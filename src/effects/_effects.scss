@@ -1,0 +1,65 @@
+// Update: 21/02/2022
+
+//-----------------------------------
+
+@include keyframes(floatImg) {
+    0%   {
+        @include transform(translate(0,  0px));
+    }
+
+    50%  {
+        @include transform(translate(0, 15px));
+    }
+
+    100% {
+        @include transform(translate(0, -0px));
+    }
+}
+
+@include keyframes(fadeZoomIn) {
+    0% {
+        @include transform(scale(1.3));
+        opacity: 0;
+    }
+
+    100% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+}
+
+@include keyframes(fadeZoomOut) {
+    0% {
+        @include transform(scale(0.3));
+        opacity: 0;
+    }
+
+    100% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+}
+
+@include keyframes(zoomOut) {
+    0% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+
+    100% {
+        @include transform(scale(0.3));
+        opacity: 0;
+    }
+}
+
+@include keyframes(zoomIn) {
+    0% {
+        @include transform(scale(0));
+        opacity: 0;
+    }
+
+    100% {
+        @include transform(scale(1));
+        opacity: 1;
+    }
+}

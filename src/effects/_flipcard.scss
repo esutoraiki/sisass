@@ -1,0 +1,40 @@
+// Update: 28/12/2021
+
+//-----------------------------------
+
+@mixin flip_card($attr: ()) {
+    $w: mapv($attr, width, 350px);
+    $ar: mapv($attr, aspect_ratio, 1);
+    $bgf: mapv($attr, bg_front, white);
+    $bgb: mapv($attr, bg_back, black);
+
+    @include aspect-ratio($w, $ar);
+    @include position;
+    user-select: none;
+
+    &.open,
+    &:hover
+    {
+        .front { @include transform(perspective(600px) rotateY(-180deg)); }
+        .back { @include transform(perspective(600px) rotateY(0)); }
+    }
+
+    .item_card {
+        @include transition(all 0.6s linear);
+        @include position(absolute);
+        @include whs(100%);
+        backface-visibility: hidden;
+        overflow: hidden;
+    }
+
+    .front {
+        @include transform(perspective(600px) rotateY(0));
+        background-color: $bgf;
+    }
+
+    .back {
+        @include transform(perspective(600px) rotateY(180deg));
+        background-color: $bgb;
+    }
+}
+

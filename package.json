@@ -1,0 +1,20 @@
+{
+  "name": "sisass",
+  "version": "1.0.0",
+  "description": "Simple Interface for SASS",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esutoraiki/sisass.git"
+  },
+  "keywords": [],
+  "author": "John Sánchez Alvarez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/esutoraiki/sisass/issues"
+  },
+  "homepage": "https://github.com/esutoraiki/sisass#readme"
+}

@@ -1,0 +1,19 @@
+//------------------------------------------------
+//font-face
+//------------------------------------------------
+// AdihausDIN
+@include font-face(
+    "AdihausDIN", "../fonts/adihausdin/adihausdin",
+    normal, normal,
+    woff2 woff ttf
+);
+
+@include font-face(
+    "AdihausDIN", "../fonts/adihausdin/adihausdin",
+    bold, normal,
+    woff2 woff ttf
+);
+
+//------------------------------------------------
+//End font-face
+//------------------------------------------------

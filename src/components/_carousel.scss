@@ -1,0 +1,97 @@
+// Update: 29/07/2021
+
+//-----------------------------------
+// Components
+//-----------------------------------
+@use "sass:math";
+
+@mixin carousel($items: 6, $attr: ()) {
+    $width: mapv($attr, width, 90vw);
+    $height: mapv($attr, height, auto);
+    $max-width: mapv($attr, max-width, 1236px);
+    $max-height: mapv($attr, max-height, initial);
+    $padding: mapv($attr, padding, 0 48px);
+    $margin: mapv($attr, margin, 0 auto);
+    $number-items: mapv($attr, number-items, 3);
+
+    &.active {
+        @include wh($width, $height);
+        padding: $padding;
+        margin: $margin;
+        max: {
+            width: $max-width;
+            height: $max-height;
+        }
+
+        @for $i from 1 through $items {
+            .carousel__activator:nth-of-type(#{$i}):checked~.carousel__controls:nth-of-type(#{$i}) {
+                display: block;
+            }
+
+            .carousel__activator:nth-of-type(#{$i}):checked~.carousel__screen .carousel__track {
+                @include transform(translateX(#{(1 - $i) * 100%}));
+            }
+        }
+
+        .carousel__activator {
+            display: none;
+        }
+
+        .carousel__controls {
+            @include transform(translate(0, -50%));
+            @include position(absolute, 50%);
+            @include wh(100%, 48px);
+            display: inline-block;
+            display: none;
+
+            &:first-of-type {
+                justify-content: flex-end;
+            }
+
+            &:last-of-type {
+                justify-content: flex-start;
+            }
+
+            .carousel__control {
+                @include transition($t3 all);
+                @include wh(30px, 48px);
+                display: block;
+                cursor: pointer;
+                z-index: 1;
+
+                &:hover {
+                    @include transform(scale(1.05));
+                }
+
+                &.carousel__control--forward {
+                    @include ht;
+                    @include position(absolute, 0, 0, top, right);
+                }
+
+                &.carousel__control--backward {
+                    @include ht;
+                }
+            }
+        }
+
+        .carousel__screen {
+            @include wh(inherit);
+            overflow: hidden;
+            margin: 0 -16px;
+
+            .carousel__track {
+                @include wh(inherit);
+                @include transition(all 0.3s ease 0s);
+                font-size: 0;
+                white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
+
+                .carousel__item {
+                    @include wh(math.div(100%, $number-items));
+                    display: inline-flex;
+                }
+            }
+        }
+    }
+}
+
