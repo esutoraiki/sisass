@@ -1,0 +1,56 @@
+// Update: 30/03/2022
+
+//-----------------------------------
+// Components
+//-----------------------------------
+@mixin modal($attr: ()) {
+    $bgl: mapv($attr, bg_light, $c2);
+    $bgl_o: mapv($attr, bg_light_opacity, 0.8);
+    $wi_modal: mapv($attr, width_modal, 100%);
+    $width_min: mapv($attr, min_width, 250px);
+    $zi: mapv($attr, z_index, 100);
+    $wi: mapv($attr, width, 100%);
+    $he: mapv($attr, height, auto);
+    $bg: mapv($attr, bg, $c1);
+    $wi_c: mapv($attr, width_container, 45vw);
+    $he_c: mapv($attr, height_container, auto);
+    $mhe: mapv($attr, max_height_container, 100vh);
+    $class_m: mapv($attr, class_modal, modal_container);
+    $padding_x: mapv($attr, padding_x, 15px);
+    $padding_y: mapv($attr, padding_y, 15px);
+    $padding_o: mapv($attr, padding_opctional, 2vw);
+    $class_c: mapv($attr, class_content, content);
+    $class_x: mapv($attr, class_close, close);
+    $wic: mapv($attr, width_close, 30px);
+    $hec: mapv($attr, height_close, 30px);
+    $tc: mapv($attr, top_close, 10px);
+    $rc: mapv($attr, right_close, 10px);
+
+    @include background-opacity($bgl, $bgl_o);
+    @include center-flex-column;
+    @include position(fixed);
+    @include whs($wi_modal);
+    z-index: $zi;
+
+    .#{$class_m} {
+        @include position;
+        @include wh($wi_c, $he_c);
+        background-color: $bg;
+        padding: $padding_y MAX($padding_o, $padding_x);
+        max-height: $mhe;
+        min-width: $width_min;
+    }
+
+   .#{$class_c} {
+        @include wh($wi, $he);
+        z-index: calc(#{$zi} + 1);
+   }
+
+   .#{$class_x} {
+        all: initial;
+        @include position(absolute, $tc, $rc, top, right);
+        @include wh($wic, $hec);
+        z-index: calc(#{$zi} + 2);
+        cursor: pointer;
+   }
+}

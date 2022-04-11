@@ -1,0 +1,33 @@
+// Update: 21/02/2022
+
+//---------------------
+@mixin triangle-corner($attr: ()) {
+    $axis_y: mapv($attr, y, bottom);
+    $axis_x: mapv($attr, x, right);
+    $size_y: mapv($attr, size_y, 100px);
+    $size_x: mapv($attr, size_x, 100px);
+    $bd_style: mapv($attr, border_style, solid);
+    $color: mapv($attr, color, black);
+
+    @include whs(0);
+    border-#{$axis_y}: $size_y $bd_style $color;
+    border-#{$axis_x}: $size_x $bd_style transparent;
+}
+
+@mixin triangle-isosceles ($attr: ()) {
+    $direction: mapv($attr, direction, up);
+    $dim1: mapv($attr, height, 5px);
+    $dim2: mapv($attr, base, 5px);
+    $color1: mapv($attr, color, black);
+    $axis_1: mapv($attr, axis_1, bottom);
+    $axis_2: mapv($attr, axis_2, right);
+    $axis_3: mapv($attr, axis_3, left);
+    $color2: transparent;
+
+    @include whs(0);
+    border: {
+        #{$axis_1}: $dim1 solid $color1;
+        #{$axis_2}: $dim2 solid $color2;
+        #{$axis_3}: $dim2 solid $color2;
+    }
+}
