@@ -2,15 +2,12 @@ const
     fs = require("fs"),
 
     // args = process.argv.slice(2),
+    dest = "./",
     filesDir = "node_modules/sisass/files/"
 ;
 
-let
-    dest = "./"
-;
-
 // Copy files to the project
-fs.cp(filesDir, "./", {recursive: true}, (err, data) => {
+fs.cp(filesDir, dest, {recursive: true}, (err, data) => {
     if (err) {
         console.error("Error Install");
         console.error(err);
