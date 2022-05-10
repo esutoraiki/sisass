@@ -1,6 +1,6 @@
 {
   "name": "sisass",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Simple Interface for SASS",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,10 @@
     "type": "git",
     "url": "git+https://github.com/esutoraiki/sisass.git"
   },
-  "keywords": [],
+  "keywords": [
+    "sass",
+    "framework"
+  ],
   "author": "John Sánchez Alvarez",
   "license": "MIT",
   "bugs": {

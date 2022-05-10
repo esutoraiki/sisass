@@ -1,7 +1,7 @@
-// Update: 30/03/2022
+// Update: 20220502
 
 //---------------------
-@mixin simple_button($attr: ()) {
+@mixin button_simple($attr: ()) {
     $bg: mapv($attr, bg, $c1);
     $bgh: mapv($attr, bg_hover, $c2);
     $color: mapv($attr, color, $c2);
@@ -67,6 +67,7 @@
     @include position;
     @include aspect-ratio($w, $ar);
     @include user-select;
+    display: block;
     cursor: pointer;
 
     &:before {
@@ -162,6 +163,63 @@
                 content: "\2190";
             }
         }
+    }
+}
+
+@mixin button_bisel($attr: ()) {
+    $w: mapv($attr, width, 140px);
+    $h: mapv($attr, height, 55px);
+    $difi: mapv($attr, diff, 10px);
+    $bg1: mapv($attr, bg1, $c1);
+    $bg2: mapv($attr, bg2, $c2);
+    $bgo: mapv($attr, bg_opacity, 0.4);
+    $bdb: mapv($attr, border_contain, false);
+    $bd: mapv($attr, border, 2px solid $c2);
+    $aspi: mapv($attr, aspect_inside, 2.8);
+    $font: mapv($attr, font, $f1);
+    $size: mapv($attr, size, 18);
+    $weight: mapv($attr, weight, bold);
+    $ob: mapv($attr, opacity_before, 1);
+    $color: mapv($attr, color, $c1);
+    $colorh: mapv($attr, color_hover, $c1);
+
+    all: initial;
+    @include wh($w, $h);
+    @include user-select;
+    @include position;
+    background: linear-gradient(to top, rgba($bg1, $bgo), rgba($bg2, $bgo));
+    cursor: pointer;
+    display: block;
+
+    @if $bdb {
+        border: $bd;
+    }
+
+    &:hover {
+        &:before {
+            background: linear-gradient(to top, rgba($bg1, $bgo), rgba($bg2, $bgo));
+        }
+
+        .content_link { color: $colorh; }
+    }
+
+    &:before {
+        @include hv-center;
+        width: calc($w - $difi);
+        aspect-ratio:  $aspi;
+        opacity: $ob;
+        background: linear-gradient(to bottom, rgba($bg1, $bgo), rgba($bg2, $bgo));
+        z-index: 0;
+        content: "";
+    }
+
+    .content_link {
+        @include font(szrem($size), $font, $weight);
+        @include text(center, uppercase);
+        @include hv-center;
+        color: $color;
+        width: 95%;
+        z-index: 2;
     }
 }
 

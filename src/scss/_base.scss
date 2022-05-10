@@ -1,4 +1,4 @@
-// Update: 20220405
+// Update: 20220504
 @use "sass:math";
 
 // Vendor.
@@ -442,14 +442,14 @@
     $bg: mapv($attr, bg, black);
     $wi: mapv($attr, width, 15px);
     $bdr: mapv($attr, radius, 10px);
-    $dir: mapv($attr, direction, "h");
+    $dir: mapv($attr, direction, "v");
 
     @include position;
 
-    @if $dir == "h" {
+    @if $dir == "v" {
         overflow: overlay;
         overflow-x: hidden;
-    } @else if $dir == "v"  {
+    } @else if $dir == "h"  {
         overflow: overlay;
         overflow-y: hidden;
     } @else {
@@ -494,25 +494,26 @@
     @return math.div($value, $value * 0 + 1);
 }
 
-// Fluid Font
+// Fluid Fonti and Measures
 @mixin fluid-type($attr: ()) {
-    $min-vw: mapv($attr, minvw, 320px);
-    $max-vw: mapv($attr, maxvw, 1920px);
-    $min-font-size: mapv($attr, minf, 14px);
-    $max-font-size: mapv($attr, maxf, 24px);
+    $min_s: mapv($attr, mins, 320px);
+    $max_s: mapv($attr, maxs, 1920px);
+    $min_v: mapv($attr, minv, 14px);
+    $max_v: mapv($attr, maxv, 24px);
+    $attre: mapv($attr, attr, font-size);
 
-    $u1: unit($min-vw);
-    $u2: unit($max-vw);
-    $u3: unit($min-font-size);
-    $u4: unit($max-font-size);
+    $u1: unit($min_s);
+    $u2: unit($max_s);
+    $u3: unit($min_v);
+    $u4: unit($max_v);
 
     @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-        @include brp(strip-unit($max-vw)) {
-            font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        @include brp(strip-unit($max_s)) {
+            #{$attre}: calc(#{$min_v} + #{strip-unit($max_v - $min_v)} * ((100vw - #{$min_s}) / #{strip-unit($max_s - $min_s)}));
         }
 
-        @include brp(strip-unit($min-vw)) {
-            font-size: $min-font-size;
+        @include brp(strip-unit($min_s)) {
+            #{$attre}: $min_v;
         }
     } @else {
         @debug "No fueron enviadas las unidades para fluid-type"
