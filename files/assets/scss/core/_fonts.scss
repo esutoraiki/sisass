@@ -1,18 +1,15 @@
 //------------------------------------------------
 //font-face
 //------------------------------------------------
-// AdihausDIN
+// Font
+/* Example
 @include font-face(
-    "AdihausDIN", "../fonts/adihausdin/adihausdin",
-    normal, normal,
+    "name_font", "path_font",
+    weight_font, style_font,
     woff2 woff ttf
 );
+*/
 
-@include font-face(
-    "AdihausDIN", "../fonts/adihausdin/adihausdin",
-    bold, normal,
-    woff2 woff ttf
-);
 
 //------------------------------------------------
 //End font-face
