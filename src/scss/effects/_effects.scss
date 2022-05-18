@@ -1,22 +1,23 @@
-// Update: 20220420
+// Update: 20220518
 
 //-----------------------------------
 
 @mixin floatImg($attr: ()) {
     $name_k: mapv($attr, name, floatImg);
-    $dis_y:  mapv($attr, Y, 15px);
+    $dis_y_1:  mapv($attr, Y, 15px);
+    $dis_y_2:  mapv($attr, Y_initial, 0);
 
     @include keyframes($name_k) {
         0%   {
-            @include transform(translateY(0));
+            @include transform(translateY($dis_y_2));
         }
 
         50%  {
-            @include transform(translateY($dis_y));
+            @include transform(translateY($dis_y_1));
         }
 
         100% {
-            @include transform(translateY(0));
+            @include transform(translateY($dis_y_2));
         }
     }
 };
@@ -24,33 +25,37 @@
 @mixin fadeZoomIn($attr: ()) {
     $name_k: mapv($attr, name, fadeZoomIn);
     $scale: mapv($attr, scale, 1.3);
+    $opa_1: mapv($attr, opacity_start 0);
+    $opa_2: mapv($attr, opacity_end, 1);
 
     @include keyframes($name_k) {
         0% {
             @include transform(scale($scale));
-            opacity: 0;
+            opacity: $opa_1;
         }
 
         100% {
             @include transform(scale(1));
-            opacity: 1;
-        }
+            opacity: $opa_2;
     }
+        }
 }
 
 @mixin fadeZoomOut($attr: ()) {
     $name_k: mapv($attr, name, fadeZoomOut);
     $scale: mapv($attr, scale, 0.3);
+    $opa_1: mapv($attr, opacity_start 0);
+    $opa_2: mapv($attr, opacity_end, 1);
 
     @include keyframes($name_k) {
         0% {
             @include transform(scale($scale));
-            opacity: 0;
+            opacity: $opa_1;
         }
 
         100% {
             @include transform(scale(1));
-            opacity: 1;
+            opacity: $opa_2;
         }
     }
 }
@@ -58,16 +63,18 @@
 @mixin zoomOut($attr: ()) {
     $name_k: mapv($attr, name, zoomOut);
     $scale: mapv($attr, scale, 0.3);
+    $opa_1: mapv($attr, opacity_start 1);
+    $opa_2: mapv($attr, opacity_end, 0);
 
     @include keyframes($name_k) {
         0% {
             @include transform(scale(1));
-            opacity: 1;
+            opacity: $opa_1;
         }
 
         100% {
             @include transform(scale($scale));
-            opacity: 0;
+            opacity: $opa_2;
         }
     }
 }
@@ -75,16 +82,18 @@
 @mixin zoomIn($attr: ()) {
     $name_k: mapv($attr, name, zoomIn);
     $scale: mapv($attr, scale, 0);
+    $opa_1: mapv($attr, opacity_start, 0);
+    $opa_2: mapv($attr, opacity_end, 1);
 
     @include keyframes($name_k) {
         0% {
             @include transform(scale($scale));
-            opacity: 0;
+            opacity: $opa_1;
         }
 
         100% {
             @include transform(scale(1));
-            opacity: 1;
+            opacity: $opa_2;
         }
     }
 }
@@ -93,15 +102,16 @@
     $name_k:  mapv($attr, name, bgTransitionOpacityIn);
     $bg1:     mapv($attr, bg1, $c2);
     $bg2:     mapv($attr, bg2, $bg1);
-    $opacity: mapv($attr, opacity, 0.8);
+    $opa_1: mapv($attr, opacity_start, 0);
+    $opa_2: mapv($attr, opacity_end, 0.8);
 
     @include keyframes($name_k) {
         0% {
-            @include background-opacity($bg1, 0);
+            @include background-opacity($bg1, $opa_1);
         }
 
         100% {
-            @include background-opacity($bg2, $opacity);
+            @include background-opacity($bg2, $opa_2);
         }
     }
 }
@@ -110,15 +120,16 @@
     $name_k:  mapv($attr, name, bgTransitionOpacityOut);
     $bg1:     mapv($attr, bg1, $c2);
     $bg2:     mapv($attr, bg2, $bg1);
-    $opacity: mapv($attr, opacity, 0.8);
+    $opa_1: mapv($attr, opacity_start, 0.8);
+    $opa_2: mapv($attr, opacity_end, 0);
 
     @include keyframes($name_k) {
         0% {
-            @include background-opacity($bg1, $opacity);
+            @include background-opacity($bg1, $opa_1);
         }
 
         100% {
-            @include background-opacity($bg2, 0);
+            @include background-opacity($bg2, $opa_2);
         }
     }
 }
