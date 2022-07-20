@@ -1,0 +1,13 @@
+@import "instance";
+
+.logo_sisass {
+    &:before {
+        @include icon_svg(
+            sisass,
+            nth($l1x, 1),
+            nth($l1y, 1),
+            $c3
+        );
+        content: "";
+    }
+}

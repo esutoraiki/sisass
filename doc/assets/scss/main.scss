@@ -1,0 +1,33 @@
+@import "variables";
+@import "base";
+@import "mediaqueries";
+@import "fonts";
+@import "reset";
+@import "keyframes";
+@import "layouts";
+@import "mixins";
+@import "silents_class";
+
+@import "components/menu";
+
+.documentationpage {
+    @include scroll;
+    @include font(100%);
+    @include no-margins;
+    @include no-border;
+    background-color: $c1;
+
+    .main_header {
+        @include wh(100vw);
+        padding: 35px 40px;
+
+        .logo_sisass {
+            @include ht;
+            @include position;
+            @include wh(
+                nth($l1x, 1),
+                nth($l1y, 1)
+            );
+        }
+    }
+}

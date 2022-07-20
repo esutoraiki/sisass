@@ -1,0 +1,26 @@
+//------------------------------------------------
+//font-face
+//------------------------------------------------
+// Monserrat
+@include font-face(
+    "Monserrat", "../fonts/montserrat/montserrat_black",
+    900, normal,
+    woff2 woff ttf
+);
+
+// Fira Sans
+@include font-face(
+    "Fira Sans", "../fonts/fira_sans/firasans_regular",
+    normal, normal,
+    woff2 woff ttf
+);
+
+@include font-face(
+    "Fira Sans", "../fonts/fira_sans/firasans_bold",
+    bold, normal,
+    woff2 woff ttf
+);
+
+//------------------------------------------------
+//End font-face
+//------------------------------------------------

@@ -7,7 +7,6 @@
     "postinstall": "node install"
   },
   "directories": {
-    "examples": "eg",
     "documentation": "doc",
     "files": "files",
     "source": "src"

@@ -1,0 +1,27 @@
+@import "instance";
+
+.main_menu {
+    .group_1 {
+        @include flex-direction(column);
+        @include flex;
+        margin-bottom: 35px;
+
+        &:last-child { margin-bottom: 0; }
+
+        .title {
+            @include font(szrem(24), $f2, bold);
+            @include text;
+            margin-bottom: 14px;
+            color: $c3;
+        }
+
+        .item {
+            @include font(szrem(18), $f2);
+            @include text;
+            margin-bottom: 10px;
+            color: $c3;
+
+            &:last-child { margin-bottom: 0; }
+        }
+    }
+}
