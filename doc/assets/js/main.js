@@ -4,13 +4,37 @@ import { buildNode } from "./core/fn.js";
     "use strict";
 
     const
-        // s0 = document.body,
         s1 = document.getElementById("main_header"),
+        s2 = document.getElementById("main_content"),
+
+        p_menu = "../components/menu.html",
+        p_content = [
+            ["welcome", "../components/welcome.html"]
+        ],
 
         NSDocumentation = (function () {
             return {
+                content: () => {
+                    for (let item of p_content) {
+                        fetch(item[1])
+                            .then((response) => response.text())
+                            .then((content) => {
+                                buildNode({
+                                    content: content,
+                                    insert: s2,
+                                    attr: [
+                                        ["id", "container_" + item[0]],
+                                        ["class", "container_" + item[0]]
+                                    ]
+
+                                });
+                            })
+                        ;
+                    }
+                },
+
                 main_menu: () => {
-                    fetch("../components/menu.html")
+                    fetch(p_menu)
                         .then((response) => response.text())
                         .then((menu) => {
                             buildNode({
@@ -18,7 +42,7 @@ import { buildNode } from "./core/fn.js";
                                 insert: s1,
                                 attr: [
                                     ["id", "container_menu"],
-                                    ["class", "container_menu m1"]
+                                    ["class", "container_menu a2"]
                                 ]
                             });
                         })
@@ -30,5 +54,6 @@ import { buildNode } from "./core/fn.js";
 
     window.addEventListener("load", function () {
         NSDocumentation.main_menu();
+        NSDocumentation.content();
     });
 }());

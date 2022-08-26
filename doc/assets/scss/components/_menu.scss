@@ -1,6 +1,8 @@
 @import "instance";
 
 .main_menu {
+    padding-left: min(2.08vw, 40px);
+
     .group_1 {
         @include flex-direction(column);
         @include flex;

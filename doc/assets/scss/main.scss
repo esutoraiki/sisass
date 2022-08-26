@@ -19,7 +19,7 @@
 
     .main_header {
         @include wh(100vw);
-        padding: 35px 40px;
+        padding: 35px min(2.08vw, 40px);
 
         .logo_sisass {
             @include ht;
