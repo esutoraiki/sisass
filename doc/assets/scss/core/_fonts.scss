@@ -21,6 +21,19 @@
     woff2 woff ttf
 );
 
+//Nunito Sans
+@include font-face(
+    "Nunito Sans", "../fonts/nunito_sans/nunito_sans",
+    normal, normal,
+    woff2 woff ttf
+);
+
+@include font-face(
+    "Nunito Sans", "../fonts/nunito_sans/nunito_sans_bold",
+    bold, normal,
+    woff2 woff ttf
+);
+
 //------------------------------------------------
 //End font-face
 //------------------------------------------------

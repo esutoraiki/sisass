@@ -15,7 +15,7 @@
     @include font(100%);
     @include no-margins;
     @include no-border;
-    background-color: $c1;
+    @include bc($c1, $c3);
 
     .main_header {
         @include wh(100vw);
@@ -29,5 +29,35 @@
                 nth($l1y, 1)
             );
         }
+    }
+
+    .main_content {
+        padding: 0 min(2.08vw, 40px);
+    }
+
+    .title {
+        @include font(szrem(36), $f1, 900);
+        @include text;
+        margin-bottom: 30px;
+        color: $c4;
+    }
+
+    .description {
+        @include font(szrem(16), $f3);
+        @include text(justify);
+        margin-bottom: 15px;
+        color: $c3;
+
+        b {
+            @include font(szrem(16), $f3, bold);
+            @include text(justify);
+            color: $c3;
+        }
+    }
+
+    article {
+        border-bottom: $bd1;
+        padding-bottom: 40px;
+        margin-bottom: 30px;
     }
 }

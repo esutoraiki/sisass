@@ -22,6 +22,7 @@ import { buildNode } from "./core/fn.js";
                                 buildNode({
                                     content: content,
                                     insert: s2,
+                                    position: "beforeend",
                                     attr: [
                                         ["id", "container_" + item[0]],
                                         ["class", "container_" + item[0]]
