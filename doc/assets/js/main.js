@@ -9,7 +9,10 @@ import { buildNode } from "./core/fn.js";
 
         p_menu = "../components/menu.html",
         p_content = [
-            ["welcome", "../components/welcome.html"]
+            ["welcome", "../components/welcome.html"],
+            ["workflow", "../components/workflow.html"],
+            ["src", "../components/src.html"],
+            ["vendor_prefix", "../components/vendor_prefix.html"]
         ],
 
         NSDocumentation = (function () {

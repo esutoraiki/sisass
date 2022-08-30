@@ -17,6 +17,12 @@
     @include no-border;
     @include bc($c1, $c3);
 
+    article {
+        border-bottom: $bd1;
+        padding-bottom: 40px;
+        margin-bottom: 30px;
+    }
+
     .main_header {
         @include wh(100vw);
         padding: 35px min(2.08vw, 40px);
@@ -35,11 +41,29 @@
         padding: 0 min(2.08vw, 40px);
     }
 
+    .group_title {
+        margin-bottom: 30px;
+    }
+
     .title {
         @include font(szrem(36), $f1, 900);
         @include text;
         margin-bottom: 30px;
         color: $c4;
+    }
+
+    .subtitle {
+        @include font(szrem(28), $f1, 900);
+        @include text;
+        margin-bottom: 5px;
+        color: $c5;
+    }
+
+    .attribute {
+        @include font(szrem(20), $f2, bold);
+        @include text;
+        margin-bottom: 3px;
+        color: $c6;
     }
 
     .description {
@@ -53,11 +77,5 @@
             @include text(justify);
             color: $c3;
         }
-    }
-
-    article {
-        border-bottom: $bd1;
-        padding-bottom: 40px;
-        margin-bottom: 30px;
     }
 }
