@@ -1,0 +1,30 @@
+{
+    "components": [
+        {
+            "id": "menu",
+            "url": "../components/menu.html",
+            "class": "a2",
+            "position": "afterend"
+        },
+        {
+            "id": "welcome",
+            "url": "../components/welcome.html",
+            "position": "beforeend"
+        },
+        {
+            "id": "workflow",
+            "url": "../components/workflow.html",
+            "position": "beforeend"
+        },
+        {
+            "id": "src",
+            "url": "../components/src.html",
+            "position": "beforeend"
+        },
+        {
+            "id": "vendor_prefix",
+            "url": "../components/vendor_prefix.html",
+            "position": "beforeend"
+        }
+    ]
+}
