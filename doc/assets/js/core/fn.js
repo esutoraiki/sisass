@@ -83,8 +83,10 @@ function buildNode(attr = {}) {
 
     // Insert node
     if (insert_node) {
-        insert_node.insertAdjacentElement(position, node);
-        success();
+        window.setTimeout(() => {
+            insert_node.insertAdjacentElement(position, node);
+            success();
+        }, 1000);
     }
 
     return node;

@@ -23,6 +23,8 @@
             margin-bottom: 10px;
             color: $c3;
 
+            &:hover { color: $c5; }
+
             &:last-child { margin-bottom: 0; }
         }
     }

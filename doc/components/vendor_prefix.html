@@ -18,7 +18,7 @@
     </p>
 
     <p class="note">
-        Nota: Los proveedores de navegadores están trabajando
+        <b>Nota:</b> Los proveedores de navegadores están trabajando
         para dejar de usar los prefijos de proveedores para
         funciones experimentales. Los desarrolladores web los
         han estado utilizando en sitios web de producción, a
@@ -31,12 +31,16 @@
         web populares.
     </p>
 
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+<pre class="language-css"><code>@import vendor-prefix($property, $value, $prefix);</code></pre>
 
-    <p>
-Últimamente, la tendencia es agregar características experimentales detrás de las banderas o preferencias controladas por el usuario, y crear especificaciones más pequeñas que puedan alcanzar un estado estable mucho más rápidamente.
-    </p>
+<pre class="language-css"><code>.first_letter_line {
+    p:first-letter { font-size: 200%; }
+    p:first-line   { color: red; }
+}</code></pre>
 
-    <p>
-        En SISASS contamos con algunos mixin para las propiedades vendor más comunes usadas para que se tenga una mayor compatibilidad con todos los navegadores, las propiedades de las cuales disponemos son las siguiente:
-    </p>
+    </section>
 </article>

@@ -2,6 +2,18 @@
 // Silent Class
 //-----------------------------------
 
+%text_1 {
+    @include font(szrem(16), $f3);
+    @include text(justify);
+    color: $c3;
+
+    b {
+        @include font(szrem(16), $f3, bold);
+        @include text(justify);
+        color: $c3;
+    }
+}
+
 //-----------------------------------
 // END Silent Class
 //-----------------------------------
