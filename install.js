@@ -3,7 +3,7 @@ const
     fs = require("fs"),
 
     dest = arg.path || "../../",
-    filesDir = arg.dir || "files/"
+    filesDir = (dest === "../../") ? "files/" : "files/assets/"
 ;
 
 // Copy files to the project
