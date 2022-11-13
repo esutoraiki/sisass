@@ -1,5 +1,75 @@
-// Update: 20220511
+// Update: 20220619
 /** @module js/core/ */
+
+const
+    checkLoad = new Proxy([], {
+        set: (target, property, value) => {
+            let load = true;
+
+            target[property] = value;
+
+            for (let item of target) {
+                if (!item) load = false;
+            }
+
+            if (load) {
+                let prism = document.createElement("script");
+
+                prism.src = "js/libraries/prism.js";
+                document.head.insertAdjacentElement("beforeend", prism);
+            }
+
+            return true;
+        }
+    })
+;
+
+function contentLoad(attr = {}) {
+    let
+        url = attr.url || null
+    ;
+
+    fetch(url)
+        .then(response => response.json())
+        .then((data) => {
+            for (const element in data.components) {
+                const
+                    component = data.components[element]
+                ;
+
+                checkLoad[element] = false;
+
+                fetch(component.url)
+                    .then((text) => text.text())
+                    .then((content) => {
+                        let
+                            node_insert = document.getElementById(component.node),
+                            class_add = (component.class !== undefined) ? component.class : ""
+                        ;
+
+                        buildNode({
+                            content: content,
+                            insert: node_insert,
+                            position: component.position,
+                            attr: [
+                                ["id", "container_" + component.id],
+                                ["class", "container_" + component.id + " " + class_add]
+                            ],
+                            success: () => {
+                                checkLoad[element] = true;
+                            }
+                        });
+                    })
+                ;
+            }
+        })
+        .catch(function (err) {
+            console.warn('Something went wrong.', err);
+        })
+    ;
+
+    return false;
+}
 
 /*
  * Load Ajax
@@ -83,13 +153,11 @@ function buildNode(attr = {}) {
 
     // Insert node
     if (insert_node) {
-        window.setTimeout(() => {
-            insert_node.insertAdjacentElement(position, node);
-            success();
-        }, 1000);
+        insert_node.insertAdjacentElement(position, node);
+        success();
     }
 
     return node;
 }
 
-export { loadAjax, buildNode };
+export { loadAjax, buildNode, checkLoad, contentLoad };

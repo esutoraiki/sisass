@@ -3,12 +3,12 @@
 //-----------------------------------
 
 %text_1 {
-    @include font(szrem(16), $f3);
+    @include font(szrem(16), $f1);
     @include text(justify);
     color: $c3;
 
     b {
-        @include font(szrem(16), $f3, bold);
+        @include font(szrem(16), $f1, bold);
         @include text(justify);
         color: $c3;
     }

@@ -19,11 +19,13 @@ const
     ],
     paths_dest_css = [
         "assets/css/",
-        "assets/css/components"
+        "assets/css/components",
+        "assets/css/examples"
     ],
     paths_compile_scss = [
         "assets/scss/*.scss",
-        "assets/scss/components/*.scss"
+        "assets/scss/components/*.scss",
+        "assets/scss/examples/*.scss"
     ],
 
     path_svg = "assets/scss/svg/*.scss",
@@ -35,6 +37,7 @@ const
 
     paths_js = [
         "assets/js/*.js",
+        "assets/js/pages/*.js",
         "assets/js/components/*.js"
     ],
 
@@ -75,7 +78,7 @@ gulp.task("css_svg", function () {
 
     return gulp.src(path_svg)
         .pipe(sass({
-            outputStyle: "compressed",
+            outputStyle: "expanded",
             includePaths: paths_scss
         }).on("error", sass.logError))
         .pipe(gulp.dest(path_dest_svg));
@@ -90,7 +93,7 @@ gulp.task("scss", function () {
     for (let i = 0; i < paths_compile_scss.length; i++) {
         task_array[i] = gulp.src(paths_compile_scss[i])
             .pipe(sass({
-                outputStyle: "compressed",
+                outputStyle: "expanded",
                 includePaths: paths_scss
             }).on("error", sass.logError))
             .pipe(gulp.dest(paths_dest_css[i]));

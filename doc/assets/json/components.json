@@ -1,30 +1,53 @@
 {
     "components": [
         {
+            "id": "header",
+            "url": "../components/header.html",
+            "position": "beforeend",
+            "node": "header"
+        },
+        {
             "id": "menu",
-            "url": "../components/menu.html",
+            "url": "../components/global/menu.html",
             "class": "a2",
-            "position": "afterend"
+            "position": "afterend",
+            "node": "main_header"
         },
         {
             "id": "welcome",
             "url": "../components/welcome.html",
-            "position": "beforeend"
+            "position": "beforeend",
+            "node": "welcome"
         },
         {
             "id": "workflow",
             "url": "../components/workflow.html",
-            "position": "beforeend"
+            "position": "beforeend",
+            "node": "workflow"
         },
         {
             "id": "src",
             "url": "../components/src.html",
-            "position": "beforeend"
+            "position": "beforeend",
+            "node": "src"
         },
         {
             "id": "vendor_prefix",
             "url": "../components/vendor_prefix.html",
-            "position": "beforeend"
+            "position": "beforeend",
+            "node": "vendorprefix"
+        },
+        {
+            "id": "border_radius",
+            "url": "../components/border_radius.html",
+            "position": "beforeend",
+            "node": "borderradius"
+        },
+        {
+            "id": "box_shadow",
+            "url": "../components/box_shadow.html",
+            "position": "beforeend",
+            "node": "boxshadow"
         }
     ]
 }

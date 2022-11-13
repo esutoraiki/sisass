@@ -14,7 +14,7 @@
     @include scroll((
         color: $c4
     ));
-    @include font(100%, $f3);
+    @include font(100%, $f1);
     @include no-margins;
     @include no-border;
     @include bc($c1, $c3);
@@ -36,6 +36,7 @@
                 nth($l1x, 1),
                 nth($l1y, 1)
             );
+            display: block;
         }
     }
 
@@ -43,19 +44,24 @@
         padding: 0 min(10vw, 192px);
     }
 
+    .container_menu {
+        @include position(sticky, 26px);
+        @include wh(100%, max-content);
+    }
+
     .group_title {
         margin-bottom: 30px;
     }
 
     .title {
-        @include font(szrem(36), $f1, 900);
+        @include font(szrem(36), $f3, 900);
         @include text;
         margin-bottom: 30px;
         color: $c4;
     }
 
     .subtitle {
-        @include font(szrem(28), $f1, 900);
+        @include font(szrem(28), $f3, 900);
         @include text;
         margin-bottom: 5px;
         color: $c5;
@@ -66,6 +72,10 @@
         @include text;
         margin-bottom: 3px;
         color: $c6;
+    }
+
+    .deprecated {
+        color: $c5;
     }
 
     .description,
@@ -83,19 +93,49 @@
     }
 
     .use {
-        color: red;
-
         .title {
             @include font(szrem(28), $f2, bold);
             @include text;
-            margin-bottom: 10px;
             color: $c6;
+            margin: {
+                top: 45px;
+                bottom: 10px;
+            }
+        }
+
+        .subtitle {
+            @include font(szrem(20), $f2, bold);
+            @include text;
+            color: lighten($c6, 20%);
+            margin: {
+                top: 30px;
+                bottom: 10px;
+            }
+        }
+    }
+
+    .result {
+        box-sizing: border-box;
+        background-color: lighten($c3, 65%);
+        border: $bd1;
+        padding: 10px;
+        display: block;
+        margin: 10px 0;
+
+        .box {
+            @include whs(100px);
+            background-color: $c5;
         }
     }
 
     code {
-        @include font(szrem(16), $f3);
+        @include font(szrem(16), $f1);
         padding: 10px 15px;
         display: block;
+    }
+
+    pre {
+        @include border-radius(5%);
+        margin-bottom: 40px;
     }
 }

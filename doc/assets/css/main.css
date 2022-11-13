@@ -1,1 +1,460 @@
-@font-face{font-family:"Monserrat";font-style:normal;font-weight:900;src:url("../fonts/montserrat/montserrat_black.woff2") format("woff2"),url("../fonts/montserrat/montserrat_black.woff") format("woff"),url("../fonts/montserrat/montserrat_black.ttf") format("truetype");font-display:swap}@font-face{font-family:"Fira Sans";font-style:normal;font-weight:normal;src:url("../fonts/fira_sans/firasans_regular.woff2") format("woff2"),url("../fonts/fira_sans/firasans_regular.woff") format("woff"),url("../fonts/fira_sans/firasans_regular.ttf") format("truetype");font-display:swap}@font-face{font-family:"Fira Sans";font-style:normal;font-weight:bold;src:url("../fonts/fira_sans/firasans_bold.woff2") format("woff2"),url("../fonts/fira_sans/firasans_bold.woff") format("woff"),url("../fonts/fira_sans/firasans_bold.ttf") format("truetype");font-display:swap}@font-face{font-family:"Nunito Sans";font-style:normal;font-weight:normal;src:url("../fonts/nunito_sans/nunito_sans.woff2") format("woff2"),url("../fonts/nunito_sans/nunito_sans.woff") format("woff"),url("../fonts/nunito_sans/nunito_sans.ttf") format("truetype");font-display:swap}@font-face{font-family:"Nunito Sans";font-style:normal;font-weight:bold;src:url("../fonts/nunito_sans/nunito_sans_bold.woff2") format("woff2"),url("../fonts/nunito_sans/nunito_sans_bold.woff") format("woff"),url("../fonts/nunito_sans/nunito_sans_bold.ttf") format("truetype");font-display:swap}*{font-size:100%;font-family:"Montserrat","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;margin:0;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;padding:0;padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;border:0 none rgba(0,0,0,0);border-top:0 none rgba(0,0,0,0);border-bottom:0 none rgba(0,0,0,0);border-left:0 none rgba(0,0,0,0);border-right:0 none rgba(0,0,0,0);vertical-align:baseline;box-sizing:border-box}*:focus{outline:0}html{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}a{text-decoration:none}textarea{resize:none}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}img{pointer-events:none}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}.documentationpage .note,.documentationpage .description,.documentationpage p{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;text-align:justify;text-decoration:none;text-transform:none;color:#3a405a}.documentationpage .note b,.documentationpage .description b,.documentationpage p b{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:bold;font-style:normal;font-variant:normal;text-align:justify;text-decoration:none;text-transform:none;color:#3a405a}.layout_1{-ms-display:grid;display:grid;grid-template-columns:230px auto;grid-template-areas:"h1 h1" "m1 c1"}.layout_1 .a1{grid-area:h1}.layout_1 .a2{grid-area:m1}.layout_1 .a3{grid-area:c1}.documentationpage .note,.documentationpage .description,.documentationpage p{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;text-align:justify;text-decoration:none;text-transform:none;color:#3a405a}.documentationpage .note b,.documentationpage .description b,.documentationpage p b{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:bold;font-style:normal;font-variant:normal;text-align:justify;text-decoration:none;text-transform:none;color:#3a405a}.documentationpage .note,.documentationpage .description,.documentationpage p{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;text-align:justify;text-decoration:none;text-transform:none;color:#3a405a}.documentationpage .note b,.documentationpage .description b,.documentationpage p b{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:bold;font-style:normal;font-variant:normal;text-align:justify;text-decoration:none;text-transform:none;color:#3a405a}.main_menu{padding-left:min(2.08vw,40px)}.main_menu .group_1{-webkit-flex-direction:column;flex-direction:column;-webkit-display:flex;-moz-display:flex;-ms-display:flex;display:flex;margin-bottom:35px}.main_menu .group_1:last-child{margin-bottom:0}.main_menu .group_1 .title{font-size:1.5rem;font-family:"Fira Sans","sans-serif";font-weight:bold;font-style:normal;font-variant:normal;text-align:left;text-decoration:none;text-transform:none;margin-bottom:14px;color:#3a405a}.main_menu .group_1 .item{font-size:1.125rem;font-family:"Fira Sans","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;text-align:left;text-decoration:none;text-transform:none;margin-bottom:10px;color:#3a405a}.main_menu .group_1 .item:hover{color:#a01303}.main_menu .group_1 .item:last-child{margin-bottom:0}.documentationpage{position:relative;top:0;left:0;overflow:overlay;overflow-x:hidden;font-size:100%;font-family:"Nunito Sans","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;margin:0;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;padding:0;padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;border:0 none rgba(0,0,0,0);border-top:0 none rgba(0,0,0,0);border-bottom:0 none rgba(0,0,0,0);border-left:0 none rgba(0,0,0,0);border-right:0 none rgba(0,0,0,0);background-color:#fff;color:#3a405a}.documentationpage::-webkit-scrollbar{-webkit-appearance:none;-moz-appearance:none;appearance:none;width:15px;height:auto;background-color:#000}.documentationpage::-webkit-scrollbar-thumb{-webkit-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px;background-color:#fbb03b}.documentationpage::-webkit-scrollbar-track{-webkit-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;border-radius:10px}.documentationpage article{border-bottom:2px dashed #3a405a;padding-bottom:40px;margin-bottom:30px}.documentationpage .main_header{width:100vw;height:auto;padding:35px min(2.08vw,40px)}.documentationpage .main_header .logo_sisass{margin:0;margin-top:0;margin-bottom:0;margin-left:0;margin-right:0;padding:0;padding-top:0;padding-bottom:0;padding-left:0;padding-right:0;text-indent:-119988px;font:0/0 a;text-shadow:none;color:rgba(0,0,0,0);position:relative;top:0;left:0;width:324px;height:116px}.documentationpage .main_content{padding:0 min(10vw,192px)}.documentationpage .group_title{margin-bottom:30px}.documentationpage .title{font-size:2.25rem;font-family:"Montserrat","sans-serif";font-weight:900;font-style:normal;font-variant:normal;text-align:left;text-decoration:none;text-transform:none;margin-bottom:30px;color:#fbb03b}.documentationpage .subtitle{font-size:1.75rem;font-family:"Montserrat","sans-serif";font-weight:900;font-style:normal;font-variant:normal;text-align:left;text-decoration:none;text-transform:none;margin-bottom:5px;color:#a01303}.documentationpage .attribute{font-size:1.25rem;font-family:"Fira Sans","sans-serif";font-weight:bold;font-style:normal;font-variant:normal;text-align:left;text-decoration:none;text-transform:none;margin-bottom:3px;color:#2d396c}.documentationpage .description,.documentationpage p{margin-bottom:15px}.documentationpage .note{padding:min(5vw,15px);border:1px solid #3a405a;border-left:6px solid #3a405a;margin-bottom:15px}.documentationpage .use{color:red}.documentationpage .use .title{font-size:1.75rem;font-family:"Fira Sans","sans-serif";font-weight:bold;font-style:normal;font-variant:normal;text-align:left;text-decoration:none;text-transform:none;margin-bottom:10px;color:#2d396c}.documentationpage code{font-size:1rem;font-family:"Nunito Sans","sans-serif";font-weight:normal;font-style:normal;font-variant:normal;padding:10px 15px;display:block}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/montserrat/montserrat_black.woff2") format("woff2"), url("../fonts/montserrat/montserrat_black.woff") format("woff"), url("../fonts/montserrat/montserrat_black.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/fira_sans/firasans_regular.woff2") format("woff2"), url("../fonts/fira_sans/firasans_regular.woff") format("woff"), url("../fonts/fira_sans/firasans_regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/fira_sans/firasans_bold.woff2") format("woff2"), url("../fonts/fira_sans/firasans_bold.woff") format("woff"), url("../fonts/fira_sans/firasans_bold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/nunito_sans/nunito_sans.woff2") format("woff2"), url("../fonts/nunito_sans/nunito_sans.woff") format("woff"), url("../fonts/nunito_sans/nunito_sans.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/nunito_sans/nunito_sans_bold.woff2") format("woff2"), url("../fonts/nunito_sans/nunito_sans_bold.woff") format("woff"), url("../fonts/nunito_sans/nunito_sans_bold.ttf") format("truetype");
+  font-display: swap;
+}
+* {
+  font-size: 100%;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0 none transparent;
+  border-top: 0 none transparent;
+  border-bottom: 0 none transparent;
+  border-left: 0 none transparent;
+  border-right: 0 none transparent;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: 0;
+}
+
+html {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+img {
+  pointer-events: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+.documentationpage .note, .documentationpage .description,
+.documentationpage p {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  text-transform: none;
+  color: #3A405A;
+}
+.documentationpage .note b, .documentationpage .description b,
+.documentationpage p b {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  text-transform: none;
+  color: #3A405A;
+}
+
+.layout_1 {
+  -ms-display: grid;
+  display: grid;
+  grid-template-columns: 230px auto;
+  grid-template-areas: "h1 h1" "m1 c1";
+}
+.layout_1 .a1 {
+  grid-area: h1;
+}
+.layout_1 .a2 {
+  grid-area: m1;
+}
+.layout_1 .a3 {
+  grid-area: c1;
+}
+
+.documentationpage .note, .documentationpage .description,
+.documentationpage p {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  text-transform: none;
+  color: #3A405A;
+}
+.documentationpage .note b, .documentationpage .description b,
+.documentationpage p b {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  text-transform: none;
+  color: #3A405A;
+}
+
+.documentationpage .note, .documentationpage .description,
+.documentationpage p {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  text-transform: none;
+  color: #3A405A;
+}
+.documentationpage .note b, .documentationpage .description b,
+.documentationpage p b {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: none;
+  text-transform: none;
+  color: #3A405A;
+}
+
+.main_menu {
+  padding-left: min(2.08vw, 40px);
+}
+.main_menu .group_1 {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  margin-bottom: 35px;
+}
+.main_menu .group_1:last-child {
+  margin-bottom: 0;
+}
+.main_menu .group_1 .title {
+  font-size: 1.5rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  margin-bottom: 14px;
+  color: #3A405A;
+}
+.main_menu .group_1 .item {
+  font-size: 1.125rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  margin-bottom: 10px;
+  color: #3A405A;
+}
+.main_menu .group_1 .item:hover {
+  color: #A01303;
+}
+.main_menu .group_1 .item:last-child {
+  margin-bottom: 0;
+}
+
+.documentationpage {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: overlay;
+  overflow-x: hidden;
+  font-size: 100%;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  border: 0 none transparent;
+  border-top: 0 none transparent;
+  border-bottom: 0 none transparent;
+  border-left: 0 none transparent;
+  border-right: 0 none transparent;
+  background-color: #FFF;
+  color: #3A405A;
+}
+.documentationpage::-webkit-scrollbar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: auto;
+  background-color: black;
+}
+.documentationpage::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  background-color: #FBB03B;
+}
+.documentationpage::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+.documentationpage article {
+  border-bottom: 2px dashed #3A405A;
+  padding-bottom: 40px;
+  margin-bottom: 30px;
+}
+.documentationpage .main_header {
+  width: 100vw;
+  height: auto;
+  padding: 35px min(2.08vw, 40px);
+}
+.documentationpage .main_header .logo_sisass {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -119988px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 324px;
+  height: 116px;
+  display: block;
+}
+.documentationpage .main_content {
+  padding: 0 min(10vw, 192px);
+}
+.documentationpage .container_menu {
+  position: sticky;
+  top: 26px;
+  left: 0;
+  width: 100%;
+  height: max-content;
+}
+.documentationpage .group_title {
+  margin-bottom: 30px;
+}
+.documentationpage .title {
+  font-size: 2.25rem;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  margin-bottom: 30px;
+  color: #FBB03B;
+}
+.documentationpage .subtitle {
+  font-size: 1.75rem;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  margin-bottom: 5px;
+  color: #A01303;
+}
+.documentationpage .attribute {
+  font-size: 1.25rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  margin-bottom: 3px;
+  color: #2D396C;
+}
+.documentationpage .deprecated {
+  color: #A01303;
+}
+.documentationpage .description,
+.documentationpage p {
+  margin-bottom: 15px;
+}
+.documentationpage .note {
+  padding: min(5vw, 15px);
+  border: 1px solid #3A405A;
+  border-left: 6px solid #3A405A;
+  margin-bottom: 15px;
+}
+.documentationpage .use .title {
+  font-size: 1.75rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  color: #2D396C;
+  margin-top: 45px;
+  margin-bottom: 10px;
+}
+.documentationpage .use .subtitle {
+  font-size: 1.25rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none;
+  color: #4b5fb4;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.documentationpage .result {
+  box-sizing: border-box;
+  background-color: #eceef3;
+  border: 2px dashed #3A405A;
+  padding: 10px;
+  display: block;
+  margin: 10px 0;
+}
+.documentationpage .result .box {
+  width: 100px;
+  height: 100px;
+  background-color: #A01303;
+}
+.documentationpage code {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  padding: 10px 15px;
+  display: block;
+}
+.documentationpage pre {
+  -webkit-border-radius: 5%;
+  -moz-border-radius: 5%;
+  -ms-border-radius: 5%;
+  -o-border-radius: 5%;
+  border-radius: 5%;
+  margin-bottom: 40px;
+}
