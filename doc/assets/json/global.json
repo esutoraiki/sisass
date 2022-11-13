@@ -1,0 +1,18 @@
+{
+    "components": [
+        {
+            "id": "header",
+            "url": "../components/global/header.html",
+            "position": "afterbegin",
+            "node": "header"
+        },
+        {
+            "id": "menu",
+            "url": "../components/global/menu.html",
+            "class": "a2",
+            "position": "afterend",
+            "node": "main_content"
+        }
+    ]
+}
+

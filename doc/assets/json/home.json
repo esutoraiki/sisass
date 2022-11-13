@@ -1,0 +1,16 @@
+{
+    "components": [
+        {
+            "id": "welcome",
+            "url": "../components/home/welcome.html",
+            "position": "beforeend",
+            "node": "welcome"
+        },
+        {
+            "id": "workflow",
+            "url": "../components/home/workflow.html",
+            "position": "beforeend",
+            "node": "workflow"
+        }
+    ]
+}

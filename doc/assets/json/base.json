@@ -1,0 +1,28 @@
+{
+    "components": [
+        {
+            "id": "src",
+            "url": "../components/base/src.html",
+            "position": "beforeend",
+            "node": "src"
+        },
+        {
+            "id": "vendor_prefix",
+            "url": "../components/base/vendor_prefix.html",
+            "position": "beforeend",
+            "node": "vendorprefix"
+        },
+        {
+            "id": "border_radius",
+            "url": "../components/base/border_radius.html",
+            "position": "beforeend",
+            "node": "borderradius"
+        },
+        {
+            "id": "box_shadow",
+            "url": "../components/base/box_shadow.html",
+            "position": "beforeend",
+            "node": "boxshadow"
+        }
+    ]
+}

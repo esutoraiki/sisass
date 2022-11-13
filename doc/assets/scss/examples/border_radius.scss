@@ -1,0 +1,5 @@
+@import "base";
+
+.circle_border_radius {
+    @include border-radius(50%);
+}
