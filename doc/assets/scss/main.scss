@@ -74,14 +74,16 @@
         color: $c6;
     }
 
-    .deprecated {
-        color: $c5;
-    }
+    .deprecated { color: $c5; }
 
     .description,
     p {
         @extend %text_1;
         margin-bottom: 15px;
+    }
+
+    .mb {
+        margin-bottom: 25px;
     }
 
     .note {
@@ -126,6 +128,12 @@
             @include whs(100px);
             background-color: $c5;
         }
+    }
+
+    .container_example {
+        @include bc($c7, $c3);
+        box-sizing: border-box;
+        padding: 1px min(0.78vw, 15px) 15px;
     }
 
     code {

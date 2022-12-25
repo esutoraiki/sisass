@@ -1,0 +1,8 @@
+@import "base";
+
+.scale_rotate_example {
+    @include transform(
+        rotate(45deg)
+        scale(0.5)
+    );
+}

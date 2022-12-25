@@ -1,0 +1,7 @@
+.scale_rotate_example {
+  -webkit-transform: rotate(45deg) scale(0.5);
+  -moz-transform: rotate(45deg) scale(0.5);
+  -ms-transform: rotate(45deg) scale(0.5);
+  -o-transform: rotate(45deg) scale(0.5);
+  transform: rotate(45deg) scale(0.5);
+}

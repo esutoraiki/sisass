@@ -1,0 +1,35 @@
+@import "variables";
+@import "base";
+
+.transform_style_flat {
+    @include transform-style(flat);
+    @include transform(
+        perspective(390px)
+        rotateY(30deg)
+    );
+    @include wh(250px, 100px);
+    background-color: $c4 ;
+
+    &.center_element,
+    .center_element
+    {
+        @include center-flex-column;
+    }
+
+    .text {
+        display: block;
+        margin: 0;
+        color: $c2;
+    }
+
+    .children {
+        @include transform(rotate3d(1, 1, 0, 15deg));
+        @include wh(80%);
+        padding: 15px 10px;
+        background-color: $c5;
+
+        .text {
+            color: $c1;
+        }
+    }
+}

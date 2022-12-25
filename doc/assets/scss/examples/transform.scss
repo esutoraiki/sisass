@@ -1,0 +1,5 @@
+@import "base";
+
+.rotate_example {
+    @include transform(rotate(45deg));
+}

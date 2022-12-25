@@ -396,6 +396,9 @@ summary {
 .documentationpage p {
   margin-bottom: 15px;
 }
+.documentationpage .mb {
+  margin-bottom: 25px;
+}
 .documentationpage .note {
   padding: min(5vw, 15px);
   border: 1px solid #3A405A;
@@ -440,6 +443,12 @@ summary {
   width: 100px;
   height: 100px;
   background-color: #A01303;
+}
+.documentationpage .container_example {
+  background-color: #F5F3F3;
+  color: #3A405A;
+  box-sizing: border-box;
+  padding: 1px min(0.78vw, 15px) 15px;
 }
 .documentationpage code {
   font-size: 1rem;

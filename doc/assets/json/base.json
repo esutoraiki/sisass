@@ -23,6 +23,18 @@
             "url": "../components/base/box_shadow.html",
             "position": "beforeend",
             "node": "boxshadow"
+        },
+        {
+            "id": "transform",
+            "url": "../components/base/transform.html",
+            "position": "beforeend",
+            "node": "transform"
+        },
+        {
+            "id": "transformstyle",
+            "url": "../components/base/transform_style.html",
+            "position": "beforeend",
+            "node": "transformstyle"
         }
     ]
 }

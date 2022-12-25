@@ -1,0 +1,110 @@
+<article id="transform" class="transform">
+    <div class="group_title">
+        <h2 class="subtitle">
+            transform-style (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 1.1.13
+        </h3>
+    </div>
+
+    <p class="description">
+        Clase vendor existente dentro de SISASS para la propiedad transform style
+    </p>
+
+    <p class="description">
+        La propiedad transform-style es una propiedad de CSS que establece si el
+        elemento hijo está posicionado en el espacio tridimensional (<b>preserve-3d</b>)
+        o si se integra en el plano del elemento padre (<b>flat</b>). De esta manera,
+        podemos controlar cómo se comportan los elementos hijos en relación con
+        el elemento padre cuando se aplican transformaciones tridimensionales.
+    </p>
+
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin transform-style($br: none);</code></pre>
+
+        <p class="description">
+            <b>br</b>: Valor a asignar a la propiedad
+        </p>
+
+        <h2 class="title">
+            Propiedad transform-style con preserve-3d
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/examples/transformstyle.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/examples/transformstyle.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;transform_style_preserve_3d&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;Padre&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;children&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hijo&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine; &lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="transform_style_preserve_3d center_element">
+                    <p class="text">Padre</p>
+                    <div class="children center_element">
+                        <p class="text">
+                            Hijo
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="title">
+            Propiedad transform-style con flat
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 2: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/examples/transformstyle2.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 2: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/examples/transformstyle2.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 2: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;transform_style_flat&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;Padre&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;children&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hijo&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine; &lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="transform_style_flat center_element">
+                    <p class="text">Padre</p>
+                    <div class="children center_element">
+                        <p class="text">
+                            Hijo
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

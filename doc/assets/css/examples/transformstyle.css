@@ -1,0 +1,43 @@
+.transform_style_preserve_3d {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: perspective(390px) rotateY(30deg);
+  -moz-transform: perspective(390px) rotateY(30deg);
+  -ms-transform: perspective(390px) rotateY(30deg);
+  -o-transform: perspective(390px) rotateY(30deg);
+  transform: perspective(390px) rotateY(30deg);
+  width: 250px;
+  height: 100px;
+  background-color: #FBB03B;
+}
+.transform_style_preserve_3d.center_element,
+.transform_style_preserve_3d .center_element {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.transform_style_preserve_3d .text {
+  display: block;
+  margin: 0;
+  color: #000;
+}
+.transform_style_preserve_3d .children {
+  -webkit-transform: rotate3d(1, 1, 0, 15deg);
+  -moz-transform: rotate3d(1, 1, 0, 15deg);
+  -ms-transform: rotate3d(1, 1, 0, 15deg);
+  -o-transform: rotate3d(1, 1, 0, 15deg);
+  transform: rotate3d(1, 1, 0, 15deg);
+  width: 80%;
+  height: auto;
+  padding: 15px 10px;
+  background-color: #A01303;
+}
+.transform_style_preserve_3d .children .text {
+  color: #FFF;
+}
