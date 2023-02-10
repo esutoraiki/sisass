@@ -20,12 +20,12 @@ const
     paths_dest_css = [
         "assets/css/",
         "assets/css/components",
-        "assets/css/examples"
+        "assets/css/bases"
     ],
     paths_compile_scss = [
         "assets/scss/*.scss",
         "assets/scss/components/*.scss",
-        "assets/scss/examples/*.scss"
+        "assets/scss/bases/*.scss"
     ],
 
     path_svg = "assets/scss/svg/*.scss",
