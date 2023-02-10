@@ -1,4 +1,4 @@
-// Update: 20220504
+// Update: 20230210
 @use "sass:math";
 
 // Vendor.
@@ -187,16 +187,19 @@
     @if $line-height != "none" { line-height: $line-height; }
 }
 
-// Background.
+// Background
 @mixin background ($attr: ()) {
     $way: mapv($attr, url, "");
     $repeat: mapv($attr, repeat, no-repeat);
     $position: mapv($attr, position, center);
     $color: mapv($attr, color, transparent);
     $size: mapv($attr, size, auto);
+    $image: mapv($attr, image, "");
 
     background: {
-        image    : url($way);
+        @if $way != ""   { image: url($way); }
+        @if $image != "" { image: $image; }
+
         repeat   : $repeat;
         position : $position;
         color    : $color;
