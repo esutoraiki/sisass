@@ -35,6 +35,12 @@
             "url": "../components/base/transform_style.html",
             "position": "beforeend",
             "node": "transformstyle"
+        },
+        {
+            "id": "background",
+            "url": "../components/base/background.html",
+            "position": "beforeend",
+            "node": "background"
         }
     ]
 }

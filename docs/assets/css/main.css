@@ -458,6 +458,8 @@ summary {
   font-variant: normal;
   padding: 10px 15px;
   display: block;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
 }
 .documentationpage pre {
   -webkit-border-radius: 5%;
@@ -466,4 +468,10 @@ summary {
   -o-border-radius: 5%;
   border-radius: 5%;
   margin-bottom: 40px;
+}
+.documentationpage pre:before {
+  display: none;
+}
+.documentationpage pre:after {
+  display: none;
 }

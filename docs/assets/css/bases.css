@@ -184,3 +184,11 @@
   background: rgba(210, 0, 210, 0.7);
   transform: rotateX(-90deg) translateZ(50px);
 }
+
+.background_gradient {
+  background-image: linear-gradient(to right, hsl(242.87deg, 100%, 45.1%) 0%, hsl(242.87deg, 100%, 45.1%) 25%, hsl(235.27deg, 85.1%, 56.14%) 25%, hsl(235.27deg, 85.1%, 56.14%) 50%, hsl(224.78deg, 90.65%, 65.03%) 50%, hsl(224.78deg, 90.65%, 65.03%) 75%, hsl(209.77deg, 100%, 73.92%) 75%, hsl(209.77deg, 100%, 73.92%) 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  background-size: auto;
+}

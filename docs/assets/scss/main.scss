@@ -140,10 +140,15 @@
         @include font(szrem(16), $f1);
         padding: 10px 15px;
         display: block;
+        white-space: pre-wrap !important;
+        word-break: break-word !important;
     }
 
     pre {
         @include border-radius(5%);
         margin-bottom: 40px;
+
+        &:before { display: none; }
+        &:after { display: none; }
     }
 }
