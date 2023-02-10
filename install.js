@@ -1,15 +1,15 @@
 const
+    arg = require("./arg.js").arg
     fs = require("fs"),
 
-    // args = process.argv.slice(2),
-    dest = "../../",
-    filesDir = "files/"
+    dest = arg.path || "../../",
+    filesDir = (dest === "../../") ? "files/" : "files/assets/"
 ;
 
 // Copy files to the project
 fs.cp(filesDir, dest, {recursive: true, force: false}, (err, data) => {
     if (err) {
-        console.error("Error Install");
+        console.error("Error Install: ");
         console.error(err);
     } else {
         console.log("successful resource installation");
