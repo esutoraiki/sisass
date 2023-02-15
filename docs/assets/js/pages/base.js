@@ -4,7 +4,7 @@ import { contentLoad } from "../core/fn.js";
     "use strict";
 
     const
-        url_json_base= "json/base.json",
+        url_json_base = "json/base.json",
 
 
         NSBase = (function () {

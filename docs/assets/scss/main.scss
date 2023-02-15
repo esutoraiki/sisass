@@ -54,10 +54,10 @@
     }
 
     .title {
-        @include font(szrem(36), $f3, 900);
+        @include font(szrem(42), $f3, 900);
         @include text;
         margin-bottom: 30px;
-        color: $c4;
+        color: $c5;
     }
 
     .subtitle {
@@ -127,6 +127,10 @@
         .box {
             @include whs(100px);
             background-color: $c5;
+        }
+
+        .box_no_bgc {
+            @include whs(100px);
         }
     }
 

@@ -20,12 +20,14 @@ const
     paths_dest_css = [
         "assets/css/",
         "assets/css/components",
-        "assets/css/bases"
+        "assets/css/bases",
+        "assets/css/mediaqueries"
     ],
     paths_compile_scss = [
         "assets/scss/*.scss",
         "assets/scss/components/*.scss",
-        "assets/scss/bases/*.scss"
+        "assets/scss/bases/*.scss",
+        "assets/scss/mediaqueries/*.scss"
     ],
 
     path_svg = "assets/scss/svg/*.scss",

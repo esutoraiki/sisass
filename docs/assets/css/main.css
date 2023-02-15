@@ -1,3 +1,30 @@
+.example_mbr {
+  background-color: red;
+  width: 300px;
+  height: 300px;
+}
+@media only screen and (max-width: 1920px) {
+  .example_mbr {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .example_mbr {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .example_mbr {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+}
+
 @font-face {
   font-family: "Montserrat";
   font-style: normal;
@@ -119,6 +146,33 @@ summary {
   display: block;
 }
 
+.example_mbr {
+  background-color: red;
+  width: 300px;
+  height: 300px;
+}
+@media only screen and (max-width: 1920px) {
+  .example_mbr {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .example_mbr {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .example_mbr {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+}
+
 .documentationpage .note, .documentationpage .description,
 .documentationpage p {
   font-size: 1rem;
@@ -183,6 +237,33 @@ summary {
   text-decoration: none;
   text-transform: none;
   color: #3A405A;
+}
+
+.example_mbr {
+  background-color: red;
+  width: 300px;
+  height: 300px;
+}
+@media only screen and (max-width: 1920px) {
+  .example_mbr {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .example_mbr {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .example_mbr {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
 }
 
 .documentationpage .note, .documentationpage .description,
@@ -254,6 +335,9 @@ summary {
 }
 .main_menu .group_1 .item:last-child {
   margin-bottom: 0;
+}
+.main_menu .group_1 .item.active {
+  color: #A01303;
 }
 
 .documentationpage {
@@ -354,7 +438,7 @@ summary {
   margin-bottom: 30px;
 }
 .documentationpage .title {
-  font-size: 2.25rem;
+  font-size: 2.625rem;
   font-family: "Montserrat", "sans-serif";
   font-weight: 900;
   font-style: normal;
@@ -363,7 +447,7 @@ summary {
   text-decoration: none;
   text-transform: none;
   margin-bottom: 30px;
-  color: #FBB03B;
+  color: #A01303;
 }
 .documentationpage .subtitle {
   font-size: 1.75rem;
@@ -443,6 +527,10 @@ summary {
   width: 100px;
   height: 100px;
   background-color: #A01303;
+}
+.documentationpage .result .box_no_bgc {
+  width: 100px;
+  height: 100px;
 }
 .documentationpage .container_example {
   background-color: #F5F3F3;

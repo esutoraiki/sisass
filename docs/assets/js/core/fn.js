@@ -26,7 +26,8 @@ const
 
 function contentLoad(attr = {}) {
     let
-        url = attr.url || null
+        url = attr.url || null,
+        success = attr.success || (function () { return undefined; })
     ;
 
     fetch(url)
@@ -57,6 +58,7 @@ function contentLoad(attr = {}) {
                             ],
                             success: () => {
                                 checkLoad[element] = true;
+                                success(component.id);
                             }
                         });
                     })
