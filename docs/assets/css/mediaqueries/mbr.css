@@ -1,0 +1,26 @@
+.example_mbr {
+  background-color: red;
+  width: 300px;
+  height: 300px;
+}
+@media only screen and (max-width: 1920px) {
+  .example_mbr {
+    width: 300px;
+    height: 300px;
+    background-color: red;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .example_mbr {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .example_mbr {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+}

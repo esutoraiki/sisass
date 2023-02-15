@@ -1,0 +1,72 @@
+<article id="mbr_article" class="mbr_article">
+    <div class="group_title">
+        <h2 class="subtitle">
+            mbr (_mediaqueries.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 1.1.13
+        </h3>
+    </div>
+
+    <p class="description">
+        Mbr permite la creación de múltiples breakpoint en los cuales
+        va a variar uno o varios atributos con la ayuda de una lista/s
+        de valores.
+    </p>
+
+    <p class="note">
+        Este mixin se debe usar con al ayuda de la función
+        nth (<a href="https://sass-lang.com/documentation/modules/list#nth" target="_blank">Sass: sass:list</a>)
+        que permite obtener un elemento de una lista.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin mbr($points...) using ($i);</code></pre>
+
+        <p class="description">
+            <b>points</b>: Breakpoints o lista de dreakpoints en los cuales se realizara los cambios.
+        </p>
+        <p class="description">
+            <b>i</b>: Variable auto numerica la cual inicia desde 1.
+        </p>
+
+        <h2 class="title">
+            Cambio de background color y tamaño según la resolución del navegador.
+        </h2>
+
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/mediaqueries/mbr.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/mediaqueries/mbr.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_mbr&quot;&gt;&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="example_mbr"></div>
+            </div>
+        </div>
+    </section>
+</article>

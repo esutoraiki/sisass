@@ -1,0 +1,20 @@
+@import "_mediaqueries";
+
+$l1: (red, blue, green);
+$l2: (300px, 200px, 100px);
+
+$br1: 1920;
+$br2: 980;
+$br3: 640;
+
+.example_mbr {
+    background-color: red;
+    width: 300px;
+    height: 300px;
+
+    @include mbr($br1, $br2, $br3) using ($i) {
+        width: nth($l2, $i);
+        height: nth($l2, $i);
+        background-color: nth($l1, $i);
+    }
+}

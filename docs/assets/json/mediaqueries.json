@@ -1,0 +1,16 @@
+{
+    "components": [
+        {
+            "id": "src",
+            "url": "../components/base/src.html",
+            "position": "beforeend",
+            "node": "src"
+        },
+        {
+            "id": "mbr",
+            "url": "../components/mediaqueries/mbr.html",
+            "position": "beforeend",
+            "node": "mbr"
+        }
+    ]
+}

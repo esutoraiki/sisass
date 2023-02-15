@@ -1,0 +1,29 @@
+{
+  "name": "sisass",
+  "version": "1.1.20",
+>>>>>>> Stashed changes
+  "description": "Simple Interface for SASS",
+  "main": "index.js",
+  "scripts": {
+    "init": "node install"
+  },
+  "directories": {
+    "documentation": "doc",
+    "files": "files",
+    "source": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esutoraiki/sisass.git"
+  },
+  "keywords": [
+    "sass",
+    "framework"
+  ],
+  "author": "John Sánchez Alvarez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/esutoraiki/sisass/issues"
+  },
+  "homepage": "https://github.com/esutoraiki/sisass#readme"
+}
