@@ -44,17 +44,17 @@
 @mixin fadeZoomOut($attr: ()) {
     $name_k: mapv($attr, name, fadeZoomOut);
     $scale: mapv($attr, scale, 0.7);
-    $opa_1: mapv($attr, opacity_start, 0);
-    $opa_2: mapv($attr, opacity_end, 1);
+    $opa_1: mapv($attr, opacity_start, 1);
+    $opa_2: mapv($attr, opacity_end, 0);
 
     @include keyframes($name_k) {
         0% {
-            @include transform(scale($scale));
+            @include transform(scale(1));
             opacity: $opa_1;
         }
 
         100% {
-            @include transform(scale(1));
+            @include transform(scale($scale));
             opacity: $opa_2;
         }
     }
