@@ -1,0 +1,141 @@
+// Update: 20230610
+
+// Border Radius.
+@mixin border-radius($br) {
+  @include vendor-prefix(border-radius, $br, webkit moz ms o);
+}
+
+// Box Shadow.
+@mixin box-shadow($br: none) {
+  @include vendor-prefix(box-shadow, $br, webkit moz);
+}
+
+// Transform.
+@mixin transform($br: none) {
+    @include vendor-prefix(transform, $br, webkit moz ms o);
+}
+
+// Transform style.
+@mixin transform-style($br: none) {
+    @include vendor-prefix(transform-style, $br, webkit moz);
+}
+
+// Justify content.
+@mixin justify-content($br: initial) {
+    @include vendor-prefix(justify-content, $br, webkit);
+}
+
+// Justify self.
+@mixin justify-self($br: initial) {
+    @include vendor-prefix(justify-self, $br, webkit);
+}
+
+// Justify items.
+@mixin justify-items($br: initial) {
+    @include vendor-prefix(justify-items, $br, webkit);
+}
+
+// Align items.
+@mixin align-items($br: initial) {
+    @include vendor-prefix(align-items, $br, webkit);
+}
+
+// Align self.
+@mixin align-self($br: initial) {
+    @include vendor-prefix(align-self, $br, webkit);
+}
+
+// Align content.
+@mixin align-content($br: initial) {
+    @include vendor-prefix(align-content, $br, webkit);
+}
+
+// Flex direction.
+@mixin flex-direction($br: row) {
+    @include vendor-prefix(flex-direction, $br, webkit);
+}
+
+// Flex basis
+@mixin flex-basis($br: auto) {
+    @include vendor-prefix(flex-basis, $br, webkit);
+}
+
+// Flex.
+@mixin flex {
+    @include vendor-prefix(display, flex, webkit moz ms);
+}
+
+// Grid.
+@mixin grid {
+    @include vendor-prefix(display, grid, ms);
+}
+
+// Transition
+@mixin transition($br) {
+    @include vendor-prefix(transition, $br, webkit moz o);
+}
+
+// Animation
+@mixin animation($br: none) {
+    @include vendor-prefix(animation, $br, webkit moz);
+}
+
+// Animation fill mode
+@mixin animation-fill-mode($br) {
+    @include vendor-prefix(animation-fill-mode, $br, webkit moz);
+}
+
+// User select
+@mixin user-select($br: none) {
+    @include vendor-prefix(user-select, $br, webkit moz ms);
+}
+
+// Appearance
+@mixin appearance($br: none) {
+    @include vendor-prefix(appearance, $br, webkit moz);
+}
+
+// backface-visibility
+@mixin backface-visibility($br: hidden) {
+    @include vendor-prefix(backface-visibility, $br, webkit moz);
+}
+
+// clip-path
+@mixin clip-path($br) {
+    @include vendor-prefix(clip-path, $br, webkit);
+}
+
+// Background-clip
+@mixin background-clip($br) {
+    @include vendor-prefix(background-clip, $br, webkit);
+}
+
+// Text fill color
+@mixin text-fill-color($br) {
+    @include vendor-prefix(text-fill-color, $br, webkit);
+}
+
+// column count
+@mixin column-count($br) {
+    @include vendor-prefix(column-count, $br, webkit moz);
+}
+
+// Filter
+@mixin filter($br) {
+    @include vendor-prefix(filter, $br, webkit);
+}
+
+// linear-gradient
+@mixin linear-gradient($br) {
+    background-image: -webkit-linear-gradient(#{$br});
+    background-image: -moz-linear-gradient(#{$br});
+    background-image: -o-linear-gradient(#{$br});
+    background-image: linear-gradient(#{$br});
+}
+
+// Calc
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
