@@ -30,32 +30,32 @@
 }
 
 // Justify content.
-@mixin justify-content($br: flex-start) {
+@mixin justify-content($br: initial) {
     @include vendor-prefix(justify-content, $br, webkit);
 }
 
 // Justify self.
-@mixin justify-self($br: flex-start) {
+@mixin justify-self($br: initial) {
     @include vendor-prefix(justify-self, $br, webkit);
 }
 
 // Justify items.
-@mixin justify-items($br: flex-start) {
+@mixin justify-items($br: initial) {
     @include vendor-prefix(justify-items, $br, webkit);
 }
 
 // Align items.
-@mixin align-items($br: stretch) {
+@mixin align-items($br: initial) {
     @include vendor-prefix(align-items, $br, webkit);
 }
 
 // Align self.
-@mixin align-self($br: stretch) {
+@mixin align-self($br: initial) {
     @include vendor-prefix(align-self, $br, webkit);
 }
 
 // Align content.
-@mixin align-content($br: stretch) {
+@mixin align-content($br: initial) {
     @include vendor-prefix(align-content, $br, webkit);
 }
 
