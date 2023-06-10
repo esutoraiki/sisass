@@ -1,4 +1,4 @@
-// Update: 20230210
+// Update: 20230610
 @use "sass:math";
 
 // Vendor.
@@ -7,139 +7,6 @@
     #{"-" + $prefix + "-" + $property}: $value;
   }
   #{$property}: $value;
-}
-
-// Border Radius.
-@mixin border-radius($br) {
-  @include vendor-prefix(border-radius, $br, webkit moz ms o);
-}
-
-// Box Shadow.
-@mixin box-shadow($br: none) {
-  @include vendor-prefix(box-shadow, $br, webkit moz);
-}
-
-// Transform.
-@mixin transform($br: none) {
-    @include vendor-prefix(transform, $br, webkit moz ms o);
-}
-
-// Transform style.
-@mixin transform-style($br: none) {
-    @include vendor-prefix(transform-style, $br, webkit moz);
-}
-
-// Justify content.
-@mixin justify-content($br: initial) {
-    @include vendor-prefix(justify-content, $br, webkit);
-}
-
-// Justify self.
-@mixin justify-self($br: initial) {
-    @include vendor-prefix(justify-self, $br, webkit);
-}
-
-// Justify items.
-@mixin justify-items($br: initial) {
-    @include vendor-prefix(justify-items, $br, webkit);
-}
-
-// Align items.
-@mixin align-items($br: initial) {
-    @include vendor-prefix(align-items, $br, webkit);
-}
-
-// Align self.
-@mixin align-self($br: initial) {
-    @include vendor-prefix(align-self, $br, webkit);
-}
-
-// Align content.
-@mixin align-content($br: initial) {
-    @include vendor-prefix(align-content, $br, webkit);
-}
-
-// Flex direction.
-@mixin flex-direction($br: row) {
-    @include vendor-prefix(flex-direction, $br, webkit);
-}
-
-// Flex basis
-@mixin flex-basis($br: auto) {
-    @include vendor-prefix(flex-basis, $br, webkit);
-}
-
-// Flex.
-@mixin flex {
-    @include vendor-prefix(display, flex, webkit moz ms);
-}
-
-// Grid.
-@mixin grid {
-    @include vendor-prefix(display, grid, ms);
-}
-
-// Transition
-@mixin transition($br) {
-    @include vendor-prefix(transition, $br, webkit moz o);
-}
-
-// Animation
-@mixin animation($br: none) {
-    @include vendor-prefix(animation, $br, webkit moz);
-}
-
-// Animation fill mode
-@mixin animation-fill-mode($br) {
-    @include vendor-prefix(animation-fill-mode, $br, webkit moz);
-}
-
-// User select
-@mixin user-select($br: none) {
-    @include vendor-prefix(user-select, $br, webkit moz ms);
-}
-
-// Appearance
-@mixin appearance($br: none) {
-    @include vendor-prefix(appearance, $br, webkit moz);
-}
-
-// backface-visibility
-@mixin backface-visibility($br: hidden) {
-    @include vendor-prefix(backface-visibility, $br, webkit moz);
-}
-
-// clip-path
-@mixin clip-path($br) {
-    @include vendor-prefix(clip-path, $br, webkit);
-}
-
-// Background-clip
-@mixin background-clip($br) {
-    @include vendor-prefix(background-clip, $br, webkit);
-}
-
-// Text fill color
-@mixin text-fill-color($br) {
-    @include vendor-prefix(text-fill-color, $br, webkit);
-}
-
-// column count
-@mixin column-count($br) {
-    @include vendor-prefix(column-count, $br, webkit moz);
-}
-
-// Filter
-@mixin filter($br) {
-    @include vendor-prefix(filter, $br, webkit);
-}
-
-// linear-gradient
-@mixin linear-gradient($br) {
-    background-image: -webkit-linear-gradient(#{$br});
-    background-image: -moz-linear-gradient(#{$br});
-    background-image: -o-linear-gradient(#{$br});
-    background-image: linear-gradient(#{$br});
 }
 
 // autofill
@@ -335,13 +202,6 @@
     place-items: center;
 }
 
-// Calc
-@mixin calc($property, $expression) {
-    #{$property}: -moz-calc(#{$expression});
-    #{$property}: -webkit-calc(#{$expression});
-    #{$property}: calc(#{$expression});
-}
-
 // Aspect ratio
 @mixin aspect-ratio($width: 100vw, $aspect-ratio: 1.77) {
     --size: #{$width};
@@ -430,7 +290,7 @@
     &::placeholder { @content; }
 }
 
-// Mapear listas con valor por defecto
+// Mapping lists with default value
 @function mapv($map, $key, $value) {
     $return: $value;
     @if map-has-key($map, $key) {
@@ -476,7 +336,7 @@
     }
 }
 
-// Texto en degradado
+// Text gradient
 @mixin gradient-text($grad) {
     @include linear-gradient($grad);
     @include background-clip(text);
@@ -484,20 +344,21 @@
     display: inline-block;
 }
 
-// Base porcentual
+// percentage base
 @function bp($attr: ()) {
-    $base_i: mapv($attr, initial_base, 1440);
+    $base_i: mapv($attr, initial_base, 1920);
     $unn: mapv($attr, units, "vw");
     $value: mapv($attr, value, 0);
 
     @return #{math.div($value * 100, $base_i) + $unn};
 }
 
+// Remove unit of measurement from a value
 @function strip-unit($value) {
     @return math.div($value, $value * 0 + 1);
 }
 
-// Fluid Fonti and Measures
+// Fluid Font and Measures
 @mixin fluid-type($attr: ()) {
     $min_s: mapv($attr, mins, 320px);
     $max_s: mapv($attr, maxs, 1920px);
