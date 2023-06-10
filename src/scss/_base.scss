@@ -392,6 +392,28 @@
     }
 }
 
+// Normalize the styles for working with SVG files
+@mixin normalize-svg($attr: ()) {
+    $width: mapv($attr, width, auto);
+    $height: mapv($attr, height, auto);
+    $position: mapv($attr, position, relative);
+    $x: mapv($attr, x, 0);
+    $y: mapv($attr, y, 0);
+    $yaxis: mapv($attr, yaxis, top);
+    $xaxis: mapv($attr, xaxis, left);
+    $z: mapv($attr, z, 2);
+
+    @include ht;
+    @include wh($width, $height);
+    @include position(
+        $position,
+        $y, $x,
+        $yaxis, $xaxis
+    );
+    z-index: $z;
+}
+
+
 // Image cover
 %img_cover {
     @include whs(100%);
