@@ -71,7 +71,7 @@
 }
 
 // Transition
-@mixin transition($br) {
+@mixin transition($br: none) {
     @include vendor-prefix(transition, $br, webkit moz o);
 }
 
@@ -121,7 +121,7 @@
 }
 
 // Filter
-@mixin filter($br) {
+@mixin filter($br: none) {
     @include vendor-prefix(filter, $br, webkit);
 }
 
