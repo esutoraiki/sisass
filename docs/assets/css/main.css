@@ -175,7 +175,7 @@ summary {
 
 .documentationpage .note, .documentationpage .description,
 .documentationpage p {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 0.83vw, 1rem);
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
@@ -187,15 +187,7 @@ summary {
 }
 .documentationpage .note b, .documentationpage .description b,
 .documentationpage p b {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: none;
-  text-transform: none;
-  color: #3A405A;
 }
 
 .layout_1 {
@@ -203,6 +195,13 @@ summary {
   display: grid;
   grid-template-columns: 230px auto;
   grid-template-areas: "h1 h1" "m1 c1";
+}
+@media only screen and (max-width: 980px) {
+  .layout_1 {
+    grid-gap: 15px;
+    grid-template-columns: auto;
+    grid-template-areas: "h1" "c1";
+  }
 }
 .layout_1 .a1 {
   grid-area: h1;
@@ -216,7 +215,7 @@ summary {
 
 .documentationpage .note, .documentationpage .description,
 .documentationpage p {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 0.83vw, 1rem);
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
@@ -228,15 +227,7 @@ summary {
 }
 .documentationpage .note b, .documentationpage .description b,
 .documentationpage p b {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: none;
-  text-transform: none;
-  color: #3A405A;
 }
 
 .example_mbr {
@@ -268,7 +259,7 @@ summary {
 
 .documentationpage .note, .documentationpage .description,
 .documentationpage p {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 0.83vw, 1rem);
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
@@ -280,19 +271,16 @@ summary {
 }
 .documentationpage .note b, .documentationpage .description b,
 .documentationpage p b {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: none;
-  text-transform: none;
-  color: #3A405A;
 }
 
 .main_menu {
   padding-left: min(2.08vw, 40px);
+}
+@media only screen and (max-width: 980px) {
+  .main_menu {
+    padding-top: 25px;
+  }
 }
 .main_menu .group_1 {
   -webkit-flex-direction: column;
@@ -307,7 +295,7 @@ summary {
   margin-bottom: 0;
 }
 .main_menu .group_1 .title {
-  font-size: 1.5rem;
+  font-size: clamp(1.125rem, 1.25vw, 1.5rem);
   font-family: "Fira Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
@@ -319,7 +307,7 @@ summary {
   color: #3A405A;
 }
 .main_menu .group_1 .item {
-  font-size: 1.125rem;
+  font-size: clamp(0.875rem, 0.94vw, 1.125rem);
   font-family: "Fira Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
@@ -400,7 +388,7 @@ summary {
 .documentationpage .main_header {
   width: 100vw;
   height: auto;
-  padding: 35px min(2.08vw, 40px);
+  padding: clamp(10px, 1.82vw, 35px) min(2.08vw, 40px);
 }
 .documentationpage .main_header .logo_sisass {
   margin: 0;
@@ -420,8 +408,8 @@ summary {
   position: relative;
   top: 0;
   left: 0;
-  width: 324px;
-  height: 116px;
+  width: clamp(195px, 16.88vw, 324px);
+  height: clamp(70px, 6.04vw, 116px);
   display: block;
 }
 .documentationpage .main_content {
@@ -434,11 +422,23 @@ summary {
   width: 100%;
   height: max-content;
 }
+@media only screen and (max-width: 980px) {
+  .documentationpage .container_menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: #FFF;
+    color: #3A405A;
+    z-index: 10;
+  }
+}
 .documentationpage .group_title {
   margin-bottom: 30px;
 }
 .documentationpage .title {
-  font-size: 2.625rem;
+  font-size: clamp(2.125rem, 2.19vw, 2.625rem);
   font-family: "Montserrat", "sans-serif";
   font-weight: 900;
   font-style: normal;

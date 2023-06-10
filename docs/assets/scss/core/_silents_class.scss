@@ -3,14 +3,15 @@
 //-----------------------------------
 
 %text_1 {
-    @include font(szrem(16), $f1);
+    @include font(
+        clamp(szrem(14), 0.83vw, szrem(16)),
+        $f1
+    );
     @include text(justify);
     color: $c3;
 
     b {
-        @include font(szrem(16), $f1, bold);
-        @include text(justify);
-        color: $c3;
+        font-weight: bold;
     }
 }
 

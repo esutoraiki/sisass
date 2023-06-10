@@ -1,5 +1,6 @@
 @import "variables";
 @import "base";
+@import "vendor";
 @import "mediaqueries";
 @import "fonts";
 @import "reset";
@@ -27,7 +28,7 @@
 
     .main_header {
         @include wh(100vw);
-        padding: 35px min(2.08vw, 40px);
+        padding: clamp(10px, 1.82vw, 35px) min(2.08vw, 40px);
 
         .logo_sisass {
             @include ht;
@@ -47,6 +48,14 @@
     .container_menu {
         @include position(sticky, 26px);
         @include wh(100%, max-content);
+
+        @include brp($b6) {
+            @include position(fixed);
+            @include wh(280px, 100vh);
+            @include bc($c1, $c3);
+            z-index: 10;
+        }
+
     }
 
     .group_title {
@@ -54,7 +63,11 @@
     }
 
     .title {
-        @include font(szrem(42), $f3, 900);
+        @include font(
+            clamp(szrem(34), 2.19vw, szrem(42)),
+            $f3,
+            900
+        );
         @include text;
         margin-bottom: 30px;
         color: $c5;

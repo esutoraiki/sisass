@@ -3,6 +3,12 @@
 .main_menu {
     padding-left: min(2.08vw, 40px);
 
+    @include brp($b6) {
+        padding: {
+            top: 25px;
+        }
+    }
+
     .group_1 {
         @include flex-direction(column);
         @include flex;
@@ -11,14 +17,21 @@
         &:last-child { margin-bottom: 0; }
 
         .title {
-            @include font(szrem(24), $f2, bold);
+            @include font(
+                clamp(szrem(18), 1.25vw, szrem(24)),
+                $f2,
+                bold
+            );
             @include text;
             margin-bottom: 14px;
             color: $c3;
         }
 
         .item {
-            @include font(szrem(18), $f2);
+            @include font(
+                clamp(szrem(14), 0.94vw, szrem(18)),
+                $f2
+            );
             @include text;
             margin-bottom: 10px;
             color: $c3;

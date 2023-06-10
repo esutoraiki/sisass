@@ -48,10 +48,11 @@ $t7: 700ms;
 $t8: 800ms;
 $t9: 900ms;
 $t10: 1s;
+$t11: 2s;
 
 // Variables
-$l1x: (324px);
-$l1y: (116px);
+$l1x: (clamp(195px, 16.88vw, 324px));
+$l1y: (clamp(70px, 6.04vw, 116px));
 
 //-----------------------------------
 //End Variables

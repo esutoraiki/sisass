@@ -1,4 +1,5 @@
 @import "base";
+@import "vendor";
 
 .scale_rotate_example {
     @include transform(
