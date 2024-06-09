@@ -19,7 +19,7 @@ npm explore sisass -- npm run init
 This will install sisass at the root of the project in the **assets** folder. If you want to change the **resource** folder (for example), use the path parameter like so:
 
 ```bash
-npm explore sisass -- npm run init -- --path../../resources/
+npm explore sisass -- npm run init -- --path ../../resources/
 ```
 
 # Documentation
