@@ -328,6 +328,15 @@ summary {
   color: #A01303;
 }
 
+:root {
+  --color1: white;
+  color1: white;
+  --color2: red;
+  color2: red;
+  --color3: blue;
+  color3: blue;
+}
+
 .documentationpage {
   position: relative;
   top: 0;
