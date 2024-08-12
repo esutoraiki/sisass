@@ -209,10 +209,7 @@
 
     width: var(--size);
     height: calc(var(--size) / var(--aspect-ratio));
-
-    @supports (aspect-ratio) {
-        aspect-ratio: $aspect-ratio;
-    }
+    aspect-ratio: $aspect-ratio;
 }
 
 //Rem
@@ -387,9 +384,7 @@
 // Gap for flex
 @mixin gap($br) {
     grid-gap: $br;
-    @supports (gap) {
-        gap: $br;
-    }
+    gap: $br;
 }
 
 // Normalize the styles for working with SVG files
