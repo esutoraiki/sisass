@@ -1,0 +1,65 @@
+{
+    "svg": {
+        "img": [
+                "assets/img/svg/orig/*.svg"
+            ],
+            "img_dest": [
+                "assets/img/svg/"
+            ],
+            "src": [
+                "assets/scss/svg/*.scss"
+            ],
+            "dest": [
+                "assets/css/svg/"
+            ]
+    },
+    "scss": {
+        "src": [
+            "assets/scss/*.scss",
+            "assets/scss/pages/*.scss",
+            "assets/scss/components/*.scss"
+        ],
+        "dest": [
+            "assets/css/",
+            "assets/css/pages/",
+            "assets/css/components/"
+        ],
+        "depen": [
+            "assets/scss/",
+            "assets/scss/core/",
+            "node_modules/sisass/src/scss/"
+            ],
+        "core": "assets/scss/core/*.scss"
+    },
+    "js": {
+        "src": [
+            "assets/js/*.js",
+            "assets/js/pages/*.js",
+            "assets/js/components/*.js"
+        ],
+        "dest": [
+            "assets/js/",
+            "assets/js/pages/",
+            "assets/js/components/"
+        ],
+        "mindest": [
+            "assets/js/min/",
+            "assets/js/min/pages",
+            "assets/js/min/components"
+        ]
+    },
+    "json": {
+        "src": [
+                "assets/json/*.json"
+            ]
+    },
+    "clean": [
+        "**/.gitkeep",
+        "**/.**.*.swp",
+        "**/.**.*.swo",
+        "**/*.*~",
+        "**/Thumbs.db",
+        "**/.DS_Store",
+        "**/.vscode"
+    ]
+}
