@@ -1,5 +1,6 @@
 // Update: 20241119
 @use "sass:math";
+@use "sass:map";
 @use "./vendor" as *;
 
 // autofill
@@ -241,8 +242,8 @@
     );
 
     @each $ext in $exts {
-        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
-        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+        $format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
         $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
     }
 
@@ -283,8 +284,8 @@
 // Mapping lists with default value
 @function mapv($map, $key, $value) {
     $return: $value;
-    @if map-has-key($map, $key) {
-        $return: map-get($map, $key);
+    @if map.has-key($map, $key) {
+        $return: map.get($map, $key);
     }
     @return $return;
 }
