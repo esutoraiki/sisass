@@ -1,4 +1,4 @@
-// Update: 20241119
+// Update: 20250223
 @use "sass:math";
 @use "sass:map";
 @use "./vendor" as *;
@@ -208,7 +208,7 @@
 
 //Rem
 @function szrem($value_px: 14, $base: 16) {
-    @return math.div($value_px, $base) + rem;
+    @return (math.div($value_px, $base)) * 1rem;
 }
 
 // =================
