@@ -1,4 +1,4 @@
-// Update: 20241119
+// Update: 20250811
 
 // Vendor.
 @mixin vendor-prefix($property, $value, $prefixes: ()) {
@@ -6,6 +6,56 @@
     #{"-" + $prefix + "-" + $property}: $value;
   }
   #{$property}: $value;
+}
+
+// Box Sizing.
+@mixin box-sizing($br) {
+    @include vendor-prefix(box-sizing, $br, webkit moz);
+}
+
+// backdrop-filter.
+@mixin backdrop-filter($br) {
+    @include vendor-prefix(backdrop-filter, $br, webkit);
+}
+
+// Box Decoration Break.
+@mixin box-decoration-break($br) {
+    @include vendor-prefix(box-decoration-break, $br, webkit);
+}
+
+// Text Stroke.
+@mixin text-stroke($br) {
+    @include vendor-prefix(text-stroke, $br, webkit);
+}
+
+// Hyphens.
+@mixin hyphens($br) {
+    @include vendor-prefix(hyphens, $br, webkit);
+}
+
+// Text Size Adjust.
+@mixin text-size-adjust($br) {
+    @include vendor-prefix(text-size-adjust, $br, webkit ms);
+}
+
+// Mask
+@mixin mask($br) {
+    @include vendor-prefix(mask, $br, webkit);
+}
+
+// Object Fit
+@mixin object-fit($br) {
+    @include vendor-prefix(object-fit, $br, o);
+}
+
+// Tap Highlight Color
+@mixin tap-highlight-color($br) {
+    @include vendor-prefix(tap-highlight-color, $br, webkit);
+}
+
+// Pointer Events
+@mixin pointer-events($br) {
+    @include vendor-prefix(pointer-events, $br, ms);
 }
 
 // Border Radius.
