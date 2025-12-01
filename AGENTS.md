@@ -4,6 +4,7 @@
 - Root scripts `install.js` and `arg.js` copy framework assets; pass `--path` to choose the target directory (defaults to `../../`). 
 - Source SASS lives in `src/scss` (base, reset, media queries, vendor overrides). Treat it as the editable core when improving the framework.
 - Distributed assets reside in `files/assets/scss`, organized into `core`, `components`, `helpers`, and `themes`; update these when shipping changes to consumers. El modo `--dep sqhtml` no usa carpeta aparte: el instalador ajusta en destino fuentes (Roboto) y variables ($c3, $f1, $i1) sobre los archivos copiados.
+- El modo `--dep sqhtml2` fuerza la instalación directa de los SCSS de `core` en `../../src/scss/core/` (ignorando `--path`) y aplica los mismos overrides de SQHTML sobre `_variables.scss` y `_fonts.scss`.
 - Documentation site files sit in `docs/` with its own `package.json` and `gulpfile.js`; keep sample pages and assets in sync with framework changes.
 
 ## Build, Test, and Development Commands

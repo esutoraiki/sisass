@@ -5,8 +5,11 @@ const
 
 const
     dest_path = parsed_args.path || "../../",
-    dependents = parsed_args.dep || "",
-    base_dir = dest_path === "../../" ? "files/" : "files/assets/";
+    dependents = parsed_args.dep || "";
+
+let target_path = dest_path;
+let base_dir = dest_path === "../../" ? "files/" : "files/assets/";
+let after_copy = null;
 
 const roboto_fonts_block = `@include font-face(
     "Roboto", "../fonts/roboto/roboto_regular",
@@ -95,16 +98,27 @@ const update_fonts_sqhtml = core_dir => {
     console.log(`Updated SQHTML fonts at ${fonts_path}`);
 };
 
-const apply_sqhtml_overrides = () => {
-    if (dependents !== "sqhtml") return;
-
-    const assets_root = dest_path === "../../"
-        ? path.join(dest_path, "assets")
-        : dest_path;
-    const core_dir = path.join(assets_root, "scss", "core");
-
+const apply_sqhtml_overrides = core_dir => {
     update_variables_sqhtml(core_dir);
     update_fonts_sqhtml(core_dir);
 };
 
-copy_directory(base_dir, dest_path, "Base assets", apply_sqhtml_overrides);
+const resolve_sqhtml_core_dir = destination => {
+    const assets_root = destination === "../../"
+        ? path.join(destination, "assets")
+        : destination;
+    return path.join(assets_root, "scss", "core");
+};
+
+if (dependents === "sqhtml") {
+    const core_dir = resolve_sqhtml_core_dir(target_path);
+    after_copy = () => apply_sqhtml_overrides(core_dir);
+}
+
+if (dependents === "sqhtml2") {
+    target_path = "../../src/scss/core/";
+    base_dir = "files/assets/scss/core/";
+    after_copy = () => apply_sqhtml_overrides(target_path);
+}
+
+copy_directory(base_dir, target_path, "Base assets", after_copy);
