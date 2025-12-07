@@ -5,7 +5,8 @@ const
 
 const
     dest_path = parsed_args.path || "../../",
-    dependents = parsed_args.dep || "";
+    dependents = parsed_args.dep || "",
+    instances_config_path = path.join(__dirname, "instances.config.js");
 
 let target_path = dest_path;
 let base_dir = dest_path === "../../" ? "files/" : "files/assets/";
@@ -103,6 +104,42 @@ const apply_sqhtml_overrides = core_dir => {
     update_fonts_sqhtml(core_dir);
 };
 
+const load_instances_config = () => {
+    if (!fs.existsSync(instances_config_path)) {
+        console.warn(`Instances config not found at ${instances_config_path}`);
+        return null;
+    }
+
+    delete require.cache[require.resolve(instances_config_path)];
+    return require(instances_config_path);
+};
+
+const build_instances_content = config => {
+    const
+        imports = Array.isArray(config.imports) ? config.imports : [];
+
+    return imports
+        .map(entry => `@import "${entry}";`)
+        .join("\n");
+};
+
+const generate_instances_file = core_dir => {
+    const config = load_instances_config();
+    if (!config) {
+        return;
+    }
+
+    const instances_content = build_instances_content(config);
+    if (!instances_content) {
+        console.warn("Instances configuration is empty. Skipping _instances.scss generation.");
+        return;
+    }
+
+    const instances_path = path.join(core_dir, "_instances.scss");
+    fs.writeFileSync(instances_path, `${instances_content}\n`, "utf8");
+    console.log(`Generated instances file at ${instances_path}`);
+};
+
 const resolve_sqhtml_core_dir = destination => {
     const assets_root = destination === "../../"
         ? path.join(destination, "assets")
@@ -118,7 +155,10 @@ if (dependents === "sqhtml") {
 if (dependents === "sqhtml2") {
     target_path = "../../src/scss/core/";
     base_dir = "files/assets/scss/core/";
-    after_copy = () => apply_sqhtml_overrides(target_path);
+    after_copy = () => {
+        apply_sqhtml_overrides(target_path);
+        generate_instances_file(target_path);
+    };
 }
 
 copy_directory(base_dir, target_path, "Base assets", after_copy);
