@@ -3,6 +3,7 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:string";
+@use "sass:meta";
 
 @use "./vendor" as *;
 
@@ -26,16 +27,26 @@
     }
 }
 
-// Text.
+// Text
 @mixin text(
     $aling: left,
-    $trans: none,
-    $decor: none
+    $trans: initial,
+    $decor: initial
 ) {
+    $align_value: $aling;
+    $decor_value: $decor;
+    $trans_value: $trans;
+
+    @if meta.type-of($aling) == "map" {
+        $align_value: mapv($aling, align, left);
+        $decor_value: mapv($aling, decoration, initial);
+        $trans_value: mapv($aling, transform, initial);
+    }
+
     text: {
-        align      : $aling;
-        decoration : $decor;
-        transform  : $trans;
+        align      : $align_value;
+        decoration : $decor_value;
+        transform  : $trans_value;
     }
 }
 
@@ -419,10 +430,33 @@
     object-fit: cover;
 }
 
-// Image contain
 @mixin contain {
     @include whs(100%);
     object-fit: contain;
+}
+
+@function list_add_unique($list, $value) {
+    @if index($list, $value) {
+        @return $list;
+    }
+
+    @return append($list, $value, space);
+}
+
+@function list_add_items($list, $items) {
+    @each $item in $items {
+        $list: list_add_unique($list, $item);
+    }
+
+    @return $list;
+}
+
+@function append_points($list, $points) {
+    @each $point in $points {
+        $list: append($list, $point, comma);
+    }
+
+    @return $list;
 }
 //-----------------------------------
 //End Mixin
