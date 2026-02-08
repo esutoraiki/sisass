@@ -3,10 +3,16 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:string";
+
 @use "./vendor" as *;
 
 // autofill
-@mixin autofill($background, $color) {
+@mixin autofill($attr: ()) {
+    $background: mapv($attr, bg, initial);
+    $color: mapv($attr, color, initial);
+    $padding: mapv($attr, padding, null);
+    $border: mapv($attr, border, null);
+
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus
@@ -14,6 +20,9 @@
         @include box-shadow(inset 0 0 0 1000px $background);
         @include transition(background-color 5000s ease-in-out 0);
         -webkit-text-fill-color: $color;
+
+        @if $padding != null { padding: $padding; }
+        @if $border != null { border: $border; }
     }
 }
 
@@ -405,14 +414,13 @@
 }
 
 
-// Image cover
-%img_cover {
+@mixin cover {
     @include whs(100%);
     object-fit: cover;
 }
 
 // Image contain
-%img_contain {
+@mixin contain {
     @include whs(100%);
     object-fit: contain;
 }
