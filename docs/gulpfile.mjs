@@ -3,7 +3,7 @@ import { deleteAsync } from "del";
 import path from "path";
 import gulp_sass from "gulp-sass";
 import * as dart_sass from "sass";
-import eslint from "gulp-eslint";
+import eslint from "gulp-eslint-new";
 import { optimize } from "svgo";
 import { Transform } from "stream";
 import postcss from "gulp-postcss";
@@ -130,24 +130,17 @@ gulp.task("lint", function() {
     console.log("");
     console.log("---- ES-LINT ----");
 
-    let task_array = [];
+    return gulp.src(paths_js, { allowEmpty: true })
+        .pipe(eslint({}))
+        .pipe(eslint.format())
+        .pipe(eslint.results(results => {
+            // Called once for all ESLint results.
+            console.log(`Total Results: ${results.length}`);
+            console.log(`Total Warnings: ${results.warningCount}`);
+            console.log(`Total Errors: ${results.errorCount}`);
 
-    for (let i = 0; i < paths_js.length; i++) {
-        task_array[i] = gulp.src(paths_js[i])
-            .pipe(eslint({}))
-            .pipe(eslint.format())
-            .pipe(eslint.results(results => {
-                // Called once for all ESLint results.
-                console.log(`Total Results: ${results.length}`);
-                console.log(`Total Warnings: ${results.warningCount}`);
-                console.log(`Total Errors: ${results.errorCount}`);
-
-                console.log("");
-            }));
-    }
-
-    console.log("");
-    return merge(...task_array);
+            console.log("");
+        }));
 
 });
 
