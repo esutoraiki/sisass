@@ -1,4 +1,6 @@
 //-----------------------------------
 // SISASS bridge for docs (explicit file)
 //-----------------------------------
-@forward "../../../src/scss/sisass";
+@forward "../../../src/scss/sisass" with (
+    $i1: "../../img/svg/"
+);

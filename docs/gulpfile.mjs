@@ -1,22 +1,27 @@
-"use strict";
+import gulp from "gulp";
+import { deleteAsync } from "del";
+import path from "path";
+import gulp_sass from "gulp-sass";
+import * as dart_sass from "sass";
+import eslint from "gulp-eslint";
+import { optimize } from "svgo";
+import { Transform } from "stream";
+import postcss from "gulp-postcss";
+import postinlinesvg from "postcss-inline-svg";
+import jsonlint from "gulp-jsonlint";
+import merge from "merge-stream";
+import { fileURLToPath } from "url";
 
 const
-    gulp = require("gulp"),
-    del = require("del"),
-    path = require("path"),
-    sass = require("gulp-sass")(require("sass")),
-    eslint = require("gulp-eslint"),
-    svgmin = require("gulp-svgmin"),
-    postcss = require("gulp-postcss"),
-    postinlinesvg = require("postcss-inline-svg"),
-    jsonlint = require("gulp-jsonlint"),
-    merge = require("merge-stream"),
+    sass = gulp_sass(dart_sass),
+    file_path = fileURLToPath(import.meta.url),
+    dir_path = path.dirname(file_path),
 
     // NOTE: foler core and sisass last element of array
     paths_scss = [
-        path.resolve(__dirname, "assets/scss/"),
-        path.resolve(__dirname, "assets/scss/core/"),
-        path.resolve(__dirname, "../src/scss/")
+        path.resolve(dir_path, "assets/scss/"),
+        path.resolve(dir_path, "assets/scss/core/"),
+        path.resolve(dir_path, "../src/scss/")
     ],
     paths_dest_css = [
         "assets/css/",
@@ -53,15 +58,30 @@ gulp.task("delete_svg", function () {
     console.log("");
     console.log("---- SVG ----");
 
-    return del(path_img_svg);
+    return deleteAsync(path_img_svg);
 });
 
 gulp.task("svgmin", function () {
+    const svg_transform = new Transform({
+        objectMode: true,
+        transform(file, encoding, callback) {
+            if (file.isBuffer()) {
+                const result = optimize(file.contents.toString(), {
+                    path: file.path,
+                    plugins: [
+                        { name: "preset-default" },
+                        { name: "removeStyleElement" },
+                        { name: "removeComments" }
+                    ]
+                });
+                file.contents = Buffer.from(result.data);
+            }
+            callback(null, file);
+        }
+    });
+
     return gulp.src(path_orig_img_svg)
-        .pipe(svgmin(
-            { removeStyleElement: true },
-            { removeComments: true }
-        ))
+        .pipe(svg_transform)
         .pipe(gulp.dest(path_dest_img_svg));
 })
 
