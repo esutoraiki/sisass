@@ -1,5 +1,4 @@
 @use "../core/instances" as *;
-@use "../core/variables" as *;
 
 .cube_transform_style {
     @include transform-style(preserve-3d);

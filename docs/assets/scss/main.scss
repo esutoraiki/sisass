@@ -1,5 +1,8 @@
 @use "sass:list";
 @use "sass:color";
+
+@use "./core/reset";
+@use "core/variables" as *;
 @use "./core/instances" as *;
 @use "./core/fonts";
 @use "./core/keyframes";
@@ -75,7 +78,7 @@
 
     .description,
     p {
-        @extend %text_1;
+        @include text_1;
         margin-bottom: 15px;
     }
 
@@ -84,7 +87,7 @@
     }
 
     .note {
-        @extend %text_1;
+        @include text_1;
         padding: min(5vw, 15px);
         border: $bd2;
         border-left: $bd3;

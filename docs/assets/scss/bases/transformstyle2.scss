@@ -1,5 +1,4 @@
 @use "../core/instances" as *;
-@use "../core/variables" as *;
 
 .transform_style_flat {
     @include transform-style(flat);

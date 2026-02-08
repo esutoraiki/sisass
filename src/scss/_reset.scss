@@ -1,7 +1,7 @@
 @use "./base" as *;
 
 * {
-    @include font(100%);
+    @include font(100%, inherit);
     @include no-margins;
     @include no-border;
     vertical-align: baseline;
