@@ -1,5 +1,5 @@
-@import "base";
+@use "../sisass" as s;
 
 .box_shadow_example {
-    @include box_shadow(7px 7px 7px #FBB03B);
+    @include s.box-shadow(7px 7px 7px #FBB03B);
 }

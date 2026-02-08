@@ -1,31 +1,32 @@
-@import "instance";
+@use "../sisass" as s;
+@use "../core/variables" as v;
 
 .main_menu {
     padding-left: min(2.08vw, 40px);
 
     .group_1 {
-        @include flex-direction(column);
-        @include flex;
+        @include s.flex-direction(column);
+        @include s.flex;
         margin-bottom: 35px;
 
         &:last-child { margin-bottom: 0; }
 
         .title {
-            @include font(szrem(24), $f2, bold);
-            @include text;
+            @include s.font(s.szrem(24), v.$f2, bold);
+            @include s.text;
             margin-bottom: 14px;
-            color: $c3;
+            color: v.$c3;
         }
 
         .item {
-            @include font(szrem(18), $f2);
-            @include text;
+            @include s.font(s.szrem(18), v.$f2);
+            @include s.text;
             margin-bottom: 10px;
-            color: $c3;
+            color: v.$c3;
 
-            &:hover { color: $c5; }
+            &:hover { color: v.$c5; }
             &:last-child { margin-bottom: 0; }
-            &.active { color: $c5; }
+            &.active { color: v.$c5; }
         }
     }
 }

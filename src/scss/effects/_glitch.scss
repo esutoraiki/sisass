@@ -2,6 +2,10 @@
 
 //---------------------
 @use "sass:math";
+@use "sass:list";
+@use "../variables" as *;
+@use "../base" as *;
+@use "../vendor" as *;
 
 @mixin textGlitch(
     $name,
@@ -199,13 +203,12 @@
 
         @for $i from 2 through 5 {
             &:nth-child(#{$i}) {
-                animation-name: #{nth($animation-name, $i - 1)};
+                animation-name: #{list.nth($animation-name, $i - 1)};
                 background: {
-                    color: #{nth($blend-color, $i - 1)};
-                    blend-mode:  #{nth($blend-mode, $i - 1)};
+                    color: #{list.nth($blend-color, $i - 1)};
+                    blend-mode:  #{list.nth($blend-mode, $i - 1)};
                 }
             }
         }
     }
 }
-

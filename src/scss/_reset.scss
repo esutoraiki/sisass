@@ -1,3 +1,6 @@
+@use "./base" as *;
+@use "./variables" as *;
+
 * {
     @include font(100%, $f1);
     @include no-margins;

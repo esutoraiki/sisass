@@ -2,6 +2,9 @@
 
 //-----------------------------------
 
+@use "../base" as *;
+@use "../vendor" as *;
+
 @mixin flip_card($attr: ()) {
     $w: mapv($attr, width, 350px);
     $ar: mapv($attr, aspect_ratio, 1);
@@ -37,4 +40,3 @@
         background-color: $bgb;
     }
 }
-

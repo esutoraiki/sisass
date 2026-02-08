@@ -4,6 +4,9 @@
 // Components
 //-----------------------------------
 @use "sass:math";
+@use "../variables" as *;
+@use "../base" as *;
+@use "../vendor" as *;
 
 @mixin carousel($items: 6, $attr: ()) {
     $width: mapv($attr, width, 90vw);
@@ -94,4 +97,3 @@
         }
     }
 }
-

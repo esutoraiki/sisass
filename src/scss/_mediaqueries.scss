@@ -4,6 +4,7 @@
 //Mixin Media Queries
 //-----------------------------------
 @use "sass:math";
+@use "sass:list";
 
 // Width
 @mixin brp($punto, $type: max, $units: px, $means: screen){
@@ -68,8 +69,8 @@
 
 // Multiple breakpoint
 @mixin mbr($points...) {
-    @for $i from 1 through length($points) {
-        @include brp(nth($points, $i)) {
+    @for $i from 1 through list.length($points) {
+        @include brp(list.nth($points, $i)) {
             @content($i);
         }
     }

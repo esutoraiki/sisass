@@ -2,6 +2,9 @@
 // End Keyframes
 //-------------
 
+@use "../base" as *;
+@use "../vendor" as *;
+
 @include keyframes(glitch-anim-1) {
     0% {
         @include transform(translate3d(var(--gap-horizontal), 0, 0));

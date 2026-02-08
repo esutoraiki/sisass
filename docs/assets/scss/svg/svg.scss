@@ -1,12 +1,14 @@
-@import "instance";
+@use "sass:list";
+@use "../sisass" as s;
+@use "../core/variables" as v;
 
 .logo_sisass {
     &:before {
-        @include icon_svg(
+        @include s.icon_svg(
             sisass,
-            nth($l1x, 1),
-            nth($l1y, 1),
-            $c3
+            list.nth(v.$l1x, 1),
+            list.nth(v.$l1y, 1),
+            v.$c3
         );
         content: "";
     }

@@ -1,6 +1,8 @@
 // Update: 21/02/2022
 
 //---------------------
+@use "../base" as *;
+
 @mixin triangle-corner($attr: ()) {
     $axis_y: mapv($attr, y, bottom);
     $axis_x: mapv($attr, x, right);

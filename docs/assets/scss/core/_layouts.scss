@@ -1,7 +1,7 @@
-@import "instance";
+@use "../sisass" as s;
 
 .layout_1 {
-    @include grid;
+    @include s.grid;
 
     grid: {
         template: {

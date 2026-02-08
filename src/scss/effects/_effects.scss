@@ -2,6 +2,10 @@
 
 //-----------------------------------
 
+@use "../variables" as *;
+@use "../base" as *;
+@use "../vendor" as *;
+
 @mixin floatImg($attr: ()) {
     $name_k: mapv($attr, name, floatImg);
     $dis_y_1:  mapv($attr, Y, 15px);

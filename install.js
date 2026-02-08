@@ -119,7 +119,7 @@ const build_instances_content = config => {
         imports = Array.isArray(config.imports) ? config.imports : [];
 
     return imports
-        .map(entry => `@import "${entry}";`)
+        .map(entry => `@forward "${entry}";`)
         .join("\n");
 };
 

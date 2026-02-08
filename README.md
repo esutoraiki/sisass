@@ -5,7 +5,7 @@ Simple Interface for SASS
 # Requirements
 
 - Minimum Node  v16.7.0
-- Recommended Sass CLI: `sass` 1.63.4 (tested)
+- Recommended Sass CLI: `sass` 1.97.3 (tested)
 
 # Installation
 
@@ -32,35 +32,99 @@ This will install sisass at the root of the project in the **assets** folder. If
 npm explore sisass -- npm run init -- --path ../../resources/
 ```
 
-# Quick start with Sass 1.63.4
+# Quick start with Sass 1.97.3 (SISASS 2.x.x)
 
-1. Install Sass CLI 1.63.4 locally (or use `npx`):
+1. Install Sass CLI 1.97.3 locally (or use `npx`):
    
    ```bash
-   npx sass@1.63.4 --version
+   npx sass@1.97.3 --version
    ```
 2. Create a small entry file (example if you installed to `assets/scss/`):
    
    ```scss
    // assets/scss/main.scss
-   @import "core/variables";
-   @import "core/base";
-   @import "core/mediaqueries";
-   @import "core/fonts";
-   @import "core/reset";
-   @import "core/keyframes";
-   @import "core/layout";
-   @import "core/mixin";
-   @import "core/silents_class";
+   @use "sisass" as s;
+
+   // Optional CSS modules (emit CSS when used)
+   @use "reset";
+
+   .button {
+       @include s.button_simple();
+       font-size: s.szrem(16);
+   }
    ```
-3. Compile with Sass 1.63.4:
+3. Compile with Sass 1.97.3:
    
    ```bash
-   npx sass@1.63.4 assets/scss/main.scss assets/css/main.css --load-path assets/scss
+   npx sass@1.97.3 assets/scss/main.scss assets/css/main.css --load-path assets/scss
    ```
 4. Import the generated `assets/css/main.css` in your HTML.
 
 > Tip: The documentation site uses `docs/assets/scss/main.scss` as a working example; you can copy that structure into your project.
+
+# Migration to SISASS 2.x.x (@use / @forward)
+
+## Breaking changes
+
+- `@import` is no longer supported. Use `@use` / `@forward`.
+- Globals are no longer injected. Mixins, functions, and variables must be accessed
+  through a namespace (recommended) or via the legacy entrypoint.
+- Vendor mixins are no longer reachable via `base` alone. Use the SISASS module.
+
+## Upgrade guide (1.x → 2.x)
+
+1. Replace `@import` with `@use` / `@forward`.
+2. Add a namespace:
+   - `@use "sisass" as s;`
+3. Prefix all SISASS calls:
+   - `@include s.button_simple();`
+   - `font-size: s.szrem(16);`
+4. If you need globals temporarily:
+   - `@use "sisass/legacy" as *;` (not recommended for long-term use)
+
+- Namespaced usage (recommended):
+  - `@use "sisass" as s;`
+  - `@include s.button_simple();`
+  - `font-size: s.szrem(16);`
+- Legacy usage (global, may collide with your own mixins/functions):
+  - `@use "sisass/legacy" as *;`
+  - `@include button_simple();`
+
+You can configure default variables via `@use "sisass" with (...)` if needed.
+
+## Variables configuration
+
+All SISASS variables are defined with `!default`, so you can override them at import:
+
+```scss
+@use "sisass" with (
+    $c1: #ffffff,
+    $c2: #000000,
+    $f1: "Inter, sans-serif",
+    $b6: 1024
+);
+```
+
+## Module overview
+
+- Core utilities: `base`, `vendor`, `mediaqueries`, `reset`
+- Components: `buttons`, `carousel`, `modal`
+- Effects: `effects`, `flipcard`, `glitch`, `glitch_keyframes`
+- Shapes: `triangles`
+
+## Why `@use` fixes vendor mixins
+
+In SISASS 1.x, `@import "base"` pulled globals. With `@use`, modules do not re-export
+their dependencies, so vendor mixins like `border-radius` are **not** visible through
+`base`. The solution in 2.x is to call mixins directly from the SISASS module:
+
+```scss
+@use "sisass" as s;
+
+.box {
+    @include s.border-radius(50%);
+}
+```
 
 # Documentation
 

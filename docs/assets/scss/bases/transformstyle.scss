@@ -1,35 +1,35 @@
-@import "variables";
-@import "base";
+@use "../sisass" as s;
+@use "../core/variables" as v;
 
 .transform_style_preserve_3d {
-    @include transform-style(preserve-3d);
-    @include transform(
+    @include s.transform-style(preserve-3d);
+    @include s.transform(
         perspective(390px)
         rotateY(30deg)
     );
-    @include wh(250px, 100px);
-    background-color: $c4 ;
+    @include s.wh(250px, 100px);
+    background-color: v.$c4;
 
     &.center_element,
     .center_element
     {
-        @include center-flex-column;
+        @include s.center-flex-column;
     }
 
     .text {
         display: block;
         margin: 0;
-        color: $c2;
+        color: v.$c2;
     }
 
     .children {
-        @include transform(rotate3d(1, 1, 0, 15deg));
-        @include wh(80%);
+        @include s.transform(rotate3d(1, 1, 0, 15deg));
+        @include s.wh(80%);
         padding: 15px 10px;
-        background-color: $c5;
+        background-color: v.$c5;
 
         .text {
-            color: $c1;
+            color: v.$c1;
         }
     }
 }

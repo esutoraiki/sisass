@@ -1,5 +1,5 @@
-@import "base";
+@use "../sisass" as s;
 
 .rotate_example {
-    @include transform(rotate(45deg));
+    @include s.transform(rotate(45deg));
 }

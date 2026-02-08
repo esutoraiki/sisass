@@ -1,7 +1,7 @@
-@import "base";
+@use "../sisass" as s;
 
 .background_gradient {
-    @include background((
+    @include s.background((
         image: linear-gradient(
             to bottom,
             hsl(330, 100%, 45.1%) 0%,

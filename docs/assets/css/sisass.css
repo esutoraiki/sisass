@@ -1127,16 +1127,3 @@ summary {
     opacity: 0;
   }
 }
-.logo_sisass:before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 324px;
-  height: 116px;
-  background-image: svg-load("../img/svg/sisass.svg", fill=#3A405A);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: top left;
-  background-color: transparent;
-  content: "";
-}

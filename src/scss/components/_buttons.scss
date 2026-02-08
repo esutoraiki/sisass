@@ -1,6 +1,10 @@
 // Update: 20220502
 
 //---------------------
+@use "../variables" as *;
+@use "../base" as *;
+@use "../vendor" as *;
+
 @mixin button_simple($attr: ()) {
     $bg: mapv($attr, bg, $c1);
     $bgh: mapv($attr, bg_hover, $c2);
@@ -222,4 +226,3 @@
         z-index: 2;
     }
 }
-

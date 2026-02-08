@@ -1,6 +1,4 @@
-@import "variables";
-@import "base";
-@import "mediaqueries";
-
-@import "mixins";
-@import "silents_class";
+@use "./sisass" as s;
+@use "./core/variables" as v;
+@use "./core/mixins";
+@use "./core/silents_class";

@@ -3,6 +3,7 @@
 const
     gulp = require("gulp"),
     del = require("del"),
+    path = require("path"),
     sass = require("gulp-sass")(require("sass")),
     eslint = require("gulp-eslint"),
     svgmin = require("gulp-svgmin"),
@@ -13,9 +14,9 @@ const
 
     // NOTE: foler core and sisass last element of array
     paths_scss = [
-        "assets/scss/",
-        "assets/scss/core/",
-        "../src/scss/"
+        path.resolve(__dirname, "assets/scss/"),
+        path.resolve(__dirname, "assets/scss/core/"),
+        path.resolve(__dirname, "../src/scss/")
     ],
     paths_dest_css = [
         "assets/css/",

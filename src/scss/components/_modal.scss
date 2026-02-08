@@ -3,6 +3,9 @@
 //-----------------------------------
 // Components
 //-----------------------------------
+@use "../variables" as *;
+@use "../base" as *;
+
 @mixin modal($attr: ()) {
     $bgl: mapv($attr, bg_light, $c2);
     $bgl_o: mapv($attr, bg_light_opacity, 0.8);
