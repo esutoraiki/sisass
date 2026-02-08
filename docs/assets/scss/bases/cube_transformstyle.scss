@@ -1,29 +1,29 @@
-@use "../sisass" as s;
-@use "../core/variables" as v;
+@use "../core/instances" as *;
+@use "../core/variables" as *;
 
 .cube_transform_style {
-    @include s.transform-style(preserve-3d);
-    @include s.transform(rotate3d(1, 1, 1, 30deg));
-    @include s.whs(100px);
+    @include transform-style(preserve-3d);
+    @include transform(rotate3d(1, 1, 1, 30deg));
+    @include whs(100px);
 
     .face {
-        @include s.backface-visibility(inherit);
-        @include s.center-flex-column;
-        @include s.position(absolute);
-        @include s.whs(100%);
+        @include backface-visibility(inherit);
+        @include center-flex-column;
+        @include position(absolute);
+        @include whs(100%);
         font-size: 60px;
-        color: v.$c1;
+        color: $c1;
     }
 
     .front {
-        @include s.transform(
+        @include transform(
             translateZ(50px)
         );
         background: rgba(90, 90, 90, 0.7);
     }
 
     .back {
-        @include s.transform(
+        @include transform(
             translateZ(-50px)
             rotateY(180deg)
         );
@@ -31,7 +31,7 @@
     }
 
     .right {
-        @include s.transform(
+        @include transform(
             translateZ(50px)
             rotateY(90deg)
         );

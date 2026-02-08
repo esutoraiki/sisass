@@ -1,5 +1,5 @@
-@use "../sisass" as s;
+@use "../core/instances" as *;
 
 .box_shadow_example {
-    @include s.box-shadow(7px 7px 7px #FBB03B);
+    @include box-shadow(7px 7px 7px #FBB03B);
 }

@@ -1,5 +1,5 @@
 @use "sass:list";
-@use "../sisass" as s;
+@use "../core/instances" as *;
 
 $l1: (red, blue, green);
 $l2: (300px, 200px, 100px);
@@ -13,7 +13,7 @@ $br3: 640;
     width: 300px;
     height: 300px;
 
-    @include s.mbr($br1, $br2, $br3) using ($i) {
+    @include mbr($br1, $br2, $br3) using ($i) {
         width: list.nth($l2, $i);
         height: list.nth($l2, $i);
         background-color: list.nth($l1, $i);

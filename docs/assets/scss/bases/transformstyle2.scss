@@ -1,35 +1,35 @@
-@use "../sisass" as s;
-@use "../core/variables" as v;
+@use "../core/instances" as *;
+@use "../core/variables" as *;
 
 .transform_style_flat {
-    @include s.transform-style(flat);
-    @include s.transform(
+    @include transform-style(flat);
+    @include transform(
         perspective(390px)
         rotateY(30deg)
     );
-    @include s.wh(250px, 100px);
-    background-color: v.$c4;
+    @include wh(250px, 100px);
+    background-color: $c4;
 
     &.center_element,
     .center_element
     {
-        @include s.center-flex-column;
+        @include center-flex-column;
     }
 
     .text {
         display: block;
         margin: 0;
-        color: v.$c2;
+        color: $c2;
     }
 
     .children {
-        @include s.transform(rotate3d(1, 1, 0, 15deg));
-        @include s.wh(80%);
+        @include transform(rotate3d(1, 1, 0, 15deg));
+        @include wh(80%);
         padding: 15px 10px;
-        background-color: v.$c5;
+        background-color: $c5;
 
         .text {
-            color: v.$c1;
+            color: $c1;
         }
     }
 }

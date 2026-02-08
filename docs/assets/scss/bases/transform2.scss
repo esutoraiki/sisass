@@ -1,7 +1,7 @@
-@use "../sisass" as s;
+@use "../core/instances" as *;
 
 .scale_rotate_example {
-    @include s.transform(
+    @include transform(
         rotate(45deg)
         scale(0.5)
     );

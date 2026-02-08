@@ -82,19 +82,45 @@ npm explore sisass -- npm run init -- --path ../../resources/
 4. If you need globals temporarily:
    - `@use "sisass/legacy" as *;` (not recommended for long-term use)
 
-- Namespaced usage (recommended):
+- Namespaced usage (safest):
   - `@use "sisass" as s;`
   - `@include s.button_simple();`
   - `font-size: s.szrem(16);`
-- Legacy usage (global, may collide with your own mixins/functions):
+- Unprefixed usage (allowed, may collide):
   - `@use "sisass/legacy" as *;`
   - `@include button_simple();`
 
 You can configure default variables via `@use "sisass" with (...)` if needed.
 
+## Avoiding collisions without prefixes
+
+If you choose unprefixed usage, any mixin or variable name can collide with your own.
+To avoid this, namespace your own modules and variables, for example:
+
+```scss
+@use "my_project/mixins" as my;
+
+.button {
+    @include my.button_simple();
+}
+```
+
 ## Variables configuration
 
-All SISASS variables are defined with `!default`, so you can override them at import:
+All SISASS variables are defined with `!default`, so you can override them at import.
+If you prefer to use variables without a namespace in your project, use `as *`:
+
+```scss
+@use "sisass" as s;
+@use "core/variables" as *;
+
+.button {
+    color: $c1;
+    @include s.button_simple();
+}
+```
+
+You can also override values at import:
 
 ```scss
 @use "sisass" with (

@@ -1,40 +1,37 @@
 @use "sass:list";
 @use "sass:color";
-@use "./sisass" as s;
-@use "./core/variables" as v;
+@use "./core/instances" as *;
 @use "./core/fonts";
 @use "./core/keyframes";
 @use "./core/layouts";
-@use "./core/mixins";
-@use "./core/silents_class" as *;
 
 @use "components/menu";
 
 .documentationpage {
-    @include s.scroll((
-        color: v.$c4
+    @include scroll((
+        color: $c4
     ));
-    @include s.font(100%, v.$f1);
-    @include s.no-margins;
-    @include s.no-border;
-    @include s.bc(v.$c1, v.$c3);
+    @include font(100%, $f1);
+    @include no-margins;
+    @include no-border;
+    @include bc($c1, $c3);
 
     article {
-        border-bottom: v.$bd1;
+        border-bottom: $bd1;
         padding-bottom: 40px;
         margin-bottom: 30px;
     }
 
     .main_header {
-        @include s.wh(100vw);
+        @include wh(100vw);
         padding: 35px min(2.08vw, 40px);
 
         .logo_sisass {
-            @include s.ht;
-            @include s.position;
-            @include s.wh(
-                list.nth(v.$l1x, 1),
-                list.nth(v.$l1y, 1)
+            @include ht;
+            @include position;
+            @include wh(
+                list.nth($l1x, 1),
+                list.nth($l1y, 1)
             );
             display: block;
         }
@@ -45,8 +42,8 @@
     }
 
     .container_menu {
-        @include s.position(sticky, 26px);
-        @include s.wh(100%, max-content);
+        @include position(sticky, 26px);
+        @include wh(100%, max-content);
     }
 
     .group_title {
@@ -54,27 +51,27 @@
     }
 
     .title {
-        @include s.font(s.szrem(42), v.$f3, 900);
-        @include s.text;
+        @include font(szrem(42), $f3, 900);
+        @include text;
         margin-bottom: 30px;
-        color: v.$c5;
+        color: $c5;
     }
 
     .subtitle {
-        @include s.font(s.szrem(28), v.$f3, 900);
-        @include s.text;
+        @include font(szrem(28), $f3, 900);
+        @include text;
         margin-bottom: 5px;
-        color: v.$c5;
+        color: $c5;
     }
 
     .attribute {
-        @include s.font(s.szrem(20), v.$f2, bold);
-        @include s.text;
+        @include font(szrem(20), $f2, bold);
+        @include text;
         margin-bottom: 3px;
-        color: v.$c6;
+        color: $c6;
     }
 
-    .deprecated { color: v.$c5; }
+    .deprecated { color: $c5; }
 
     .description,
     p {
@@ -89,16 +86,16 @@
     .note {
         @extend %text_1;
         padding: min(5vw, 15px);
-        border: v.$bd2;
-        border-left: v.$bd3;
+        border: $bd2;
+        border-left: $bd3;
         margin-bottom: 15px;
     }
 
     .use {
         .title {
-            @include s.font(s.szrem(28), v.$f2, bold);
-            @include s.text;
-            color: v.$c6;
+            @include font(szrem(28), $f2, bold);
+            @include text;
+            color: $c6;
             margin: {
                 top: 45px;
                 bottom: 10px;
@@ -106,9 +103,9 @@
         }
 
         .subtitle {
-            @include s.font(s.szrem(20), v.$f2, bold);
-            @include s.text;
-            color: color.adjust(v.$c6, $lightness: 20%);
+            @include font(szrem(20), $f2, bold);
+            @include text;
+            color: color.adjust($c6, $lightness: 20%);
             margin: {
                 top: 30px;
                 bottom: 10px;
@@ -118,30 +115,30 @@
 
     .result {
         box-sizing: border-box;
-        background-color: color.adjust(v.$c3, $lightness: 65%);
-        border: v.$bd1;
+        background-color: color.adjust($c3, $lightness: 65%);
+        border: $bd1;
         padding: 10px;
         display: block;
         margin: 10px 0;
 
         .box {
-            @include s.whs(100px);
-            background-color: v.$c5;
+            @include whs(100px);
+            background-color: $c5;
         }
 
         .box_no_bgc {
-            @include s.whs(100px);
+            @include whs(100px);
         }
     }
 
     .container_example {
-        @include s.bc(v.$c7, v.$c3);
+        @include bc($c7, $c3);
         box-sizing: border-box;
         padding: 1px min(0.78vw, 15px) 15px;
     }
 
     code {
-        @include s.font(s.szrem(16), v.$f1);
+        @include font(szrem(16), $f1);
         padding: 10px 15px;
         display: block;
         white-space: pre-wrap !important;
@@ -149,7 +146,7 @@
     }
 
     pre {
-        @include s.border-radius(5%);
+        @include border-radius(5%);
         margin-bottom: 40px;
 
         &:before { display: none; }

@@ -3,7 +3,6 @@
 @use "sass:map";
 @use "sass:list";
 @use "sass:string";
-@use "./variables" as *;
 @use "./vendor" as *;
 
 // autofill
@@ -34,7 +33,7 @@
 // Font
 @mixin font (
     $size: 1em,
-    $family: $f1,
+    $family: "sans-serif",
     $weight: normal,
     $style: normal,
     $line-height: "none",
@@ -85,7 +84,7 @@
 }
 
 // Background-color and Color
-@mixin bc($background: $c1, $color: $c2) {
+@mixin bc($background: #FFF, $color: #000) {
     background-color: $background;
     color: $color;
 }
@@ -106,7 +105,7 @@
 @mixin icon_svg($svg, $w, $h, $fill: "none", $def: "none") {
     @include position(absolute);
     @include wh($w, $h);
-    $path_svg: $i1 +  $svg + ".svg";
+    $path_svg: "../../img/svg/" +  $svg + ".svg";
     background: {
         @if $fill == "inline" {
             image: svg-inline($def);
@@ -123,7 +122,7 @@
 }
 
 // background opacity
-@mixin background-opacity($color: $c1, $opacity: 0.8) {
+@mixin background-opacity($color: #FFF, $opacity: 0.8) {
     background-color: $color;
     background-color: rgba($color, $opacity);
 }
@@ -133,7 +132,7 @@
     @include background(
         $image,
         no-repeat, center,
-        $c0, cover
+        transparent, cover
     );
     @include wh($iw, $ih);
     @include ht;

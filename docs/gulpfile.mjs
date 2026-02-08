@@ -9,13 +9,19 @@ import { Transform } from "stream";
 import postcss from "gulp-postcss";
 import postinlinesvg from "postcss-inline-svg";
 import jsonlint from "@prantlf/gulp-jsonlint";
-import merge from "merge-stream";
 import { fileURLToPath } from "url";
+import plumber from "gulp-plumber";
+import concat from "gulp-concat";
 
 const
     sass = gulp_sass(dart_sass),
     file_path = fileURLToPath(import.meta.url),
     dir_path = path.dirname(file_path),
+    handle_sass_error = function (error) {
+        console.log("");
+        console.log(error.messageFormatted || error.message);
+        this.emit("end");
+    },
 
     // NOTE: foler core and sisass last element of array
     paths_scss = [
@@ -23,18 +29,12 @@ const
         path.resolve(dir_path, "assets/scss/core/"),
         path.resolve(dir_path, "../src/scss/")
     ],
-    paths_dest_css = [
-        "assets/css/",
-        "assets/css/components",
-        "assets/css/bases",
-        "assets/css/mediaqueries"
-    ],
     paths_compile_scss = [
         "assets/scss/*.scss",
-        "assets/scss/components/*.scss",
-        "assets/scss/bases/*.scss",
-        "assets/scss/mediaqueries/*.scss"
+        "assets/scss/components/*.scss"
     ],
+    path_bases_scss = "assets/scss/bases/[^_]*.scss",
+    path_mediaqueries_scss = "assets/scss/mediaqueries/[^_]*.scss",
 
     path_svg = "assets/scss/svg/*.scss",
     path_dest_svg = "assets/css/svg/",
@@ -100,30 +100,71 @@ gulp.task("css_svg", function () {
     console.log("---- Styles SVG ----");
 
     return gulp.src(path_svg)
+        .pipe(plumber({ errorHandler: handle_sass_error }))
         .pipe(sass({
             outputStyle: "expanded",
             includePaths: paths_scss
-        }).on("error", sass.logError))
+        }))
         .pipe(gulp.dest(path_dest_svg));
 });
 
 gulp.task("scss", function () {
     console.log("");
     console.log("---- Styles ----");
+    const resolve_css_dest = function (file) {
+        const relative_path = file.relative.replace(/\\/g, "/");
 
-    let task_array = [];
+        if (relative_path.startsWith("components/")) {
+            return "assets/css/components";
+        }
 
-    for (let i = 0; i < paths_compile_scss.length; i++) {
-        task_array[i] = gulp.src(paths_compile_scss[i])
-            .pipe(sass({
-                outputStyle: "expanded",
-                includePaths: paths_scss
-            }).on("error", sass.logError))
-            .pipe(gulp.dest(paths_dest_css[i]));
-    }
+        if (relative_path.startsWith("bases/")) {
+            return "assets/css/bases";
+        }
+
+        if (relative_path.startsWith("mediaqueries/")) {
+            return "assets/css/mediaqueries";
+        }
+
+        return "assets/css";
+    };
 
     console.log("");
-    return merge(...task_array);
+    return gulp.src(paths_compile_scss, { base: "assets/scss" })
+        .pipe(plumber({ errorHandler: handle_sass_error }))
+        .pipe(sass({
+            outputStyle: "expanded",
+            includePaths: paths_scss
+        }))
+        .pipe(gulp.dest(resolve_css_dest));
+});
+
+gulp.task("scss_bases", function () {
+    console.log("");
+    console.log("---- Styles Bases ----");
+
+    return gulp.src(path_bases_scss)
+        .pipe(plumber({ errorHandler: handle_sass_error }))
+        .pipe(sass({
+            outputStyle: "expanded",
+            includePaths: paths_scss
+        }))
+        .pipe(concat("bases.css"))
+        .pipe(gulp.dest("assets/css"));
+});
+
+gulp.task("scss_mediaqueries", function () {
+    console.log("");
+    console.log("---- Styles Mediaqueries ----");
+
+    return gulp.src(path_mediaqueries_scss)
+        .pipe(plumber({ errorHandler: handle_sass_error }))
+        .pipe(sass({
+            outputStyle: "expanded",
+            includePaths: paths_scss
+        }))
+        .pipe(concat("mediaqueries.css"))
+        .pipe(gulp.dest("assets/css"));
 });
 
 gulp.task("lint", function() {
@@ -172,6 +213,8 @@ gulp.task("watch", function () {
     gulp.watch("assets/json/*.json", gulp.series("jsonlint"));
 
     gulp.watch(paths_compile_scss, gulp.series("scss"));
+    gulp.watch(path_bases_scss, gulp.series("scss_bases"));
+    gulp.watch(path_mediaqueries_scss, gulp.series("scss_mediaqueries"));
     gulp.watch(path_svg, gulp.series("css_svg", "process_svg"));
     gulp.watch(path_orig_img_svg, gulp.series(
         "delete_svg",

@@ -1,5 +1,5 @@
-@use "../sisass" as s;
+@use "../core/instances" as *;
 
 .rotate_example {
-    @include s.transform(rotate(45deg));
+    @include transform(rotate(45deg));
 }

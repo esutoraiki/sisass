@@ -1,27 +1,25 @@
-// Update: 20220502
-
+// Update: 20260208
 //---------------------
-@use "../variables" as *;
 @use "../base" as *;
 @use "../vendor" as *;
 
 @mixin button_simple($attr: ()) {
-    $bg: mapv($attr, bg, $c1);
-    $bgh: mapv($attr, bg_hover, $c2);
-    $color: mapv($attr, color, $c2);
-    $colorh: mapv($attr, color_hover, $c1);
+    $bg: mapv($attr, bg, #FFF);
+    $bgh: mapv($attr, bg_hover, #000);
+    $color: mapv($attr, color, #000);
+    $colorh: mapv($attr, color_hover, #FFF);
     $size: mapv($attr, size, 18);
-    $font: mapv($attr, font, $f1);
+    $font: mapv($attr, font, "sans-serif");
     $weight: mapv($attr, weight, normal);
     $align: mapv($attr, align, center);
     $uppercase: mapv($attr, uppercase, uppercase);
     $w: mapv($attr, width, 65px);
     $h: mapv($attr, height, 45px);
-    $bd: mapv($attr, border_color, $c2);
-    $bdh: mapv($attr, border_color_hover, $c2);
+    $bd: mapv($attr, border_color, #000);
+    $bdh: mapv($attr, border_color_hover, #000);
     $bdsize: mapv($attr, border_size, 1px);
     $bdstyle: mapv($attr, border_style, solid);
-    $time: mapv($attr, time, $t5);
+    $time: mapv($attr, time, 500ms);
 
     all: initial;
     @include font(szrem($size), $font, $weight);
@@ -48,21 +46,21 @@
 @mixin button_style_adidas_1($attr: ()) {
     $w: mapv($attr, width, 280px);
     $ar: mapv($attr, aspect_ratio, 5.16);
-    $bg: mapv($attr, bg, $c2);
-    $bgh: mapv($attr, bg_hover, $c2);
-    $bgd: mapv($attr, bg_disabled, lighten($c2, 80%));
-    $color: mapv($attr, color, $c1);
-    $colorh: mapv($attr, color_hover, $c1);
-    $colord: mapv($attr, color_disabled, lighten($c2, 40%));
-    $font: mapv($attr, font, $f1);
+    $bg: mapv($attr, bg, #000);
+    $bgh: mapv($attr, bg_hover, #000);
+    $bgd: mapv($attr, bg_disabled, lighten(#000, 80%));
+    $color: mapv($attr, color, #FFF);
+    $colorh: mapv($attr, color_hover, #FFF);
+    $colord: mapv($attr, color_disabled, lighten(#000, 40%));
+    $font: mapv($attr, font, "sans-serif");
     $size: mapv($attr, size, 18);
     $weight: mapv($attr, weight, bold);
     $transform: mapv($attr, transform, uppercase);
     $align: mapv($attr, align, center);
-    $time: mapv($attr, time, $t2);
-    $bd: mapv($attr, border_color, $c2);
-    $bdh: mapv($attr, border_color_hover, $c2);
-    $bdd: mapv($attr, border_color_disabled, lighten($c2, 80%));
+    $time: mapv($attr, time, 200ms);
+    $bd: mapv($attr, border_color, #000);
+    $bdh: mapv($attr, border_color_hover, #000);
+    $bdd: mapv($attr, border_color_disabled, lighten(#000, 80%));
     $bdsize: mapv($attr, border_size, 1px);
     $bdstyle: mapv($attr, border_style, solid);
     $iconr: mapv($attr, icon_right, false);
@@ -75,7 +73,7 @@
     cursor: pointer;
 
     &:before {
-        @include transition(all $t2 linear);
+        @include transition(all $time linear);
         @include position(absolute);
         @include wh(99%, 97%);
         border: $bdsize $bdstyle $bd;
@@ -86,27 +84,27 @@
 
     &:hover {
         &:before {
-            @include transition(all $t2 linear);
+            @include transition(all $time linear);
             @include position(absolute, 4px, 4px);
             border: $bdsize $bdstyle $bdh;
         }
 
         .content_link {
-            @include transition(all $t2 linear);
+            @include transition(all $time linear);
             background-color: $bgh;
             color: $colorh;
 
             @if $iconr {
                 &:after {
                     @include position(relative, -2px, 15px);
-                    @include transition(all $t2 linear);
+                    @include transition(all $time linear);
                 }
             }
 
             @if $iconl {
                 &:before {
                     @include position(relative, -2px, -15px);
-                    @include transition(all $t2 linear);
+                    @include transition(all $time linear);
                 }
             }
         }
@@ -140,7 +138,7 @@
         @include aspect-ratio($w, $ar);
         @include font(szrem($size), $font, $weight);
         @include text($align, $transform);
-        @include transition(all $t2 linear);
+        @include transition(all $time linear);
         border: $bdsize $bdstyle $bd;
         background-color: $bg;
         color: $color;
@@ -151,7 +149,7 @@
 
             &:after {
                 @include position(relative, -2px, 10px);
-                @include transition(all $t2 linear);
+                @include transition(all $time linear);
                 font-size: szrem($size - 3);
                 content: "\2192";
             }
@@ -162,7 +160,7 @@
 
             &:before {
                 @include position(relative, -2px, -10px);
-                @include transition(all $t2 linear);
+                @include transition(all $time linear);
                 font-size: szrem($size - 3);
                 content: "\2190";
             }
@@ -174,18 +172,18 @@
     $w: mapv($attr, width, 140px);
     $h: mapv($attr, height, 55px);
     $difi: mapv($attr, diff, 10px);
-    $bg1: mapv($attr, bg1, $c1);
-    $bg2: mapv($attr, bg2, $c2);
+    $bg1: mapv($attr, bg1, #FFF);
+    $bg2: mapv($attr, bg2, #000);
     $bgo: mapv($attr, bg_opacity, 0.4);
     $bdb: mapv($attr, border_contain, false);
-    $bd: mapv($attr, border, 2px solid $c2);
+    $bd: mapv($attr, border, 2px solid #000);
     $aspi: mapv($attr, aspect_inside, 2.8);
-    $font: mapv($attr, font, $f1);
+    $font: mapv($attr, font, "sans-serif");
     $size: mapv($attr, size, 18);
     $weight: mapv($attr, weight, bold);
     $ob: mapv($attr, opacity_before, 1);
-    $color: mapv($attr, color, $c1);
-    $colorh: mapv($attr, color_hover, $c1);
+    $color: mapv($attr, color, #FFF);
+    $colorh: mapv($attr, color_hover, #FFF);
 
     all: initial;
     @include wh($w, $h);

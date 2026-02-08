@@ -1,8 +1,7 @@
 @use "./base" as *;
-@use "./variables" as *;
 
 * {
-    @include font(100%, $f1);
+    @include font(100%);
     @include no-margins;
     @include no-border;
     vertical-align: baseline;

@@ -1,18 +1,18 @@
 //-----------------------------------
 // Silent Class
 //-----------------------------------
-@use "../sisass" as s;
-@use "./variables" as v;
+@use "../../../../src/scss/sisass" as *;
+@use "./variables" as *;
 
 %text_1 {
-    @include s.font(s.szrem(16), v.$f1);
-    @include s.text(justify);
-    color: v.$c3;
+    @include font(szrem(16), $f1);
+    @include text(justify);
+    color: $c3;
 
     b {
-        @include s.font(s.szrem(16), v.$f1, bold);
-        @include s.text(justify);
-        color: v.$c3;
+        @include font(szrem(16), $f1, bold);
+        @include text(justify);
+        color: $c3;
     }
 }
 
