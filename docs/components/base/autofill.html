@@ -1,0 +1,62 @@
+<article id="autofill" class="autofill">
+    <div class="group_title">
+        <h2 class="subtitle">
+            autofill (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Permite definir estilos para el estado autofill en inputs (WebKit).
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin autofill($background, $color);</code></pre>
+
+        <p class="description">
+            <b>background</b>: Color de fondo aplicado al autofill.
+        </p>
+        <p class="description">
+            <b>color</b>: Color del texto aplicado al autofill.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/autofill.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/autofill.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;input&nbsp;class=&quot;input_autofill&quot;&nbsp;type=&quot;text&quot;&nbsp;value=&quot;Demo&quot;&nbsp;/&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <input class="input_autofill" type="text" value="Demo" />
+            </div>
+        </div>
+    </section>
+</article>

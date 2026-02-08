@@ -1,3 +1,14 @@
+.input_autofill:-webkit-autofill, .input_autofill:-webkit-autofill:hover, .input_autofill:-webkit-autofill:focus {
+  -webkit-box-shadow: inset 0 0 0 1000px #FFF;
+  -moz-box-shadow: inset 0 0 0 1000px #FFF;
+  box-shadow: inset 0 0 0 1000px #FFF;
+  -webkit-transition: background-color 5000s ease-in-out 0;
+  -moz-transition: background-color 5000s ease-in-out 0;
+  -o-transition: background-color 5000s ease-in-out 0;
+  transition: background-color 5000s ease-in-out 0;
+  -webkit-text-fill-color: #3A405A;
+}
+
 .background_gradient {
   background-image: linear-gradient(to bottom, hsl(330, 100%, 45.1%) 0%, hsl(330, 100%, 45.1%) 33.3%, hsl(270, 50%, 45.1%) 33.3%, hsl(270, 50%, 45.1%) 66.7%, hsl(210, 100%, 45.1%) 66.7%, hsl(210, 100%, 45.1%) 100%);
   background-repeat: no-repeat;
@@ -5,18 +16,21 @@
   background-color: transparent;
   background-size: auto;
 }
+
 .circle_border_radius {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
+  -webkit-border-radius: 5%;
+  -moz-border-radius: 5%;
+  -ms-border-radius: 5%;
+  -o-border-radius: 5%;
+  border-radius: 5%;
 }
+
 .box_shadow_example {
   -webkit-box-shadow: 7px 7px 7px #FBB03B;
   -moz-box-shadow: 7px 7px 7px #FBB03B;
   box-shadow: 7px 7px 7px #FBB03B;
 }
+
 .cube_transform_style {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
@@ -85,6 +99,7 @@
   background: rgba(210, 0, 210, 0.7);
   transform: rotateX(-90deg) translateZ(50px);
 }
+
 .rotate_example {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -92,6 +107,7 @@
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
 .scale_rotate_example {
   -webkit-transform: rotate(45deg) scale(0.5);
   -moz-transform: rotate(45deg) scale(0.5);
@@ -99,6 +115,7 @@
   -o-transform: rotate(45deg) scale(0.5);
   transform: rotate(45deg) scale(0.5);
 }
+
 .transform_style_preserve_3d {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
@@ -142,6 +159,7 @@
 .transform_style_preserve_3d .children .text {
   color: #FFF;
 }
+
 .transform_style_flat {
   -webkit-transform-style: flat;
   -moz-transform-style: flat;

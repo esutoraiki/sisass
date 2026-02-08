@@ -7,10 +7,10 @@
             "node": "src"
         },
         {
-            "id": "vendor_prefix",
-            "url": "../components/base/vendor_prefix.html",
+            "id": "autofill",
+            "url": "../components/base/autofill.html",
             "position": "beforeend",
-            "node": "vendorprefix"
+            "node": "autofill"
         },
         {
             "id": "border_radius",

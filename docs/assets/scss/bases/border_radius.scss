@@ -1,5 +1,5 @@
 @use "../core/instances" as *;
 
 .circle_border_radius {
-    @include border-radius(50%);
+    @include border-radius(5%);
 }

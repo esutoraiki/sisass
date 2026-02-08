@@ -11,7 +11,6 @@ import postinlinesvg from "postcss-inline-svg";
 import jsonlint from "@prantlf/gulp-jsonlint";
 import { fileURLToPath } from "url";
 import plumber from "gulp-plumber";
-import concat from "gulp-concat";
 
 const
     sass = gulp_sass(dart_sass),
@@ -31,10 +30,10 @@ const
     ],
     paths_compile_scss = [
         "assets/scss/*.scss",
-        "assets/scss/components/*.scss"
+        "assets/scss/components/*.scss",
+        "assets/scss/bases/[^_]*.scss",
+        "assets/scss/mediaqueries/[^_]*.scss"
     ],
-    path_bases_scss = "assets/scss/bases/[^_]*.scss",
-    path_mediaqueries_scss = "assets/scss/mediaqueries/[^_]*.scss",
 
     path_svg = "assets/scss/svg/*.scss",
     path_dest_svg = "assets/css/svg/",
@@ -111,24 +110,6 @@ gulp.task("css_svg", function () {
 gulp.task("scss", function () {
     console.log("");
     console.log("---- Styles ----");
-    const resolve_css_dest = function (file) {
-        const relative_path = file.relative.replace(/\\/g, "/");
-
-        if (relative_path.startsWith("components/")) {
-            return "assets/css/components";
-        }
-
-        if (relative_path.startsWith("bases/")) {
-            return "assets/css/bases";
-        }
-
-        if (relative_path.startsWith("mediaqueries/")) {
-            return "assets/css/mediaqueries";
-        }
-
-        return "assets/css";
-    };
-
     console.log("");
     return gulp.src(paths_compile_scss, { base: "assets/scss" })
         .pipe(plumber({ errorHandler: handle_sass_error }))
@@ -136,34 +117,6 @@ gulp.task("scss", function () {
             outputStyle: "expanded",
             includePaths: paths_scss
         }))
-        .pipe(gulp.dest(resolve_css_dest));
-});
-
-gulp.task("scss_bases", function () {
-    console.log("");
-    console.log("---- Styles Bases ----");
-
-    return gulp.src(path_bases_scss)
-        .pipe(plumber({ errorHandler: handle_sass_error }))
-        .pipe(sass({
-            outputStyle: "expanded",
-            includePaths: paths_scss
-        }))
-        .pipe(concat("bases.css"))
-        .pipe(gulp.dest("assets/css"));
-});
-
-gulp.task("scss_mediaqueries", function () {
-    console.log("");
-    console.log("---- Styles Mediaqueries ----");
-
-    return gulp.src(path_mediaqueries_scss)
-        .pipe(plumber({ errorHandler: handle_sass_error }))
-        .pipe(sass({
-            outputStyle: "expanded",
-            includePaths: paths_scss
-        }))
-        .pipe(concat("mediaqueries.css"))
         .pipe(gulp.dest("assets/css"));
 });
 
@@ -213,8 +166,6 @@ gulp.task("watch", function () {
     gulp.watch("assets/json/*.json", gulp.series("jsonlint"));
 
     gulp.watch(paths_compile_scss, gulp.series("scss"));
-    gulp.watch(path_bases_scss, gulp.series("scss_bases"));
-    gulp.watch(path_mediaqueries_scss, gulp.series("scss_mediaqueries"));
     gulp.watch(path_svg, gulp.series("css_svg", "process_svg"));
     gulp.watch(path_orig_img_svg, gulp.series(
         "delete_svg",
