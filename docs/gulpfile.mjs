@@ -8,7 +8,7 @@ import { optimize } from "svgo";
 import { Transform } from "stream";
 import postcss from "gulp-postcss";
 import postinlinesvg from "postcss-inline-svg";
-import jsonlint from "gulp-jsonlint";
+import jsonlint from "@prantlf/gulp-jsonlint";
 import merge from "merge-stream";
 import { fileURLToPath } from "url";
 
@@ -148,15 +148,12 @@ gulp.task("jsonlint", function () {
     console.log("");
     console.log("---- JSON-LINT ----");
 
-    let
-        myCustomReporter = function (file) {
-            log("File " + file.path + " is not valid JSON.");
-        }
-    ;
-
     return gulp.src("assets/json/*.json")
         .pipe(jsonlint())
-        .pipe(jsonlint.reporter(myCustomReporter));
+        .pipe(jsonlint.reporter({
+            formatter: "prose",
+            reporter: "jshint"
+        }));
 });
 
 gulp.task("html", function () {
