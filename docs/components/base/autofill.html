@@ -12,7 +12,15 @@
     </div>
 
     <p class="description">
-        Permite definir estilos para el estado autofill en inputs (WebKit).
+        El autofill es el estado que aplica el navegador cuando completa
+        automáticamente un campo (por ejemplo, al sugerir un correo o una
+        contraseña guardada). Este mixin te permite controlar el color de fondo
+        y el color del texto en ese estado para mantener consistencia con tu UI.
+    </p>
+    <p class="description">
+        En este ejemplo el input usa el mixin con <b>$c1</b> como fondo y <b>$c3</b>
+        como color de texto. Para ver el efecto, escribe en el input y usa una
+        sugerencia del navegador, o guarda un valor y vuelve a cargar la página.
     </p>
 
     <section class="use">
@@ -20,14 +28,39 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin autofill($background, $color);</code></pre>
+        <pre class="language-scss"><code>@mixin autofill($background, $color, $padding: null, $border: null);</code></pre>
 
-        <p class="description">
-            <b>background</b>: Color de fondo aplicado al autofill.
-        </p>
-        <p class="description">
-            <b>color</b>: Color del texto aplicado al autofill.
-        </p>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>$background</b></td>
+                    <td>Color</td>
+                    <td>Color de fondo aplicado al autofill.</td>
+                </tr>
+                <tr>
+                    <td><b>$color</b></td>
+                    <td>Color</td>
+                    <td>Color del texto aplicado al autofill.</td>
+                </tr>
+                <tr>
+                    <td><b>$padding</b></td>
+                    <td>Medida</td>
+                    <td>Padding opcional aplicado en autofill (por defecto <b>null</b>).</td>
+                </tr>
+                <tr>
+                    <td><b>$border</b></td>
+                    <td>Border</td>
+                    <td>Borde opcional aplicado en autofill (por defecto <b>null</b>).</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="title">
             Ejemplo
@@ -55,7 +88,7 @@
             </h2>
 
             <div class="result">
-                <input class="input_autofill" type="text" value="Demo" />
+                <input class="input_autofill" type="email" name="email" autocomplete="email" />
             </div>
         </div>
     </section>

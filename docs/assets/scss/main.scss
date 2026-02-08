@@ -2,7 +2,6 @@
 @use "sass:color";
 
 @use "./core/reset";
-@use "core/variables" as *;
 @use "./core/instances" as *;
 @use "./core/fonts";
 @use "./core/keyframes";
@@ -154,5 +153,33 @@
 
         &:before { display: none; }
         &:after { display: none; }
+    }
+
+    table {
+        margin-block-end: 40px;
+
+        &.full { width: 100%; }
+
+        thead {
+            th {
+                @include bc($c6, $c1);
+                padding: 10px 5px;
+                border: $bd4;
+            }
+        }
+
+        tbody {
+            td {
+                padding: 10px 5px;
+                border: $bd5;
+
+                b { font-weight: bold; }
+
+                ul {
+                    margin-inline-start: 40px;
+                    li { list-style-type: disc; }
+                }
+            }
+        }
     }
 }

@@ -455,3 +455,28 @@ summary {
 .documentationpage pre:after {
   display: none;
 }
+.documentationpage table {
+  margin-block-end: 40px;
+}
+.documentationpage table.full {
+  width: 100%;
+}
+.documentationpage table thead th {
+  background-color: #2D396C;
+  color: #FFF;
+  padding: 10px 5px;
+  border: 1px solid #FFF;
+}
+.documentationpage table tbody td {
+  padding: 10px 5px;
+  border: 1px solid #2D396C;
+}
+.documentationpage table tbody td b {
+  font-weight: bold;
+}
+.documentationpage table tbody td ul {
+  margin-inline-start: 40px;
+}
+.documentationpage table tbody td ul li {
+  list-style-type: disc;
+}
