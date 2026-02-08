@@ -118,6 +118,17 @@
   transform: rotate(45deg) scale(0.5);
 }
 
+.documentationpage .text_example_params {
+  text-align: left;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.documentationpage .text_example_map {
+  text-align: right;
+  text-decoration: line-through;
+  text-transform: lowercase;
+}
+
 .transform_style_preserve_3d {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;

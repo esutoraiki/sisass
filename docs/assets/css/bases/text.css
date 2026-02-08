@@ -1,0 +1,10 @@
+.documentationpage .text_example_params {
+  text-align: left;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+.documentationpage .text_example_map {
+  text-align: right;
+  text-decoration: line-through;
+  text-transform: lowercase;
+}

@@ -1,0 +1,87 @@
+<article id="text" class="text">
+    <div class="group_title">
+        <h2 class="subtitle">
+            text (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Permite configurar alineación, transformación y decoración de texto.
+        Ahora soporta dos formas de uso: pasando parámetros individuales o un
+        mapa con las claves <b>align</b>, <b>transform</b> y <b>decoration</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin text($aling: left, $trans: none, $decor: none);</code></pre>
+        <p class="description">
+            Valores por defecto: <b>left</b>, <b>none</b>, <b>none</b>.
+        </p>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>$aling</b></td>
+                    <td>String | Map</td>
+                    <td>Si es string, define <b>text-align</b>. Si es map, puede incluir <b>align</b>, <b>transform</b>, <b>decoration</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>$trans</b></td>
+                    <td>String</td>
+                    <td>Define <b>text-transform</b> cuando el primer parámetro no es map.</td>
+                </tr>
+                <tr>
+                    <td><b>$decor</b></td>
+                    <td>String</td>
+                    <td>Define <b>text-decoration</b> cuando el primer parámetro no es map.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/text.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/text.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;text_example_params&quot;&gt;Texto&nbsp;con&nbsp;parámetros&nbsp;individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;text_example_map&quot;&gt;Texto&nbsp;usando&nbsp;map&lt;/p&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <p class="text_example_params">Texto con parámetros individuales</p>
+                <p class="text_example_map">Texto usando map</p>
+            </div>
+        </div>
+    </section>
+</article>

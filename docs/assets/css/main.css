@@ -157,8 +157,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   margin-bottom: 14px;
   color: #3A405A;
 }
@@ -169,8 +169,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   margin-bottom: 10px;
   color: #3A405A;
 }
@@ -290,8 +290,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   margin-bottom: 30px;
   color: #A01303;
 }
@@ -302,8 +302,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   margin-bottom: 5px;
   color: #A01303;
 }
@@ -314,8 +314,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   margin-bottom: 3px;
   color: #2D396C;
 }
@@ -330,8 +330,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: justify;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   color: #3A405A;
 }
 .documentationpage .description b,
@@ -342,8 +342,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: justify;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   color: #3A405A;
 }
 .documentationpage .description,
@@ -360,8 +360,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: justify;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   color: #3A405A;
 }
 .documentationpage .note b {
@@ -371,8 +371,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: justify;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   color: #3A405A;
 }
 .documentationpage .note {
@@ -388,8 +388,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   color: #2D396C;
   margin-top: 45px;
   margin-bottom: 10px;
@@ -401,8 +401,8 @@ summary {
   font-style: normal;
   font-variant: normal;
   text-align: left;
-  text-decoration: none;
-  text-transform: none;
+  text-decoration: initial;
+  text-transform: initial;
   color: #4b5fb4;
   margin-top: 30px;
   margin-bottom: 10px;

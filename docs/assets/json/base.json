@@ -13,6 +13,12 @@
             "node": "autofill"
         },
         {
+            "id": "text",
+            "url": "../components/base/text.html",
+            "position": "beforeend",
+            "node": "text"
+        },
+        {
             "id": "border_radius",
             "url": "../components/base/border_radius.html",
             "position": "beforeend",

@@ -1,0 +1,15 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .text_example_params {
+        @include text(left, uppercase, underline);
+    }
+
+    .text_example_map {
+        @include text((
+            align: right,
+            transform: lowercase,
+            decoration: line-through
+        ));
+    }
+}
