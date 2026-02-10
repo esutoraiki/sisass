@@ -161,9 +161,8 @@
         $red_value: color.channel($bg_value, "red", $space: rgb);
         $green_value: color.channel($bg_value, "green", $space: rgb);
         $blue_value: color.channel($bg_value, "blue", $space: rgb);
-        $rgb_list: $red_value $green_value $blue_value;
-        $rgb_with_alpha: list.slash($rgb_list, $opacity_value);
-        background-color: rgb($rgb_with_alpha);
+        $rgb_string: "rgb(#{$red_value} #{$green_value} #{$blue_value} / #{$opacity_value})";
+        background-color: string.unquote($rgb_string);
     }
 }
 
