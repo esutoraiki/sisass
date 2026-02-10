@@ -4,6 +4,7 @@
 @use "sass:list";
 @use "sass:string";
 @use "sass:meta";
+@use "sass:color";
 
 @use "./vendor" as *;
 @use "./mediaqueries" as *;
@@ -141,9 +142,29 @@
 
 
 // background opacity
-@mixin background-opacity($bg: #FFF, $opacity: 0.8) {
-    background-color: $bg;
-    background-color: rgba($bg, $opacity);
+@mixin background-opacity($bg: #FFF, $opacity: 0.8, $use_legacy: false) {
+    $bg_value: $bg;
+    $opacity_value: $opacity;
+    $use_legacy_value: $use_legacy;
+
+    @if meta.type-of($bg) == "map" {
+        $bg_value: mapv($bg, color, #FFF);
+        $opacity_value: mapv($bg, opacity, 0.8);
+        $use_legacy_value: mapv($bg, use_legacy, false);
+    }
+
+    background-color: $bg_value;
+
+    @if $use_legacy_value {
+        background-color: rgba($bg_value, $opacity_value);
+    } @else {
+        $red_value: color.channel($bg_value, "red", $space: rgb);
+        $green_value: color.channel($bg_value, "green", $space: rgb);
+        $blue_value: color.channel($bg_value, "blue", $space: rgb);
+        $rgb_list: $red_value $green_value $blue_value;
+        $rgb_with_alpha: list.slash($rgb_list, $opacity_value);
+        background-color: rgb($rgb_with_alpha);
+    }
 }
 
 // Position

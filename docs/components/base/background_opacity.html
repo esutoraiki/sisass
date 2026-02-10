@@ -11,16 +11,23 @@
         </h3>
     </div>
 
-    <p class="description">Genera un background con opacidad usando rgba.</p>
+    <p class="description">Genera un background con opacidad usando sintaxis moderna o rgba.</p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin background-opacity($color: #FFF, $opacity: 0.8);</code></pre>
+        <pre class="language-scss"><code>@mixin background-opacity($color: #FFF, $opacity: 0.8, $use_legacy: false);</code></pre>
+
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+
+        <pre class="language-scss"><code>@include background-opacity((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#FFF,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;opacity:&nbsp;0.8,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;use_legacy:&nbsp;false&NewLine;));</code></pre>
+
         <p class="description">
-            Valores por defecto: #FFF, 0.8.
+            Valores por defecto: #FFF, 0.8, false.
         </p>
 
         <table class="full">
@@ -45,6 +52,12 @@
                     <td>0.8</td>
                     <td>Opacidad.</td>
                 </tr>
+                <tr>
+                    <td><b>$use_legacy</b></td>
+                    <td>Bool</td>
+                    <td>false</td>
+                    <td>Usar rgba como fallback.</td>
+                </tr>
             </tbody>
         </table>
 
@@ -66,14 +79,15 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;background_opacity_example&quot;&gt;&lt;/div&gt;</code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;background_opacity_example_legacy&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;background_opacity_example_map&quot;&gt;&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <div class="background_opacity_example"></div>
+                <div class="background_opacity_example_legacy"></div>
+                <div class="background_opacity_example_map"></div>
             </div>
         </div>
     </section>
