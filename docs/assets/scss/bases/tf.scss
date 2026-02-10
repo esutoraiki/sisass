@@ -1,0 +1,17 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .tf_example_map {
+        @include tf((
+            align: right,
+            transform: lowercase,
+            decoration: underline,
+            size: szrem(20),
+            family: $f3,
+            weight: 900,
+            style: normal,
+            line-height: 1.2,
+            variant: normal
+        ));
+    }
+}

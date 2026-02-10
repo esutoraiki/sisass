@@ -1,15 +1,40 @@
 @use "../core/instances" as *;
 
-.background_gradient {
-    @include background((
-        image: linear-gradient(
-            to bottom,
-            hsl(330, 100%, 45.1%) 0%,
-            hsl(330, 100%, 45.1%) 33.3%,
-            hsl(270, 50%, 45.1%) 33.3%,
-            hsl(270, 50%, 45.1%) 66.7%,
-            hsl(210, 100%, 45.1%) 66.7%,
-            hsl(210, 100%, 45.1%) 100%
-        )
-    ));
+.documentationpage {
+    .background_gradient {
+        @include background((
+            image: linear-gradient(
+                to bottom,
+                hsl(330, 100%, 45.1%) 0%,
+                hsl(330, 100%, 45.1%) 33.3%,
+                hsl(270, 50%, 45.1%) 33.3%,
+                hsl(270, 50%, 45.1%) 66.7%,
+                hsl(210, 100%, 45.1%) 66.7%,
+                hsl(210, 100%, 45.1%) 100%
+            )
+        ));
+    }
+
+    .background_gradient_linear {
+        @include background((
+            image: linear-gradient(90deg, $c4, $c5)
+        ));
+    }
+
+    .background_gradient_radial {
+        @include background((
+            image: radial-gradient(circle, $c5 0%, $c6 100%)
+        ));
+    }
+
+    .background_image {
+        @include wh(220px, 140px);
+        @include background((
+            url: "../img/test/1.webp",
+            repeat: no-repeat,
+            position: center,
+            color: $c7,
+            size: cover
+        ));
+    }
 }

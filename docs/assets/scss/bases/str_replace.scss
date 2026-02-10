@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .fn_str_replace:before {
+                content: str-replace("hola mundo", " ", "-");
+            }
+}

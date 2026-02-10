@@ -1,10 +1,12 @@
 @use "../core/instances" as *;
 
-.input_autofill {
-    @include autofill((
-        bg: $c4,
-        color: $c5,
-        padding: 15px,
-        border: $bd1
-    ));
+.documentationpage {
+            .input_autofill {
+                @include autofill((
+                    bg: $c4,
+                    color: $c5,
+                    padding: 15px,
+                    border: $bd1
+                ));
+            }
 }

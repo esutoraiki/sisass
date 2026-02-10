@@ -197,3 +197,12 @@
     #{$property}: -webkit-calc(#{$expression});
     #{$property}: calc(#{$expression});
 }
+
+// Placeholder
+@mixin placeholder {
+    &::-ms-input-placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+    &::placeholder { @content; }
+}

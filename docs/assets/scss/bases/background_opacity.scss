@@ -1,0 +1,8 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .background_opacity_example {
+        @include background-opacity($c2, 0.35);
+        @include whs(100px);
+    }
+}

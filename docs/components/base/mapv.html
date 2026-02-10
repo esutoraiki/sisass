@@ -1,0 +1,79 @@
+<article id="mapv" class="mapv">
+    <div class="group_title">
+        <h2 class="subtitle">
+            mapv (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">Obtiene un valor de un map con fallback.</p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function mapv($map, $key, $value);</code></pre>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>$map</b></td>
+                    <td>Map</td>
+                    <td>Mapa de valores.</td>
+                </tr>
+                <tr>
+                    <td><b>$key</b></td>
+                    <td>String</td>
+                    <td>Clave a leer.</td>
+                </tr>
+                <tr>
+                    <td><b>$value</b></td>
+                    <td>Any</td>
+                    <td>Valor por defecto.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/mapv.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/mapv.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code><p class="fn_mapv">Color por mapv</p></code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <p class="fn_mapv">Color por mapv</p>
+            </div>
+        </div>
+    </section>
+</article>

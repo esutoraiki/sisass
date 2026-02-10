@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .ht_example {
+                @include ht;
+                @include wh(120px, 40px);
+                background-color: $c5;
+            }
+}

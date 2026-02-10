@@ -1,0 +1,92 @@
+<article id="font_face" class="font_face">
+    <div class="group_title">
+        <h2 class="subtitle">
+            font-face (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">Declara un @font-face con múltiples formatos.</p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg);</code></pre>
+        <p class="description">
+            Valores por defecto: weight null, style null, exts eot woff2 woff ttf svg.
+        </p>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>$name</b></td>
+                    <td>String</td>
+                    <td>Nombre de la fuente.</td>
+                </tr>
+                <tr>
+                    <td><b>$path</b></td>
+                    <td>String</td>
+                    <td>Ruta base sin extensión.</td>
+                </tr>
+                <tr>
+                    <td><b>$weight</b></td>
+                    <td>String | Number</td>
+                    <td>Peso.</td>
+                </tr>
+                <tr>
+                    <td><b>$style</b></td>
+                    <td>String</td>
+                    <td>Estilo.</td>
+                </tr>
+                <tr>
+                    <td><b>$exts</b></td>
+                    <td>List</td>
+                    <td>Extensiones.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/font_face.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/font_face.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code><p class="font_face_example">Texto con font-face</p></code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <p class="font_face_example">Texto con font-face</p>
+            </div>
+        </div>
+    </section>
+</article>

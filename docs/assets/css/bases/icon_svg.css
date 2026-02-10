@@ -1,0 +1,12 @@
+.documentationpage .icon_svg_example {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background-image: svg-load("../../img/svg/sisass.svg", fill=#A01303);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top left;
+  background-color: transparent;
+}

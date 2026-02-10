@@ -1,0 +1,72 @@
+<article id="scroll" class="scroll">
+    <div class="group_title">
+        <h2 class="subtitle">
+            scroll (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">Personaliza el scroll del elemento.</p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin scroll($attr: ());</code></pre>
+        <p class="description">
+            Valores por defecto: color white, bg black, width 15px, radius 10px, direction "v".
+        </p>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>$attr</b></td>
+                    <td>Map</td>
+                    <td>Opciones de scroll.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/scroll.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/scroll.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code><div class="scroll_example"><p>Contenido<br/>Contenido<br/>Contenido<br/>Contenido<br/>Contenido</p></div></code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="scroll_example"><p>Contenido<br/>Contenido<br/>Contenido<br/>Contenido<br/>Contenido</p></div>
+            </div>
+        </div>
+    </section>
+</article>

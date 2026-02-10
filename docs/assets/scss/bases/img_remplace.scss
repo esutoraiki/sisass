@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .img_remplace_example {
+                @include img-remplace("../img/favicons/favicon.png", 64px, 64px);
+            }
+}

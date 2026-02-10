@@ -1,0 +1,8 @@
+.documentationpage .no_border_example {
+  border: 2px solid #A01303;
+  border: 0 none transparent;
+  border-top: 0 none transparent;
+  border-bottom: 0 none transparent;
+  border-left: 0 none transparent;
+  border-right: 0 none transparent;
+}

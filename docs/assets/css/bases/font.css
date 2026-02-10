@@ -1,0 +1,16 @@
+.documentationpage .font_example_params {
+  font-size: 1.125rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: 700;
+  font-style: italic;
+  font-variant: normal;
+  line-height: 1.4;
+}
+.documentationpage .font_example_map {
+  font-size: 1.25rem;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.2;
+}

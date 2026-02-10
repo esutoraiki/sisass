@@ -1,0 +1,17 @@
+.documentationpage .hv_container {
+  position: relative;
+  height: 120px;
+}
+.documentationpage .hv_center_example {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background-color: #A01303;
+}

@@ -1,0 +1,80 @@
+<article id="bc" class="bc">
+    <div class="group_title">
+        <h2 class="subtitle">
+            bc (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">Aplica background-color y color en una sola llamada.</p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin bc($background: #FFF, $color: #000);</code></pre>
+        <p class="description">
+            Valores por defecto: #FFF, #000.
+        </p>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>$background</b></td>
+                    <td>Color</td>
+                    <td>#FFF</td>
+                    <td>Color de fondo.</td>
+                </tr>
+                <tr>
+                    <td><b>$color</b></td>
+                    <td>Color</td>
+                    <td>#000</td>
+                    <td>Color del texto.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/bc.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/bc.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;bc_example&quot;&gt;Texto&nbsp;con&nbsp;background&nbsp;y&nbsp;color&lt;/p&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <p class="bc_example">Texto con background y color</p>
+            </div>
+        </div>
+    </section>
+</article>

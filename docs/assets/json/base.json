@@ -7,16 +7,178 @@
             "node": "src"
         },
         {
-            "id": "autofill",
-            "url": "../components/base/autofill.html",
+            "id": "base_description",
+            "url": "../components/base/base_description.html",
             "position": "beforeend",
-            "node": "autofill"
+            "node": "base_description"
         },
         {
             "id": "text",
             "url": "../components/base/text.html",
             "position": "beforeend",
             "node": "text"
+        },
+        {
+            "id": "font",
+            "url": "../components/base/font.html",
+            "position": "beforeend",
+            "node": "font"
+        },
+        {
+            "id": "tf",
+            "url": "../components/base/tf.html",
+            "position": "beforeend",
+            "node": "tf"
+        },
+        {
+            "id": "gradient_text",
+            "url": "../components/base/gradient_text.html",
+            "position": "beforeend",
+            "node": "gradient_text"
+        },
+        {
+            "id": "fluid_type",
+            "url": "../components/base/fluid_type.html",
+            "position": "beforeend",
+            "node": "fluid_type"
+        },
+        {
+            "id": "font_face",
+            "url": "../components/base/font_face.html",
+            "position": "beforeend",
+            "node": "font_face"
+        },
+        {
+            "id": "autofill",
+            "url": "../components/base/autofill.html",
+            "position": "beforeend",
+            "node": "autofill"
+        },
+        {
+            "id": "background",
+            "url": "../components/base/background.html",
+            "position": "beforeend",
+            "node": "background"
+        },
+        {
+            "id": "bc",
+            "url": "../components/base/bc.html",
+            "position": "beforeend",
+            "node": "bc"
+        },
+        {
+            "id": "background_opacity",
+            "url": "../components/base/background_opacity.html",
+            "position": "beforeend",
+            "node": "background_opacity"
+        },
+        {
+            "id": "position",
+            "url": "../components/base/position.html",
+            "position": "beforeend",
+            "node": "position"
+        },
+        {
+            "id": "wh",
+            "url": "../components/base/wh.html",
+            "position": "beforeend",
+            "node": "wh"
+        },
+        {
+            "id": "whs",
+            "url": "../components/base/whs.html",
+            "position": "beforeend",
+            "node": "whs"
+        },
+        {
+            "id": "ht",
+            "url": "../components/base/ht.html",
+            "position": "beforeend",
+            "node": "ht"
+        },
+        {
+            "id": "hv_center",
+            "url": "../components/base/hv_center.html",
+            "position": "beforeend",
+            "node": "hv_center"
+        },
+        {
+            "id": "center_flex_column",
+            "url": "../components/base/center_flex_column.html",
+            "position": "beforeend",
+            "node": "center_flex_column"
+        },
+        {
+            "id": "center_flex_row",
+            "url": "../components/base/center_flex_row.html",
+            "position": "beforeend",
+            "node": "center_flex_row"
+        },
+        {
+            "id": "aspect_ratio",
+            "url": "../components/base/aspect_ratio.html",
+            "position": "beforeend",
+            "node": "aspect_ratio"
+        },
+        {
+            "id": "gap",
+            "url": "../components/base/gap.html",
+            "position": "beforeend",
+            "node": "gap"
+        },
+        {
+            "id": "icon_svg",
+            "url": "../components/base/icon_svg.html",
+            "position": "beforeend",
+            "node": "icon_svg"
+        },
+        {
+            "id": "normalize_svg",
+            "url": "../components/base/normalize_svg.html",
+            "position": "beforeend",
+            "node": "normalize_svg"
+        },
+        {
+            "id": "img_remplace",
+            "url": "../components/base/img_remplace.html",
+            "position": "beforeend",
+            "node": "img_remplace"
+        },
+        {
+            "id": "keyframes",
+            "url": "../components/base/keyframes.html",
+            "position": "beforeend",
+            "node": "keyframes"
+        },
+        {
+            "id": "scroll",
+            "url": "../components/base/scroll.html",
+            "position": "beforeend",
+            "node": "scroll"
+        },
+        {
+            "id": "cover",
+            "url": "../components/base/cover.html",
+            "position": "beforeend",
+            "node": "cover"
+        },
+        {
+            "id": "contain",
+            "url": "../components/base/contain.html",
+            "position": "beforeend",
+            "node": "contain"
+        },
+        {
+            "id": "no_margins",
+            "url": "../components/base/no_margins.html",
+            "position": "beforeend",
+            "node": "no_margins"
+        },
+        {
+            "id": "no_border",
+            "url": "../components/base/no_border.html",
+            "position": "beforeend",
+            "node": "no_border"
         },
         {
             "id": "border_radius",
@@ -38,15 +200,57 @@
         },
         {
             "id": "transformstyle",
-            "url": "../components/base/transform_style.html",
+            "url": "../components/base/transformstyle.html",
             "position": "beforeend",
             "node": "transformstyle"
         },
         {
-            "id": "background",
-            "url": "../components/base/background.html",
+            "id": "szrem",
+            "url": "../components/base/szrem.html",
             "position": "beforeend",
-            "node": "background"
+            "node": "szrem"
+        },
+        {
+            "id": "str_replace",
+            "url": "../components/base/str_replace.html",
+            "position": "beforeend",
+            "node": "str_replace"
+        },
+        {
+            "id": "mapv",
+            "url": "../components/base/mapv.html",
+            "position": "beforeend",
+            "node": "mapv"
+        },
+        {
+            "id": "bp",
+            "url": "../components/base/bp.html",
+            "position": "beforeend",
+            "node": "bp"
+        },
+        {
+            "id": "strip_unit",
+            "url": "../components/base/strip_unit.html",
+            "position": "beforeend",
+            "node": "strip_unit"
+        },
+        {
+            "id": "list_add_unique",
+            "url": "../components/base/list_add_unique.html",
+            "position": "beforeend",
+            "node": "list_add_unique"
+        },
+        {
+            "id": "list_add_items",
+            "url": "../components/base/list_add_items.html",
+            "position": "beforeend",
+            "node": "list_add_items"
+        },
+        {
+            "id": "append_points",
+            "url": "../components/base/append_points.html",
+            "position": "beforeend",
+            "node": "append_points"
         }
     ]
 }

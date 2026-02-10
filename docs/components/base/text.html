@@ -7,13 +7,13 @@
             Tipo: Mixin
         </h3>
         <h3 class="attribute">
-            Versión: 2.x.x
+            Version: 2.x.x
         </h3>
     </div>
 
     <p class="description">
-        Permite configurar alineación, transformación y decoración de texto.
-        Ahora soporta dos formas de uso: pasando parámetros individuales o un
+        Permite configurar alineacion, transformacion y decoracion de texto.
+        Ahora soporta dos formas de uso: pasando parametros individuales o un
         mapa con las claves <b>align</b>, <b>transform</b> y <b>decoration</b>.
     </p>
 
@@ -30,26 +30,30 @@
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parámetro</th>
+                    <th>Parametro</th>
                     <th>Tipo</th>
-                    <th>Descripción</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b>$aling</b></td>
                     <td>String | Map</td>
+                    <td>left</td>
                     <td>Si es string, define <b>text-align</b>. Si es map, puede incluir <b>align</b>, <b>transform</b>, <b>decoration</b>.</td>
                 </tr>
                 <tr>
                     <td><b>$trans</b></td>
                     <td>String</td>
-                    <td>Define <b>text-transform</b> cuando el primer parámetro no es map.</td>
+                    <td>none</td>
+                    <td>Define <b>text-transform</b> cuando el primer parametro no es map.</td>
                 </tr>
                 <tr>
                     <td><b>$decor</b></td>
                     <td>String</td>
-                    <td>Define <b>text-decoration</b> cuando el primer parámetro no es map.</td>
+                    <td>none</td>
+                    <td>Define <b>text-decoration</b> cuando el primer parametro no es map.</td>
                 </tr>
             </tbody>
         </table>
@@ -72,14 +76,14 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;text_example_params&quot;&gt;Texto&nbsp;con&nbsp;parámetros&nbsp;individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;text_example_map&quot;&gt;Texto&nbsp;usando&nbsp;map&lt;/p&gt;</code></pre>
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;text_example_params&quot;&gt;Texto&nbsp;con&nbsp;parametros&nbsp;individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;text_example_map&quot;&gt;Texto&nbsp;usando&nbsp;map&lt;/p&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <p class="text_example_params">Texto con parámetros individuales</p>
+                <p class="text_example_params">Texto con parametros individuales</p>
                 <p class="text_example_map">Texto usando map</p>
             </div>
         </div>

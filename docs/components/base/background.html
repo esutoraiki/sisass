@@ -13,6 +13,14 @@
 
     <p class="description">
         Normaliza los estilos para las propiedades referentes al background.
+        Puedes usarlo para aplicar colores, imagenes de fondo o gradientes. El
+        atributo <b>url</b> genera un background-image con url(), mientras que
+        <b>image</b> permite pasar cualquier valor valido de background-image
+        (por ejemplo, gradients o imagenes inline).
+    </p>
+    <p class="description">
+        Tambien puedes controlar repeticion, posicion y size del background con
+        las claves disponibles en el map.
     </p>
 
     <section class="use">
@@ -26,29 +34,55 @@
             Atributos
         </h2>
 
-        <ul>
-            <li class="description">
-                <b>url</b>: Valor a utilizar en la función url con background-image.
-            </li>
-            <li class="description">
-                <b>repeat</b>: valor a utilizar con background-repeat.
-            </li>
-            <li class="description">
-                <b>position</b>: Valor a utilizar con background-position.
-            </li>
-            <li class="description">
-                <b>color</b>: Valor a utilizar con background-color.
-            </li>
-            <li class="description">
-                <b>size</b>: Valor a utilizar con background-size.
-            </li>
-            <li class="description">
-                <b>image</b>: Valor a utilizar con background-image.
-            </li>
-        </ul>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>url</b></td>
+                    <td>String</td>
+                    <td>""</td>
+                    <td>Valor a utilizar en la función url con background-image.</td>
+                </tr>
+                <tr>
+                    <td><b>repeat</b></td>
+                    <td>String</td>
+                    <td>no-repeat</td>
+                    <td>Valor a utilizar con background-repeat.</td>
+                </tr>
+                <tr>
+                    <td><b>position</b></td>
+                    <td>String</td>
+                    <td>center</td>
+                    <td>Valor a utilizar con background-position.</td>
+                </tr>
+                <tr>
+                    <td><b>color</b></td>
+                    <td>Color</td>
+                    <td>transparent</td>
+                    <td>Valor a utilizar con background-color.</td>
+                </tr>
+                <tr>
+                    <td><b>size</b></td>
+                    <td>String</td>
+                    <td>auto</td>
+                    <td>Valor a utilizar con background-size.</td>
+                </tr>
+                <tr>
+                    <td><b>image</b></td>
+                    <td>String</td>
+                    <td>""</td>
+                    <td>Valor a utilizar con background-image.</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <h2 class="title">
-        </h2>
         <div class="container_example">
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
@@ -64,14 +98,17 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;box&nbsp;background_gradient&quot;&gt;&lt;/div&gt;</code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;box&nbsp;background_gradient_linear&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;box&nbsp;background_gradient_radial&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;box&nbsp;background_gradient&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;background_image&quot;&gt;&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
+                <div class="box background_gradient_linear"></div>
+                <div class="box background_gradient_radial"></div>
                 <div class="box background_gradient"></div>
+                <div class="background_image"></div>
             </div>
         </div>
     </section>

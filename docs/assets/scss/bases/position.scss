@@ -1,0 +1,14 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .position_container {
+                position: relative;
+                height: 120px;
+            }
+
+            .position_example {
+                @include position(absolute, 10px, 20px);
+                @include whs(40px);
+                background-color: $c5;
+            }
+}

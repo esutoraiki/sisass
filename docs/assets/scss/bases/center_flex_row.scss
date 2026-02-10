@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .center_flex_row_example {
+                @include center-flex-row;
+                @include wh(160px, 80px);
+                background-color: $c7;
+            }
+}

@@ -1,0 +1,13 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .scroll_example {
+                @include scroll((color: $c5, bg: $c7, width: 8px, radius: 6px));
+                @include wh(200px, 80px);
+                overflow: auto;
+            }
+
+            .scroll_example p {
+                margin: 0;
+            }
+}

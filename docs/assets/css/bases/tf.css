@@ -1,0 +1,11 @@
+.documentationpage .tf_example_map {
+  text-align: right;
+  text-decoration: underline;
+  text-transform: lowercase;
+  font-size: 1.25rem;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.2;
+}

@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .placeholder_example {
+                @include placeholder {
+                    color: $c5;
+                }
+            }
+}

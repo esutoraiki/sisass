@@ -1,0 +1,14 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .gap_example {
+                @include flex-direction;
+                @include flex;
+                @include gap(10px);
+            }
+
+            .gap_example .box {
+                @include whs(30px);
+                background-color: $c5;
+            }
+}

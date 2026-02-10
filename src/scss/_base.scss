@@ -6,26 +6,8 @@
 @use "sass:meta";
 
 @use "./vendor" as *;
+@use "./mediaqueries" as *;
 
-// autofill
-@mixin autofill($attr: ()) {
-    $background: mapv($attr, bg, initial);
-    $color: mapv($attr, color, initial);
-    $padding: mapv($attr, padding, null);
-    $border: mapv($attr, border, null);
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus
-    {
-        @include box-shadow(inset 0 0 0 1000px $background);
-        @include transition(background-color 5000s ease-in-out 0);
-        -webkit-text-fill-color: $color;
-
-        @if $padding != null { padding: $padding; }
-        @if $border != null { border: $border; }
-    }
-}
 
 // Text
 @mixin text(
@@ -59,19 +41,80 @@
     $line-height: "none",
     $variant: normal
 ) {
-    font: {
-        size   : $size;
-        family : $family;
-        weight : $weight;
-        style  : $style;
-        variant: $variant
+    $size_value: $size;
+    $family_value: $family;
+    $weight_value: $weight;
+    $style_value: $style;
+    $line_height_value: $line-height;
+    $variant_value: $variant;
+
+    @if meta.type-of($size) == "map" {
+        $size_value: mapv($size, size, 1em);
+        $family_value: mapv($size, family, "sans-serif");
+        $weight_value: mapv($size, weight, normal);
+        $style_value: mapv($size, style, normal);
+        $line_height_value: mapv($size, line-height, "none");
+        $variant_value: mapv($size, variant, normal);
     }
 
-    @if $line-height != "none" { line-height: $line-height; }
+    font: {
+        size   : $size_value;
+        family : $family_value;
+        weight : $weight_value;
+        style  : $style_value;
+        variant: $variant_value
+    }
+
+    @if $line_height_value != "none" { line-height: $line_height_value; }
+}
+
+// Text + Font
+@mixin tf($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "tf() only accepts a map with text and font options.";
+    }
+
+    $text_attr: (
+        align: mapv($attr, align, left),
+        transform: mapv($attr, transform, initial),
+        decoration: mapv($attr, decoration, initial)
+    );
+
+    $font_attr: (
+        size: mapv($attr, size, 1em),
+        family: mapv($attr, family, "sans-serif"),
+        weight: mapv($attr, weight, normal),
+        style: mapv($attr, style, normal),
+        line-height: mapv($attr, line-height, "none"),
+        variant: mapv($attr, variant, normal)
+    );
+
+    @include text($text_attr);
+    @include font($font_attr);
+}
+
+// autofill
+@mixin autofill($attr: ()) {
+    $background: mapv($attr, bg, initial);
+    $color: mapv($attr, color, initial);
+    $padding: mapv($attr, padding, null);
+    $border: mapv($attr, border, null);
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus
+    {
+        @include box-shadow(inset 0 0 0 1000px $background);
+        @include transition(background-color 5000s ease-in-out 0);
+        -webkit-text-fill-color: $color;
+
+        @if $padding != null { padding: $padding; }
+        @if $border != null { border: $border; }
+    }
 }
 
 // Background
-@mixin background ($attr: ()) {
+@mixin background($attr: ()) {
     $way: mapv($attr, url, "");
     $repeat: mapv($attr, repeat, no-repeat);
     $position: mapv($attr, position, center);
@@ -90,6 +133,19 @@
     }
 }
 
+// Background-color and Color
+@mixin bc($background: #FFF, $color: #000) {
+    background-color: $background;
+    color: $color;
+}
+
+
+// background opacity
+@mixin background-opacity($bg: #FFF, $opacity: 0.8) {
+    background-color: $bg;
+    background-color: rgba($bg, $opacity);
+}
+
 // Position
 @mixin position(
     $position: relative,
@@ -101,12 +157,6 @@
     position : $position;
     #{$posit_1} : $value_1;
     #{$posit_2} : $value_2;
-}
-
-// Background-color and Color
-@mixin bc($background: #FFF, $color: #000) {
-    background-color: $background;
-    color: $color;
 }
 
 // Width Height
@@ -141,19 +191,15 @@
     };
 }
 
-// background opacity
-@mixin background-opacity($color: #FFF, $opacity: 0.8) {
-    background-color: $color;
-    background-color: rgba($color, $opacity);
-}
-
 // Imagen remplace
 @mixin img-remplace($image, $iw, $ih) {
-    @include background(
-        $image,
-        no-repeat, center,
-        transparent, cover
-    );
+    @include background((
+        url: $image,
+        repeat: no-repeat,
+        position: center,
+        color: transparent,
+        size: cover
+    ));
     @include wh($iw, $ih);
     @include ht;
 }
@@ -294,15 +340,6 @@
   }
 }
 
-// Placeholder
-@mixin placeholder {
-    &::-ms-input-placeholder { @content; }
-    &:-moz-placeholder { @content; }
-    &::-moz-placeholder { @content; }
-    &::-webkit-input-placeholder { @content; }
-    &::placeholder { @content; }
-}
-
 // Mapping lists with default value
 @function mapv($map, $key, $value) {
     $return: $value;
@@ -379,10 +416,10 @@
     $max_v: mapv($attr, maxv, 24px);
     $attre: mapv($attr, attr, font-size);
 
-    $u1: unit($min_s);
-    $u2: unit($max_s);
-    $u3: unit($min_v);
-    $u4: unit($max_v);
+    $u1: math.unit($min_s);
+    $u2: math.unit($max_s);
+    $u3: math.unit($min_v);
+    $u4: math.unit($max_v);
 
     @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
         @include brp(strip-unit($max_s)) {
@@ -436,11 +473,11 @@
 }
 
 @function list_add_unique($list, $value) {
-    @if index($list, $value) {
+    @if list.index($list, $value) {
         @return $list;
     }
 
-    @return append($list, $value, space);
+    @return list.append($list, $value, space);
 }
 
 @function list_add_items($list, $items) {
@@ -453,7 +490,7 @@
 
 @function append_points($list, $points) {
     @each $point in $points {
-        $list: append($list, $point, comma);
+        $list: list.append($list, $point, comma);
     }
 
     @return $list;

@@ -1,0 +1,8 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .aspect_ratio_example {
+                @include aspect-ratio(200px, 1.5);
+                background-color: $c5;
+            }
+}

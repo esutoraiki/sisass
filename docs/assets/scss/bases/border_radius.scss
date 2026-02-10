@@ -1,5 +1,7 @@
 @use "../core/instances" as *;
 
-.circle_border_radius {
-    @include border-radius(5%);
+.documentationpage {
+            .circle_border_radius {
+                @include border-radius(5%);
+            }
 }

@@ -1,0 +1,6 @@
+.documentationpage .background_opacity_example {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.35);
+  width: 100px;
+  height: 100px;
+}

@@ -1,0 +1,15 @@
+.documentationpage .placeholder_example::-ms-input-placeholder {
+  color: #A01303;
+}
+.documentationpage .placeholder_example:-moz-placeholder {
+  color: #A01303;
+}
+.documentationpage .placeholder_example::-moz-placeholder {
+  color: #A01303;
+}
+.documentationpage .placeholder_example::-webkit-input-placeholder {
+  color: #A01303;
+}
+.documentationpage .placeholder_example::placeholder {
+  color: #A01303;
+}

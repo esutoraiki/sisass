@@ -1,4 +1,4 @@
-.transform_style_flat {
+.documentationpage .transform_style_flat {
   -webkit-transform-style: flat;
   -moz-transform-style: flat;
   transform-style: flat;
@@ -11,8 +11,8 @@
   height: 100px;
   background-color: #FBB03B;
 }
-.transform_style_flat.center_element,
-.transform_style_flat .center_element {
+.documentationpage .transform_style_flat.center_element,
+.documentationpage .transform_style_flat .center_element {
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-display: flex;
@@ -22,12 +22,12 @@
   place-content: center;
   place-items: center;
 }
-.transform_style_flat .text {
+.documentationpage .transform_style_flat .text {
   display: block;
   margin: 0;
   color: #000;
 }
-.transform_style_flat .children {
+.documentationpage .transform_style_flat .children {
   -webkit-transform: rotate3d(1, 1, 0, 15deg);
   -moz-transform: rotate3d(1, 1, 0, 15deg);
   -ms-transform: rotate3d(1, 1, 0, 15deg);
@@ -38,6 +38,6 @@
   padding: 15px 10px;
   background-color: #A01303;
 }
-.transform_style_flat .children .text {
+.documentationpage .transform_style_flat .children .text {
   color: #FFF;
 }

@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .fluid_type_example {
+                @include fluid-type((mins: 320px, maxs: 1280px, minv: 14px, maxv: 26px));
+            }
+}

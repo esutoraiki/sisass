@@ -1,0 +1,14 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .hv_container {
+                position: relative;
+                height: 120px;
+            }
+
+            .hv_center_example {
+                @include hv-center;
+                @include whs(40px);
+                background-color: $c5;
+            }
+}

@@ -1,4 +1,4 @@
-.input_autofill:-webkit-autofill, .input_autofill:-webkit-autofill:hover, .input_autofill:-webkit-autofill:focus {
+.documentationpage .input_autofill:-webkit-autofill, .documentationpage .input_autofill:-webkit-autofill:hover, .documentationpage .input_autofill:-webkit-autofill:focus {
   -webkit-box-shadow: inset 0 0 0 1000px #FBB03B;
   -moz-box-shadow: inset 0 0 0 1000px #FBB03B;
   box-shadow: inset 0 0 0 1000px #FBB03B;

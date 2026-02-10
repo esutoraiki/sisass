@@ -1,0 +1,8 @@
+.documentationpage .aspect_ratio_example {
+  --size: 200px;
+  --aspect-ratio: 1.5;
+  width: var(--size);
+  height: calc(var(--size) / var(--aspect-ratio));
+  aspect-ratio: 1.5;
+  background-color: #A01303;
+}

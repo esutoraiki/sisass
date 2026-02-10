@@ -1,0 +1,9 @@
+/*
+.documentationpage {
+    @include font-face("Demo Font", "../fonts/demo/demo", 700, normal, woff2 woff);
+
+    .font_face_example {
+        @include font(szrem(18), "Demo Font", 700);
+    }
+}
+*/

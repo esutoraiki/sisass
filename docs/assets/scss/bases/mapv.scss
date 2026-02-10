@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .fn_mapv {
+                color: mapv((color: $c5), color, $c3);
+            }
+}

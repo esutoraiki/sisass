@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .contain_example {
+                @include contain;
+            }
+}

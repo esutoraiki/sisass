@@ -1,0 +1,123 @@
+<article id="tf" class="tf">
+    <div class="group_title">
+        <h2 class="subtitle">
+            tf (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Version: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin combinado para texto y tipografia. Usa los mismos defaults de
+        <b>text</b> y <b>font</b>, pero recibe un solo map con todas las claves.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin&nbsp;tf($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;align:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;decoration:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;1em,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;&quot;sans-serif&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;&quot;none&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;variant:&nbsp;normal&NewLine;);&NewLine;</code></pre>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>align</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Define <b>text-align</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>transform</b></td>
+                    <td>String</td>
+                    <td>initial</td>
+                    <td>Define <b>text-transform</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>decoration</b></td>
+                    <td>String</td>
+                    <td>initial</td>
+                    <td>Define <b>text-decoration</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>size</b></td>
+                    <td>String</td>
+                    <td>1em</td>
+                    <td>Define <b>font-size</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>family</b></td>
+                    <td>String</td>
+                    <td>"sans-serif"</td>
+                    <td>Define <b>font-family</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>weight</b></td>
+                    <td>String | Number</td>
+                    <td>normal</td>
+                    <td>Define <b>font-weight</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>style</b></td>
+                    <td>String</td>
+                    <td>normal</td>
+                    <td>Define <b>font-style</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>line-height</b></td>
+                    <td>String | Number</td>
+                    <td>"none"</td>
+                    <td>Define <b>line-height</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>variant</b></td>
+                    <td>String</td>
+                    <td>normal</td>
+                    <td>Define <b>font-variant</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/tf.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/tf.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;tf_example_params&quot;&gt;TF con parametros individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;tf_example_map&quot;&gt;TF usando map&lt;/p&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <p class="tf_example_params">TF con parametros individuales</p>
+                <p class="tf_example_map">TF usando map</p>
+            </div>
+        </div>
+    </section>
+</article>

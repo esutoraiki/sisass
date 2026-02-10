@@ -1,0 +1,10 @@
+@media only screen and (max-width: 1280px) {
+  .documentationpage .fluid_type_example {
+    font-size: calc(14px + 12 * (100vw - 320px) / 960);
+  }
+}
+@media only screen and (max-width: 320px) {
+  .documentationpage .fluid_type_example {
+    font-size: 14px;
+  }
+}

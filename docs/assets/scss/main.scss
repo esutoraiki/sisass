@@ -9,6 +9,8 @@
 
 @use "components/menu";
 
+html { scroll-behavior: smooth; }
+
 .documentationpage {
     @include scroll((
         color: $c4
@@ -56,7 +58,7 @@
         @include font(szrem(42), $f3, 900);
         @include text;
         margin-bottom: 30px;
-        color: $c5;
+        color: $c6;
     }
 
     .subtitle {
@@ -64,6 +66,20 @@
         @include text;
         margin-bottom: 5px;
         color: $c5;
+    }
+
+    .category {
+        @include tf((
+            size: szrem(38),
+            family: $f2,
+            weight: bold,
+            transform: uppercase
+        ));
+        margin: 35px 0 20px;
+        padding-left: 12px;
+        border-left: $bd3;
+        color: $c6;
+        letter-spacing: 0.02em;
     }
 
     .attribute {

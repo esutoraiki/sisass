@@ -1,0 +1,13 @@
+.documentationpage .center_flex_column_example {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 160px;
+  height: 80px;
+  background-color: #F5F3F3;
+}

@@ -27,5 +27,25 @@
             &:last-child { margin-bottom: 0; }
             &.active { color: $c5; }
         }
+
+        .submenu {
+            @include flex-direction(column);
+            @include flex;
+            margin: 2px 0 8px;
+            padding-left: 12px;
+            border-left: $bd2;
+
+            .subitem {
+                @include font(szrem(15), $f2);
+                @include text;
+                margin-bottom: 8px;
+                color: $c6;
+                opacity: 0.8;
+
+                &:hover { color: $c5; opacity: 1; }
+                &:last-child { margin-bottom: 0; }
+                &.active { color: $c5; opacity: 1; }
+            }
+        }
     }
 }

@@ -183,6 +183,45 @@ summary {
 .main_menu .group_1 .item.active {
   color: #A01303;
 }
+.main_menu .group_1 .submenu {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  margin: 2px 0 8px;
+  padding-left: 12px;
+  border-left: 1px solid #3A405A;
+}
+.main_menu .group_1 .submenu .subitem {
+  font-size: 0.9375rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  margin-bottom: 8px;
+  color: #2D396C;
+  opacity: 0.8;
+}
+.main_menu .group_1 .submenu .subitem:hover {
+  color: #A01303;
+  opacity: 1;
+}
+.main_menu .group_1 .submenu .subitem:last-child {
+  margin-bottom: 0;
+}
+.main_menu .group_1 .submenu .subitem.active {
+  color: #A01303;
+  opacity: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 .documentationpage {
   position: relative;
@@ -293,7 +332,7 @@ summary {
   text-decoration: initial;
   text-transform: initial;
   margin-bottom: 30px;
-  color: #A01303;
+  color: #2D396C;
 }
 .documentationpage .subtitle {
   font-size: 1.75rem;
@@ -306,6 +345,21 @@ summary {
   text-transform: initial;
   margin-bottom: 5px;
   color: #A01303;
+}
+.documentationpage .category {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: uppercase;
+  font-size: 2.375rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  margin: 35px 0 20px;
+  padding-left: 12px;
+  border-left: 6px solid #3A405A;
+  color: #2D396C;
+  letter-spacing: 0.02em;
 }
 .documentationpage .attribute {
   font-size: 1.25rem;
