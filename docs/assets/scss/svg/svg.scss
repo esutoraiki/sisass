@@ -3,7 +3,7 @@
 
 .logo_sisass {
     &:before {
-        @include icon_svg(
+        @include icon-svg(
             sisass,
             list.nth($l1x, 1),
             list.nth($l1y, 1),

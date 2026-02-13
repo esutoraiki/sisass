@@ -1,7 +1,7 @@
-<article id="append_points" class="append_points">
+<article id="list-add-unique" class="list-add-unique">
     <div class="group_title">
         <h2 class="subtitle">
-            append_points (_base.scscs)
+            list-add-unique (_base.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Function
@@ -11,14 +11,14 @@
         </h3>
     </div>
 
-    <p class="description">Agrega puntos a una lista.</p>
+    <p class="description">Agrega un valor si no existe en la lista.</p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@function append_points($list, $points);</code></pre>
+        <pre class="language-scss"><code>@function list-add-unique($list, $value);</code></pre>
 
         <table class="full">
             <thead>
@@ -35,9 +35,9 @@
                     <td>Lista base.</td>
                 </tr>
                 <tr>
-                    <td><b>$points</b></td>
-                    <td>List</td>
-                    <td>Lista de puntos.</td>
+                    <td><b>$value</b></td>
+                    <td>Any</td>
+                    <td>Valor a agregar.</td>
                 </tr>
             </tbody>
         </table>
@@ -49,25 +49,25 @@
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
             </h2>
-            <pre class="language-scss" data-src="../assets/scss/bases/append_points.scss"></pre>
+            <pre class="language-scss" data-src="../assets/scss/bases/list-add-unique.scss"></pre>
 
             <h2 class="subtitle">
                 Ejemplo 1: CSS generado
             </h2>
-            <pre class="language-css" data-src="../assets/css/bases/append_points.css"></pre>
+            <pre class="language-css" data-src="../assets/css/bases/list-add-unique.css"></pre>
 
             <h2 class="subtitle">
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><div class="fn_append_points">Revisa la variable --list</div></code></pre>
+            <pre class="language-html"><code><div class="fn-list-add-unique">Revisa la variable --list</div></code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <div class="fn_append_points">Revisa la variable --list</div>
+                <div class="fn-list-add-unique">Revisa la variable --list</div>
             </div>
         </div>
     </section>

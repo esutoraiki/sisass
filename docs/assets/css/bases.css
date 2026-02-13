@@ -292,7 +292,7 @@
   background-color: #A01303;
 }
 
-.documentationpage .icon_svg_example {
+.documentationpage .icon-svg-example {
   position: absolute;
   top: 0;
   left: 0;
@@ -664,14 +664,14 @@
   --size: 24;
 }
 
-.documentationpage .fn_list_add_unique {
+.documentationpage .fn-list-add-unique {
   --list: a b c;
 }
 
-.documentationpage .fn_list_add_items {
+.documentationpage .fn-list-add-items {
   --list: a b c d;
 }
 
-.documentationpage .fn_append_points {
+.documentationpage .fn-append-points {
   --list: 1, 2, 3, 4;
 }

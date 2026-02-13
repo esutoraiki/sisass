@@ -197,7 +197,7 @@
 }
 
 // Include svg inline (Need gulp-postcss and postcss-inline-svg)
-@mixin icon_svg($svg, $w, $h, $fill: "none", $def: "none") {
+@mixin icon-svg($svg, $w, $h, $fill: "none", $def: "none") {
     @include position(absolute);
     @include wh($w, $h);
     $path_svg: "../../img/svg/" +  $svg + ".svg";
@@ -497,7 +497,7 @@
     object-fit: contain;
 }
 
-@function list_add_unique($list, $value) {
+@function list-add-unique($list, $value) {
     @if list.index($list, $value) {
         @return $list;
     }
@@ -505,15 +505,15 @@
     @return list.append($list, $value, space);
 }
 
-@function list_add_items($list, $items) {
+@function list-add-items($list, $items) {
     @each $item in $items {
-        $list: list_add_unique($list, $item);
+        $list: list-add-unique($list, $item);
     }
 
     @return $list;
 }
 
-@function append_points($list, $points) {
+@function append-points($list, $points) {
     @each $point in $points {
         $list: list.append($list, $point, comma);
     }

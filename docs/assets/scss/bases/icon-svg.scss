@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .icon-svg-example {
+                @include icon-svg("sisass", 32px, 32px, $c5);
+            }
+}

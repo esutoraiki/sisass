@@ -127,10 +127,10 @@
             "node": "gap"
         },
         {
-            "id": "icon_svg",
-            "url": "../components/base/icon_svg.html",
+            "id": "icon-svg",
+            "url": "../components/base/icon-svg.html",
             "position": "beforeend",
-            "node": "icon_svg"
+            "node": "icon-svg"
         },
         {
             "id": "normalize_svg",
@@ -235,22 +235,22 @@
             "node": "strip_unit"
         },
         {
-            "id": "list_add_unique",
-            "url": "../components/base/list_add_unique.html",
+            "id": "list-add-unique",
+            "url": "../components/base/list-add-unique.html",
             "position": "beforeend",
-            "node": "list_add_unique"
+            "node": "list-add-unique"
         },
         {
-            "id": "list_add_items",
-            "url": "../components/base/list_add_items.html",
+            "id": "list-add-items",
+            "url": "../components/base/list-add-items.html",
             "position": "beforeend",
-            "node": "list_add_items"
+            "node": "list-add-items"
         },
         {
-            "id": "append_points",
-            "url": "../components/base/append_points.html",
+            "id": "append-points",
+            "url": "../components/base/append-points.html",
             "position": "beforeend",
-            "node": "append_points"
+            "node": "append-points"
         }
     ]
 }
