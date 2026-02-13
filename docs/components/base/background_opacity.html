@@ -11,7 +11,11 @@
         </h3>
     </div>
 
-    <p class="description">Genera un background con opacidad usando sintaxis moderna o rgba.</p>
+    <p class="description">
+        Genera un background con opacidad usando sintaxis moderna o rgba.
+        Soporta dos formas de uso: parametros individuales o un map con
+        las claves <b>color</b>, <b>opacity</b> y <b>use_legacy</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -42,21 +46,21 @@
             <tbody>
                 <tr>
                     <td><b>$color</b></td>
-                    <td>Color</td>
+                    <td>Color | Map</td>
                     <td>#FFF</td>
-                    <td>Color base.</td>
+                    <td>Si es color, define el color base. Si es map, puede incluir <b>color</b>, <b>opacity</b> y <b>use_legacy</b>.</td>
                 </tr>
                 <tr>
                     <td><b>$opacity</b></td>
                     <td>Number</td>
                     <td>0.8</td>
-                    <td>Opacidad.</td>
+                    <td>Define la opacidad cuando el primer parametro no es map.</td>
                 </tr>
                 <tr>
                     <td><b>$use_legacy</b></td>
                     <td>Bool</td>
                     <td>false</td>
-                    <td>Usar rgba como fallback.</td>
+                    <td>Usar rgba como fallback cuando el primer parametro no es map.</td>
                 </tr>
             </tbody>
         </table>
