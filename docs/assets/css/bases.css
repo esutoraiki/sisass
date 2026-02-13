@@ -238,10 +238,10 @@
 }
 
 .documentationpage .gradient_text_example {
-  background-image: -webkit-linear-gradient(linear-gradient(90deg, #A01303, #2D396C));
-  background-image: -moz-linear-gradient(linear-gradient(90deg, #A01303, #2D396C));
-  background-image: -o-linear-gradient(linear-gradient(90deg, #A01303, #2D396C));
-  background-image: linear-gradient(linear-gradient(90deg, #A01303, #2D396C));
+  background-image: -webkit-linear-gradient(90deg, #A01303, #2D396C);
+  background-image: -moz-linear-gradient(90deg, #A01303, #2D396C);
+  background-image: -o-linear-gradient(90deg, #A01303, #2D396C);
+  background-image: linear-gradient(90deg, #A01303, #2D396C);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

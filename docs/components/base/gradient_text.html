@@ -11,7 +11,11 @@
         </h3>
     </div>
 
-    <p class="description">Aplica un gradiente al texto.</p>
+    <p class="description">
+        Aplica un gradiente al texto.
+        El parametro recibe los argumentos de <b>linear-gradient</b>,
+        no la funcion completa.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -31,8 +35,8 @@
             <tbody>
                 <tr>
                     <td><b>$grad</b></td>
-                    <td>String</td>
-                    <td>Gradiente CSS.</td>
+                    <td>String | List</td>
+                    <td>Argumentos para <b>linear-gradient</b> (ej: <b>(90deg, #A01303, #2D396C)</b>).</td>
                 </tr>
             </tbody>
         </table>
@@ -55,7 +59,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><span class="gradient_text_example">Texto gradiente</span></code></pre>
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;gradient_text_example&quot;&gt;Texto&nbsp;gradiente&lt;/p&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

@@ -1,8 +1,8 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .gradient_text_example {
-                @include gradient-text(linear-gradient(90deg, $c5, $c6));
-                @include font(szrem(28), $f2, 700);
-            }
+    .gradient_text_example {
+        @include gradient-text((90deg, $c5, $c6));
+        @include font(szrem(28), $f2, 700);
+    }
 }
