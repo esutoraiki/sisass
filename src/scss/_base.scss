@@ -14,22 +14,26 @@
 @mixin text(
     $aling: left,
     $trans: initial,
-    $decor: initial
+    $decor: initial,
+    $wrap: initial
 ) {
     $align_value: $aling;
     $decor_value: $decor;
     $trans_value: $trans;
+    $wrap_value: $wrap;
 
     @if meta.type-of($aling) == "map" {
         $align_value: mapv($aling, align, left);
         $decor_value: mapv($aling, decoration, initial);
         $trans_value: mapv($aling, transform, initial);
+        $wrap_value: mapv($aling, wrap, initial);
     }
 
     text: {
-        align      : $align_value;
-        decoration : $decor_value;
-        transform  : $trans_value;
+        align: $align_value;
+        decoration: $decor_value;
+        transform: $trans_value;
+        wrap: $wrap_value;
     }
 }
 
@@ -78,7 +82,8 @@
     $text_attr: (
         align: mapv($attr, align, left),
         transform: mapv($attr, transform, initial),
-        decoration: mapv($attr, decoration, initial)
+        decoration: mapv($attr, decoration, initial),
+        wrap: mapv($attr, wrap, initial)
     );
 
     $font_attr: (

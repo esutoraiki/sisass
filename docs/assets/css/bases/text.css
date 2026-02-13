@@ -2,9 +2,19 @@
   text-align: left;
   text-decoration: underline;
   text-transform: uppercase;
+  text-wrap: initial;
 }
 .documentationpage .text_example_map {
   text-align: right;
   text-decoration: line-through;
   text-transform: lowercase;
+  text-wrap: initial;
+}
+.documentationpage .text_example_wrap {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: pretty;
+  width: 200px;
+  height: auto;
 }
