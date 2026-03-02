@@ -13,21 +13,26 @@ let base_dir = dest_path === "../../" ? "files/" : "files/assets/";
 let after_copy = null;
 
 const roboto_fonts_block = `@include font-face(
-    "Roboto", "../fonts/roboto/roboto_regular",
-    normal, normal,
-    woff2 woff ttf
+    (
+        name: "Roboto",
+        path: "../fonts/roboto/roboto_regular"
+    )
 );
 
 @include font-face(
-    "Roboto", "../fonts/roboto/roboto_bold",
-    bold, normal,
-    woff2 woff ttf
+    (
+        name: "Roboto",
+        path: "../fonts/roboto/roboto_bold",
+        weight: bold
+    )
 );
 
 @include font-face(
-    "Roboto", "../fonts/roboto/roboto_italic",
-    normal, italic,
-    woff2 woff ttf
+    (
+        name: "Roboto",
+        path: "../fonts/roboto/roboto_italic",
+        style: italic
+    )
 );
 
 `;

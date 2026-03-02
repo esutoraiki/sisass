@@ -4,9 +4,13 @@
 // Font
 /* Example
 @include font-face(
-    "name_font", "path_font",
-    weight_font, style_font,
-    woff2 woff ttf
+    (
+        name: "name_font",
+        path: "path_font",
+        weight: weight_font (normal, bold, 100, 200, 300, 400, 500, 600, 700, 800, 900),
+        style: style_font (normal, italic, oblique),
+        exts: (woff2, woff, ttf)
+    )
 );
 */
 
