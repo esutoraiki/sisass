@@ -529,13 +529,25 @@ html {
   width: 100%;
 }
 .documentationpage table thead th {
+  -webkit-border-radius: 5%;
+  -moz-border-radius: 5%;
+  -ms-border-radius: 5%;
+  -o-border-radius: 5%;
+  border-radius: 5%;
   background-color: #2D396C;
   color: #FFF;
-  padding: 10px 5px;
-  border: 1px solid #FFF;
+  padding: 10px 15px;
+  border-right: 1px solid #FFF;
+}
+.documentationpage table thead th:first-child {
+  border-radius: 6px 0 0 0;
+}
+.documentationpage table thead th:last-child {
+  border-radius: 0 6px 0 0;
+  border-right: none;
 }
 .documentationpage table tbody td {
-  padding: 10px 5px;
+  padding: 10px 15px;
   border: 1px solid #2D396C;
 }
 .documentationpage table tbody td b {

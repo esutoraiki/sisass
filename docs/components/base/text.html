@@ -12,7 +12,7 @@
     </div>
 
     <p class="description">
-        Permite configurar alineacion, transformacion y decoracion de texto.
+        Permite configurar alineacion, transformacion, decoracion y wrap de texto.
         Ahora soporta dos formas de uso: pasando parametros individuales o un
         mapa con las claves <b>align</b>, <b>transform</b>, <b>decoration</b> y <b>wrap</b>.
     </p>
@@ -23,6 +23,13 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin text($aling: left, $trans: initial, $decor: initial, $wrap: initial);</code></pre>
+
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+
+        <pre class="language-scss"><code>@include text((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;align:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;decoration:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;wrap:&nbsp;initial&NewLine;));</code></pre>
+
         <p class="description">
             Valores por defecto: <b>left</b>, <b>initial</b>, <b>initial</b>, <b>initial</b>.
         </p>

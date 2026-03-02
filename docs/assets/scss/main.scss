@@ -178,15 +178,22 @@ html { scroll-behavior: smooth; }
 
         thead {
             th {
+                @include border-radius(5%);
                 @include bc($c6, $c1);
-                padding: 10px 5px;
-                border: $bd4;
+                padding: 10px 15px;
+                border-right: $bd4;
+
+                &:first-child { border-radius: 6px 0 0 0; }
+                &:last-child {
+                    border-radius: 0 6px 0 0;
+                    border-right: none;
+                }
             }
         }
 
         tbody {
             td {
-                padding: 10px 5px;
+                padding: 10px 15px;
                 border: $bd5;
 
                 b { font-weight: bold; }

@@ -18,7 +18,7 @@
         y el color del texto en ese estado para mantener consistencia con tu UI.
     </p>
     <p class="description">
-        En este ejemplo el input usa el mixin con <b>$c1</b> como fondo y <b>$c3</b>
+        En este ejemplo el input usa el mixin con <b>$c4</b> como fondo y <b>$c5</b>
         como color de texto. Para ver el efecto, escribe en el input y usa una
         sugerencia del navegador, o guarda un valor y vuelve a cargar la pagina.
     </p>
@@ -28,12 +28,12 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin autofill($background, $color, $padding: null, $border: null);</code></pre>
+        <pre class="language-scss"><code>@mixin&nbsp;autofill($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bg:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;border:&nbsp;null&NewLine;);&NewLine;</code></pre>
 
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parametro</th>
+                    <th>Clave</th>
                     <th>Tipo</th>
                     <th>Default</th>
                     <th>Descripcion</th>
@@ -41,28 +41,28 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$background</b></td>
+                    <td><b>bg</b></td>
                     <td>Color</td>
                     <td>initial</td>
-                    <td>Color de fondo aplicado al autofill.</td>
+                    <td>Define el color de fondo aplicado al estado autofill.</td>
                 </tr>
                 <tr>
-                    <td><b>$color</b></td>
+                    <td><b>color</b></td>
                     <td>Color</td>
                     <td>initial</td>
-                    <td>Color del texto aplicado al autofill.</td>
+                    <td>Define el color del texto aplicado al estado autofill.</td>
                 </tr>
                 <tr>
-                    <td><b>$padding</b></td>
+                    <td><b>padding</b></td>
                     <td>Medida</td>
                     <td>null</td>
-                    <td>Padding opcional aplicado en autofill (por defecto <b>null</b>).</td>
+                    <td>Define un padding opcional para el estado autofill.</td>
                 </tr>
                 <tr>
-                    <td><b>$border</b></td>
+                    <td><b>border</b></td>
                     <td>Border</td>
                     <td>null</td>
-                    <td>Borde opcional aplicado en autofill (por defecto <b>null</b>).</td>
+                    <td>Define un borde opcional para el estado autofill.</td>
                 </tr>
             </tbody>
         </table>
@@ -86,7 +86,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;input&nbsp;class=&quot;input_autofill&quot;&nbsp;type=&quot;text&quot;&nbsp;value=&quot;Demo&quot;&nbsp;/&gt;</code></pre>
+            <pre class="language-html"><code>&lt;input&nbsp;class=&quot;input_autofill&quot;&nbsp;type=&quot;email&quot;&nbsp;name=&quot;email&quot;&nbsp;autocomplete=&quot;email&quot;&nbsp;/&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

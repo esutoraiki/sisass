@@ -25,6 +25,13 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin font($size: 1em, $family: "sans-serif", $weight: normal, $style: normal, $line-height: "none", $variant: normal);</code></pre>
+
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+
+        <pre class="language-scss"><code>@include font((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;1em,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;&quot;sans-serif&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;&quot;none&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;variant:&nbsp;normal&NewLine;));</code></pre>
+
         <p class="description">
             Valores por defecto: <b>1em</b>, <b>"sans-serif"</b>, <b>normal</b>, <b>normal</b>, <b>"none"</b>, <b>normal</b>.
         </p>
