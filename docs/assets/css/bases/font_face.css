@@ -1,9 +1,28 @@
-/*
-.documentationpage {
-    @include font-face("Demo Font", "../fonts/demo/demo", 700, normal, woff2 woff);
-
-    .font_face_example {
-        @include font(szrem(18), "Demo Font", 700);
-    }
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/fira_sans/firasans_regular.woff2") format("woff2"), url("../fonts/fira_sans/firasans_regular.woff") format("woff"), url("../fonts/fira_sans/firasans_regular.ttf") format("truetype");
+  font-display: swap;
 }
-*/
+@font-face {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/fira_sans/firasans_bold.woff2") format("woff2"), url("../fonts/fira_sans/firasans_bold.woff") format("woff"), url("../fonts/fira_sans/firasans_bold.ttf") format("truetype");
+  font-display: swap;
+}
+.documentationpage .font_face_example_normal {
+  font-size: 1.125rem;
+  font-family: "Fira Sans";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+}
+.documentationpage .font_face_example_bold {
+  font-size: 1.125rem;
+  font-family: "Fira Sans";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}

@@ -100,31 +100,70 @@
 }
 
 // Font Face
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
-    $src: null;
+@mixin font-face($attr: ()) {
+    $name: mapv($attr, name, null);
+    $path: mapv($attr, path, null);
+    $weight: mapv($attr, weight, normal);
+    $style: mapv($attr, style, normal);
+    $display: mapv($attr, display, swap);
+    $exts: mapv($attr, exts, (woff2, woff, ttf));
 
+    $valid_exts: (eot, woff2, woff, ttf, otf, svg);
     $extmods: (
-        eot: "?",
+        eot: "?#iefix",
         svg: "#" + str-replace($name, " ", "_")
     );
-
     $formats: (
+        eot: "embedded-opentype",
         otf: "opentype",
         ttf: "truetype"
     );
 
+    $src: ();
+    $has_eot: false;
+
+    @if $name == null or $path == null {
+        @error "font-face() requires `name` and `path`.";
+    }
+
     @each $ext in $exts {
-        $extmod: if(sass(map.has-key($extmods, $ext)): $ext + map.get($extmods, $ext); else: $ext);
-        $format: if(sass(map.has-key($formats, $ext)): map.get($formats, $ext); else: $ext);
-        $src: list.append($src, url(string.quote($path + "." + $extmod)) format(string.quote($format)), comma);
+        @if not list.index($valid_exts, $ext) {
+            @warn "font-face(): unsupported extension `#{$ext}` for `#{$name}`.";
+        } @else {
+            @if $ext == eot {
+                $has_eot: true;
+            }
+
+            $extmod: $ext;
+            $format: $ext;
+
+            @if map.has-key($extmods, $ext) {
+                $extmod: $ext + map.get($extmods, $ext);
+            }
+
+            @if map.has-key($formats, $ext) {
+                $format: map.get($formats, $ext);
+            }
+
+            $src: list.append(
+                $src,
+                url(string.quote($path + "." + $extmod)) format(string.quote($format)),
+                comma
+            );
+        }
     }
 
     @font-face {
         font-family: string.quote($name);
         font-style: $style;
         font-weight: $weight;
+
+        @if $has_eot {
+            src: url(string.quote($path + ".eot"));
+        }
+
         src: $src;
-        font-display: swap;
+        font-display: $display;
     }
 }
 

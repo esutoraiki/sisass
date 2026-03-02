@@ -5,35 +5,43 @@
 
 // Monserrat
 @include font-face(
-    "Montserrat", "../fonts/montserrat/montserrat_black",
-    900, normal,
-    woff2 woff ttf
+    (
+        name: "Montserrat",
+        path: "../fonts/montserrat/montserrat_black",
+        weight: 900
+    )
 );
 
 // Fira Sans
 @include font-face(
-    "Fira Sans", "../fonts/fira_sans/firasans_regular",
-    normal, normal,
-    woff2 woff ttf
+    (
+        name: "Fira Sans",
+        path: "../fonts/fira_sans/firasans_regular"
+    )
 );
 
 @include font-face(
-    "Fira Sans", "../fonts/fira_sans/firasans_bold",
-    bold, normal,
-    woff2 woff ttf
+    (
+        name: "Fira Sans",
+        path: "../fonts/fira_sans/firasans_bold",
+        weight: bold
+    )
 );
 
 //Nunito Sans
 @include font-face(
-    "Nunito Sans", "../fonts/nunito_sans/nunito_sans",
-    normal, normal,
-    woff2 woff ttf
+    (
+        name: "Nunito Sans",
+        path: "../fonts/nunito_sans/nunito_sans"
+    )
 );
 
 @include font-face(
-    "Nunito Sans", "../fonts/nunito_sans/nunito_sans_bold",
-    bold, normal,
-    woff2 woff ttf
+    (
+        name: "Nunito Sans",
+        path: "../fonts/nunito_sans/nunito_sans_bold",
+        weight: bold
+    )
 );
 
 //------------------------------------------------

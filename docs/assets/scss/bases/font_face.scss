@@ -1,11 +1,22 @@
 @use "../core/instances" as *;
 
-/*
-.documentationpage {
-    @include font-face("Demo Font", "../fonts/demo/demo", 700, normal, woff2 woff);
+@include font-face((
+    name: "Fira Sans",
+    path: "../fonts/fira_sans/firasans_regular"
+));
 
-    .font_face_example {
-        @include font(szrem(18), "Demo Font", 700);
+@include font-face((
+    name: "Fira Sans",
+    path: "../fonts/fira_sans/firasans_bold",
+    weight: bold
+));
+
+.documentationpage {
+    .font_face_example_normal {
+        @include font(szrem(18), "Fira Sans", normal);
+    }
+
+    .font_face_example_bold {
+        @include font(szrem(18), "Fira Sans", bold);
     }
 }
-*/
