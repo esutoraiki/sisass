@@ -11,7 +11,7 @@
         </h3>
     </div>
 
-    <p class="description">Asigna width y height.</p>
+    <p class="description">Asigna width y height en una sola llamada.</p>
 
     <section class="use">
         <h2 class="title">
@@ -20,26 +20,29 @@
 
         <pre class="language-scss"><code>@mixin wh($width: auto, $height: auto);</code></pre>
         <p class="description">
-            Valores por defecto: auto, auto.
+            Valores por defecto: width: auto, height: auto.
         </p>
 
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parámetro</th>
+                    <th>Parametro</th>
                     <th>Tipo</th>
-                    <th>Descripción</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b>$width</b></td>
                     <td>Medida</td>
+                    <td>auto</td>
                     <td>Ancho.</td>
                 </tr>
                 <tr>
                     <td><b>$height</b></td>
                     <td>Medida</td>
+                    <td>auto</td>
                     <td>Alto.</td>
                 </tr>
             </tbody>
@@ -63,14 +66,14 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><div class="wh_example"></div></code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;wh_example box&quot;&gt;&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <div class="wh_example"></div>
+                <div class="wh_example box"></div>
             </div>
         </div>
     </section>

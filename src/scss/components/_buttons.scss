@@ -45,7 +45,7 @@
 
 @mixin button_style_adidas_1($attr: ()) {
     $w: mapv($attr, width, 280px);
-    $ar: mapv($attr, aspect_ratio, 5.16);
+    $ar: mapv($attr, ratio, 5.16);
     $bg: mapv($attr, bg, #000);
     $bgh: mapv($attr, bg_hover, #000);
     $bgd: mapv($attr, bg_disabled, lighten(#000, 80%));
@@ -67,7 +67,8 @@
     $iconl: mapv($attr, icon_left, false);
 
     @include position;
-    @include aspect-ratio($w, $ar);
+    width: $w;
+    aspect-ratio: $ar;
     @include user-select;
     display: block;
     cursor: pointer;
@@ -135,7 +136,8 @@
     .content_link {
         @include position;
         @include center-flex-row;
-        @include aspect-ratio($w, $ar);
+        width: $w;
+        aspect-ratio: $ar;
         @include font(szrem($size), $font, $weight);
         @include text($align, $transform);
         @include transition(all $time linear);
@@ -206,7 +208,7 @@
     }
 
     &:before {
-        @include hv-center;
+        @include center-absolute;
         width: calc($w - $difi);
         aspect-ratio:  $aspi;
         opacity: $ob;
@@ -218,7 +220,7 @@
     .content_link {
         @include font(szrem($size), $font, $weight);
         @include text(center, uppercase);
-        @include hv-center;
+        @include center-absolute;
         color: $color;
         width: 95%;
         z-index: 2;

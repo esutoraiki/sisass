@@ -99,6 +99,14 @@
     @include font($font_attr);
 }
 
+// Text gradient
+@mixin gradient-text($grad) {
+    @include linear-gradient($grad);
+    @include background-clip(text);
+    @include text-fill-color(transparent);
+    display: inline-block;
+}
+
 // Font Face
 @mixin font-face($attr: ()) {
     $name: mapv($attr, name, null);
@@ -166,6 +174,16 @@
         font-display: $display;
     }
 }
+
+// hide text
+@mixin ht {
+    @include no-margins;
+    text-indent: -10000000px;
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
 
 // autofill
 @mixin autofill($attr: ()) {
@@ -242,14 +260,46 @@
 // Position
 @mixin position(
     $position: relative,
-    $value_1: 0,
-    $value_2: 0,
-    $posit_1: top,
-    $posit_2: left
+    $y: 0,
+    $x: 0,
+    $yaxis: top,
+    $xaxis: left
 ) {
-    position : $position;
-    #{$posit_1} : $value_1;
-    #{$posit_2} : $value_2;
+    $position_value: $position;
+    $v_y: $y;
+    $v_x: $x;
+    $pos_y: $yaxis;
+    $pos_x: $xaxis;
+
+    $top_value: null;
+    $right_value: null;
+    $bottom_value: null;
+    $left_value: null;
+
+    @if meta.type-of($position) == "map" {
+        $position_value: mapv($position, position, $position_value);
+        $v_y: mapv($position, y, $v_y);
+        $v_x: mapv($position, x, $v_x);
+        $pos_y: mapv($position, yaxis, $pos_y);
+        $pos_x: mapv($position, xaxis, $pos_x);
+
+        $top_value: mapv($position, (top, t), null);
+        $right_value: mapv($position, (right, r), null);
+        $bottom_value: mapv($position, (bottom, b), null);
+        $left_value: mapv($position, (left, l), null);
+    }
+
+    position : $position_value;
+
+    @if $top_value != null or $right_value != null or $bottom_value != null or $left_value != null {
+        @if $top_value != null { top : $top_value; }
+        @if $right_value != null { right : $right_value; }
+        @if $bottom_value != null { bottom : $bottom_value; }
+        @if $left_value != null { left : $left_value; }
+    } @else {
+        #{$pos_y} : $v_y;
+        #{$pos_x} : $v_x;
+    }
 }
 
 // Width Height
@@ -262,6 +312,86 @@
 @mixin whs($value_aa: auto) {
     width  : $value_aa;
     height : $value_aa;
+}
+
+// Absolute centering (principal)
+@mixin center-absolute {
+    @include position(absolute, 50%, 50%);
+    @include transform(translate(-50%, -50%));
+}
+
+// Backward compatibility alias
+@mixin hv-center {
+    @include center-absolute;
+}
+
+// Horizontal and vertical centering with flex for column
+@mixin center-flex-column {
+    @include flex-direction(column);
+    @include flex;
+    place-content: center;
+    place-items: center;
+}
+
+// Horizontal and vertical centering with flex for row
+@mixin center-flex-row {
+    @include flex-direction;
+    @include flex;
+    place-content: center;
+    place-items: center;
+}
+
+// Gap for flex
+@mixin gap($value) {
+    grid-gap: $value;
+    gap: $value;
+}
+
+@mixin cover {
+    @include whs(100%);
+    object-fit: cover;
+}
+
+@mixin contain {
+    @include whs(100%);
+    object-fit: contain;
+}
+
+// Imagen remplace
+@mixin img-remplace($image, $iw: auto, $ih: auto, $display: block) {
+    $image_value: $image;
+    $width_value: $iw;
+    $height_value: $ih;
+    $display_value: $display;
+
+    $repeat_value: no-repeat;
+    $position_value: center;
+    $color_value: transparent;
+    $size_value: cover;
+
+    @if meta.type-of($image) == "map" {
+        $image_value: mapv($image, (image, url, i, u), "");
+        $width_value: mapv($image, (width, w), $width_value);
+        $height_value: mapv($image, (height, h), $height_value);
+        $display_value: mapv($image, (display, d), $display_value);
+
+        $repeat_value: mapv($image, (repeat, r), $repeat_value);
+        $position_value: mapv($image, (position, p), $position_value);
+        $color_value: mapv($image, (color, c), $color_value);
+        $size_value: mapv($image, (size, s), $size_value);
+    }
+
+    @include background((
+        url: $image_value,
+        repeat: $repeat_value,
+        position: $position_value,
+        color: $color_value,
+        size: $size_value
+    ));
+
+    @include wh($width_value, $height_value);
+    @include ht;
+    display: $display_value;
 }
 
 // Include svg inline (Need gulp-postcss and postcss-inline-svg)
@@ -282,19 +412,6 @@
         position: top left;
         color: transparent;
     };
-}
-
-// Imagen remplace
-@mixin img-remplace($image, $iw, $ih) {
-    @include background((
-        url: $image,
-        repeat: no-repeat,
-        position: center,
-        color: transparent,
-        size: cover
-    ));
-    @include wh($iw, $ih);
-    @include ht;
 }
 
 // no margins
@@ -324,47 +441,6 @@
         left   : 0 none transparent;
         right  : 0 none transparent;
     }
-}
-
-// hide text
-@mixin ht {
-    @include no-margins;
-    text-indent: -119988px;
-    font: 0/0 a;
-    text-shadow: none;
-    color: transparent;
-}
-
-// Horizontal and vertical centering
-@mixin hv-center {
-    @include position(absolute, 50%, 50%);
-    @include transform(translate(-50%, -50%));
-}
-
-// Horizontal and vertical centering with flex for column
-@mixin center-flex-column {
-    @include flex-direction(column);
-    @include flex;
-    place-content: center;
-    place-items: center;
-}
-
-// Horizontal and vertical centering with flex for row
-@mixin center-flex-row {
-    @include flex-direction;
-    @include flex;
-    place-content: center;
-    place-items: center;
-}
-
-// Aspect ratio
-@mixin aspect-ratio($width: 100vw, $aspect-ratio: 1.77) {
-    --size: #{$width};
-    --aspect-ratio: #{$aspect-ratio};
-
-    width: var(--size);
-    height: calc(var(--size) / var(--aspect-ratio));
-    aspect-ratio: $aspect-ratio;
 }
 
 //Rem
@@ -404,9 +480,21 @@
 // Mapping lists with default value
 @function mapv($map, $key, $value) {
     $return: $value;
+
+    @if meta.type-of($key) == "list" {
+        @each $key_item in $key {
+            @if map.has-key($map, $key_item) {
+                @return map.get($map, $key_item);
+            }
+        }
+
+        @return $return;
+    }
+
     @if map.has-key($map, $key) {
         $return: map.get($map, $key);
     }
+
     @return $return;
 }
 
@@ -447,13 +535,6 @@
     }
 }
 
-// Text gradient
-@mixin gradient-text($grad) {
-    @include linear-gradient($grad);
-    @include background-clip(text);
-    @include text-fill-color(transparent);
-    display: inline-block;
-}
 
 // percentage base
 @function bp($attr: ()) {
@@ -469,37 +550,6 @@
     @return math.div($value, $value * 0 + 1);
 }
 
-// Fluid Font and Measures
-@mixin fluid-type($attr: ()) {
-    $min_s: mapv($attr, mins, 320px);
-    $max_s: mapv($attr, maxs, 1920px);
-    $min_v: mapv($attr, minv, 14px);
-    $max_v: mapv($attr, maxv, 24px);
-    $attre: mapv($attr, attr, font-size);
-
-    $u1: math.unit($min_s);
-    $u2: math.unit($max_s);
-    $u3: math.unit($min_v);
-    $u4: math.unit($max_v);
-
-    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
-        @include brp(strip-unit($max_s)) {
-            #{$attre}: calc(#{$min_v} + #{strip-unit($max_v - $min_v)} * ((100vw - #{$min_s}) / #{strip-unit($max_s - $min_s)}));
-        }
-
-        @include brp(strip-unit($min_s)) {
-            #{$attre}: $min_v;
-        }
-    } @else {
-        @debug "No fueron enviadas las unidades para fluid-type"
-    }
-}
-
-// Gap for flex
-@mixin gap($br) {
-    grid-gap: $br;
-    gap: $br;
-}
 
 // Normalize the styles for working with SVG files
 @mixin normalize-svg($attr: ()) {
@@ -520,17 +570,6 @@
         $yaxis, $xaxis
     );
     z-index: $z;
-}
-
-
-@mixin cover {
-    @include whs(100%);
-    object-fit: cover;
-}
-
-@mixin contain {
-    @include whs(100%);
-    object-fit: contain;
 }
 
 @function list-add-unique($list, $value) {

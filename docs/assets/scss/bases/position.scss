@@ -1,14 +1,33 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .position_container {
-                position: relative;
-                height: 120px;
-            }
+    .position_container {
+        @include position;
+        border: 2px dashed $c4;
+        height: 120px;
 
-            .position_example {
-                @include position(absolute, 10px, 20px);
-                @include whs(40px);
-                background-color: $c5;
-            }
+        .position_example {
+            @include position((
+                position: absolute,
+                y: -47px,
+                x: 100px,
+                yaxis: top,
+                xaxis: left
+            ));
+        }
+    }
+
+    .position_container_explicit {
+        @include position;
+        border: 2px dashed $c5;
+        height: 120px;
+
+        .position_example_explicit {
+            @include position((
+                position: absolute,
+                b: -10px,
+                r: 100px
+            ));
+        }
+    }
 }

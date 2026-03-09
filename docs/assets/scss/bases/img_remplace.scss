@@ -1,7 +1,17 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .img_remplace_example {
-                @include img-remplace("../img/favicons/favicon.png", 64px, 64px);
-            }
+    .img_remplace_example {
+        @include img-remplace("../img/test/1.webp", 64px, 64px);
+    }
+
+    .img_remplace_parameters {
+        @include img-remplace((
+            image: "../img/test/2.webp",
+            w: 250px,
+            h: 150px,
+            size: contain,
+            display: inline-block
+        ));
+    }
 }

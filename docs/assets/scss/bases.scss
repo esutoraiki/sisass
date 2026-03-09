@@ -9,13 +9,12 @@
 @forward "bases/cube_transformstyle";
 @forward "bases/contain";
 @forward "bases/cover";
-@forward "bases/fluid_type";
 @forward "bases/font";
 @forward "bases/font_face";
 @forward "bases/gap";
 @forward "bases/gradient_text";
 @forward "bases/ht";
-@forward "bases/hv_center";
+@forward "bases/center_absolute";
 @forward "bases/icon-svg";
 @forward "bases/img_remplace";
 @forward "bases/keyframes";
@@ -33,7 +32,6 @@
 @forward "bases/tf";
 @forward "bases/transformstyle";
 @forward "bases/transformstyle2";
-@forward "bases/aspect_ratio";
 @forward "bases/szrem";
 @forward "bases/str_replace";
 @forward "bases/mapv";

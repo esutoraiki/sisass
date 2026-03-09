@@ -1,15 +1,8 @@
 .documentationpage .gap_example {
-  -webkit-flex-direction: row;
-  flex-direction: row;
   -webkit-display: flex;
   -moz-display: flex;
   -ms-display: flex;
   display: flex;
   grid-gap: 10px;
   gap: 10px;
-}
-.documentationpage .gap_example .box {
-  width: 30px;
-  height: 30px;
-  background-color: #A01303;
 }

@@ -45,6 +45,7 @@
   `Tipo`, `Version`, `Interface`, `Sintaxis alternativa (map)`, `Ejemplo`, `Descripcion`, `Parametro`/`Clave`, `Default`.
 - Keep examples synchronized with real assets:
   `docs/assets/scss/...`, `docs/assets/css/...`, and the HTML snippet must match the rendered `Resultado`.
+- Cuando se solicite agregar mas ejemplos en una misma pagina de documentacion, integrarlos preferiblemente en un solo bloque de SCSS/CSS/HTML/Resultado (como en `background`), reutilizando los mismos archivos `data-src` cuando sea posible. Solo separarlos en bloques independientes si se solicita explicitamente.
 - When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
 - Do not add extra standalone code blocks between the parameter table and the `Ejemplo` section unless the page explicitly requires an additional subsection.
 

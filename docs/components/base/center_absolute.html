@@ -1,7 +1,7 @@
-<article id="contain" class="contain">
+<article id="center_absolute" class="center_absolute">
     <div class="group_title">
         <h2 class="subtitle">
-            contain (_base.scscs)
+            center-absolute (_base.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Mixin
@@ -11,14 +11,14 @@
         </h3>
     </div>
 
-    <p class="description">Ajusta el contenido con object-fit: contain.</p>
+    <p class="description">Centra un elemento de forma absoluta usando <b>position</b> y <b>transform</b>.</p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin contain;</code></pre>
+        <pre class="language-scss"><code>@mixin center-absolute;</code></pre>
 
         <h2 class="title">
             Ejemplo
@@ -27,26 +27,26 @@
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
             </h2>
-            <pre class="language-scss" data-src="../assets/scss/bases/contain.scss"></pre>
+            <pre class="language-scss" data-src="../assets/scss/bases/center_absolute.scss"></pre>
 
             <h2 class="subtitle">
                 Ejemplo 1: CSS generado
             </h2>
-            <pre class="language-css" data-src="../assets/css/bases/contain.css"></pre>
+            <pre class="language-css" data-src="../assets/css/bases/center_absolute.css"></pre>
 
             <h2 class="subtitle">
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;contain_container&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;class=&quot;contain_example&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;contain&quot;&nbsp;/&gt;&NewLine;&lt;/div&gt;</code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;center_absolute_container&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;center_absolute_example&nbsp;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <div class="contain_container">
-                    <img class="contain_example" src="img/test/1.webp" alt="contain" />
+                <div class="center_absolute_container">
+                    <div class="center_absolute_example box"></div>
                 </div>
             </div>
         </div>

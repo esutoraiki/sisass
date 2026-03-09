@@ -1,8 +1,9 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .whs_example {
-                @include whs(80px);
-                background-color: $c5;
-            }
+    .result {
+        .whs_example {
+            @include whs(20px);
+        }
+    }
 }

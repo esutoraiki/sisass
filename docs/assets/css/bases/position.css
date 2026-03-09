@@ -1,12 +1,24 @@
 .documentationpage .position_container {
   position: relative;
+  top: 0;
+  left: 0;
+  border: 2px dashed #FBB03B;
   height: 120px;
 }
-.documentationpage .position_example {
+.documentationpage .position_container .position_example {
   position: absolute;
-  top: 10px;
-  left: 20px;
-  width: 40px;
-  height: 40px;
-  background-color: #A01303;
+  top: -47px;
+  left: 100px;
+}
+.documentationpage .position_container_explicit {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 2px dashed #A01303;
+  height: 120px;
+}
+.documentationpage .position_container_explicit .position_example_explicit {
+  position: absolute;
+  right: 100px;
+  bottom: -10px;
 }

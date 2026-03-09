@@ -1,9 +1,9 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .center_flex_column_example {
-                @include center-flex-column;
-                @include wh(160px, 80px);
-                background-color: $c7;
-            }
+    .center_flex_column_demo {
+        @include center-flex-column;
+        @include position;
+        @include wh(100%, 200px);
+    }
 }

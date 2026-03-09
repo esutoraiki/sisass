@@ -1,9 +1,12 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-    .center_flex_row_demo {
-        @include center-flex-row;
+    .center_absolute_container {
         @include position;
         @include wh(100%, 200px);
+
+        .center_absolute_example {
+            @include center-absolute;
+        }
     }
 }

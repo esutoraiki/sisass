@@ -7,11 +7,12 @@
 
 @mixin flip_card($attr: ()) {
     $w: mapv($attr, width, 350px);
-    $ar: mapv($attr, aspect_ratio, 1);
+    $ar: mapv($attr, ratio, 1);
     $bgf: mapv($attr, bg_front, white);
     $bgb: mapv($attr, bg_back, black);
 
-    @include aspect-ratio($w, $ar);
+    width: $w;
+    aspect-ratio: $ar;
     @include position;
     user-select: none;
 

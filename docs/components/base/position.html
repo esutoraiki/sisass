@@ -11,54 +11,96 @@
         </h3>
     </div>
 
-    <p class="description">Asigna position y los offsets correspondientes.</p>
+    <p class="description">Define el valor de <b>position</b> y aplica offsets usando dos formas: sintaxis por ejes (<b>y/x</b>) o sintaxis explicita por lados (<b>top/right/bottom/left</b>) con aliases cortos (<b>t/r/b/l</b>).</p>
+    <p class="description">La sintaxis <b>y/x</b> es compacta para ajustes rapidos: <b>$y</b> controla el eje vertical y <b>$x</b> el horizontal; <b>$yaxis</b> y <b>$xaxis</b> indican que propiedad CSS usa cada eje (por ejemplo, <b>top</b>/<b>left</b> o <b>bottom</b>/<b>right</b>).</p>
+    <p class="description">El mixin esta diseñado a propósito con el eje Y primero porque, en escenarios reales, suele modificarse solo <b>top</b>. Cuando necesitas control puntual por cada lado, usa la sintaxis explicita en map para declarar <b>top</b>, <b>right</b>, <b>bottom</b> y <b>left</b> (o sus aliases <b>t</b>, <b>r</b>, <b>b</b>, <b>l</b>).</p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin position($position: relative, $value_1: 0, $value_2: 0, $posit_1: top, $posit_2: left);</code></pre>
+        <pre class="language-scss"><code>@mixin&nbsp;position($position:&nbsp;relative,&nbsp;$y:&nbsp;0,&nbsp;$x:&nbsp;0,&nbsp;$yaxis:&nbsp;top,&nbsp;$xaxis:&nbsp;left);</code></pre>
+        <h3 class="subtitle">
+            Sintaxis alternativa (map)
+        </h3>
+        <pre class="language-scss"><code>@include&nbsp;position((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;relative,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;yaxis:&nbsp;top,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;xaxis:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;right:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bottom:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;t:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;b:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;l:&nbsp;null&NewLine;));</code></pre>
         <p class="description">
-            Valores por defecto: relative, 0, 0, top, left.
+            Uso recomendado de map: define <b>position</b> y luego elige una sola estrategia. Si incluyes <b>top/right/bottom/left</b> o <b>t/r/b/l</b>, se usa sintaxis explicita; si no, se aplica la sintaxis por ejes <b>y/x</b>.
         </p>
 
+        <p class="description">
+            Valores por defecto: relative, y: 0, x: 0, yaxis: top, xaxis: left, top/right/bottom/left: null, t/r/b/l: null.
+        </p>
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parámetro</th>
+                    <th>Parametro</th>
                     <th>Tipo</th>
-                    <th>Descripción</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b>$position</b></td>
-                    <td>String</td>
-                    <td>Tipo de posicionamiento.</td>
+                    <td>String | Map</td>
+                    <td>relative</td>
+                    <td>Define la propiedad <b>position</b>. Tambien puede recibir un map con claves de ejes y lados.</td>
                 </tr>
                 <tr>
-                    <td><b>$value_1</b></td>
+                    <td><b>$y</b></td>
                     <td>Medida</td>
-                    <td>Valor para el primer eje.</td>
+                    <td>0</td>
+                    <td>Define el valor del offset para el eje Y cuando no se usa un lado explicito.</td>
                 </tr>
                 <tr>
-                    <td><b>$value_2</b></td>
+                    <td><b>$x</b></td>
                     <td>Medida</td>
-                    <td>Valor para el segundo eje.</td>
+                    <td>0</td>
+                    <td>Define el valor del offset para el eje X cuando no se usa un lado explicito.</td>
                 </tr>
                 <tr>
-                    <td><b>$posit_1</b></td>
+                    <td><b>$yaxis</b></td>
                     <td>String</td>
-                    <td>Propiedad del primer eje.</td>
+                    <td>top</td>
+                    <td>Selecciona la propiedad CSS del eje Y (por ejemplo: top o bottom).</td>
                 </tr>
                 <tr>
-                    <td><b>$posit_2</b></td>
+                    <td><b>$xaxis</b></td>
                     <td>String</td>
-                    <td>Propiedad del segundo eje.</td>
+                    <td>left</td>
+                    <td>Selecciona la propiedad CSS del eje X (por ejemplo: left o right).</td>
+                </tr>
+                <tr>
+                    <td><b>top</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>top</b> de forma explicita cuando se usa map. Alias: <b>t</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>right</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>right</b> de forma explicita cuando se usa map. Alias: <b>r</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>bottom</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>bottom</b> de forma explicita cuando se usa map. Alias: <b>b</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>left</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>left</b> de forma explicita cuando se usa map. Alias: <b>l</b>.</td>
                 </tr>
             </tbody>
         </table>
+        <p class="description">
+            Precedencia: si el map incluye <b>top</b>, <b>right</b>, <b>bottom</b> o <b>left</b> (o sus aliases), esos lados se aplican primero y reemplazan la salida basada en <b>y/x</b>. Si se define clave larga y alias al mismo tiempo, prevalece la clave larga.
+        </p>
 
         <h2 class="title">
             Ejemplo
@@ -77,15 +119,19 @@
             <h2 class="subtitle">
                 Ejemplo 1: HTML
             </h2>
-
-            <pre class="language-html"><code><div class="position_container"><div class="position_example"></div></div></code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;position_container&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;position_example&nbsp;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;position_container_explicit&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;position_example_explicit&nbsp;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <div class="position_container"><div class="position_example"></div></div>
+                <div class="position_container">
+                    <div class="position_example box"></div>
+                </div>
+                <div class="position_container_explicit">
+                    <div class="position_example_explicit box"></div>
+                </div>
             </div>
         </div>
     </section>

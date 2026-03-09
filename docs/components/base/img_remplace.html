@@ -11,41 +11,110 @@
         </h3>
     </div>
 
-    <p class="description">Reemplaza texto por imagen de fondo.</p>
+    <p class="description">Reemplaza texto visual por una imagen de fondo, manteniendo el contenido textual en el marcado.</p>
+    <p class="description">Aplica utilidades de fondo, tamaño, ocultamiento de texto y control de <b>display</b> en una sola llamada.</p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin img-remplace($image, $iw, $ih);</code></pre>
+        <pre class="language-scss"><code>@mixin img-remplace($image, $iw: auto, $ih: auto, $display: block);</code></pre>
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+        <pre class="language-scss"><code>@include&nbsp;img-remplace((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;i:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;u:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;w:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;h:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;d:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;repeat:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;c:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;cover,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;s:&nbsp;cover&NewLine;));</code></pre>
+        <p class="description">
+            Valores por defecto: iw: auto, ih: auto, display: block, repeat: no-repeat, position: center, color: transparent, size: cover.
+        </p>
 
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parámetro</th>
+                    <th>Parametro</th>
                     <th>Tipo</th>
-                    <th>Descripción</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b>$image</b></td>
-                    <td>String</td>
-                    <td>URL de la imagen.</td>
+                    <td>String | Map</td>
+                    <td>Requerido</td>
+                    <td>Ruta de imagen o map. Si es map, habilita claves y aliases de imagen, medidas, display y background.</td>
                 </tr>
                 <tr>
                     <td><b>$iw</b></td>
                     <td>Medida</td>
-                    <td>Ancho.</td>
+                    <td>auto</td>
+                    <td>Ancho del elemento cuando se usa sintaxis posicional.</td>
                 </tr>
                 <tr>
                     <td><b>$ih</b></td>
                     <td>Medida</td>
-                    <td>Alto.</td>
+                    <td>auto</td>
+                    <td>Alto del elemento cuando se usa sintaxis posicional.</td>
+                </tr>
+                <tr>
+                    <td><b>$display</b></td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Define el valor de <b>display</b> del elemento.</td>
+                </tr>
+                <tr>
+                    <td><b>image | url | i | u</b> (map)</td>
+                    <td>String</td>
+                    <td>""</td>
+                    <td>Ruta de la imagen de fondo. Prioridad de lectura: image, luego url, luego i, luego u.</td>
+                </tr>
+                <tr>
+                    <td><b>width | w</b> (map)</td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Ancho del elemento cuando se usa sintaxis map.</td>
+                </tr>
+                <tr>
+                    <td><b>height | h</b> (map)</td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Alto del elemento cuando se usa sintaxis map.</td>
+                </tr>
+                <tr>
+                    <td><b>display | d</b> (map)</td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Valor de <b>display</b> aplicado al elemento.</td>
+                </tr>
+                <tr>
+                    <td><b>repeat | r</b> (map)</td>
+                    <td>String</td>
+                    <td>no-repeat</td>
+                    <td>Valor de <b>background-repeat</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>position | p</b> (map)</td>
+                    <td>String</td>
+                    <td>center</td>
+                    <td>Valor de <b>background-position</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>color | c</b> (map)</td>
+                    <td>Color</td>
+                    <td>transparent</td>
+                    <td>Valor de <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>size | s</b> (map)</td>
+                    <td>String</td>
+                    <td>cover</td>
+                    <td>Valor de <b>background-size</b>.</td>
                 </tr>
             </tbody>
         </table>
+        <p class="description">
+            Nota: en modo map, los aliases cortos solo se usan si no existe su clave larga equivalente.
+        </p>
 
         <h2 class="title">
             Ejemplo
@@ -65,14 +134,19 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><span class="img_remplace_example">Logo</span></code></pre>
+            <pre class="language-html"><code>&lt;h2&nbsp;class=&quot;img_remplace_example&quot;&gt;Gato&lt;/h2&gt;&NewLine;&lt;h2&nbsp;class=&quot;img_remplace_parameters&quot;&gt;Perro&lt;/h2&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <span class="img_remplace_example">Logo</span>
+                <h2 class="img_remplace_example">
+                    Gato
+                </h2>
+                <h2 class="img_remplace_parameters">
+                    Perro
+                </h2>
             </div>
         </div>
     </section>

@@ -169,7 +169,8 @@
     max-height: $mhe;
 
     @if $ar {
-        @include aspect-ratio($w_im, $ratio);
+        width: $w_im;
+        aspect-ratio: $ratio;
     } @else {
         @include wh($w_im, $h_im);
     }
