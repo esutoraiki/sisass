@@ -1,0 +1,161 @@
+<article id="icon_svg_mask" class="icon_svg_mask">
+    <div class="group_title">
+        <h2 class="subtitle">
+            icon_svg_mask (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">Aplica un SVG como mascara CSS y colorea el resultado con <code>background-color</code>.</p>
+    <p class="description">Requiere <code>postcss-inline-svg</code> porque utiliza <code>svg-load()</code> para construir <code>mask-image</code>.</p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin icon_svg_mask($attr: (
+    svg: false,
+    color: $c1,
+    position: absolute,
+    x: 0,
+    y: 0,
+    xaxis: left,
+    yaxis: top,
+    width: 100px,
+    height: 100px,
+    repeat: no-repeat,
+    size: contain,
+    path: $i1,
+    display: block
+));</code></pre>
+        <p class="description">
+            Valores por defecto: color $c1, position absolute, x 0, y 0, xaxis left, yaxis top, width 100px, height 100px, repeat no-repeat, size contain, path $i1, display block.
+        </p>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>svg</b></td>
+                    <td>String | Bool</td>
+                    <td>false</td>
+                    <td>Nombre base del archivo SVG. Si es false no genera la mascara.</td>
+                </tr>
+                <tr>
+                    <td><b>color</b></td>
+                    <td>Color</td>
+                    <td>$c1</td>
+                    <td>Define el color final del icono mediante <code>background-color</code>.</td>
+                </tr>
+                <tr>
+                    <td><b>position</b></td>
+                    <td>String | Bool</td>
+                    <td>absolute</td>
+                    <td>Tipo de posicionamiento usado por el mixin <code>position()</code>. Si es false no aplica posicionamiento.</td>
+                </tr>
+                <tr>
+                    <td><b>x</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Desplazamiento horizontal aplicado por <code>position()</code>.</td>
+                </tr>
+                <tr>
+                    <td><b>y</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Desplazamiento vertical aplicado por <code>position()</code>.</td>
+                </tr>
+                <tr>
+                    <td><b>xaxis</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Eje horizontal usado por <code>position()</code>.</td>
+                </tr>
+                <tr>
+                    <td><b>yaxis</b></td>
+                    <td>String</td>
+                    <td>top</td>
+                    <td>Eje vertical usado por <code>position()</code>.</td>
+                </tr>
+                <tr>
+                    <td><b>width</b></td>
+                    <td>Medida</td>
+                    <td>100px</td>
+                    <td>Asigna el ancho del area visible del icono.</td>
+                </tr>
+                <tr>
+                    <td><b>height</b></td>
+                    <td>Medida</td>
+                    <td>100px</td>
+                    <td>Asigna el alto del area visible del icono.</td>
+                </tr>
+                <tr>
+                    <td><b>repeat</b></td>
+                    <td>String</td>
+                    <td>no-repeat</td>
+                    <td>Controla la repeticion de la mascara.</td>
+                </tr>
+                <tr>
+                    <td><b>size</b></td>
+                    <td>String | Medida</td>
+                    <td>contain</td>
+                    <td>Controla el escalado de la mascara SVG.</td>
+                </tr>
+                <tr>
+                    <td><b>path</b></td>
+                    <td>String</td>
+                    <td>$i1</td>
+                    <td>Prefijo de ruta donde se busca el archivo SVG.</td>
+                </tr>
+                <tr>
+                    <td><b>display</b></td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Define el valor de <code>display</code> del elemento.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/icon_svg_mask.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/icon_svg_mask.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code><span class="icon_svg_mask_example"></span></code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <span class="icon_svg_mask_example"></span>
+            </div>
+        </div>
+    </section>
+</article>

@@ -12,11 +12,11 @@
     </div>
 
     <p class="description">
-        Permite configurar propiedades de tipografia como tamano, familia,
+        Permite configurar propiedades de tipografía como tamaño, familia,
         peso, estilo, line-height y variant. Ahora soporta dos formas de uso:
-        pasando parametros individuales o un mapa con las claves <b>size</b>,
-        <b>family</b>, <b>weight</b>, <b>style</b>, <b>line-height</b> y
-        <b>variant</b>.
+        pasando parámetros individuales o un mapa con las claves <b>size | s</b>,
+        <b>family | f</b>, <b>weight | w</b>, <b>style</b>, <b>line-height | lh</b> y
+        <b>variant | v</b>.
     </p>
 
     <section class="use">
@@ -32,10 +32,9 @@
 
         <pre class="language-scss"><code>@include font((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;1em,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;&quot;sans-serif&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;&quot;none&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;variant:&nbsp;normal&NewLine;));</code></pre>
 
-        <p class="description">
-            Valores por defecto: <b>1em</b>, <b>"sans-serif"</b>, <b>normal</b>, <b>normal</b>, <b>"none"</b>, <b>normal</b>.
-        </p>
-
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
@@ -47,40 +46,92 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$size</b></td>
-                    <td>String | Map</td>
+                    <td><b>size</b></td>
+                    <td>String</td>
                     <td>1em</td>
-                    <td>Si es string, define <b>font-size</b>. Si es map, puede incluir <b>size</b>, <b>family</b>, <b>weight</b>, <b>style</b>, <b>line-height</b>, <b>variant</b>.</td>
+                    <td>Define la propiedad <b>font-size</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$family</b></td>
+                    <td><b>family</b></td>
                     <td>String</td>
                     <td>"sans-serif"</td>
-                    <td>Define <b>font-family</b> cuando el primer parametro no es map.</td>
+                    <td>Define la propiedad <b>font-family</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$weight</b></td>
+                    <td><b>weight</b></td>
                     <td>String | Number</td>
                     <td>normal</td>
-                    <td>Define <b>font-weight</b> cuando el primer parametro no es map.</td>
+                    <td>Define la propiedad <b>font-weight</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$style</b></td>
+                    <td><b>style</b></td>
                     <td>String</td>
                     <td>normal</td>
-                    <td>Define <b>font-style</b> cuando el primer parametro no es map.</td>
+                    <td>Define la propiedad <b>font-style</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$line-height</b></td>
+                    <td><b>line-height</b></td>
                     <td>String | Number</td>
                     <td>"none"</td>
-                    <td>Define <b>line-height</b> cuando el primer parametro no es map.</td>
+                    <td>Define la propiedad <b>line-height</b> cuando su valor es distinto de <b>"none"</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$variant</b></td>
+                    <td><b>variant</b></td>
                     <td>String</td>
                     <td>normal</td>
-                    <td>Define <b>font-variant</b> cuando el primer parametro no es map.</td>
+                    <td>Define la propiedad <b>font-variant</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>size | s</b></td>
+                    <td>String</td>
+                    <td>1em</td>
+                    <td>Define la propiedad <b>font-size</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>family | f</b></td>
+                    <td>String</td>
+                    <td>"sans-serif"</td>
+                    <td>Define la propiedad <b>font-family</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>weight | w</b></td>
+                    <td>String | Number</td>
+                    <td>normal</td>
+                    <td>Define la propiedad <b>font-weight</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>style</b></td>
+                    <td>String</td>
+                    <td>normal</td>
+                    <td>Define la propiedad <b>font-style</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>line-height | lh</b></td>
+                    <td>String | Number</td>
+                    <td>"none"</td>
+                    <td>Define la propiedad <b>line-height</b> cuando su valor es distinto de <b>"none"</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>variant | v</b></td>
+                    <td>String</td>
+                    <td>normal</td>
+                    <td>Define la propiedad <b>font-variant</b>.</td>
                 </tr>
             </tbody>
         </table>
@@ -103,15 +154,15 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;font_example_params&quot;&gt;Tipografia con parametros individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;font_example_map&quot;&gt;Tipografia usando map&lt;/p&gt;</code></pre>
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;font_example_params&quot;&gt;Tipografía con parámetros individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;font_example_map&quot;&gt;Tipografía usando map&lt;/p&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <p class="font_example_params">Tipografia con parametros individuales</p>
-                <p class="font_example_map">Tipografia usando map</p>
+                <p class="font_example_params">Tipografía con parámetros individuales</p>
+                <p class="font_example_map">Tipografía usando map</p>
             </div>
         </div>
     </section>

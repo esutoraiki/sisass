@@ -121,6 +121,12 @@
             "node": "icon-svg"
         },
         {
+            "id": "icon_svg_mask",
+            "url": "../components/base/icon_svg_mask.html",
+            "position": "beforeend",
+            "node": "icon_svg_mask"
+        },
+        {
             "id": "normalize_svg",
             "url": "../components/base/normalize_svg.html",
             "position": "beforeend",

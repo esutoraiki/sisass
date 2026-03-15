@@ -37,6 +37,14 @@ const
 
     path_svg = "assets/scss/svg/*.scss",
     path_dest_svg = "assets/css/svg/",
+    paths_process_svg = [
+        path_dest_svg + "*.css",
+        "assets/css/bases.css"
+    ],
+    postcss_svg_paths = [
+        path.resolve(dir_path, "assets/css/bases"),
+        path.resolve(dir_path, "assets/css/svg")
+    ],
 
     path_img_svg = "assets/img/svg/*.svg",
     path_orig_img_svg = "assets/img/svg/orig/*.svg",
@@ -85,13 +93,14 @@ gulp.task("svgmin", function () {
 })
 
 gulp.task("process_svg", function () {
-    return gulp.src(path_dest_svg + "*.css")
+    return gulp.src(paths_process_svg, { base: "assets/css" })
         .pipe(postcss([
             postinlinesvg({
+                paths: postcss_svg_paths,
                 removeFill: true
             })
         ]))
-        .pipe(gulp.dest(path_dest_svg));
+        .pipe(gulp.dest("assets/css"));
 })
 
 gulp.task("css_svg", function () {
@@ -165,7 +174,7 @@ gulp.task("watch", function () {
 
     gulp.watch("assets/json/*.json", gulp.series("jsonlint"));
 
-    gulp.watch(paths_compile_scss, gulp.series("scss"));
+    gulp.watch(paths_compile_scss, gulp.series("scss", "process_svg"));
     gulp.watch(path_svg, gulp.series("css_svg", "process_svg"));
     gulp.watch(path_orig_img_svg, gulp.series(
         "delete_svg",

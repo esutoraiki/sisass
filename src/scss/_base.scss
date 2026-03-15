@@ -23,10 +23,10 @@
     $wrap_value: $wrap;
 
     @if meta.type-of($aling) == "map" {
-        $align_value: mapv($aling, align, left);
-        $decor_value: mapv($aling, decoration, initial);
-        $trans_value: mapv($aling, transform, initial);
-        $wrap_value: mapv($aling, wrap, initial);
+        $align_value: mapv($aling, (align, a), left);
+        $decor_value: mapv($aling, (decoration, d), initial);
+        $trans_value: mapv($aling, (transform, t), initial);
+        $wrap_value: mapv($aling, (wrap, wr), initial);
     }
 
     text: {
@@ -54,12 +54,12 @@
     $variant_value: $variant;
 
     @if meta.type-of($size) == "map" {
-        $size_value: mapv($size, size, 1em);
-        $family_value: mapv($size, family, "sans-serif");
-        $weight_value: mapv($size, weight, normal);
+        $size_value: mapv($size, (size, s), 1em);
+        $family_value: mapv($size, (family, f), "sans-serif");
+        $weight_value: mapv($size, (weight, w), normal);
         $style_value: mapv($size, style, normal);
-        $line_height_value: mapv($size, line-height, "none");
-        $variant_value: mapv($size, variant, normal);
+        $line_height_value: mapv($size, (line-height, lh), "none");
+        $variant_value: mapv($size, (variant, v), normal);
     }
 
     font: {
@@ -80,19 +80,19 @@
     }
 
     $text_attr: (
-        align: mapv($attr, align, left),
-        transform: mapv($attr, transform, initial),
-        decoration: mapv($attr, decoration, initial),
-        wrap: mapv($attr, wrap, initial)
+        align: mapv($attr, (align, a), left),
+        transform: mapv($attr, (transform, t), initial),
+        decoration: mapv($attr, (decoration, d), initial),
+        wrap: mapv($attr, (wrap, wr), initial)
     );
 
     $font_attr: (
-        size: mapv($attr, size, 1em),
-        family: mapv($attr, family, "sans-serif"),
-        weight: mapv($attr, weight, normal),
+        size: mapv($attr, (size, s), 1em),
+        family: mapv($attr, (family, f), "sans-serif"),
+        weight: mapv($attr, (weight, w), normal),
         style: mapv($attr, style, normal),
-        line-height: mapv($attr, line-height, "none"),
-        variant: mapv($attr, variant, normal)
+        line-height: mapv($attr, (line-height, lh), "none"),
+        variant: mapv($attr, (variant, v), normal)
     );
 
     @include text($text_attr);
@@ -277,7 +277,7 @@
     $left_value: null;
 
     @if meta.type-of($position) == "map" {
-        $position_value: mapv($position, position, $position_value);
+        $position_value: mapv($position, (position, p), $position_value);
         $v_y: mapv($position, y, $v_y);
         $v_x: mapv($position, x, $v_x);
         $pos_y: mapv($position, yaxis, $pos_y);
@@ -395,23 +395,121 @@
 }
 
 // Include svg inline (Need gulp-postcss and postcss-inline-svg)
-@mixin icon-svg($svg, $w, $h, $fill: "none", $def: "none") {
-    @include position(absolute);
-    @include wh($w, $h);
-    $path_svg: "../../img/svg/" +  $svg + ".svg";
-    background: {
-        @if $fill == "inline" {
-            image: svg-inline($def);
-        } @else if $fill != "none"  {
-            image: svg-load($path_svg, fill=$fill);
-        } @else {
-            image: url($path_svg);
+@mixin icon-svg(
+    $svg,
+    $w: auto,
+    $h: auto,
+    $fill: "none",
+    $def: "none",
+    $path: "../../img/svg/"
+) {
+    $svg_value: $svg;
+    $width_value: $w;
+    $height_value: $h;
+    $fill_value: $fill;
+    $def_value: $def;
+    $path_value: $path;
+    $position_attr: (
+        position: absolute,
+        y: 0,
+        x: 0,
+        yaxis: top,
+        xaxis: left,
+        top: null,
+        right: null,
+        bottom: null,
+        left: null
+    );
+    $background_attr: (
+        repeat: no-repeat,
+        position: top left,
+        color: transparent,
+        size: 100%
+    );
+
+    @if meta.type-of($svg) == "map" {
+        $svg_value: mapv($svg, (svg, icon, name), "");
+        $width_value: mapv($svg, (width, w), $width_value);
+        $height_value: mapv($svg, (height, h), $height_value);
+        $fill_value: mapv($svg, fill, $fill_value);
+        $def_value: mapv($svg, (def, inline, inline_svg), $def_value);
+        $path_value: mapv($svg, (path, base_path, svg_path), $path_value);
+
+        @if map.has-key($svg, position) and meta.type-of(map.get($svg, position)) == "map" {
+            $position_map: map.get($svg, position);
+            $position_attr: (
+                position: mapv($position_map, type, mapv($position_map, position, map.get($position_attr, position))),
+                y: mapv($position_map, y, map.get($position_attr, y)),
+                x: mapv($position_map, x, map.get($position_attr, x)),
+                yaxis: mapv($position_map, yaxis, map.get($position_attr, yaxis)),
+                xaxis: mapv($position_map, xaxis, map.get($position_attr, xaxis)),
+                top: mapv($position_map, top, map.get($position_attr, top)),
+                right: mapv($position_map, right, map.get($position_attr, right)),
+                bottom: mapv($position_map, bottom, map.get($position_attr, bottom)),
+                left: mapv($position_map, left, map.get($position_attr, left))
+            );
         }
-        repeat: no-repeat;
-        size: 100%;
-        position: top left;
-        color: transparent;
-    };
+
+        @if map.has-key($svg, background) and meta.type-of(map.get($svg, background)) == "map" {
+            $background_map: map.get($svg, background);
+            $background_attr: (
+                repeat: mapv($background_map, repeat, map.get($background_attr, repeat)),
+                position: mapv($background_map, position, map.get($background_attr, position)),
+                color: mapv($background_map, color, map.get($background_attr, color)),
+                size: mapv($background_map, size, map.get($background_attr, size))
+            );
+        }
+    }
+
+    $path_svg: $path_value + $svg_value + ".svg";
+    $background_image: url($path_svg);
+
+    @if $fill_value == "inline" {
+        $background_image: svg-inline($def_value);
+    } @else if $fill_value != "none" {
+        $background_image: svg-load($path_svg, fill=$fill_value);
+    }
+
+    @include position($position_attr);
+    @include wh($width_value, $height_value);
+    @include background((
+        image: $background_image,
+        repeat: map.get($background_attr, repeat),
+        position: map.get($background_attr, position),
+        color: map.get($background_attr, color),
+        size: map.get($background_attr, size)
+    ));
+}
+
+// Need gulp-postcss and postcss-inline-svg
+@mixin icon_svg_mask($attr: ()) {
+    $svg: mapv($attr, svg, false);
+    $color: mapv($attr, color, #FFFFFF);
+    $pos: mapv($attr, position, absolute);
+    $x: mapv($attr, x, 0);
+    $y: mapv($attr, y, 0);
+    $xaxis: mapv($attr, xaxis, left);
+    $yaxis: mapv($attr, yaxis, top);
+    $w: mapv($attr, width, 100px);
+    $h: mapv($attr, height, 100px);
+    $repeat: mapv($attr, repeat, no-repeat);
+    $size: mapv($attr, size, contain);
+    $path: mapv($attr, path, "../../img/svg/");
+    $display: mapv($attr, display, block);
+
+    @if $svg != false {
+        @if $pos != false {
+            @include position($pos, $y, $x, $yaxis, $xaxis);
+        }
+
+        @include wh($w, $h);
+        $path_svg: $path +  $svg + ".svg";
+        mask-image: svg-load($path_svg, fill="currentColor");
+        mask-repeat: $repeat;
+        mask-size: $size;
+        display: $display;
+        background-color: $color;
+    }
 }
 
 // no margins

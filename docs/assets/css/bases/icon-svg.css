@@ -1,12 +1,42 @@
 .documentationpage .icon-svg-example {
+  width: 334px;
+  height: 126px;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+.documentationpage .icon-svg-example::before {
   position: absolute;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 334px;
+  height: 126px;
   background-image: svg-load("../../img/svg/sisass.svg", fill=#A01303);
   background-repeat: no-repeat;
-  background-size: 100%;
   background-position: top left;
   background-color: transparent;
+  background-size: 100%;
+  content: "";
+}
+.documentationpage .icon-svg-example-map {
+  width: 220px;
+  height: 83px;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+}
+.documentationpage .icon-svg-example-map::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 83px;
+  background-image: svg-load("../../img/svg/sisass.svg", fill=#3A405A);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  background-size: contain;
+  content: "";
 }

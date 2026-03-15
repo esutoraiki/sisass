@@ -12,15 +12,16 @@
     </div>
 
     <p class="description">Inserta un SVG como background (requiere postcss-inline-svg).</p>
+    <p class="description">Admite firma posicional o un map con opciones para tamano, color, ruta, posicion y fondo.</p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin icon-svg($svg, $w, $h, $fill: "none", $def: "none");</code></pre>
+        <pre class="language-scss"><code>@mixin icon-svg($svg, $w: auto, $h: auto, $fill: "none", $def: "none", $path: "../../img/svg/");</code></pre>
         <p class="description">
-            Valores por defecto: fill "none", def "none".
+            Valores por defecto: w auto, h auto, fill "none", def "none", path "../../img/svg/".
         </p>
 
         <table class="full">
@@ -28,34 +29,140 @@
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><b>$svg</b></td>
-                    <td>String</td>
-                    <td>Nombre del SVG.</td>
+                    <td>String | Map</td>
+                    <td>-</td>
+                    <td>Nombre del SVG o map de configuracion del icono.</td>
                 </tr>
                 <tr>
                     <td><b>$w</b></td>
                     <td>Medida</td>
-                    <td>Ancho.</td>
+                    <td>auto</td>
+                    <td>Define el ancho aplicado por la mezcla <b>wh</b>.</td>
                 </tr>
                 <tr>
                     <td><b>$h</b></td>
                     <td>Medida</td>
-                    <td>Alto.</td>
+                    <td>auto</td>
+                    <td>Define el alto aplicado por la mezcla <b>wh</b>.</td>
                 </tr>
                 <tr>
                     <td><b>$fill</b></td>
-                    <td>String</td>
-                    <td>Color o modo de relleno.</td>
+                    <td>Color | String</td>
+                    <td>"none"</td>
+                    <td>Aplica el color del SVG con <b>svg-load</b> o activa el modo <b>inline</b>.</td>
                 </tr>
                 <tr>
                     <td><b>$def</b></td>
                     <td>String</td>
-                    <td>SVG inline cuando fill es inline.</td>
+                    <td>"none"</td>
+                    <td>Define el SVG inline usado cuando <b>$fill</b> es <b>"inline"</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>$path</b></td>
+                    <td>String</td>
+                    <td>"../../img/svg/"</td>
+                    <td>Define la ruta base desde donde se carga el archivo SVG.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+
+        <pre class="language-scss"><code>@include icon-svg((
+    svg: "sisass",
+    width: 32px,
+    height: 32px,
+    fill: $c5,
+    def: "none",
+    path: "../../img/svg/",
+    position: (
+        type: absolute,
+        y: 0,
+        x: 0,
+        yaxis: top,
+        xaxis: left,
+        top: null,
+        right: null,
+        bottom: null,
+        left: null
+    ),
+    background: (
+        repeat: no-repeat,
+        position: top left,
+        color: transparent,
+        size: 100%
+    )
+));</code></pre>
+        <p class="description">
+            Valores por defecto: svg "", width auto, height auto, fill "none", def "none", path "../../img/svg/".
+        </p>
+
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>svg | icon | name</b></td>
+                    <td>String</td>
+                    <td>""</td>
+                    <td>Define el nombre del archivo SVG a usar.</td>
+                </tr>
+                <tr>
+                    <td><b>width | w</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define el ancho aplicado al elemento.</td>
+                </tr>
+                <tr>
+                    <td><b>height | h</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define el alto aplicado al elemento.</td>
+                </tr>
+                <tr>
+                    <td><b>fill</b></td>
+                    <td>Color | String</td>
+                    <td>"none"</td>
+                    <td>Colorea el SVG con <b>svg-load</b> o usa <b>"inline"</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>def | inline | inline_svg</b></td>
+                    <td>String</td>
+                    <td>"none"</td>
+                    <td>Define el contenido inline del SVG cuando se usa ese modo.</td>
+                </tr>
+                <tr>
+                    <td><b>path | base_path | svg_path</b></td>
+                    <td>String</td>
+                    <td>"../../img/svg/"</td>
+                    <td>Define la ruta base para construir la URL del SVG.</td>
+                </tr>
+                <tr>
+                    <td><b>position</b></td>
+                    <td>Map</td>
+                    <td>(type: absolute, y: 0, x: 0, yaxis: top, xaxis: left, top: null, right: null, bottom: null, left: null)</td>
+                    <td>Controla la posicion usada por la mezcla <b>position</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>background</b></td>
+                    <td>Map</td>
+                    <td>(repeat: no-repeat, position: top left, color: transparent, size: 100%)</td>
+                    <td>Controla repeat, posicion, color y size del background final.</td>
                 </tr>
             </tbody>
         </table>
@@ -65,20 +172,21 @@
         </h2>
         <div class="container_example">
             <h2 class="subtitle">
-                Ejemplo 1: SCSS
+                SCSS
             </h2>
             <pre class="language-scss" data-src="../assets/scss/bases/icon-svg.scss"></pre>
 
             <h2 class="subtitle">
-                Ejemplo 1: CSS generado
+                CSS generado
             </h2>
             <pre class="language-css" data-src="../assets/css/bases/icon-svg.css"></pre>
 
             <h2 class="subtitle">
-                Ejemplo 1: HTML
+                HTML
             </h2>
 
-            <pre class="language-html"><code><span class="icon-svg-example"></span></code></pre>
+            <pre class="language-html"><code>&lt;span&nbsp;class=&quot;icon-svg-example&quot;&gt;&lt;/span&gt;
+&lt;span&nbsp;class=&quot;icon-svg-example-map&quot;&gt;&lt;/span&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
@@ -86,6 +194,7 @@
 
             <div class="result">
                 <span class="icon-svg-example"></span>
+                <span class="icon-svg-example-map"></span>
             </div>
         </div>
     </section>

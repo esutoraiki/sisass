@@ -13,7 +13,6 @@
         componentes UI y helpers responsive, además de funciones de apoyo para mapas, listas, strings y unidades.
         Muchas utilidades aceptan configuración mediante mapas para mantener una API consistente y escalable.
     </p>
-
     <div class="group_title">
         <h2 class="subtitle">
             Clasificación de mixins
@@ -64,7 +63,7 @@
             </tr>
             <tr>
                 <td><b>SVG</b></td>
-                <td><a href="../pages/base.html#icon-svg">icon-svg</a></td>
+                <td><a href="../pages/base.html#icon-svg">icon-svg</a>, <a href="../pages/base.html#icon_svg_mask">icon_svg_mask</a></td>
             </tr>
             <tr>
                 <td><b>Animaciones</b></td>
@@ -118,4 +117,31 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="group_title">
+        <h2 class="subtitle">
+            Uso de parametros y alias
+        </h2>
+    </div>
+    <p class="description">
+        En SISASS, muchos mixins pueden usarse de dos formas. La primera es con parámetros secuenciales, es decir,
+        pasando los valores en el mismo orden en que aparecen en la firma del mixin. La segunda es con sintaxis
+        <b>map</b>, donde se envía un mapa de claves y valores para nombrar cada opción de forma explícita.
+        Un <b>map</b> se escribe con pares <b>clave: valor</b>, por ejemplo:
+        <b>(position: absolute, y: 10px, x: 20px)</b>.
+    </p>
+    <p class="description">
+        La diferencia práctica es importante: con parámetros secuenciales debes respetar el orden exacto de la firma
+        del mixin, mientras que con sintaxis <b>map</b> el orden de las claves no altera el resultado, porque cada valor
+        se resuelve por nombre. Por ejemplo, <b>@include position(absolute, 10px, 20px);</b> depende del orden,
+        mientras que <b>@include position((x: 20px, position: absolute, y: 10px));</b> produce la misma configuración
+        aunque las claves estén reordenadas.
+    </p>
+    <p class="description">
+        En las tablas de parámetros, cuando una entrada aparece como <b>position | p</b> o <b>top | t</b>, significa que
+        todas esas claves apuntan a la misma configuración dentro de la sintaxis <b>map</b>. El nombre ubicado más a la
+        izquierda es el nombre principal y los siguientes son alias. La precedencia se resuelve en ese mismo orden:
+        primero gana el nombre principal, luego el primer alias, después el siguiente, y así sucesivamente. Si una misma
+        opción tiene más de un alias, el valor efectivo será el del primer nombre disponible según el orden documentado.
+    </p>
 </article>

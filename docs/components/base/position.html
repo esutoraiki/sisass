@@ -24,13 +24,13 @@
         <h3 class="subtitle">
             Sintaxis alternativa (map)
         </h3>
-        <pre class="language-scss"><code>@include&nbsp;position((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;relative,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;yaxis:&nbsp;top,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;xaxis:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;right:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bottom:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;t:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;b:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;l:&nbsp;null&NewLine;));</code></pre>
+        <pre class="language-scss"><code>@include&nbsp;position((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;relative,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;relative,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;yaxis:&nbsp;top,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;xaxis:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;right:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bottom:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;t:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;b:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;l:&nbsp;null&NewLine;));</code></pre>
         <p class="description">
-            Uso recomendado de map: define <b>position</b> y luego elige una sola estrategia. Si incluyes <b>top/right/bottom/left</b> o <b>t/r/b/l</b>, se usa sintaxis explicita; si no, se aplica la sintaxis por ejes <b>y/x</b>.
+            Uso recomendado de map: define <b>position</b> o <b>p</b> y luego elige una sola estrategia. Si incluyes <b>top/right/bottom/left</b> o <b>t/r/b/l</b>, se usa sintaxis explicita; si no, se aplica la sintaxis por ejes <b>y/x</b>.
         </p>
 
         <p class="description">
-            Valores por defecto: relative, y: 0, x: 0, yaxis: top, xaxis: left, top/right/bottom/left: null, t/r/b/l: null.
+            Valores por defecto: position/p relative, y: 0, x: 0, yaxis: top, xaxis: left, top/right/bottom/left: null, t/r/b/l: null.
         </p>
         <table class="full">
             <thead>
@@ -43,63 +43,63 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$position</b></td>
+                    <td><b>position | p</b></td>
                     <td>String | Map</td>
                     <td>relative</td>
-                    <td>Define la propiedad <b>position</b>. Tambien puede recibir un map con claves de ejes y lados.</td>
+                    <td>Define la propiedad <b>position</b>. Tambien puede recibir un map; en esa sintaxis se admite la clave <b>position</b> o su alias <b>p</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$y</b></td>
+                    <td><b>y</b></td>
                     <td>Medida</td>
                     <td>0</td>
                     <td>Define el valor del offset para el eje Y cuando no se usa un lado explicito.</td>
                 </tr>
                 <tr>
-                    <td><b>$x</b></td>
+                    <td><b>x</b></td>
                     <td>Medida</td>
                     <td>0</td>
                     <td>Define el valor del offset para el eje X cuando no se usa un lado explicito.</td>
                 </tr>
                 <tr>
-                    <td><b>$yaxis</b></td>
+                    <td><b>yaxis</b></td>
                     <td>String</td>
                     <td>top</td>
                     <td>Selecciona la propiedad CSS del eje Y (por ejemplo: top o bottom).</td>
                 </tr>
                 <tr>
-                    <td><b>$xaxis</b></td>
+                    <td><b>xaxis</b></td>
                     <td>String</td>
                     <td>left</td>
                     <td>Selecciona la propiedad CSS del eje X (por ejemplo: left o right).</td>
                 </tr>
                 <tr>
-                    <td><b>top</b></td>
+                    <td><b>top | t</b></td>
                     <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Asigna <b>top</b> de forma explicita cuando se usa map. Alias: <b>t</b>.</td>
+                    <td>Asigna <b>top</b> de forma explicita cuando se usa map.</td>
                 </tr>
                 <tr>
-                    <td><b>right</b></td>
+                    <td><b>right | r</b></td>
                     <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Asigna <b>right</b> de forma explicita cuando se usa map. Alias: <b>r</b>.</td>
+                    <td>Asigna <b>right</b> de forma explicita cuando se usa map.</td>
                 </tr>
                 <tr>
-                    <td><b>bottom</b></td>
+                    <td><b>bottom | b</b></td>
                     <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Asigna <b>bottom</b> de forma explicita cuando se usa map. Alias: <b>b</b>.</td>
+                    <td>Asigna <b>bottom</b> de forma explicita cuando se usa map.</td>
                 </tr>
                 <tr>
-                    <td><b>left</b></td>
+                    <td><b>left | l</b></td>
                     <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Asigna <b>left</b> de forma explicita cuando se usa map. Alias: <b>l</b>.</td>
+                    <td>Asigna <b>left</b> de forma explicita cuando se usa map.</td>
                 </tr>
             </tbody>
         </table>
         <p class="description">
-            Precedencia: si el map incluye <b>top</b>, <b>right</b>, <b>bottom</b> o <b>left</b> (o sus aliases), esos lados se aplican primero y reemplazan la salida basada en <b>y/x</b>. Si se define clave larga y alias al mismo tiempo, prevalece la clave larga.
+            Precedencia: si el map incluye <b>top</b>, <b>right</b>, <b>bottom</b> o <b>left</b> (o sus aliases), esos lados se aplican primero y reemplazan la salida basada en <b>y/x</b>. Si se define <b>position</b> y <b>p</b> al mismo tiempo, prevalece <b>position</b>. Si se define clave larga y alias al mismo tiempo, prevalece la clave larga.
         </p>
 
         <h2 class="title">

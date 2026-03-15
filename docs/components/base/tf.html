@@ -12,8 +12,15 @@
     </div>
 
     <p class="description">
-        Mixin combinado para texto y tipografia. Usa los mismos defaults de
+        Mixin combinado para texto y tipografía. Usa los mismos defaults de
         <b>text</b> y <b>font</b>, pero recibe un solo map con todas las claves.
+    </p>
+    <p class="description">
+        Este mixin solo acepta sintaxis <b>map</b>. Si se envía un valor distinto
+        de un map, genera un error. Admite las claves <b>align | a</b>,
+        <b>transform | t</b>, <b>decoration | d</b>, <b>wrap | wr</b>,
+        <b>size | s</b>, <b>family | f</b>, <b>weight | w</b>, <b>style</b>,
+        <b>line-height | lh</b> y <b>variant | v</b>.
     </p>
 
     <section class="use">
@@ -21,8 +28,11 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin&nbsp;tf($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;align:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;decoration:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;wrap:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;1em,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;&quot;sans-serif&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;&quot;none&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;variant:&nbsp;normal&NewLine;);&NewLine;</code></pre>
+        <pre class="language-scss"><code>@mixin&nbsp;tf($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;align:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;decoration:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;wrap:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;1em,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;&quot;sans-serif&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;line-height:&nbsp;&quot;none&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;variant:&nbsp;normal&NewLine;));</code></pre>
 
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
@@ -34,43 +44,43 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>align</b></td>
+                    <td><b>align | a</b></td>
                     <td>String</td>
                     <td>left</td>
                     <td>Define <b>text-align</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>transform</b></td>
+                    <td><b>transform | t</b></td>
                     <td>String</td>
                     <td>initial</td>
                     <td>Define <b>text-transform</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>decoration</b></td>
+                    <td><b>decoration | d</b></td>
                     <td>String</td>
                     <td>initial</td>
                     <td>Define <b>text-decoration</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>wrap</b></td>
+                    <td><b>wrap | wr</b></td>
                     <td>String</td>
                     <td>initial</td>
                     <td>Define <b>text-wrap</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>size</b></td>
+                    <td><b>size | s</b></td>
                     <td>String</td>
                     <td>1em</td>
                     <td>Define <b>font-size</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>family</b></td>
+                    <td><b>family | f</b></td>
                     <td>String</td>
                     <td>"sans-serif"</td>
                     <td>Define <b>font-family</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>weight</b></td>
+                    <td><b>weight | w</b></td>
                     <td>String | Number</td>
                     <td>normal</td>
                     <td>Define <b>font-weight</b>.</td>
@@ -82,13 +92,13 @@
                     <td>Define <b>font-style</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>line-height</b></td>
+                    <td><b>line-height | lh</b></td>
                     <td>String | Number</td>
                     <td>"none"</td>
-                    <td>Define <b>line-height</b>.</td>
+                    <td>Define <b>line-height</b> cuando su valor es distinto de <b>"none"</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>variant</b></td>
+                    <td><b>variant | v</b></td>
                     <td>String</td>
                     <td>normal</td>
                     <td>Define <b>font-variant</b>.</td>
@@ -114,14 +124,13 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;tf_example_params&quot;&gt;TF con parametros individuales&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;tf_example_map&quot;&gt;TF usando map&lt;/p&gt;</code></pre>
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;tf_example_map&quot;&gt;TF usando map&lt;/p&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <p class="tf_example_params">TF con parametros individuales</p>
                 <p class="tf_example_map">TF usando map</p>
             </div>
         </div>

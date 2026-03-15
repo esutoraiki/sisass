@@ -36,11 +36,19 @@
   First, show the `Interface` with positional signature.
   Then add `Sintaxis alternativa (map)` with an `@include` example containing map keys and defaults.
   Add a short defaults note when needed (for example: `Valores por defecto: ...`).
+- If a mixin supports positional parameters and `map` syntax, document them in two separate parameter tables.
+- Parameter tables must include a subtitle that clearly indicates whether they document `Parametros secuenciales` or `Sintaxis map`.
 - In parameter tables, use headers in this exact order:
   `Parametro` (for positional or mixed APIs) or `Clave` (for map-only APIs), then `Tipo`, `Default`, `Descripcion`.
+- In parameter tables, parameter names must not start with `$`; document them without the SCSS variable prefix.
+- In parameter tables, list all supported aliases in the same entry separated by `|` (for example `position | p` or `top | t`).
+- In sequential-parameter tables, parameters must appear in the exact signature order because order matters.
+- In `map`-syntax tables, document the main key first and then its aliases in the same order used by the mixin implementation.
 - In parameter tables for map-based mixins, list map keys directly (`bg`, `color`, etc.), not repeated `$attr` labels.
-- In mixed APIs, the first row should document that the first positional argument can also be a map when that behavior exists (for example `Color | Map`).
+- If the first positional parameter can also receive a `map` only to enable the alternative `map` syntax, its type in the sequential-parameter table must show only the actual positional type.
+- If the first parameter is genuinely of type `map` and not just an entry point for an alternative syntax, document `Map` as its type.
 - Each table row description must explain the resulting CSS property or behavior with short, direct wording.
+- Verify accents and punctuation in documentation text before finishing edits.
 - Keep terminology and spelling consistent with existing docs pages:
   `Tipo`, `Version`, `Interface`, `Sintaxis alternativa (map)`, `Ejemplo`, `Descripcion`, `Parametro`/`Clave`, `Default`.
 - Keep examples synchronized with real assets:
