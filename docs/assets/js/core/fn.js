@@ -27,12 +27,22 @@ const
 function contentLoad(attr = {}) {
     let
         url = attr.url || null,
-        success = attr.success || (function () { return undefined; })
+        success = attr.success || (function () { return undefined; }),
+        complete = attr.complete || (function () { return undefined; })
     ;
 
     fetch(url)
         .then(response => response.json())
         .then((data) => {
+            let
+                pending_components = data.components.length
+            ;
+
+            if (pending_components === 0) {
+                complete();
+                return;
+            }
+
             for (const element in data.components) {
                 const
                     component = data.components[element]
@@ -59,6 +69,11 @@ function contentLoad(attr = {}) {
                             success: () => {
                                 checkLoad[element] = true;
                                 success(component.id);
+                                pending_components -= 1;
+
+                                if (pending_components === 0) {
+                                    complete();
+                                }
                             }
                         });
                     })

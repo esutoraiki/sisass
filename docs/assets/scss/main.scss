@@ -29,6 +29,10 @@ html { scroll-behavior: smooth; }
     .main_header {
         @include wh(100vw);
         padding: 35px min(2.08vw, 40px);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+        align-items: start;
+        gap: 20px;
 
         .logo_sisass {
             @include ht;
@@ -39,6 +43,125 @@ html { scroll-behavior: smooth; }
             );
             display: block;
         }
+
+        .page_search {
+            @include wh(500px);
+            @include position((
+                p: fixed,
+                t: 15px,
+                r: 15px
+            ));
+            z-index: 3;
+        }
+
+        .page_search_label {
+            @include font(szrem(15), $f2, bold);
+            @include text;
+            margin-bottom: 8px;
+            display: block;
+            color: $c6;
+        }
+
+        .page_search_box {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 10px;
+        }
+
+        .page_search_input {
+            @include font(szrem(16), $f1);
+            @include border-radius(8px);
+            @include no-border;
+            @include bc($c1, $c3);
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px 16px;
+            border: 1px solid color.adjust($c3, $lightness: 55%);
+        }
+
+        .page_search_clear {
+            @include font(szrem(15), $f2, bold);
+            @include border-radius(8px);
+            @include no-border;
+            @include bc($c6, $c1);
+            padding: 0 16px;
+            cursor: pointer;
+
+            &:disabled {
+                opacity: 0.45;
+                cursor: not-allowed;
+            }
+        }
+
+        .page_search_results {
+            @include bc($c1, $c3);
+            @include border-radius(10px);
+            width: 100%;
+            max-height: min(60vh, 540px);
+            box-sizing: border-box;
+            border: 1px solid color.adjust($c3, $lightness: 60%);
+            overflow: auto;
+            margin-top: 10px;
+            box-shadow: 0 14px 30px rgba($c2, 0.08);
+            display: none;
+
+            &.is_visible {
+                display: block;
+            }
+        }
+
+        .page_search_state,
+        .page_search_item {
+            padding: 14px 16px;
+        }
+
+        .page_search_state {
+            @include text_1;
+            margin-bottom: 0;
+        }
+
+        .page_search_item {
+            display: block;
+            text-decoration: none;
+            border-bottom: 1px solid color.adjust($c3, $lightness: 63%);
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: color.adjust($c7, $lightness: 2%);
+            }
+        }
+
+        .page_search_title {
+            @include font(szrem(18), $f2, bold);
+            @include text;
+            margin-bottom: 6px;
+            color: $c5;
+        }
+
+        .page_search_category,
+        .page_search_excerpt {
+            @include text_1;
+            margin-bottom: 0;
+        }
+
+        .page_search_category {
+            font-weight: bold;
+            color: color.adjust($c6, $lightness: 10%);
+        }
+
+        .page_search_excerpt {
+            margin-top: 6px;
+        }
+    }
+
+    .search_target {
+        box-sizing: border-box;
+        transition: outline-color 0.2s ease-in-out;
+        outline: 3px solid color.adjust($c5, $lightness: 24%);
+        outline-offset: 10px;
     }
 
     .main_content {
@@ -203,6 +326,12 @@ html { scroll-behavior: smooth; }
                     li { list-style-type: disc; }
                 }
             }
+        }
+    }
+
+    @media (max-width: 860px) {
+        .main_header {
+            grid-template-columns: 1fr;
         }
     }
 }

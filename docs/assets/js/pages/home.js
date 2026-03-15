@@ -1,4 +1,5 @@
 import { contentLoad } from "../core/fn.js";
+import { init_documentation_search } from "../core/search.js";
 
 (function () {
     "use strict";
@@ -10,7 +11,12 @@ import { contentLoad } from "../core/fn.js";
         NSHome = (function () {
             return {
                 content: () => {
-                    contentLoad({ url: url_json });
+                    contentLoad({
+                        url: url_json,
+                        complete: function () {
+                            init_documentation_search();
+                        }
+                    });
                 }
             };
         }())

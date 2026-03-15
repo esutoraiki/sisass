@@ -2,4 +2,33 @@
     <a class="logo_sisass" href="/">
         SISASS Simple Interface for SASS
     </a>
+
+    <div class="page_search">
+        <label class="page_search_label" for="page_search_input">
+            Buscar en esta página
+        </label>
+        <div class="page_search_box">
+            <input
+                id="page_search_input"
+                class="page_search_input"
+                type="search"
+                placeholder="Buscar contenido, mixins, claves o descripciones"
+                autocomplete="off"
+                spellcheck="false"
+            />
+            <button
+                id="page_search_clear"
+                class="page_search_clear"
+                type="button"
+                aria-label="Limpiar búsqueda"
+            >
+                Limpiar
+            </button>
+        </div>
+        <div
+            id="page_search_results"
+            class="page_search_results"
+            aria-live="polite"
+        ></div>
+    </div>
 </header>
