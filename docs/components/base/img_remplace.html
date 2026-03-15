@@ -1,7 +1,7 @@
 <article id="img_remplace" class="img_remplace">
     <div class="group_title">
         <h2 class="subtitle">
-            img-remplace (_base.scscs)
+            img-replace (_base.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Mixin
@@ -19,103 +19,118 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin img-remplace($image, $iw: auto, $ih: auto, $display: block);</code></pre>
+        <pre class="language-scss"><code>@mixin img-replace($image, $iw: auto, $ih: auto, $display: block);</code></pre>
         <h2 class="title">
             Sintaxis alternativa (map)
         </h2>
-        <pre class="language-scss"><code>@include&nbsp;img-remplace((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;i:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;u:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;w:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;h:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;d:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;repeat:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;c:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;cover,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;s:&nbsp;cover&NewLine;));</code></pre>
+        <pre class="language-scss"><code>@include&nbsp;img-replace((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;i:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;u:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;w:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;h:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;d:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;repeat:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;r:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;p:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;c:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;cover,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;s:&nbsp;cover&NewLine;));</code></pre>
         <p class="description">
             Valores por defecto: iw: auto, ih: auto, display: block, repeat: no-repeat, position: center, color: transparent, size: cover.
         </p>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parametro</th>
+                    <th>Parámetro</th>
                     <th>Tipo</th>
                     <th>Default</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$image</b></td>
-                    <td>String | Map</td>
+                    <td><b>image</b></td>
+                    <td>String</td>
                     <td>Requerido</td>
-                    <td>Ruta de imagen o map. Si es map, habilita claves y aliases de imagen, medidas, display y background.</td>
+                    <td>Define la ruta de la imagen usada en <b>background-image</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$iw</b></td>
+                    <td><b>iw</b></td>
                     <td>Medida</td>
                     <td>auto</td>
-                    <td>Ancho del elemento cuando se usa sintaxis posicional.</td>
+                    <td>Define la propiedad <b>width</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$ih</b></td>
+                    <td><b>ih</b></td>
                     <td>Medida</td>
                     <td>auto</td>
-                    <td>Alto del elemento cuando se usa sintaxis posicional.</td>
+                    <td>Define la propiedad <b>height</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$display</b></td>
+                    <td><b>display</b></td>
                     <td>String</td>
                     <td>block</td>
                     <td>Define el valor de <b>display</b> del elemento.</td>
                 </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <table class="full">
+            <thead>
                 <tr>
-                    <td><b>image | url | i | u</b> (map)</td>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>image | url | i | u</b></td>
                     <td>String</td>
                     <td>""</td>
                     <td>Ruta de la imagen de fondo. Prioridad de lectura: image, luego url, luego i, luego u.</td>
                 </tr>
                 <tr>
-                    <td><b>width | w</b> (map)</td>
+                    <td><b>width | w</b></td>
                     <td>Medida</td>
                     <td>auto</td>
-                    <td>Ancho del elemento cuando se usa sintaxis map.</td>
+                    <td>Define la propiedad <b>width</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>height | h</b> (map)</td>
+                    <td><b>height | h</b></td>
                     <td>Medida</td>
                     <td>auto</td>
-                    <td>Alto del elemento cuando se usa sintaxis map.</td>
+                    <td>Define la propiedad <b>height</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>display | d</b> (map)</td>
+                    <td><b>display | d</b></td>
                     <td>String</td>
                     <td>block</td>
                     <td>Valor de <b>display</b> aplicado al elemento.</td>
                 </tr>
                 <tr>
-                    <td><b>repeat | r</b> (map)</td>
+                    <td><b>repeat | r</b></td>
                     <td>String</td>
                     <td>no-repeat</td>
                     <td>Valor de <b>background-repeat</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>position | p</b> (map)</td>
+                    <td><b>position | p</b></td>
                     <td>String</td>
                     <td>center</td>
                     <td>Valor de <b>background-position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>color | c</b> (map)</td>
+                    <td><b>color | c</b></td>
                     <td>Color</td>
                     <td>transparent</td>
                     <td>Valor de <b>background-color</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>size | s</b> (map)</td>
+                    <td><b>size | s</b></td>
                     <td>String</td>
                     <td>cover</td>
                     <td>Valor de <b>background-size</b>.</td>
                 </tr>
             </tbody>
         </table>
-        <p class="description">
-            Nota: en modo map, los aliases cortos solo se usan si no existe su clave larga equivalente.
-        </p>
-
         <h2 class="title">
             Ejemplo
         </h2>

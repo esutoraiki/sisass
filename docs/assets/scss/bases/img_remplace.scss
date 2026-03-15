@@ -2,11 +2,13 @@
 
 .documentationpage {
     .img_remplace_example {
-        @include img-remplace("../img/test/1.webp", 64px, 64px);
+        @include img-replace("../img/test/1.webp", 64px, 64px);
     }
 
     .img_remplace_parameters {
-        @include img-remplace((
+        border: 2px dashed $c4;
+
+        @include img-replace((
             image: "../img/test/2.webp",
             w: 250px,
             h: 150px,

@@ -1,7 +1,7 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .bc_example {
-                @include bc($c3, $c4);
-            }
+    .bc_example {
+        @include bc($c3, $c4);
+    }
 }

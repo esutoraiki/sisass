@@ -12,9 +12,16 @@
     </div>
 
     <p class="description">
-        Aplica un gradiente al texto.
-        El parametro recibe los argumentos de <b>linear-gradient</b>,
-        no la funcion completa.
+        Aplica un gradiente al texto a partir de los argumentos que recibe
+        <b>linear-gradient</b>. El mixin no espera la función completa, solo
+        la lista de valores que se le pasarán internamente.
+    </p>
+    <p class="description">
+        Además aplica <b>background-clip: text</b>,
+        <b>text-fill-color: transparent</b> y permite definir
+        <b>display</b>, cuyo valor por defecto es <b>inline-block</b>,
+        para que el gradiente se vea correctamente sobre el contenido del
+        texto.
     </p>
 
     <section class="use">
@@ -22,21 +29,32 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin gradient-text($grad);</code></pre>
+        <pre class="language-scss"><code>@mixin gradient-text($grad, $display: inline-block);</code></pre>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$grad</b></td>
+                    <td><b>grad</b></td>
                     <td>String | List</td>
-                    <td>Argumentos para <b>linear-gradient</b> (ej: <b>(90deg, #A01303, #2D396C)</b>).</td>
+                    <td>Sin default</td>
+                    <td>Define los argumentos que se envían a <b>linear-gradient</b> para generar <b>background-image</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display</b></td>
+                    <td>String</td>
+                    <td>inline-block</td>
+                    <td>Define la propiedad <b>display</b> aplicada al elemento con el texto degradado.</td>
                 </tr>
             </tbody>
         </table>
@@ -59,7 +77,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;gradient_text_example&quot;&gt;Texto&nbsp;gradiente&lt;/p&gt;</code></pre>
+            <pre class="language-html"><code>&lt;span&nbsp;class=&quot;gradient_text_example&quot;&gt;Texto&nbsp;gradiente&lt;/span&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

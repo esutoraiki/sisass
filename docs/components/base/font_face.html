@@ -7,7 +7,7 @@
             Tipo: Mixin
         </h3>
         <h3 class="attribute">
-            Version: 2.x.x
+            Versión: 2.x.x
         </h3>
     </div>
 
@@ -15,18 +15,14 @@
         Declara un <b>@font-face</b> mediante un map de atributos.
         Requiere <b>name</b> y <b>path</b>, y permite configurar
         <b>weight</b>, <b>style</b>, <b>display</b> y <b>exts</b>.
+        También admite los aliases <b>n</b>, <b>p</b>, <b>w</b>, <b>s</b>,
+        <b>d</b> y <b>e</b> para esas mismas claves.
     </p>
     <p class="description">
         Por defecto usa extensiones <b>woff2</b>, <b>woff</b> y <b>ttf</b>.
-        Si necesitas compatibilidad adicional, puedes agregar <b>eot</b> o
-        <b>svg</b> de forma opcional en la lista <b>exts</b>.
-    </p>
-    <p class="description">
-        Valores recomendados: <b>weight</b> acepta valores como
-        <b>normal</b>, <b>bold</b> o numericos (<b>100</b> a <b>900</b>);
-        <b>style</b> acepta <b>normal</b>, <b>italic</b> u <b>oblique</b>;
-        <b>display</b> acepta <b>auto</b>, <b>block</b>, <b>swap</b>,
-        <b>fallback</b> y <b>optional</b>.
+        También admite <b>eot</b>, <b>otf</b> y <b>svg</b> en la lista
+        <b>exts</b>; cuando usas <b>eot</b> o <b>svg</b>, el mixin ajusta el
+        valor de <b>src</b> con el formato requerido para cada caso.
     </p>
 
     <section class="use">
@@ -35,56 +31,55 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin&nbsp;font-face($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;path:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;swap,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;exts:&nbsp;(woff2,&nbsp;woff,&nbsp;ttf)&NewLine;);&NewLine;</code></pre>
-        <p class="description">
-            Valores por defecto: <b>weight normal</b>, <b>style normal</b>,
-            <b>display swap</b>, <b>exts (woff2, woff, ttf)</b>.
-        </p>
 
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Clave</th>
                     <th>Tipo</th>
                     <th>Default</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>name</b></td>
+                    <td><b>name | n</b></td>
                     <td>String</td>
                     <td>null</td>
-                    <td>Nombre de la familia tipografica para <b>font-family</b>.</td>
+                    <td>Nombre de la familia tipográfica para <b>font-family</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>path</b></td>
+                    <td><b>path | p</b></td>
                     <td>String</td>
                     <td>null</td>
-                    <td>Ruta base del archivo sin extension.</td>
+                    <td>Ruta base del archivo sin extensión.</td>
                 </tr>
                 <tr>
-                    <td><b>weight</b></td>
+                    <td><b>weight | w</b></td>
                     <td>String | Number</td>
                     <td>normal</td>
                     <td>Define <b>font-weight</b> dentro de <b>@font-face</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>style</b></td>
+                    <td><b>style | s</b></td>
                     <td>String</td>
                     <td>normal</td>
                     <td>Define <b>font-style</b> dentro de <b>@font-face</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>display</b></td>
+                    <td><b>display | d</b></td>
                     <td>String</td>
                     <td>swap</td>
                     <td>Define <b>font-display</b> dentro de <b>@font-face</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>exts</b></td>
+                    <td><b>exts | e</b></td>
                     <td>List</td>
                     <td>(woff2, woff, ttf)</td>
-                    <td>Lista de extensiones a generar. <b>eot</b> y <b>svg</b> son opcionales.</td>
+                    <td>Lista de extensiones a generar en <b>src</b>. Soporta <b>eot</b>, <b>woff2</b>, <b>woff</b>, <b>ttf</b>, <b>otf</b> y <b>svg</b>.</td>
                 </tr>
             </tbody>
         </table>

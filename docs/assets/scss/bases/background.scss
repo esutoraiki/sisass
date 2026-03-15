@@ -17,7 +17,7 @@
 
     .background_gradient_linear {
         @include background((
-            image: linear-gradient(90deg, $c4, $c5)
+            i: linear-gradient(90deg, $c4, $c5)
         ));
     }
 
@@ -31,9 +31,9 @@
         @include wh(220px, 140px);
         @include background((
             url: "../img/test/1.webp",
-            repeat: no-repeat,
+            r: no-repeat,
             position: center,
-            color: $c7,
+            c: $c7,
             size: cover
         ));
     }

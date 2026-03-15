@@ -11,8 +11,17 @@
         </h3>
     </div>
 
-    <p class="description">Inserta un SVG como background (requiere postcss-inline-svg).</p>
-    <p class="description">Admite firma posicional o un map con opciones para tamano, color, ruta, posicion y fondo.</p>
+    <p class="description">
+        Inserta un SVG como background. Requiere <b>postcss-inline-svg</b> para
+        resolver las funciones usadas por el mixin.
+    </p>
+    <p class="description">
+        Admite firma posicional o sintaxis <b>map</b> con opciones para tamaño,
+        color, ruta, posición y fondo. Las claves <b>position</b> y
+        <b>background</b> reutilizan la sintaxis de los mixins
+        <a href="../pages/base.html#position">position</a> y
+        <a href="../pages/base.html#background">background</a>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -24,6 +33,9 @@
             Valores por defecto: w auto, h auto, fill "none", def "none", path "../../img/svg/".
         </p>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
@@ -35,37 +47,37 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$svg</b></td>
-                    <td>String | Map</td>
+                    <td><b>svg</b></td>
+                    <td>String</td>
                     <td>-</td>
-                    <td>Nombre del SVG o map de configuracion del icono.</td>
+                    <td>Define el nombre del archivo SVG.</td>
                 </tr>
                 <tr>
-                    <td><b>$w</b></td>
+                    <td><b>w</b></td>
                     <td>Medida</td>
                     <td>auto</td>
-                    <td>Define el ancho aplicado por la mezcla <b>wh</b>.</td>
+                    <td>Define la propiedad <b>width</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$h</b></td>
+                    <td><b>h</b></td>
                     <td>Medida</td>
                     <td>auto</td>
-                    <td>Define el alto aplicado por la mezcla <b>wh</b>.</td>
+                    <td>Define la propiedad <b>height</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$fill</b></td>
+                    <td><b>fill</b></td>
                     <td>Color | String</td>
                     <td>"none"</td>
                     <td>Aplica el color del SVG con <b>svg-load</b> o activa el modo <b>inline</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$def</b></td>
+                    <td><b>def</b></td>
                     <td>String</td>
                     <td>"none"</td>
-                    <td>Define el SVG inline usado cuando <b>$fill</b> es <b>"inline"</b>.</td>
+                    <td>Define el SVG inline usado cuando <b>fill</b> es <b>"inline"</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$path</b></td>
+                    <td><b>path</b></td>
                     <td>String</td>
                     <td>"../../img/svg/"</td>
                     <td>Define la ruta base desde donde se carga el archivo SVG.</td>
@@ -106,6 +118,9 @@
             Valores por defecto: svg "", width auto, height auto, fill "none", def "none", path "../../img/svg/".
         </p>
 
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
@@ -156,13 +171,13 @@
                     <td><b>position</b></td>
                     <td>Map</td>
                     <td>(type: absolute, y: 0, x: 0, yaxis: top, xaxis: left, top: null, right: null, bottom: null, left: null)</td>
-                    <td>Controla la posicion usada por la mezcla <b>position</b>.</td>
+                    <td>Controla la posición usada por el mixin <a href="../pages/base.html#position">position</a> y sigue su misma sintaxis map.</td>
                 </tr>
                 <tr>
                     <td><b>background</b></td>
                     <td>Map</td>
                     <td>(repeat: no-repeat, position: top left, color: transparent, size: 100%)</td>
-                    <td>Controla repeat, posicion, color y size del background final.</td>
+                    <td>Controla repeat, posición, color y size del fondo final usando la sintaxis map del mixin <a href="../pages/base.html#background">background</a>.</td>
                 </tr>
             </tbody>
         </table>
@@ -172,17 +187,17 @@
         </h2>
         <div class="container_example">
             <h2 class="subtitle">
-                SCSS
+                Ejemplo 1: SCSS
             </h2>
             <pre class="language-scss" data-src="../assets/scss/bases/icon-svg.scss"></pre>
 
             <h2 class="subtitle">
-                CSS generado
+                Ejemplo 1: CSS generado
             </h2>
             <pre class="language-css" data-src="../assets/css/bases/icon-svg.css"></pre>
 
             <h2 class="subtitle">
-                HTML
+                Ejemplo 1: HTML
             </h2>
 
             <pre class="language-html"><code>&lt;span&nbsp;class=&quot;icon-svg-example&quot;&gt;&lt;/span&gt;

@@ -180,6 +180,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1.7777777778;
+  max-height: 500px;
 }
 .documentationpage .contain_container .contain_example {
   width: 100%;
@@ -191,6 +192,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1.7777777778;
+  max-height: 500px;
 }
 .documentationpage .cover_container .cover_example {
   width: 100%;
@@ -386,6 +388,7 @@
   display: block;
 }
 .documentationpage .img_remplace_parameters {
+  border: 2px dashed #FBB03B;
   background-image: url("../img/test/2.webp");
   background-repeat: no-repeat;
   background-position: center;

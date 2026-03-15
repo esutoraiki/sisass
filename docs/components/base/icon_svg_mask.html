@@ -11,8 +11,16 @@
         </h3>
     </div>
 
-    <p class="description">Aplica un SVG como mascara CSS y colorea el resultado con <code>background-color</code>.</p>
-    <p class="description">Requiere <code>postcss-inline-svg</code> porque utiliza <code>svg-load()</code> para construir <code>mask-image</code>.</p>
+    <p class="description">
+        Aplica un SVG como máscara CSS y colorea el resultado con
+        <b>background-color</b>.
+    </p>
+    <p class="description">
+        Requiere <b>postcss-inline-svg</b> porque utiliza
+        <b>svg-load()</b> para construir <b>mask-image</b>. También
+        usa el mixin <a href="../pages/base.html#position">position</a> cuando
+        la clave <b>position</b> es distinta de <b>false</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -21,7 +29,7 @@
 
         <pre class="language-scss"><code>@mixin icon_svg_mask($attr: (
     svg: false,
-    color: $c1,
+    color: #FFFFFF,
     position: absolute,
     x: 0,
     y: 0,
@@ -31,20 +39,27 @@
     height: 100px,
     repeat: no-repeat,
     size: contain,
-    path: $i1,
+    path: "../../img/svg/",
     display: block
 ));</code></pre>
         <p class="description">
-            Valores por defecto: color $c1, position absolute, x 0, y 0, xaxis left, yaxis top, width 100px, height 100px, repeat no-repeat, size contain, path $i1, display block.
+            Valores por defecto: color <b>#FFFFFF</b>, position
+            <b>absolute</b>, x <b>0</b>, y <b>0</b>, xaxis <b>left</b>, yaxis
+            <b>top</b>, width <b>100px</b>, height <b>100px</b>, repeat
+            <b>no-repeat</b>, size <b>contain</b>, path
+            <b>"../../img/svg/"</b> y display <b>block</b>.
         </p>
 
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Clave</th>
                     <th>Tipo</th>
                     <th>Default</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,79 +67,79 @@
                     <td><b>svg</b></td>
                     <td>String | Bool</td>
                     <td>false</td>
-                    <td>Nombre base del archivo SVG. Si es false no genera la mascara.</td>
+                    <td>Nombre base del archivo SVG. Si es <b>false</b>, no genera la máscara.</td>
                 </tr>
                 <tr>
                     <td><b>color</b></td>
                     <td>Color</td>
-                    <td>$c1</td>
-                    <td>Define el color final del icono mediante <code>background-color</code>.</td>
+                    <td>#FFFFFF</td>
+                    <td>Define el color final del icono mediante <b>background-color</b>.</td>
                 </tr>
                 <tr>
                     <td><b>position</b></td>
                     <td>String | Bool</td>
                     <td>absolute</td>
-                    <td>Tipo de posicionamiento usado por el mixin <code>position()</code>. Si es false no aplica posicionamiento.</td>
+                    <td>Tipo de posicionamiento usado por el mixin <a href="../pages/base.html#position">position</a>. Si es <b>false</b>, no aplica posicionamiento.</td>
                 </tr>
                 <tr>
                     <td><b>x</b></td>
                     <td>Medida</td>
                     <td>0</td>
-                    <td>Desplazamiento horizontal aplicado por <code>position()</code>.</td>
+                    <td>Desplazamiento horizontal aplicado por <b>position()</b>.</td>
                 </tr>
                 <tr>
                     <td><b>y</b></td>
                     <td>Medida</td>
                     <td>0</td>
-                    <td>Desplazamiento vertical aplicado por <code>position()</code>.</td>
+                    <td>Desplazamiento vertical aplicado por <b>position()</b>.</td>
                 </tr>
                 <tr>
                     <td><b>xaxis</b></td>
                     <td>String</td>
                     <td>left</td>
-                    <td>Eje horizontal usado por <code>position()</code>.</td>
+                    <td>Eje horizontal usado por <b>position()</b>.</td>
                 </tr>
                 <tr>
                     <td><b>yaxis</b></td>
                     <td>String</td>
                     <td>top</td>
-                    <td>Eje vertical usado por <code>position()</code>.</td>
+                    <td>Eje vertical usado por <b>position()</b>.</td>
                 </tr>
                 <tr>
                     <td><b>width</b></td>
                     <td>Medida</td>
                     <td>100px</td>
-                    <td>Asigna el ancho del area visible del icono.</td>
+                    <td>Asigna el ancho del área visible del icono.</td>
                 </tr>
                 <tr>
                     <td><b>height</b></td>
                     <td>Medida</td>
                     <td>100px</td>
-                    <td>Asigna el alto del area visible del icono.</td>
+                    <td>Asigna el alto del área visible del icono.</td>
                 </tr>
                 <tr>
                     <td><b>repeat</b></td>
                     <td>String</td>
                     <td>no-repeat</td>
-                    <td>Controla la repeticion de la mascara.</td>
+                    <td>Controla la repetición de la máscara.</td>
                 </tr>
                 <tr>
                     <td><b>size</b></td>
                     <td>String | Medida</td>
                     <td>contain</td>
-                    <td>Controla el escalado de la mascara SVG.</td>
+                    <td>Controla el escalado de la máscara SVG.</td>
                 </tr>
                 <tr>
                     <td><b>path</b></td>
                     <td>String</td>
-                    <td>$i1</td>
+                    <td>"../../img/svg/"</td>
                     <td>Prefijo de ruta donde se busca el archivo SVG.</td>
                 </tr>
                 <tr>
                     <td><b>display</b></td>
                     <td>String</td>
                     <td>block</td>
-                    <td>Define el valor de <code>display</code> del elemento.</td>
+                    <td>Define el valor de <b>display</b> del elemento.</td>
                 </tr>
             </tbody>
         </table>
@@ -147,7 +162,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><span class="icon_svg_mask_example"></span></code></pre>
+            <pre class="language-html"><code>&lt;span&nbsp;class=&quot;icon_svg_mask_example&quot;&gt;&lt;/span&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

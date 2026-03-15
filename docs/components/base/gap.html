@@ -11,7 +11,7 @@
         </h3>
     </div>
 
-    <p class="description">Define la separacion entre elementos hijos en contenedores <b>flex</b> o <b>grid</b>.</p>
+    <p class="description">Define la separación entre elementos hijos en contenedores <b>flex</b> o <b>grid</b>.</p>
     <p class="description">El mixin escribe <b>grid-gap</b> y <b>gap</b> para mantener compatibilidad, pero no define el tipo de layout del contenedor.</p>
 
     <section class="use">
@@ -21,21 +21,24 @@
 
         <pre class="language-scss"><code>@mixin gap($value);</code></pre>
         <p class="description">
-            Sin valor por defecto: debes enviar la separacion a aplicar.
+            Sin valor por defecto: debes enviar la separación a aplicar.
         </p>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parametro</th>
+                    <th>Parámetro</th>
                     <th>Tipo</th>
                     <th>Default</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$value</b></td>
+                    <td><b>value</b></td>
                     <td>Medida | Lista</td>
                     <td>Requerido</td>
                     <td>Define el valor de <b>gap</b> y <b>grid-gap</b>. Acepta un valor o dos valores (fila/columna).</td>

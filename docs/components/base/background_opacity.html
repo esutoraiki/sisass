@@ -12,9 +12,16 @@
     </div>
 
     <p class="description">
-        Genera un background con opacidad usando sintaxis moderna o rgba.
-        Soporta dos formas de uso: parametros individuales o un map con
-        las claves <b>color</b>, <b>opacity</b> y <b>use_legacy</b>.
+        Genera un color de fondo con opacidad usando sintaxis moderna
+        <b>rgb(... / alpha)</b> o <b>rgba(...)</b>. Soporta dos formas de uso:
+        parámetros individuales o sintaxis <b>map</b>.
+    </p>
+    <p class="description">
+        Cuando <b>use_legacy</b> es <b>false</b>, el mixin genera una salida
+        moderna con canales RGB y alpha. Cuando es <b>true</b>, genera
+        <b>rgba(...)</b> como valor final de <b>background-color</b>.
+        En sintaxis <b>map</b> también admite los aliases <b>c</b>,
+        <b>o</b> y <b>ul</b>.
     </p>
 
     <section class="use">
@@ -22,7 +29,7 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin background-opacity($color: #FFF, $opacity: 0.8, $use_legacy: false);</code></pre>
+        <pre class="language-scss"><code>@mixin background-opacity($bg: #FFF, $opacity: 0.8, $use_legacy: false);</code></pre>
 
         <h2 class="title">
             Sintaxis alternativa (map)
@@ -34,6 +41,9 @@
             Valores por defecto: <b>#FFF, 0.8, false.</b>
         </p>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
@@ -45,22 +55,56 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$color</b></td>
-                    <td>Color | Map</td>
+                    <td><b>bg</b></td>
+                    <td>Color</td>
                     <td>#FFF</td>
-                    <td>Si es color, define el color base. Si es map, puede incluir <b>color</b>, <b>opacity</b> y <b>use_legacy</b>.</td>
+                    <td>Define el color base usado para generar <b>background-color</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$opacity</b></td>
+                    <td><b>opacity</b></td>
                     <td>Number</td>
                     <td>0.8</td>
-                    <td>Define la opacidad cuando el primer parametro no es map.</td>
+                    <td>Define el nivel de opacidad aplicado al color de fondo.</td>
                 </tr>
                 <tr>
-                    <td><b>$use_legacy</b></td>
+                    <td><b>use_legacy</b></td>
                     <td>Bool</td>
                     <td>false</td>
-                    <td>Usar rgba como fallback cuando el primer parametro no es map.</td>
+                    <td>Define si el valor final usa <b>rgba(...)</b> en lugar de sintaxis moderna RGB con alpha.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>color | c</b></td>
+                    <td>Color</td>
+                    <td>#FFF</td>
+                    <td>Define el color base usado para generar <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>opacity | o</b></td>
+                    <td>Number</td>
+                    <td>0.8</td>
+                    <td>Define el nivel de opacidad aplicado al color de fondo.</td>
+                </tr>
+                <tr>
+                    <td><b>use_legacy | ul</b></td>
+                    <td>Bool</td>
+                    <td>false</td>
+                    <td>Define si el valor final usa <b>rgba(...)</b> en lugar de sintaxis moderna RGB con alpha.</td>
                 </tr>
             </tbody>
         </table>

@@ -2,6 +2,7 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1.7777777778;
+  max-height: 500px;
 }
 .documentationpage .cover_container .cover_example {
   width: 100%;

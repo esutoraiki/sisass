@@ -7,20 +7,15 @@
             Tipo: Mixin
         </h3>
         <h3 class="attribute">
-            Version: 2.x.x
+            Versión: 2.x.x
         </h3>
     </div>
 
     <p class="description">
         El autofill es el estado que aplica el navegador cuando completa
-        automaticamente un campo (por ejemplo, al sugerir un correo o una
-        contrasena guardada). Este mixin te permite controlar el color de fondo
+        automáticamente un campo (por ejemplo, al sugerir un correo o una
+        contraseña guardada). Este mixin te permite controlar el color de fondo
         y el color del texto en ese estado para mantener consistencia con tu UI.
-    </p>
-    <p class="description">
-        En este ejemplo el input usa el mixin con <b>$c4</b> como fondo y <b>$c5</b>
-        como color de texto. Para ver el efecto, escribe en el input y usa una
-        sugerencia del navegador, o guarda un valor y vuelve a cargar la pagina.
     </p>
 
     <section class="use">
@@ -30,13 +25,16 @@
 
         <pre class="language-scss"><code>@mixin&nbsp;autofill($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bg:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;border:&nbsp;null&NewLine;);&NewLine;</code></pre>
 
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Clave</th>
                     <th>Tipo</th>
                     <th>Default</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,19 +45,19 @@
                     <td>Define el color de fondo aplicado al estado autofill.</td>
                 </tr>
                 <tr>
-                    <td><b>color</b></td>
+                    <td><b>color | c</b></td>
                     <td>Color</td>
                     <td>initial</td>
                     <td>Define el color del texto aplicado al estado autofill.</td>
                 </tr>
                 <tr>
-                    <td><b>padding</b></td>
+                    <td><b>padding | p</b></td>
                     <td>Medida</td>
                     <td>null</td>
                     <td>Define un padding opcional para el estado autofill.</td>
                 </tr>
                 <tr>
-                    <td><b>border</b></td>
+                    <td><b>border | b</b></td>
                     <td>Border</td>
                     <td>null</td>
                     <td>Define un borde opcional para el estado autofill.</td>
@@ -70,6 +68,13 @@
         <h2 class="title">
             Ejemplo
         </h2>
+
+        <p class="note">
+            <b>Nota:</b> En este ejemplo el input usa el mixin con <b>$c4</b>
+            como fondo y <b>$c5</b> como color de texto. Para ver el efecto,
+            escribe en el input y usa una sugerencia del navegador, o guarda un
+            valor y vuelve a cargar la página.
+        </p>
 
         <div class="container_example">
             <h2 class="subtitle">

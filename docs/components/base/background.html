@@ -13,14 +13,17 @@
 
     <p class="description">
         Normaliza los estilos para las propiedades referentes al background.
-        Puedes usarlo para aplicar colores, imagenes de fondo o gradientes. El
+        Puedes usarlo para aplicar colores, imágenes de fondo o gradientes. El
         atributo <b>url</b> genera un background-image con url(), mientras que
-        <b>image</b> permite pasar cualquier valor valido de background-image
-        (por ejemplo, gradients o imagenes inline).
+        <b>image</b> permite pasar cualquier valor válido de background-image
+        (por ejemplo, gradientes o imágenes inline).
     </p>
     <p class="description">
-        Tambien puedes controlar repeticion, posicion y size del background con
-        las claves disponibles en el map.
+        También puedes controlar repetición, posición y size del background con
+        las claves disponibles en el map. El mixin también admite los aliases
+        <b>u</b>, <b>r</b>, <b>p</b>, <b>c</b>, <b>s</b> e <b>i</b> para
+        <b>url</b>, <b>repeat</b>, <b>position</b>, <b>color</b>,
+        <b>size</b> e <b>image</b>.
     </p>
 
     <section class="use">
@@ -30,10 +33,9 @@
 
         <pre class="language-scss"><code>@mixin&nbsp;background($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;url:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;repeat:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;&quot;&quot;&NewLine;);&NewLine;</code></pre>
 
-        <h2 class="title">
-            Atributos
-        </h2>
-
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
@@ -45,37 +47,37 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><b>url</b></td>
+                    <td><b>url | u</b></td>
                     <td>String</td>
                     <td>""</td>
                     <td>Valor a utilizar en la función url con background-image.</td>
                 </tr>
                 <tr>
-                    <td><b>repeat</b></td>
+                    <td><b>repeat | r</b></td>
                     <td>String</td>
                     <td>no-repeat</td>
                     <td>Valor a utilizar con background-repeat.</td>
                 </tr>
                 <tr>
-                    <td><b>position</b></td>
+                    <td><b>position | p</b></td>
                     <td>String</td>
                     <td>center</td>
                     <td>Valor a utilizar con background-position.</td>
                 </tr>
                 <tr>
-                    <td><b>color</b></td>
+                    <td><b>color | c</b></td>
                     <td>Color</td>
                     <td>transparent</td>
                     <td>Valor a utilizar con background-color.</td>
                 </tr>
                 <tr>
-                    <td><b>size</b></td>
+                    <td><b>size | s</b></td>
                     <td>String</td>
                     <td>auto</td>
                     <td>Valor a utilizar con background-size.</td>
                 </tr>
                 <tr>
-                    <td><b>image</b></td>
+                    <td><b>image | i</b></td>
                     <td>String</td>
                     <td>""</td>
                     <td>Valor a utilizar con background-image.</td>
@@ -83,6 +85,9 @@
             </tbody>
         </table>
 
+        <h2 class="title">
+            Ejemplo
+        </h2>
         <div class="container_example">
             <h2 class="subtitle">
                 Ejemplo 1: SCSS

@@ -10,8 +10,8 @@
     .background_opacity_example_map {
         @include background-opacity((
             color: $c2,
-            opacity: 0.35,
-            use_legacy: false
+            o: 0.35,
+            ul: false
         ));
         @include whs(100px);
     }

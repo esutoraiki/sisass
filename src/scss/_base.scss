@@ -100,21 +100,21 @@
 }
 
 // Text gradient
-@mixin gradient-text($grad) {
+@mixin gradient-text($grad, $display: inline-block) {
     @include linear-gradient($grad);
     @include background-clip(text);
     @include text-fill-color(transparent);
-    display: inline-block;
+    display: $display;
 }
 
 // Font Face
 @mixin font-face($attr: ()) {
-    $name: mapv($attr, name, null);
-    $path: mapv($attr, path, null);
-    $weight: mapv($attr, weight, normal);
-    $style: mapv($attr, style, normal);
-    $display: mapv($attr, display, swap);
-    $exts: mapv($attr, exts, (woff2, woff, ttf));
+    $name: mapv($attr, (name, n), null);
+    $path: mapv($attr, (path, p), null);
+    $weight: mapv($attr, (weight, w), normal);
+    $style: mapv($attr, (style, s), normal);
+    $display: mapv($attr, (display, d), swap);
+    $exts: mapv($attr, (exts, e), (woff2, woff, ttf));
 
     $valid_exts: (eot, woff2, woff, ttf, otf, svg);
     $extmods: (
@@ -188,9 +188,9 @@
 // autofill
 @mixin autofill($attr: ()) {
     $background: mapv($attr, bg, initial);
-    $color: mapv($attr, color, initial);
-    $padding: mapv($attr, padding, null);
-    $border: mapv($attr, border, null);
+    $color: mapv($attr, (color, c), initial);
+    $padding: mapv($attr, (padding, p), null);
+    $border: mapv($attr, (border, b), null);
 
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
@@ -207,12 +207,12 @@
 
 // Background
 @mixin background($attr: ()) {
-    $way: mapv($attr, url, "");
-    $repeat: mapv($attr, repeat, no-repeat);
-    $position: mapv($attr, position, center);
-    $color: mapv($attr, color, transparent);
-    $size: mapv($attr, size, auto);
-    $image: mapv($attr, image, "");
+    $way: mapv($attr, (url, u), "");
+    $repeat: mapv($attr, (repeat, r), no-repeat);
+    $position: mapv($attr, (position, p), center);
+    $color: mapv($attr, (color, c), transparent);
+    $size: mapv($attr, (size, s), auto);
+    $image: mapv($attr, (image, i), "");
 
     background: {
         @if $way != ""   { image: url($way); }
@@ -239,9 +239,9 @@
     $use_legacy_value: $use_legacy;
 
     @if meta.type-of($bg) == "map" {
-        $bg_value: mapv($bg, color, #FFF);
-        $opacity_value: mapv($bg, opacity, 0.8);
-        $use_legacy_value: mapv($bg, use_legacy, false);
+        $bg_value: mapv($bg, (color, c), #FFF);
+        $opacity_value: mapv($bg, (opacity, o), 0.8);
+        $use_legacy_value: mapv($bg, (use_legacy, ul), false);
     }
 
     background-color: $bg_value;
@@ -357,8 +357,8 @@
     object-fit: contain;
 }
 
-// Imagen remplace
-@mixin img-remplace($image, $iw: auto, $ih: auto, $display: block) {
+// Image replace
+@mixin img-replace($image, $iw: auto, $ih: auto, $display: block) {
     $image_value: $image;
     $width_value: $iw;
     $height_value: $ih;
@@ -392,6 +392,11 @@
     @include wh($width_value, $height_value);
     @include ht;
     display: $display_value;
+}
+
+// Backward compatibility alias
+@mixin img-remplace($image, $iw: auto, $ih: auto, $display: block) {
+    @include img-replace($image, $iw, $ih, $display);
 }
 
 // Include svg inline (Need gulp-postcss and postcss-inline-svg)

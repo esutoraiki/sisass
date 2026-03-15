@@ -23,6 +23,7 @@
   display: block;
 }
 .documentationpage .img_remplace_parameters {
+  border: 2px dashed #FBB03B;
   background-image: url("../img/test/2.webp");
   background-repeat: no-repeat;
   background-position: center;

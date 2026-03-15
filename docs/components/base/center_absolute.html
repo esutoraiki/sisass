@@ -11,7 +11,15 @@
         </h3>
     </div>
 
-    <p class="description">Centra un elemento de forma absoluta usando <b>position</b> y <b>transform</b>.</p>
+    <p class="description">
+        Centra un elemento de forma absoluta usando <b>position</b> y
+        <b>transform</b>.
+    </p>
+    <p class="description">
+        Internamente aplica <b>position: absolute</b>, ubica el elemento en
+        <b>50% / 50%</b> y luego corrige su propio tamaño con
+        <b>translate(-50%, -50%)</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -23,6 +31,16 @@
         <h2 class="title">
             Ejemplo
         </h2>
+
+        <p class="note">
+            <b>Nota:</b> El elemento con <b>position: absolute</b> se centra
+            respecto de su ancestro posicionado más cercano, es decir, el
+            primer contenedor padre con una propiedad <b>position</b> distinta
+            de <b>static</b> como <b>relative</b>, <b>absolute</b>,
+            <b>fixed</b> o <b>sticky</b>. Si no existe uno, el cálculo se hace
+            respecto del contenedor inicial de la página.
+        </p>
+
         <div class="container_example">
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
