@@ -121,10 +121,10 @@
             "node": "icon-svg"
         },
         {
-            "id": "icon_svg_mask",
-            "url": "../components/base/icon_svg_mask.html",
+            "id": "icon-svg-mask",
+            "url": "../components/base/icon-svg-mask.html",
             "position": "beforeend",
-            "node": "icon_svg_mask"
+            "node": "icon-svg-mask"
         },
         {
             "id": "normalize_svg",
@@ -133,10 +133,10 @@
             "node": "normalize_svg"
         },
         {
-            "id": "img_remplace",
-            "url": "../components/base/img_remplace.html",
+            "id": "img_replace",
+            "url": "../components/base/img_replace.html",
             "position": "beforeend",
-            "node": "img_remplace"
+            "node": "img_replace"
         },
         {
             "id": "keyframes",

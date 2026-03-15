@@ -1,8 +1,16 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .normalize_svg_example {
-                @include normalize-svg((width: 64px, height: 64px, position: relative));
-                background-color: $c7;
-            }
+    .normalize_svg_example {
+        @include normalize-svg((
+            width: 64px,
+            height: 64px,
+            position: (
+                position: relative,
+                y: 0,
+                x: 0
+            )
+        ));
+        background-color: $c7;
+    }
 }

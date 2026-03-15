@@ -12,8 +12,9 @@
     </div>
 
     <p class="description">
-        Inserta un SVG como background. Requiere <b>postcss-inline-svg</b> para
-        resolver las funciones usadas por el mixin.
+        Inserta un SVG como <b>background-image</b>. Requiere
+        <b>postcss-inline-svg</b> para resolver las funciones usadas por el
+        mixin.
     </p>
     <p class="description">
         Admite firma posicional o sintaxis <b>map</b> con opciones para tamaño,
@@ -89,7 +90,7 @@
             Sintaxis alternativa (map)
         </h2>
 
-        <pre class="language-scss"><code>@include icon-svg((
+<pre class="language-scss"><code>@include icon-svg((
     svg: "sisass",
     width: 32px,
     height: 32px,
@@ -97,7 +98,7 @@
     def: "none",
     path: "../../img/svg/",
     position: (
-        type: absolute,
+        position: absolute,
         y: 0,
         x: 0,
         yaxis: top,
@@ -116,6 +117,12 @@
 ));</code></pre>
         <p class="description">
             Valores por defecto: svg "", width auto, height auto, fill "none", def "none", path "../../img/svg/".
+        </p>
+        <p class="description">
+            Uso recomendado: <b>icon-svg</b> dibuja el SVG y su fondo, mientras
+            <a href="../pages/base.html#normalize_svg">normalize-svg</a>
+            prepara el elemento contenedor cuando necesitas un icono decorativo
+            en un pseudo-elemento posicionado.
         </p>
 
         <h3 class="subtitle">
@@ -170,14 +177,14 @@
                 <tr>
                     <td><b>position</b></td>
                     <td>Map</td>
-                    <td>(type: absolute, y: 0, x: 0, yaxis: top, xaxis: left, top: null, right: null, bottom: null, left: null)</td>
-                    <td>Controla la posición usada por el mixin <a href="../pages/base.html#position">position</a> y sigue su misma sintaxis map.</td>
+                    <td>(position | p: absolute, y: 0, x: 0, yaxis | ya: top, xaxis | xa: left, top: null, right: null, bottom: null, left: null)</td>
+                    <td>Controla la posición usada por el mixin <a href="../pages/base.html#position">position</a> y sigue su misma sintaxis map para esas claves.</td>
                 </tr>
                 <tr>
                     <td><b>background</b></td>
                     <td>Map</td>
                     <td>(repeat: no-repeat, position: top left, color: transparent, size: 100%)</td>
-                    <td>Controla repeat, posición, color y size del fondo final usando la sintaxis map del mixin <a href="../pages/base.html#background">background</a>.</td>
+                    <td>Controla <b>repeat</b>, <b>position</b>, <b>color</b> y <b>size</b> del fondo final con la sintaxis map usada por el mixin <a href="../pages/base.html#background">background</a> para esas claves.</td>
                 </tr>
             </tbody>
         </table>
@@ -185,6 +192,13 @@
         <h2 class="title">
             Ejemplo
         </h2>
+        <p class="note">
+            Nota: cuando el SVG se usa en <b>::before</b> o <b>::after</b>,
+            normalmente se combina con
+            <a href="../pages/base.html#normalize_svg">normalize-svg</a> para
+            preparar el contenedor con tamaño, posición relativa,
+            <b>display</b>, <b>z-index</b> y ocultamiento opcional de texto.
+        </p>
         <div class="container_example">
             <h2 class="subtitle">
                 Ejemplo 1: SCSS

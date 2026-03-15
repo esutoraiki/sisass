@@ -11,28 +11,145 @@
         </h3>
     </div>
 
-    <p class="description">Normaliza estilos para contenedores SVG.</p>
+    <p class="description">
+        Normaliza estilos para elementos que representen un recurso SVG dentro
+        de la interfaz.
+    </p>
+    <p class="description">
+        El mixin combina ocultamiento opcional de texto, tamaño,
+        posicionamiento, <b>display</b> y <b>z-index</b> en una sola
+        sintaxis <b>map</b>. El bloque <b>position</b> se resuelve con el mixin
+        <a href="../pages/base.html#position">position</a>.
+    </p>
 
     <section class="use">
         <h2 class="title">
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin normalize-svg($attr: ());</code></pre>
+        <pre class="language-scss"><code>@mixin normalize-svg($attr: (
+    width: auto,
+    height: auto,
+    position: (
+        position: relative,
+        y: 0,
+        x: 0,
+        yaxis: top,
+        xaxis: left,
+        top: null,
+        right: null,
+        bottom: null,
+        left: null
+    ),
+    display: inline-block,
+    z: 2,
+    ht: true
+));</code></pre>
 
+        <p class="description">
+            Sintaxis recomendada: usa <b>position</b> como un map con la misma
+            estructura del mixin <a href="../pages/base.html#position">position</a>.
+            Por compatibilidad, también puedes pasar las claves de posición en
+            el nivel raíz del map, incluidas <b>top</b>, <b>right</b>,
+            <b>bottom</b> y <b>left</b>.
+        </p>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parámetro</th>
+                    <th>Clave</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$attr</b></td>
-                    <td>Map</td>
-                    <td>Opciones de tamaño y posición.</td>
+                    <td><b>width | w</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>width</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>height | h</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>height</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>position | p</b></td>
+                    <td>String | Map</td>
+                    <td>relative</td>
+                    <td>Define la propiedad <b>position</b> o recibe un map con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
+                </tr>
+                <tr>
+                    <td><b>x</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el desplazamiento horizontal.</td>
+                </tr>
+                <tr>
+                    <td><b>y</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el desplazamiento vertical.</td>
+                </tr>
+                <tr>
+                    <td><b>yaxis | ya</b></td>
+                    <td>String</td>
+                    <td>top</td>
+                    <td>Define la propiedad CSS usada para el eje Y.</td>
+                </tr>
+                <tr>
+                    <td><b>xaxis | xa</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Define la propiedad CSS usada para el eje X.</td>
+                </tr>
+                <tr>
+                    <td><b>top | t</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>top</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>right | r</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>right</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>bottom | b</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>bottom</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>left | l</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>left</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>z</b></td>
+                    <td>Number</td>
+                    <td>2</td>
+                    <td>Define la propiedad <b>z-index</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display | d</b></td>
+                    <td>String</td>
+                    <td>inline-block</td>
+                    <td>Define la propiedad <b>display</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>ht</b></td>
+                    <td>Bool</td>
+                    <td>true</td>
+                    <td>Controla si se aplica el mixin <b>ht</b> para ocultar el texto.</td>
                 </tr>
             </tbody>
         </table>
@@ -55,7 +172,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><span class="normalize_svg_example"></span></code></pre>
+            <pre class="language-html"><code>&lt;span&nbsp;class=&quot;normalize_svg_example&quot;&gt;&lt;/span&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

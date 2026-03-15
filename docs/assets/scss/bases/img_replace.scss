@@ -1,11 +1,11 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-    .img_remplace_example {
+    .img_replace_example {
         @include img-replace("../img/test/1.webp", 64px, 64px);
     }
 
-    .img_remplace_parameters {
+    .img_replace_parameters {
         border: 2px dashed $c4;
 
         @include img-replace((

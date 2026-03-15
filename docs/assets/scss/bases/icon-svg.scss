@@ -2,9 +2,10 @@
 
 .documentationpage {
     .icon-svg-example {
-        @include wh(334px, 126px);
-        @include position;
-        display: block;
+        @include normalize-svg((
+            w: 334px,
+            h: 126px
+        ));
 
         &::before {
             @include icon-svg("sisass", 334px, 126px, $c5);
@@ -13,18 +14,19 @@
     }
 
     .icon-svg-example-map {
-        @include wh(220px, 83px);
-        @include position;
-        display: block;
+        @include normalize-svg((
+            w: 220px,
+            h: 83px
+        ));
 
         &::before {
             @include icon-svg((
                 svg: "sisass",
-                width: 220px,
-                height: 83px,
+                w: 220px,
+                h: 83px,
                 fill: $c3,
                 position: (
-                    type: absolute,
+                    p: absolute,
                     x: 0,
                     y: 0
                 ),
