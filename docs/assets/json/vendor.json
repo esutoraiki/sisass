@@ -1,6 +1,12 @@
 {
     "components": [
         {
+            "id": "src",
+            "url": "../components/base/src.html",
+            "position": "beforeend",
+            "node": "src"
+        },
+        {
             "id": "vendor_description",
             "url": "../components/vendor/vendor_description.html",
             "position": "beforeend",
