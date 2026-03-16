@@ -11,7 +11,13 @@
         </h3>
     </div>
 
-    <p class="description">Elimina la unidad de un valor.</p>
+    <p class="description">
+        Elimina la unidad de una medida y devuelve únicamente su valor numérico.
+    </p>
+    <p class="description">
+        Es útil cuando necesitas reutilizar un número en operaciones matemáticas sin conservar unidades como
+        <b>px</b>, <b>rem</b> o <b>em</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -20,22 +26,33 @@
 
         <pre class="language-scss"><code>@function strip-unit($value);</code></pre>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$value</b></td>
+                    <td><b>value</b></td>
                     <td>Number</td>
-                    <td>Valor con unidad.</td>
+                    <td>-</td>
+                    <td>Define el valor numérico del que se eliminará la unidad.</td>
                 </tr>
             </tbody>
         </table>
+
+        <p class="description">
+            La función divide el valor original entre una expresión equivalente a <b>1</b> con la misma unidad,
+            de modo que el resultado conserva el número pero pierde la unidad. Por ejemplo,
+            <b>strip-unit(24px)</b> devuelve <b>24</b>.
+        </p>
 
         <h2 class="title">
             Ejemplo

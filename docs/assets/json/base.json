@@ -139,6 +139,12 @@
             "node": "img_replace"
         },
         {
+            "id": "replace_base",
+            "url": "../components/base/replace_base.html",
+            "position": "beforeend",
+            "node": "replace_base"
+        },
+        {
             "id": "keyframes",
             "url": "../components/base/keyframes.html",
             "position": "beforeend",
@@ -163,40 +169,16 @@
             "node": "contain"
         },
         {
-            "id": "no_margins",
-            "url": "../components/base/no_margins.html",
+            "id": "no_spacing",
+            "url": "../components/base/no_spacing.html",
             "position": "beforeend",
-            "node": "no_margins"
+            "node": "no_spacing"
         },
         {
             "id": "no_border",
             "url": "../components/base/no_border.html",
             "position": "beforeend",
             "node": "no_border"
-        },
-        {
-            "id": "border_radius",
-            "url": "../components/base/border_radius.html",
-            "position": "beforeend",
-            "node": "borderradius"
-        },
-        {
-            "id": "box_shadow",
-            "url": "../components/base/box_shadow.html",
-            "position": "beforeend",
-            "node": "boxshadow"
-        },
-        {
-            "id": "transform",
-            "url": "../components/base/transform.html",
-            "position": "beforeend",
-            "node": "transform"
-        },
-        {
-            "id": "transformstyle",
-            "url": "../components/base/transformstyle.html",
-            "position": "beforeend",
-            "node": "transformstyle"
         },
         {
             "id": "szrem",

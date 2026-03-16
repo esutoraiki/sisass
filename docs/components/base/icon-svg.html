@@ -120,9 +120,10 @@
         </p>
         <p class="description">
             Uso recomendado: <b>icon-svg</b> dibuja el SVG y su fondo, mientras
-            <a href="../pages/base.html#normalize_svg">normalize-svg</a>
-            prepara el elemento contenedor cuando necesitas un icono decorativo
-            en un pseudo-elemento posicionado.
+            <a href="../pages/base.html#replace_base">replace-base</a> prepara
+            el contenedor. Si buscas el flujo ya configurado para SVG, puedes
+            usar <a href="../pages/base.html#normalize_svg">normalize-svg</a>
+            como wrapper especializado.
         </p>
 
         <h3 class="subtitle">
@@ -195,9 +196,11 @@
         <p class="note">
             Nota: cuando el SVG se usa en <b>::before</b> o <b>::after</b>,
             normalmente se combina con
-            <a href="../pages/base.html#normalize_svg">normalize-svg</a> para
-            preparar el contenedor con tamaño, posición relativa,
-            <b>display</b>, <b>z-index</b> y ocultamiento opcional de texto.
+            <a href="../pages/base.html#replace_base">replace-base</a> para
+            preparar el contenedor con tamaño, <b>display</b>, posición,
+            <b>z-index</b> y ocultamiento opcional de texto. Si prefieres una
+            configuración ya orientada a SVG, usa
+            <a href="../pages/base.html#normalize_svg">normalize-svg</a>.
         </p>
         <div class="container_example">
             <h2 class="subtitle">

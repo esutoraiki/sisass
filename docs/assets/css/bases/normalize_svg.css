@@ -15,10 +15,10 @@
   color: transparent;
   width: 64px;
   height: 64px;
+  display: block;
   position: relative;
   top: 0;
   left: 0;
-  display: block;
   z-index: 2;
   background-color: #F5F3F3;
 }

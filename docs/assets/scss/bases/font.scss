@@ -1,18 +1,18 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .font_example_params {
-                @include font(szrem(18), $f2, 700, italic, 1.4, normal);
-            }
+    .font_example_params {
+        @include font(szrem(18), $f2, 700, italic, 1.4, normal);
+    }
 
-            .font_example_map {
-                @include font((
-                    size: szrem(20),
-                    family: $f3,
-                    weight: 900,
-                    style: normal,
-                    line-height: 1.2,
-                    variant: normal
-                ));
-            }
+    .font_example_map {
+        @include font((
+            size: szrem(20),
+            family: $f3,
+            weight: 900,
+            style: normal,
+            line-height: 1.2,
+            variant: normal
+        ));
+    }
 }

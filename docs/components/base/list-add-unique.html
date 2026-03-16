@@ -11,7 +11,12 @@
         </h3>
     </div>
 
-    <p class="description">Agrega un valor si no existe en la lista.</p>
+    <p class="description">
+        Agrega un valor a una lista solo si ese valor todavía no existe en ella.
+    </p>
+    <p class="description">
+        Es útil para construir listas acumulativas sin duplicados, especialmente cuando el origen de los valores puede repetirse.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -20,27 +25,38 @@
 
         <pre class="language-scss"><code>@function list-add-unique($list, $value);</code></pre>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$list</b></td>
+                    <td><b>list</b></td>
                     <td>List</td>
-                    <td>Lista base.</td>
+                    <td>-</td>
+                    <td>Define la lista base sobre la que se intentará agregar el nuevo valor.</td>
                 </tr>
                 <tr>
-                    <td><b>$value</b></td>
+                    <td><b>value</b></td>
                     <td>Any</td>
-                    <td>Valor a agregar.</td>
+                    <td>-</td>
+                    <td>Define el valor que se agregará solo si no existe previamente en la lista.</td>
                 </tr>
             </tbody>
         </table>
+
+        <p class="description">
+            La función primero verifica si <b>value</b> ya existe dentro de <b>list</b> usando <b>list.index</b>. Si lo encuentra,
+            devuelve la lista original; si no lo encuentra, agrega el valor al final con <b>list.append</b>.
+        </p>
 
         <h2 class="title">
             Ejemplo

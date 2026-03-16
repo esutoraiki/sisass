@@ -11,8 +11,16 @@
         </h3>
     </div>
 
-    <p class="description">Reemplaza texto visual por una imagen de fondo, manteniendo el contenido textual en el marcado.</p>
-    <p class="description">Aplica utilidades de fondo, tamaño, ocultamiento de texto y control de <b>display</b> en una sola llamada.</p>
+    <p class="description">
+        Reemplaza texto visual por una imagen de fondo, manteniendo el contenido
+        textual en el marcado.
+    </p>
+    <p class="description">
+        Aplica utilidades de fondo y delega la base del contenedor al mixin
+        <a href="../pages/base.html#replace_base"><b>replace-base</b></a>, por
+        lo que también puede personalizar tamaño,
+        <b>display</b>, ocultamiento de texto, posición y <b>z-index</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -23,9 +31,27 @@
         <h2 class="title">
             Sintaxis alternativa (map)
         </h2>
-        <pre class="language-scss"><code>@include&nbsp;img-replace((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;image:&nbsp;&quot;&quot;,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;width:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;auto,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;block,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;repeat:&nbsp;no-repeat,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;center,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;transparent,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;size:&nbsp;cover&NewLine;));</code></pre>
+        <pre class="language-scss"><code>@include img-replace((
+    image: "",
+    width: auto,
+    height: auto,
+    display: block,
+    repeat: no-repeat,
+    position: center,
+    color: transparent,
+    size: cover,
+    base: (
+        width: auto,
+        height: auto,
+        display: block,
+        ht: true
+    )
+));</code></pre>
         <p class="description">
-            Valores por defecto: iw: auto, ih: auto, display: block, repeat: no-repeat, position: center, color: transparent, size: cover.
+            Valores por defecto: iw auto, ih auto, display block, repeat no-repeat,
+            position center, color transparent y size cover. La clave
+            <b>base</b> se fusiona con <b>width</b>, <b>height</b> y
+            <b>display</b> ya resueltos por el mixin.
         </p>
 
         <h3 class="subtitle">
@@ -128,6 +154,12 @@
                     <td>String</td>
                     <td>cover</td>
                     <td>Valor de <b>background-size</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>base</b></td>
+                    <td>Map</td>
+                    <td>(width: auto, height: auto, display: block, ht: true)</td>
+                    <td>Permite sobrescribir la configuración enviada al mixin <a href="../pages/base.html#replace_base"><b>replace-base</b></a>.</td>
                 </tr>
             </tbody>
         </table>

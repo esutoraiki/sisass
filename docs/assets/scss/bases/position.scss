@@ -1,10 +1,11 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-    .position_container {
+    [class*="position_container"] {
         @include position;
-        border: 2px dashed $c4;
-        height: 120px;
+        @include wh(100%, 120px);
+        border: $bd1;
+        margin-block-end: 20px;
 
         .position_example {
             @include position((
@@ -15,12 +16,6 @@
                 xaxis: left
             ));
         }
-    }
-
-    .position_container_explicit {
-        @include position;
-        border: 2px dashed $c5;
-        height: 120px;
 
         .position_example_explicit {
             @include position((

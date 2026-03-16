@@ -11,7 +11,13 @@
         </h3>
     </div>
 
-    <p class="description">Calcula un valor porcentual basado en un width base.</p>
+    <p class="description">
+        Calcula un valor proporcional a partir de una base de referencia y devuelve el resultado con la unidad indicada.
+    </p>
+    <p class="description">
+        Es útil para convertir medidas de diseño a unidades fluidas como <b>vw</b>, manteniendo una relación respecto
+        a una base de referencia.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -19,26 +25,45 @@
         </h2>
 
         <pre class="language-scss"><code>@function bp($attr: ());</code></pre>
-        <p class="description">
-            Valores por defecto: initial_base 1920, units "vw", value 0.
-        </p>
 
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
         <table class="full">
             <thead>
                 <tr>
-                    <th>Parámetro</th>
+                    <th>Clave</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$attr</b></td>
-                    <td>Map</td>
-                    <td>Configuración de base, units y value.</td>
+                    <td><b>base | b</b></td>
+                    <td>Number</td>
+                    <td>1920</td>
+                    <td>Define la base de referencia sobre la que se calcula la proporción.</td>
+                </tr>
+                <tr>
+                    <td><b>unit | u</b></td>
+                    <td>String</td>
+                    <td>"vw"</td>
+                    <td>Define la unidad que se concatenará al resultado final.</td>
+                </tr>
+                <tr>
+                    <td><b>value | v</b></td>
+                    <td>Number</td>
+                    <td>0</td>
+                    <td>Define el valor que se convertirá en una medida proporcional.</td>
                 </tr>
             </tbody>
         </table>
+
+        <p class="description">
+            El cálculo se realiza con la fórmula <b>(value * 100) / base</b> y luego se concatena la unidad indicada en
+            <b>unit</b>. Por ejemplo, con <b>(base: 1920, value: 384, unit: "vw")</b> el resultado será <b>20vw</b>.
+        </p>
 
         <h2 class="title">
             Ejemplo
@@ -58,7 +83,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><div class="fn_bp"></div></code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;fn_bp&quot;&gt;&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

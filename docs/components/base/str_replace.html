@@ -11,7 +11,12 @@
         </h3>
     </div>
 
-    <p class="description">Reemplaza texto dentro de un string.</p>
+    <p class="description">
+        Reemplaza coincidencias dentro de una cadena y devuelve el texto resultante.
+    </p>
+    <p class="description">
+        Es útil para normalizar nombres, construir identificadores o adaptar valores de texto antes de reutilizarlos en Sass.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -19,36 +24,46 @@
         </h2>
 
         <pre class="language-scss"><code>@function str-replace($string, $search, $replace: "");</code></pre>
-        <p class="description">
-            Valores por defecto: replace "".
-        </p>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$string</b></td>
+                    <td><b>string</b></td>
                     <td>String</td>
-                    <td>Texto base.</td>
+                    <td>-</td>
+                    <td>Define la cadena base sobre la que se realizará la búsqueda.</td>
                 </tr>
                 <tr>
-                    <td><b>$search</b></td>
+                    <td><b>search</b></td>
                     <td>String</td>
-                    <td>Texto a buscar.</td>
+                    <td>-</td>
+                    <td>Define el fragmento de texto que se buscará dentro de la cadena original.</td>
                 </tr>
                 <tr>
-                    <td><b>$replace</b></td>
+                    <td><b>replace</b></td>
                     <td>String</td>
-                    <td>Texto de reemplazo.</td>
+                    <td>""</td>
+                    <td>Define el texto con el que se reemplazarán las coincidencias encontradas.</td>
                 </tr>
             </tbody>
         </table>
+
+        <p class="description">
+            La función busca la primera coincidencia de <b>search</b>, reemplaza ese fragmento por <b>replace</b> y repite
+            el proceso de forma recursiva hasta que ya no existen más coincidencias. Por ejemplo,
+            <b>str-replace("foo-bar-bar", "bar", "baz")</b> devuelve <b>"foo-baz-baz"</b>.
+        </p>
 
         <h2 class="title">
             Ejemplo

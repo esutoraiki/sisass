@@ -11,7 +11,18 @@
         </h3>
     </div>
 
-    <p class="description">Convierte px a rem.</p>
+    <p class="description">
+        Convierte un valor en píxeles a <b>rem</b> a partir de una base configurable.
+    </p>
+    <p class="description">
+        Es útil para normalizar escalas tipográficas y de espaciado cuando el proyecto trabaja con unidades relativas.
+    </p>
+    <p class="description">
+        La función recibe dos parámetros porque el cálculo necesita tanto el valor a convertir como la base de referencia.
+        <b>value_px</b> representa la medida original en píxeles y <b>base</b> representa el tamaño base sobre el que se
+        calcula <b>1rem</b>. El resultado se obtiene dividiendo <b>value_px</b> entre <b>base</b> y multiplicando ese
+        cociente por <b>1rem</b>. Por ejemplo, <b>szrem(24, 16)</b> devuelve <b>1.5rem</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -19,28 +30,31 @@
         </h2>
 
         <pre class="language-scss"><code>@function szrem($value_px: 14, $base: 16);</code></pre>
-        <p class="description">
-            Valores por defecto: 14, 16.
-        </p>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$value_px</b></td>
+                    <td><b>value_px</b></td>
                     <td>Number</td>
-                    <td>Valor en px.</td>
+                    <td>14</td>
+                    <td>Define el valor en píxeles que se convertirá a <b>rem</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>$base</b></td>
+                    <td><b>base</b></td>
                     <td>Number</td>
-                    <td>Base para el cálculo.</td>
+                    <td>16</td>
+                    <td>Define la base usada para calcular la equivalencia en <b>rem</b>.</td>
                 </tr>
             </tbody>
         </table>
@@ -63,7 +77,7 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code><p class="fn_szrem">Texto con szrem</p></code></pre>
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;fn_szrem&quot;&gt;Texto&nbsp;con&nbsp;szrem&lt;/p&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado

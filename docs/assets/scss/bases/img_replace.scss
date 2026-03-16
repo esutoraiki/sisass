@@ -13,7 +13,11 @@
             w: 250px,
             h: 150px,
             size: contain,
-            display: inline-block
+            display: inline-block,
+            base: (
+                position: relative,
+                z: 3
+            )
         ));
     }
 }

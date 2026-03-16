@@ -11,7 +11,12 @@
         </h3>
     </div>
 
-    <p class="description">Agrega una lista de items evitando duplicados.</p>
+    <p class="description">
+        Agrega varios valores a una lista base evitando duplicados.
+    </p>
+    <p class="description">
+        Es útil cuando necesitas combinar listas y conservar solo valores únicos en el resultado final.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -20,27 +25,38 @@
 
         <pre class="language-scss"><code>@function list-add-items($list, $items);</code></pre>
 
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
         <table class="full">
             <thead>
                 <tr>
                     <th>Parámetro</th>
                     <th>Tipo</th>
+                    <th>Default</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><b>$list</b></td>
+                    <td><b>list</b></td>
                     <td>List</td>
-                    <td>Lista base.</td>
+                    <td>-</td>
+                    <td>Define la lista base sobre la que se agregarán nuevos valores.</td>
                 </tr>
                 <tr>
-                    <td><b>$items</b></td>
+                    <td><b>items</b></td>
                     <td>List</td>
-                    <td>Lista a agregar.</td>
+                    <td>-</td>
+                    <td>Define la lista de valores que se intentará incorporar sin duplicados.</td>
                 </tr>
             </tbody>
         </table>
+
+        <p class="description">
+            La función recorre cada elemento de <b>items</b> con <b>@each</b> y delega la inserción en
+            <b>list-add-unique</b>, por lo que cada valor se agrega solo si todavía no existe dentro de <b>list</b>.
+        </p>
 
         <h2 class="title">
             Ejemplo

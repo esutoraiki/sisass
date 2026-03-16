@@ -1,23 +1,18 @@
-.documentationpage .position_container {
+.documentationpage [class*=position_container] {
   position: relative;
   top: 0;
   left: 0;
-  border: 2px dashed #FBB03B;
+  width: 100%;
   height: 120px;
+  border: 2px dashed #3A405A;
+  margin-block-end: 20px;
 }
-.documentationpage .position_container .position_example {
+.documentationpage [class*=position_container] .position_example {
   position: absolute;
   top: -47px;
   left: 100px;
 }
-.documentationpage .position_container_explicit {
-  position: relative;
-  top: 0;
-  left: 0;
-  border: 2px dashed #A01303;
-  height: 120px;
-}
-.documentationpage .position_container_explicit .position_example_explicit {
+.documentationpage [class*=position_container] .position_example_explicit {
   position: absolute;
   right: 100px;
   bottom: -10px;

@@ -16,9 +16,11 @@
         de la interfaz.
     </p>
     <p class="description">
-        El mixin combina ocultamiento opcional de texto, tamaño,
-        posicionamiento, <b>display</b> y <b>z-index</b> en una sola
-        sintaxis <b>map</b>. El bloque <b>position</b> se resuelve con el mixin
+        Es un wrapper especializado sobre
+        <a href="../pages/base.html#replace_base">replace-base</a> para el flujo
+        de SVG. Su valor está en ofrecer una configuración predeterminada útil
+        para trabajar junto a <a href="../pages/base.html#icon-svg">icon-svg</a>,
+        y el bloque <b>position</b> se resuelve con el mixin
         <a href="../pages/base.html#position">position</a>.
     </p>
 
@@ -41,17 +43,18 @@
         bottom: null,
         left: null
     ),
-    display: inline-block,
+    display: block,
     z: 2,
     ht: true
 ));</code></pre>
 
         <p class="description">
-            Sintaxis recomendada: usa <b>position</b> como un map con la misma
-            estructura del mixin <a href="../pages/base.html#position">position</a>.
-            Por compatibilidad, también puedes pasar las claves de posición en
-            el nivel raíz del map, incluidas <b>top</b>, <b>right</b>,
-            <b>bottom</b> y <b>left</b>.
+            Equivale a usar
+            <a href="../pages/base.html#replace_base">replace-base</a> con
+            <b>position: relative</b>, <b>z: 2</b>, <b>display: block</b> y
+            <b>ht: true</b> como valores base. Por compatibilidad, también
+            puedes pasar las claves de posición en el nivel raíz del <b>map</b>,
+            incluidas <b>top</b>, <b>right</b>, <b>bottom</b> y <b>left</b>.
         </p>
 
         <h3 class="subtitle">
@@ -142,7 +145,7 @@
                 <tr>
                     <td><b>display | d</b></td>
                     <td>String</td>
-                    <td>inline-block</td>
+                    <td>block</td>
                     <td>Define la propiedad <b>display</b>.</td>
                 </tr>
                 <tr>
