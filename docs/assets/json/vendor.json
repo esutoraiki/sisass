@@ -19,6 +19,24 @@
             "node": "vendor_prefix"
         },
         {
+            "id": "calc",
+            "url": "../components/vendor/calc.html",
+            "position": "beforeend",
+            "node": "calc"
+        },
+        {
+            "id": "box_sizing",
+            "url": "../components/vendor/box_sizing.html",
+            "position": "beforeend",
+            "node": "box_sizing"
+        },
+        {
+            "id": "box_decoration_break",
+            "url": "../components/vendor/box_decoration_break.html",
+            "position": "beforeend",
+            "node": "box_decoration_break"
+        },
+        {
             "id": "border_radius",
             "url": "../components/vendor/border_radius.html",
             "position": "beforeend",
@@ -31,6 +49,168 @@
             "node": "boxshadow"
         },
         {
+            "id": "column_count",
+            "url": "../components/vendor/column_count.html",
+            "position": "beforeend",
+            "node": "column_count"
+        },
+        {
+            "id": "clip_path",
+            "url": "../components/vendor/clip_path.html",
+            "position": "beforeend",
+            "node": "clip_path"
+        },
+        {
+            "id": "background_clip",
+            "url": "../components/vendor/background_clip.html",
+            "position": "beforeend",
+            "node": "background_clip"
+        },
+        {
+            "id": "text_stroke",
+            "url": "../components/vendor/text_stroke.html",
+            "position": "beforeend",
+            "node": "text_stroke"
+        },
+        {
+            "id": "hyphens",
+            "url": "../components/vendor/hyphens.html",
+            "position": "beforeend",
+            "node": "hyphens"
+        },
+        {
+            "id": "text_size_adjust",
+            "url": "../components/vendor/text_size_adjust.html",
+            "position": "beforeend",
+            "node": "text_size_adjust"
+        },
+        {
+            "id": "text_fill_color",
+            "url": "../components/vendor/text_fill_color.html",
+            "position": "beforeend",
+            "node": "text_fill_color"
+        },
+        {
+            "id": "placeholder",
+            "url": "../components/vendor/placeholder.html",
+            "position": "beforeend",
+            "node": "placeholder"
+        },
+        {
+            "id": "tap_highlight_color",
+            "url": "../components/vendor/tap_highlight_color.html",
+            "position": "beforeend",
+            "node": "tap_highlight_color"
+        },
+        {
+            "id": "pointer_events",
+            "url": "../components/vendor/pointer_events.html",
+            "position": "beforeend",
+            "node": "pointer_events"
+        },
+        {
+            "id": "user_select",
+            "url": "../components/vendor/user_select.html",
+            "position": "beforeend",
+            "node": "user_select"
+        },
+        {
+            "id": "appearance",
+            "url": "../components/vendor/appearance.html",
+            "position": "beforeend",
+            "node": "appearance"
+        },
+        {
+            "id": "object_fit",
+            "url": "../components/vendor/object_fit.html",
+            "position": "beforeend",
+            "node": "object_fit"
+        },
+        {
+            "id": "justify_content",
+            "url": "../components/vendor/justify_content.html",
+            "position": "beforeend",
+            "node": "justify_content"
+        },
+        {
+            "id": "justify_self",
+            "url": "../components/vendor/justify_self.html",
+            "position": "beforeend",
+            "node": "justify_self"
+        },
+        {
+            "id": "justify_items",
+            "url": "../components/vendor/justify_items.html",
+            "position": "beforeend",
+            "node": "justify_items"
+        },
+        {
+            "id": "align_items",
+            "url": "../components/vendor/align_items.html",
+            "position": "beforeend",
+            "node": "align_items"
+        },
+        {
+            "id": "align_self",
+            "url": "../components/vendor/align_self.html",
+            "position": "beforeend",
+            "node": "align_self"
+        },
+        {
+            "id": "align_content",
+            "url": "../components/vendor/align_content.html",
+            "position": "beforeend",
+            "node": "align_content"
+        },
+        {
+            "id": "flex_direction",
+            "url": "../components/vendor/flex_direction.html",
+            "position": "beforeend",
+            "node": "flex_direction"
+        },
+        {
+            "id": "flex_basis",
+            "url": "../components/vendor/flex_basis.html",
+            "position": "beforeend",
+            "node": "flex_basis"
+        },
+        {
+            "id": "flex",
+            "url": "../components/vendor/flex.html",
+            "position": "beforeend",
+            "node": "flex"
+        },
+        {
+            "id": "grid",
+            "url": "../components/vendor/grid.html",
+            "position": "beforeend",
+            "node": "grid"
+        },
+        {
+            "id": "backdrop_filter",
+            "url": "../components/vendor/backdrop_filter.html",
+            "position": "beforeend",
+            "node": "backdrop_filter"
+        },
+        {
+            "id": "mask",
+            "url": "../components/vendor/mask.html",
+            "position": "beforeend",
+            "node": "mask"
+        },
+        {
+            "id": "filter",
+            "url": "../components/vendor/filter.html",
+            "position": "beforeend",
+            "node": "filter"
+        },
+        {
+            "id": "linear_gradient",
+            "url": "../components/vendor/linear_gradient.html",
+            "position": "beforeend",
+            "node": "linear_gradient"
+        },
+        {
             "id": "transform",
             "url": "../components/vendor/transform.html",
             "position": "beforeend",
@@ -41,6 +221,36 @@
             "url": "../components/vendor/transformstyle.html",
             "position": "beforeend",
             "node": "transformstyle"
+        },
+        {
+            "id": "transition",
+            "url": "../components/vendor/transition.html",
+            "position": "beforeend",
+            "node": "transition"
+        },
+        {
+            "id": "animation",
+            "url": "../components/vendor/animation.html",
+            "position": "beforeend",
+            "node": "animation"
+        },
+        {
+            "id": "animation_fill_mode",
+            "url": "../components/vendor/animation_fill_mode.html",
+            "position": "beforeend",
+            "node": "animation_fill_mode"
+        },
+        {
+            "id": "backface_visibility",
+            "url": "../components/vendor/backface_visibility.html",
+            "position": "beforeend",
+            "node": "backface_visibility"
+        },
+        {
+            "id": "keyframes",
+            "url": "../components/vendor/keyframes.html",
+            "position": "beforeend",
+            "node": "keyframes"
         }
     ]
 }

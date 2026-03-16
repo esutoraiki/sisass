@@ -32,6 +32,7 @@ const
         "assets/scss/*.scss",
         "assets/scss/components/*.scss",
         "assets/scss/bases/[^_]*.scss",
+        "assets/scss/vendor/[^_]*.scss",
         "assets/scss/mediaqueries/[^_]*.scss"
     ],
 
