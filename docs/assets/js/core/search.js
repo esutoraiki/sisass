@@ -1,7 +1,6 @@
 const
     selector_main_content = "#main_content",
     selector_search_input = "#page_search_input",
-    selector_search_clear = "#page_search_clear",
     selector_search_results = "#page_search_results",
     max_results = 12,
     empty_search_message = "Escribe para buscar en la página actual.",
@@ -283,7 +282,7 @@ function render_results(results_node, results, root_node) {
     }
 }
 
-function attach_keyboard_shortcuts(input_node, clear_button, results_node) {
+function attach_keyboard_shortcuts(root_node, input_node, results_node) {
     document.addEventListener("keydown", function (event) {
         const
             target = event.target,
@@ -304,7 +303,7 @@ function attach_keyboard_shortcuts(input_node, clear_button, results_node) {
             input_node.value = "";
             results_node.classList.remove("is_visible");
             render_empty_state(results_node, empty_search_message);
-            clear_button.disabled = true;
+            clear_active_targets(root_node);
             input_node.blur();
         }
     });
@@ -313,11 +312,10 @@ function attach_keyboard_shortcuts(input_node, clear_button, results_node) {
 function initialize_search_interface(root_node) {
     const
         input_node = document.querySelector(selector_search_input),
-        clear_button = document.querySelector(selector_search_clear),
         results_node = document.querySelector(selector_search_results)
     ;
 
-    if (!root_node || !input_node || !clear_button || !results_node) {
+    if (!root_node || !input_node || !results_node) {
         return false;
     }
 
@@ -331,7 +329,6 @@ function initialize_search_interface(root_node) {
 
     root_node.dataset.searchReady = "true";
     render_empty_state(results_node, empty_search_message);
-    clear_button.disabled = true;
 
     input_node.addEventListener("input", function () {
         const
@@ -341,24 +338,13 @@ function initialize_search_interface(root_node) {
         results_node.dataset.query = query;
 
         if (query === "") {
-            clear_button.disabled = true;
             results_node.classList.remove("is_visible");
             render_empty_state(results_node, empty_search_message);
             clear_active_targets(root_node);
             return;
         }
 
-        clear_button.disabled = false;
         render_results(results_node, get_search_results(page_index, query), root_node);
-    });
-
-    clear_button.addEventListener("click", function () {
-        input_node.value = "";
-        clear_button.disabled = true;
-        results_node.classList.remove("is_visible");
-        render_empty_state(results_node, empty_search_message);
-        clear_active_targets(root_node);
-        input_node.focus();
     });
 
     document.addEventListener("click", function (event) {
@@ -374,7 +360,7 @@ function initialize_search_interface(root_node) {
         }
     });
 
-    attach_keyboard_shortcuts(input_node, clear_button, results_node);
+    attach_keyboard_shortcuts(root_node, input_node, results_node);
 
     return true;
 }

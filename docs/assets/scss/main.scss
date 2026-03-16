@@ -72,9 +72,7 @@ html.page {
         }
 
         .page_search_box {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            gap: 10px;
+            display: block;
         }
 
         .page_search_input {
@@ -86,20 +84,6 @@ html.page {
             box-sizing: border-box;
             padding: 14px 16px;
             border: 1px solid color.adjust($c3, $lightness: 55%);
-        }
-
-        .page_search_clear {
-            @include font(szrem(15), $f2, bold);
-            @include border-radius(8px);
-            @include no-border;
-            @include bc($c6, $c1);
-            padding: 0 16px;
-            cursor: pointer;
-
-            &:disabled {
-                opacity: 0.45;
-                cursor: not-allowed;
-            }
         }
 
         .page_search_results {

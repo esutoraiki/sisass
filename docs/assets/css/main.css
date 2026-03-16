@@ -368,9 +368,7 @@ html.page {
   color: #2D396C;
 }
 .documentationpage .main_header .page_search_box {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px;
+  display: block;
 }
 .documentationpage .main_header .page_search_input {
   font-size: 1rem;
@@ -394,31 +392,6 @@ html.page {
   box-sizing: border-box;
   padding: 14px 16px;
   border: 1px solid rgb(205.4391891892, 208.7432432432, 223.0608108108);
-}
-.documentationpage .main_header .page_search_clear {
-  font-size: 0.9375rem;
-  font-family: "Fira Sans", "sans-serif";
-  font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  border: 0 none transparent;
-  border-top: 0 none transparent;
-  border-bottom: 0 none transparent;
-  border-left: 0 none transparent;
-  border-right: 0 none transparent;
-  background-color: #2D396C;
-  color: #FFF;
-  padding: 0 16px;
-  cursor: pointer;
-}
-.documentationpage .main_header .page_search_clear:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
 }
 .documentationpage .main_header .page_search_results {
   background-color: #FFF;
