@@ -9,9 +9,8 @@
 
 @use "components/menu";
 
-html.page {
-    scroll-behavior: smooth;
-}
+.hide { display: none !important; }
+html.page { scroll-behavior: smooth; }
 
 .documentationpage {
     @include scroll((

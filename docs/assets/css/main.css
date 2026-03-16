@@ -222,6 +222,10 @@ summary {
   opacity: 1;
 }
 
+.hide {
+  display: none !important;
+}
+
 html.page {
   scroll-behavior: smooth;
 }
