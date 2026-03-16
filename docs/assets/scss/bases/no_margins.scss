@@ -1,8 +1,0 @@
-@use "../core/instances" as *;
-
-.documentationpage {
-            .no_margins_example {
-                @include no-margins;
-                background-color: $c7;
-            }
-}

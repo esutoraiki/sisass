@@ -1,0 +1,8 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .no_spacing_example {
+        @include no-spacing;
+        @include bc($c3, $c1);
+    }
+}

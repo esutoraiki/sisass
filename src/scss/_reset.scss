@@ -2,7 +2,7 @@
 
 * {
     @include font(100%, inherit);
-    @include no-margins;
+    @include no-spacing;
     @include no-border;
     vertical-align: baseline;
     box-sizing: border-box;

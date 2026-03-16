@@ -1,8 +1,8 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .no_border_example {
-                border: 2px solid $c5;
-                @include no-border;
-            }
+    .no_border_example {
+        border: 2px solid $c5;
+        @include no-border;
+    }
 }

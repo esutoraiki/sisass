@@ -177,7 +177,7 @@
 
 // hide text
 @mixin ht {
-    @include no-margins;
+    @include no-spacing;
     text-indent: -10000000px;
     font: 0/0 a;
     text-shadow: none;
@@ -368,6 +368,12 @@
     $position_value: center;
     $color_value: transparent;
     $size_value: cover;
+    $base_attr: (
+        width: $width_value,
+        height: $height_value,
+        display: $display_value,
+        ht: true
+    );
 
     @if meta.type-of($image) == "map" {
         $image_value: mapv($image, (image, url, i, u), "");
@@ -379,6 +385,16 @@
         $position_value: mapv($image, (position, p), $position_value);
         $color_value: mapv($image, (color, c), $color_value);
         $size_value: mapv($image, (size, s), $size_value);
+
+        $base_attr: map.merge($base_attr, (
+            width: $width_value,
+            height: $height_value,
+            display: $display_value
+        ));
+
+        @if map.has-key($image, base) and meta.type-of(map.get($image, base)) == "map" {
+            $base_attr: map.merge($base_attr, map.get($image, base));
+        }
     }
 
     @include background((
@@ -389,9 +405,7 @@
         size: $size_value
     ));
 
-    @include wh($width_value, $height_value);
-    @include ht;
-    display: $display_value;
+    @include replace-base($base_attr);
 }
 
 // Backward compatibility alias
@@ -517,70 +531,179 @@
     }
 }
 
-// Normalize the styles for working with SVG files
-@mixin normalize-svg($attr: ()) {
+// Base styles for visual replacement containers
+@mixin replace-base($attr: ()) {
     $width: mapv($attr, (width, w), auto);
     $height: mapv($attr, (height, h), auto);
-    $z: mapv($attr, z, 2);
     $display: mapv($attr, (display, d), block);
-    $hide_text: mapv($attr, ht, true);
-    $position_input: mapv($attr, (position, p), null);
-    $position_value: relative;
-    $position_attr: (
-        position: relative,
-        y: 0,
-        x: 0,
-        yaxis: top,
-        xaxis: left,
-        top: null,
-        right: null,
-        bottom: null,
-        left: null
-    );
-
-    @if meta.type-of($position_input) == "map" {
-        $position_map: $position_input;
-        $position_attr: (
-            position: mapv($position_map, type, mapv($position_map, (position, p), map.get($position_attr, position))),
-            y: mapv($position_map, y, map.get($position_attr, y)),
-            x: mapv($position_map, x, map.get($position_attr, x)),
-            yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
-            xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
-            top: mapv($position_map, (top, t), map.get($position_attr, top)),
-            right: mapv($position_map, (right, r), map.get($position_attr, right)),
-            bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
-            left: mapv($position_map, (left, l), map.get($position_attr, left))
-        );
-    } @else {
-        @if $position_input != null {
-            $position_value: $position_input;
-        }
-
-        $position_attr: (
-            position: $position_value,
-            y: mapv($attr, y, map.get($position_attr, y)),
-            x: mapv($attr, x, map.get($position_attr, x)),
-            yaxis: mapv($attr, (yaxis, ya), map.get($position_attr, yaxis)),
-            xaxis: mapv($attr, (xaxis, xa), map.get($position_attr, xaxis)),
-            top: mapv($attr, (top, t), map.get($position_attr, top)),
-            right: mapv($attr, (right, r), map.get($position_attr, right)),
-            bottom: mapv($attr, (bottom, b), map.get($position_attr, bottom)),
-            left: mapv($attr, (left, l), map.get($position_attr, left))
-        );
-    }
+    $hide_text: mapv($attr, (ht, hide_text), true);
+    $z: mapv($attr, z, false);
+    $position_input: mapv($attr, (position, p), false);
+    $position_attr: false;
 
     @if $hide_text == true {
         @include ht;
     }
 
     @include wh($width, $height);
-    @include position($position_attr);
     display: $display;
-    z-index: $z;
+
+    @if $position_input != false {
+        $position_attr: (
+            position: relative,
+            y: 0,
+            x: 0,
+            yaxis: top,
+            xaxis: left,
+            top: null,
+            right: null,
+            bottom: null,
+            left: null
+        );
+
+        @if meta.type-of($position_input) == "map" {
+            $position_map: $position_input;
+            $position_attr: (
+                position: mapv($position_map, type, mapv($position_map, (position, p), map.get($position_attr, position))),
+                y: mapv($position_map, y, map.get($position_attr, y)),
+                x: mapv($position_map, x, map.get($position_attr, x)),
+                yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
+                xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
+                top: mapv($position_map, (top, t), map.get($position_attr, top)),
+                right: mapv($position_map, (right, r), map.get($position_attr, right)),
+                bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
+                left: mapv($position_map, (left, l), map.get($position_attr, left))
+            );
+        } @else {
+            $position_attr: (
+                position: $position_input,
+                y: mapv($attr, y, map.get($position_attr, y)),
+                x: mapv($attr, x, map.get($position_attr, x)),
+                yaxis: mapv($attr, (yaxis, ya), map.get($position_attr, yaxis)),
+                xaxis: mapv($attr, (xaxis, xa), map.get($position_attr, xaxis)),
+                top: mapv($attr, (top, t), map.get($position_attr, top)),
+                right: mapv($attr, (right, r), map.get($position_attr, right)),
+                bottom: mapv($attr, (bottom, b), map.get($position_attr, bottom)),
+                left: mapv($attr, (left, l), map.get($position_attr, left))
+            );
+        }
+
+        @include position($position_attr);
+    }
+
+    @if $z != false {
+        z-index: $z;
+    }
 }
 
-// no margins
-@mixin no-margins {
+// Normalize the styles for working with SVG files
+@mixin normalize-svg($attr: ()) {
+    @include replace-base(map.merge((
+        position: relative,
+        z: 2,
+        display: block,
+        ht: true
+    ), $attr));
+}
+
+// Add scroll
+@mixin scroll($attr: ()) {
+    $co: mapv($attr, (thumb_color, color, c), white);
+    $co_hover: mapv($attr, (thumb_hover_color, color_hover, ch), $co);
+    $co_active: mapv($attr, (thumb_active_color, color_active, ca), $co_hover);
+    $bg: mapv($attr, (background, bg, b), black);
+    $bg_track: mapv($attr, (track_color, bg_track, bt), $bg);
+    $bg_track_hover: mapv($attr, (track_hover_color, bg_track_hover, bth), $bg_track);
+    $bg_track_active: mapv($attr, (track_active_color, bg_track_active, bta), $bg_track_hover);
+    $wi: mapv($attr, (size, width, w), 15px);
+    $wi_x: mapv($attr, (size_x, width_x, wx), $wi);
+    $wi_y: mapv($attr, (size_y, width_y, wy), $wi);
+    $bdr: mapv($attr, (radius, r), 10px);
+    $bdr_track: mapv($attr, (radius_track, rt), $bdr);
+    $thumb_border: mapv($attr, (thumb_border, tb), 0 solid transparent);
+    $track_border: mapv($attr, (track_border, trb), 0 solid transparent);
+    $thumb_shadow: mapv($attr, (thumb_shadow, ts), none);
+    $track_shadow: mapv($attr, (track_shadow, trs), none);
+    $firefox_width: mapv($attr, (firefox_width, fw), auto);
+    $axis: mapv($attr, axis, y);
+    $hidden: mapv($attr, (hidden, hide, h), false);
+
+    @include position;
+
+    @if $axis == y {
+        overflow: overlay;
+        overflow-x: hidden;
+    } @else if $axis == x {
+        overflow: overlay;
+        overflow-y: hidden;
+    } @else if $axis == both {
+        overflow-x: auto;
+        overflow-y: auto;
+    } @else {
+        @warn "scroll(): unsupported axis `#{$axis}`. Using `both`.";
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    @if $hidden {
+        -ms-overflow-style: none;
+
+        @supports (-moz-appearance: none) {
+            scrollbar-width: none;
+        }
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+    } @else {
+        @supports (-moz-appearance: none) {
+            scrollbar-color: #{$co} #{$bg_track};
+            scrollbar-width: $firefox_width;
+        }
+
+        &::-webkit-scrollbar {
+            @include appearance;
+            width: $wi_y;
+            height: $wi_x;
+            background-color: $bg_track;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            @include border-radius($bdr);
+            border: $thumb_border;
+            background-color: $co;
+            box-shadow: $thumb_shadow;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $co_hover;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background-color: $co_active;
+        }
+
+        &::-webkit-scrollbar-track {
+            @include border-radius($bdr_track);
+            border: $track_border;
+            background-color: $bg_track;
+            box-shadow: $track_shadow;
+        }
+
+        &::-webkit-scrollbar-track:hover {
+            background-color: $bg_track_hover;
+        }
+
+        &::-webkit-scrollbar-track:active {
+            background-color: $bg_track_active;
+        }
+    }
+}
+
+// no spacing
+@mixin no-spacing {
     margin: 0;
     margin: {
         top    : 0;
@@ -608,14 +731,24 @@
     }
 }
 
-//Rem
+///----------------------------------------------------
+// Functions
+//----------------------------------------------------
+
+// Size in Rem
 @function szrem($value_px: 14, $base: 16) {
+    @if meta.type-of($value_px) != "number" or meta.type-of($base) != "number" {
+        @error "szrem() only accepts numeric values.";
+    }
+
+    @if $base == 0 {
+        @error "szrem() base cannot be 0.";
+    }
+
     @return (math.div($value_px, $base)) * 1rem;
 }
 
-// =================
 // String Replace
-// =================
 @function str-replace($string, $search, $replace: "") {
     $index: string.index($string, $search);
 
@@ -624,22 +757,6 @@
     }
 
     @return $string;
-}
-
-// Keyframes
-@mixin keyframes($name) {
-  @-webkit-keyframes #{$name} {
-    @content;
-  }
-  @-moz-keyframes #{$name} {
-    @content;
-  }
-  @-ms-keyframes #{$name} {
-    @content;
-  }
-  @keyframes #{$name} {
-    @content;
-  }
 }
 
 // Mapping lists with default value
@@ -663,49 +780,11 @@
     @return $return;
 }
 
-// Add scroll
-@mixin scroll($attr: ()) {
-    $co: mapv($attr, color, white);
-    $bg: mapv($attr, bg, black);
-    $wi: mapv($attr, width, 15px);
-    $bdr: mapv($attr, radius, 10px);
-    $dir: mapv($attr, direction, "v");
-
-    @include position;
-
-    @if $dir == "v" {
-        overflow: overlay;
-        overflow-x: hidden;
-    } @else if $dir == "h"  {
-        overflow: overlay;
-        overflow-y: hidden;
-    } @else {
-        overflow-x: auto;
-        overflow-y: auto;
-    }
-
-    &::-webkit-scrollbar {
-        @include appearance;
-        @include wh($wi);
-        background-color: $bg;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        @include border-radius($bdr);
-        background-color: $co;
-    }
-
-    &::-webkit-scrollbar-track {
-        @include border-radius($bdr);
-    }
-}
-
-
-// percentage base
+// base porcentage
 @function bp($attr: ()) {
-    $base_i: mapv($attr, initial_base, 1920);
-    $unn: mapv($attr, units, "vw");
-    $value: mapv($attr, value, 0);
+    $base_i: mapv($attr, (base, b), 1920);
+    $unn: mapv($attr, (unit, u), "vw");
+    $value: mapv($attr, (value, v), 0);
 
     @return #{math.div($value * 100, $base_i) + $unn};
 }
@@ -715,6 +794,7 @@
     @return math.div($value, $value * 0 + 1);
 }
 
+// Add item to list if not exist
 @function list-add-unique($list, $value) {
     @if list.index($list, $value) {
         @return $list;
@@ -723,6 +803,7 @@
     @return list.append($list, $value, space);
 }
 
+// Add items to list
 @function list-add-items($list, $items) {
     @each $item in $items {
         $list: list-add-unique($list, $item);
@@ -731,6 +812,7 @@
     @return $list;
 }
 
+// Append points
 @function append-points($list, $points) {
     @each $point in $points {
         $list: list.append($list, $point, comma);
