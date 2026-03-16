@@ -1,7 +1,7 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .fn-list-add-unique {
-                --list: #{list-add-unique((a b), c)};
-            }
+    .fn-list-add-unique {
+        --list: #{list-add-unique((a b), c)};
+    }
 }
