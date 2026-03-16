@@ -1,0 +1,40 @@
+{
+    "components": [
+        {
+            "id": "vendor_description",
+            "url": "../components/vendor/vendor_description.html",
+            "position": "beforeend",
+            "node": "vendor_description"
+        },
+        {
+            "id": "vendor_prefix",
+            "url": "../components/vendor/vendor_prefix.html",
+            "position": "beforeend",
+            "node": "vendor_prefix"
+        },
+        {
+            "id": "border_radius",
+            "url": "../components/vendor/border_radius.html",
+            "position": "beforeend",
+            "node": "borderradius"
+        },
+        {
+            "id": "box_shadow",
+            "url": "../components/vendor/box_shadow.html",
+            "position": "beforeend",
+            "node": "boxshadow"
+        },
+        {
+            "id": "transform",
+            "url": "../components/vendor/transform.html",
+            "position": "beforeend",
+            "node": "transform"
+        },
+        {
+            "id": "transformstyle",
+            "url": "../components/vendor/transformstyle.html",
+            "position": "beforeend",
+            "node": "transformstyle"
+        }
+    ]
+}

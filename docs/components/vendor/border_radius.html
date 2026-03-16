@@ -1,7 +1,7 @@
 <article id="border_radius" class="border_radius">
     <div class="group_title">
         <h2 class="subtitle">
-            border-radius (_base.scscs)
+            border-radius (_vendor.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Mixin
@@ -12,9 +12,11 @@
     </div>
 
     <p class="description">
-        Clase vendor existente dentro de SISASS para la propiedad border-radius
+        Mixin vendor de SISASS para la propiedad <b>border-radius</b>.
     </p>
-
+    <p class="description">
+        Aplica la propiedad con sus prefijos históricos y con la versión estándar.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -23,15 +25,32 @@
 
         <pre class="language-scss"><code>@mixin border-radius($br);</code></pre>
 
-        <p class="description">
-            <b>br</b>: Valor a asignar a la propiedad
-        </p>
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Size | String</td>
+                    <td>-</td>
+                    <td>Define el valor que se asignará a <b>border-radius</b>.</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="title">
-            Generación de un círculo con border-radius
+            Ejemplo
         </h2>
         <div class="container_example">
-
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
             </h2>

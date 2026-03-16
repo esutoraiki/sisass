@@ -1,7 +1,7 @@
 <article id="box_shadow" class="box_shadow">
     <div class="group_title">
         <h2 class="subtitle">
-            box-shadow (_base.scscs)
+            box-shadow (_vendor.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Mixin
@@ -12,9 +12,11 @@
     </div>
 
     <p class="description">
-        Clase vendor existente dentro de SISASS para la propiedad box-shadow
+        Mixin vendor de SISASS para la propiedad <b>box-shadow</b>.
     </p>
-
+    <p class="description">
+        Aplica la propiedad con sus prefijos históricos y con la versión estándar.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -23,16 +25,32 @@
 
         <pre class="language-scss"><code>@mixin box-shadow($br: none);</code></pre>
 
-        <p class="description">
-            <b>br</b>: Valor a asignar a la propiedad
-
-        </p>
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Shadow | String</td>
+                    <td>none</td>
+                    <td>Define el valor que se asignará a <b>box-shadow</b>.</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="title">
-            Generación de una sombra con box-shadow
+            Ejemplo
         </h2>
         <div class="container_example">
-
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
             </h2>

@@ -1,7 +1,7 @@
 <article id="transform" class="transform">
     <div class="group_title">
         <h2 class="subtitle">
-            transform (_base.scscs)
+            transform (_vendor.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Mixin
@@ -15,9 +15,11 @@
         <span class="deprecated">
             (Obsoleto)
         </span>
-        Clase vendor existente dentro de SISASS para la propiedad transform
+        Mixin vendor de SISASS para la propiedad <b>transform</b>.
     </p>
-
+    <p class="description">
+        Aplica la propiedad con sus prefijos históricos y con la versión estándar.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -26,12 +28,30 @@
 
         <pre class="language-scss"><code>@mixin transform($br: none);</code></pre>
 
-        <p class="description">
-            <b>br</b>: Valor a asignar a la propiedad
-        </p>
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Transform | String</td>
+                    <td>none</td>
+                    <td>Define el valor que se asignará a <b>transform</b>.</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="title">
-            Aplicando una transformación
+            Ejemplo
         </h2>
         <div class="container_example mb">
             <h2 class="subtitle">
@@ -45,7 +65,7 @@
             <pre class="language-css" data-src="../assets/css/bases/transform.css"></pre>
 
             <h2 class="subtitle">
-                Ejemplo 1: HTML
+                Ejemplo 2: HTML
             </h2>
 
             <pre class="language-html"><code>&lt;div&nbsp;class=&quot;box&nbsp;rotate_example&quot;&gt;&lt;/div&gt;</code></pre>
@@ -60,11 +80,11 @@
         </div>
 
         <p class="description">
-            Para sumar múltiples transformaciones se puede realizar de la siguiente manera:
+            Para combinar múltiples transformaciones se puede escribir el valor compuesto en una sola llamada al mixin.
         </p>
 
         <h2 class="title">
-            Aplicando múltiples transformaciones
+            Ejemplo adicional
         </h2>
         <div class="container_example">
             <h2 class="subtitle">

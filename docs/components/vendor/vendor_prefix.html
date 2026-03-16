@@ -1,0 +1,64 @@
+<article id="vendor_prefix" class="vendor_prefix">
+    <div class="group_title">
+        <h2 class="subtitle">
+            vendor-prefix (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Permite construir prefijos vendor para propiedades CSS que son o fueron experimentales, incluyendo también
+        la propiedad sin prefijos.
+    </p>
+
+    <p class="note">
+        <b>Nota:</b> Los prefijos vendor deben utilizarse con criterio. Su uso excesivo puede dificultar el mantenimiento y generar diferencias innecesarias entre navegadores.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin vendor-prefix($property, $value, $prefixes: ());</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>property</b></td>
+                    <td>String</td>
+                    <td>-</td>
+                    <td>Define el nombre de la propiedad CSS a prefijar.</td>
+                </tr>
+                <tr>
+                    <td><b>value</b></td>
+                    <td>String | Number</td>
+                    <td>-</td>
+                    <td>Define el valor que se asignará a la propiedad.</td>
+                </tr>
+                <tr>
+                    <td><b>prefixes</b></td>
+                    <td>List</td>
+                    <td>()</td>
+                    <td>Define la lista de prefijos, por ejemplo <b>webkit</b>, <b>moz</b>, <b>ms</b> u <b>o</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</article>

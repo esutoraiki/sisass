@@ -1,7 +1,7 @@
-<article id="transform" class="transform">
+<article id="transformstyle" class="transformstyle">
     <div class="group_title">
         <h2 class="subtitle">
-            transform-style (_base.scscs)
+            transform-style (_vendor.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Mixin
@@ -12,17 +12,13 @@
     </div>
 
     <p class="description">
-        Clase vendor existente dentro de SISASS para la propiedad transform style
+        Mixin vendor de SISASS para la propiedad <b>transform-style</b>.
     </p>
 
     <p class="description">
-        La propiedad transform-style es una propiedad de CSS que establece si el
-        elemento hijo está posicionado en el espacio tridimensional (<b>preserve-3d</b>)
-        o si se integra en el plano del elemento padre (<b>flat</b>). De esta manera,
-        podemos controlar cómo se comportan los elementos hijos en relación con
-        el elemento padre cuando se aplican transformaciones tridimensionales.
+        La propiedad <b>transform-style</b> establece si los elementos hijos conservan su posición en el espacio
+        tridimensional con <b>preserve-3d</b> o si se integran en el plano del padre con <b>flat</b>.
     </p>
-
 
     <section class="use">
         <h2 class="title">
@@ -31,12 +27,30 @@
 
         <pre class="language-scss"><code>@mixin transform-style($br: none);</code></pre>
 
-        <p class="description">
-            <b>br</b>: Valor a asignar a la propiedad
-        </p>
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword</td>
+                    <td>none</td>
+                    <td>Define el valor que se asignará a <b>transform-style</b>.</td>
+                </tr>
+            </tbody>
+        </table>
 
         <h2 class="title">
-            Propiedad transform-style con preserve-3d
+            Ejemplo
         </h2>
         <div class="container_example">
             <h2 class="subtitle">
@@ -72,7 +86,7 @@
         </div>
 
         <h2 class="title">
-            Propiedad transform-style con flat
+            Ejemplo adicional
         </h2>
         <div class="container_example">
             <h2 class="subtitle">
@@ -108,7 +122,7 @@
         </div>
 
         <h2 class="title">
-            Cubo 3D realizado con la propiedad transform-style
+            Ejemplo adicional
         </h2>
         <div class="container_example">
             <h2 class="subtitle">
