@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .round {
+        @include vendor-prefix(border-radius, 18px, webkit moz ms o);
+    }
+}

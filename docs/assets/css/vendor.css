@@ -6,6 +6,12 @@
   border-radius: 50%;
 }
 
+.documentationpage .calc_example {
+  width: -moz-calc(100% - 40px);
+  width: -webkit-calc(100% - 40px);
+  width: calc(100% - 40px);
+}
+
 .documentationpage .box_shadow_example {
   -webkit-box-shadow: 7px 7px 7px #FBB03B;
   -moz-box-shadow: 7px 7px 7px #FBB03B;
@@ -183,4 +189,12 @@
 }
 .documentationpage .transform_style_flat .children .text {
   color: #FFF;
+}
+
+.documentationpage .round {
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  border-radius: 18px;
 }
