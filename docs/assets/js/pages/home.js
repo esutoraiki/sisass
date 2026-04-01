@@ -1,4 +1,5 @@
 import { contentLoad } from "../core/fn.js";
+import { init_hash_navigation } from "../core/hash_navigation.js";
 
 (function () {
     "use strict";
@@ -21,19 +22,19 @@ import { contentLoad } from "../core/fn.js";
 
                     window.requestAnimationFrame(NSHome.remove_search);
                 },
-                content: () => {
-                    contentLoad({
-                        url: url_json,
-                        complete: function () {
-                            NSHome.remove_search();
-                        }
+                content: async () => {
+                    await contentLoad({
+                        url: url_json
                     });
+
+                    NSHome.remove_search();
+                    init_hash_navigation();
                 }
             };
         }())
     ;
 
-    window.addEventListener("load", function () {
-        NSHome.content();
+    window.addEventListener("load", async function () {
+        await NSHome.content();
     });
 }());

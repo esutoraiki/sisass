@@ -1,4 +1,5 @@
 import { contentLoad } from "../core/fn.js";
+import { init_hash_navigation } from "../core/hash_navigation.js";
 import { init_documentation_search } from "../core/search.js";
 
 (function () {
@@ -11,21 +12,21 @@ import { init_documentation_search } from "../core/search.js";
 
         NSBase = (function () {
             return {
-                content: () => {
-                    contentLoad({
-                        url: url_json_base,
-                        complete: function () {
-                            init_documentation_search({
-                                current_page: currentPage
-                            });
-                        }
+                content: async () => {
+                    await contentLoad({
+                        url: url_json_base
+                    });
+
+                    init_hash_navigation();
+                    init_documentation_search({
+                        current_page: currentPage
                     });
                 }
             };
         }())
     ;
 
-    window.addEventListener("load", function () {
-        NSBase.content();
+    window.addEventListener("load", async function () {
+        await NSBase.content();
     });
 }());

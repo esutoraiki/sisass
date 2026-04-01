@@ -24,68 +24,80 @@ const
     })
 ;
 
-function contentLoad(attr = {}) {
+function waitNextFrame() {
+    return new Promise((resolve) => {
+        window.requestAnimationFrame(function () {
+            resolve();
+        });
+    });
+}
+
+function waitTimeout(delay = 300) {
+    return new Promise((resolve) => {
+        window.setTimeout(function () {
+            resolve();
+        }, delay);
+    });
+}
+
+async function contentLoad(attr = {}) {
     let
         url = attr.url || null,
         success = attr.success || (function () { return undefined; }),
         complete = attr.complete || (function () { return undefined; })
     ;
 
-    fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-            let
-                pending_components = data.components.length
-            ;
+    try {
+        const
+            response = await fetch(url),
+            data = await response.json(),
+            components = data.components || []
+        ;
 
-            if (pending_components === 0) {
-                complete();
-                return;
-            }
+        if (components.length === 0) {
+            complete();
+            await waitNextFrame();
+            return [];
+        }
 
-            for (const element in data.components) {
+        const
+            loaded_components = await Promise.all(components.map(async function (component, index) {
+                checkLoad[index] = false;
+
                 const
-                    component = data.components[element]
+                    text_response = await fetch(component.url),
+                    content = await text_response.text(),
+                    node_insert = document.getElementById(component.node),
+                    class_add = (component.class !== undefined) ? component.class : ""
                 ;
 
-                checkLoad[element] = false;
+                buildNode({
+                    content: content,
+                    insert: node_insert,
+                    position: component.position,
+                    attr: [
+                        ["id", "container_" + component.id],
+                        ["class", "container_" + component.id + " " + class_add]
+                    ]
+                });
 
-                fetch(component.url)
-                    .then((text) => text.text())
-                    .then((content) => {
-                        let
-                            node_insert = document.getElementById(component.node),
-                            class_add = (component.class !== undefined) ? component.class : ""
-                        ;
+                checkLoad[index] = true;
+                success(component.id);
 
-                        buildNode({
-                            content: content,
-                            insert: node_insert,
-                            position: component.position,
-                            attr: [
-                                ["id", "container_" + component.id],
-                                ["class", "container_" + component.id + " " + class_add]
-                            ],
-                            success: () => {
-                                checkLoad[element] = true;
-                                success(component.id);
-                                pending_components -= 1;
+                return component;
+            }))
+        ;
 
-                                if (pending_components === 0) {
-                                    complete();
-                                }
-                            }
-                        });
-                    })
-                ;
-            }
-        })
-        .catch(function (err) {
-            console.warn('Something went wrong.', err);
-        })
-    ;
+        await waitNextFrame();
+        await waitNextFrame();
+        complete();
 
-    return false;
+        return loaded_components;
+    } catch (err) {
+        console.warn("Something went wrong.", err);
+    }
+
+    return [];
 }
 
 /*
@@ -263,4 +275,4 @@ async function loadPageTemplates(attr = {}) {
     return [];
 }
 
-export { loadAjax, buildNode, checkLoad, contentLoad, loadPageTemplates };
+export { loadAjax, buildNode, checkLoad, contentLoad, loadPageTemplates, waitNextFrame, waitTimeout };

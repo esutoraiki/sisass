@@ -1,4 +1,5 @@
 import { contentLoad } from "../core/fn.js";
+import { init_hash_navigation } from "../core/hash_navigation.js";
 import { init_documentation_search } from "../core/search.js";
 
 (function () {
@@ -10,21 +11,21 @@ import { init_documentation_search } from "../core/search.js";
 
         NSVendor = (function () {
             return {
-                content: () => {
-                    contentLoad({
-                        url: url_json_vendor,
-                        complete: function () {
-                            init_documentation_search({
-                                current_page: currentPage
-                            });
-                        }
+                content: async () => {
+                    await contentLoad({
+                        url: url_json_vendor
+                    });
+
+                    init_hash_navigation();
+                    init_documentation_search({
+                        current_page: currentPage
                     });
                 }
             };
         }())
     ;
 
-    window.addEventListener("load", function () {
-        NSVendor.content();
+    window.addEventListener("load", async function () {
+        await NSVendor.content();
     });
 }());

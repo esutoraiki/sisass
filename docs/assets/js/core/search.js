@@ -1,4 +1,5 @@
 import { loadPageTemplates } from "./fn.js";
+import { clear_active_targets, focus_target, update_page_hash } from "./hash_navigation.js";
 
 const
     selector_main_content = "#main_content",
@@ -188,48 +189,6 @@ function get_search_results(index, query) {
         .sort((left_item, right_item) => right_item.score - left_item.score)
         .slice(0, max_results)
     ;
-}
-
-function clear_active_targets(root_node) {
-    const
-        target_nodes = root_node.querySelectorAll(".search_target")
-    ;
-
-    for (const target_node of target_nodes) {
-        target_node.classList.remove("search_target");
-    }
-}
-
-function focus_target(root_node, anchor) {
-    const
-        section_node = root_node.querySelector("#" + CSS.escape(anchor)),
-        article_node = section_node ? section_node.querySelector("article") : null,
-        target_node = article_node || section_node
-    ;
-
-    if (!target_node) {
-        return;
-    }
-
-    clear_active_targets(root_node);
-    target_node.classList.add("search_target");
-    target_node.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
-
-    window.setTimeout(function () {
-        target_node.classList.remove("search_target");
-    }, 1800);
-}
-
-function update_page_hash(anchor) {
-    const
-        base_url = window.location.pathname + window.location.search,
-        target_url = base_url + "#" + anchor
-    ;
-
-    history.replaceState(null, "", target_url);
 }
 
 function render_empty_state(results_node, message) {

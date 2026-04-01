@@ -10,8 +10,8 @@ import { contentLoad } from "./core/fn.js";
 
         NSDocumentation = (function () {
             return {
-                content: () => {
-                    contentLoad({
+                content: async () => {
+                    await contentLoad({
                         url: url_json_global,
                         success: function (id_component) {
                             if (id_component === "menu") {
@@ -38,7 +38,7 @@ import { contentLoad } from "./core/fn.js";
         }())
     ;
 
-    window.addEventListener("load", function () {
-        NSDocumentation.content();
+    window.addEventListener("load", async function () {
+        await NSDocumentation.content();
     });
 }());
