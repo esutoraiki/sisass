@@ -1,0 +1,8 @@
+.documentationpage .tap_highlight_color_example {
+  -webkit-tap-highlight-color: transparent;
+  tap-highlight-color: transparent;
+  color: #FFF;
+  display: inline-block;
+  padding: 10px 14px;
+  text-decoration: none;
+}

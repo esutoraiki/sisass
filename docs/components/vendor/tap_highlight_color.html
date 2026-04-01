@@ -15,7 +15,10 @@
         Mixin vendor de SISASS para la propiedad <b>tap-highlight-color</b>.
     </p>
     <p class="description">
-        Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.
+        Controla el color del resaltado que algunos navegadores móviles muestran al tocar enlaces, botones u otros elementos interactivos.
+    </p>
+    <p class="description">
+        Aplica la propiedad con el prefijo histórico <b>-webkit-</b> y luego agrega la versión estándar.
     </p>
 
     <section class="use">
@@ -46,5 +49,39 @@
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo se usa el valor <b>transparent</b> para evitar el color de resaltado al tocar el enlace en navegadores móviles compatibles.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/tap_highlight_color.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/tap_highlight_color.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;a&nbsp;class=&quot;tap_highlight_color_example&quot;&nbsp;href=&quot;#tap_highlight_color&quot;&nbsp;onclick=&quot;event.preventDefault()&quot;&gt;Enlace táctil&lt;/a&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <a class="tap_highlight_color_example" href="#tap_highlight_color" onclick="event.preventDefault()">Enlace táctil</a>
+            </div>
+        </div>
     </section>
 </article>
