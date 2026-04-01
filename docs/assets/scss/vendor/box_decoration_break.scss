@@ -1,0 +1,24 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .item {
+        @include wh(90vw);
+        max-width: 240px;
+    }
+
+    .box_decoration_break_text {
+        @include border-radius(20px);
+        @include bc($c4, $c2);
+        padding-inline: 20px;
+        display: inline;
+        line-height: 1.7;
+
+        &--slice {
+            @include box-decoration-break(slice);
+        }
+
+        &--clone {
+            @include box-decoration-break(clone);
+        }
+    }
+}

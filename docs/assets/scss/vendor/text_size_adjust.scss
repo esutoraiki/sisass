@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .text_size_adjust_example {
+        @include text-size-adjust(280%);
+        color: $c4;
+        font-size: 1rem;
+    }
+}

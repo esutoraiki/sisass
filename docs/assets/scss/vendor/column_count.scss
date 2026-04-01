@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .column_count_example {
+        @include column-count(2);
+        column-gap: 24px;
+        color: #3A405A;
+    }
+}
