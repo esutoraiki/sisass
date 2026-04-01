@@ -15,7 +15,10 @@
         Mixin vendor de SISASS para la propiedad <b>hyphens</b>.
     </p>
     <p class="description">
-        Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.
+        Controla si el navegador puede dividir palabras con guiones cuando el texto no cabe en la línea disponible. Suele usarse en columnas estrechas, bloques de texto justificado o contenedores reducidos para evitar espacios irregulares y cortes bruscos.
+    </p>
+    <p class="description">
+        Aplica la propiedad con el prefijo histórico <b>-webkit-</b> y luego agrega la versión estándar.
     </p>
 
     <section class="use">
@@ -40,11 +43,46 @@
             <tbody>
                 <tr>
                     <td><b>br</b></td>
-                    <td>Keyword</td>
+                    <td>Keyword | String</td>
                     <td>-</td>
-                    <td>Define el valor que se asignará a <b>hyphens</b>.</td>
+                    <td>Define cómo se dividirán las palabras al final de línea con <b>hyphens</b>.</td>
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/hyphens.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/hyphens.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;p&nbsp;class=&quot;hyphens_example&quot;&nbsp;lang=&quot;en&quot;&gt;
+    Antidisestablishmentarianism electroencephalographically disproportionableness characterization.
+&lt;/p&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <p class="hyphens_example" lang="en">
+                    Antidisestablishmentarianism electroencephalographically disproportionableness characterization.
+                </p>
+            </div>
+        </div>
     </section>
 </article>

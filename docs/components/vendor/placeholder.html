@@ -1,6 +1,62 @@
 <article id="placeholder" class="placeholder">
-    <div class="group_title"><h2 class="subtitle">placeholder (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para estilizar el pseudo-elemento <b>placeholder</b>.</p>
-    <p class="description">No recibe parámetros y replica el bloque <b>@content</b> sobre los selectores vendor históricos y sobre <b>::placeholder</b>.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin placeholder { @content; }</code></pre></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            placeholder (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para estilizar el pseudo-elemento <b>placeholder</b>.
+    </p>
+    <p class="description">
+        No recibe parámetros. Replica el bloque <b>@content</b> sobre los selectores vendor históricos y sobre la variante estándar <b>::placeholder</b>.
+    </p>
+    <p class="description">
+        Es útil para centralizar estilos de texto de ayuda en campos de formulario y mantener compatibilidad con navegadores que todavía reconocen sintaxis prefijadas.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin placeholder { @content; }</code></pre>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/placeholder.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/placeholder.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;input&nbsp;class=&quot;placeholder_example&quot;&nbsp;placeholder=&quot;Escribe&nbsp;tu&nbsp;nombre&quot;&nbsp;/&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <input class="placeholder_example" placeholder="Escribe tu nombre" />
+            </div>
+        </div>
+    </section>
 </article>

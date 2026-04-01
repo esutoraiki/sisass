@@ -12,10 +12,24 @@
     </div>
 
     <p class="description">
-        Mixin vendor de SISASS para la propiedad <b>box-decoration-break</b>.
+        Mixin vendor de SISASS para aplicar la propiedad <b>box-decoration-break</b>
+        con su versión prefijada <b>-webkit-</b> y la sintaxis estándar.
     </p>
     <p class="description">
-        Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.
+        Esta propiedad controla cómo se repiten o se continúan decoraciones
+        como el <b>background</b>, el <b>border</b> y el <b>padding</b>
+        cuando una misma caja inline se fragmenta en varias líneas, columnas
+        o páginas. Resulta útil para textos destacados, etiquetas o chips
+        que necesitan conservar un acabado visual coherente al partirse.
+    </p>
+
+    <p class="note">
+        <b>Nota:</b> Su uso suele ser más útil en elementos con
+        <b>display: inline</b> o <b>inline-block</b> que realmente puedan
+        fragmentarse. Con <b>slice</b>, la decoración se trata como una sola
+        caja continua y se corta entre fragmentos; con <b>clone</b>, cada
+        fragmento vuelve a dibujar su fondo, borde y padding de forma
+        independiente.
     </p>
 
     <section class="use">
@@ -42,9 +56,70 @@
                     <td><b>br</b></td>
                     <td>Keyword | String</td>
                     <td>-</td>
-                    <td>Define el valor que se asignará a <b>box-decoration-break</b>.</td>
+                    <td>Define el valor que se asignará a la propiedad <b>box-decoration-break</b>.</td>
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/box_decoration_break.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/box_decoration_break.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div class=&quot;box_decoration_break_example&quot;&gt;
+    &lt;div class=&quot;box_decoration_break_item&quot;&gt;
+        &lt;div class=&quot;box_decoration_break_label&quot;&gt;slice&lt;/div&gt;
+        &lt;span class=&quot;box_decoration_break_text box_decoration_break_text--slice&quot;&gt;
+            Un texto con salto de línea para mostrar el comportamiento del fondo.
+        &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;box_decoration_break_item&quot;&gt;
+        &lt;div class=&quot;box_decoration_break_label&quot;&gt;clone&lt;/div&gt;
+        &lt;span class=&quot;box_decoration_break_text box_decoration_break_text--clone&quot;&gt;
+            Un texto con salto de línea para mostrar el comportamiento del fondo.
+        &lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="item">
+                    <h3 class="subtitle">
+                        Slice
+                    </h3>
+                    <p class="box_decoration_break_text box_decoration_break_text--slice">
+                        Un texto con salto de línea para mostrar el comportamiento del fondo.
+                    </p>
+                </div>
+
+                <div class="item">
+                    <h3 class="subtitle">
+                        Clone
+                    </h3>
+                    <p class="box_decoration_break_text box_decoration_break_text--clone">
+                        Un texto con salto de línea para mostrar el comportamiento del fondo.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 </article>

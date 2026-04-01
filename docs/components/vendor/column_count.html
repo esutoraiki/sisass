@@ -1,6 +1,85 @@
 <article id="column_count" class="column_count">
-    <div class="group_title"><h2 class="subtitle">column-count (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>column-count</b>.</p>
-    <p class="description">Aplica la propiedad con los prefijos históricos disponibles y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin column-count($br);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Number</td><td>-</td><td>Define el valor que se asignará a <b>column-count</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            column-count (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>column-count</b>.
+    </p>
+    <p class="description">
+        Aplica la propiedad con los prefijos históricos <b>-webkit-</b> y <b>-moz-</b>, y luego agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin column-count($br);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Number | String</td>
+                    <td>-</td>
+                    <td>Define la cantidad de columnas que se asignará a <b>column-count</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/column_count.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/column_count.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;column_count_example&quot;&gt;
+    &lt;p&gt;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Sed&nbsp;non&nbsp;turpis&nbsp;vitae&nbsp;lorem&nbsp;tincidunt&nbsp;finibus.&nbsp;Integer&nbsp;posuere,&nbsp;augue&nbsp;id&nbsp;malesuada&nbsp;aliquet,&nbsp;nibh&nbsp;massa&nbsp;gravida&nbsp;risus,&nbsp;vitae&nbsp;feugiat&nbsp;sapien&nbsp;velit&nbsp;et&nbsp;mauris.&nbsp;Curabitur&nbsp;sodales,&nbsp;lectus&nbsp;a&nbsp;tincidunt&nbsp;aliquet,&nbsp;lacus&nbsp;lectus&nbsp;vulputate&nbsp;justo,&nbsp;vitae&nbsp;consequat&nbsp;urna&nbsp;turpis&nbsp;et&nbsp;sem.&nbsp;Proin&nbsp;ac&nbsp;mi&nbsp;non&nbsp;erat&nbsp;cursus&nbsp;blandit.&nbsp;Vestibulum&nbsp;ante&nbsp;ipsum&nbsp;primis&nbsp;in&nbsp;faucibus&nbsp;orci&nbsp;luctus&nbsp;et&nbsp;ultrices&nbsp;posuere&nbsp;cubilia&nbsp;curae;&nbsp;Donec&nbsp;posuere&nbsp;massa&nbsp;id&nbsp;turpis&nbsp;tincidunt,&nbsp;eu&nbsp;fermentum&nbsp;ligula&nbsp;bibendum.&nbsp;Aenean&nbsp;volutpat&nbsp;posuere&nbsp;neque,&nbsp;id&nbsp;viverra&nbsp;neque&nbsp;efficitur&nbsp;at.&nbsp;Nulla&nbsp;facilisi.&nbsp;Duis&nbsp;luctus&nbsp;sem&nbsp;at&nbsp;odio&nbsp;ullamcorper,&nbsp;nec&nbsp;porttitor&nbsp;nisl&nbsp;tempor.&nbsp;Praesent&nbsp;sed&nbsp;orci&nbsp;sem.&nbsp;Pellentesque&nbsp;habitant&nbsp;morbi&nbsp;tristique&nbsp;senectus&nbsp;et&nbsp;netus&nbsp;et&nbsp;malesuada&nbsp;fames&nbsp;ac&nbsp;turpis&nbsp;egestas.&nbsp;Suspendisse&nbsp;ac&nbsp;nibh&nbsp;vel&nbsp;nibh&nbsp;aliquam&nbsp;auctor.&nbsp;Donec&nbsp;sit&nbsp;amet&nbsp;sapien&nbsp;nec&nbsp;velit&nbsp;facilisis&nbsp;molestie.&nbsp;Mauris&nbsp;tempus&nbsp;nibh&nbsp;et&nbsp;lectus&nbsp;dapibus,&nbsp;nec&nbsp;tincidunt&nbsp;metus&nbsp;luctus.&nbsp;Integer&nbsp;gravida&nbsp;aliquet&nbsp;nisl,&nbsp;in&nbsp;sollicitudin&nbsp;ligula&nbsp;tincidunt&nbsp;id.&nbsp;Vivamus&nbsp;blandit,&nbsp;sem&nbsp;nec&nbsp;fermentum&nbsp;luctus,&nbsp;arcu&nbsp;purus&nbsp;tristique&nbsp;magna,&nbsp;non&nbsp;posuere&nbsp;lorem&nbsp;turpis&nbsp;in&nbsp;libero.&nbsp;Aliquam&nbsp;erat&nbsp;volutpat.&nbsp;Cras&nbsp;euismod&nbsp;urna&nbsp;a&nbsp;velit&nbsp;fermentum,&nbsp;nec&nbsp;malesuada&nbsp;turpis&nbsp;pretium.&nbsp;In&nbsp;hac&nbsp;habitasse&nbsp;platea&nbsp;dictumst.&nbsp;Vestibulum&nbsp;ante&nbsp;ipsum&nbsp;primis&nbsp;in&nbsp;faucibus&nbsp;orci&nbsp;luctus&nbsp;et&nbsp;ultrices&nbsp;posuere&nbsp;cubilia&nbsp;curae;&nbsp;Integer&nbsp;dictum&nbsp;egestas&nbsp;dui,&nbsp;non&nbsp;feugiat&nbsp;sem&nbsp;viverra&nbsp;a.&nbsp;Vivamus&nbsp;in&nbsp;malesuada&nbsp;arcu.&nbsp;Nullam&nbsp;luctus&nbsp;nunc&nbsp;non&nbsp;lacus&nbsp;tristique,&nbsp;ac&nbsp;feugiat&nbsp;ex&nbsp;commodo.&nbsp;Nam&nbsp;at&nbsp;viverra&nbsp;nulla.&nbsp;Maecenas&nbsp;ultrices,&nbsp;orci&nbsp;a&nbsp;feugiat&nbsp;dignissim,&nbsp;eros&nbsp;ipsum&nbsp;bibendum&nbsp;risus,&nbsp;eu&nbsp;porttitor&nbsp;erat&nbsp;quam&nbsp;et&nbsp;sapien.&nbsp;Phasellus&nbsp;mollis&nbsp;neque&nbsp;non&nbsp;nunc&nbsp;pretium,&nbsp;ut&nbsp;faucibus&nbsp;tortor&nbsp;auctor.&nbsp;Donec&nbsp;sit&nbsp;amet&nbsp;augue&nbsp;sed&nbsp;libero&nbsp;cursus&nbsp;pretium.&nbsp;Quisque&nbsp;finibus&nbsp;risus&nbsp;ac&nbsp;ante&nbsp;volutpat,&nbsp;vitae&nbsp;interdum&nbsp;erat&nbsp;tristique.&nbsp;Donec&nbsp;ac&nbsp;orci&nbsp;lectus.&nbsp;Morbi&nbsp;quis&nbsp;magna&nbsp;sed&nbsp;massa&nbsp;gravida&nbsp;posuere.&nbsp;Nunc&nbsp;non&nbsp;dictum&nbsp;ipsum.&nbsp;Nulla&nbsp;pharetra&nbsp;posuere&nbsp;tellus,&nbsp;sed&nbsp;sodales&nbsp;arcu&nbsp;porttitor&nbsp;vel.&nbsp;Sed&nbsp;consequat&nbsp;lectus&nbsp;at&nbsp;nisl&nbsp;malesuada,&nbsp;a&nbsp;sagittis&nbsp;est&nbsp;placerat.&nbsp;Donec&nbsp;vitae&nbsp;aliquet&nbsp;dolor.&nbsp;Sed&nbsp;sollicitudin,&nbsp;nisi&nbsp;non&nbsp;interdum&nbsp;accumsan,&nbsp;nulla&nbsp;est&nbsp;faucibus&nbsp;tellus,&nbsp;ut&nbsp;faucibus&nbsp;leo&nbsp;dolor&nbsp;eget&nbsp;dui.&nbsp;Integer&nbsp;vel&nbsp;magna&nbsp;luctus,&nbsp;hendrerit&nbsp;tortor&nbsp;sit&nbsp;amet,&nbsp;efficitur&nbsp;quam.&nbsp;Curabitur&nbsp;suscipit&nbsp;ante&nbsp;ac&nbsp;libero&nbsp;feugiat,&nbsp;non&nbsp;gravida&nbsp;lacus&nbsp;sollicitudin.&nbsp;Nunc&nbsp;viverra&nbsp;mi&nbsp;vel&nbsp;felis&nbsp;volutpat,&nbsp;et&nbsp;vehicula&nbsp;nulla&nbsp;aliquet.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="column_count_example">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non turpis vitae lorem tincidunt finibus. Integer posuere, augue id malesuada aliquet, nibh massa gravida risus, vitae feugiat sapien velit et mauris. Curabitur sodales, lectus a tincidunt aliquet, lacus lectus vulputate justo, vitae consequat urna turpis et sem. Proin ac mi non erat cursus blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec posuere massa id turpis tincidunt, eu fermentum ligula bibendum. Aenean volutpat posuere neque, id viverra neque efficitur at. Nulla facilisi. Duis luctus sem at odio ullamcorper, nec porttitor nisl tempor. Praesent sed orci sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse ac nibh vel nibh aliquam auctor. Donec sit amet sapien nec velit facilisis molestie. Mauris tempus nibh et lectus dapibus, nec tincidunt metus luctus. Integer gravida aliquet nisl, in sollicitudin ligula tincidunt id. Vivamus blandit, sem nec fermentum luctus, arcu purus tristique magna, non posuere lorem turpis in libero. Aliquam erat volutpat. Cras euismod urna a velit fermentum, nec malesuada turpis pretium. In hac habitasse platea dictumst. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dictum egestas dui, non feugiat sem viverra a. Vivamus in malesuada arcu. Nullam luctus nunc non lacus tristique, ac feugiat ex commodo. Nam at viverra nulla. Maecenas ultrices, orci a feugiat dignissim, eros ipsum bibendum risus, eu porttitor erat quam et sapien. Phasellus mollis neque non nunc pretium, ut faucibus tortor auctor. Donec sit amet augue sed libero cursus pretium. Quisque finibus risus ac ante volutpat, vitae interdum erat tristique. Donec ac orci lectus. Morbi quis magna sed massa gravida posuere. Nunc non dictum ipsum. Nulla pharetra posuere tellus, sed sodales arcu porttitor vel. Sed consequat lectus at nisl malesuada, a sagittis est placerat. Donec vitae aliquet dolor. Sed sollicitudin, nisi non interdum accumsan, nulla est faucibus tellus, ut faucibus leo dolor eget dui. Integer vel magna luctus, hendrerit tortor sit amet, efficitur quam. Curabitur suscipit ante ac libero feugiat, non gravida lacus sollicitudin. Nunc viverra mi vel felis volutpat, et vehicula nulla aliquet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

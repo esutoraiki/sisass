@@ -1,6 +1,81 @@
 <article id="background_clip" class="background_clip">
-    <div class="group_title"><h2 class="subtitle">background-clip (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>background-clip</b>.</p>
-    <p class="description">Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin background-clip($br);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Keyword | String</td><td>-</td><td>Define el valor que se asignará a <b>background-clip</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            background-clip (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>background-clip</b>.
+    </p>
+    <p class="description">
+        Aplica la propiedad con el prefijo histórico <b>-webkit-</b> y luego agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin background-clip($br);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword | String</td>
+                    <td>-</td>
+                    <td>Define el área de recorte del fondo que se asignará a <b>background-clip</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/background_clip.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/background_clip.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;span&nbsp;class=&quot;background_clip_example&quot;&gt;SISASS&lt;/span&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <span class="background_clip_example">SISASS</span>
+            </div>
+        </div>
+    </section>
 </article>

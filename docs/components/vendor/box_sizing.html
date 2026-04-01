@@ -15,7 +15,7 @@
         Mixin vendor de SISASS para la propiedad <b>box-sizing</b>.
     </p>
     <p class="description">
-        Aplica la propiedad con sus prefijos históricos y con la versión estándar.
+        Aplica los prefijos históricos <b>-webkit-</b> y <b>-moz-</b>, además de la propiedad estándar.
     </p>
 
     <section class="use">
@@ -42,9 +42,42 @@
                     <td><b>br</b></td>
                     <td>Keyword | String</td>
                     <td>-</td>
-                    <td>Define el valor que se asignará a <b>box-sizing</b>.</td>
+                    <td>Define el valor que se asignará a la propiedad <b>box-sizing</b>.</td>
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/box_sizing.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/box_sizing.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;box_sizing_example&quot;&gt;Ancho total: 180px&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="box_sizing_example">
+                    Ancho total: 180px
+                </div>
+            </div>
+        </div>
     </section>
 </article>
