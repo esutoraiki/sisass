@@ -1,0 +1,7 @@
+.documentationpage .column_count_example {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  column-gap: 24px;
+  color: #3A405A;
+}

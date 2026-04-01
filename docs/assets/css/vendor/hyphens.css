@@ -1,0 +1,6 @@
+.documentationpage .hyphens_example {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  color: #3A405A;
+  max-width: 180px;
+}

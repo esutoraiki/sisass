@@ -1,0 +1,7 @@
+.documentationpage .text_size_adjust_example {
+  -webkit-text-size-adjust: 280%;
+  -ms-text-size-adjust: 280%;
+  text-size-adjust: 280%;
+  color: #FBB03B;
+  font-size: 1rem;
+}

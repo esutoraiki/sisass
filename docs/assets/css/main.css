@@ -125,6 +125,11 @@ summary {
   grid-template-columns: 230px auto;
   grid-template-areas: "h1 h1" "m1 c1";
 }
+@media only screen and (max-width: 980px) {
+  .layout_1 {
+    display: block;
+  }
+}
 .layout_1 .a1 {
   grid-area: h1;
 }
@@ -222,6 +227,179 @@ summary {
   opacity: 1;
 }
 
+.documentationpage .main_header .page_search {
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  background-color: #FFF;
+  color: #000;
+  width: 500px;
+  height: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.08);
+  padding: 10px 10px 7px;
+  z-index: 3;
+}
+.documentationpage .main_header .page_search .page_search_label {
+  font-size: 0.9375rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  margin-bottom: 8px;
+  display: block;
+  color: #2D396C;
+}
+.documentationpage .main_header .page_search .page_search_box {
+  display: block;
+}
+.documentationpage .main_header .page_search .page_search_input {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  border: 0 none transparent;
+  border-top: 0 none transparent;
+  border-bottom: 0 none transparent;
+  border-left: 0 none transparent;
+  border-right: 0 none transparent;
+  background-color: #FFF;
+  color: #3A405A;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border: 1px solid rgb(205.4391891892, 208.7432432432, 223.0608108108);
+}
+.documentationpage .main_header .page_search .page_search_results {
+  background-color: #FFF;
+  color: #3A405A;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  width: 100%;
+  max-height: min(60vh, 540px);
+  box-sizing: border-box;
+  border: 1px solid rgb(220.9459459459, 223.2162162162, 233.0540540541);
+  overflow: auto;
+  margin-top: 10px;
+  display: none;
+}
+.documentationpage .main_header .page_search .page_search_results.is_visible {
+  display: block;
+}
+.documentationpage .main_header .page_search .page_search_state,
+.documentationpage .main_header .page_search .page_search_item {
+  padding: 14px 16px;
+}
+.documentationpage .main_header .page_search .page_search_state {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  color: #3A405A;
+}
+.documentationpage .main_header .page_search .page_search_state b {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  color: #3A405A;
+}
+.documentationpage .main_header .page_search .page_search_state {
+  margin-bottom: 0;
+}
+.documentationpage .main_header .page_search .page_search_item {
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(230.25, 231.9, 239.05);
+}
+.documentationpage .main_header .page_search .page_search_item:last-child {
+  border-bottom: none;
+}
+.documentationpage .main_header .page_search .page_search_item:hover {
+  background-color: rgb(249.6363636364, 248.5636363636, 248.5636363636);
+}
+.documentationpage .main_header .page_search .page_search_title {
+  font-size: 1.125rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  margin-bottom: 6px;
+  color: #A01303;
+}
+.documentationpage .main_header .page_search .page_search_category,
+.documentationpage .main_header .page_search .page_search_excerpt {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  color: #3A405A;
+}
+.documentationpage .main_header .page_search .page_search_category b,
+.documentationpage .main_header .page_search .page_search_excerpt b {
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  color: #3A405A;
+}
+.documentationpage .main_header .page_search .page_search_category,
+.documentationpage .main_header .page_search .page_search_excerpt {
+  margin-bottom: 0;
+}
+.documentationpage .main_header .page_search .page_search_category {
+  font-weight: bold;
+  color: #3c4c90;
+}
+.documentationpage .main_header .page_search .page_search_excerpt {
+  margin-top: 6px;
+}
+
 .hide {
   display: none !important;
 }
@@ -284,8 +462,6 @@ html.page {
   background-color: #000;
 }
 .documentationpage {
-  min-height: 100vh;
-  height: 100vh;
   font-size: 100%;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
@@ -308,6 +484,8 @@ html.page {
   border-right: 0 none transparent;
   background-color: #FFF;
   color: #3A405A;
+  min-height: 100vh;
+  height: 100vh;
 }
 .documentationpage article {
   border-bottom: 2px dashed #3A405A;
@@ -344,170 +522,6 @@ html.page {
   width: 324px;
   height: 116px;
   display: block;
-}
-.documentationpage .main_header .page_search {
-  width: 500px;
-  height: auto;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 3;
-}
-.documentationpage .main_header .page_search_label {
-  font-size: 0.9375rem;
-  font-family: "Fira Sans", "sans-serif";
-  font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: left;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  margin-bottom: 8px;
-  display: block;
-  color: #2D396C;
-}
-.documentationpage .main_header .page_search_box {
-  display: block;
-}
-.documentationpage .main_header .page_search_input {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  border: 0 none transparent;
-  border-top: 0 none transparent;
-  border-bottom: 0 none transparent;
-  border-left: 0 none transparent;
-  border-right: 0 none transparent;
-  background-color: #FFF;
-  color: #3A405A;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 14px 16px;
-  border: 1px solid rgb(205.4391891892, 208.7432432432, 223.0608108108);
-}
-.documentationpage .main_header .page_search_results {
-  background-color: #FFF;
-  color: #3A405A;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  width: 100%;
-  max-height: min(60vh, 540px);
-  box-sizing: border-box;
-  border: 1px solid rgb(220.9459459459, 223.2162162162, 233.0540540541);
-  overflow: auto;
-  margin-top: 10px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-  display: none;
-}
-.documentationpage .main_header .page_search_results.is_visible {
-  display: block;
-}
-.documentationpage .main_header .page_search_state,
-.documentationpage .main_header .page_search_item {
-  padding: 14px 16px;
-}
-.documentationpage .main_header .page_search_state {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .main_header .page_search_state b {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
-  font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .main_header .page_search_state {
-  margin-bottom: 0;
-}
-.documentationpage .main_header .page_search_item {
-  display: block;
-  text-decoration: none;
-  border-bottom: 1px solid rgb(230.25, 231.9, 239.05);
-}
-.documentationpage .main_header .page_search_item:last-child {
-  border-bottom: none;
-}
-.documentationpage .main_header .page_search_item:hover {
-  background-color: rgb(249.6363636364, 248.5636363636, 248.5636363636);
-}
-.documentationpage .main_header .page_search_title {
-  font-size: 1.125rem;
-  font-family: "Fira Sans", "sans-serif";
-  font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: left;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  margin-bottom: 6px;
-  color: #A01303;
-}
-.documentationpage .main_header .page_search_category,
-.documentationpage .main_header .page_search_excerpt {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .main_header .page_search_category b,
-.documentationpage .main_header .page_search_excerpt b {
-  font-size: 1rem;
-  font-family: "Nunito Sans", "sans-serif";
-  font-weight: bold;
-  font-style: normal;
-  font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .main_header .page_search_category,
-.documentationpage .main_header .page_search_excerpt {
-  margin-bottom: 0;
-}
-.documentationpage .main_header .page_search_category {
-  font-weight: bold;
-  color: #3c4c90;
-}
-.documentationpage .main_header .page_search_excerpt {
-  margin-top: 6px;
 }
 .documentationpage .search_target {
   box-sizing: border-box;
