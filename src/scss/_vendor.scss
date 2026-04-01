@@ -8,19 +8,26 @@
   #{$property}: $value;
 }
 
+// Calc
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
 // Box Sizing.
 @mixin box-sizing($br) {
     @include vendor-prefix(box-sizing, $br, webkit moz);
 }
 
-// backdrop-filter.
-@mixin backdrop-filter($br) {
-    @include vendor-prefix(backdrop-filter, $br, webkit);
-}
-
 // Box Decoration Break.
 @mixin box-decoration-break($br) {
     @include vendor-prefix(box-decoration-break, $br, webkit);
+}
+
+// backdrop-filter.
+@mixin backdrop-filter($br) {
+    @include vendor-prefix(backdrop-filter, $br, webkit);
 }
 
 // Text Stroke.
@@ -189,13 +196,6 @@
     background-image: -moz-linear-gradient(#{$br});
     background-image: -o-linear-gradient(#{$br});
     background-image: linear-gradient(#{$br});
-}
-
-// Calc
-@mixin calc($property, $expression) {
-    #{$property}: -moz-calc(#{$expression});
-    #{$property}: -webkit-calc(#{$expression});
-    #{$property}: calc(#{$expression});
 }
 
 // Placeholder
