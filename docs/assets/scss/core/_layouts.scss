@@ -13,6 +13,10 @@
         }
     }
 
+    @include brp($b6) {
+        display: block;
+    }
+
     .a1 { grid-area: h1; }
     .a2 { grid-area: m1; }
     .a3 { grid-area: c1; }

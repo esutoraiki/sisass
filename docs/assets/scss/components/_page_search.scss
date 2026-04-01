@@ -1,0 +1,106 @@
+@use "../core/instances" as *;
+@use "sass:color";
+
+.documentationpage {
+    .main_header {
+        .page_search {
+            @include border-radius(12px);
+            @include bc($c1, $c2);
+            @include wh(500px);
+            @include user-select;
+            @include position((
+                p: fixed,
+                t: 15px,
+                r: 15px
+            ));
+            box-shadow: $sh1;
+            padding: 10px 10px 7px;
+            z-index: 3;
+
+            .page_search_label {
+                @include font(szrem(15), $f2, bold);
+                @include text;
+                margin-bottom: 8px;
+                display: block;
+                color: $c6;
+            }
+
+            .page_search_box {
+                display: block;
+            }
+
+            .page_search_input {
+                @include font(szrem(16), $f1);
+                @include border-radius(8px);
+                @include no-border;
+                @include bc($c1, $c3);
+                width: 100%;
+                box-sizing: border-box;
+                padding: 14px 16px;
+                border: 1px solid color.adjust($c3, $lightness: 55%);
+            }
+
+            .page_search_results {
+                @include bc($c1, $c3);
+                @include border-radius(10px);
+                width: 100%;
+                max-height: min(60vh, 540px);
+                box-sizing: border-box;
+                border: 1px solid color.adjust($c3, $lightness: 60%);
+                overflow: auto;
+                margin-top: 10px;
+                display: none;
+
+                &.is_visible {
+                    display: block;
+                }
+            }
+
+            .page_search_state,
+            .page_search_item {
+                padding: 14px 16px;
+            }
+
+            .page_search_state {
+                @include text_1;
+                margin-bottom: 0;
+            }
+
+            .page_search_item {
+                display: block;
+                text-decoration: none;
+                border-bottom: 1px solid color.adjust($c3, $lightness: 63%);
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                &:hover {
+                    background-color: color.adjust($c7, $lightness: 2%);
+                }
+            }
+
+            .page_search_title {
+                @include font(szrem(18), $f2, bold);
+                @include text;
+                margin-bottom: 6px;
+                color: $c5;
+            }
+
+            .page_search_category,
+            .page_search_excerpt {
+                @include text_1;
+                margin-bottom: 0;
+            }
+
+            .page_search_category {
+                font-weight: bold;
+                color: color.adjust($c6, $lightness: 10%);
+            }
+
+            .page_search_excerpt {
+                margin-top: 6px;
+            }
+        }
+    }
+}
