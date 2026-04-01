@@ -119,6 +119,38 @@ summary {
   src: url("../fonts/nunito_sans/nunito_sans_bold.woff2") format("woff2"), url("../fonts/nunito_sans/nunito_sans_bold.woff") format("woff"), url("../fonts/nunito_sans/nunito_sans_bold.ttf") format("truetype");
   font-display: swap;
 }
+@-webkit-keyframes documentation_loader_progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+@-moz-keyframes documentation_loader_progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+@-ms-keyframes documentation_loader_progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+@keyframes documentation_loader_progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
 .layout_1 {
   -ms-display: grid;
   display: grid;
@@ -227,6 +259,124 @@ summary {
   opacity: 1;
 }
 
+.documentationpage .page_loader {
+  background-color: #FFF;
+  color: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  padding: 24px;
+  z-index: 30;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.documentationpage .page_loader.close {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.documentationpage .page_loader .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.08);
+  background-color: #FFF;
+  color: #000;
+  width: min(100%, 420px);
+  height: auto;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 3px;
+  gap: 3px;
+  padding: 28px 24px 22px;
+}
+.documentationpage .page_loader .box .title {
+  background-color: transparent;
+  color: #2D396C;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1.875rem;
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  font-style: normal;
+  font-variant: normal;
+  margin-bottom: 0;
+}
+.documentationpage .page_loader .box .text {
+  background-color: transparent;
+  color: #3A405A;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+}
+.documentationpage .page_loader .box .text b {
+  background-color: transparent;
+  color: #3A405A;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.documentationpage .page_loader .box .bar {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  background-color: transparent;
+  color: transparent;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+}
+.documentationpage .page_loader .box .bar .progress {
+  -webkit-animation: documentation_loader_progress 1.4s ease-in-out infinite;
+  -moz-animation: documentation_loader_progress 1.4s ease-in-out infinite;
+  animation: documentation_loader_progress 1.4s ease-in-out infinite;
+  -webkit-border-radius: inherit;
+  -moz-border-radius: inherit;
+  -ms-border-radius: inherit;
+  -o-border-radius: inherit;
+  border-radius: inherit;
+  width: 40%;
+  height: 100%;
+  background-image: linear-gradient(90deg, #A01303 0%, #2D396C 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  background-size: auto;
+}
+
 .documentationpage .main_header .page_search {
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
@@ -312,28 +462,30 @@ summary {
   padding: 14px 16px;
 }
 .documentationpage .main_header .page_search .page_search_state {
+  background-color: transparent;
+  color: #3A405A;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
+}
+.documentationpage .main_header .page_search .page_search_state b {
+  background-color: transparent;
+  color: #3A405A;
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .main_header .page_search .page_search_state b {
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
   font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
 }
 .documentationpage .main_header .page_search .page_search_state {
   margin-bottom: 0;
@@ -364,29 +516,31 @@ summary {
 }
 .documentationpage .main_header .page_search .page_search_category,
 .documentationpage .main_header .page_search .page_search_excerpt {
+  background-color: transparent;
+  color: #3A405A;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
+}
+.documentationpage .main_header .page_search .page_search_category b,
+.documentationpage .main_header .page_search .page_search_excerpt b {
+  background-color: transparent;
+  color: #3A405A;
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .main_header .page_search .page_search_category b,
-.documentationpage .main_header .page_search .page_search_excerpt b {
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
   font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
 }
 .documentationpage .main_header .page_search .page_search_category,
 .documentationpage .main_header .page_search .page_search_excerpt {
@@ -402,6 +556,10 @@ summary {
 
 .hide {
   display: none !important;
+}
+
+.no_scroll {
+  overflow: hidden !important;
 }
 
 html.page {
@@ -602,29 +760,31 @@ html.page {
 }
 .documentationpage .description,
 .documentationpage p {
+  background-color: transparent;
+  color: #3A405A;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
+}
+.documentationpage .description b,
+.documentationpage p b {
+  background-color: transparent;
+  color: #3A405A;
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .description b,
-.documentationpage p b {
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
   font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
 }
 .documentationpage .description,
 .documentationpage p {
@@ -634,28 +794,30 @@ html.page {
   margin-bottom: 25px;
 }
 .documentationpage .note {
+  background-color: transparent;
+  color: #3A405A;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
+}
+.documentationpage .note b {
+  background-color: transparent;
+  color: #3A405A;
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  color: #3A405A;
-}
-.documentationpage .note b {
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
   font-variant: normal;
-  text-align: justify;
-  text-decoration: initial;
-  text-transform: initial;
-  text-wrap: initial;
-  color: #3A405A;
 }
 .documentationpage .note {
   padding: min(5vw, 15px);
