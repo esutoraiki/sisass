@@ -11,10 +11,7 @@
 
         <!-- Preload fonts -->
         <link rel="preload" href="fonts/montserrat/montserrat_black.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="fonts/fira_sans/firasans_regular.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="fonts/fira_sans/firasans_bold.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="fonts/nunito_sans/nunito_sans.woff2" as="font" type="font/woff2" crossorigin />
-        <link rel="preload" href="fonts/nunito_sans/nunito_sans_bold.woff2" as="font" type="font/woff2" crossorigin />
         <!-- End preload fonts -->
 
 
@@ -52,7 +49,16 @@
         <!-- End  Scripts -->
     </head>
 
-    <body class="documentationpage" data-link="base">
+    <body class="documentationpage no_scroll" data-link="base">
+        <div id="loader" class="page_loader">
+            <div class="box">
+                <p class="title">SISASS</p>
+                <p class="text">Cargando la documentación.</p>
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
         <div class="container_main layout_1">
             <div id="header" class="a1"> </div>
 
@@ -119,11 +125,6 @@
                 <section id="icon-svg"></section>
                 <section id="icon-svg-mask"></section>
                 <section id="normalize_svg"></section>
-
-                <h2 id="base_animaciones" class="category">
-                    Categoría: Animaciones
-                </h2>
-                <section id="keyframes"></section>
 
                 <h2 id="base_ui" class="category">
                     Categoría: Interfaz

@@ -145,12 +145,6 @@
             "node": "replace_base"
         },
         {
-            "id": "keyframes",
-            "url": "../components/base/keyframes.html",
-            "position": "beforeend",
-            "node": "keyframes"
-        },
-        {
             "id": "scroll",
             "url": "../components/base/scroll.html",
             "position": "beforeend",
