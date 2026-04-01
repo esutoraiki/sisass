@@ -1,5 +1,6 @@
 import { contentLoad } from "../core/fn.js";
 import { init_hash_navigation } from "../core/hash_navigation.js";
+import { page_loader } from "../core/page_loader.js";
 
 (function () {
     "use strict";
@@ -10,25 +11,39 @@ import { init_hash_navigation } from "../core/hash_navigation.js";
 
         NSHome = (function () {
             return {
-                remove_search: () => {
-                    const
-                        search_node = document.querySelector(".page_search")
-                    ;
+                remove_search: async () => {
+                    await new Promise((resolve) => {
+                        const wait_for_search = function () {
+                            const
+                                search_node = document.querySelector(".page_search")
+                            ;
 
-                    if (search_node) {
-                        search_node.remove();
-                        return;
-                    }
+                            if (search_node) {
+                                search_node.remove();
+                                resolve();
+                                return;
+                            }
 
-                    window.requestAnimationFrame(NSHome.remove_search);
+                            window.requestAnimationFrame(wait_for_search);
+                        };
+
+                        wait_for_search();
+                    });
                 },
                 content: async () => {
+                    page_loader.register([
+                        "content_ready",
+                        "navigation_ready"
+                    ]);
+
                     await contentLoad({
                         url: url_json
                     });
+                    page_loader.set("content_ready", true);
 
-                    NSHome.remove_search();
-                    init_hash_navigation();
+                    await NSHome.remove_search();
+                    await init_hash_navigation();
+                    page_loader.set("navigation_ready", true);
                 }
             };
         }())

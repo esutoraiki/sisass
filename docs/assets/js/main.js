@@ -1,4 +1,5 @@
 import { contentLoad } from "./core/fn.js";
+import { page_loader } from "./core/page_loader.js";
 
 (function () {
     "use strict";
@@ -11,6 +12,10 @@ import { contentLoad } from "./core/fn.js";
         NSDocumentation = (function () {
             return {
                 content: async () => {
+                    page_loader.register([
+                        "shell_ready"
+                    ]);
+
                     await contentLoad({
                         url: url_json_global,
                         success: function (id_component) {
@@ -33,12 +38,15 @@ import { contentLoad } from "./core/fn.js";
                             }
                         }
                     });
+
+                    page_loader.set("shell_ready", true);
                 }
             };
         }())
     ;
 
     window.addEventListener("load", async function () {
+        page_loader.start();
         await NSDocumentation.content();
     });
 }());

@@ -387,23 +387,29 @@ async function init_documentation_search(attr = {}) {
         ]
     });
 
-    const wait_for_nodes = function () {
-        const
-            root_node = document.querySelector(root_selector)
-        ;
+    return await new Promise((resolve) => {
+        const wait_for_nodes = function () {
+            const
+                root_node = document.querySelector(root_selector)
+            ;
 
-        if (initialize_search_interface(root_node)) {
-            return;
-        }
+            if (initialize_search_interface(root_node)) {
+                resolve(true);
+                return;
+            }
 
-        attempt += 1;
+            attempt += 1;
 
-        if (attempt < attempts_limit) {
-            window.requestAnimationFrame(wait_for_nodes);
-        }
-    };
+            if (attempt < attempts_limit) {
+                window.requestAnimationFrame(wait_for_nodes);
+                return;
+            }
 
-    wait_for_nodes();
+            resolve(false);
+        };
+
+        wait_for_nodes();
+    });
 }
 
 export { init_documentation_search };

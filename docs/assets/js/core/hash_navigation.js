@@ -83,6 +83,10 @@ async function apply_hash_focus(attr = {}) {
         correction_attempts = attr.correction_attempts ?? default_correction_attempts
     ;
 
+    if (get_current_hash() === "") {
+        return true;
+    }
+
     const get_hash_target = function () {
         const
             root_node = document.querySelector(root_selector),
@@ -191,7 +195,9 @@ function init_hash_navigation(attr = {}) {
         root_selector = attr.root_selector || default_root_selector
     ;
 
-    apply_hash_focus(attr);
+    const
+        initial_focus = apply_hash_focus(attr)
+    ;
 
     window.addEventListener("hashchange", function () {
         apply_hash_focus({
@@ -201,6 +207,8 @@ function init_hash_navigation(attr = {}) {
             correction_delay: attr.correction_delay
         });
     });
+
+    return initial_focus;
 }
 
 export { clear_active_targets, focus_target, init_hash_navigation, update_page_hash };

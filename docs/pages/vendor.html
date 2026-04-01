@@ -9,6 +9,11 @@
         <meta name="description" content="Documentation and examples for SISASS: Simple Interface for SASS" />
         <meta name="keywords" content="sisass" />
 
+        <!-- Preload fonts -->
+        <link rel="preload" href="fonts/montserrat/montserrat_black.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="fonts/nunito_sans/nunito_sans.woff2" as="font" type="font/woff2" crossorigin />
+        <!-- End preload fonts -->
+
         <link rel="icon" type="image/png" href="img/favicons/favicon.png" />
         <link rel="icon" type="image/vnd.microsoft.icon" href="img/favicons/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="img/favicons/favicon.ico" />
@@ -37,7 +42,16 @@
         <script src="js/pages/vendor.js" type="module"></script>
     </head>
 
-    <body class="documentationpage" data-link="vendor">
+    <body class="documentationpage no_scroll" data-link="vendor">
+        <div id="loader" class="page_loader">
+            <div class="box">
+                <p class="title">SISASS</p>
+                <p class="text">Cargando la documentación.</p>
+                <div class="bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        </div>
         <div class="container_main layout_1">
             <div id="header" class="a1"> </div>
 

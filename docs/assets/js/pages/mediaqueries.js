@@ -1,5 +1,6 @@
 import { contentLoad } from "../core/fn.js";
 import { init_hash_navigation } from "../core/hash_navigation.js";
+import { page_loader } from "../core/page_loader.js";
 import { init_documentation_search } from "../core/search.js";
 
 (function () {
@@ -12,14 +13,24 @@ import { init_documentation_search } from "../core/search.js";
         NSBase = (function () {
             return {
                 content: async () => {
+                    page_loader.register([
+                        "content_ready",
+                        "navigation_ready",
+                        "search_ready"
+                    ]);
+
                     await contentLoad({
                         url: url_json_base
                     });
+                    page_loader.set("content_ready", true);
 
-                    init_hash_navigation();
-                    init_documentation_search({
+                    await init_hash_navigation();
+                    page_loader.set("navigation_ready", true);
+
+                    await init_documentation_search({
                         current_page: currentPage
                     });
+                    page_loader.set("search_ready", true);
                 }
             };
         }())

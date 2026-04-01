@@ -1,0 +1,60 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .page_loader {
+        @include bc($c1, $c1);
+        @include position(( p: fixed ));
+        @include whs(100%);
+        @include center-flex-column;
+        padding: 24px;
+        z-index: 30;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease
+        ;
+
+        &.close {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .box {
+            @include flex-direction(column);
+            @include border-radius(16px);
+            @include box-shadow($sh1);
+            @include bc($c1, $c2);
+            @include wh(min(100%, 420px));
+            @include flex;
+            @include gap(3px);
+            padding: 28px 24px 22px;
+
+            .title {
+                @include bc($c0, $c6);
+                @include tf((
+                    f: $f3,
+                    s: szrem(30),
+                    w: 900
+                ));
+                margin-bottom: 0;
+            }
+
+            .text { @include text_1; }
+
+            .bar {
+                @include border-radius(10px);
+                @include bc($c0, $c0);
+                width: 100%;
+                height: 10px;
+                overflow: hidden;
+
+                .progress {
+                    @include animation(documentation_loader_progress 1.4s ease-in-out infinite);;
+                    @include border-radius(inherit);
+                    @include wh(40%, 100%);
+                    @include background(( i: $gr1 ));
+                }
+            }
+        }
+    }
+}
