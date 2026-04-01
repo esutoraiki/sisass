@@ -5,14 +5,21 @@
 @use "./variables" as *;
 
 @mixin text_1 {
-    @include font(szrem(16), $f1);
-    @include text(justify);
-    color: $c3;
+    @include bc($c0, $c3);
+    @include tf((
+        f: $f1,
+        s: szrem(16),
+        a: justify
+    ));
 
     b {
-        @include font(szrem(16), $f1, bold);
-        @include text(justify);
-        color: $c3;
+        @include bc($c0, $c3);
+        @include tf((
+            f: $f1,
+            s: szrem(16),
+            a: justify,
+            w: bold
+        ));
     }
 }
 
