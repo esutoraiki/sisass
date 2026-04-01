@@ -1,10 +1,16 @@
+import { loadPageTemplates } from "./fn.js";
+
 const
     selector_main_content = "#main_content",
     selector_search_input = "#page_search_input",
     selector_search_results = "#page_search_results",
+    selector_search_templates_mount = "body",
+    search_templates_url = new URL("../../../templates/templates.html", import.meta.url).href,
     max_results = 12,
     empty_search_message = "Escribe para buscar en la página actual.",
-    no_results_message = "No se encontraron coincidencias en esta página."
+    no_results_message = "No se encontraron coincidencias en esta página.",
+    template_search_state = "template_page_search_state",
+    template_search_item = "template_page_search_item"
 ;
 
 function normalize_text(value = "") {
@@ -227,7 +233,29 @@ function update_page_hash(anchor) {
 }
 
 function render_empty_state(results_node, message) {
-    results_node.innerHTML = "<p class=\"page_search_state\">" + message + "</p>";
+    const
+        template_node = document.getElementById(template_search_state)
+    ;
+
+    results_node.innerHTML = "";
+
+    if (!(template_node instanceof HTMLTemplateElement)) {
+        const
+            fallback_node = document.createElement("p")
+        ;
+
+        fallback_node.className = "page_search_state";
+        fallback_node.textContent = message;
+        results_node.appendChild(fallback_node);
+        return;
+    }
+
+    const
+        state_node = template_node.content.firstElementChild.cloneNode(true)
+    ;
+
+    state_node.textContent = message;
+    results_node.appendChild(state_node);
 }
 
 function render_results(results_node, results, root_node) {
@@ -237,31 +265,45 @@ function render_results(results_node, results, root_node) {
         return;
     }
 
-    let html = "";
+    const
+        template_node = document.getElementById(template_search_item)
+    ;
+
+    results_node.innerHTML = "";
+
+    if (!(template_node instanceof HTMLTemplateElement)) {
+        return;
+    }
 
     for (const item of results) {
         const
-            category_html = item.category !== "" ? "<p class=\"page_search_category\">" + item.category + "</p>" : ""
+            result_node = template_node.content.firstElementChild.cloneNode(true),
+            title_node = result_node.querySelector(".page_search_title"),
+            category_node = result_node.querySelector(".page_search_category"),
+            excerpt_node = result_node.querySelector(".page_search_excerpt")
         ;
 
-        html += [
-            "<a class=\"page_search_item\" href=\"#",
-            item.anchor,
-            "\" data-search-anchor=\"",
-            item.anchor,
-            "\">",
-            "<p class=\"page_search_title\">",
-            item.title,
-            "</p>",
-            category_html,
-            "<p class=\"page_search_excerpt\">",
-            get_result_snippet(item, normalize_text(results_node.dataset.query || "")),
-            "</p>",
-            "</a>"
-        ].join("");
-    }
+        result_node.href = "#" + item.anchor;
+        result_node.dataset.searchAnchor = item.anchor;
 
-    results_node.innerHTML = html;
+        if (title_node) {
+            title_node.textContent = item.title;
+        }
+
+        if (category_node) {
+            if (item.category !== "") {
+                category_node.textContent = item.category;
+            } else {
+                category_node.remove();
+            }
+        }
+
+        if (excerpt_node) {
+            excerpt_node.textContent = get_result_snippet(item, normalize_text(results_node.dataset.query || ""));
+        }
+
+        results_node.appendChild(result_node);
+    }
     results_node.classList.add("is_visible");
 
     const
@@ -365,13 +407,26 @@ function initialize_search_interface(root_node) {
     return true;
 }
 
-function init_documentation_search(attr = {}) {
+async function init_documentation_search(attr = {}) {
     const
         root_selector = attr.root_selector || selector_main_content,
-        attempts_limit = attr.attempts_limit || 120
+        attempts_limit = attr.attempts_limit || 120,
+        current_page = attr.current_page || "documentationpage",
+        templates_insert = document.querySelector(attr.templates_insert || selector_search_templates_mount)
     ;
 
     let attempt = 0;
+
+    await loadPageTemplates({
+        url: attr.templates_url || search_templates_url,
+        current_page: current_page,
+        insert: templates_insert,
+        position: "beforeend",
+        template_ids: [
+            template_search_state,
+            template_search_item
+        ]
+    });
 
     const wait_for_nodes = function () {
         const

@@ -1,5 +1,4 @@
 import { contentLoad } from "../core/fn.js";
-import { init_documentation_search } from "../core/search.js";
 
 (function () {
     "use strict";
@@ -10,11 +9,23 @@ import { init_documentation_search } from "../core/search.js";
 
         NSHome = (function () {
             return {
+                remove_search: () => {
+                    const
+                        search_node = document.querySelector(".page_search")
+                    ;
+
+                    if (search_node) {
+                        search_node.remove();
+                        return;
+                    }
+
+                    window.requestAnimationFrame(NSHome.remove_search);
+                },
                 content: () => {
                     contentLoad({
                         url: url_json,
                         complete: function () {
-                            init_documentation_search();
+                            NSHome.remove_search();
                         }
                     });
                 }

@@ -5,6 +5,7 @@ import { init_documentation_search } from "../core/search.js";
     "use strict";
 
     const
+        currentPage = "documentationpage",
         url_json_base = "json/mediaqueries.json",
 
         NSBase = (function () {
@@ -13,7 +14,9 @@ import { init_documentation_search } from "../core/search.js";
                     contentLoad({
                         url: url_json_base,
                         complete: function () {
-                            init_documentation_search();
+                            init_documentation_search({
+                                current_page: currentPage
+                            });
                         }
                     });
                 }

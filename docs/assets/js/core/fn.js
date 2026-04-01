@@ -177,4 +177,90 @@ function buildNode(attr = {}) {
     return node;
 }
 
-export { loadAjax, buildNode, checkLoad, contentLoad };
+async function loadPageTemplates(attr = {}) {
+    const
+        url = attr.url || "templates/templates.html",
+        current_page = attr.current_page || "both",
+        insert_node = attr.insert || document.body,
+        position = attr.position || "beforeend",
+        template_ids = attr.template_ids || []
+    ;
+
+    if (!insert_node) {
+        return [];
+    }
+
+    if (template_ids.length > 0) {
+        const
+            has_all_templates = template_ids.every((template_id) => document.getElementById(template_id))
+        ;
+
+        if (has_all_templates) {
+            return template_ids.map((template_id) => document.getElementById(template_id));
+        }
+    } else {
+        const
+            existing_templates = Array.from(document.querySelectorAll("template[data-page]"))
+                .filter((template_node) => {
+                    const
+                        page_target = template_node.dataset.page || "both"
+                    ;
+
+                    return page_target === "both" || page_target === current_page;
+                })
+        ;
+
+        if (existing_templates.length > 0) {
+            return existing_templates;
+        }
+    }
+
+    try {
+        const
+            templates = await loadAjax({
+                url: url
+            }),
+            container = document.createElement("div"),
+            filtered_templates = []
+        ;
+
+        container.innerHTML = templates;
+
+        for (const template_node of container.querySelectorAll("template")) {
+            const
+                page_target = template_node.dataset.page || "both",
+                already_exists = template_node.id !== "" && document.getElementById(template_node.id)
+            ;
+
+            if (page_target !== "both" && page_target !== current_page) {
+                continue;
+            }
+
+            if (already_exists) {
+                filtered_templates.push(document.getElementById(template_node.id));
+                continue;
+            }
+
+            const
+                cloned_template = template_node.cloneNode(true)
+            ;
+
+            filtered_templates.push(cloned_template);
+        }
+
+        if (filtered_templates.length > 0) {
+            insert_node.insertAdjacentHTML(
+                position,
+                filtered_templates.map((template_node) => template_node.outerHTML).join("")
+            );
+        }
+
+        return filtered_templates.map((template_node) => document.getElementById(template_node.id));
+    } catch (err) {
+        console.error(err);
+    }
+
+    return [];
+}
+
+export { loadAjax, buildNode, checkLoad, contentLoad, loadPageTemplates };
