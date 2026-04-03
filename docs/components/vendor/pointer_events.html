@@ -15,7 +15,7 @@
         Mixin vendor de SISASS para la propiedad <b>pointer-events</b>.
     </p>
     <p class="description">
-        Aplica la propiedad con el prefijo histórico disponible y con la versión estándar.
+        Define si un elemento responde o no a eventos del puntero, como clic, toque o paso del cursor. Aplica el prefijo histórico <b>-ms-</b> y después agrega la propiedad estándar.
     </p>
 
     <section class="use">
@@ -40,11 +40,48 @@
             <tbody>
                 <tr>
                     <td><b>br</b></td>
-                    <td>Keyword</td>
+                    <td>Keyword | String</td>
                     <td>-</td>
-                    <td>Define el valor que se asignará a <b>pointer-events</b>.</td>
+                    <td>Define el valor que se asignará a la propiedad <b>pointer-events</b>.</td>
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos botones intentan ejecutar un <b>alert()</b>. El segundo usa el valor <b>none</b>, por lo que no responde al clic ni al toque del puntero.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/pointer_events.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/pointer_events.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;pointer_events_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&quot;&nbsp;type=&quot;button&quot;&nbsp;onclick=&quot;alert('Botón&nbsp;activo')&quot;&gt;Botón&nbsp;activo&lt;/button&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button&nbsp;blocked&quot;&nbsp;type=&quot;button&quot;&nbsp;onclick=&quot;alert('Botón&nbsp;bloqueado')&quot;&gt;Sin&nbsp;interacción&lt;/button&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="pointer_events_example">
+                    <button class="button" type="button" onclick="alert('Botón activo')">Botón activo</button>
+                    <button class="button blocked" type="button" onclick="alert('Botón bloqueado')">Sin interacción</button>
+                </div>
+            </div>
+        </div>
     </section>
 </article>
