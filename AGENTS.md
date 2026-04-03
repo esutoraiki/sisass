@@ -14,6 +14,7 @@
 ## Coding Style & Naming Conventions
 - Use 4-space indentation, double quotes, and snake_case identifiers where language permits. Keep declarations grouped in single `const`/`let` statements when possible.
 - SASS: place shared variables in `_variables.scss`, mixins in `_mixin.scss`, layout primitives in `_layout.scss`, and animations in `_keyframes.scss`. Prefer clear, utility-style class names and maintain vendor overrides in `_vendor.scss`.
+- In `*.sass` and `*.scss`, prioritize value construction through concatenation when composing strings, selectors, property names, prefixes, or similar fragments. Prefer explicit concatenation patterns over alternative forms when both are valid.
 - JavaScript: keep small utility modules, avoid side effects in argument parsing, and ensure file paths remain relative-friendly for package consumers.
 
 ## Testing Guidelines
