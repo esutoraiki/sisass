@@ -153,6 +153,32 @@
   opacity: 0.45;
 }
 
+.documentationpage .user_select_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.documentationpage .user_select_example .card {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  background-color: #FFF;
+  color: #3A405A;
+  border: 1px solid #3A405A;
+  padding: 14px 16px;
+}
+.documentationpage .user_select_example .card.blocked {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .documentationpage .placeholder_example::-ms-input-placeholder {
   color: #A01303;
   font-style: italic;

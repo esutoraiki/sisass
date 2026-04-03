@@ -1,0 +1,20 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .user_select_example {
+        @include flex;
+        @include gap(12px);
+        flex-wrap: wrap;
+
+        .card {
+            @include user-select(text);
+            @include bc($c1, $c3);
+            border: $bd2;
+            padding: 14px 16px;
+
+            &.blocked {
+                @include user-select(none);
+            }
+        }
+    }
+}
