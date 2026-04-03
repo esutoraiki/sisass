@@ -1,0 +1,21 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .appearance_example {
+        @include flex;
+        @include gap(12px);
+        flex-wrap: wrap;
+
+        .field {
+            padding: 10px 14px;
+
+            &.custom {
+                @include border-radius(6px);
+                @include appearance(none);
+                @include bc($c5, $c4);
+                background-image: none;
+                cursor: pointer;
+            }
+        }
+    }
+}

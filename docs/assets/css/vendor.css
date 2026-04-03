@@ -179,6 +179,33 @@
   user-select: none;
 }
 
+.documentationpage .appearance_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.documentationpage .appearance_example .field {
+  padding: 10px 14px;
+}
+.documentationpage .appearance_example .field.custom {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #A01303;
+  color: #FBB03B;
+  background-image: none;
+  cursor: pointer;
+}
+
 .documentationpage .placeholder_example::-ms-input-placeholder {
   color: #A01303;
   font-style: italic;
