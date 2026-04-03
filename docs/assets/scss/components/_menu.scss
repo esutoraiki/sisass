@@ -1,50 +1,55 @@
 @use "../core/instances" as *;
 
-.main_menu {
-    padding-left: min(2.08vw, 40px);
+.container_menu {
+    @include position(sticky, 26px);
+    @include wh(100%, max-content);
 
-    .group_1 {
-        @include flex-direction(column);
-        @include flex;
-        margin-bottom: 35px;
+    .main_menu {
+        padding-left: min(2.08vw, 40px);
 
-        &:last-child { margin-bottom: 0; }
-
-        .title {
-            @include font(szrem(24), $f2, bold);
-            @include text;
-            margin-bottom: 14px;
-            color: $c3;
-        }
-
-        .item {
-            @include font(szrem(18), $f2);
-            @include text;
-            margin-bottom: 10px;
-            color: $c3;
-
-            &:hover { color: $c5; }
-            &:last-child { margin-bottom: 0; }
-            &.active { color: $c5; }
-        }
-
-        .submenu {
+        .group_1 {
             @include flex-direction(column);
             @include flex;
-            margin: 2px 0 8px;
-            padding-left: 12px;
-            border-left: $bd2;
+            margin-bottom: 35px;
 
-            .subitem {
-                @include font(szrem(15), $f2);
+            &:last-child { margin-bottom: 0; }
+
+            .title {
+                @include font(szrem(24), $f2, bold);
                 @include text;
-                margin-bottom: 8px;
-                color: $c6;
-                opacity: 0.8;
+                margin-bottom: 14px;
+                color: $c3;
+            }
 
-                &:hover { color: $c5; opacity: 1; }
+            .item {
+                @include font(szrem(18), $f2);
+                @include text;
+                margin-bottom: 10px;
+                color: $c3;
+
+                &:hover { color: $c5; }
                 &:last-child { margin-bottom: 0; }
-                &.active { color: $c5; opacity: 1; }
+                &.active { color: $c5; }
+            }
+
+            .submenu {
+                @include flex-direction(column);
+                @include flex;
+                margin: 2px 0 8px;
+                padding-left: 12px;
+                border-left: $bd2;
+
+                .subitem {
+                    @include font(szrem(15), $f2);
+                    @include text;
+                    margin-bottom: 8px;
+                    color: $c6;
+                    opacity: 0.8;
+
+                    &:hover { color: $c5; opacity: 1; }
+                    &:last-child { margin-bottom: 0; }
+                    &.active { color: $c5; opacity: 1; }
+                }
             }
         }
     }

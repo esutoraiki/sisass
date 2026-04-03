@@ -67,10 +67,6 @@ html.page { scroll-behavior: smooth; }
         padding: 0 min(10vw, 192px);
     }
 
-    .container_menu {
-        @include position(sticky, 26px);
-        @include wh(100%, max-content);
-    }
 
     .group_title {
         margin-bottom: 30px;
