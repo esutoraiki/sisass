@@ -1,6 +1,87 @@
 <article id="justify_self" class="justify_self">
-    <div class="group_title"><h2 class="subtitle">justify-self (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>justify-self</b>.</p>
-    <p class="description">Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin justify-self($br: initial);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Keyword</td><td>initial</td><td>Define el valor que se asignará a <b>justify-self</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            justify-self (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>justify-self</b>.
+    </p>
+    <p class="description">
+        Define la alineación horizontal de un elemento dentro de su área en un contenedor de grid. Aplica el prefijo histórico <b>-webkit-</b> y después agrega la propiedad estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin justify-self($br: initial);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword | String</td>
+                    <td>initial</td>
+                    <td>Define el valor que se asignará a la propiedad <b>justify-self</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos elementos comparten una celda amplia de grid. El segundo aplica el valor <b>end</b>, por lo que se alinea hacia el extremo horizontal de su área.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/justify_self.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/justify_self.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;justify_self_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;Auto&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&nbsp;end&quot;&gt;End&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="justify_self_example">
+                    <div class="cell"><span class="box">Auto</span></div>
+                    <div class="cell"><span class="box end">End</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>
