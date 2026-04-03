@@ -84,6 +84,44 @@
   font-weight: 800;
 }
 
+.documentationpage .justify_content_example {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+}
+.documentationpage .justify_content_example .row {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  border: 1px solid #3A405A;
+  padding: 12px;
+}
+.documentationpage .justify_content_example .row.between {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.documentationpage .justify_content_example .row .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  color: #FFF;
+}
+
 .documentationpage .text_stroke_example {
   -webkit-text-stroke: 2px #A01303;
   text-stroke: 2px #A01303;

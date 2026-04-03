@@ -1,0 +1,26 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .justify_content_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+        @include wh(100%);
+
+        .row {
+            @include flex;
+            @include gap(12px);
+            border: $bd2;
+            padding: 12px;
+
+            &.between {
+                @include justify-content(space-between);
+            }
+
+            .box {
+                @include center-flex-column;
+                color: $c1;
+            }
+        }
+    }
+}
