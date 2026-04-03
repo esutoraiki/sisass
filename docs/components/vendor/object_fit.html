@@ -15,7 +15,7 @@
         Mixin vendor de SISASS para la propiedad <b>object-fit</b>.
     </p>
     <p class="description">
-        Aplica la propiedad con el prefijo histórico disponible y con la versión estándar.
+        Define cómo se ajusta una imagen o un video dentro de su contenedor. Aplica el prefijo histórico <b>-o-</b> y después agrega la propiedad estándar.
     </p>
 
     <section class="use">
@@ -40,11 +40,48 @@
             <tbody>
                 <tr>
                     <td><b>br</b></td>
-                    <td>Keyword</td>
+                    <td>Keyword | String</td>
                     <td>-</td>
-                    <td>Define el valor que se asignará a <b>object-fit</b>.</td>
+                    <td>Define el valor que se asignará a la propiedad <b>object-fit</b>.</td>
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambas imágenes comparten el mismo contenedor. La segunda usa el valor <b>cover</b>, por lo que llena el área visible sin deformarse, aunque recorta parte del contenido.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/object_fit.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/object_fit.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;object_fit_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;frame&quot;&gt;&lt;img&nbsp;class=&quot;img&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;test&nbsp;object-fit&quot;&nbsp;/&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;frame&quot;&gt;&lt;img&nbsp;class=&quot;img&nbsp;cover&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;test&nbsp;object-fit&quot;&nbsp;/&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="object_fit_example">
+                    <div class="frame"><img class="img" src="img/test/1.webp" alt="test object-fit" /></div>
+                    <div class="frame"><img class="img cover" src="img/test/1.webp" alt="test object-fit" /></div>
+                </div>
+            </div>
+        </div>
     </section>
 </article>

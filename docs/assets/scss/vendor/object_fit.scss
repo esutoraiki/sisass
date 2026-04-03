@@ -1,0 +1,25 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .object_fit_example {
+        @include flex;
+        @include gap(12px);
+        flex-wrap: wrap;
+
+        .frame {
+            @include wh(235px, 110px);
+            border: $bd2;
+            overflow: hidden;
+
+            .img {
+                @include whs(100%);
+                display: block;
+
+                &.cover {
+                    @include object-fit(cover);
+                    object-position: top;
+                }
+            }
+        }
+    }
+}
