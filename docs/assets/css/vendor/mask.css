@@ -1,0 +1,48 @@
+.documentationpage .mask_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .mask_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 8px;
+}
+.documentationpage .mask_example .sample {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  border-radius: 18px;
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(135deg, #A01303, #FBB03B 50%, #2D396C);
+  color: #FFF;
+  font-size: 2.375rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+}
+.documentationpage .mask_example .sample.masked {
+  -webkit-mask: radial-gradient(circle, white 46%, rgba(255, 255, 255, 0) 72%);
+  mask: radial-gradient(circle, white 46%, rgba(255, 255, 255, 0) 72%);
+}

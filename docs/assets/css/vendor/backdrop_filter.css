@@ -1,0 +1,64 @@
+.documentationpage .backdrop_filter_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .backdrop_filter_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 8px;
+}
+.documentationpage .backdrop_filter_example .scene {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 260px;
+  height: 180px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px;
+  background: url("../img/test/1.webp") center center/cover no-repeat;
+  overflow: hidden;
+}
+.documentationpage .backdrop_filter_example .panel {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  -ms-border-radius: 14px;
+  -o-border-radius: 14px;
+  border-radius: 14px;
+  width: 170px;
+  height: 96px;
+  background-color: rgba(255, 255, 255, 0.34);
+  color: #000;
+}
+.documentationpage .backdrop_filter_example .panel.blurred {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}

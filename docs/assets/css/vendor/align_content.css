@@ -1,0 +1,57 @@
+.documentationpage .align_content_example {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+}
+.documentationpage .align_content_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.documentationpage .align_content_example .wrap {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: min(100vw, 520px);
+  height: 320px;
+  border: 1px solid #3A405A;
+  padding: 12px;
+  background-color: #F5F3F3;
+}
+.documentationpage .align_content_example .wrap.start {
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+}
+.documentationpage .align_content_example .wrap.space_between {
+  -webkit-align-content: space-between;
+  align-content: space-between;
+}
+.documentationpage .align_content_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: calc(50% - 6px);
+  height: 52px;
+  color: #FFF;
+}

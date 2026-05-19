@@ -1,6 +1,89 @@
 <article id="align_content" class="align_content">
-    <div class="group_title"><h2 class="subtitle">align-content (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>align-content</b>.</p>
-    <p class="description">Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin align-content($br: initial);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Keyword</td><td>initial</td><td>Define el valor que se asignará a <b>align-content</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            align-content (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>align-content</b>.
+    </p>
+    <p class="description">
+        Controla la distribución de varias filas o columnas dentro de un contenedor flex o grid cuando existe espacio disponible en el eje transversal. Aplica el prefijo histórico <b>-webkit-</b> y después agrega la propiedad estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin align-content($br: initial);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword | String</td>
+                    <td>initial</td>
+                    <td>Define el valor que se asignará a la propiedad <b>align-content</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos contenedores usan flex con varias filas y una altura fija. El primero agrupa las filas al inicio con <b>flex-start</b>. El segundo aplica <b>space-between</b>, por lo que reparte el espacio vertical sobrante entre las filas y hace visible la diferencia.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/align_content.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/align_content.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_content_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-content:&nbsp;flex-start&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;wrap&nbsp;start&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;D&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-content:&nbsp;space-between&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;wrap&nbsp;space_between&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;D&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="align_content_example">
+                    <h3 class="subtitle">align-content: flex-start</h3>
+                    <div class="wrap start"><span class="box">A</span><span class="box">B</span><span class="box">C</span><span class="box">D</span></div>
+                    <h3 class="subtitle">align-content: space-between</h3>
+                    <div class="wrap space_between"><span class="box">A</span><span class="box">B</span><span class="box">C</span><span class="box">D</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

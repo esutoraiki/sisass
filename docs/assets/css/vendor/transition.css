@@ -1,0 +1,45 @@
+.documentationpage .transition_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .transition_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 8px;
+}
+.documentationpage .transition_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  font-size: 1.125rem;
+  font-weight: bold;
+  opacity: 0.5;
+  color: #FFF;
+}
+.documentationpage .transition_example .box:hover {
+  opacity: 1;
+}
+.documentationpage .transition_example .box.animated {
+  -webkit-transition: opacity 5s ease;
+  -moz-transition: opacity 5s ease;
+  -o-transition: opacity 5s ease;
+  transition: opacity 5s ease;
+}

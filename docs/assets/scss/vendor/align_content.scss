@@ -1,0 +1,39 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .align_content_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+
+        .subtitle {
+            @include no-spacing;
+        }
+
+        .wrap {
+            @include flex;
+            @include gap(12px);
+            flex-wrap: wrap;
+            width: min(100vw, 520px);
+            height: 320px;
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            &.start {
+                @include align-content(flex-start);
+            }
+
+            &.space_between {
+                @include align-content(space-between);
+            }
+        }
+
+        .box {
+            @include center-flex-column;
+            width: calc(50% - 6px);
+            height: 52px;
+            color: $c1;
+        }
+    }
+}

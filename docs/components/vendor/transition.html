@@ -1,6 +1,93 @@
 <article id="transition" class="transition">
-    <div class="group_title"><h2 class="subtitle">transition (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>transition</b>.</p>
-    <p class="description">Aplica la propiedad con los prefijos históricos disponibles y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin transition($br: none);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>String</td><td>none</td><td>Define el valor que se asignará a <b>transition</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            transition (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>transition</b>.
+    </p>
+    <p class="description">
+        Define cómo cambian de forma animada una o varias propiedades CSS entre un estado y otro. Aplica la propiedad con los prefijos históricos disponibles y después agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin transition($br: none);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>String</td>
+                    <td>none</td>
+                    <td>Define el valor que se asignará a <b>transition</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos bloques parten con <b>opacity: 0.5</b>. El primero cambia a opacidad completa de forma inmediata al pasar el cursor. El segundo aplica una transición sobre <b>opacity</b>, por lo que el cambio ocurre de manera gradual y la diferencia se percibe con claridad.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/transition.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/transition.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;transition_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Sin&nbsp;transition&lt;/h3&gt;&lt;div&nbsp;class=&quot;box&quot;&gt;Hover&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;transition:&nbsp;opacity&nbsp;.35s&nbsp;ease&lt;/h3&gt;&lt;div&nbsp;class=&quot;box&nbsp;animated&quot;&gt;Hover&lt;/div&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="transition_example">
+                    <div>
+                        <h3 class="subtitle">Sin transition</h3>
+                        <div class="box">Hover</div>
+                    </div>
+                    <div>
+                        <h3 class="subtitle">transition: opacity .35s ease</h3>
+                        <div class="box animated">Hover</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

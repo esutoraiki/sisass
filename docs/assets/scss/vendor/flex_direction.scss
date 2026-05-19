@@ -1,0 +1,27 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .flex_direction_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+
+        .subtitle { @include no-spacing; }
+
+        .box_group {
+            @include flex;
+            @include gap(12px);
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            &.row { @include flex-direction(row); }
+            &.column { @include flex-direction(column); }
+        }
+
+        .box {
+            @include center-flex-column;
+            color: $c1;
+        }
+    }
+}

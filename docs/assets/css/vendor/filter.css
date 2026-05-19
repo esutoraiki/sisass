@@ -1,0 +1,37 @@
+.documentationpage .filter_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .filter_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 8px;
+}
+.documentationpage .filter_example .img {
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px;
+  width: 260px;
+  height: 180px;
+  display: block;
+  object-fit: cover;
+}
+.documentationpage .filter_example .img.grayscale {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}

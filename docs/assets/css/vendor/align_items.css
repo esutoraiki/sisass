@@ -1,0 +1,52 @@
+.documentationpage .align_items_example {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+}
+.documentationpage .align_items_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.documentationpage .align_items_example .row {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  width: min(100vw, 520px);
+  height: 225px;
+  border: 1px solid #3A405A;
+  padding: 12px;
+  background-color: #F5F3F3;
+}
+.documentationpage .align_items_example .row.center {
+  -webkit-align-items: center;
+  align-items: center;
+}
+.documentationpage .align_items_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  min-width: 72px;
+  padding: 10px 14px;
+  color: #FFF;
+}

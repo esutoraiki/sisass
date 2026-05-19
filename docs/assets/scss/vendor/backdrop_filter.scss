@@ -1,0 +1,34 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .backdrop_filter_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .scene {
+            @include center-flex-column;
+            @include wh(260px, 180px);
+            @include border-radius(16px);
+            background: url("../img/test/1.webp") center center / cover no-repeat;
+            overflow: hidden;
+        }
+
+        .panel {
+            @include center-flex-column;
+            @include border-radius(14px);
+            @include wh(170px, 96px);
+            background-color: rgba($c1, 0.34);
+            color: $c2;
+
+            &.blurred {
+                @include backdrop-filter(blur(10px));
+            }
+        }
+    }
+}

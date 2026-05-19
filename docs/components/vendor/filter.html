@@ -1,6 +1,93 @@
 <article id="filter" class="filter">
-    <div class="group_title"><h2 class="subtitle">filter (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>filter</b>.</p>
-    <p class="description">Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin filter($br: none);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>String</td><td>none</td><td>Define el valor que se asignará a <b>filter</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            filter (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>filter</b>.
+    </p>
+    <p class="description">
+        Aplica efectos visuales directamente sobre el propio elemento, como desenfoque, escala de grises o saturación. Genera la propiedad con prefijo <b>-webkit-</b> y después agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin filter($br: none);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>String</td>
+                    <td>none</td>
+                    <td>Define el valor que se asignará a <b>filter</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambas tarjetas usan la misma imagen. La primera se muestra sin alteraciones. La segunda aplica <b>grayscale(100%)</b>, por lo que la imagen pierde su color y el efecto se distingue con facilidad.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/filter.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/filter.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;filter_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Sin&nbsp;filter&lt;/h3&gt;&lt;img&nbsp;class=&quot;img&quot;&nbsp;src=&quot;../assets/img/test/1.webp&quot;&nbsp;alt=&quot;Ejemplo&nbsp;sin&nbsp;filter&quot;&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;filter:&nbsp;grayscale(100%)&lt;/h3&gt;&lt;img&nbsp;class=&quot;img&nbsp;grayscale&quot;&nbsp;src=&quot;../assets/img/test/1.webp&quot;&nbsp;alt=&quot;Ejemplo&nbsp;con&nbsp;filter&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="filter_example">
+                    <div>
+                        <h3 class="subtitle">Sin filter</h3>
+                        <img class="img" src="../assets/img/test/1.webp" alt="Ejemplo sin filter">
+                    </div>
+                    <div>
+                        <h3 class="subtitle">filter: grayscale(100%)</h3>
+                        <img class="img grayscale" src="../assets/img/test/1.webp" alt="Ejemplo con filter">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

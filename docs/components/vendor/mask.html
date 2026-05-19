@@ -15,7 +15,7 @@
         Mixin vendor de SISASS para la propiedad <b>mask</b>.
     </p>
     <p class="description">
-        Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.
+        Define una máscara visual que controla qué partes de un elemento permanecen visibles. Genera la propiedad con prefijo <b>-webkit-</b> y después agrega la versión estándar.
     </p>
 
     <section class="use">
@@ -46,5 +46,48 @@
                 </tr>
             </tbody>
         </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos bloques comparten el mismo fondo con degradado. El primero se muestra completo. El segundo aplica una máscara radial con bordes transparentes, por lo que la figura visible se recorta hacia el centro y la diferencia se aprecia con claridad.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/mask.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/mask.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;mask_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Sin&nbsp;mask&lt;/h3&gt;&lt;div&nbsp;class=&quot;sample&quot;&gt;MASK&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;mask:&nbsp;radial-gradient(...)&lt;/h3&gt;&lt;div&nbsp;class=&quot;sample&nbsp;masked&quot;&gt;MASK&lt;/div&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="mask_example">
+                    <div>
+                        <h3 class="subtitle">Sin mask</h3>
+                        <div class="sample">MASK</div>
+                    </div>
+                    <div>
+                        <h3 class="subtitle">mask: radial-gradient(...)</h3>
+                        <div class="sample masked">MASK</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </article>

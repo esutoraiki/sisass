@@ -1,6 +1,89 @@
 <article id="flex_basis" class="flex_basis">
-    <div class="group_title"><h2 class="subtitle">flex-basis (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>flex-basis</b>.</p>
-    <p class="description">Aplica la propiedad con prefijo <b>-webkit-</b> y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin flex-basis($br: auto);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Size | Keyword</td><td>auto</td><td>Define el valor que se asignará a <b>flex-basis</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            flex-basis (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>flex-basis</b>.
+    </p>
+    <p class="description">
+        Define el tamaño base inicial de un elemento flex antes de repartir el espacio disponible en el contenedor. Aplica el prefijo histórico <b>-webkit-</b> y después agrega la propiedad estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin flex-basis($br: auto);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Size | Keyword | String</td>
+                    <td>auto</td>
+                    <td>Define el valor que se asignará a la propiedad <b>flex-basis</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos contenedores usan flex en fila con ajuste de línea y un ancho fijo. El primero mantiene el tamaño base automático, por lo que los tres elementos caben en una sola fila. El segundo aplica <b>flex-basis: 140px</b> a cada elemento, así que cada caja reserva más espacio horizontal y el último elemento salta a una nueva línea.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/flex_basis.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/flex_basis.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;flex_basis_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;flex-basis:&nbsp;auto&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;flex-basis:&nbsp;140px&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&nbsp;fixed_basis&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="flex_basis_example">
+                    <h3 class="subtitle">flex-basis: auto</h3>
+                    <div class="row"><span class="box">A</span><span class="box">B</span><span class="box">C</span></div>
+                    <h3 class="subtitle">flex-basis: 140px</h3>
+                    <div class="row fixed_basis"><span class="box">A</span><span class="box">B</span><span class="box">C</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

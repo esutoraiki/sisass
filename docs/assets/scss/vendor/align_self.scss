@@ -1,0 +1,32 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .align_self_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+
+        .subtitle {
+            @include no-spacing;
+        }
+
+        .cell {
+            @include grid;
+            @include wh(250px, 520px);
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+        }
+
+        .box {
+            @include center-flex-column;
+            min-width: 72px;
+            padding: 10px 14px;
+            color: $c1;
+
+            &.end {
+                @include align-self(end);
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .linear_gradient_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .sample {
+            @include center-flex-column;
+            @include border-radius(18px);
+            @include wh(220px, 160px);
+            background-color: $c5;
+            color: $c1;
+            font-size: szrem(34);
+            font-weight: bold;
+
+            &.gradient {
+                @include linear-gradient("135deg, #A01303, #FBB03B");
+            }
+        }
+    }
+}

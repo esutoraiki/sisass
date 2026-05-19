@@ -1,0 +1,43 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .flex_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+
+        .subtitle {
+            @include no-spacing;
+        }
+
+        .box_group {
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            &.is_flex {
+                @include flex;
+                @include gap(12px);
+            }
+        }
+
+        .box {
+            @include center-flex-column;
+            min-width: 72px;
+            min-height: 52px;
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            color: $c1;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .is_flex {
+            .box {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+.documentationpage .flex_basis_example {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+}
+.documentationpage .flex_basis_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.documentationpage .flex_basis_example .row {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 320px;
+  border: 1px solid #3A405A;
+  padding: 12px;
+  background-color: #F5F3F3;
+}
+.documentationpage .flex_basis_example .row.fixed_basis .box {
+  -webkit-flex-basis: 140px;
+  flex-basis: 140px;
+}
+.documentationpage .flex_basis_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  min-height: 52px;
+  padding: 10px 14px;
+  color: #FFF;
+}
