@@ -1,5 +1,5 @@
-@use "sass:list";
 @use "../core/instances" as *;
+@use "sass:list";
 
 .logo_sisass {
     &:before {
@@ -7,6 +7,18 @@
             sisass,
             list.nth($l1x, 1),
             list.nth($l1y, 1),
+            $c3
+        );
+        content: "";
+    }
+}
+
+.icon_search {
+    &::before {
+        @include icon-svg(
+            search,
+            list.nth($l2, 1),
+            list.nth($l2, 1),
             $c3
         );
         content: "";
