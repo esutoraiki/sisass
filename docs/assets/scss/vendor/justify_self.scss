@@ -1,0 +1,25 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .justify_self_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+
+        .cell {
+            @include grid;
+            @include wh(250px);
+            border: $bd2;
+            padding: 12px;
+        }
+
+        .box {
+            @include center-flex-column;
+            color: $c1;
+
+            &.end {
+                @include justify-self(end);
+            }
+        }
+    }
+}

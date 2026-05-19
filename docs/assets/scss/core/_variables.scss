@@ -60,8 +60,12 @@ $t9: 900ms;
 $t10: 1s;
 
 // Variables
-$l1x: (324px);
-$l1y: (116px);
+// logo sisass
+$l1x: (clamp(200px, 16.88vw, 324px));
+$l1y: (clamp(71px, 6.04vw, 116px));
+
+// icon search
+$l2: (26px);
 
 //-----------------------------------
 //End Variables
