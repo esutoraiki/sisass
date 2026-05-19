@@ -3,16 +3,46 @@ import { clear_active_targets, focus_target, update_page_hash } from "./hash_nav
 
 const
     selector_main_content = "#main_content",
+    selector_search_container = ".page_search",
+    selector_search_openclose = "#openclose_search",
     selector_search_input = "#page_search_input",
     selector_search_results = "#page_search_results",
     selector_search_templates_mount = "body",
     search_templates_url = new URL("../../../templates/templates.html", import.meta.url).href,
+    class_active = "active",
+    class_hide = "hide",
     max_results = 12,
     empty_search_message = "Escribe para buscar en la página actual.",
     no_results_message = "No se encontraron coincidencias en esta página.",
     template_search_state = "template_page_search_state",
     template_search_item = "template_page_search_item"
 ;
+
+function open_search_interface() {
+    const
+        search_node = document.querySelector(selector_search_container),
+        openclose_node = document.querySelector(selector_search_openclose),
+        container_node = search_node ? search_node.querySelector(".container_search") : null,
+        input_node = document.querySelector(selector_search_input)
+    ;
+
+    if (!search_node || !container_node) {
+        return false;
+    }
+
+    if (openclose_node) {
+        openclose_node.classList.add(class_hide);
+    }
+
+    search_node.classList.add(class_active);
+    container_node.classList.add(class_active);
+
+    if (input_node) {
+        input_node.focus();
+    }
+
+    return true;
+}
 
 function normalize_text(value = "") {
     return value
@@ -312,11 +342,14 @@ function attach_keyboard_shortcuts(root_node, input_node, results_node) {
 
 function initialize_search_interface(root_node) {
     const
+        search_node = document.querySelector(selector_search_container),
+        openclose_node = document.querySelector(selector_search_openclose),
+        container_node = search_node ? search_node.querySelector(".container_search") : null,
         input_node = document.querySelector(selector_search_input),
         results_node = document.querySelector(selector_search_results)
     ;
 
-    if (!root_node || !input_node || !results_node) {
+    if (!root_node || !search_node || !container_node || !input_node || !results_node) {
         return false;
     }
 
@@ -330,6 +363,13 @@ function initialize_search_interface(root_node) {
 
     root_node.dataset.searchReady = "true";
     render_empty_state(results_node, empty_search_message);
+
+    if (openclose_node) {
+        openclose_node.addEventListener("click", function (event) {
+            event.preventDefault();
+            open_search_interface();
+        });
+    }
 
     input_node.addEventListener("input", function () {
         const

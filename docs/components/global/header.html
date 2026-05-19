@@ -4,23 +4,24 @@
     </a>
 
     <div class="page_search">
-        <label class="page_search_label" for="page_search_input">
-            Buscar en esta página
-        </label>
-        <div class="page_search_box">
-            <input
-                id="page_search_input"
-                class="page_search_input"
-                type="search"
-                placeholder="Buscar contenido, mixins, claves o descripciones"
-                autocomplete="off"
-                spellcheck="false"
-            />
+        <button id="openclose_search" class="openclose icon_search">
+        </button>
+
+        <div class="container_search">
+            <label class="page_search_label" for="page_search_input">
+                Buscar en esta página
+            </label>
+            <div class="page_search_box">
+                <input
+                    id="page_search_input"
+                    class="page_search_input"
+                    type="search"
+                    placeholder="Buscar contenido, mixins, claves o descripciones"
+                    autocomplete="off"
+                    spellcheck="false"
+                    />
+            </div>
+            <div id="page_search_results" class="page_search_results" aria-live="polite"></div>
         </div>
-        <div
-            id="page_search_results"
-            class="page_search_results"
-            aria-live="polite"
-        ></div>
     </div>
 </header>
