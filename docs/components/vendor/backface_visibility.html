@@ -1,6 +1,103 @@
 <article id="backface_visibility" class="backface_visibility">
-    <div class="group_title"><h2 class="subtitle">backface-visibility (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>backface-visibility</b>.</p>
-    <p class="description">Aplica la propiedad con los prefijos históricos disponibles y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin backface-visibility($br: hidden);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Keyword</td><td>hidden</td><td>Define el valor que se asignará a <b>backface-visibility</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            backface-visibility (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>backface-visibility</b>.
+    </p>
+    <p class="description">
+        Controla si la cara trasera de un elemento transformado en 3D permanece visible cuando queda orientada hacia el usuario. Se usa sobre todo en giros con <b>rotateY</b>, <b>rotateX</b> o composiciones tipo card flip para evitar que el reverso se vea invertido cuando no corresponde.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin backface-visibility($br: hidden);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword</td>
+                    <td>hidden</td>
+                    <td>Define el valor que se asignará a <b>backface-visibility</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambas tarjetas giran 180 grados al pasar el cursor. La primera usa <b>hidden</b>, por lo que la cara trasera no se muestra mientras queda invertida. La segunda usa <b>visible</b>, así que el reverso sigue siendo visible durante el giro.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/backface_visibility.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/backface_visibility.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;backface_visibility_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;card_wrapper&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;hidden&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;card_scene&quot;&gt;&lt;div&nbsp;class=&quot;card&nbsp;hidden_face&quot;&gt;&lt;div&nbsp;class=&quot;face&nbsp;front&quot;&gt;Front&lt;/div&gt;&lt;div&nbsp;class=&quot;face&nbsp;back&quot;&gt;Back&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;card_wrapper&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;visible&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;card_scene&quot;&gt;&lt;div&nbsp;class=&quot;card&nbsp;visible_face&quot;&gt;&lt;div&nbsp;class=&quot;face&nbsp;front&quot;&gt;Front&lt;/div&gt;&lt;div&nbsp;class=&quot;face&nbsp;back&quot;&gt;Back&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="backface_visibility_example">
+                    <div class="card_wrapper">
+                        <h3 class="subtitle">hidden</h3>
+                        <div class="card_scene">
+                            <div class="card hidden_face">
+                                <div class="face front">Front</div>
+                                <div class="face back">Back</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card_wrapper">
+                        <h3 class="subtitle">visible</h3>
+                        <div class="card_scene">
+                            <div class="card visible_face">
+                                <div class="face front">Front</div>
+                                <div class="face back">Back</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

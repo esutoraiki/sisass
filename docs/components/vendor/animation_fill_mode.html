@@ -1,6 +1,97 @@
 <article id="animation_fill_mode" class="animation_fill_mode">
-    <div class="group_title"><h2 class="subtitle">animation-fill-mode (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>animation-fill-mode</b>.</p>
-    <p class="description">Aplica la propiedad con los prefijos históricos disponibles y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin animation-fill-mode($br);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>Keyword</td><td>-</td><td>Define el valor que se asignará a <b>animation-fill-mode</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            animation-fill-mode (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>animation-fill-mode</b>.
+    </p>
+    <p class="description">
+        Controla qué estilos de una animación permanecen activos fuera de su tiempo de ejecución, tanto antes de que empiece como después de que termine. Esto permite decidir si el elemento debe conservar el estado del primer fotograma, el del último, ambos o ninguno cuando existe un retraso o cuando la animación finaliza.
+    </p>
+    <p class="description">
+        Resulta útil para evitar saltos visuales entre el estado base del elemento y los fotogramas definidos en la animación. Aplica la propiedad con los prefijos históricos disponibles y después agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin animation-fill-mode($br);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword</td>
+                    <td>-</td>
+                    <td>Define el valor que se asignará a <b>animation-fill-mode</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            En este ejemplo, ambos bloques usan la misma animación con retraso y una sola ejecución. Pulsa el botón para reiniciarla cuando quieras. El bloque <b>backwards</b> aplica el estilo inicial durante la espera; el bloque <b>forwards</b> conserva el estilo final cuando la animación termina.
+        </p>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/animation_fill_mode.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/animation_fill_mode.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;animation_fill_mode_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button&nbsp;class=&quot;button_replay&quot;&nbsp;type=&quot;button&quot;&nbsp;data-animation-replay=&quot;animation-fill-mode&quot;&gt;Reproducir&nbsp;animación&lt;/button&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;backwards&lt;/h3&gt;&lt;div&nbsp;class=&quot;box&nbsp;backwards&quot;&nbsp;data-animation-box=&quot;animation-fill-mode&quot;&gt;Backwards&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;forwards&lt;/h3&gt;&lt;div&nbsp;class=&quot;box&nbsp;forwards&quot;&nbsp;data-animation-box=&quot;animation-fill-mode&quot;&gt;Forwards&lt;/div&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="animation_fill_mode_example">
+                    <button class="button_replay" type="button" data-animation-replay="animation-fill-mode">Reproducir animación</button>
+                    <div>
+                        <h3 class="subtitle">backwards</h3>
+                        <div class="box backwards" data-animation-box="animation-fill-mode">Backwards</div>
+                    </div>
+                    <div>
+                        <h3 class="subtitle">forwards</h3>
+                        <div class="box forwards" data-animation-box="animation-fill-mode">Forwards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>

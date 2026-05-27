@@ -1,6 +1,84 @@
 <article id="animation" class="animation">
-    <div class="group_title"><h2 class="subtitle">animation (_vendor.scscs)</h2><h3 class="attribute">Tipo: Mixin</h3><h3 class="attribute">Versión: 2.x.x</h3></div>
-    <p class="description">Mixin vendor de SISASS para la propiedad <b>animation</b>.</p>
-    <p class="description">Aplica la propiedad con los prefijos históricos disponibles y con la versión estándar.</p>
-    <section class="use"><h2 class="title">Interface</h2><pre class="language-scss"><code>@mixin animation($br: none);</code></pre><h3 class="subtitle">Parámetros secuenciales</h3><table class="full"><thead><tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead><tbody><tr><td><b>br</b></td><td>String</td><td>none</td><td>Define el valor que se asignará a <b>animation</b>.</td></tr></tbody></table></section>
+    <div class="group_title">
+        <h2 class="subtitle">
+            animation (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>animation</b>.
+    </p>
+    <p class="description">
+        Asigna la animación que debe ejecutarse sobre un elemento, incluyendo nombre, duración, función de tiempo, retraso, iteraciones, dirección, fill mode y estado. Aplica la propiedad con los prefijos históricos disponibles y después agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin animation($br: none);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>String</td>
+                    <td>none</td>
+                    <td>Define el valor completo que se asignará a <b>animation</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/animation.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/animation.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;animation_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;box&quot;&gt;Sin&nbsp;animation&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;box&nbsp;active&quot;&gt;Con&nbsp;animation&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="animation_example">
+                    <div class="box">Sin animation</div>
+                    <div class="box active">Con animation</div>
+                </div>
+            </div>
+        </div>
+    </section>
 </article>
