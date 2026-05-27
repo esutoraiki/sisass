@@ -1,0 +1,12 @@
+.example_brpl {
+  background-color: #dcecf3;
+  color: #153443;
+  padding: 20px;
+  border: 2px solid #153443;
+}
+@media only screen and (max-width: 960px) and (orientation: landscape) {
+  .example_brpl {
+    background-color: #dff1d6;
+    color: #253f18;
+  }
+}

@@ -1,26 +1,96 @@
+.example_brp {
+  background-color: #d7eef7;
+  color: #16313a;
+  padding: 20px;
+  border: 2px solid #16313a;
+}
+@media only screen and (max-width: 760px) {
+  .example_brp {
+    background-color: #f8d9dc;
+    color: #4d171d;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .example_brp {
+    background-color: #ddf2da;
+    color: #173f21;
+  }
+}
+
+.example_brpp {
+  background-color: #e7e1f7;
+  color: #2d214a;
+  padding: 20px;
+  border: 2px solid #2d214a;
+}
+@media only screen and (max-height: 860px) and (orientation: portrait) {
+  .example_brpp {
+    background-color: #fff0c2;
+    color: #4a3700;
+  }
+}
+
+.example_brpl {
+  background-color: #dcecf3;
+  color: #153443;
+  padding: 20px;
+  border: 2px solid #153443;
+}
+@media only screen and (max-width: 960px) and (orientation: landscape) {
+  .example_brpl {
+    background-color: #dff1d6;
+    color: #253f18;
+  }
+}
+
+.example_brph {
+  background-color: #f1e0d1;
+  color: #4a2914;
+  padding: 20px;
+  border: 2px solid #4a2914;
+}
+@media only screen and (max-height: 700px) {
+  .example_brph {
+    background-color: #d8edf0;
+    color: #153c42;
+  }
+}
+
+.example_brpwh {
+  background-color: #edf0d8;
+  color: #3c4215;
+  padding: 20px;
+  border: 2px solid #3c4215;
+}
+@media only screen and (max-width: 900px) and (max-height: 700px) {
+  .example_brpwh {
+    background-color: #f0d8e8;
+    color: #421532;
+  }
+}
+
 .example_mbr {
-  background-color: red;
+  background-color: #cfebf3;
   width: 300px;
-  height: 300px;
+  min-height: 120px;
+  padding: 20px;
+  border: 2px solid #123743;
 }
 @media only screen and (max-width: 1920px) {
   .example_mbr {
     width: 300px;
-    height: 300px;
-    background-color: red;
+    background-color: #cfebf3;
   }
 }
 @media only screen and (max-width: 980px) {
   .example_mbr {
-    width: 200px;
-    height: 200px;
-    background-color: blue;
+    width: 220px;
+    background-color: #e5f0d3;
   }
 }
 @media only screen and (max-width: 640px) {
   .example_mbr {
-    width: 100px;
-    height: 100px;
-    background-color: green;
+    width: 150px;
+    background-color: #f6d8df;
   }
 }

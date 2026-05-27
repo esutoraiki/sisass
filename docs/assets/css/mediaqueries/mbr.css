@@ -1,26 +1,25 @@
 .example_mbr {
-  background-color: red;
+  background-color: #cfebf3;
   width: 300px;
-  height: 300px;
+  min-height: 120px;
+  padding: 20px;
+  border: 2px solid #123743;
 }
 @media only screen and (max-width: 1920px) {
   .example_mbr {
     width: 300px;
-    height: 300px;
-    background-color: red;
+    background-color: #cfebf3;
   }
 }
 @media only screen and (max-width: 980px) {
   .example_mbr {
-    width: 200px;
-    height: 200px;
-    background-color: blue;
+    width: 220px;
+    background-color: #e5f0d3;
   }
 }
 @media only screen and (max-width: 640px) {
   .example_mbr {
-    width: 100px;
-    height: 100px;
-    background-color: green;
+    width: 150px;
+    background-color: #f6d8df;
   }
 }

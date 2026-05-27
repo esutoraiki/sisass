@@ -1,0 +1,12 @@
+.example_brph {
+  background-color: #f1e0d1;
+  color: #4a2914;
+  padding: 20px;
+  border: 2px solid #4a2914;
+}
+@media only screen and (max-height: 700px) {
+  .example_brph {
+    background-color: #d8edf0;
+    color: #153c42;
+  }
+}

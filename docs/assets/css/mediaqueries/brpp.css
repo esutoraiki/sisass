@@ -1,0 +1,12 @@
+.example_brpp {
+  background-color: #e7e1f7;
+  color: #2d214a;
+  padding: 20px;
+  border: 2px solid #2d214a;
+}
+@media only screen and (max-height: 860px) and (orientation: portrait) {
+  .example_brpp {
+    background-color: #fff0c2;
+    color: #4a3700;
+  }
+}
