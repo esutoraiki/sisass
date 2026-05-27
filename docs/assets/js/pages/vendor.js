@@ -12,6 +12,24 @@ import { init_documentation_search } from "../core/search.js";
 
         NSVendor = (function () {
             return {
+                init_animation_fill_mode_example: () => {
+                    const
+                        replay_button = document.querySelector("[data-animation-replay=\"animation-fill-mode\"]"),
+                        animation_boxes = document.querySelectorAll("[data-animation-box=\"animation-fill-mode\"]")
+                    ;
+
+                    if (!replay_button || animation_boxes.length === 0) {
+                        return;
+                    }
+
+                    replay_button.addEventListener("click", () => {
+                        animation_boxes.forEach((animation_box) => {
+                            animation_box.classList.remove("is_running");
+                            void animation_box.offsetWidth;
+                            animation_box.classList.add("is_running");
+                        });
+                    });
+                },
                 content: async () => {
                     page_loader.register([
                         "content_ready",
@@ -30,6 +48,7 @@ import { init_documentation_search } from "../core/search.js";
                     await init_documentation_search({
                         current_page: currentPage
                     });
+                    NSVendor.init_animation_fill_mode_example();
                     page_loader.set("search_ready", true);
                 }
             };
