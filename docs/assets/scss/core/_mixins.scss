@@ -9,7 +9,8 @@
     @include tf((
         f: $f1,
         s: szrem(16),
-        a: justify
+        a: justify,
+        lh: 1.3
     ));
 
     b {

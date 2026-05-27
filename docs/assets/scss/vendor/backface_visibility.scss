@@ -1,0 +1,60 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .backface_visibility_example {
+        @include flex;
+        @include gap(24px);
+        flex-wrap: wrap;
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .card_scene {
+            perspective: 800px;
+        }
+
+        .card {
+            @include wh(150px, 96px);
+            @include transition(transform .8s ease);
+            position: relative;
+            @include transform-style(preserve-3d);
+
+            &:hover {
+                @include transform(rotateY(180deg));
+            }
+        }
+
+        .face {
+            @include center-flex-column;
+            @include whs(100%);
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            color: $c1;
+            font-weight: bold;
+        }
+
+        .front {
+            background-color: $c5;
+        }
+
+        .back {
+            background-color: $c2;
+            @include transform(rotateY(180deg));
+        }
+
+        .hidden_face {
+            .face {
+                @include backface-visibility(hidden);
+            }
+        }
+
+        .visible_face {
+            .face {
+                @include backface-visibility(visible);
+            }
+        }
+    }
+}

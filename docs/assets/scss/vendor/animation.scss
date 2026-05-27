@@ -1,0 +1,30 @@
+@use "../core/instances" as *;
+
+@include keyframes(pulse) {
+    from {
+        transform: translateY(0);
+        opacity: 0.45;
+    }
+    to {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+};
+
+.documentationpage {
+    .animation_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .box {
+            @include center-flex-column;
+            @include whs(150px);
+
+            &.active {
+                @include bc($c6, $c1);
+                @include animation(pulse 1.2s infinite ease alternate);
+            }
+        }
+    }
+}

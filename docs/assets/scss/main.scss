@@ -38,7 +38,7 @@ html.page { scroll-behavior: smooth; }
 
     .main_header {
         @include wh(100vw);
-        padding: 35px min(2.08vw, 40px);
+        padding: clamp(15px, 1.83vw, 35px) min(2.08vw, 40px);
         display: grid;
         grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
         align-items: start;
@@ -64,7 +64,7 @@ html.page { scroll-behavior: smooth; }
     }
 
     .main_content {
-        padding: 0 min(10vw, 192px);
+        padding: 0 min(5vw, 192px);
     }
 
 
@@ -143,7 +143,7 @@ html.page { scroll-behavior: smooth; }
             @include text;
             color: color.adjust($c6, $lightness: 20%);
             margin: {
-                top: 30px;
+                top: 20px;
                 bottom: 10px;
             }
         }
@@ -159,7 +159,7 @@ html.page { scroll-behavior: smooth; }
 
         .box {
             @include whs(100px);
-            background-color: $c5;
+            @include bc($c5, $c1);
         }
 
         .box_no_bgc {
@@ -169,8 +169,10 @@ html.page { scroll-behavior: smooth; }
 
     .container_example {
         @include bc($c7, $c3);
+        @include border-radius(7px 7px 0 0);
+        border-block-start: $bd8;
         box-sizing: border-box;
-        padding: 1px min(0.78vw, 15px) 15px;
+        padding: 0px min(0.78vw, 15px) 15px;
     }
 
     code {
@@ -183,7 +185,7 @@ html.page { scroll-behavior: smooth; }
 
     pre {
         @include border-radius(5%);
-        margin-bottom: 40px;
+        margin-bottom: 25px;
 
         &:before { display: none; }
         &:after { display: none; }

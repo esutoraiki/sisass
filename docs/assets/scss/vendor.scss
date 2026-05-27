@@ -1,4 +1,6 @@
 @forward "vendor/vendor_prefix";
+@forward "vendor/animation";
+@forward "vendor/animation_fill_mode";
 @forward "vendor/calc";
 @forward "vendor/box_sizing";
 @forward "vendor/box_decoration_break";
@@ -29,6 +31,7 @@
 @forward "vendor/pointer_events";
 @forward "vendor/user_select";
 @forward "vendor/appearance";
+@forward "vendor/backface_visibility";
 @forward "vendor/placeholder";
 @forward "vendor/cube_transformstyle";
 @forward "vendor/transform";
