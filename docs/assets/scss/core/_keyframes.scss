@@ -32,7 +32,7 @@
     }
 }
 
-@include keyframes(documentation_loader_progress) {
+@include keyframes(loader_progress) {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(300%); }
 }

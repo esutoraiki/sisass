@@ -1,6 +1,6 @@
 import { contentLoad } from "../core/fn.js";
 import { init_hash_navigation } from "../core/hash_navigation.js";
-import { page_loader } from "../core/page_loader.js";
+import { loader } from "../core/page_loader.js";
 
 (function () {
     "use strict";
@@ -31,7 +31,7 @@ import { page_loader } from "../core/page_loader.js";
                     });
                 },
                 content: async () => {
-                    page_loader.register([
+                    loader.register([
                         "content_ready",
                         "navigation_ready"
                     ]);
@@ -39,11 +39,11 @@ import { page_loader } from "../core/page_loader.js";
                     await contentLoad({
                         url: url_json
                     });
-                    page_loader.set("content_ready", true);
+                    loader.set("content_ready", true);
 
                     await NSHome.remove_search();
                     await init_hash_navigation();
-                    page_loader.set("navigation_ready", true);
+                    loader.set("navigation_ready", true);
                 }
             };
         }())

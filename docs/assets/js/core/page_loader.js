@@ -1,4 +1,4 @@
-function create_page_loader(attr = {}) {
+function create_loader(attr = {}) {
     const
         loader_id = attr.loader_id || "loader",
         lock_class = attr.lock_class || "no_scroll",
@@ -110,7 +110,7 @@ function create_page_loader(attr = {}) {
 }
 
 const
-    page_loader = create_page_loader()
+    loader = create_loader()
 ;
 
-export { create_page_loader, page_loader };
+export { create_loader, loader };

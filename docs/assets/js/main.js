@@ -1,5 +1,5 @@
 import { contentLoad } from "./core/fn.js";
-import { page_loader } from "./core/page_loader.js";
+import { loader } from "./core/page_loader.js";
 
 (function () {
     "use strict";
@@ -108,7 +108,7 @@ import { page_loader } from "./core/page_loader.js";
                 },
 
                 content: async () => {
-                    page_loader.register([
+                    loader.register([
                         "shell_ready"
                     ]);
 
@@ -136,14 +136,14 @@ import { page_loader } from "./core/page_loader.js";
                     });
 
                     NSDocumentation.bind_menu();
-                    page_loader.set("shell_ready", true);
+                    loader.set("shell_ready", true);
                 }
             };
         }())
     ;
 
     window.addEventListener("load", async function () {
-        page_loader.start();
+        loader.start();
         await NSDocumentation.content();
     });
 }());
