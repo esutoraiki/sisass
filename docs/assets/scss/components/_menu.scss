@@ -6,8 +6,50 @@
     overflow-x: hidden;
     overflow-y: auto;
 
+    @include brp($b6) {
+        @include transform(translateX(100%));
+        @include flex-direction(column);
+        @include justify-content(initial);
+        @include align-items(center);
+        @include position(( p: fixed, t: 0, l: 0 ));
+        @include whs(100%);
+        @include bc($c3, $c1);
+        @include transition((
+            transform $t5 ease,
+            opacity $t5 ease,
+            display $t5 allow-discrete
+        ));
+        padding: clamp(20px, 8.16vw, 80px) 0 clamp(10px, 4.08vw, 40px);
+        pointer-events: none;
+        overflow-y: auto;
+        inset-block: 0;
+        display: none;
+        z-index: 10;
+        opacity: 0;
+    }
+
+    &.open {
+        @include brp($b6) {
+            @include flex;
+            transform: translateX(0);
+            pointer-events: auto;
+            display: flex;
+            opacity: 1;
+
+            @starting-style {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    }
+
     .main_menu {
         padding-left: min(2.08vw, 40px);
+
+        @include brp($b6) {
+            padding: 0;
+            width: min(88vw, 320px);
+        }
 
         .group_1 {
             @include flex-direction(column);
@@ -21,6 +63,10 @@
                 @include text;
                 margin-bottom: 14px;
                 color: $c3;
+
+                @include brp($b6) {
+                    color: $c1;
+                }
             }
 
             .item {
@@ -29,9 +75,27 @@
                 margin-bottom: 10px;
                 color: $c3;
 
-                &:hover { color: $c5; }
+                @include brp($b6) {
+                    color: $c1;
+                }
+
                 &:last-child { margin-bottom: 0; }
-                &.active { color: $c5; }
+
+                &:hover {
+                    color: $c5;
+
+                    @include brp($b6) {
+                        color: $c4;
+                    }
+                }
+
+                &.active {
+                    color: $c5;
+
+                    @include brp($b6) {
+                        color: $c4;
+                    }
+                }
             }
 
             .submenu {
@@ -41,6 +105,10 @@
                 padding-left: 12px;
                 border-left: $bd2;
 
+                @include brp($b6) {
+                    border-left-color: rgba($c1, 0.35);
+                }
+
                 .subitem {
                     @include font(szrem(15), $f2);
                     @include text;
@@ -48,78 +116,27 @@
                     color: $c6;
                     opacity: 0.8;
 
-                    &:hover { color: $c5; opacity: 1; }
-                    &:last-child { margin-bottom: 0; }
-                    &.active { color: $c5; opacity: 1; }
-                }
-            }
-        }
-    }
-
-    @include brp($b6) {
-        @include flex-direction(column);
-        @include justify-content(initial);
-        @include align-items(center);
-        @include position((
-            p: fixed,
-            t: 0,
-            l: 0
-        ));
-        @include wh(100vw, 100dvh);
-        @include bc($c3, $c1);
-        @include transition((
-            transform $t5 ease,
-            opacity $t5 ease,
-            display $t5 allow-discrete
-        ));
-        transform: translateX(100%);
-        inset-block: 0;
-        display: none;
-        opacity: 0;
-        overflow-y: auto;
-        padding: 84px 0 40px;
-        pointer-events: none;
-        z-index: 10;
-
-        &.open {
-            @include flex;
-            transform: translateX(0);
-            display: flex;
-            opacity: 1;
-            pointer-events: auto;
-
-            @starting-style {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        .main_menu {
-            padding: 0;
-            width: min(88vw, 320px);
-
-            .group_1 {
-                .title {
-                    color: $c1;
-                }
-
-                .item {
-                    color: $c1;
-
-                    &:hover,
-                    &.active {
-                        color: $c4;
-                    }
-                }
-
-                .submenu {
-                    border-left-color: rgba($c1, 0.35);
-
-                    .subitem {
+                    @include brp($b6) {
                         color: rgba($c1, 0.82);
+                    }
 
-                        &:hover,
-                        &.active {
+                    &:last-child { margin-bottom: 0; }
+
+                    &:hover {
+                        color: $c5;
+                        opacity: 1;
+
+                        @include brp($b6) {
+                            color: $c4;
+                            opacity: 1;
+                        }
+                    }
+
+                    &.active {
+                        color: $c5;
+                        opacity: 1;
+
+                        @include brp($b6) {
                             color: $c4;
                             opacity: 1;
                         }

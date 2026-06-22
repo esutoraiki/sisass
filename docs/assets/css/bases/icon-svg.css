@@ -13,8 +13,8 @@
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
-  width: 334px;
-  height: 126px;
+  width: 263px;
+  height: 99px;
   display: block;
   position: relative;
   top: 0;
@@ -25,8 +25,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 334px;
-  height: 126px;
+  width: 263px;
+  height: 99px;
   background-image: svg-load("../../img/svg/sisass.svg", fill=#A01303);
   background-repeat: no-repeat;
   background-position: top left;
@@ -49,8 +49,8 @@
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
-  width: 220px;
-  height: 83px;
+  width: 150px;
+  height: 56px;
   display: block;
   position: relative;
   top: 0;
@@ -61,8 +61,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 220px;
-  height: 83px;
+  width: 150px;
+  height: 56px;
   background-image: svg-load("../../img/svg/sisass.svg", fill=#3A405A);
   background-repeat: no-repeat;
   background-position: center center;

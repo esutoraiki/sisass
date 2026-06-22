@@ -3,27 +3,27 @@
 .documentationpage {
     .icon-svg-example {
         @include normalize-svg((
-            w: 334px,
-            h: 126px
+            w: 263px,
+            h: 99px
         ));
 
         &::before {
-            @include icon-svg("sisass", 334px, 126px, $c5);
+            @include icon-svg("sisass", 263px, 99px, $c5);
             content: "";
         }
     }
 
     .icon-svg-example-map {
         @include normalize-svg((
-            w: 220px,
-            h: 83px
+            w: 150px,
+            h: 56px
         ));
 
         &::before {
             @include icon-svg((
                 svg: "sisass",
-                w: 220px,
-                h: 83px,
+                w: 150px,
+                h: 56px,
                 fill: $c3,
                 position: (
                     p: absolute,

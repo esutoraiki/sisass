@@ -14,6 +14,9 @@
 ## Coding Style & Naming Conventions
 - Use 4-space indentation, double quotes, and snake_case identifiers where language permits. Keep declarations grouped in single `const`/`let` statements when possible.
 - SASS: place shared variables in `_variables.scss`, mixins in `_mixin.scss`, layout primitives in `_layout.scss`, and animations in `_keyframes.scss`. Prefer clear, utility-style class names and maintain vendor overrides in `_vendor.scss`.
+- SISASS follows a desktop-first SASS workflow.
+- Each `@include brp(...)` must be applied directly to the corresponding selector, immediately after its base properties. Never nest a breakpoint inside another selector or reuse a single `brp` block to group multiple selectors.
+- If an element needs multiple breakpoints, declare them consecutively and keep each one attached to that same selector.
 - In `*.sass` and `*.scss`, prioritize value construction through concatenation when composing strings, selectors, property names, prefixes, or similar fragments. Prefer explicit concatenation patterns over alternative forms when both are valid.
 - JavaScript: keep small utility modules, avoid side effects in argument parsing, and ensure file paths remain relative-friendly for package consumers.
 
@@ -41,6 +44,7 @@
 - Parameter tables must include a subtitle that clearly indicates whether they document `Parámetros secuenciales` or `Sintaxis map`.
 - In parameter tables, use headers in this exact order:
   `Parámetro` (for positional or mixed APIs) or `Clave` (for map-only APIs), then `Tipo`, `Default`, `Descripción`.
+- Wrap every documentation table with class `full` inside a `<div class="container_table">` container. This is required to preserve responsive layout behavior and prevent wide tables from breaking the page on small screens.
 - In parameter tables, parameter names must not start with `$`; document them without the SCSS variable prefix.
 - In parameter tables, list all supported aliases in the same entry separated by `|` (for example `position | p` or `top | t`).
 - In sequential-parameter tables, parameters must appear in the exact signature order because order matters.
@@ -55,8 +59,8 @@
 - Keep examples synchronized with real assets:
   `docs/assets/scss/...`, `docs/assets/css/...`, and the HTML snippet must match the rendered `Resultado`.
 - When additional examples are requested on the same documentation page, prefer integrating them into a single SCSS/CSS/HTML/Resultado block (as in `background`), reusing the same `data-src` files whenever possible. Split them into separate blocks only when explicitly requested.
-- When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
 - Do not add extra standalone code blocks between the parameter table and the `Ejemplo` section unless the page explicitly requires an additional subsection.
+- When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
 
 ## Commit & Pull Request Guidelines
 - Use concise, imperative commit messages (e.g., `Add grid helpers`, `Fix install path parsing`). Group related edits per commit to keep history readable.
