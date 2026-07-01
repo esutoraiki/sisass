@@ -7,6 +7,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .flex_direction_example .subtitle {
   margin: 0;
@@ -27,9 +29,11 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .flex_direction_example .box_group.row {
   -webkit-flex-direction: row;

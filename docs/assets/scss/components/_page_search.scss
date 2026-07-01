@@ -3,7 +3,7 @@
 
 .search_target {
     @include transition(outline-color $t2 ease-in-out);
-    outline: $bd6;
+    outline: 3px solid var(--theme_accent);
     box-sizing: border-box;
     outline-offset: 10px;
 }
@@ -12,7 +12,7 @@
     .main_header {
         .page_search {
             @include border-radius(12px);
-            @include bc($c1, $c2);
+            @include bc(var(--theme_surface), var(--theme_text));
             @include wh(max-content);
             @include user-select;
             @include position((
@@ -20,7 +20,7 @@
                 t: 15px,
                 r: 15px
             ));
-            box-shadow: $sh1;
+            box-shadow: var(--theme_shadow);
             padding: 10px 10px 7px;
             z-index: 3;
 
@@ -49,7 +49,7 @@
                     @include text;
                     margin-bottom: 8px;
                     display: block;
-                    color: $c6;
+                    color: var(--theme_text);
                 }
 
                 .page_search_box {
@@ -59,23 +59,23 @@
                         @include font(szrem(16), $f1);
                         @include border-radius(8px);
                         @include no-border;
-                        @include bc($c1, $c3);
+                        @include bc(var(--theme_surface), var(--theme_text));
                         @include wh(100%);
                         box-sizing: border-box;
                         padding: 14px 16px;
-                        border: $bd2;
+                        border: 1px solid var(--theme_border);
                     }
                 } // page_search_box
 
                 .page_search_results {
                     @include scroll((
-                        color: $c4,
-                        bg: $c2,
+                        color: var(--theme_scroll_thumb),
+                        bg: var(--theme_scroll_track),
                         width: 10px,
-                        thumb_border: 3px solid $c2,
+                        thumb_border: 3px solid var(--theme_scroll_track),
                         radius: 5px
                     ));
-                    @include bc($c1, $c3);
+                    @include bc(var(--theme_surface), var(--theme_text));
                     @include border-radius(10px);
                     @include wh(100%);
                     max-height: min(60vh, 540px);
@@ -87,7 +87,7 @@
                     &.is_visible { display: block; }
 
                     .page_search_state {
-                        @include text_1;
+                        @include t1(( c: var(--theme_text_alt) ));
                         margin-bottom: 0;
                         padding: 14px 16px;
                     }
@@ -95,28 +95,28 @@
                     .page_search_item {
                         display: block;
                         text-decoration: none;
-                        border-bottom: $bd7;
+                        border-bottom: 1px dashed var(--theme_border_soft);
                         padding: 14px 16px;
 
                         &:last-child { border-bottom: none; }
-                        &:hover { background-color: $c7; }
+                        &:hover { background-color: var(--theme_surface_alt); }
 
                         .page_search_title {
                             @include font(szrem(18), $f2, bold);
                             @include text;
                             margin-bottom: 6px;
-                            color: $c5;
+                            color: var(--theme_accent);
                         }
 
                         .page_search_category,
                         .page_search_excerpt {
-                            @include text_1;
+                            @include t1(( c: var(--theme_text_alt) ));
                             margin-bottom: 0;
                         }
 
                         .page_search_category {
                             font-weight: bold;
-                            color: $c6;
+                            color: var(--theme_text);
                         }
 
                         .page_search_excerpt { margin-top: 6px; }

@@ -7,6 +7,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .flex_basis_example .subtitle {
   margin: 0;
@@ -28,10 +30,10 @@
   grid-gap: 12px;
   gap: 12px;
   flex-wrap: wrap;
-  width: 320px;
+  width: 100%;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .flex_basis_example .row.fixed_basis .box {
   -webkit-flex-basis: 140px;

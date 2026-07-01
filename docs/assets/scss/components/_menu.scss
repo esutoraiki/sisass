@@ -13,7 +13,7 @@
         @include align-items(center);
         @include position(( p: fixed, t: 0, l: 0 ));
         @include whs(100%);
-        @include bc($c3, $c1);
+        @include bc(var(--theme_surface_alt), var(--theme_text));
         @include transition((
             transform $t5 ease,
             opacity $t5 ease,
@@ -62,10 +62,10 @@
                 @include font(szrem(24), $f2, bold);
                 @include text;
                 margin-bottom: 14px;
-                color: $c3;
+                color: var(--theme_text);
 
                 @include brp($b6) {
-                    color: $c1;
+                    color: var(--theme_text);
                 }
             }
 
@@ -73,27 +73,27 @@
                 @include font(szrem(18), $f2);
                 @include text;
                 margin-bottom: 10px;
-                color: $c3;
+                color: var(--theme_text);
 
                 @include brp($b6) {
-                    color: $c1;
+                    color: var(--theme_text);
                 }
 
                 &:last-child { margin-bottom: 0; }
 
                 &:hover {
-                    color: $c5;
+                    color: var(--theme_accent);
 
                     @include brp($b6) {
-                        color: $c4;
+                        color: var(--theme_accent_alt);
                     }
                 }
 
                 &.active {
-                    color: $c5;
+                    color: var(--theme_accent);
 
                     @include brp($b6) {
-                        color: $c4;
+                        color: var(--theme_accent_alt);
                     }
                 }
             }
@@ -103,41 +103,41 @@
                 @include flex;
                 margin: 2px 0 8px;
                 padding-left: 12px;
-                border-left: $bd2;
+                border-left: 1px solid var(--theme_border);
 
                 @include brp($b6) {
-                    border-left-color: rgba($c1, 0.35);
+                    border-left-color: var(--theme_border_soft);
                 }
 
                 .subitem {
                     @include font(szrem(15), $f2);
                     @include text;
                     margin-bottom: 8px;
-                    color: $c6;
+                    color: var(--theme_text_alt);
                     opacity: 0.8;
 
                     @include brp($b6) {
-                        color: rgba($c1, 0.82);
+                        color: var(--theme_text_alt);
                     }
 
                     &:last-child { margin-bottom: 0; }
 
                     &:hover {
-                        color: $c5;
+                        color: var(--theme_accent);
                         opacity: 1;
 
                         @include brp($b6) {
-                            color: $c4;
+                            color: var(--theme_accent_alt);
                             opacity: 1;
                         }
                     }
 
                     &.active {
-                        color: $c5;
+                        color: var(--theme_accent);
                         opacity: 1;
 
                         @include brp($b6) {
-                            color: $c4;
+                            color: var(--theme_accent_alt);
                             opacity: 1;
                         }
                     }
@@ -150,9 +150,9 @@
 .menu_close {
     @include position(fixed, 15px, 15px, top, right);
     @include border-radius(50%);
-    @include bc($c3, $c1);
+    @include bc(var(--theme_surface), var(--theme_text));
     @include whs(45px);
-    box-shadow: $sh1;
+    box-shadow: var(--theme_shadow);
     cursor: pointer;
     display: none;
     padding: 10px;
@@ -167,7 +167,7 @@
     }
 
     .mc {
-        stroke: $c4;
+        stroke: var(--theme_icon_stroke);
         stroke: {
             width: 10;
             linecap: round;

@@ -363,11 +363,13 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .justify_self_example .cell {
   -ms-display: grid;
   display: grid;
-  width: 250px;
+  width: 100%;
   height: auto;
   border: 1px solid #3A405A;
   padding: 12px;
@@ -397,6 +399,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .justify_items_example .subtitle {
   margin: 0;
@@ -416,10 +420,10 @@
   grid-gap: 12px;
   gap: 12px;
   grid-template-columns: repeat(2, 1fr);
-  width: min(100vw, 520px);
+  width: 100%;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .justify_items_example .grid.end {
   -webkit-justify-items: end;
@@ -446,6 +450,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .align_items_example .subtitle {
   margin: 0;
@@ -466,11 +472,17 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
-  width: min(100vw, 520px);
-  height: 225px;
+  width: 100%;
+  height: 250px;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
+}
+@media only screen and (max-width: 980px) {
+  .documentationpage .align_items_example .row {
+    width: 100%;
+    height: 150px;
+  }
 }
 .documentationpage .align_items_example .row.center {
   -webkit-align-items: center;
@@ -499,6 +511,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .align_self_example .subtitle {
   margin: 0;
@@ -515,11 +529,17 @@
 .documentationpage .align_self_example .cell {
   -ms-display: grid;
   display: grid;
-  width: 250px;
-  height: 520px;
+  width: 100%;
+  height: 250px;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
+}
+@media only screen and (max-width: 980px) {
+  .documentationpage .align_self_example .cell {
+    width: 100%;
+    height: 150px;
+  }
 }
 .documentationpage .align_self_example .box {
   -webkit-flex-direction: column;
@@ -548,6 +568,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .align_content_example .subtitle {
   margin: 0;
@@ -568,12 +590,18 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: 350px;
   flex-wrap: wrap;
-  width: min(100vw, 520px);
-  height: 320px;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
+}
+@media only screen and (max-width: 980px) {
+  .documentationpage .align_content_example .wrap {
+    width: 100%;
+    height: 250px;
+  }
 }
 .documentationpage .align_content_example .wrap.start {
   -webkit-align-content: flex-start;
@@ -606,6 +634,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .flex_direction_example .subtitle {
   margin: 0;
@@ -626,9 +656,11 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .flex_direction_example .box_group.row {
   -webkit-flex-direction: row;
@@ -659,6 +691,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .flex_basis_example .subtitle {
   margin: 0;
@@ -680,10 +714,10 @@
   grid-gap: 12px;
   gap: 12px;
   flex-wrap: wrap;
-  width: 320px;
+  width: 100%;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .flex_basis_example .row.fixed_basis .box {
   -webkit-flex-basis: 140px;
@@ -712,6 +746,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .flex_example .subtitle {
   margin: 0;
@@ -726,9 +762,11 @@
   padding-right: 0;
 }
 .documentationpage .flex_example .box_group {
+  width: 100%;
+  height: auto;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .flex_example .box_group.is_flex {
   -webkit-display: flex;
@@ -769,6 +807,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .grid_example .subtitle {
   margin: 0;
@@ -783,9 +823,11 @@
   padding-right: 0;
 }
 .documentationpage .grid_example .box_group {
+  width: 100%;
+  height: auto;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .grid_example .box_group.is_grid {
   -ms-display: grid;
@@ -793,7 +835,6 @@
   grid-gap: 12px;
   gap: 12px;
   grid-template-columns: repeat(2, 1fr);
-  width: 320px;
 }
 .documentationpage .grid_example .box {
   -webkit-flex-direction: column;

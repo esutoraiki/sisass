@@ -6,11 +6,22 @@ $c0: transparent;
 $c1: #FFF;
 $c2: #000;
 
+// Base colors
 $c3: #3A405A;
 $c4: #FBB03B;
 $c5: #A01303;
 $c6: #2D396C;
-$c7: #F5F3F3;
+$c7: #FEFEFE;
+$c8: #DDDDDD;
+
+// Theme colors
+$c9: #10151F;
+$c10: #151A25;
+$c11: #1C2230;
+$c12: #E8EEF8;
+$c13: #C9D2E2;
+$c14: #FFD36B;
+$c15: #F88C7E;
 
 // Border
 $bd1: 2px dashed $c3;
@@ -62,11 +73,15 @@ $t10: 1s;
 
 // Variables
 // logo sisass
-$l1x: (clamp(200px, 15.63vw, 300px));
-$l1y: (clamp(71px, 5.57vw, 107px));
+$l1x: (clamp(130px, 10.44vw, 200px));
+$l1y: (clamp(29px, 2.30vw, 44px));
 
 // icon search
 $l2: (26px);
+
+// icon light / dark
+$l3: (24px);
+
 
 //-----------------------------------
 //End Variables

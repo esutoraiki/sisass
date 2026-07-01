@@ -7,6 +7,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .justify_items_example .subtitle {
   margin: 0;
@@ -26,10 +28,10 @@
   grid-gap: 12px;
   gap: 12px;
   grid-template-columns: repeat(2, 1fr);
-  width: min(100vw, 520px);
+  width: 100%;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .justify_items_example .grid.end {
   -webkit-justify-items: end;

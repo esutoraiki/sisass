@@ -7,6 +7,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .grid_example .subtitle {
   margin: 0;
@@ -21,9 +23,11 @@
   padding-right: 0;
 }
 .documentationpage .grid_example .box_group {
+  width: 100%;
+  height: auto;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
 }
 .documentationpage .grid_example .box_group.is_grid {
   -ms-display: grid;
@@ -31,7 +35,6 @@
   grid-gap: 12px;
   gap: 12px;
   grid-template-columns: repeat(2, 1fr);
-  width: 320px;
 }
 .documentationpage .grid_example .box {
   -webkit-flex-direction: column;

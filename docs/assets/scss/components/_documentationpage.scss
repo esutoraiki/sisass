@@ -1,57 +1,31 @@
-@use "sass:list";
 @use "sass:color";
-
 @use "../core/instances" as *;
 
 .documentationpage {
     @include scroll((
-        color: $c4,
-        bg: $c2,
+        color: var(--theme_scroll_thumb),
+        bg: var(--theme_scroll_track),
         width: 16px,
-        thumb_border: 3px solid $c2,
+        thumb_border: 3px solid var(--theme_scroll_track),
         radius: 7px
     ));
     @include font(100%, $f1);
     @include no-spacing;
     @include no-border;
-    @include bc($c1, $c3);
+    @include bc(var(--theme_bg), var(--theme_text));
     min-height: 100vh;
     height: 100vh;
 
     article {
-        border-bottom: $bd1;
+        border-bottom: 2px dashed var(--theme_border);
         padding-bottom: 40px;
         margin-bottom: 30px;
-    }
-
-    .main_header {
-        @include wh(100vw);
-        padding: clamp(15px, 1.83vw, 35px) min(2.08vw, 40px);
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
-        align-items: start;
-        gap: 20px;
-
-        @include brp($b6) {
-            grid-template-columns: 1fr;
-        }
-
-        .logo_sisass {
-            @include ht;
-            @include position;
-            @include wh(
-                list.nth($l1x, 1),
-                list.nth($l1y, 1)
-            );
-            display: block;
-        }
-
     }
 
     .search_target {
         box-sizing: border-box;
         transition: outline-color 0.2s ease-in-out;
-        outline: 3px solid color.adjust($c5, $lightness: 24%);
+        outline: 3px solid var(--theme_accent);
         outline-offset: 10px;
     }
 
@@ -71,7 +45,7 @@
         @include font(szrem(42), $f3, 900);
         @include text;
         margin-bottom: 30px;
-        color: $c6;
+        color: var(--theme_text);
 
         @include brp($b6) {
             font-size: szrem(32);
@@ -83,7 +57,7 @@
         @include font(szrem(28), $f3, 900);
         @include text;
         margin-bottom: 5px;
-        color: $c5;
+        color: var(--theme_accent);
 
         @include brp($b6) {
             font-size: szrem(24);
@@ -99,23 +73,24 @@
         ));
         margin: 35px 0 20px;
         padding-left: 12px;
-        border-left: $bd3;
-        color: $c6;
+        border-left: 6px solid var(--theme_accent_alt);
+        color: var(--theme_text);
         letter-spacing: 0.02em;
+
     }
 
     .attribute {
         @include font(szrem(20), $f2, bold);
         @include text;
         margin-bottom: 3px;
-        color: $c6;
+        color: var(--theme_text);
     }
 
-    .deprecated { color: $c5; }
+    .deprecated { color: var(--theme_accent); }
 
     .description,
     p {
-        @include text_1;
+        @include t1(( c: var(--theme_text_alt) ));
         margin-bottom: 15px;
     }
 
@@ -124,10 +99,10 @@
     }
 
     .note {
-        @include text_1;
+        @include t1(( c: var(--theme_text_alt) ));
         padding: min(5vw, 15px);
-        border: $bd2;
-        border-left: $bd3;
+        border: 1px solid var(--theme_border);
+        border-left: 6px solid var(--theme_accent_alt);
         margin-bottom: 15px;
     }
 
@@ -135,7 +110,7 @@
         .title {
             @include font(szrem(28), $f2, bold);
             @include text;
-            color: $c6;
+            color: var(--theme_text);
             margin: {
                 top: 45px;
                 bottom: 10px;
@@ -145,7 +120,7 @@
         .subtitle {
             @include font(szrem(20), $f2, bold);
             @include text;
-            color: color.adjust($c6, $lightness: 20%);
+            color: var(--theme_text_alt);
             margin: {
                 top: 20px;
                 bottom: 10px;
@@ -155,15 +130,15 @@
 
     .result {
         box-sizing: border-box;
-        background-color: color.adjust($c3, $lightness: 65%);
-        border: $bd1;
+        background-color: var(--theme_surface_alt);
+        border: 2px dashed var(--theme_border);
         padding: 10px;
         display: block;
         margin: 10px 0;
 
         .box {
             @include whs(100px);
-            @include bc($c5, $c1);
+            @include bc(var(--theme_accent), var(--theme_surface));
 
             @include brp($b9) {
                 @include whs(50px);
@@ -177,12 +152,13 @@
                 @include whs(50px);
             }
         }
+
     }
 
     .container_example {
-        @include bc($c7, $c3);
+        @include bc(var(--theme_surface), var(--theme_text));
         @include border-radius(7px 7px 0 0);
-        border-block-start: $bd8;
+        border-block-start: 10px solid var(--theme_accent_alt);
         box-sizing: border-box;
         padding: 0px min(0.78vw, 15px) 15px;
     }
@@ -217,9 +193,9 @@
         thead {
             th {
                 @include border-radius(5%);
-                @include bc($c6, $c1);
+                @include bc(var(--theme_text), var(--theme_surface));
                 padding: 10px 15px;
-                border-right: $bd4;
+                border-right: 1px solid var(--theme_border);
 
                 &:first-child { border-radius: 6px 0 0 0; }
                 &:last-child {
@@ -232,7 +208,7 @@
         tbody {
             td {
                 padding: 10px 15px;
-                border: $bd5;
+                border: 1px solid var(--theme_border);
 
                 b { font-weight: bold; }
 

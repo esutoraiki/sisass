@@ -7,8 +7,9 @@
             sisass,
             list.nth($l1x, 1),
             list.nth($l1y, 1),
-            $c3
+            $c6
         );
+        filter: var(--theme_icon_filter);
         content: "";
     }
 }
@@ -21,6 +22,33 @@
             list.nth($l2, 1),
             $c3
         );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_light {
+    &::before {
+        @include icon-svg(
+            light,
+            list.nth($l3, 1),
+            list.nth($l3, 1),
+            $c3
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_dark {
+    &::before {
+        @include icon-svg(
+            dark,
+            list.nth($l3, 1),
+            list.nth($l3, 1),
+            $c3
+        );
+        filter: var(--theme_icon_filter);
         content: "";
     }
 }

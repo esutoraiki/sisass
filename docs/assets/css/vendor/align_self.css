@@ -7,6 +7,8 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .align_self_example .subtitle {
   margin: 0;
@@ -23,11 +25,17 @@
 .documentationpage .align_self_example .cell {
   -ms-display: grid;
   display: grid;
-  width: 250px;
-  height: 520px;
+  width: 100%;
+  height: 250px;
   border: 1px solid #3A405A;
   padding: 12px;
-  background-color: #F5F3F3;
+  background-color: #FEFEFE;
+}
+@media only screen and (max-width: 980px) {
+  .documentationpage .align_self_example .cell {
+    width: 100%;
+    height: 150px;
+  }
 }
 .documentationpage .align_self_example .box {
   -webkit-flex-direction: column;

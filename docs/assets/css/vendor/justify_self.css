@@ -7,11 +7,13 @@
   display: flex;
   grid-gap: 12px;
   gap: 12px;
+  width: 100%;
+  height: auto;
 }
 .documentationpage .justify_self_example .cell {
   -ms-display: grid;
   display: grid;
-  width: 250px;
+  width: 100%;
   height: auto;
   border: 1px solid #3A405A;
   padding: 12px;

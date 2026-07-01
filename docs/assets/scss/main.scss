@@ -3,13 +3,15 @@
 @use "./core/fonts";
 @use "./core/keyframes";
 @use "./core/layouts";
+@use "components/theme";
 
-@use "components/menu";
 @use "components/page_loader";
+@use "components/menu";
+@use "components/header";
 @use "components/page_search";
 @use "components/documentationpage";
 
 .hide { display: none !important; }
 .no_scroll { overflow: hidden !important; }
+.no_visibility { visibility: hidden !important; }
 html.page { scroll-behavior: smooth; }
-
