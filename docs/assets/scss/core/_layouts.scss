@@ -1,10 +1,26 @@
 @use "../core/instances" as *;
 
+.layout_header {
+    @include wh(min(95vw, 1920px));
+    @include grid;
+
+    grid: {
+        template: {
+            areas: "l0 s0 t0";
+        }
+    }
+
+    .b1 { grid-area: l0; }
+    .b2 { grid-area: s0; }
+    .b3 { grid-area: t0; }
+}
+
 .layout_1 {
     @include grid;
 
     grid: {
         template: {
+            rows: 95px auto;
             columns: 230px auto;
             areas:
                 "h1 h1"

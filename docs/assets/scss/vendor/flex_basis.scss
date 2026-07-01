@@ -5,6 +5,7 @@
         @include flex-direction(column);
         @include flex;
         @include gap(12px);
+        @include wh(100%);
 
         .subtitle {
             @include no-spacing;
@@ -14,7 +15,7 @@
             @include flex;
             @include gap(12px);
             flex-wrap: wrap;
-            width: 320px;
+            width: 100%;
             border: $bd2;
             padding: 12px;
             background-color: $c7;
