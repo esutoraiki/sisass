@@ -28,6 +28,12 @@
 - Write documentation prose and UI labels in Spanish by default.
   Keep technical identifiers in English when they are code-facing:
   mixin/function names, file names, ids, class names, SCSS keys, and literal API signatures.
+- Treat `docs/` as the main documentation site and `doc/` as non-canonical unless a task explicitly uses it.
+- Keep source and generated documentation assets in sync when changing documentation content.
+- Use `docs/index.html` as the documentation entry point, with `docs/pages/`, `docs/components/`, `docs/assets/scss/`, `docs/assets/css/`, `docs/assets/js/`, and `docs/assets/json/` as the main documentation areas.
+- Preserve the current documentation naming conventions and page structure when editing component pages.
+- Prefer updating both SCSS source and compiled CSS when a documentation style change is intentional.
+- Rebuild the relevant documentation assets after editing SCSS, SVG, or JSON sources, and validate layout changes in the browser.
 - For `docs/components/base/*.html`, use this explicit section order:
   `article` root with id/class, `group_title` block, 1-2 short `description` paragraphs, `Interface` title with mixin signature, parameter table, `Ejemplo` title, and `container_example` with SCSS/CSS/HTML/Resultado blocks.
 - `group_title` must contain exactly:
@@ -61,6 +67,7 @@
 - When additional examples are requested on the same documentation page, prefer integrating them into a single SCSS/CSS/HTML/Resultado block (as in `background`), reusing the same `data-src` files whenever possible. Split them into separate blocks only when explicitly requested.
 - Do not add extra standalone code blocks between the parameter table and the `Ejemplo` section unless the page explicitly requires an additional subsection.
 - When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
+- Do not introduce component-specific theme logic into unrelated style partials.
 
 ## Commit & Pull Request Guidelines
 - Use concise, imperative commit messages (e.g., `Add grid helpers`, `Fix install path parsing`). Group related edits per commit to keep history readable.
