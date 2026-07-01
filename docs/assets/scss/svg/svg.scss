@@ -14,6 +14,32 @@
     }
 }
 
+.logo_github {
+    &:before {
+        @include icon-svg(
+            github,
+            list.nth($l2, 1),
+            list.nth($l2, 1),
+            $c6
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_email {
+    &::before {
+        @include icon-svg(
+            email,
+            list.nth($l2, 1),
+            list.nth($l2, 1),
+            $c3
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
 .icon_search {
     &::before {
         @include icon-svg(

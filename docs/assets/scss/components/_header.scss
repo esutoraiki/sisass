@@ -7,6 +7,11 @@
     padding-inline: 5vw;
     margin-inline: auto;
 
+    .separator {
+        @include wh(2px, 20px);
+        @include bc(var(--theme_border), $c0);
+    }
+
     .main_header {
         @include wh(100%, 100%);
 
@@ -29,18 +34,16 @@
                 display: block;
             }
 
-            .separator {
-                @include wh(2px, 20px);
-                @include bc(var(--theme_border), $c0);
-            }
-
             .slogan {
                 @include t1(( s: szrem(14), c: var(--theme_text) ));
             }
         }
 
         .tools_header {
+            @include flex;
             @include align-self(center);
+            @include align-items(center);
+            @include gap(25px);
 
             .theme_toggle {
                 @include no-border;
@@ -65,6 +68,29 @@
                         h: list.nth($l3, 1)
                     ));
                     display: block;
+                }
+            }
+
+            .version {
+                @include t1(( s: szrem(12), lh: initial ));
+            }
+
+            .contact {
+                @include flex;
+                @include align-items(center);
+                @include gap(15px);
+
+                .github, .email {
+                    @include position;
+                    display: block;
+                    cursor: pointer;
+                }
+
+                .logo_github, .icon_email {
+                    @include normalize-svg((
+                        w: list.nth($l2, 1),
+                        h: list.nth($l2, 1)
+                    ));
                 }
             }
         }

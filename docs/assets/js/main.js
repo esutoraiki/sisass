@@ -14,7 +14,6 @@ import { loader } from "./core/page_loader.js";
         theme_light = "light",
         theme_dark = "dark",
         theme_storage_key = "sisass_theme",
-        legacy_theme_storage_key = "sisass_documentation_theme",
         theme_meta_color_light = "#FEFEFE",
         theme_meta_color_dark = "#10151F",
         mobile_breakpoint = 980,
@@ -45,18 +44,10 @@ import { loader } from "./core/page_loader.js";
 
                 get_theme: () => {
                     try {
-                        const
-                            stored_theme = window.localStorage.getItem(theme_storage_key),
-                            legacy_stored_theme = window.localStorage.getItem(legacy_theme_storage_key)
-                        ;
+                        const stored_theme = window.localStorage.getItem(theme_storage_key);
 
                         if (stored_theme === theme_light || stored_theme === theme_dark) {
                             return stored_theme;
-                        }
-
-                        if (legacy_stored_theme === theme_light || legacy_stored_theme === theme_dark) {
-                            window.localStorage.setItem(theme_storage_key, legacy_stored_theme);
-                            return legacy_stored_theme;
                         }
                     } catch {
                         return theme_light;

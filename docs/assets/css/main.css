@@ -237,6 +237,7 @@ summary {
   -ms-display: grid;
   display: grid;
   grid-template-areas: "l0 s0 t0";
+  grid-template-columns: max-content auto max-content;
 }
 .layout_header .b1 {
   grid-area: l0;
@@ -667,6 +668,12 @@ html.page[data-theme=dark] {
   padding-inline: 5vw;
   margin-inline: auto;
 }
+.container_header .separator {
+  width: 2px;
+  height: 20px;
+  background-color: var(--theme_border);
+  color: transparent;
+}
 .container_header .main_header {
   width: 100%;
   height: 100%;
@@ -708,12 +715,6 @@ html.page[data-theme=dark] {
   height: clamp(29px, 2.3vw, 44px);
   display: block;
 }
-.container_header .main_header .left_header .separator {
-  width: 2px;
-  height: 20px;
-  background-color: var(--theme_border);
-  color: transparent;
-}
 .container_header .main_header .left_header .slogan {
   background-color: transparent;
   color: var(--theme_text);
@@ -742,8 +743,16 @@ html.page[data-theme=dark] {
   font-variant: normal;
 }
 .container_header .main_header .tools_header {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
   -webkit-align-self: center;
   align-self: center;
+  -webkit-align-items: center;
+  align-items: center;
+  grid-gap: 25px;
+  gap: 25px;
 }
 .container_header .main_header .tools_header .theme_toggle {
   border: 0 none transparent;
@@ -804,6 +813,73 @@ html.page[data-theme=dark] {
   left: 0;
   z-index: 2;
   display: block;
+}
+.container_header .main_header .tools_header .version {
+  background-color: transparent;
+  color: var(--theme_text);
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 0.75rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: initial;
+}
+.container_header .main_header .tools_header .version b {
+  background-color: transparent;
+  color: var(--theme_text);
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 0.75rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.container_header .main_header .tools_header .contact {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  grid-gap: 15px;
+  gap: 15px;
+}
+.container_header .main_header .tools_header .contact .github, .container_header .main_header .tools_header .contact .email {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  cursor: pointer;
+}
+.container_header .main_header .tools_header .contact .logo_github, .container_header .main_header .tools_header .contact .icon_email {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: 26px;
+  height: 26px;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 
 .search_target {

@@ -8,7 +8,6 @@ import { loader } from "../core/page_loader.js";
     const
         url_json = "json/home.json",
 
-
         NSHome = (function () {
             return {
                 remove_search: async () => {
@@ -36,9 +35,7 @@ import { loader } from "../core/page_loader.js";
                         "navigation_ready"
                     ]);
 
-                    await contentLoad({
-                        url: url_json
-                    });
+                    await contentLoad({ url: url_json });
                     loader.set("content_ready", true);
 
                     await NSHome.remove_search();

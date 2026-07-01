@@ -10,7 +10,7 @@
     $a: mapv($attr, a, justify);
     $lh: mapv($attr, lh, 1.3);
     $bg: mapv($attr, bg, $c0);
-    $c: mapv($attr, c, $c3);
+    $c: mapv($attr, c, var(--theme_text));
 
     @include bc($bg, $c);
     @include tf(( f: $f, s: $s, a: $a, lh: $lh ));
