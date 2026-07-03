@@ -4,12 +4,12 @@
     .icon-svg-mask-example {
         @include icon-svg-mask((
             svg: "sisass",
-            color: $c5,
-            position: relative,
-            width: 220px,
-            height: 83px,
-            size: contain,
-            repeat: no-repeat,
+            c: $c5,
+            p: relative,
+            w: 220px,
+            h: 83px,
+            s: contain,
+            r: no-repeat,
             path: "../../img/svg/"
         ));
     }

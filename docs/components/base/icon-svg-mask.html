@@ -19,7 +19,11 @@
         Requiere <b>postcss-inline-svg</b> porque utiliza
         <b>svg-load()</b> para construir <b>mask-image</b>. También
         usa el mixin <a href="../pages/base.html#position">position</a> cuando
-        la clave <b>position</b> es distinta de <b>false</b>.
+        la clave <b>position | p</b> es distinta de <b>false</b>. El mapa
+        acepta aliases como <b>color | c</b>, <b>position | p</b>,
+        <b>xaxis | xa</b>, <b>yaxis | ya</b>, <b>width | w</b>,
+        <b>height | h</b>, <b>repeat | r</b>, <b>size | s</b> y
+        <b>display | d</b>.
     </p>
 
     <section class="use">
@@ -43,12 +47,12 @@
     display: block
 ));</code></pre>
         <p class="description">
-            Valores por defecto: color <b>#FFFFFF</b>, position
-            <b>absolute</b>, x <b>0</b>, y <b>0</b>, xaxis | xa
-            <b>left</b>, yaxis | ya <b>top</b>, width <b>100px</b>, height
-            <b>100px</b>, repeat
-            <b>no-repeat</b>, size <b>contain</b>, path
-            <b>"../../img/svg/"</b> y display <b>block</b>.
+            Valores por defecto: svg <b>false</b>, color | c
+            <b>#FFFFFF</b>, position | p <b>absolute</b>, x <b>0</b>,
+            y <b>0</b>, xaxis | xa <b>left</b>, yaxis | ya <b>top</b>,
+            width | w <b>100px</b>, height | h <b>100px</b>, repeat | r
+            <b>no-repeat</b>, size | s <b>contain</b>, path
+            <b>"../../img/svg/"</b> y display | d <b>block</b>.
         </p>
 
         <h3 class="subtitle">
@@ -72,13 +76,13 @@
                     <td>Nombre base del archivo SVG. Si es <b>false</b>, no genera la máscara.</td>
                 </tr>
                 <tr>
-                    <td><b>color</b></td>
+                    <td><b>color | c</b></td>
                     <td>Color</td>
                     <td>#FFFFFF</td>
                     <td>Define el color final del icono mediante <b>background-color</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>position</b></td>
+                    <td><b>position | p</b></td>
                     <td>String | Bool</td>
                     <td>absolute</td>
                     <td>Tipo de posicionamiento usado por el mixin <a href="../pages/base.html#position">position</a>. Si es <b>false</b>, no aplica posicionamiento.</td>
@@ -108,25 +112,25 @@
                     <td>Eje vertical usado por <b>position()</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>width</b></td>
+                    <td><b>width | w</b></td>
                     <td>Medida</td>
                     <td>100px</td>
                     <td>Asigna el ancho del área visible del icono.</td>
                 </tr>
                 <tr>
-                    <td><b>height</b></td>
+                    <td><b>height | h</b></td>
                     <td>Medida</td>
                     <td>100px</td>
                     <td>Asigna el alto del área visible del icono.</td>
                 </tr>
                 <tr>
-                    <td><b>repeat</b></td>
+                    <td><b>repeat | r</b></td>
                     <td>String</td>
                     <td>no-repeat</td>
                     <td>Controla la repetición de la máscara.</td>
                 </tr>
                 <tr>
-                    <td><b>size</b></td>
+                    <td><b>size | s</b></td>
                     <td>String | Medida</td>
                     <td>contain</td>
                     <td>Controla el escalado de la máscara SVG.</td>
@@ -138,7 +142,7 @@
                     <td>Prefijo de ruta donde se busca el archivo SVG.</td>
                 </tr>
                 <tr>
-                    <td><b>display</b></td>
+                    <td><b>display | d</b></td>
                     <td>String</td>
                     <td>block</td>
                     <td>Define el valor de <b>display</b> del elemento.</td>

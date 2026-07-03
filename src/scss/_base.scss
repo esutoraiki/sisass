@@ -503,18 +503,18 @@
 // Need gulp-postcss and postcss-inline-svg
 @mixin icon-svg-mask($attr: ()) {
     $svg: mapv($attr, svg, false);
-    $color: mapv($attr, color, #FFFFFF);
-    $pos: mapv($attr, position, absolute);
+    $color: mapv($attr, (color, c), #FFFFFF);
+    $pos: mapv($attr, (position, p), absolute);
     $x: mapv($attr, x, 0);
     $y: mapv($attr, y, 0);
     $xaxis: mapv($attr, (xaxis, xa), left);
     $yaxis: mapv($attr, (yaxis, ya), top);
-    $w: mapv($attr, width, 100px);
-    $h: mapv($attr, height, 100px);
-    $repeat: mapv($attr, repeat, no-repeat);
-    $size: mapv($attr, size, contain);
+    $w: mapv($attr, (width, w), 100px);
+    $h: mapv($attr, (height, h), 100px);
+    $repeat: mapv($attr, (repeat, r), no-repeat);
+    $size: mapv($attr, (size, s), contain);
     $path: mapv($attr, path, "../../img/svg/");
-    $display: mapv($attr, display, block);
+    $display: mapv($attr, (display, d), block);
 
     @if $svg != false {
         @if $pos != false {
