@@ -44,6 +44,14 @@
     )
 );
 
+@include font-face(
+    (
+        name: "Roboto",
+        path: "../fonts/roboto/roboto_bold",
+        weight: bold
+    )
+);
+
 //------------------------------------------------
 //End font-face
 //------------------------------------------------

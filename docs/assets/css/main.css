@@ -119,6 +119,13 @@ summary {
   src: url("../fonts/nunito_sans/nunito_sans_bold.woff2") format("woff2"), url("../fonts/nunito_sans/nunito_sans_bold.woff") format("woff"), url("../fonts/nunito_sans/nunito_sans_bold.ttf") format("truetype");
   font-display: swap;
 }
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/roboto/roboto_bold.woff2") format("woff2"), url("../fonts/roboto/roboto_bold.woff") format("woff"), url("../fonts/roboto/roboto_bold.ttf") format("truetype");
+  font-display: swap;
+}
 @-webkit-keyframes menu_close_1 {
   0% {
     stroke-dashoffset: -22;
@@ -249,6 +256,27 @@ summary {
   grid-area: t0;
 }
 
+.layout_home {
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-display: grid;
+  display: grid;
+  grid-template-columns: min(95vw, 1920px);
+  grid-template-rows: 95px auto;
+  grid-template-areas: "h2" "c2";
+}
+@media only screen and (max-width: 980px) {
+  .layout_home {
+    display: block;
+  }
+}
+.layout_home .c1 {
+  grid-area: h2;
+}
+.layout_home .c2 {
+  grid-area: c2;
+}
+
 .layout_1 {
   -ms-display: grid;
   display: grid;
@@ -278,6 +306,7 @@ html.page {
   --theme_surface_alt: light-dark(#FEFEFE, #1C2230);
   --theme_text: light-dark(#2D396C, #E8EEF8);
   --theme_text_alt: light-dark(#3A405A, #C9D2E2);
+  --theme_text_bold: light-dark(#6F00FA, #885AC2);
   --theme_accent: light-dark(#A01303, #F88C7E);
   --theme_accent_alt: light-dark(#FBB03B, #FFD36B);
   --theme_border: light-dark(#DDDDDD, rgba(255, 255, 255, 0.18));
@@ -361,8 +390,6 @@ html.page[data-theme=dark] {
   margin-bottom: 0;
 }
 .documentationpage .loader .box .text {
-  background-color: transparent;
-  color: var(--theme_text_alt);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -373,10 +400,17 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text_alt);
+}
+.documentationpage .loader .box .text .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text_alt);
 }
 .documentationpage .loader .box .text b {
   background-color: transparent;
-  color: var(--theme_text_alt);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -415,6 +449,102 @@ html.page[data-theme=dark] {
   background-position: center;
   background-color: transparent;
   background-size: auto;
+}
+
+.btn {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  border-radius: 9px;
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  width: 200px;
+  height: auto;
+  grid-gap: 8px;
+  gap: 8px;
+  cursor: pointer;
+  aspect-ratio: 4.4444444444;
+  border: 2px solid var(--theme_text_bold);
+}
+.btn:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-transform: translateY(-5%);
+  -moz-transform: translateY(-5%);
+  -ms-transform: translateY(-5%);
+  -o-transform: translateY(-5%);
+  transform: translateY(-5%);
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn_bg {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  border-radius: 9px;
+  background-color: var(--theme_text_bold);
+  color: #FFF;
+  width: 200px;
+  height: auto;
+  grid-gap: 8px;
+  gap: 8px;
+  cursor: pointer;
+  aspect-ratio: 4.4444444444;
+  border: 2px solid var(--theme_text_bold);
+}
+.btn_bg:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-transform: translateY(-5%);
+  -moz-transform: translateY(-5%);
+  -ms-transform: translateY(-5%);
+  -o-transform: translateY(-5%);
+  transform: translateY(-5%);
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .container_menu {
@@ -667,6 +797,7 @@ html.page[data-theme=dark] {
   place-items: center;
   padding-inline: 5vw;
   margin-inline: auto;
+  border-bottom: 1px solid var(--theme_border);
 }
 .container_header .separator {
   width: 2px;
@@ -716,8 +847,6 @@ html.page[data-theme=dark] {
   display: block;
 }
 .container_header .main_header .left_header .slogan {
-  background-color: transparent;
-  color: var(--theme_text);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -728,10 +857,17 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.container_header .main_header .left_header .slogan .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text);
 }
 .container_header .main_header .left_header .slogan b {
   background-color: transparent;
-  color: var(--theme_text);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -815,8 +951,6 @@ html.page[data-theme=dark] {
   display: block;
 }
 .container_header .main_header .tools_header .version {
-  background-color: transparent;
-  color: var(--theme_text);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -827,10 +961,17 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: initial;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.container_header .main_header .tools_header .version .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text);
 }
 .container_header .main_header .tools_header .version b {
   background-color: transparent;
-  color: var(--theme_text);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1062,8 +1203,6 @@ html.page[data-theme=dark] {
   display: block;
 }
 .documentationpage .main_header .page_search .container_search .page_search_results .page_search_state {
-  background-color: transparent;
-  color: var(--theme_text_alt);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1074,10 +1213,17 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text_alt);
+}
+.documentationpage .main_header .page_search .container_search .page_search_results .page_search_state .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text_alt);
 }
 .documentationpage .main_header .page_search .container_search .page_search_results .page_search_state b {
   background-color: transparent;
-  color: var(--theme_text_alt);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1119,8 +1265,6 @@ html.page[data-theme=dark] {
 }
 .documentationpage .main_header .page_search .container_search .page_search_results .page_search_item .page_search_category,
 .documentationpage .main_header .page_search .container_search .page_search_results .page_search_item .page_search_excerpt {
-  background-color: transparent;
-  color: var(--theme_text_alt);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1131,11 +1275,19 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text_alt);
+}
+.documentationpage .main_header .page_search .container_search .page_search_results .page_search_item .page_search_category .tagline_sisass,
+.documentationpage .main_header .page_search .container_search .page_search_results .page_search_item .page_search_excerpt .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text_alt);
 }
 .documentationpage .main_header .page_search .container_search .page_search_results .page_search_item .page_search_category b,
 .documentationpage .main_header .page_search .container_search .page_search_results .page_search_item .page_search_excerpt b {
   background-color: transparent;
-  color: var(--theme_text_alt);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1249,7 +1401,7 @@ html.page[data-theme=dark] {
   outline-offset: 10px;
 }
 .documentationpage .main_content {
-  padding: 0 min(5vw, 192px);
+  padding: 50px min(5vw, 192px);
 }
 @media only screen and (max-width: 980px) {
   .documentationpage .main_content {
@@ -1260,23 +1412,60 @@ html.page[data-theme=dark] {
   margin-bottom: 30px;
 }
 .documentationpage .title {
-  font-size: 2.625rem;
-  font-family: "Montserrat", "sans-serif";
-  font-weight: 900;
-  font-style: normal;
-  font-variant: normal;
+  background-color: transparent;
+  color: var(--theme_text);
   text-align: left;
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  margin-bottom: 30px;
+  font-size: 2.625rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
   color: var(--theme_text);
+}
+.documentationpage .title .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.documentationpage .title b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 2.625rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.documentationpage .title {
+  margin-bottom: 30px;
 }
 @media only screen and (max-width: 980px) {
   .documentationpage .title {
     font-size: 2rem;
     margin-bottom: 15px;
   }
+}
+.documentationpage .title::after {
+  width: 45px;
+  height: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background-color: var(--theme_text_bold);
+  color: transparent;
+  display: block;
+  content: "";
 }
 .documentationpage .subtitle {
   font-size: 1.75rem;
@@ -1330,8 +1519,6 @@ html.page[data-theme=dark] {
 }
 .documentationpage .description,
 .documentationpage p {
-  background-color: transparent;
-  color: var(--theme_text_alt);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1342,11 +1529,19 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.documentationpage .description .tagline_sisass,
+.documentationpage p .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text);
 }
 .documentationpage .description b,
 .documentationpage p b {
   background-color: transparent;
-  color: var(--theme_text_alt);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1365,8 +1560,6 @@ html.page[data-theme=dark] {
   margin-bottom: 25px;
 }
 .documentationpage .note {
-  background-color: transparent;
-  color: var(--theme_text_alt);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -1377,10 +1570,17 @@ html.page[data-theme=dark] {
   font-style: normal;
   font-variant: normal;
   line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text_alt);
+}
+.documentationpage .note .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  text-transform: uppercase;
+  color: var(--theme_text_alt);
 }
 .documentationpage .note b {
   background-color: transparent;
-  color: var(--theme_text_alt);
+  color: var(--theme_text_bold);
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;

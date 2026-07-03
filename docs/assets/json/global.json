@@ -11,8 +11,8 @@
             "url": "../components/global/menu.html",
             "class": "a2",
             "position": "afterend",
-            "node": "main_content"
+            "node": "main_content",
+            "page": "docs"
         }
     ]
 }
-

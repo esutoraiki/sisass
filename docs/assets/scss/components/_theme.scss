@@ -7,6 +7,7 @@ html.page {
     --theme_surface_alt: #{light-dark($c7, $c11)};
     --theme_text: #{light-dark($c6, $c12)};
     --theme_text_alt: #{light-dark($c3, $c13)};
+    --theme_text_bold: #{light-dark($c16, $c17)};
     --theme_accent: #{light-dark($c5, $c15)};
     --theme_accent_alt: #{light-dark($c4, $c14)};
     --theme_border: #{light-dark($c8, rgba($c1, 0.18))};

@@ -1,0 +1,31 @@
+@use "../core/instances" as * ;
+
+.welcome {
+    @include flex;
+    @include gap(min(7.68vw, 120px));
+
+    .group_1 {
+        .btn_group {
+            @include flex;
+            @include gap(15px);
+            margin-top: 32px;
+
+            .btn_bg, .btn {
+                @include wh(250px, 50px);
+                @include gap(15px);
+            }
+        }
+    }
+
+    .group_2 {
+        @include wh(min(44.84vw, 700px));
+        @include align_self(center);
+        aspect-ratio: calc(700 / 394);
+        display: block;
+
+        .img {
+            @include wh(inherit, inherit);
+            object-fit: contain;
+        }
+    }
+}

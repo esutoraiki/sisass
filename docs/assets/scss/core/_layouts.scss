@@ -16,6 +16,26 @@
     .b3 { grid-area: t0; }
 }
 
+.layout_home {
+    @include justify-content(center);
+    @include grid;
+
+    grid: {
+        template: {
+            columns: min(95vw, 1920px);
+            rows: 95px auto;
+            areas: "h2" "c2";
+        }
+    }
+
+    @include brp($b6) {
+        display: block;
+    }
+
+    .c1 { grid-area: h2; }
+    .c2 { grid-area: c2; }
+}
+
 .layout_1 {
     @include grid;
 

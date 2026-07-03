@@ -30,7 +30,7 @@
     }
 
     .main_content {
-        padding: 0 min(5vw, 192px);
+        padding: 50px min(5vw, 192px);
 
         @include brp($b6) {
             padding: 25px min(5vw, 192px) 50px;
@@ -42,14 +42,26 @@
     }
 
     .title {
-        @include font(szrem(42), $f3, 900);
-        @include text;
+        @include bc($c0, var(--theme_text));
+        @include t1((
+            f: $f4,
+            s: szrem(42),
+            w: bold,
+            a: left
+        ));
         margin-bottom: 30px;
-        color: var(--theme_text);
 
         @include brp($b6) {
             font-size: szrem(32);
             margin-bottom: 15px;
+        }
+
+        &::after {
+            @include wh(45px, 4px);
+            @include border-radius(4px);
+            @include bc(var(--theme_text_bold), $c0);
+            display: block;
+            content: "";
         }
     }
 
@@ -79,6 +91,7 @@
 
     }
 
+
     .attribute {
         @include font(szrem(20), $f2, bold);
         @include text;
@@ -90,8 +103,9 @@
 
     .description,
     p {
-        @include t1(( c: var(--theme_text_alt) ));
+        @include t1;
         margin-bottom: 15px;
+
     }
 
     .mb {

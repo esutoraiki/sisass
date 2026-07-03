@@ -27,6 +27,36 @@
     }
 }
 
+.icon_arrow_2 {
+    &::after {
+        @include icon-svg((
+            svg: arrow_2,
+            w: list.nth($l4x, 1),
+            h: list.nth($l4y, 1),
+            fill: $c1,
+            position: (
+                p: relative
+            )
+        ));
+        display: block;
+        content: "";
+    }
+}
+
+.icon_start {
+    &::after {
+        @include icon-svg-mask((
+            svg: start,
+            w: list.nth($l5, 1),
+            h: list.nth($l5, 1),
+            c: currentColor,
+            p: relative
+        ));
+        display: block;
+        content: "";
+    }
+}
+
 .icon_email {
     &::before {
         @include icon-svg(

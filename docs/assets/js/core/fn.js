@@ -43,6 +43,7 @@ function waitTimeout(delay = 300) {
 async function contentLoad(attr = {}) {
     let
         url = attr.url || null,
+        current_page = attr.current_page || "both",
         success = attr.success || (function () { return undefined; }),
         complete = attr.complete || (function () { return undefined; })
     ;
@@ -62,6 +63,15 @@ async function contentLoad(attr = {}) {
 
         const
             loaded_components = await Promise.all(components.map(async function (component, index) {
+                const
+                    component_page = component.page || "both"
+                ;
+
+                if (component_page !== "both" && component_page !== current_page) {
+                    checkLoad[index] = true;
+                    return component;
+                }
+
                 checkLoad[index] = false;
 
                 const

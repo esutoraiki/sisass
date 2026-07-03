@@ -230,12 +230,18 @@ import { loader } from "./core/page_loader.js";
                 },
 
                 content: async () => {
+                    const
+                        body = document.body,
+                        current_page = body && body.dataset.link ? "docs" : "home"
+                    ;
+
                     loader.register([
                         "shell_ready"
                     ]);
 
                     await contentLoad({
                         url: url_json_global,
+                        current_page: current_page,
                         success: function (id_component) {
                             if (id_component === "menu") {
                                 let
@@ -256,6 +262,16 @@ import { loader } from "./core/page_loader.js";
                             }
                         }
                     });
+
+                    if (current_page === "home") {
+                        const
+                            menu_trigger = document.getElementById("menu_close")
+                        ;
+
+                        if (menu_trigger) {
+                            menu_trigger.remove();
+                        }
+                    }
 
                     NSDocumentation.bind_theme();
                     NSDocumentation.bind_menu();

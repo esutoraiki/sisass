@@ -6,6 +6,7 @@
     @include center-flex-column;
     padding-inline: 5vw;
     margin-inline: auto;
+    border-bottom: 1px solid var(--theme_border);
 
     .separator {
         @include wh(2px, 20px);
