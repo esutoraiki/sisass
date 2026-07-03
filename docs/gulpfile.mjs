@@ -32,6 +32,7 @@ const
         "assets/scss/*.scss",
         "assets/scss/components/*.scss",
         "assets/scss/bases/[^_]*.scss",
+        "assets/scss/pages/*.scss",
         "assets/scss/vendor/[^_]*.scss",
         "assets/scss/mediaqueries/[^_]*.scss"
     ],
@@ -188,6 +189,8 @@ gulp.task("watch", function () {
         "scss",
         gulp.series("css_svg", "process_svg")
     ));
+
+    gulp.watch("assets/scss/pages/*.scss", gulp.series("scss"));
 
     gulp.watch(paths_html, gulp.series("html"));
 });
