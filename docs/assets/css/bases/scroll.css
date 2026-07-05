@@ -29,6 +29,7 @@
   position: relative;
   top: 0;
   left: 0;
+  z-index: 1;
   overflow: overlay;
   overflow-x: hidden;
 }
@@ -82,6 +83,7 @@
   position: relative;
   top: 0;
   left: 0;
+  z-index: 1;
   overflow: overlay;
   overflow-y: hidden;
 }
@@ -135,6 +137,7 @@
   position: relative;
   top: 0;
   left: 0;
+  z-index: 1;
   overflow-x: auto;
   overflow-y: auto;
 }
@@ -188,6 +191,7 @@
   position: relative;
   top: 0;
   left: 0;
+  z-index: 1;
   overflow: overlay;
   overflow-x: hidden;
   -ms-overflow-style: none;

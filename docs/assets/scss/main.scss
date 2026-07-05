@@ -13,6 +13,14 @@
 @use "components/documentationpage";
 
 .hide { display: none !important; }
+.theme_only_light { display: block !important; }
+.theme_only_dark { display: none !important; }
+
+html.page[data-theme="dark"] {
+    .theme_only_light { display: none !important; }
+    .theme_only_dark { display: block !important; }
+}
+
 .no_scroll { overflow: hidden !important; }
 .no_visibility { visibility: hidden !important; }
 html.page { scroll-behavior: smooth; }

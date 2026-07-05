@@ -14,6 +14,8 @@ $c6: #2D396C;
 $c7: #FEFEFE;
 $c8: #DDDDDD;
 $c16: #6F00FA;
+$c18: #12CFC8;
+$c19: #FE00BE;
 
 // Theme colors
 $c9: #10151F;
@@ -35,18 +37,21 @@ $bd6: 3px solid $c5;
 $bd7: 1px dashed $c3;
 $bd8: 10px solid $c6;
 $bd9: 1px solid var(--theme_border);
-$bd10: 2px solid var(--theme_text_bold);
+$bd10: 2px solid var(--theme_border_btn);
 
 // shadow
 $sh1: 0 4px 5px rgba($c2, 0.08);
-$sh2: 0 4px 5px rgba($c2, 0.2);
+$sh2: 0 2px 7px -1px var(--theme_text);
 
 // gradient
 $gr1: linear-gradient(90deg, $c5 0%, $c6 100%);
 
 // Font
+// Nunito Sans regular | bold
 $f1: "Nunito Sans", "sans-serif";
+// Fira Sans regular | bold
 $f2: "Fira Sans", "sans-serif";
+// Montserrat 900
 $f3: "Montserrat", "sans-serif";
 // Roboto bold
 $f4: "Roboto", "sans-serif";
@@ -79,6 +84,10 @@ $t9: 900ms;
 $t10: 1s;
 
 // Variables
+$charecteristics_name: (organized, reusable, consistent, productive);
+$characteristics_svg: (cube, code, palette, rocket);
+$characteristics_color: ($c16, $c18, $c15, $c19);
+
 // logo sisass
 $l1x: (clamp(130px, 10.44vw, 200px));
 $l1y: (clamp(29px, 2.30vw, 44px));
@@ -89,12 +98,18 @@ $l2: (26px);
 // icon light / dark
 $l3: (24px);
 
-// icon arrow
+// icon arrow_2
 $l4x: (15px);
 $l4y: (10px);
 
 // icon star
 $l5: (18px);
+
+// icons characteristic
+$l6: (40px);
+
+// icon arrow
+$l7: (12px);
 
 //-----------------------------------
 //End Variables

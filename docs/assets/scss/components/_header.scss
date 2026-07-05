@@ -35,8 +35,18 @@
                 display: block;
             }
 
+            .separator {
+                @include brp($b6) {
+                    display: none;
+                }
+            }
+
             .slogan {
                 @include t1(( s: szrem(14), c: var(--theme_text) ));
+
+                @include brp($b6) {
+                    display: none;
+                }
             }
         }
 
@@ -45,6 +55,10 @@
             @include align-self(center);
             @include align-items(center);
             @include gap(25px);
+
+            @include brp($b6) {
+                @include gap(15px);
+            }
 
             .theme_toggle {
                 @include no-border;

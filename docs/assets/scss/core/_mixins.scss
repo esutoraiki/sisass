@@ -9,6 +9,7 @@
 
     .tagline_sisass {
         font-family: $f3;
+        font-weight: 900;
         text-transform: uppercase;
         color: $c;
     }
@@ -24,8 +25,9 @@
     $c: mapv($attr, c, var(--theme_text));
     $bgb: mapv($attr, bgb, $c0);
     $cb: mapv($attr, cb, var(--theme_text_bold));
+    $wr: mapv($attr, wr, initial);
 
-    @include tf(( f: $f, s: $s, a: $a, lh: $lh, w: $w ));
+    @include tf(( f: $f, s: $s, a: $a, lh: $lh, w: $w, wr: $wr ));
     @include bc($bg, $c);
     @include tagline_sisass(( c: $c ));
 
@@ -41,12 +43,12 @@
     $as: mapv($attr, as, calc(200 / 45));
     $bd: mapv($attr, bd, $bd10);
     $bg: mapv($attr, bg, $c0);
-    $c: mapv($attr, (color, c), var(--theme_text_bold));
+    $c: mapv($attr, (color, c), var(--theme_btn_text));
     $r: mapv($attr, (radius, r), 9px);
     $g: mapv($attr, (gap, g), 8px);
 
     @include center-flex-row;
-    @include transition(all $t5);
+    @include transition(all $t3);
     @include transform(translateY(0));
     @include border-radius($r);
     @include bc($bg, $c);
@@ -57,7 +59,7 @@
     border: $bd;
 
     &:hover {
-        @include transition(all $t5);
+        @include transition(all $t3);
         @include transform(translateY(-5%));
         @include box-shadow($sh2);
     }

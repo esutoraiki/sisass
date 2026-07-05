@@ -27,6 +27,19 @@
     }
 }
 
+.icon_arrow {
+    &::after {
+        @include icon-svg((
+            svg: arrow,
+            w: list.nth($l7, 1),
+            h: list.nth($l7, 1),
+            fill: $c6
+        ));
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
 .icon_arrow_2 {
     &::after {
         @include icon-svg((
@@ -43,6 +56,21 @@
     }
 }
 
+@for $i from 1 through list.length($charecteristics_name) {
+    .icon_#{list.nth($charecteristics_name, $i)} {
+        &::after {
+            @include icon-svg-mask((
+                svg: list.nth($characteristics_svg, $i),
+                w: list.nth($l6, 1),
+                h: list.nth($l6, 1),
+                c: list.nth($characteristics_color, $i),
+                p: relative
+            ));
+            content: "";
+        }
+    }
+}
+
 .icon_start {
     &::after {
         @include icon-svg-mask((
@@ -52,7 +80,6 @@
             c: currentColor,
             p: relative
         ));
-        display: block;
         content: "";
     }
 }

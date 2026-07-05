@@ -263,7 +263,8 @@
     $y: 0,
     $x: 0,
     $yaxis: top,
-    $xaxis: left
+    $xaxis: left,
+    $z: 1
 ) {
     $position_value: $position;
     $v_y: $y;
@@ -282,6 +283,7 @@
         $v_x: mapv($position, x, $v_x);
         $pos_y: mapv($position, (yaxis, ya), $pos_y);
         $pos_x: mapv($position, (xaxis, xa), $pos_x);
+        $z: mapv($position, z, $z);
 
         $top_value: mapv($position, (top, t), null);
         $right_value: mapv($position, (right, r), null);
@@ -300,6 +302,8 @@
         #{$pos_y} : $v_y;
         #{$pos_x} : $v_x;
     }
+
+    z-index: $z;
 }
 
 // Width Height

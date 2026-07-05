@@ -29,11 +29,61 @@
     }
 
     @include brp($b6) {
-        display: block;
+        grid: {
+            template: {
+                rows: 45px auto;
+                columns: 1fr;
+            }
+        }
     }
 
     .c1 { grid-area: h2; }
     .c2 { grid-area: c2; }
+}
+
+.layout_characteristics {
+    @include align-items(center);
+    @include gap(16px);
+    @include grid;
+
+    grid: {
+        template: {
+            columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    @include brp($b5) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include brp($b7) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.layout_block_3 {
+    @include grid;
+
+    grid: {
+        gap: 24px;
+        template: {
+            columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+
+    @include brp($b5) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+
+        &:has(> :nth-child(3):last-child) > :first-child {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @include brp($b7) {
+        grid-template-columns: 1fr;
+    }
 }
 
 .layout_1 {
