@@ -32,6 +32,7 @@
 - Keep source and generated documentation assets in sync when changing documentation content.
 - Use `docs/index.html` as the documentation entry point, with `docs/pages/`, `docs/components/`, `docs/assets/scss/`, `docs/assets/css/`, `docs/assets/js/`, and `docs/assets/json/` as the main documentation areas.
 - Preserve the current documentation naming conventions and page structure when editing component pages.
+- When a new documentation category is added in `docs/pages/base.html`, update the corresponding menu in `docs/components/global/menu.html` and any related index or classification blocks if the new category exposes new resources.
 - Prefer updating both SCSS source and compiled CSS when a documentation style change is intentional.
 - Rebuild the relevant documentation assets after editing SCSS, SVG, or JSON sources, and validate layout changes in the browser.
 - For `docs/components/base/*.html`, use this explicit section order:
