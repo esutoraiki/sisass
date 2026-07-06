@@ -288,3 +288,16 @@ import { loader } from "./core/page_loader.js";
         await NSDocumentation.content();
     });
 }());
+
+(function preventDummyLinksDelegated() {
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest("a[href]");
+    if (!a) return;
+
+    const href = (a.getAttribute("href") || "").trim();
+    if (href === "" || href === "#") {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+})();
