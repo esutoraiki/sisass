@@ -22,7 +22,7 @@
         .box {
             @include flex-direction(column);
             @include border-radius(16px);
-            @include box-shadow(var(--theme_shadow));
+            @include box-shadow($sh1);
             @include bc(var(--theme_surface), var(--theme_text));
             @include wh(min(90%, 420px));
             @include flex;

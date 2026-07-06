@@ -87,7 +87,7 @@
                 min-width: 0;
 
                 .title_characteristic {
-                    @include t1(( f: $f4, s: szrem(16), w: bold, lh: 1.1 ));
+                    @include t1(( f: $f2, s: szrem(18), w: bold, lh: 1.1 ));
                     margin-bottom: 0;
                 }
 
@@ -109,7 +109,7 @@
             min-width: 0;
 
             .feature_title {
-                @include t1(( f: $f4, s: szrem(20), w: bold, lh: 1.15, a: left ));
+                @include t1(( f: $f2, s: szrem(20), w: bold, lh: 1.15, a: left ));
                 @include bc($c0, var(--theme_black_white));
                 @include gap(10px);
                 @include flex;
@@ -135,22 +135,23 @@
 
                 .feature_list {
                     @include no-spacing;
-                    list-style: none;
 
                     .feature_item {
                         @include flex;
                         @include gap(15px);
+                        cursor: pointer;
                         padding: 15px;
 
                         .feature_index {
                             @include t1(( f: $f4, s: szrem(13), w: bold, lh: 1, a: center ));
-                            @include border-radius(10px);
                             @include bc(rgba($c17, 0.14), var(--theme_text_bold));
+                            @include align_self(center);
+                            @include align_items(center);
+                            @include justify_content(center);
+                            @include border-radius(10px);
                             @include whs(32px);
                             flex: 0 0 32px;
                             display: inline-flex;
-                            justify-content: center;
-                            align-items: center;
                         }
 
                         .feature_content {
@@ -193,7 +194,7 @@
         }
 
         .feature_item_title {
-            @include t1(( f: $f4, s: szrem(15), w: 700, lh: 1.15, a: left ));
+            @include t1(( f: $f2, s: szrem(16), w: bold, lh: 1.15, a: left ));
             margin-bottom: 0;
             color: var(--theme_text_bold);
         }
@@ -202,17 +203,6 @@
             @include t1(( f: $f1, s: szrem(13), lh: 1.35, a: left, wr: balance ));
             margin-bottom: 0;
             color: var(--theme_text);
-        }
-
-
-        .feature_link_text {
-            min-width: 0;
-        }
-
-        .feature_link_arrow {
-            font-size: 1.15em;
-            line-height: 1;
-            transform: translateY(1px);
         }
 
         .feature_block_start {

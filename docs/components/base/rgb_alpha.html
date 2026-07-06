@@ -1,0 +1,98 @@
+<article id="rgb_alpha" class="rgb_alpha">
+    <div class="group_title">
+        <h2 class="subtitle">
+            rgb-alpha (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Convierte un color Sass y un valor <b>alpha</b> en un valor CSS con
+        sintaxis moderna <b>rgb(... / ...)</b>. Es útil para reutilizar la
+        misma conversión en propiedades que aceptan colores con transparencia.
+    </p>
+    <p class="description">
+        La función separa los canales rojo, verde y azul del color de entrada
+        y los recombina con el nivel de opacidad indicado. El resultado puede
+        usarse directamente en propiedades como <b>background-color</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function rgb-alpha($color, $alpha);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>color</b></td>
+                    <td>Color</td>
+                    <td>-</td>
+                    <td>Define el color Sass del que se extraen los canales RGB.</td>
+                </tr>
+                <tr>
+                    <td><b>alpha</b></td>
+                    <td>Number</td>
+                    <td>-</td>
+                    <td>Define el nivel de transparencia que se aplicará al color final.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <p class="description">
+            La función espera un color Sass válido porque necesita leer sus
+            canales RGB para construir el resultado final. Si el valor de
+            entrada no es un color, la conversión no puede resolverse de forma
+            correcta.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/rgb_alpha.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/rgb_alpha.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div class=&quot;rgb_alpha_example&quot;&gt;&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="rgb_alpha_example"></div>
+            </div>
+        </div>
+    </section>
+</article>

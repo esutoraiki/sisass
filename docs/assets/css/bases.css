@@ -56,6 +56,12 @@
   height: 100px;
 }
 
+.documentationpage .rgb_alpha_example {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(251 176 59 / 0.35);
+}
+
 .documentationpage .bc_example {
   background-color: #3A405A;
   color: #FBB03B;

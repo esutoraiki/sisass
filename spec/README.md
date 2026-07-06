@@ -14,6 +14,7 @@ Esta carpeta contiene especificaciones de producto e interfaz para funcionalidad
 | Archivo | Propósito |
 | --- | --- |
 | [theme_toggle_button.md](./theme_toggle_button.md) | Define el botón para cambiar la documentación entre modo claro y modo oscuro. |
+| [rgb_alpha.md](./rgb_alpha.md) | Define la documentación de la función `rgb-alpha` en la sección base. |
 
 ## Convenciones
 

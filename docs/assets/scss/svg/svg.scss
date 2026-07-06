@@ -36,6 +36,7 @@
             fill: $c6
         ));
         filter: var(--theme_icon_filter);
+        display: block;
         content: "";
     }
 }
@@ -51,6 +52,24 @@
                 p: relative
             )
         ));
+        filter: var(--theme_icon_filter);
+        display: block;
+        content: "";
+    }
+}
+
+.icon_arrow_3 {
+    &::after {
+        @include icon-svg((
+            svg: arrow_2,
+            w: list.nth($l4x, 1),
+            h: list.nth($l4y, 1),
+            fill: $c2,
+            position: (
+                p: relative
+            )
+        ));
+        filter: var(--theme_icon_filter);
         display: block;
         content: "";
     }

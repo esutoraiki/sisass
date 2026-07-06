@@ -3,7 +3,7 @@
 
 .documentationpage {
     @include scroll((
-        color: var(--theme_scroll_thumb),
+        color: $c4,
         bg: var(--theme_scroll_track),
         width: 16px,
         thumb_border: 3px solid var(--theme_scroll_track),

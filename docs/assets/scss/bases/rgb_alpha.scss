@@ -1,0 +1,8 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .rgb_alpha_example {
+        @include whs(100px);
+        background-color: rgb-alpha($c4, 0.35);
+    }
+}

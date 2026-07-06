@@ -67,6 +67,12 @@
             "node": "background_opacity"
         },
         {
+            "id": "rgb_alpha",
+            "url": "../components/base/rgb_alpha.html",
+            "position": "beforeend",
+            "node": "rgb_alpha"
+        },
+        {
             "id": "position",
             "url": "../components/base/position.html",
             "position": "beforeend",

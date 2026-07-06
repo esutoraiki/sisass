@@ -13,7 +13,7 @@ $c5: #A01303;
 $c6: #2D396C;
 $c7: #FEFEFE;
 $c8: #DDDDDD;
-$c16: #6F00FA;
+$c16: #2A47CE;
 $c18: #12CFC8;
 $c19: #FE00BE;
 
@@ -25,7 +25,7 @@ $c12: #E8EEF8;
 $c13: #C9D2E2;
 $c14: #FFD36B;
 $c15: #F88C7E;
-$c17: #885AC2;
+$c17: #007AFF;
 
 // Border
 $bd1: 2px dashed $c3;
@@ -40,7 +40,7 @@ $bd9: 1px solid var(--theme_border);
 $bd10: 2px solid var(--theme_border_btn);
 
 // shadow
-$sh1: 0 4px 5px rgba($c2, 0.08);
+$sh1: 0 4px 5px rgb-alpha($c2, 0.08);
 $sh2: 0 2px 7px -1px var(--theme_text);
 
 // gradient
