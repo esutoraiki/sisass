@@ -1,4 +1,4 @@
-// Update: 20260316
+// Update: 20260706
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -249,11 +249,7 @@
     @if $use_legacy_value {
         background-color: rgba($bg_value, $opacity_value);
     } @else {
-        $red_value: color.channel($bg_value, "red", $space: rgb);
-        $green_value: color.channel($bg_value, "green", $space: rgb);
-        $blue_value: color.channel($bg_value, "blue", $space: rgb);
-        $rgb_string: "rgb(#{$red_value} #{$green_value} #{$blue_value} / #{$opacity_value})";
-        background-color: string.unquote($rgb_string);
+        background-color: rgb-alpha($bg_value, $opacity_value);
     }
 }
 
@@ -752,6 +748,20 @@
     @return (math.div($value_px, $base)) * 1rem;
 }
 
+// base porcentage
+@function bp($attr: ()) {
+    $base_i: mapv($attr, (base, b), 1920);
+    $unn: mapv($attr, (unit, u), "vw");
+    $value: mapv($attr, (value, v), 0);
+
+    @return #{math.div($value * 100, $base_i) + $unn};
+}
+
+// Remove unit of measurement from a value
+@function strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
 // String Replace
 @function str-replace($string, $search, $replace: "") {
     $index: string.index($string, $search);
@@ -784,18 +794,13 @@
     @return $return;
 }
 
-// base porcentage
-@function bp($attr: ()) {
-    $base_i: mapv($attr, (base, b), 1920);
-    $unn: mapv($attr, (unit, u), "vw");
-    $value: mapv($attr, (value, v), 0);
+// RGB with alpha
+@function rgb-alpha($color, $alpha) {
+    $r: color.channel($color, "red", $space: rgb);
+    $g: color.channel($color, "green", $space: rgb);
+    $b: color.channel($color, "blue", $space: rgb);
 
-    @return #{math.div($value * 100, $base_i) + $unn};
-}
-
-// Remove unit of measurement from a value
-@function strip-unit($value) {
-    @return math.div($value, $value * 0 + 1);
+    @return string.unquote("rgb(#{$r} #{$g} #{$b} / #{$alpha})");
 }
 
 // Add item to list if not exist
@@ -824,6 +829,7 @@
 
     @return $list;
 }
+
 //-----------------------------------
 //End Mixin
 //-----------------------------------
