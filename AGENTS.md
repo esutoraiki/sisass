@@ -70,6 +70,39 @@
 - When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
 - Do not introduce component-specific theme logic into unrelated style partials.
 
+## Checklist Para Crear Una `pages/` Desde Cero
+Antes de construir una página nueva de la documentación, sigue este flujo:
+
+1. Identifica el tipo de página.
+2. Confirma la clasificación con el usuario si hay más de una opción posible.
+3. Verifica qué archivos deben existir o actualizarse.
+4. Revisa si la nueva página necesita assets de ejemplo y estilos compilados.
+5. Comprueba si la navegación, el buscador o el hash routing deben reconocerla.
+6. Ajusta los textos en español y valida que el contenido coincida con los assets reales.
+7. Ejecuta la verificación correspondiente del sitio de documentación.
+
+### Clasificación De Páginas
+
+| Clasificación | Cuándo usarla | Archivos mínimos |
+| --- | --- | --- |
+| `portada` | Portada general del sitio de documentación. | `docs/index.html`, `docs/assets/js/pages/home.js`, `docs/assets/json/home.json`, componentes de `docs/components/home/` |
+| `pagina_referencia` | Página de referencia para un archivo fuente como `base`, `vendor`, `mediaqueries` o `reset`. | `docs/pages/*.html`, `docs/assets/js/pages/*.js`, `docs/assets/json/*.json`, componentes de `docs/components/*/` |
+| `nueva_seccion_referencia` | Nueva sección dentro de una página de referencia existente. | `docs/pages/*.html`, `docs/assets/json/*.json`, `docs/components/...`, y estilos o ejemplos asociados si aplica |
+| `componente_solo` | Fragmento reutilizable que no necesita una página completa. | `docs/components/...` y, si corresponde, assets de ejemplo sincronizados |
+| `recurso_compartido` | Recurso compartido por varias páginas, como plantillas, headers, menús o cargadores. | `docs/components/global/`, `docs/templates/`, `docs/assets/js/core/` o `docs/assets/js/components/` según corresponda |
+
+### Preguntas Que Debo Hacer Antes De Empezar
+
+Si la solicitud no aclara lo suficiente el alcance, pregunta primero. Si existe ambigüedad sobre clasificación, menú, reutilización o assets, debo preguntar siempre antes de decidir.
+
+1. ¿Qué tipo de página quieres construir: `portada`, `pagina_referencia`, `nueva_seccion_referencia`, `componente_solo` o `recurso_compartido`?
+2. ¿La nueva pieza debe vivir en `docs/pages/` o solo en `docs/components/`?
+3. ¿Debe tener su propio `docs/assets/js/pages/*.js` y su propio `docs/assets/json/*.json`?
+4. ¿Hay que agregar una categoría nueva o reutilizar una existente en `docs/components/global/menu.html`?
+5. ¿La pieza necesita ejemplos reales con `docs/assets/scss/...`, `docs/assets/css/...` y HTML de resultado?
+6. ¿Debo mantener la estructura visual y de secciones de una página existente o crear una variante nueva?
+7. ¿Quieres fijar alguna asunción explícita antes de que implemente la página?
+
 ## Commit & Pull Request Guidelines
 - Use concise, imperative commit messages (e.g., `Add grid helpers`, `Fix install path parsing`). Group related edits per commit to keep history readable.
 - PRs should describe the change, affected folders (e.g., `src/scss`, `files/assets/scss/core`), manual verification steps, and any docs updates. Include before/after screenshots when altering visual output or doc pages.

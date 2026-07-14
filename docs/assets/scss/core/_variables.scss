@@ -40,8 +40,9 @@ $bd9: 1px solid var(--theme_border);
 $bd10: 2px solid var(--theme_border_btn);
 
 // shadow
-$sh1: 0 4px 5px rgb-alpha($c2, 0.08);
+$sh1: 0 0 6px var(--theme_shadow);
 $sh2: 0 2px 7px -1px var(--theme_text);
+$sh3: 0 0 0 5px rgba($c18, 0.2);
 
 // gradient
 $gr1: linear-gradient(90deg, $c5 0%, $c6 100%);
@@ -88,6 +89,8 @@ $charecteristics_name: (organized, reusable, consistent, productive);
 $characteristics_svg: (cube, code, palette, rocket);
 $characteristics_color: ($c16, $c18, $c15, $c19);
 
+$features_name: (mixins, functions, variables, helpers, layouts);
+
 // logo sisass
 $l1x: (clamp(130px, 10.44vw, 200px));
 $l1y: (clamp(29px, 2.30vw, 44px));
@@ -111,6 +114,13 @@ $l6: (40px);
 // icon arrow
 $l7: (12px);
 
+// icons moduls
+$l8: (26px);
+
+// icon help
+$l9x: (15px);
+$l9y: (22px);
+
 //-----------------------------------
 //End Variables
-//-----------------------------------
+//----------------------------------

@@ -60,32 +60,6 @@
                 @include gap(15px);
             }
 
-            .theme_toggle {
-                @include no-border;
-                @include no-spacing;
-                @include flex;
-                @include align-items(center);
-                @include justify-content(center);
-                @include whs(list.nth($l3, 1));
-                @include bc($c0, var(--theme_text));
-                cursor: pointer;
-                position: relative;
-
-                .icon_light,
-                .icon_dark {
-                    position: absolute;
-                    inset: 0;
-                }
-
-                span[class^="icon_"] {
-                    @include normalize-svg((
-                        w: list.nth($l3, 1),
-                        h: list.nth($l3, 1)
-                    ));
-                    display: block;
-                }
-            }
-
             .version {
                 @include t1(( s: szrem(12), lh: initial ));
             }

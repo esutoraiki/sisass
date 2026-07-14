@@ -9,6 +9,7 @@
 @use "components/buttons";
 @use "components/menu";
 @use "components/header";
+@use "components/theme_toggle";
 @use "components/page_search";
 @use "components/documentationpage";
 
@@ -24,3 +25,4 @@ html.page[data-theme="dark"] {
 .no_scroll { overflow: hidden !important; }
 .no_visibility { visibility: hidden !important; }
 html.page { scroll-behavior: smooth; }
+

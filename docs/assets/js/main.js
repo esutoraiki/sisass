@@ -1,5 +1,6 @@
 import { contentLoad } from "./core/fn.js";
 import { loader } from "./core/page_loader.js";
+import { get_theme, init_theme_toggle, set_theme } from "./components/theme_toggle.js";
 
 (function () {
     "use strict";
@@ -11,11 +12,6 @@ import { loader } from "./core/page_loader.js";
         c4 = "no_scroll",
         c5 = "close",
 
-        theme_light = "light",
-        theme_dark = "dark",
-        theme_storage_key = "sisass_theme",
-        theme_meta_color_light = "#FEFEFE",
-        theme_meta_color_dark = "#10151F",
         mobile_breakpoint = 980,
         url_json_global = "json/global.json",
 
@@ -40,122 +36,6 @@ import { loader } from "./core/page_loader.js";
                     body.classList.remove(c4);
                     trigger.setAttribute("aria-expanded", "false");
                     trigger.setAttribute("aria-label", "Abrir navegación");
-                },
-
-                get_theme: () => {
-                    try {
-                        const stored_theme = window.localStorage.getItem(theme_storage_key);
-
-                        if (stored_theme === theme_light || stored_theme === theme_dark) {
-                            return stored_theme;
-                        }
-                    } catch {
-                        return theme_light;
-                    }
-
-                    return theme_light;
-                },
-
-                sync_theme_meta: (theme_name) => {
-                    const
-                        theme_color = theme_name === theme_dark ? theme_meta_color_dark : theme_meta_color_light,
-                        existing_meta = document.querySelector('meta[name="theme-color"]')
-                    ;
-
-                    if (existing_meta) {
-                        existing_meta.setAttribute("content", theme_color);
-                        return;
-                    }
-
-                    const
-                        meta_node = document.createElement("meta")
-                    ;
-
-                    meta_node.setAttribute("name", "theme-color");
-                    meta_node.setAttribute("content", theme_color);
-
-                    if (document.head) {
-                        document.head.appendChild(meta_node);
-                    }
-                },
-
-                sync_theme_toggle: (theme_name) => {
-                    const
-                        trigger = document.getElementById("theme_toggle"),
-                        icon_light = trigger ? trigger.querySelector(".icon_light") : null,
-                        icon_dark = trigger ? trigger.querySelector(".icon_dark") : null,
-                        is_dark = theme_name === theme_dark
-                    ;
-
-                    if (!trigger) {
-                        return;
-                    }
-
-                    trigger.setAttribute("aria-pressed", String(is_dark));
-                    trigger.setAttribute("aria-label", is_dark ? "Cambiar a tema claro" : "Cambiar a tema oscuro");
-                    trigger.tabIndex = -1;
-
-                    if (icon_light) {
-                        icon_light.classList.toggle(c2, !is_dark);
-                    }
-
-                    if (icon_dark) {
-                        icon_dark.classList.toggle(c2, is_dark);
-                    }
-                },
-
-                set_theme: (theme_name) => {
-                    const
-                        theme_root = document.documentElement,
-                        resolved_theme = theme_name === theme_dark ? theme_dark : theme_light
-                    ;
-
-                    if (!theme_root) {
-                        return resolved_theme;
-                    }
-
-                    theme_root.dataset.theme = resolved_theme;
-                    theme_root.style.colorScheme = resolved_theme;
-
-                    NSDocumentation.sync_theme_meta(resolved_theme);
-                    NSDocumentation.sync_theme_toggle(resolved_theme);
-
-                    try {
-                        window.localStorage.setItem(theme_storage_key, resolved_theme);
-                    } catch {
-                        return resolved_theme;
-                    }
-
-                    return resolved_theme;
-                },
-
-                toggle_theme: () => {
-                    const
-                        current_theme = document.documentElement.dataset.theme || theme_light,
-                        next_theme = current_theme === theme_dark ? theme_light : theme_dark
-                    ;
-
-                    NSDocumentation.set_theme(next_theme);
-                },
-
-                bind_theme: () => {
-                    const
-                        trigger = document.getElementById("theme_toggle")
-                    ;
-
-                    if (!trigger || trigger.dataset.listenerReady === "true") {
-                        NSDocumentation.sync_theme_toggle(document.documentElement.dataset.theme || theme_light);
-                        return;
-                    }
-
-                    trigger.addEventListener("click", function () {
-                        NSDocumentation.toggle_theme();
-                    });
-
-                    trigger.tabIndex = -1;
-                    trigger.dataset.listenerReady = "true";
-
-                    NSDocumentation.sync_theme_toggle(document.documentElement.dataset.theme || theme_light);
                 },
 
                 bind_menu: () => {
@@ -273,17 +153,15 @@ import { loader } from "./core/page_loader.js";
                         }
                     }
 
-                    NSDocumentation.bind_theme();
+                    await init_theme_toggle();
                     NSDocumentation.bind_menu();
                     loader.set("shell_ready", true);
                 }
             };
         }())
     ;
-
-    NSDocumentation.set_theme(NSDocumentation.get_theme());
-
     window.addEventListener("load", async function () {
+        set_theme(get_theme());
         loader.start();
         await NSDocumentation.content();
     });

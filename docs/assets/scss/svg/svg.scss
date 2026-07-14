@@ -90,6 +90,22 @@
     }
 }
 
+@for $i from 1 through list.length($features_name) {
+    .icon_#{list.nth($features_name, $i)} {
+        &::after {
+            @include icon-svg-mask((
+                svg: list.nth($features_name, $i),
+                w: list.nth($l8, 1),
+                h: list.nth($l8, 1),
+                c: var(--theme_text_bold),
+                p: relative
+            ));
+            display: block;
+            content: "";
+        }
+    }
+}
+
 .icon_start {
     &::after {
         @include icon-svg-mask((
@@ -151,6 +167,48 @@
             $c3
         );
         filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_help {
+    &::before {
+        @include icon-svg((
+            svg: help,
+            w: list.nth($l9x, 1),
+            h: list.nth($l9y, 1),
+            fill: $c1,
+            position: (
+                x: 50%,
+                y: 50%
+            )
+        ));
+        content: "";
+    }
+}
+
+.icon_guide {
+    &::after {
+        @include icon-svg-mask((
+            svg: guide,
+            w: list.nth($l5, 1),
+            h: list.nth($l5, 1),
+            c: currentColor,
+            p: relative
+        ));
+        content: "";
+    }
+}
+
+.icon_issue {
+    &::after {
+        @include icon-svg-mask((
+            svg: issue,
+            w: list.nth($l5, 1),
+            h: list.nth($l5, 1),
+            c: currentColor,
+            p: relative
+        ));
         content: "";
     }
 }

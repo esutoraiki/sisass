@@ -65,6 +65,18 @@
     }
 }
 
+@mixin bg_list() {
+    @include t1(( f: $f4, s: szrem(16), w: bold, lh: 1, a: center ));
+    @include bc(rgb-alpha($c17, 0.14), var(--theme_text_bold));
+    @include align_self(center);
+    @include align_items(center);
+    @include justify_content(center);
+    @include border-radius(10px);
+    @include whs(42px);
+    flex: 0 0 42px;
+    display: inline-flex;
+}
+
 //-----------------------------------
 //End Mixin
 //-----------------------------------

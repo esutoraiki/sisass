@@ -2,7 +2,10 @@
 @use "sass:list";
 
 .documentationpage {
-    .welcome { @include no-border; }
+    .welcome {
+        @include no-border;
+        @include no-spacing;
+    }
 }
 
 .welcome {
@@ -133,180 +136,163 @@
                 overflow: hidden;
                 border: $bd9;
 
-                .feature_list {
-                    @include no-spacing;
+                &.feature_card_modules {
+                    .feature_list {
+                        .feature_item {
+                            @include align-items(center);
+                            border-bottom: $bd9;
 
-                    .feature_item {
-                        @include flex;
-                        @include gap(15px);
-                        cursor: pointer;
-                        padding: 15px;
-
-                        .feature_index {
-                            @include t1(( f: $f4, s: szrem(13), w: bold, lh: 1, a: center ));
-                            @include bc(rgba($c17, 0.14), var(--theme_text_bold));
-                            @include align_self(center);
-                            @include align_items(center);
-                            @include justify_content(center);
-                            @include border-radius(10px);
-                            @include whs(32px);
-                            flex: 0 0 32px;
-                            display: inline-flex;
-                        }
-
-                        .feature_content {
-                            @include flex-direction(column);
-                            @include gap(4px);
-                            @include flex;
-                            flex: 0 0 calc(100% - 78px);
-                        }
-
-                        .icon_arrow {
-                            @include align_self(center);
-                            @include normalize-svg((
-                                width: list.nth($l7, 1),
-                                height: list.nth($l7, 1)
-                            ));
-                            flex: 0 0 32px;
+                            &:last-child { border-bottom: 0 none transparent; }
+                            .feature_content {
+                                flex: 0 0 calc(100% - 115px);
+                            }
                         }
                     }
                 }
 
-                .feature_link {
-                    @include t1(( f: $f4, s: szrem(14), w: 700, lh: 1.15, a: left ));
-                    @include transition(color $t2 ease);
-                    @include position(( p: absolute, b: 0, l: 0 ));
-                    @include wh(100%, 55px);
-                    @include bc($c0, $c16);
-                    @include align_items(center);
-                    @include justify_content(space-between);
-                    @include gap(12px);
+                .feature_icon { @include bg_list; }
+
+                .feature_count {
+                    @include t1(( f: $f3, s: szrem(13), w: 800, lh: 1, a: center ));
+                    @include bc(rgb-alpha($c17, 0.14), var(--theme_text_bold));
+                    @include wh(50px, 30px);
+                    @include center-flex-column;
+                    @include border-radius(15px);
+                    flex: 0 0 50px;
+                }
+            }
+
+            .feature_list {
+                @include no-spacing;
+
+                .feature_item {
                     @include flex;
-                    border-top: $bd9;
-                    padding: 18px 20px 20px;
+                    @include gap(15px);
+                    padding: 15px;
 
-                    &:hover {
-                        @include transition(color $t2 ease);
-                        @include bc($c0, $c17);
+                    &[href] {
+                        cursor: pointer;
+                        text-decoration: none;
+                    }
+
+                    .feature_index { @include bg_list; }
+
+                    .feature_content {
+                        @include flex-direction(column);
+                        @include gap(4px);
+                        @include flex;
+                        flex: 0 0 calc(100% - 78px);
+
+                        .feature_item_title {
+                            @include t1(( f: $f2, s: szrem(16), w: bold, lh: 1.15, a: left ));
+                            margin-bottom: 0;
+                            color: var(--theme_text_bold);
+                        }
+
+                        .feature_item_description {
+                            @include t1(( f: $f1, s: szrem(13), lh: 1.35, a: left, wr: balance ));
+                            margin-bottom: 0;
+                            color: var(--theme_text);
+                        }
+                    }
+
+                    .icon_arrow {
+                        @include align_self(center);
+                        @include normalize-svg((
+                        width: list.nth($l7, 1),
+                        height: list.nth($l7, 1)
+                        ));
+                        flex: 0 0 32px;
                     }
                 }
             }
-        }
 
-        .feature_item_title {
-            @include t1(( f: $f2, s: szrem(16), w: bold, lh: 1.15, a: left ));
-            margin-bottom: 0;
-            color: var(--theme_text_bold);
-        }
+            .feature_link {
+                @include t1(( f: $f4, s: szrem(14), w: 700, lh: 1.15, a: left ));
+                @include transition(color $t2 ease);
+                @include position(( p: absolute, b: 0, l: 0 ));
+                @include wh(100%, 55px);
+                @include bc($c0, $c16);
+                @include align_items(center);
+                @include justify_content(space-between);
+                @include gap(12px);
+                @include flex;
+                border-top: $bd9;
+                padding: 18px 20px 20px;
 
-        .feature_item_description {
-            @include t1(( f: $f1, s: szrem(13), lh: 1.35, a: left, wr: balance ));
-            margin-bottom: 0;
-            color: var(--theme_text);
-        }
-
-        .feature_block_start {
-            .feature_card {
-                border-color: rgba($c16, 0.14);
-            }
-
-            .feature_item {
-                align-items: center;
-                border-bottom: $bd9;
-                display: grid;
-                gap: 14px;
-                grid-template-columns: 34px minmax(0, 1fr) 16px;
-                padding: 14px 18px;
-
-                &:last-child {
-                    border-bottom: 0 none transparent;
-                }
-            }
-
-
-            .feature_chevron {
-                color: var(--theme_text);
-                font-size: 1.8rem;
-                line-height: 1;
-                opacity: 0.72;
-                text-align: right;
-            }
-        }
-
-        .feature_card_modules {
-            .feature_item {
-                align-items: center;
-                border-bottom: $bd9;
-                display: grid;
-                gap: 14px;
-                grid-template-columns: 38px minmax(0, 1fr) max-content;
-                padding: 14px 18px;
-
-                &:last-child {
-                    border-bottom: 0 none transparent;
-                }
-            }
-
-            .feature_icon {
-                @include t1(( f: $f3, s: szrem(14), w: 800, lh: 1, a: center ));
-                background: linear-gradient(180deg, rgba($c17, 0.14), rgba($c17, 0.06));
-                border-radius: 999px;
-                color: $c17;
-                display: inline-flex;
-                height: 38px;
-                justify-content: center;
-                align-items: center;
-                width: 38px;
-            }
-
-            .feature_count {
-                @include t1(( f: $f3, s: szrem(13), w: 800, lh: 1, a: center ));
-                background: linear-gradient(180deg, rgba($c16, 0.16), rgba($c16, 0.08));
-                border-radius: 999px;
-                color: $c16;
-                display: inline-flex;
-                height: 30px;
-                justify-content: center;
-                align-items: center;
-                min-width: 42px;
-                padding: 0 12px;
-            }
-        }
-
-        .feature_card_news {
-            .feature_item {
-                align-items: flex-start;
-                border-bottom: $bd9;
-                display: grid;
-                gap: 12px;
-                grid-template-columns: 12px minmax(0, 1fr);
-                padding: 16px 18px;
-
-                &:last-child {
-                    border-bottom: 0 none transparent;
+                &:hover {
+                    @include transition(color $t2 ease);
+                    @include bc($c0, $c17);
                 }
             }
 
             .feature_dot {
-                background-color: #13B36F;
-                border-radius: 999px;
-                box-shadow: 0 0 0 5px rgba($c18, 0.12);
+                @include bc($c18, $c0);
+                @include border-radius(50%);
+                @include whs(10px);
                 display: inline-flex;
-                height: 10px;
+                box-shadow: $sh3 ;
                 margin-top: 6px;
-                width: 10px;
             }
-        }
-
-        @include brp($b7) {
-            .feature_title {
-                justify-content: flex-start;
-            }
-
-            .feature_link {
-                padding-left: 18px;
-                padding-right: 18px;
-            }
-        }
+        } // .feature_block
     } // .feature_welcome
-}
+
+    .help_welcome {
+        @include bc(
+            var(--theme_bg_secondary),
+            var(--theme_text)
+        );
+        @include border-radius(12px);
+        @include flex-direction(row);
+        @include align_items(center);
+        @include gap(15px);
+        @include flex;
+        padding: 20px 15px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+
+        .icon_help {
+            @include normalize-svg((
+                width: 40px,
+                height: 40px
+            ));
+            @include border-radius(50%);
+            @include bc($c16, $c1);
+            flex: 0 0 40px;
+            display: block;
+
+            &::before {
+                @include transform(translate(-50%, -50%));
+            }
+        }
+
+        .help_content {
+            @include flex-direction(column);
+            @include flex;
+            flex: 0 0 calc(100% - 485px);
+
+            @include brp($b6) {
+                flex: 0 0 calc(100% - 66px);
+            }
+
+            .help_title {
+                @include t1(( f: $f2, s: szrem(16), w: bold, lh: 1.15, a: left ));
+                @include bc($c0, var(--theme_text_bold));
+                margin-bottom: 0;
+            }
+
+            .help_description {
+                text-wrap-style: pretty;
+                text-align: left;
+                margin-bottom: 0;
+            }
+        }
+
+        .group_contact {
+            @include justify_content(center);
+            @include gap(10px);
+            @include flex;
+            flex-wrap: wrap;
+        }
+    } // .help_welcome
+} // .feature_welcom
