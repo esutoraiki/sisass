@@ -39,10 +39,10 @@ npm explore sisass -- npm run init -- --path ../../resources/
    ```bash
    npx sass@1.97.3 --version
    ```
-2. Create a small entry file (example if you installed to `assets/scss/`):
+2. Create a small entry file (example if you installed to `assets/`):
    
    ```scss
-   // assets/scss/main.scss
+   // assets/main.scss
    @use "sisass" as s;
 
    // Optional CSS modules (emit CSS when used)
@@ -56,11 +56,11 @@ npm explore sisass -- npm run init -- --path ../../resources/
 3. Compile with Sass 1.97.3:
    
    ```bash
-   npx sass@1.97.3 assets/scss/main.scss assets/css/main.css --load-path assets/scss
+   npx sass@1.97.3 assets/main.scss assets/css/main.css --load-path assets
    ```
 4. Import the generated `assets/css/main.css` in your HTML.
 
-> Tip: The documentation site uses `docs/assets/scss/main.scss` as a working example; you can copy that structure into your project.
+> Tip: The documentation site uses `docs/assets/main.scss` as a working example; you can copy that structure into your project.
 
 # Migration to SISASS 2.x.x (@use / @forward)
 
