@@ -1,4 +1,4 @@
-// Update: 20260706
+// Update: 20260802
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -627,8 +627,6 @@
     $firefox_width: mapv($attr, (firefox_width, fw), auto);
     $axis: mapv($attr, axis, y);
     $hidden: mapv($attr, (hidden, hide, h), false);
-
-    @include position;
 
     @if $axis == y {
         overflow: overlay;
