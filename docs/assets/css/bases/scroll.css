@@ -26,10 +26,6 @@
   height: 150px;
 }
 .documentationpage .scroll_y {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
   overflow: overlay;
   overflow-x: hidden;
 }
@@ -80,10 +76,6 @@
   background-color: transparent;
 }
 .documentationpage .scroll_x {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
   overflow: overlay;
   overflow-y: hidden;
 }
@@ -134,10 +126,6 @@
   background-color: #2D396C;
 }
 .documentationpage .scroll_both {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
   overflow-x: auto;
   overflow-y: auto;
 }
@@ -188,10 +176,6 @@
   background-color: #FFF;
 }
 .documentationpage .scroll_hidden {
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
   overflow: overlay;
   overflow-x: hidden;
   -ms-overflow-style: none;

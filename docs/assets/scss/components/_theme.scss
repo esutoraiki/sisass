@@ -21,6 +21,8 @@ html.page {
     --theme_black_white: #{light-dark($c2, $c1)};
     --theme_white_black: #{light-dark($c1, $c2)};
     --theme_btn_text: #{light-dark($c16, $c1)};
+    --theme_bg_th: #{light-dark($c6, $c11)};
+    --theme_text_th: #{light-dark($c1, $c12)};
 }
 
 html.page[data-theme="light"] {

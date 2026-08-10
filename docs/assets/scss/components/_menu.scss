@@ -3,6 +3,12 @@
 .container_menu {
     @include position(sticky, 26px);
     @include wh(100%, 85vh);
+    @include scroll((
+        width: 8px,
+        bg: $c0,
+        c: $c4
+    ));
+    margin-block-start: 25px;
     overflow-x: hidden;
     overflow-y: auto;
 

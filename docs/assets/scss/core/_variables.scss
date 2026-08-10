@@ -16,6 +16,7 @@ $c8: #DDDDDD;
 $c16: #2A47CE;
 $c18: #12CFC8;
 $c19: #FE00BE;
+$c20: #458ED1;
 
 // Theme colors
 $c9: #10151F;
@@ -24,7 +25,7 @@ $c11: #1C2230;
 $c12: #E8EEF8;
 $c13: #C9D2E2;
 $c14: #FFD36B;
-$c15: #F88C7E;
+$c15: #F35A45;
 $c17: #007AFF;
 
 // Border
@@ -46,6 +47,7 @@ $sh3: 0 0 0 5px rgba($c18, 0.2);
 
 // gradient
 $gr1: linear-gradient(90deg, $c5 0%, $c6 100%);
+$gr2: linear-gradient($c1 50%, rgba($c20, .04) 50%);
 
 // Font
 // Nunito Sans regular | bold

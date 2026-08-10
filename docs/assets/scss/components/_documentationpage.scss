@@ -1,5 +1,17 @@
 @use "sass:color";
-@use "../core/instances" as *;
+@use "../core/_instances" as *;
+
+html.page[data-theme="dark"] {
+    .documentationpage {
+        pre {
+            &[class*="language-"] {
+                > code {
+                    filter: invert(1) hue-rotate(209deg);
+                }
+            }
+        }
+    }
+}
 
 .documentationpage {
     @include scroll((
@@ -30,7 +42,7 @@
     }
 
     .main_content {
-        padding: 50px min(5vw, 192px);
+        padding: 30px min(5vw, 192px) 50px;
 
         @include brp($b6) {
             padding: 25px min(5vw, 192px) 50px;
@@ -57,7 +69,7 @@
         }
 
         &::after {
-            @include wh(45px, 4px);
+            @include wh(45px, 2px);
             @include border-radius(4px);
             @include bc(var(--theme_text_bold), $c0);
             display: block;
@@ -191,6 +203,7 @@
 
         &:before { display: none; }
         &:after { display: none; }
+
     }
 
     .container_table {
@@ -207,7 +220,7 @@
         thead {
             th {
                 @include border-radius(5%);
-                @include bc(var(--theme_text), var(--theme_surface));
+                @include bc(var(--theme_bg_th), var(--theme_text_th));
                 padding: 10px 15px;
                 border-right: 1px solid var(--theme_border);
 

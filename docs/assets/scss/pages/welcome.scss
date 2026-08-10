@@ -261,6 +261,11 @@
             flex: 0 0 40px;
             display: block;
 
+            @include brp($b8) {
+                @include wh(40px, 70px);
+                @include border-radius(7px);
+            }
+
             &::before {
                 @include transform(translate(-50%, -50%));
             }
