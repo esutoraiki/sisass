@@ -4,7 +4,8 @@
   "description": "Simple Interface for SASS",
   "main": "index.js",
   "scripts": {
-    "init": "node install"
+    "init": "node install",
+    "tab_panel": "npm --prefix docs run tab_panel --"
   },
   "directories": {
     "documentation": "doc",

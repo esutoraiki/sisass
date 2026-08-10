@@ -33,6 +33,21 @@
 - Use `docs/index.html` as the documentation entry point, with `docs/pages/`, `docs/components/`, `docs/assets/scss/`, `docs/assets/css/`, `docs/assets/js/`, and `docs/assets/json/` as the main documentation areas.
 - Preserve the current documentation naming conventions and page structure when editing component pages.
 - When a new documentation category is added in `docs/pages/base.html`, update the corresponding menu in `docs/components/global/menu.html` and any related index or classification blocks if the new category exposes new resources.
+- Keep documentation breadcrumbs available on every docs page except the home page:
+  - Each page JSON can define a manual `breadcrumb` array before `components`.
+  - Use the simple item structure `{ "label": "src", "url": "../pages/base.html#src" }`; `url` is optional and the last item usually omits it because it represents the current file or page.
+  - If `breadcrumb` is missing, `docs/assets/js/core/breadcrumb.js` calculates a fallback route from the current URL.
+  - Each non-home page script in `docs/assets/js/pages/` must import `init_page_breadcrumb` and call it with the page JSON URL after `contentLoad`.
+  - For pages that document source files, prefer a manual source-path breadcrumb such as `src / _base.scss` instead of the HTML page path.
+- Keep the global documentation search synchronized whenever articles, reference pages, sections, or component fragments change:
+  - The search index is generated at `docs/assets/json/search_index.json` by the `search_index` Gulp task.
+  - The generator scans every `docs/pages/**/*.html` file and only indexes a page when there is a matching JSON file in `docs/assets/json/` with the same basename. For example, `docs/pages/articles/project_structure.html` requires `docs/assets/json/project_structure.json`.
+  - Each page JSON must expose a `components` array whose entries point to real component files through `url`. Each entry must define a stable `id` or `node`; that value becomes the search anchor and must match the rendered section or article target used by the page.
+  - Search titles and categories are read from each component's `group_title` block. Keep the `subtitle`, `Tipo`, and visible Spanish prose updated because this text is what users will find.
+  - Do not edit `docs/assets/json/search_index.json` manually. Regenerate it from `docs/` with `npm exec gulp search_index` after adding, deleting, renaming, or moving pages, JSON files, component entries, anchors, titles, categories, or searchable prose.
+  - After regenerating the index, run `npm exec gulp jsonlint` from `docs/` to catch malformed JSON. If the documentation package defines a `test` script, also run `npm run test`.
+  - When running the docs watcher, verify that changes to `docs/pages/**/*.html`, `docs/components/**/*.html`, and `docs/assets/json/*.json` refresh the search index. If the watcher is not running, regenerate the index explicitly before finishing.
+  - Validate at least one representative query in the browser or by inspecting `docs/assets/json/search_index.json` when the change affects discoverability. Confirm that the result opens the correct page and hash anchor, especially for nested paths under `docs/pages/articles/`.
 - Prefer updating both SCSS source and compiled CSS when a documentation style change is intentional.
 - Rebuild the relevant documentation assets after editing SCSS, SVG, or JSON sources, and validate layout changes in the browser.
 - For `docs/components/base/*.html`, use this explicit section order:
@@ -70,6 +85,75 @@
 - When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
 - Do not introduce component-specific theme logic into unrelated style partials.
 
+### Uso De `TabPanel` En Ejemplos
+
+- Para convertir un ejemplo convencional existente, ejecuta desde la raíz:
+  `npm run tab_panel -- --file components/base/nombre.html`.
+  También se puede ejecutar desde `docs/` con el mismo comando. El script reorganiza
+  el primer `container_example`, genera un id `<archivo>_example_tabs` e inicializa
+  todos los paneles desde el script de página correspondiente. Usa `--index 2` si la
+  página tiene varios ejemplos, `--id otro_id` para personalizar el id y `--dry-run`
+  para validar sin escribir. Consulta todas las opciones con
+  `npm run tab_panel -- --help`.
+- Usa `docs/assets/js/libraries/tab_panel.min.js` para agrupar las vistas de un ejemplo cuando deban presentarse como pestañas. En los ejemplos completos, conserva este orden: `Resultado`, `SCSS`, `CSS generado` y `HTML`; deja `Resultado` como pestaña inicial salvo que la solicitud indique otra cosa.
+- Importa la clase como módulo desde el script de la página correspondiente:
+  `import { TabPanel } from "../libraries/tab_panel.min.js";`.
+- Los componentes de documentación se insertan de forma asíncrona mediante `contentLoad`. Crea e inicializa cada instancia de `TabPanel` únicamente después de completar `await contentLoad(...)`, cuando el nodo raíz ya exista en el DOM:
+
+  ```js
+  await contentLoad({
+      url: url_json_page
+  });
+
+  const example_tabs = new TabPanel("#example_tabs");
+
+  example_tabs.init();
+  ```
+
+- Usa un `id` único en la página para cada raíz. La estructura mínima válida debe incluir:
+  - una raíz con `data-tab-panel`;
+  - exactamente un listado propio con `data-tab-panel-list`;
+  - al menos dos botones propios con `data-tab-panel-tab="tab_id"`;
+  - la misma cantidad de paneles propios con `data-tab-panel-panel="tab_id"`.
+- Cada `tab_id` debe ser una cadena no vacía, única dentro de la instancia y debe coincidir exactamente entre un botón y su panel. Todos los botones deben estar contenidos en el único `data-tab-panel-list` de la instancia.
+- Usa los atributos `data-*` para el comportamiento y las clases `tab_panel`, `tab_panel_list`, `tab_panel_tab` y `tab_panel_panel` para la presentación. Sigue esta estructura:
+
+  ```html
+  <div
+      id="example_tabs"
+      class="container_example tab_panel"
+      data-tab-panel
+      data-active-tab="result"
+  >
+      <div class="tab_panel_list" data-tab-panel-list>
+          <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+          <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+      </div>
+
+      <div class="tab_panel_panel" data-tab-panel-panel="result">
+          <div class="result">...</div>
+      </div>
+
+      <div class="tab_panel_panel" data-tab-panel-panel="scss">
+          <pre class="language-scss" data-src="../assets/scss/example.scss"></pre>
+      </div>
+  </div>
+  ```
+
+- Define la pestaña inicial con `data-active-tab` en la raíz cuando el valor forme parte del marcado. La prioridad aplicada por la librería es: opción JavaScript `active_tab`, atributo `data-active-tab` y, como fallback, la primera pestaña válida.
+- No agregues `hidden`, roles ARIA, IDs de relación ni estados activos manualmente al marcado inicial. Antes de una inicialización válida, todos los paneles deben permanecer visibles como fallback progresivo. Al ejecutar `init()`, la librería administra:
+  - `is_initialized` en la raíz;
+  - `is_active` en la pestaña y el panel seleccionados;
+  - `role="tablist"`, `role="tab"` y `role="tabpanel"`;
+  - `aria-controls`, `aria-selected` y `aria-labelledby`;
+  - IDs internos únicos, `hidden` en paneles inactivos y `type="button"` cuando el botón no lo define.
+- Mantén los bloques de código dentro de su panel. Para SCSS y CSS reales, conserva `pre.language-*` con `data-src`; Prism puede cargar esos archivos aunque el panel quede oculto después de inicializar `TabPanel`. El HTML mostrado y el contenido de `Resultado` deben continuar sincronizados.
+- Mantén los estilos compartidos de las pestañas en `docs/assets/scss/components/_documentationpage.scss`, dentro de `.documentationpage`. Usa `is_active` para el estado visual y conserva desplazamiento horizontal en `tab_panel_list` para evitar desbordamiento en pantallas estrechas. No agregues estos estilos a un partial de tema no relacionado.
+- Si una página contiene varias raíces, crea una instancia independiente por cada raíz. Los nodos pertenecen a la raíz `data-tab-panel` más cercana; no reutilices botones o paneles entre instancias.
+- Si el contenido de una instancia va a retirarse o reemplazarse después de inicializarse, conserva su referencia y llama `destroy()` antes de eliminarlo. Esto cancela los listeners y restaura los atributos administrados por la librería.
+- Una estructura inválida deja la instancia con estado `invalid` y mantiene los paneles visibles. Durante la validación, confirma que `get_status()` devuelva `init`, que solo la pestaña inicial tenga `aria-selected="true"`, que los demás paneles tengan `hidden` y que los recursos `data-src` alcancen el estado `loaded`.
+- Después de modificar el SCSS del panel, ejecuta `npm exec gulp scss` desde `docs/` y conserva actualizado `docs/assets/css/main.css`. Si la compilación afecta CSS con SVG pendiente de procesar, ejecuta también `npm exec gulp process_svg`. Ejecuta `npm exec gulp lint`; si cambian etiquetas o prosa indexable, regenera además el buscador con `npm exec gulp search_index` y valida con `npm exec gulp jsonlint`.
+
 ## Checklist Para Crear Una `pages/` Desde Cero
 Antes de construir una página nueva de la documentación, sigue este flujo:
 
@@ -77,9 +161,11 @@ Antes de construir una página nueva de la documentación, sigue este flujo:
 2. Confirma la clasificación con el usuario si hay más de una opción posible.
 3. Verifica qué archivos deben existir o actualizarse.
 4. Revisa si la nueva página necesita assets de ejemplo y estilos compilados.
-5. Comprueba si la navegación, el buscador o el hash routing deben reconocerla.
+5. Comprueba si la navegación, el breadcrumb, el buscador global o el hash routing deben reconocerla.
 6. Ajusta los textos en español y valida que el contenido coincida con los assets reales.
-7. Ejecuta la verificación correspondiente del sitio de documentación.
+7. Si la página debe mostrar una ruta distinta a la calculada por URL, define `breadcrumb` en su JSON con la estructura simple de items.
+8. Si la página o sección debe aparecer en el buscador, crea o actualiza su JSON homónimo en `docs/assets/json/`, registra sus componentes con `id` o `node` estable, y regenera `docs/assets/json/search_index.json` con `npm exec gulp search_index` desde `docs/`.
+9. Ejecuta la verificación correspondiente del sitio de documentación.
 
 ### Clasificación De Páginas
 

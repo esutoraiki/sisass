@@ -184,9 +184,48 @@ html.page[data-theme="dark"] {
     .container_example {
         @include bc(var(--theme_surface), var(--theme_text));
         @include border-radius(7px 7px 0 0);
+        @include box-shadow($sh1);
         border-block-start: 10px solid var(--theme_accent_alt);
         box-sizing: border-box;
         padding: 0px min(0.78vw, 15px) 15px;
+    }
+
+    .tab_panel_list {
+        @include scroll((
+            color: $c4,
+            bg: var(--theme_scroll_track),
+            width: 8px,
+            thumb_border: 3px solid var(--theme_scroll_track),
+            radius: 7px
+        ));
+        display: flex;
+        gap: 4px;
+        padding-block: 10px;
+        overflow-x: auto;
+    }
+
+    .tab_panel_tab {
+        @include font(szrem(16), $f2, bold);
+        @include border-radius(5px);
+        @include bc(var(--theme_surface_alt), var(--theme_text));
+        padding: 10px 15px;
+        border: 1px solid var(--theme_border);
+        cursor: pointer;
+        white-space: nowrap;
+
+        &.is_active {
+            @include bc(var(--theme_accent), var(--theme_surface));
+            border-color: var(--theme_accent);
+        }
+    }
+
+    .tab_panel_panel {
+        padding-block-start: 5px;
+
+        > pre,
+        > .result {
+            margin-block-end: 0;
+        }
     }
 
     code {

@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "tab_panel": "node scripts/implement_tab_panel.mjs"
+  },
   "dependencies": {
     "del": "8.0.1",
     "gulp": "5.0.1",
