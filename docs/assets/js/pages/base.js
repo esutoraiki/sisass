@@ -1,4 +1,5 @@
 import { contentLoad } from "../core/fn.js";
+import { init_page_breadcrumb } from "../core/breadcrumb.js";
 import { init_hash_navigation } from "../core/hash_navigation.js";
 import { loader } from "../core/page_loader.js";
 import { init_documentation_search } from "../core/search.js";
@@ -22,6 +23,9 @@ import { init_documentation_search } from "../core/search.js";
 
                     await contentLoad({
                         url: url_json_base
+                    });
+                    await init_page_breadcrumb({
+                        json_url: url_json_base
                     });
                     loader.set("content_ready", true);
 

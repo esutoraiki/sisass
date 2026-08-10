@@ -9,14 +9,19 @@ const
     selector_search_results = "#page_search_results",
     selector_search_templates_mount = "body",
     search_templates_url = new URL("../../../templates/templates.html", import.meta.url).href,
+    search_index_url = new URL("../../json/search_index.json", import.meta.url).href,
+    documentation_root_url = new URL("../../../", import.meta.url),
     class_active = "active",
     class_hide = "hide",
+    mobile_breakpoint = 980,
     max_results = 12,
-    empty_search_message = "Escribe para buscar en la página actual.",
-    no_results_message = "No se encontraron coincidencias en esta página.",
+    empty_search_message = "Escribe para buscar en toda la documentación.",
+    no_results_message = "No se encontraron coincidencias en la documentación.",
     template_search_state = "template_page_search_state",
     template_search_item = "template_page_search_item"
 ;
+
+let documentation_search_index = null;
 
 function open_search_interface() {
     const
@@ -30,7 +35,7 @@ function open_search_interface() {
         return false;
     }
 
-    if (openclose_node) {
+    if (openclose_node && window.innerWidth <= mobile_breakpoint) {
         openclose_node.classList.add(class_hide);
     }
 
@@ -124,6 +129,7 @@ function build_page_index(root_node) {
             anchor,
             title,
             category,
+            page_title: "Página actual",
             text,
             normalized_title,
             normalized_category,
@@ -132,6 +138,52 @@ function build_page_index(root_node) {
     }
 
     return index;
+}
+
+async function get_documentation_search_index() {
+    if (documentation_search_index !== null) {
+        return documentation_search_index;
+    }
+
+    try {
+        const
+            response = await fetch(search_index_url),
+            data = await response.json(),
+            items = Array.isArray(data.items) ? data.items : []
+        ;
+
+        documentation_search_index = items.filter(function (item) {
+            return (
+                typeof item.url === "string" &&
+                typeof item.anchor === "string" &&
+                typeof item.title === "string" &&
+                typeof item.text === "string"
+            );
+        }).map(function (item) {
+            return {
+                ...item,
+                category: item.category || "Documentación",
+                page_title: item.page_title || "Documentación",
+                normalized_title: normalize_text(item.title),
+                normalized_category: normalize_text(item.category || ""),
+                normalized_text: normalize_text(item.text)
+            };
+        });
+    } catch (error) {
+        console.warn("No se pudo cargar el índice global de búsqueda.", error);
+        documentation_search_index = [];
+    }
+
+    return documentation_search_index;
+}
+
+function get_result_url(item) {
+    const
+        result_url = new URL(item.url || window.location.pathname, documentation_root_url)
+    ;
+
+    result_url.hash = item.anchor;
+    return result_url;
 }
 
 function get_result_snippet(item, query) {
@@ -268,15 +320,21 @@ function render_results(results_node, results, root_node) {
         const
             result_node = template_node.content.firstElementChild.cloneNode(true),
             title_node = result_node.querySelector(".page_search_title"),
+            page_node = result_node.querySelector(".page_search_page"),
             category_node = result_node.querySelector(".page_search_category"),
-            excerpt_node = result_node.querySelector(".page_search_excerpt")
+            excerpt_node = result_node.querySelector(".page_search_excerpt"),
+            result_url = get_result_url(item)
         ;
 
-        result_node.href = "#" + item.anchor;
+        result_node.href = result_url.href;
         result_node.dataset.searchAnchor = item.anchor;
 
         if (title_node) {
             title_node.textContent = item.title;
+        }
+
+        if (page_node) {
+            page_node.textContent = item.page_title;
         }
 
         if (category_node) {
@@ -302,8 +360,13 @@ function render_results(results_node, results, root_node) {
     for (const link_node of link_nodes) {
         link_node.addEventListener("click", function (event) {
             const
-                anchor = event.currentTarget.dataset.searchAnchor
+                anchor = event.currentTarget.dataset.searchAnchor,
+                result_url = new URL(event.currentTarget.href)
             ;
+
+            if (result_url.pathname !== window.location.pathname) {
+                return;
+            }
 
             event.preventDefault();
             update_page_hash(anchor);
@@ -324,8 +387,18 @@ function attach_keyboard_shortcuts(root_node, input_node, results_node) {
             )
         ;
 
-        if (event.key === "/" && !is_editable) {
+        if (
+            (event.key === "/" || (
+                event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey)
+            )) &&
+            !is_editable
+        ) {
             event.preventDefault();
+
+            if (window.innerWidth <= mobile_breakpoint) {
+                open_search_interface();
+            }
+
             input_node.focus();
             input_node.select();
         }
@@ -340,7 +413,7 @@ function attach_keyboard_shortcuts(root_node, input_node, results_node) {
     });
 }
 
-function initialize_search_interface(root_node) {
+function initialize_search_interface(root_node, global_index = []) {
     const
         search_node = document.querySelector(selector_search_container),
         openclose_node = document.querySelector(selector_search_openclose),
@@ -358,7 +431,7 @@ function initialize_search_interface(root_node) {
     }
 
     const
-        page_index = build_page_index(root_node)
+        page_index = global_index.length > 0 ? global_index : build_page_index(root_node)
     ;
 
     root_node.dataset.searchReady = "true";
@@ -427,13 +500,17 @@ async function init_documentation_search(attr = {}) {
         ]
     });
 
+    const
+        global_index = await get_documentation_search_index()
+    ;
+
     return await new Promise((resolve) => {
         const wait_for_nodes = function () {
             const
                 root_node = document.querySelector(root_selector)
             ;
 
-            if (initialize_search_interface(root_node)) {
+            if (initialize_search_interface(root_node, global_index)) {
                 resolve(true);
                 return;
             }

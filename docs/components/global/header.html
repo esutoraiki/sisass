@@ -27,7 +27,12 @@
     </svg>
 
     <div class="page_search b2">
-        <button id="openclose_search" class="openclose icon_search">
+        <button
+            id="openclose_search"
+            class="openclose icon_search"
+            type="button"
+            aria-label="Abrir buscador"
+            >
         </button>
 
         <div class="container_search">
@@ -39,10 +44,12 @@
                     id="page_search_input"
                     class="page_search_input"
                     type="search"
-                    placeholder="Buscar contenido, mixins, claves o descripciones"
+                    aria-label="Buscar en la documentación"
+                    placeholder="Buscar en la documentación..."
                     autocomplete="off"
                     spellcheck="false"
                     />
+                <kbd class="page_search_shortcut" aria-hidden="true">⌘ K</kbd>
             </div>
             <div id="page_search_results" class="page_search_results" aria-live="polite"></div>
         </div>

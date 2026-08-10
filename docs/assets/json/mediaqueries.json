@@ -1,4 +1,13 @@
 {
+    "breadcrumb": [
+        {
+            "label": "src",
+            "url": "../pages/base.html#src"
+        },
+        {
+            "label": "_mediaqueries.scss"
+        }
+    ],
     "components": [
         {
             "id": "src",

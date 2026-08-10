@@ -133,7 +133,7 @@
   color: transparent;
 }
 .welcome .characteristics_welcome .characteristic .bg_icon_consistent {
-  background-color: rgba(248, 140, 126, 0.12);
+  background-color: rgba(243, 90, 69, 0.12);
   color: transparent;
 }
 .welcome .characteristics_welcome .characteristic .bg_icon_productive {
@@ -784,6 +784,17 @@
   color: #FFF;
   flex: 0 0 40px;
   display: block;
+}
+@media only screen and (max-width: 640px) {
+  .welcome .help_welcome .icon_help {
+    width: 40px;
+    height: 70px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+  }
 }
 .welcome .help_welcome .icon_help::before {
   -webkit-transform: translate(-50%, -50%);

@@ -1,17 +1,18 @@
-@use "./core/reset";
-@use "./core/instances" as *;
-@use "./core/fonts";
-@use "./core/keyframes";
-@use "./core/layouts";
-@use "components/theme";
+@use "./core/_reset";
+@use "./core/_instances" as *;
+@use "./core/_fonts";
+@use "./core/_keyframes";
+@use "./core/_layouts";
+@use "components/_theme";
 
-@use "components/page_loader";
-@use "components/buttons";
-@use "components/menu";
-@use "components/header";
-@use "components/theme_toggle";
-@use "components/page_search";
-@use "components/documentationpage";
+@use "components/_page_loader";
+@use "components/_buttons";
+@use "components/_menu";
+@use "components/_header";
+@use "components/_theme_toggle";
+@use "components/_page_search";
+@use "components/_breadcrumb";
+@use "components/_documentationpage";
 
 .hide { display: none !important; }
 .theme_only_light { display: block !important; }
@@ -25,4 +26,3 @@ html.page[data-theme="dark"] {
 .no_scroll { overflow: hidden !important; }
 .no_visibility { visibility: hidden !important; }
 html.page { scroll-behavior: smooth; }
-

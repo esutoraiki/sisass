@@ -8,11 +8,10 @@ import { init_documentation_search } from "../core/search.js";
     "use strict";
 
     const
-        currentPage = "documentationpage",
-        url_json_reset = "json/reset.json",
+        current_page = "documentationpage",
+        url_json_project_structure = "json/project_structure.json",
 
-
-        NSReset = (function () {
+        NSProjectStructure = (function () {
             return {
                 content: async () => {
                     loader.register([
@@ -22,10 +21,10 @@ import { init_documentation_search } from "../core/search.js";
                     ]);
 
                     await contentLoad({
-                        url: url_json_reset
+                        url: url_json_project_structure
                     });
                     await init_page_breadcrumb({
-                        json_url: url_json_reset
+                        json_url: url_json_project_structure
                     });
                     loader.set("content_ready", true);
 
@@ -33,7 +32,7 @@ import { init_documentation_search } from "../core/search.js";
                     loader.set("navigation_ready", true);
 
                     await init_documentation_search({
-                        current_page: currentPage
+                        current_page: current_page
                     });
                     loader.set("search_ready", true);
                 }
@@ -42,6 +41,6 @@ import { init_documentation_search } from "../core/search.js";
     ;
 
     window.addEventListener("load", async function () {
-        await NSReset.content();
+        await NSProjectStructure.content();
     });
 }());

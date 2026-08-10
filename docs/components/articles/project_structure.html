@@ -1,0 +1,333 @@
+<article id="project_structure" class="project_structure">
+    <div class="group_title">
+        <h2 class="subtitle">
+            Estructura del proyecto
+        </h2>
+        <h3 class="attribute">
+            Tipo: Artículo
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Este artículo explica cómo se divide el repositorio de SISASS y dónde debes trabajar según el tipo de cambio. El proyecto separa el código fuente del framework, la carga core que usa el instalador y el sitio de documentación.
+    </p>
+    <p class="description">
+        <b>src</b> es la fuente editable del framework. En esta carpeta se corrige o amplía el comportamiento real
+        de los mixins, funciones y módulos SCSS que mantiene SISASS.
+    </p>
+    <p class="description">
+        <b>files/</b> es la carga que <b>install.js</b> entrega al proyecto consumidor durante la instalación. Esta carga
+        no se genera automáticamente desde <b>src</b>; se mantiene como un conjunto de archivos distribuibles. Por
+        eso, si una mejora de la fuente también debe llegar a quien instala SISASS, el cambio correspondiente debe
+        aplicarse en el activo distribuible.
+    </p>
+    <p class="description">
+        <b>docs/</b> es el sitio de documentación. Sus estilos pueden usar módulos de <b>src</b> al compilar, por lo
+        que la documentación puede reflejar cambios de la fuente sin que eso signifique que la carga distribuible ya fue
+        actualizada.
+    </p>
+
+    <h2 class="title">
+        Mapa principal del repositorio
+    </h2>
+
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Ruta</th>
+                <th>Responsabilidad</th>
+                <th>Cuándo revisarla</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>src/</b></td>
+                <td>Fuente de los módulos SCSS del framework.</td>
+                <td>Cuando modificas mixins, funciones o módulos de SISASS.</td>
+            </tr>
+            <tr>
+                <td><b>files/</b></td>
+                <td>Carga de archivos que utiliza el instalador.</td>
+                <td>Cuando preparas o ajustas lo que se copia a un proyecto consumidor.</td>
+            </tr>
+            <tr>
+                <td><b>install.js</b></td>
+                <td>Copia los activos y aplica las variantes de instalación.</td>
+                <td>Cuando cambia el destino, el contenido instalado o el comportamiento de <b>--dep</b>.</td>
+            </tr>
+            <tr>
+                <td><b>arg.js</b></td>
+                <td>Convierte los argumentos de la línea de comandos en opciones del instalador.</td>
+                <td>Cuando agregas o modificas opciones como <b>--path</b> o <b>--dep</b>.</td>
+            </tr>
+            <tr>
+                <td><b>instances.config.js</b></td>
+                <td>Define los módulos que se escriben en <b>_instances.scss</b> durante la instalación <b>sqhtml2</b>.</td>
+                <td>Solo cuando cambia esa integración específica.</td>
+            </tr>
+            <tr>
+                <td><b>package.json</b> y <b>README.md</b></td>
+                <td>Metadatos, comandos de npm, instalación y guía de uso del paquete.</td>
+                <td>Cuando cambia la publicación, la instalación o la forma de consumir SISASS.</td>
+            </tr>
+            <tr>
+                <td><b>docs/</b></td>
+                <td>Sitio de documentación y recursos para presentar el proyecto.</td>
+                <td>Cuando cambia una explicación, una página o la interfaz documental.</td>
+            </tr>
+            <tr>
+                <td><b>spec/</b></td>
+                <td>Especificaciones para cambios concretos.</td>
+                <td>Cuando una tarea tiene criterios funcionales que deben cumplirse.</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <h2 class="title">
+        Fuente del framework: src
+    </h2>
+
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Ruta</th>
+                <th>Qué contiene</th>
+                <th>Relación con el framework</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>src/_sisass.scss</b></td>
+                <td>Punto de entrada de las utilidades core exportadas.</td>
+                <td>Reexporta <b>_vendor.scss</b>, <b>_base.scss</b> y <b>_mediaqueries.scss</b>; no reexporta reset, componentes, efectos ni formas.</td>
+            </tr>
+            <tr>
+                <td><b>src/_base.scss</b></td>
+                <td>Mixins y funciones de uso general.</td>
+                <td>Incluye utilidades para tipografía, layout, fondos, unidades, mapas, color, cadenas y listas.</td>
+            </tr>
+            <tr>
+                <td><b>src/_vendor.scss</b></td>
+                <td>Mixins de compatibilidad y prefijos.</td>
+                <td>Proporciona utilidades para propiedades que necesitan tratamiento vendor.</td>
+            </tr>
+            <tr>
+                <td><b>src/_mediaqueries.scss</b></td>
+                <td>Mixins para breakpoints, altura y orientación.</td>
+                <td>Construye las media queries usadas por las utilidades responsive.</td>
+            </tr>
+            <tr>
+                <td><b>src/_reset.scss</b></td>
+                <td>Reset global de elementos HTML.</td>
+                <td>Es un módulo independiente; no forma parte de los <b>@forward</b> de <b>_sisass.scss</b>.</td>
+            </tr>
+            <tr>
+                <td><b>src/components/</b></td>
+                <td>Componentes reutilizables como botones, carrusel y modal.</td>
+                <td>Son parciales independientes y no se reexportan desde <b>_sisass.scss</b>.</td>
+            </tr>
+            <tr>
+                <td><b>src/effects/</b></td>
+                <td>Efectos visuales, animaciones y keyframes.</td>
+                <td>Contiene parciales independientes para efectos de presentación.</td>
+            </tr>
+            <tr>
+                <td><b>src/shapes/</b></td>
+                <td>Formas geométricas reutilizables.</td>
+                <td>Contiene parciales independientes como <b>_triangles.scss</b>.</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <p class="note">
+        No existe un archivo de variables en <b>src/</b>. Las variables distribuidas están en <b>files/assets/scss/core/_variables.scss</b> y la documentación define sus propias variables en <b>docs/assets/scss/core/_variables.scss</b>. La entrada <b>_sisass.scss</b> no representa todo el árbol de <b>src</b>: los componentes, efectos, formas y el reset se mantienen como módulos separados. Revisa el archivo que contiene la utilidad que vas a cambiar antes de editar el punto de entrada.
+    </p>
+
+    <h2 class="title">
+        Activos de instalación: files/
+    </h2>
+
+    <p class="description">
+        La ruta <b>files/assets/scss/core/</b> es la carga core que el instalador utiliza en algunos modos. Actualmente contiene variables y archivos base de integración; no contiene una copia completa de los módulos de <b>src</b>.
+    </p>
+
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Archivo</th>
+                <th>Estado y propósito actual</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>files/assets/scss/core/_variables.scss</b></td>
+                <td>Contiene valores base para colores, tipografía, ruta de iconos, breakpoints y tiempos.</td>
+            </tr>
+            <tr>
+                <td><b>files/assets/scss/core/_fonts.scss</b></td>
+                <td>Contiene una plantilla comentada para declarar fuentes; el modo <b>sqhtml</b> reemplaza esa plantilla por declaraciones de Roboto.</td>
+            </tr>
+            <tr>
+                <td><b>files/assets/scss/core/_mixin.scss</b></td>
+                <td>Es un archivo base para mixins distribuidos y actualmente funciona como placeholder.</td>
+            </tr>
+            <tr>
+                <td><b>files/assets/scss/core/_keyframes.scss</b></td>
+                <td>Es un archivo base para keyframes distribuidos y actualmente funciona como placeholder.</td>
+            </tr>
+            <tr>
+                <td><b>files/assets/scss/core/_instances.scss</b></td>
+                <td>Es un placeholder en la carga normal; <b>sqhtml2</b> lo genera de nuevo usando <b>instances.config.js</b>.</td>
+            </tr>
+            <tr>
+                <td><b>files/assets/scss/core/_layout.scss</b></td>
+                <td>Usa <b>instances</b> y sirve como punto de conexión para la composición distribuida.</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <p class="note">
+        La distribución actual instala únicamente esta carga core. No instala <b>sisass.scss</b>, <b>reset.scss</b>, ni los directorios <b>components/</b>, <b>effects/</b> o <b>shapes/</b> de <b>src</b>. Por tanto, no debes asumir que la instalación estándar entrega por sí sola todos los módulos disponibles en el repositorio.
+    </p>
+
+    <h2 class="title">
+        Relaciones estructurales reales
+    </h2>
+
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Relación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>src/_sisass.scss</b></td>
+                <td><b>docs/assets/scss/core/_instances.scss</b></td>
+                <td>La documentación reexporta las utilidades core de SISASS para usarlas en sus estilos.</td>
+            </tr>
+            <tr>
+                <td><b>src/_reset.scss</b></td>
+                <td><b>docs/assets/scss/core/_reset.scss</b></td>
+                <td>El reset del sitio de documentación reenvía el reset fuente del framework.</td>
+            </tr>
+            <tr>
+                <td><b>docs/assets/scss/main.scss</b></td>
+                <td><b>docs/assets/css/</b></td>
+                <td>El flujo de Gulp compila los estilos del sitio usando los módulos core y los estilos propios de documentación.</td>
+            </tr>
+            <tr>
+                <td><b>files/assets/scss/core/</b></td>
+                <td>Proyecto consumidor</td>
+                <td><b>install.js</b> copia esta carga core; no la reconstruye automáticamente desde <b>src</b>.</td>
+            </tr>
+            <tr>
+                <td><b>instances.config.js</b></td>
+                <td><b>_instances.scss</b> del destino <b>sqhtml2</b></td>
+                <td>Define las sentencias <b>@forward</b> que se generan para módulos que deben existir en el proyecto consumidor.</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <h2 class="title">
+        Cómo funciona la instalación
+    </h2>
+
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Modo</th>
+                <th>Origen</th>
+                <th>Destino o efecto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Instalación normal</td>
+                <td><b>files/</b></td>
+                <td>Copia la carga incluida en <b>files/</b> al directorio raíz del proyecto consumidor; por defecto crea <b>assets/</b>.</td>
+            </tr>
+            <tr>
+                <td><b>--path</b></td>
+                <td><b>files/assets/</b></td>
+                <td>Copia los activos dentro de la ruta indicada, por ejemplo <b>resources/core/</b>.</td>
+            </tr>
+            <tr>
+                <td><b>--dep sqhtml</b></td>
+                <td>La misma carga que la instalación normal o <b>--path</b>.</td>
+                <td>Después de copiar, ajusta <b>_variables.scss</b> y <b>_fonts.scss</b> para SQHTML.</td>
+            </tr>
+            <tr>
+                <td><b>--dep sqhtml2</b></td>
+                <td><b>files/assets/scss/core/</b></td>
+                <td>Ignora <b>--path</b>, copia directamente en <b>../../src/core/</b>, aplica los ajustes de SQHTML y genera <b>_instances.scss</b>.</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <p class="description">
+        En una instalación personalizada, <b>--path</b> cambia la raíz de los recursos, no la fuente del framework. En cambio, <b>sqhtml2</b> es una integración especial que fuerza su propio destino y genera referencias a módulos del proyecto consumidor; por eso no debe interpretarse como el flujo general de SISASS.
+    </p>
+
+    <h2 class="title">
+        Dónde trabajar según el cambio
+    </h2>
+
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Necesidad</th>
+                <th>Ubicación inicial</th>
+                <th>Resultado esperado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cambiar el comportamiento de un mixin o una función.</td>
+                <td><b>src/</b></td>
+                <td>Actualizas la fuente del framework; revisa la documentación porque sus estilos importan módulos desde esta ruta.</td>
+            </tr>
+            <tr>
+                <td>Cambiar lo que instala el paquete.</td>
+                <td><b>files/assets/scss/core/</b> e <b>install.js</b></td>
+                <td>Actualizas manualmente el activo distribuible y su proceso de copia.</td>
+            </tr>
+            <tr>
+                <td>Cambiar la integración con SQHTML.</td>
+                <td><b>install.js</b> y, si aplica, <b>instances.config.js</b></td>
+                <td>Modificas la rama correspondiente de <b>--dep</b>.</td>
+            </tr>
+            <tr>
+                <td>Corregir una explicación o una página del sitio.</td>
+                <td><b>docs/</b></td>
+                <td>Modificas la documentación sin alterar la fuente ni la distribución del framework; su compilación sí depende de <b>src</b>.</td>
+            </tr>
+            <tr>
+                <td>Implementar una tarea con criterios específicos.</td>
+                <td><b>spec/</b></td>
+                <td>Consultas y verificas la especificación asociada.</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <p class="note">
+        Regla práctica: modifica <b>src</b> para el framework, <b>files/</b> para la carga core que se distribuye, <b>install.js</b> para el flujo de instalación y <b>docs/</b> para explicar y compilar el sitio documental. No asumas que una carpeta se sincroniza automáticamente con otra ni que la carga instalada contiene todo el árbol fuente.
+    </p>
+</article>
