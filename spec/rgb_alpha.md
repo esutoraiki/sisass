@@ -24,7 +24,7 @@ Como desarrollador que usa SISASS, quiero consultar la documentación de `rgb-al
 ## Requisitos de contenido
 
 - El nombre visible debe ser `rgb-alpha`.
-- La referencia de origen debe apuntar a `src/scss/_base.scss`.
+- La referencia de origen debe apuntar a `src/_base.scss`.
 - La redacción narrativa debe estar en español.
 - Los identificadores técnicos, fragmentos SCSS y nombres de parámetros deben mantenerse en inglés.
 - La página no debe introducir una sección de compatibilidad o historial de versión adicional.
