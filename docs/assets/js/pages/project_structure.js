@@ -42,7 +42,7 @@ import { init_documentation_search } from "../core/search.js";
                     const tree_viewer = new TreeViewer(tree_node, {
                         format: "json",
                         source: tree_data,
-                        title: "Mapa principal del repositorio",
+                        title: "Árbol del repositorio",
                         show_icons: true,
                         folder_icon: url_icon_folder,
                         file_icon: url_icon_file,

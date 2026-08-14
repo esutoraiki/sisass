@@ -9,6 +9,7 @@
     │               ├── _layout.scss
     │               ├── _mixin.scss
     │               └── _variables.scss
+    ├── docs (folder)
     ├── src
     │   └── scss
     │       ├── components
@@ -28,6 +29,5 @@
     │       ├── _sisass.scss
     │       └── _vendor.scss
     ├── arg.js
-    ├── docs
     ├── install.js
     └── instances.config.js

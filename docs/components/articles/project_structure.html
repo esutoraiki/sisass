@@ -30,67 +30,86 @@
         actualizada.
     </p>
 
-    <div
-        id="project_structure_tree"
-        class="tree_viewer tree_viewer_demo"
-        aria-label="Mapa principal del repositorio"
-    ></div>
+    <div class="layout_2 container_tree">
+        <div id="project_structure_tree" class="tree_viewer tree_viewer_demo d1" aria-label="Árbol del repositorio" ></div>
+        <div class="assets_tree d2">
+            <div class="legends">
+                <h2 class="subtitle_2">
+                    Leyenda
+                </h2>
+                <ul class="legend_list">
+                    <li class="legend_item">
+                        <img class="legend_icon" src="../assets/img/svg/root.svg" alt="">
+                        <span class="legend_text">Raíz</span>
+                    </li>
+                    <li class="legend_item">
+                        <img class="legend_icon" src="../assets/img/svg/folder.svg" alt="">
+                        <span class="legend_text">Carpeta</span>
+                    </li>
+                    <li class="legend_item">
+                        <img class="legend_icon" src="../assets/img/svg/js.svg" alt="">
+                        <span class="legend_text">Archivo JavaScript</span>
+                    </li>
+                    <li class="legend_item">
+                        <img class="legend_icon" src="../assets/img/svg/sass.svg" alt="">
+                        <span class="legend_text">Archivo SCSS</span>
+                    </li>
+                </ul>
+            </div>
 
-    <h2 class="title">
-        Mapa principal del repositorio
-    </h2>
+            <div class="description_tree">
+            </div>
+        </div>
+    </div>
+
+    <h2 class="title"> Mapa principal del repositorio </h2>
 
     <div class="container_table">
         <table class="full">
-        <thead>
-            <tr>
-                <th>Ruta</th>
-                <th>Responsabilidad</th>
-                <th>Cuándo revisarla</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>src/</b></td>
-                <td>Fuente de los módulos SCSS del framework.</td>
-                <td>Cuando modificas mixins, funciones o módulos de SISASS.</td>
-            </tr>
-            <tr>
-                <td><b>files/</b></td>
-                <td>Carga de archivos que utiliza el instalador.</td>
-                <td>Cuando preparas o ajustas lo que se copia a un proyecto consumidor.</td>
-            </tr>
-            <tr>
-                <td><b>install.js</b></td>
-                <td>Copia los activos y aplica las variantes de instalación.</td>
-                <td>Cuando cambia el destino, el contenido instalado o el comportamiento de <b>--dep</b>.</td>
-            </tr>
-            <tr>
-                <td><b>arg.js</b></td>
-                <td>Convierte los argumentos de la línea de comandos en opciones del instalador.</td>
-                <td>Cuando agregas o modificas opciones como <b>--path</b> o <b>--dep</b>.</td>
-            </tr>
-            <tr>
-                <td><b>instances.config.js</b></td>
-                <td>Define los módulos que se escriben en <b>_instances.scss</b> durante la instalación <b>sqhtml2</b>.</td>
-                <td>Solo cuando cambia esa integración específica.</td>
-            </tr>
-            <tr>
-                <td><b>package.json</b> y <b>README.md</b></td>
-                <td>Metadatos, comandos de npm, instalación y guía de uso del paquete.</td>
-                <td>Cuando cambia la publicación, la instalación o la forma de consumir SISASS.</td>
-            </tr>
-            <tr>
-                <td><b>docs/</b></td>
-                <td>Sitio de documentación y recursos para presentar el proyecto.</td>
-                <td>Cuando cambia una explicación, una página o la interfaz documental.</td>
-            </tr>
-            <tr>
-                <td><b>spec/</b></td>
-                <td>Especificaciones para cambios concretos.</td>
-                <td>Cuando una tarea tiene criterios funcionales que deben cumplirse.</td>
-            </tr>
-        </tbody>
+            <thead>
+                <tr>
+                    <th>Ruta</th>
+                    <th>Responsabilidad</th>
+                    <th>Cuándo revisarla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>src/</b></td>
+                    <td>Fuente de los módulos SCSS del framework.</td>
+                    <td>Cuando modificas mixins, funciones o módulos de SISASS.</td>
+                </tr>
+                <tr>
+                    <td><b>files/</b></td>
+                    <td>Carga de archivos que utiliza el instalador.</td>
+                    <td>Cuando preparas o ajustas lo que se copia a un proyecto consumidor.</td>
+                </tr>
+                <tr>
+                    <td><b>install.js</b></td>
+                    <td>Copia los activos y aplica las variantes de instalación.</td>
+                    <td>Cuando cambia el destino, el contenido instalado o el comportamiento de <b>--dep</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>arg.js</b></td>
+                    <td>Convierte los argumentos de la línea de comandos en opciones del instalador.</td>
+                    <td>Cuando agregas o modificas opciones como <b>--path</b> o <b>--dep</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>instances.config.js</b></td>
+                    <td>Define los módulos que se escriben en <b>_instances.scss</b> durante la instalación <b>sqhtml2</b>.</td>
+                    <td>Solo cuando cambia esa integración específica.</td>
+                </tr>
+                <tr>
+                    <td><b>package.json</b> y <b>README.md</b></td>
+                    <td>Metadatos, comandos de npm, instalación y guía de uso del paquete.</td>
+                    <td>Cuando cambia la publicación, la instalación o la forma de consumir SISASS.</td>
+                </tr>
+                <tr>
+                    <td><b>docs/</b></td>
+                    <td>Sitio de documentación y recursos para presentar el proyecto.</td>
+                    <td>Cuando cambia una explicación, una página o la interfaz documental.</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
