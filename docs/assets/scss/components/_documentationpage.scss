@@ -49,9 +49,7 @@ html.page[data-theme="dark"] {
         }
     }
 
-    .group_title {
-        margin-bottom: 30px;
-    }
+    .group_title { margin-bottom: 30px; }
 
     .title {
         @include bc($c0, var(--theme_text));
@@ -87,6 +85,14 @@ html.page[data-theme="dark"] {
             font-size: szrem(24);
         }
     }
+    .subtitle_2 {
+        @include t1((
+            f: $f2,
+            s: szrem(24),
+            w: bold
+        ));
+        color: var(--theme_text);
+    }
 
     .category {
         @include tf((
@@ -120,9 +126,7 @@ html.page[data-theme="dark"] {
 
     }
 
-    .mb {
-        margin-bottom: 25px;
-    }
+    .mb { margin-bottom: 25px; }
 
     .note {
         @include t1(( c: var(--theme_text_alt) ));

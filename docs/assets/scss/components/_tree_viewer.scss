@@ -1,19 +1,59 @@
 @use "../core/_instances" as *;
 
+.container_tree {
+    margin-bottom: 30px;
+}
+
+.assets_tree {
+    .legends {
+        @include box-shadow($sh1);
+        @include border-radius(8px);
+        border: $bd9;
+        padding: 15px 20px;
+    }
+
+    .legend_list {
+        @include no-spacing;
+        list-style: none;
+        margin-top: 16px;
+    }
+
+    .legend_item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 32px;
+    }
+
+    .legend_item + .legend_item {
+        margin-top: 10px;
+    }
+
+    .legend_icon {
+        display: block;
+        flex: 0 0 auto;
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+
+    .legend_text {
+        @include font(szrem(16), $f1);
+        color: var(--theme_text);
+    }
+}
+
 .project_structure {
     .tree_viewer {
         @include bc(var(--theme_surface), var(--theme_text));
         @include border-radius(8px);
         @include box-shadow($sh1);
         box-sizing: border-box;
-        margin-bottom: 30px;
         overflow: hidden;
         border: 1px solid var(--theme_border);
     }
 
-    .tree_viewer__frame {
-        display: block;
-    }
+    .tree_viewer__frame { display: block; }
 
     .tree_viewer__header {
         @include bc(var(--theme_surface_alt), var(--theme_text));
@@ -28,9 +68,7 @@
         color: var(--theme_accent);
     }
 
-    .tree_viewer__content {
-        display: block;
-    }
+    .tree_viewer__content { display: block; }
 
     .tree_viewer__viewport {
         @include scroll((
@@ -76,6 +114,7 @@
         @include font(100%, monospace);
         color: var(--theme_accent_alt);
         flex: 0 0 auto;
+        white-space: pre;
     }
 
     .tree_viewer__icon {
@@ -95,17 +134,9 @@
         object-fit: contain;
     }
 
-    .tree_viewer__text {
-        display: inline-block;
-    }
-
-    .tree_viewer__node--folder > .tree_viewer__row {
-        font-weight: bold;
-    }
-
-    .tree_viewer__children {
-        display: block;
-    }
+    .tree_viewer__text { display: inline-block; }
+    .tree_viewer__node--folder > .tree_viewer__row { font-weight: bold; }
+    .tree_viewer__children { display: block; }
 
     .tree_viewer__empty,
     .tree_viewer__invalid {
@@ -115,9 +146,6 @@
 
     .tree_viewer.without-data,
     .tree_viewer.invalid-data {
-        .tree_viewer__viewport {
-            padding: 20px;
-        }
+        .tree_viewer__viewport { padding: 20px; }
     }
-
 }

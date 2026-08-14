@@ -119,3 +119,18 @@
     .a2 { grid-area: m1; }
     .a3 { grid-area: c1; }
 }
+
+.layout_2 {
+    @include grid;
+    @include gap(25px);
+
+    grid: {
+        template: {
+            areas: "c1 c2";
+            columns: 0.7fr 0.3fr;
+        }
+    }
+
+    .d1 { grid-area: c1; }
+    .d2 { grid-area: c2; }
+}
