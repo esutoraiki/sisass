@@ -10,7 +10,7 @@
 }
 .documentationpage [class*=position_container] .position_example {
   position: absolute;
-  top: -47px;
+  top: -17px;
   left: 100px;
   z-index: 1;
 }

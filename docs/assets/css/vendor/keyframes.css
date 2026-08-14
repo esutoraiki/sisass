@@ -31,8 +31,10 @@
   }
 }
 .documentationpage .keyframes_example {
+  -webkit-animation: fade 1s infinite alternate;
+  -moz-animation: fade 1s infinite alternate;
+  animation: fade 1s infinite alternate;
   width: 60px;
   height: 60px;
   background-color: #A01303;
-  animation: fade 1s infinite alternate;
 }

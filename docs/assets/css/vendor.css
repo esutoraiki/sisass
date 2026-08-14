@@ -173,6 +173,47 @@
   animation-fill-mode: forwards;
 }
 
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.documentationpage .keyframes_example {
+  -webkit-animation: fade 1s infinite alternate;
+  -moz-animation: fade 1s infinite alternate;
+  animation: fade 1s infinite alternate;
+  width: 60px;
+  height: 60px;
+  background-color: #A01303;
+}
+
 .documentationpage .calc_example {
   width: -moz-calc(100% - 40px);
   width: -webkit-calc(100% - 40px);
