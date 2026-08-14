@@ -9,6 +9,8 @@
             margin-bottom: 18px;
         }
 
+        @media print { display: none; }
+
         .page_breadcrumb_list {
             @include border-radius(16px);
             @include bc(rgba($c16, 0.08), var(--theme_text_alt));

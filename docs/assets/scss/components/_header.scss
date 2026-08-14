@@ -61,6 +61,8 @@
                 @include gap(15px);
             }
 
+            @media print { display: none; }
+
             .version {
                 @include t1(( s: szrem(12), lh: initial ));
             }

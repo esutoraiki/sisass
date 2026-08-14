@@ -25,10 +25,7 @@ html.page {
     --theme_text_th: #{light-dark($c1, $c12)};
 }
 
-html.page[data-theme="light"] {
-    color-scheme: light;
-}
-
+html.page[data-theme="light"] { color-scheme: light; }
 html.page[data-theme="dark"] {
     color-scheme: dark;
     --theme_icon_filter: brightness(0) invert(1);

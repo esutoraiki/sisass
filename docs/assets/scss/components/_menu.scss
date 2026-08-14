@@ -34,6 +34,8 @@
         opacity: 0;
     }
 
+    @media print { display: none; }
+
     &.open {
         @include brp($b6) {
             @include flex;
@@ -55,6 +57,15 @@
         @include brp($b6) {
             padding: 0;
             width: min(88vw, 320px);
+        }
+
+        .title_main_menu {
+            @include t1((
+                f: $f4,
+                s: szrem(14),
+                c: var(--theme_text_alt),
+                t: uppercase
+            ));
         }
 
         .group_1 {

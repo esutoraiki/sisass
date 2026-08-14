@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="200"
+   height="200"
+   viewBox="0 0 200 200"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (1:1.4.3+202512261034+0d15f75042)"
+   sodipodi:docname="folder.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.77314815"
+     inkscape:cx="91.185629"
+     inkscape:cy="353.7485"
+     inkscape:window-width="2560"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g2"
+       transform="matrix(5.5292363,0,0,5.5417968,-410.37069,-458.9206)"
+       style="stroke-width:0.682778">
+      <path
+         d="m 77.779577,85.639098 c -1.637204,0 -2.955376,1.318172 -2.955376,2.955375 v 24.522017 c 0,1.63721 1.318172,2.95538 2.955376,2.95538 h 29.049383 c 1.63721,0 2.95486,-1.31817 2.95486,-2.95538 V 93.356973 c 0,-1.637203 -1.31765,-2.955375 -2.95486,-2.955375 H 92.80698 c -3.429928,0 -4.334111,-4.7625 -6.612406,-4.7625 z"
+         style="fill:#afd3fd;fill-opacity:1;stroke:#2e86fc;stroke-width:1.21037;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+         id="path2"
+         sodipodi:nodetypes="sssssssszzs" />
+      <rect
+         style="fill:#dceafd;fill-opacity:1;stroke:none;stroke-width:1.21037;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         id="rect2"
+         width="33.262173"
+         height="22.015253"
+         x="75.767319"
+         y="93.490639"
+         ry="1.5606449"
+         rx="2.0200644" />
+    </g>
+  </g>
+</svg>

@@ -7,8 +7,8 @@
     }
 
     .keyframes_example {
+        @include animation(fade 1s infinite alternate);
         @include whs(60px);
         background-color: $c5;
-        animation: fade 1s infinite alternate;
     }
 }
