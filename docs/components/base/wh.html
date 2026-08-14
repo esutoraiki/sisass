@@ -60,29 +60,35 @@
         <h2 class="title">
             Ejemplo
         </h2>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
-            <pre class="language-scss" data-src="../assets/scss/bases/wh.scss"></pre>
+        <div
+            id="wh_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-            <pre class="language-css" data-src="../assets/css/bases/wh.css"></pre>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="wh_example box"></div>
+                </div>
+            </div>
 
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/wh.scss"></pre>
+            </div>
 
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;wh_example box&quot;&gt;&lt;/div&gt;</code></pre>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/wh.css"></pre>
+            </div>
 
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="wh_example box"></div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;wh_example box&quot;&gt;&lt;/div&gt;</code></pre>
             </div>
         </div>
     </section>

@@ -3,7 +3,8 @@
 .documentationpage {
     .center_flex_row_demo {
         @include center-flex-row;
-        @include position;
         @include wh(100%, 200px);
+        @include gap(5px);
+        @include position;
     }
 }

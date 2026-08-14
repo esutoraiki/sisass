@@ -13,6 +13,7 @@
 @use "components/_page_search";
 @use "components/_breadcrumb";
 @use "components/_documentationpage";
+@use "components/_tree_viewer";
 
 .hide { display: none !important; }
 .theme_only_light { display: block !important; }

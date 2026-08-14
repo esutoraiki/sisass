@@ -55,34 +55,38 @@
         <p class="description">
             En este ejemplo, ambas imágenes comparten el mismo contenedor. La segunda usa el valor <b>cover</b>, por lo que llena el área visible sin deformarse, aunque recorta parte del contenido.
         </p>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="object_fit_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/object_fit.scss"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-
-            <pre class="language-css" data-src="../assets/css/vendor/object_fit.css"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;object_fit_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;frame&quot;&gt;&lt;img&nbsp;class=&quot;img&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;test&nbsp;object-fit&quot;&nbsp;/&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;frame&quot;&gt;&lt;img&nbsp;class=&quot;img&nbsp;cover&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;test&nbsp;object-fit&quot;&nbsp;/&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="object_fit_example">
-                    <div class="frame"><img class="img" src="img/test/1.webp" alt="test object-fit" /></div>
-                    <div class="frame"><img class="img cover" src="img/test/1.webp" alt="test object-fit" /></div>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="object_fit_example">
+                        <div class="frame"><img class="img" src="img/test/1.webp" alt="test object-fit" /></div>
+                        <div class="frame"><img class="img cover" src="img/test/1.webp" alt="test object-fit" /></div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/object_fit.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/object_fit.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;object_fit_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;frame&quot;&gt;&lt;img&nbsp;class=&quot;img&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;test&nbsp;object-fit&quot;&nbsp;/&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;frame&quot;&gt;&lt;img&nbsp;class=&quot;img&nbsp;cover&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;test&nbsp;object-fit&quot;&nbsp;/&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
             </div>
         </div>
     </section>

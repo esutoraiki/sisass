@@ -52,31 +52,35 @@
         <h2 class="title">
             Ejemplo
         </h2>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="text_stroke_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/text_stroke.scss"></pre>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <span class="text_stroke_example">SISASS</span>
+                </div>
+            </div>
 
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/text_stroke.scss"></pre>
+            </div>
 
-            <pre class="language-css" data-src="../assets/css/vendor/text_stroke.css"></pre>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/text_stroke.css"></pre>
+            </div>
 
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;span&nbsp;class=&quot;text_stroke_example&quot;&gt;SISASS&lt;/span&gt;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <span class="text_stroke_example">SISASS</span>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;span&nbsp;class=&quot;text_stroke_example&quot;&gt;SISASS&lt;/span&gt;</code></pre>
             </div>
         </div>
     </section>

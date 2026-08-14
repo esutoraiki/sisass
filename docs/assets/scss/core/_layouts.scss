@@ -106,6 +106,15 @@
         display: block;
     }
 
+    @media print {
+        grid: {
+            template: {
+                columns: 1fr;
+                areas: "h1" "c1";
+            }
+        }
+    }
+
     .a1 { grid-area: h1; }
     .a2 { grid-area: m1; }
     .a3 { grid-area: c1; }

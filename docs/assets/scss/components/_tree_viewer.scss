@@ -1,0 +1,123 @@
+@use "../core/_instances" as *;
+
+.project_structure {
+    .tree_viewer {
+        @include bc(var(--theme_surface), var(--theme_text));
+        @include border-radius(8px);
+        @include box-shadow($sh1);
+        box-sizing: border-box;
+        margin-bottom: 30px;
+        overflow: hidden;
+        border: 1px solid var(--theme_border);
+    }
+
+    .tree_viewer__frame {
+        display: block;
+    }
+
+    .tree_viewer__header {
+        @include bc(var(--theme_surface_alt), var(--theme_text));
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--theme_border);
+    }
+
+    .tree_viewer__title {
+        @include font(szrem(20), $f2, bold);
+        @include text;
+        margin: 0;
+        color: var(--theme_accent);
+    }
+
+    .tree_viewer__content {
+        display: block;
+    }
+
+    .tree_viewer__viewport {
+        @include scroll((
+            color: $c4,
+            bg: var(--theme_scroll_track),
+            width: 10px,
+            thumb_border: 3px solid var(--theme_scroll_track),
+            radius: 5px
+        ));
+        box-sizing: border-box;
+        overflow: auto;
+        padding: 20px;
+
+        @include brp($b6) {
+            max-height: 420px;
+            padding: 15px;
+        }
+    }
+
+    .tree_viewer__tree,
+    .tree_viewer__children {
+        @include no-spacing;
+        list-style: none;
+    }
+
+    .tree_viewer__node {
+        @include font(szrem(16), $f1);
+        color: var(--theme_text);
+        white-space: nowrap;
+
+        @include brp($b6) {
+            font-size: szrem(14);
+        }
+    }
+
+    .tree_viewer__row {
+        display: flex;
+        align-items: center;
+        min-height: 28px;
+    }
+
+    .tree_viewer__branch {
+        @include font(100%, monospace);
+        color: var(--theme_accent_alt);
+        flex: 0 0 auto;
+    }
+
+    .tree_viewer__icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        width: 20px;
+        height: 20px;
+        margin: 0 8px 0 6px;
+    }
+
+    .tree_viewer__icon img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .tree_viewer__text {
+        display: inline-block;
+    }
+
+    .tree_viewer__node--folder > .tree_viewer__row {
+        font-weight: bold;
+    }
+
+    .tree_viewer__children {
+        display: block;
+    }
+
+    .tree_viewer__empty,
+    .tree_viewer__invalid {
+        @include t1(( c: var(--theme_text_alt) ));
+        margin: 0;
+    }
+
+    .tree_viewer.without-data,
+    .tree_viewer.invalid-data {
+        .tree_viewer__viewport {
+            padding: 20px;
+        }
+    }
+
+}

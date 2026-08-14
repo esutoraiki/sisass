@@ -26,8 +26,9 @@
     $bgb: mapv($attr, bgb, $c0);
     $cb: mapv($attr, cb, var(--theme_text_bold));
     $wr: mapv($attr, wr, initial);
+    $tf: mapv($attr, t, initial);
 
-    @include tf(( f: $f, s: $s, a: $a, lh: $lh, w: $w, wr: $wr ));
+    @include tf(( f: $f, s: $s, a: $a, lh: $lh, w: $w, wr: $wr, t: $tf ));
     @include bc($bg, $c);
     @include tagline_sisass(( c: $c ));
 

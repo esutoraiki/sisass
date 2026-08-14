@@ -1,0 +1,33 @@
+└── .
+    ├── files
+    │   └── assets
+    │       └── scss
+    │           └── core
+    │               ├── _fonts.scss
+    │               ├── _instances.scss
+    │               ├── _keyframes.scss
+    │               ├── _layout.scss
+    │               ├── _mixin.scss
+    │               └── _variables.scss
+    ├── src
+    │   └── scss
+    │       ├── components
+    │       │   ├── _buttons.scss
+    │       │   ├── _carousel.scss
+    │       │   └── _modal.scss
+    │       ├── effects
+    │       │   ├── _effects.scss
+    │       │   ├── _flipcard.scss
+    │       │   ├── _glitch_keyframes.scss
+    │       │   └── _glitch.scss
+    │       ├── shapes
+    │       │   └── _triangles.scss
+    │       ├── _base.scss
+    │       ├── _mediaqueries.scss
+    │       ├── _reset.scss
+    │       ├── _sisass.scss
+    │       └── _vendor.scss
+    ├── arg.js
+    ├── docs
+    ├── install.js
+    └── instances.config.js

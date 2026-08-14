@@ -55,36 +55,40 @@
         <p class="description">
             En este ejemplo, cada celda usa grid y una altura fija. El segundo bloque aplica el valor <b>end</b> sobre un único elemento, por lo que ese elemento se desplaza hacia la parte inferior de su celda y se diferencia del comportamiento inicial.
         </p>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="align_self_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/align_self.scss"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-
-            <pre class="language-css" data-src="../assets/css/vendor/align_self.css"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_self_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Valor&nbsp;inicial&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-self:&nbsp;end&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&nbsp;end&quot;&gt;A&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="align_self_example">
-                    <h3 class="subtitle">Valor inicial</h3>
-                    <div class="cell"><span class="box">A</span></div>
-                    <h3 class="subtitle">align-self: end</h3>
-                    <div class="cell"><span class="box end">A</span></div>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="align_self_example">
+                        <h3 class="subtitle">Valor inicial</h3>
+                        <div class="cell"><span class="box">A</span></div>
+                        <h3 class="subtitle">align-self: end</h3>
+                        <div class="cell"><span class="box end">A</span></div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/align_self.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/align_self.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_self_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Valor&nbsp;inicial&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-self:&nbsp;end&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&nbsp;end&quot;&gt;A&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
             </div>
         </div>
     </section>

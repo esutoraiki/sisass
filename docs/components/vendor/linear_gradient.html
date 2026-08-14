@@ -55,40 +55,44 @@
         <p class="description">
             En este ejemplo, ambos bloques tienen el mismo tamaño. El primero usa un color de fondo sólido. El segundo aplica un gradiente lineal diagonal, por lo que el cambio visual resulta inmediato.
         </p>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="linear_gradient_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/linear_gradient.scss"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-
-            <pre class="language-css" data-src="../assets/css/vendor/linear_gradient.css"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;linear_gradient_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Color&nbsp;sólido&lt;/h3&gt;&lt;div&nbsp;class=&quot;sample&quot;&gt;A&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;linear-gradient(135deg,&nbsp;#A01303,&nbsp;#FBB03B)&lt;/h3&gt;&lt;div&nbsp;class=&quot;sample&nbsp;gradient&quot;&gt;A&lt;/div&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="linear_gradient_example">
-                    <div>
-                        <h3 class="subtitle">Color sólido</h3>
-                        <div class="sample">A</div>
-                    </div>
-                    <div>
-                        <h3 class="subtitle">linear-gradient(135deg, #A01303, #FBB03B)</h3>
-                        <div class="sample gradient">A</div>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="linear_gradient_example">
+                        <div>
+                            <h3 class="subtitle">Color sólido</h3>
+                            <div class="sample">A</div>
+                        </div>
+                        <div>
+                            <h3 class="subtitle">linear-gradient(135deg, #A01303, #FBB03B)</h3>
+                            <div class="sample gradient">A</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/linear_gradient.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/linear_gradient.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;linear_gradient_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Color&nbsp;sólido&lt;/h3&gt;&lt;div&nbsp;class=&quot;sample&quot;&gt;A&lt;/div&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;linear-gradient(135deg,&nbsp;#A01303,&nbsp;#FBB03B)&lt;/h3&gt;&lt;div&nbsp;class=&quot;sample&nbsp;gradient&quot;&gt;A&lt;/div&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
             </div>
         </div>
     </section>

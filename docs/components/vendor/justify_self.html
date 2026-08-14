@@ -55,34 +55,38 @@
         <p class="description">
             En este ejemplo, ambos elementos comparten una celda amplia de grid. El segundo aplica el valor <b>end</b>, por lo que se alinea hacia el extremo horizontal de su área.
         </p>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="justify_self_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/justify_self.scss"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-
-            <pre class="language-css" data-src="../assets/css/vendor/justify_self.css"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;justify_self_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;Auto&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&nbsp;end&quot;&gt;End&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="justify_self_example">
-                    <div class="cell"><span class="box">Auto</span></div>
-                    <div class="cell"><span class="box end">End</span></div>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="justify_self_example">
+                        <div class="cell"><span class="box">Auto</span></div>
+                        <div class="cell"><span class="box end">End</span></div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/justify_self.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/justify_self.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;justify_self_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;Auto&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cell&quot;&gt;&lt;span&nbsp;class=&quot;box&nbsp;end&quot;&gt;End&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
             </div>
         </div>
     </section>

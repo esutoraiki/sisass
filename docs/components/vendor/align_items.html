@@ -55,36 +55,40 @@
         <p class="description">
             En este ejemplo, ambos contenedores usan flex en fila con una altura fija. El segundo aplica el valor <b>center</b>, por lo que centra verticalmente los elementos y permite comparar ese comportamiento frente al valor inicial.
         </p>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="align_items_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/align_items.scss"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-
-            <pre class="language-css" data-src="../assets/css/vendor/align_items.css"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_items_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Valor&nbsp;inicial&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-items:&nbsp;center&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&nbsp;center&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="align_items_example">
-                    <h3 class="subtitle">Valor inicial</h3>
-                    <div class="row"><span class="box">A</span><span class="box">B</span></div>
-                    <h3 class="subtitle">align-items: center</h3>
-                    <div class="row center"><span class="box">A</span><span class="box">B</span></div>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="align_items_example">
+                        <h3 class="subtitle">Valor inicial</h3>
+                        <div class="row"><span class="box">A</span><span class="box">B</span></div>
+                        <h3 class="subtitle">align-items: center</h3>
+                        <div class="row center"><span class="box">A</span><span class="box">B</span></div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/align_items.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/align_items.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_items_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;Valor&nbsp;inicial&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-items:&nbsp;center&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;row&nbsp;center&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
             </div>
         </div>
     </section>

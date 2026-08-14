@@ -55,36 +55,40 @@
         <p class="description">
             En este ejemplo, ambos contenedores usan flex con varias filas y una altura fija. El primero agrupa las filas al inicio con <b>flex-start</b>. El segundo aplica <b>space-between</b>, por lo que reparte el espacio vertical sobrante entre las filas y hace visible la diferencia.
         </p>
-        <div class="container_example">
-            <h2 class="subtitle">
-                Ejemplo 1: SCSS
-            </h2>
+        <div
+            id="align_content_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
 
-            <pre class="language-scss" data-src="../assets/scss/vendor/align_content.scss"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: CSS generado
-            </h2>
-
-            <pre class="language-css" data-src="../assets/css/vendor/align_content.css"></pre>
-
-            <h2 class="subtitle">
-                Ejemplo 1: HTML
-            </h2>
-
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_content_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-content:&nbsp;flex-start&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;wrap&nbsp;start&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;D&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-content:&nbsp;space-between&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;wrap&nbsp;space_between&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;D&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
-
-            <h2 class="subtitle">
-                Resultado
-            </h2>
-
-            <div class="result">
-                <div class="align_content_example">
-                    <h3 class="subtitle">align-content: flex-start</h3>
-                    <div class="wrap start"><span class="box">A</span><span class="box">B</span><span class="box">C</span><span class="box">D</span></div>
-                    <h3 class="subtitle">align-content: space-between</h3>
-                    <div class="wrap space_between"><span class="box">A</span><span class="box">B</span><span class="box">C</span><span class="box">D</span></div>
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="align_content_example">
+                        <h3 class="subtitle">align-content: flex-start</h3>
+                        <div class="wrap start"><span class="box">A</span><span class="box">B</span><span class="box">C</span><span class="box">D</span></div>
+                        <h3 class="subtitle">align-content: space-between</h3>
+                        <div class="wrap space_between"><span class="box">A</span><span class="box">B</span><span class="box">C</span><span class="box">D</span></div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/align_content.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/align_content.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;align_content_example&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-content:&nbsp;flex-start&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;wrap&nbsp;start&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;D&lt;/span&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&nbsp;class=&quot;subtitle&quot;&gt;align-content:&nbsp;space-between&lt;/h3&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;wrap&nbsp;space_between&quot;&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;A&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;B&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;C&lt;/span&gt;&lt;span&nbsp;class=&quot;box&quot;&gt;D&lt;/span&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;</code></pre>
             </div>
         </div>
     </section>
