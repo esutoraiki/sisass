@@ -17,7 +17,7 @@
         @include flex-direction(column);
         @include justify-content(initial);
         @include align-items(center);
-        @include position(( p: fixed, t: 0, l: 0 ));
+        @include position(( p: fixed, t: 0, l: 0, z: 10 ));
         @include whs(100%);
         @include bc(var(--theme_surface_alt), var(--theme_text));
         @include transition((
@@ -25,12 +25,16 @@
             opacity $t5 ease,
             display $t5 allow-discrete
         ));
-        padding: clamp(20px, 8.16vw, 80px) 0 clamp(10px, 4.08vw, 40px);
+        padding:
+            clamp(20px, 8.16vw, 80px)
+            0
+            clamp(10px, 4.08vw, 40px)
+        ;
+        margin-block-start: initial;
         pointer-events: none;
         overflow-y: auto;
         inset-block: 0;
         display: none;
-        z-index: 10;
         opacity: 0;
     }
 
@@ -53,6 +57,7 @@
 
     .main_menu {
         padding-left: min(2.08vw, 40px);
+        margin-block-start: 30px;
 
         @include brp($b6) {
             padding: 0;
@@ -71,15 +76,22 @@
         .group_1 {
             @include flex-direction(column);
             @include flex;
-            margin-bottom: 35px;
+            margin-block-start: 20px;
 
-            &:last-child { margin-bottom: 0; }
 
             .title {
-                @include font(szrem(24), $f2, bold);
-                @include text;
-                margin-bottom: 14px;
+                @include t1((
+                    f: $f4,
+                    s: szrem(18),
+                    w: bold
+                ));
+                @include position;
+                @include wh(100%, 50px);
+                @include align-items(center);
+                @include flex;
+                padding-inline-start: 35px;
                 color: var(--theme_text);
+                margin-bottom: initial;
 
                 @include brp($b6) {
                     color: var(--theme_text);
@@ -87,14 +99,15 @@
             }
 
             .item {
-                @include font(szrem(18), $f2);
-                @include text;
-                margin-bottom: 10px;
-                color: var(--theme_text);
+                @include t1((
+                    f: $f2,
+                    s: szrem(14)
+                ));
+                @include wh(100%, 35px);
+                @include align-items(center);
+                @include flex;
+                padding-inline-start: 28px;
 
-                @include brp($b6) {
-                    color: var(--theme_text);
-                }
 
                 &:last-child { margin-bottom: 0; }
 
@@ -107,7 +120,13 @@
                 }
 
                 &.active {
-                    color: var(--theme_accent);
+                    @include wh(100%, 45px);
+                    @include border-radius(7px);
+                    @include bc(
+                        rgba($c16, 0.08),
+                        var(--theme_text_alt)
+                    );
+                    border-left: $bd8;
 
                     @include brp($b6) {
                         color: var(--theme_accent_alt);
@@ -165,9 +184,9 @@
 }
 
 .menu_close {
-    @include position(fixed, 15px, 15px, top, right);
+    @include position(fixed, 50px, 20px, top, right);
     @include border-radius(50%);
-    @include bc(var(--theme_surface), var(--theme_text));
+    @include bc(var(--theme_inverted_surface), var(--theme_text));
     @include whs(45px);
     box-shadow: var(--theme_shadow);
     cursor: pointer;

@@ -13,6 +13,13 @@
             "position": "afterend",
             "node": "main_content",
             "page": "docs"
+        },
+        {
+            "id": "menu_close",
+            "url": "../components/global/menu_close.html",
+            "position": "afterend",
+            "node": "main_content",
+            "page": "docs"
         }
     ]
 }

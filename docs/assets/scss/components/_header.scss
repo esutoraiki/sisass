@@ -4,7 +4,7 @@
 .container_header {
     @include wh(min(100vw, 1920px), 100%);
     @include center-flex-column;
-    padding-inline: 5vw;
+    padding: 7px 5vw;
     margin-inline: auto;
     border-bottom: 1px solid var(--theme_border);
 
