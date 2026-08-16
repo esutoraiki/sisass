@@ -1,15 +1,21 @@
 @use "../core/_instances" as *;
+@use "sass:list";
 
 .container_tree {
     margin-bottom: 30px;
 }
 
 .assets_tree {
-    .legends {
+    .legends,
+    .description_tree {
         @include box-shadow($sh1);
         @include border-radius(8px);
         border: $bd9;
         padding: 15px 20px;
+    }
+
+    .description_tree {
+        margin-top: 20px;
     }
 
     .legend_list {
@@ -40,6 +46,84 @@
     .legend_text {
         @include font(szrem(16), $f1);
         color: var(--theme_text);
+    }
+
+    .description_tree_list {
+        @include no-spacing;
+        list-style: none;
+        margin-top: 16px;
+    }
+
+    .description_tree_item {
+        display: grid;
+        grid-template-columns: 24px minmax(0, 1fr);
+        gap: 12px;
+        padding: 16px 0;
+        border-top: 1px solid var(--theme_border);
+    }
+
+    .description_tree_item:first-child {
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    .description_tree_item:last-child {
+        padding-bottom: 0;
+    }
+
+    .description_tree_icon {
+        display: block;
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+
+    .description_tree_text {
+        @include font(szrem(14), $f1);
+        margin: 0;
+        color: var(--theme_text_alt);
+        line-height: 1.45;
+    }
+
+    .description_tree_text b:first-child {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--theme_text);
+        font-size: szrem(16);
+    }
+
+    .tree_note {
+        @include bc(rgba($c16, 0.06), var(--theme_text_alt));
+        @include border-radius(8px);
+        margin-top: 20px;
+        padding: 16px 20px;
+        border: 1px solid rgba($c16, 0.18);
+
+        .tree_note_header {
+            @include flex;
+            @include align-items(center);
+            @include gap(10px);
+
+            .icon_info {
+                @include normalize-svg((
+                    w: list.nth($l10, 1),
+                    h: list.nth($l10, 1)
+                ));
+            }
+
+            .tree_note_title {
+                @include font(szrem(16), $f2, bold);
+                color: var(--theme_text);
+                margin: 0;
+            }
+        }
+
+        .tree_note_text {
+            @include font(szrem(14), $f1);
+            margin: 10px 0 0;
+            color: var(--theme_text_alt);
+            line-height: 1.45;
+        }
     }
 }
 
