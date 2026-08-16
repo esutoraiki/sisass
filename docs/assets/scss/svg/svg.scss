@@ -27,6 +27,23 @@
     }
 }
 
+@for $i from 1 through list.length($icon_name) {
+    .icon_#{list.nth($icon_name, $i)} {
+        &::before {
+            @include transform(translateY(-50%));
+            @include icon-svg(
+                list.nth($icon_name, $i),
+                list.nth($l10, 1),
+                list.nth($l10, 1),
+                $c3
+            );
+            filter: var(--theme_icon_filter);
+            top: 50%;
+            content: "";
+        }
+    }
+}
+
 .icon_arrow {
     &::after {
         @include icon-svg((

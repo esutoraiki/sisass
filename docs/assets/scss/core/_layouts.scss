@@ -127,7 +127,16 @@
     grid: {
         template: {
             areas: "c1 c2";
-            columns: 0.7fr 0.3fr;
+            columns: 1fr 330px;
+        }
+    }
+
+    @include brp($b4) {
+        grid: {
+            template: {
+                areas: "c1" "c2";
+                columns: 1fr;
+            }
         }
     }
 

@@ -26,4 +26,8 @@ html.page[data-theme="dark"] {
 
 .no_scroll { overflow: hidden !important; }
 .no_visibility { visibility: hidden !important; }
-html.page { scroll-behavior: smooth; }
+html.page {
+    scrollbar-gutter: stable;
+    scrollbar-width: 15px;
+    scroll-behavior: smooth;
+}

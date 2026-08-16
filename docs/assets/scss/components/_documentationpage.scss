@@ -55,7 +55,7 @@ html.page[data-theme="dark"] {
         @include bc($c0, var(--theme_text));
         @include t1((
             f: $f4,
-            s: szrem(42),
+            s: szrem(36),
             w: bold,
             a: left
         ));
@@ -64,14 +64,6 @@ html.page[data-theme="dark"] {
         @include brp($b6) {
             font-size: szrem(32);
             margin-bottom: 15px;
-        }
-
-        &::after {
-            @include wh(45px, 2px);
-            @include border-radius(4px);
-            @include bc(var(--theme_text_bold), $c0);
-            display: block;
-            content: "";
         }
     }
 
@@ -109,10 +101,36 @@ html.page[data-theme="dark"] {
 
     }
 
+    .container_attributes {
+        @include flex;
+        @include gap(10px);
+        margin-block-start: 15px;
+
+        .attribute {
+            @include t1((
+                f: $f2,
+                s: szrem(14)
+            ));
+            @include bc(
+                rgba($c16, 0.08),
+                var(--theme_text_alt)
+            );
+            @include border-radius(25px);
+            @include flex;
+            padding: 5px 15px;
+            margin-bottom: 3px;
+            color: var(--theme_text);
+        }
+    }
 
     .attribute {
-        @include font(szrem(20), $f2, bold);
-        @include text;
+        @include t1((
+            f: $f2,
+            s: szrem(20),
+            w: bold
+        ));
+        @include border-radius(7px);
+        @include flex;
         margin-bottom: 3px;
         color: var(--theme_text);
     }
@@ -134,6 +152,7 @@ html.page[data-theme="dark"] {
         border: 1px solid var(--theme_border);
         border-left: 6px solid var(--theme_accent_alt);
         margin-bottom: 15px;
+        margin-inline-end: 15px;
     }
 
     .use {
@@ -289,4 +308,9 @@ html.page[data-theme="dark"] {
             }
         }
     }
+}
+
+@print {
+    size: A3;
+    margin: 20mm;
 }

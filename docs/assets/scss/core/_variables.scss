@@ -22,10 +22,10 @@ $c20: #458ED1;
 $c9: #10151F;
 $c10: #151A25;
 $c11: #1C2230;
-$c12: #E8EEF8;
+$c12: #C3DAFF;
 $c13: #C9D2E2;
 $c14: #FFD36B;
-$c15: #F35A45;
+$c15: #F38845;
 $c17: #007AFF;
 
 // Border
@@ -93,6 +93,8 @@ $characteristics_color: ($c16, $c18, $c15, $c19);
 
 $features_name: (mixins, functions, variables, helpers, layouts);
 
+$icon_name: (info, articles, folder_2);
+
 // logo sisass
 $l1x: (clamp(130px, 10.44vw, 200px));
 $l1y: (clamp(29px, 2.30vw, 44px));
@@ -122,6 +124,9 @@ $l8: (26px);
 // icon help
 $l9x: (15px);
 $l9y: (22px);
+
+// icon men)u
+$l10: (20px);
 
 //-----------------------------------
 //End Variables
