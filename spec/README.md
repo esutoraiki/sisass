@@ -15,6 +15,8 @@ Esta carpeta contiene especificaciones de producto e interfaz para funcionalidad
 | --- | --- |
 | [theme_toggle_button.md](./theme_toggle_button.md) | Define el botón para cambiar la documentación entre modo claro y modo oscuro. |
 | [rgb_alpha.md](./rgb_alpha.md) | Define la documentación de la función `rgb-alpha` en la sección base. |
+| [installer_structure.md](./installer_structure.md) | Define la reorganización lógica de `files/` y la creación de la estructura de instalación por parte de `install.js`. |
+| [sisass_installation_article.md](./sisass_installation_article.md) | Define el artículo para instalar SISASS en proyectos HTML, SQHTML, SQHTML2, React y React con Vite. |
 
 ## Convenciones
 

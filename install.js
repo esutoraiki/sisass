@@ -6,10 +6,18 @@ const
 const
     dest_path = parsed_args.path || "../../",
     dependents = parsed_args.dep || "",
-    instances_config_path = path.join(__dirname, "instances.config.js");
+    instances_config_path = path.join(__dirname, "instances.config.js"),
+    source_root = path.join(__dirname, "files"),
+    source_files = [
+        "_variables.scss",
+        "_fonts.scss",
+        "_mixin.scss",
+        "_keyframes.scss",
+        "_instances.scss",
+        "_layout.scss"
+    ];
 
 let target_path = dest_path;
-let base_dir = dest_path === "../../" ? "files/" : "files/assets/";
 let after_copy = null;
 
 const roboto_fonts_block = `@include font-face(
@@ -37,16 +45,37 @@ const roboto_fonts_block = `@include font-face(
 
 `;
 
-const copy_directory = (source, target, label, on_complete) => {
-    fs.cp(source, target, {recursive: true, force: true}, error => {
-        if (error) {
-            console.error(`Error copying ${label}:`);
-            console.error(error);
-            return;
+const ensure_directory = directory_path => {
+    fs.mkdirSync(directory_path, {recursive: true});
+};
+
+const resolve_core_dir = destination => path.join(destination, "assets", "scss", "core");
+
+const copy_core_files = (source_dir, target_dir, label, on_complete) => {
+    try {
+        ensure_directory(target_dir);
+
+        source_files.forEach(file_name => {
+            const source_path = path.join(source_dir, file_name);
+            const target_file_path = path.join(target_dir, file_name);
+
+            if (!fs.existsSync(source_path)) {
+                throw new Error(`Source file not found at ${source_path}`);
+            }
+
+            fs.copyFileSync(source_path, target_file_path);
+        });
+
+        console.log(`${label} copied to ${target_dir}`);
+
+        if (on_complete) {
+            on_complete();
         }
-        console.log(`${label} copied to ${target}`);
-        if (on_complete) on_complete();
-    });
+    } catch (error) {
+        console.error(`Error copying ${label}:`);
+        console.error(error);
+        process.exitCode = 1;
+    }
 };
 
 const update_variables_sqhtml = core_dir => {
@@ -145,25 +174,17 @@ const generate_instances_file = core_dir => {
     console.log(`Generated instances file at ${instances_path}`);
 };
 
-const resolve_sqhtml_core_dir = destination => {
-    const assets_root = destination === "../../"
-        ? path.join(destination, "assets")
-        : destination;
-    return path.join(assets_root, "scss", "core");
-};
-
 if (dependents === "sqhtml") {
-    const core_dir = resolve_sqhtml_core_dir(target_path);
+    const core_dir = resolve_core_dir(target_path);
     after_copy = () => apply_sqhtml_overrides(core_dir);
 }
 
 if (dependents === "sqhtml2") {
-    target_path = "../../src/scss/core/";
-    base_dir = "files/assets/scss/core/";
+    target_path = "../../src/core/";
     after_copy = () => {
         apply_sqhtml_overrides(target_path);
         generate_instances_file(target_path);
     };
 }
 
-copy_directory(base_dir, target_path, "Base assets", after_copy);
+copy_core_files(source_root, dependents === "sqhtml2" ? target_path : resolve_core_dir(target_path), "Base assets", after_copy);

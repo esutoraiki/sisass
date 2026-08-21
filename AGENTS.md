@@ -2,9 +2,9 @@
 
 ## Project Structure & Module Organization
 - Root scripts `install.js` and `arg.js` copy framework assets; pass `--path` to choose the target directory (defaults to `../../`).
-- Source SASS lives in `src/scss` (base, reset, media queries, vendor overrides). Treat it as the editable core when improving the framework.
+- Source SASS lives in `src` (base, reset, media queries, vendor overrides). Treat it as the editable core when improving the framework.
 - Distributed assets reside in `files/assets/scss`, organized into `core`, `components`, `helpers`, and `themes`; update these when shipping changes to consumers. In `--dep sqhtml` mode, the installer does not use a separate folder: it adjusts destination fonts (Roboto) and variables (`$c3`, `$f1`, `$i1`) on the copied files.
-- In `--dep sqhtml2` mode, the installer forces direct installation of `core` SCSS into `../../src/scss/core/` (ignoring `--path`) and applies the same SQHTML overrides to `_variables.scss` and `_fonts.scss`.
+- In `--dep sqhtml2` mode, the installer forces direct installation of `core` SCSS into `../../src/core/` (ignoring `--path`) and applies the same SQHTML overrides to `_variables.scss` and `_fonts.scss`.
 - Documentation site files sit in `docs/` with its own `package.json` and `gulpfile.js`; keep sample pages and assets in sync with framework changes.
 
 ## Build, Test, and Development Commands
@@ -191,4 +191,4 @@ Si la solicitud no aclara lo suficiente el alcance, pregunta primero. Si existe 
 
 ## Commit & Pull Request Guidelines
 - Use concise, imperative commit messages (e.g., `Add grid helpers`, `Fix install path parsing`). Group related edits per commit to keep history readable.
-- PRs should describe the change, affected folders (e.g., `src/scss`, `files/assets/scss/core`), manual verification steps, and any docs updates. Include before/after screenshots when altering visual output or doc pages.
+- PRs should describe the change, affected folders (e.g., `src`, `files/assets/scss/core`), manual verification steps, and any docs updates. Include before/after screenshots when altering visual output or doc pages.
