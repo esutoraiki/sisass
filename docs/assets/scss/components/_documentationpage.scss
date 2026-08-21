@@ -137,11 +137,9 @@ html.page[data-theme="dark"] {
 
     .deprecated { color: var(--theme_accent); }
 
-    .description,
-    p {
+    .description, p {
         @include t1;
         margin-bottom: 15px;
-
     }
 
     .mb { margin-bottom: 25px; }
@@ -296,6 +294,7 @@ html.page[data-theme="dark"] {
 
         tbody {
             td {
+                @include t1(( a: left ));
                 padding: 10px 15px;
                 border: 1px solid var(--theme_border);
 

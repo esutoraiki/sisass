@@ -27,7 +27,7 @@ const
     paths_scss = [
         path.resolve(dir_path, "assets/scss/"),
         path.resolve(dir_path, "assets/scss/core/"),
-        path.resolve(dir_path, "../src/scss/")
+        path.resolve(dir_path, "../src/")
     ],
     paths_compile_scss = [
         "assets/scss/*.scss",
@@ -59,7 +59,7 @@ const
         "assets/js/components/*.js"
     ],
 
-    path_search_index = "assets/json/search_index.json",
+    path_search_index = "assets/json/components/search_index.json",
     path_documentation_pages = path.resolve(dir_path, "pages"),
 
     paths_html = [

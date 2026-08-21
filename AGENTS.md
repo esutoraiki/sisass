@@ -28,6 +28,9 @@
 - Write documentation prose and UI labels in Spanish by default.
   Keep technical identifiers in English when they are code-facing:
   mixin/function names, file names, ids, class names, SCSS keys, and literal API signatures.
+- In documentation articles, use the `b` tag for inline mini code such as commands, paths,
+  package names, flags, variables, and short identifiers. Reserve the `code` tag for complete
+  code blocks or complete single lines of code that will be processed by `docs/assets/js/libraries/prism.js`.
 - Treat `docs/` as the main documentation site and `doc/` as non-canonical unless a task explicitly uses it.
 - Keep source and generated documentation assets in sync when changing documentation content.
 - Use `docs/index.html` as the documentation entry point, with `docs/pages/`, `docs/components/`, `docs/assets/scss/`, `docs/assets/css/`, `docs/assets/js/`, and `docs/assets/json/` as the main documentation areas.

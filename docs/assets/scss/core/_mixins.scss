@@ -1,7 +1,7 @@
 //-----------------------------------
 //Mixin
 //-----------------------------------
-@use "../../../../src/scss/sisass" as *;
+@use "../../../../src/sisass" as *;
 @use "./variables" as *;
 
 @mixin tagline_sisass($attr: ()) {

@@ -127,7 +127,8 @@
     }
 }
 
-.project_structure {
+.project_structure,
+.installation {
     .tree_viewer {
         @include bc(var(--theme_surface), var(--theme_text));
         @include border-radius(8px);

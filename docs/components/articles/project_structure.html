@@ -15,7 +15,7 @@
     </div>
 
     <p class="description">
-        Este artículo explica cómo se divide el repositorio de <b class="tagline_sisass">SISASS</b> y dónde debes trabajar según el tipo de cambio. El proyecto separa el código fuente del framework, la carga core que usa el instalador y una expplicación simple del sitio de documentación.
+        Este artículo explica cómo se divide el repositorio de <b class="tagline_sisass">SISASS</b> y dónde debes trabajar según el tipo de cambio. El proyecto separa el código fuente del framework, la carga core que usa el instalador y una explicación simple del sitio de documentación.
     </p>
 
     <div class="layout_2 container_tree">
@@ -59,7 +59,7 @@
                     <li class="description_tree_item">
                         <img class="description_tree_icon" src="../assets/img/svg/folder.svg" alt="">
                         <p class="description_tree_text">
-                            <b>files/</b> contiene los archivos que <b>install.js</b> copia al instalar <b class="tagline_sisass">SISASS</b>. Esa copia solo se hace en la instalación inicial y no se sincroniza después con <b>src/</b>.
+                            <b>files/</b> contiene los archivos planos que <b>install.js</b> copia al instalar <b class="tagline_sisass">SISASS</b>. El instalador reconstruye la ruta final <b>assets/scss/core/</b> o <b>src/core/</b> según el modo, y esa copia solo se hace en la instalación inicial; no se sincroniza después con <b>src/</b>.
                         </p>
                     </li>
                     <li class="description_tree_item">
@@ -83,7 +83,16 @@
         </div>
     </div>
 
-    <h2 class="title"> Mapa principal del repositorio </h2>
+    <p class="note">
+        Un partial en SASS es un archivo SCSS pensado para contener una parte del código
+        de estilos y ser reutilizado desde otros archivos, en lugar de compilarse
+        normalmente como una hoja CSS independiente. Es decir, un archivo modular
+        de Sass que no se compila por separado. Puede entenderse como un fragmento que no genera un archivo CSS.
+    </p>
+
+    <h2 class="title"> Rutas principales del repositorio </h2>
+
+    <p class="description">En esta parte se muestran las rutas principales de <b class="tagline_sisass">SISASS</b>. Se omiten algunos scripts y archivos auxiliares.</p>
 
     <div class="container_table">
         <table class="full">
@@ -98,37 +107,22 @@
                 <tr>
                     <td><b>src/</b></td>
                     <td>Fuente de los módulos SCSS del framework.</td>
-                    <td>Cuando modificas mixins, funciones o módulos de SISASS.</td>
+                    <td>Si necesitas utilizar mixins, funciones o módulos de <b class="tagline_sisass">SISASS</b>.</td>
                 </tr>
                 <tr>
                     <td><b>files/</b></td>
-                    <td>Carga de archivos que utiliza el instalador.</td>
-                    <td>Cuando preparas o ajustas lo que se copia a un proyecto consumidor.</td>
+                    <td>Archivos que utiliza el instalador, en el momento de realizar la primera instalación.</td>
+                    <td>Si realizas la instalación de <b class="tagline_sisass">SISASS</b> y deseas entender mejor qué archivos se copian durante la instalación.</td>
                 </tr>
                 <tr>
                     <td><b>install.js</b></td>
-                    <td>Copia los activos y aplica las variantes de instalación.</td>
-                    <td>Cuando cambia el destino, el contenido instalado o el comportamiento de <b>--dep</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>arg.js</b></td>
-                    <td>Convierte los argumentos de la línea de comandos en opciones del instalador.</td>
-                    <td>Cuando agregas o modificas opciones como <b>--path</b> o <b>--dep</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>instances.config.js</b></td>
-                    <td>Define los módulos que se escriben en <b>_instances.scss</b> durante la instalación <b>sqhtml2</b>.</td>
-                    <td>Solo cuando cambia esa integración específica.</td>
-                </tr>
-                <tr>
-                    <td><b>package.json</b> y <b>README.md</b></td>
-                    <td>Metadatos, comandos de npm, instalación y guía de uso del paquete.</td>
-                    <td>Cuando cambia la publicación, la instalación o la forma de consumir SISASS.</td>
+                    <td>Script que copia los archivos de <b>files/</b> en el proyecto que instala <b class="tagline_sisass">SISASS</b> y aplica las variantes de instalación personalizadas.</td>
+                    <td>Cuando cambia el destino por defecto al hacer la instalación, o al usar <b>--dep</b> para realizar una instalación específica para algunos frameworks.</td>
                 </tr>
                 <tr>
                     <td><b>docs/</b></td>
-                    <td>Sitio de documentación y recursos para presentar el proyecto.</td>
-                    <td>Cuando cambia una explicación, una página o la interfaz documental.</td>
+                    <td>Sitio de documentación y recursos para presentar y explicar el comportamiento de <b class="tagline_sisass">SISASS</b>.</td>
+                    <td>Cuando cambia una explicación, aparece una nueva característica de <b class="tagline_sisass">SISASS</b>.</td>
                 </tr>
             </tbody>
         </table>
@@ -137,6 +131,10 @@
     <h2 class="title">
         Fuente del framework: src
     </h2>
+
+    <p class="description">
+        La carpeta <b>src/</b> es la base real del framework: concentra el código fuente que se mantiene y desde el que se construye todo el comportamiento distribuible.
+    </p>
 
     <div class="container_table">
         <table class="full">
@@ -156,44 +154,56 @@
             <tr>
                 <td><b>src/_base.scss</b></td>
                 <td>Mixins y funciones de uso general.</td>
-                <td>Incluye utilidades para tipografía, layout, fondos, unidades, mapas, color, cadenas y listas.</td>
+                <td>
+                    Centraliza utilidades base de <b class="tagline_sisass">SISASS</b>.
+                    Para más info: <a href="../pages/base.html" target="_self">Visita el artículo completo de los mixins y funciones presentes en _base.scss</a>
+                </td>
             </tr>
             <tr>
                 <td><b>src/_vendor.scss</b></td>
                 <td>Mixins de compatibilidad y prefijos.</td>
-                <td>Proporciona utilidades para propiedades que necesitan tratamiento vendor.</td>
+                <td>
+                    Proporciona utilidades para propiedades que necesitan tratamiento vendor.
+                    Para más info: <a href="../pages/vendor.html" target="_self">Visita el artículo completo de los mixins y funciones presentes en _vendor.scss</a>
+                </td>
             </tr>
             <tr>
                 <td><b>src/_mediaqueries.scss</b></td>
                 <td>Mixins para breakpoints, altura y orientación.</td>
-                <td>Construye las media queries usadas por las utilidades responsive.</td>
+                <td>
+                    Construye las media queries usadas por las utilidades responsive.
+                    Para más info: <a href="../pages/mediaqueries.html" target="_self">Visita el artículo completo de los mixins y funciones presentes en _mediaqueries.scss</a>
+                </td>
             </tr>
             <tr>
                 <td><b>src/_reset.scss</b></td>
                 <td>Reset global de elementos HTML.</td>
-                <td>Es un módulo independiente; no forma parte de los <b>@forward</b> de <b>_sisass.scss</b>.</td>
+                <td>
+                    Es un módulo independiente; no forma parte de los <b>@forward</b> de <b>_sisass.scss</b>.
+                    Para más info: <a href="../pages/reset.html" target="_self">Visita el artículo completo de los mixins y funciones presentes en _reset.scss</a>
+                </td>
             </tr>
             <tr>
                 <td><b>src/components/</b></td>
-                <td>Componentes reutilizables como botones, carrusel y modal.</td>
-                <td>Son parciales independientes y no se reexportan desde <b>_sisass.scss</b>.</td>
+                <td>Componentes reutilizables.</td>
+                <td>Son una colección de componentes como botones, carruseles y modales, realizados completamente en CSS sin JS, con ayuda de <b class="tagline_sisass">SISASS</b>.</td>
             </tr>
             <tr>
                 <td><b>src/effects/</b></td>
                 <td>Efectos visuales, animaciones y keyframes.</td>
-                <td>Contiene parciales independientes para efectos de presentación.</td>
+                <td>Son una colección de animaciones, efectos visuales y keyframes.</td>
             </tr>
             <tr>
                 <td><b>src/shapes/</b></td>
                 <td>Formas geométricas reutilizables.</td>
-                <td>Contiene parciales independientes como <b>_triangles.scss</b>.</td>
+                <td>Contiene construcciones geométricas reutilizables.</td>
             </tr>
         </tbody>
         </table>
     </div>
 
     <p class="note">
-        No existe un archivo de variables en <b>src/</b>. Las variables distribuidas están en <b>files/assets/scss/core/_variables.scss</b> y la documentación define sus propias variables en <b>docs/assets/scss/core/_variables.scss</b>. La entrada <b>_sisass.scss</b> no representa todo el árbol de <b>src</b>: los componentes, efectos, formas y el reset se mantienen como módulos separados. Revisa el archivo que contiene la utilidad que vas a cambiar antes de editar el punto de entrada.
+        No existe un archivo de variables en <b>src/</b>. Las variables distribuidas están en <b>files/_variables.scss</b> y la documentación define sus propias variables en <b>docs/assets/scss/core/_variables.scss</b>. La entrada <b>_sisass.scss</b> no representa todo el árbol de <b>src</b>: los componentes, efectos, formas y el reset se mantienen como módulos separados. Revisa el archivo que contiene la utilidad que vas a cambiar antes de editar el punto de entrada.
     </p>
 
     <h2 class="title break_page_print">
@@ -201,7 +211,7 @@
     </h2>
 
     <p class="description">
-        La ruta <b>files/assets/scss/core/</b> es la carga core que el instalador utiliza en algunos modos. Actualmente contiene variables y archivos base de integración; no contiene una copia completa de los módulos de <b>src</b>.
+        La ruta <b>files/</b> agrupa la carga core que el instalador utiliza en algunos modos. Ahora contiene los parciales distribuidos de forma plana; no contiene una copia completa de los módulos de <b>src</b>.
     </p>
 
     <div class="container_table">
@@ -214,27 +224,27 @@
         </thead>
         <tbody>
             <tr>
-                <td><b>files/assets/scss/core/_variables.scss</b></td>
+                <td><b>files/_variables.scss</b></td>
                 <td>Contiene valores base para colores, tipografía, ruta de iconos, breakpoints y tiempos.</td>
             </tr>
             <tr>
-                <td><b>files/assets/scss/core/_fonts.scss</b></td>
+                <td><b>files/_fonts.scss</b></td>
                 <td>Contiene una plantilla comentada para declarar fuentes; el modo <b>sqhtml</b> reemplaza esa plantilla por declaraciones de Roboto.</td>
             </tr>
             <tr>
-                <td><b>files/assets/scss/core/_mixin.scss</b></td>
+                <td><b>files/_mixin.scss</b></td>
                 <td>Es un archivo base para mixins distribuidos y actualmente funciona como placeholder.</td>
             </tr>
             <tr>
-                <td><b>files/assets/scss/core/_keyframes.scss</b></td>
+                <td><b>files/_keyframes.scss</b></td>
                 <td>Es un archivo base para keyframes distribuidos y actualmente funciona como placeholder.</td>
             </tr>
             <tr>
-                <td><b>files/assets/scss/core/_instances.scss</b></td>
+                <td><b>files/_instances.scss</b></td>
                 <td>Es un placeholder en la carga normal; <b>sqhtml2</b> lo genera de nuevo usando <b>instances.config.js</b>.</td>
             </tr>
             <tr>
-                <td><b>files/assets/scss/core/_layout.scss</b></td>
+                <td><b>files/_layout.scss</b></td>
                 <td>Usa <b>instances</b> y sirve como punto de conexión para la composición distribuida.</td>
             </tr>
         </tbody>
@@ -262,21 +272,21 @@
             <tr>
                 <td>Instalación normal</td>
                 <td><b>files/</b></td>
-                <td>Copia la carga incluida en <b>files/</b> al directorio raíz del proyecto consumidor; por defecto crea <b>assets/</b>.</td>
+                <td>Crea <b>assets/scss/core/</b> en la raíz del proyecto consumidor y copia allí los parciales distribuidos.</td>
             </tr>
             <tr>
                 <td><b>--path</b></td>
-                <td><b>files/assets/</b></td>
-                <td>Copia los activos dentro de la ruta indicada, por ejemplo <b>resources/core/</b>.</td>
+                <td><b>files/</b></td>
+                <td>Crea <b>assets/scss/core/</b> dentro de la ruta indicada, por ejemplo <b>resources/assets/scss/core/</b>.</td>
             </tr>
             <tr>
                 <td><b>--dep sqhtml</b></td>
                 <td>La misma carga que la instalación normal o <b>--path</b>.</td>
-                <td>Después de copiar, ajusta <b>_variables.scss</b> y <b>_fonts.scss</b> para SQHTML.</td>
+                <td>Después de copiar, ajusta <b>_variables.scss</b> y <b>_fonts.scss</b> para SQHTML en la ruta final generada.</td>
             </tr>
             <tr>
                 <td><b>--dep sqhtml2</b></td>
-                <td><b>files/assets/scss/core/</b></td>
+                <td><b>files/</b></td>
                 <td>Ignora <b>--path</b>, copia directamente en <b>../../src/core/</b>, aplica los ajustes de SQHTML y genera <b>_instances.scss</b>.</td>
             </tr>
         </tbody>
@@ -308,7 +318,7 @@
             </tr>
             <tr>
                 <td>Cambiar lo que instala el paquete.</td>
-                <td><b>files/assets/scss/core/</b> e <b>install.js</b></td>
+                <td><b>files/</b> e <b>install.js</b></td>
                 <td>Actualizas manualmente el activo distribuible y su proceso de copia.</td>
             </tr>
             <tr>
@@ -331,6 +341,6 @@
     </div>
 
     <p class="note">
-        Regla práctica: modifica <b>src</b> para el framework, <b>files/</b> para la carga core que se distribuye, <b>install.js</b> para el flujo de instalación y <b>docs/</b> para explicar y compilar el sitio documental. No asumas que una carpeta se sincroniza automáticamente con otra ni que la carga instalada contiene todo el árbol fuente.
+        Regla práctica: modifica <b>src</b> para el framework, <b>files/</b> para la carga core plana que se distribuye, <b>install.js</b> para el flujo de instalación y <b>docs/</b> para explicar y compilar el sitio documental. No asumas que una carpeta se sincroniza automáticamente con otra ni que la carga instalada contiene todo el árbol fuente.
     </p>
 </article>

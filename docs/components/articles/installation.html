@@ -1,0 +1,446 @@
+<article id="installation" class="installation">
+    <div class="group_title">
+        <h2 class="subtitle">
+            Instalación de SISASS
+        </h2>
+
+        <div class="container_attributes">
+            <h3 class="attribute">
+                Tipo: Artículo
+            </h3>
+            <h3 class="attribute">
+                Versión: 2.x.x
+            </h3>
+        </div>
+    </div>
+
+    <p class="description">
+        Esta guía explica cómo instalar <b class="tagline_sisass">SISASS</b>, copiar su carga <b>core</b> y conectar los archivos SCSS con el compilador de tu proyecto.
+    </p>
+
+    <p class="description">
+        Elige el procedimiento que corresponde a tu entorno. La instalación del paquete y la instalación del preprocesador Sass son pasos distintos, pero ambos son necesarios para compilar los estilos.
+    </p>
+
+    <aside class="note" aria-label="Advertencia de instalación">
+        Al ejecutar nuevamente el instalador, los archivos distribuidos pueden sobrescribir personalizaciones existentes en la carpeta de destino. Conserva tus cambios antes de reinstalar.
+    </aside>
+
+    <h2 id="installation_requirements" class="title">
+        Requisitos comunes
+    </h2>
+
+    <p class="description">
+        Necesitas Node.js, npm y un proyecto con una carpeta raíz identificable. Si el proyecto todavía no tiene un archivo <b>package.json</b>, créalo antes de instalar el paquete.
+    </p>
+
+    <div class="container_table">
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Entorno</th>
+                    <th>Preprocesador</th>
+                    <th>Instalador</th>
+                    <th>Destino principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML, CSS y JavaScript</td>
+                    <td><b>sass</b></td>
+                    <td>Normal</td>
+                    <td><b>assets/scss/core/</b></td>
+                </tr>
+                <tr>
+                    <td>SQHTML</td>
+                    <td><b>sass</b></td>
+                    <td><b>--dep sqhtml</b></td>
+                    <td><b>assets/scss/core/</b></td>
+                </tr>
+                <tr>
+                    <td>SQHTML2</td>
+                    <td><b>sass</b></td>
+                    <td><b>--dep sqhtml2</b></td>
+                    <td><b>src/core/</b></td>
+                </tr>
+                <tr>
+                    <td>React sin Vite</td>
+                    <td><b>sass</b></td>
+                    <td>Normal con <b>--path</b></td>
+                    <td><b>src/assets/scss/core/</b></td>
+                </tr>
+                <tr>
+                    <td>React con Vite</td>
+                    <td><b>sass-embedded</b> o <b>sass</b></td>
+                    <td>Normal con <b>--path</b></td>
+                    <td><b>src/assets/scss/core/</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 class="subtitle_2">
+        Instalar el paquete y el compilador
+    </h3>
+
+    <pre class="language-bash"><code>npm init -y
+npm install sisass
+npm install --save-dev sass</code></pre>
+
+    <p class="description">
+        SISASS 2.x.x utiliza el sistema de módulos de Sass. Escribe los nuevos ejemplos con <b>@use</b> y <b>@forward</b>; no uses <b>node-sass</b> ni construyas integraciones nuevas con <b>@import</b>.
+    </p>
+
+    <div
+        id="installation_environments_tabs"
+        class="container_example tab_panel"
+        data-tab-panel
+        data-active-tab="vanilla"
+    >
+        <div class="tab_panel_list" data-tab-panel-list>
+            <button class="tab_panel_tab" data-tab-panel-tab="vanilla">Vanilla</button>
+            <button class="tab_panel_tab" data-tab-panel-tab="react">React sin Vite</button>
+            <button class="tab_panel_tab" data-tab-panel-tab="react_vite">React con Vite</button>
+            <button class="tab_panel_tab" data-tab-panel-tab="sqhtml">SQHTML</button>
+        </div>
+
+        <div class="tab_panel_panel" data-tab-panel-panel="vanilla">
+    <h2 id="installation_html" class="title">
+        Proyecto HTML, CSS y JavaScript
+    </h2>
+
+    <p class="description">
+        En un proyecto tradicional, el instalador normal crea la carga distribuida en <b>assets/scss/core/</b>. Ejecuta el comando desde la raíz del proyecto consumidor:
+    </p>
+
+    <pre class="language-bash"><code>npm explore sisass -- npm run init</code></pre>
+
+    <p class="description">
+        Crea un punto de entrada, por ejemplo <b>assets/main.scss</b>, e importa el módulo público de SISASS. La ruta <b>sisass/src/sisass</b> corresponde al árbol actual del paquete; si el paquete publicado incorpora un punto de entrada Sass, utiliza ese punto de entrada validado.
+    </p>
+
+    <pre class="language-scss"><code>@use "sisass/src/sisass" as s;
+@use "core/variables" as variables;
+
+.installation_check {
+    @include s.text((align: center));
+    color: variables.$c2;
+}</code></pre>
+
+    <p class="description">
+        Compila el archivo con la carpeta del proyecto y el paquete como rutas de carga:
+    </p>
+
+    <pre class="language-bash"><code>npx sass assets/main.scss assets/css/main.css \
+    --load-path assets \
+    --load-path node_modules</code></pre>
+
+    <p class="description">
+        Enlaza <b>assets/css/main.css</b> desde tu HTML. Para observar cambios durante el desarrollo, puedes sustituir la compilación puntual por el modo <b>--watch</b>.
+    </p>
+
+        </div>
+
+        <div class="tab_panel_panel" data-tab-panel-panel="react">
+    <h2 id="installation_react" class="title">
+        React sin Vite
+    </h2>
+
+    <p class="description">
+        React no define por sí mismo cómo se procesan los archivos SCSS. Esta ruta utiliza Webpack como ejemplo de un proyecto React existente. Si tu proyecto usa otra herramienta, conserva el procedimiento del instalador y sigue la integración Sass específica de esa herramienta.
+    </p>
+
+    <pre class="language-bash"><code>npm install sisass
+npm install --save-dev sass sass-loader
+npm explore sisass -- npm run init -- --path ../../src/</code></pre>
+
+    <p class="description">
+        Verifica que Webpack tenga disponibles <b>css-loader</b> y <b>style-loader</b>. La regla para SCSS debe encadenar esos loaders con <b>sass-loader</b>:
+    </p>
+
+    <pre class="language-javascript"><code>module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
+            }
+        ]
+    }
+};</code></pre>
+
+    <p class="description">
+        Importa un archivo como <b>src/main.scss</b> desde tu entrada JavaScript o JSX:
+    </p>
+
+    <pre class="language-javascript"><code>import "./main.scss";</code></pre>
+
+    <p class="description">
+        Para estilos globales usa un archivo SCSS normal. Si el proyecto ya tiene CSS Modules, puedes usar la extensión <b>.module.scss</b> y consumir las clases mediante el objeto que devuelve el import.
+    </p>
+
+        </div>
+
+        <div class="tab_panel_panel" data-tab-panel-panel="react_vite">
+    <h2 id="installation_react_vite" class="title">
+        React con Vite
+    </h2>
+
+    <p class="description">
+        Vite tiene soporte incorporado para archivos <b>.scss</b> y <b>.sass</b>; no necesitas instalar un plugin específico de Vite. La documentación actual recomienda <b>sass-embedded</b> por su rendimiento y mantiene <b>sass</b> como alternativa.
+    </p>
+
+    <pre class="language-bash"><code>npm install sisass
+npm install --save-dev sass-embedded
+npm explore sisass -- npm run init -- --path ../../src/</code></pre>
+
+    <p class="description">
+        npm instala el paquete en <b>node_modules/sisass/</b>. El punto de entrada Sass de SISASS se encuentra en <b>node_modules/sisass/src/_sisass.scss</b>; por eso configura <b>node_modules</b> como una ruta de carga para que Vite pueda resolver <b>sisass/src/sisass</b>:
+    </p>
+
+    <pre class="language-javascript"><code>import { defineConfig } from "vite";
+
+export default defineConfig({
+    css: {
+        preprocessorOptions: {
+            scss: {
+                loadPaths: ["./node_modules"]
+            }
+        }
+    }
+});</code></pre>
+
+    <p class="description">
+        Crea <b>src/main.scss</b> e importa la carga instalada y el módulo de SISASS:
+    </p>
+
+    <pre class="language-scss"><code>@use "./assets/scss/core/variables" as variables;
+@use "sisass/src/sisass" as s;
+
+.installation_check {
+    @include s.text((align: center));
+    color: variables.$c2;
+}</code></pre>
+
+    <pre class="language-javascript"><code>import "./main.scss";</code></pre>
+
+    <p class="description">
+        Ejecuta el servidor de desarrollo y la construcción de producción para confirmar que Vite resuelve los módulos y genera CSS:
+    </p>
+
+    <pre class="language-bash"><code>npm run dev
+npm run build</code></pre>
+
+    <h3 class="subtitle_2">
+        Estilos locales con CSS Modules
+    </h3>
+
+    <p class="description">
+        Vite reconoce como CSS Module cualquier archivo SCSS cuyo nombre termine en <b>.module.scss</b>. Crea el archivo junto al componente que va a utilizarlo; así resulta fácil identificar qué estilos le pertenecen. Esta es la estructura del ejemplo:
+    </p>
+
+    <div class="container_tree">
+        <div
+            id="installation_css_modules_tree"
+            class="tree_viewer tree_viewer_demo d1"
+            aria-label="Estructura de un componente React con CSS Modules"
+        ></div>
+    </div>
+
+    <h3 class="subtitle_2">
+        Ejemplo: componente ProductCard
+    </h3>
+
+    <p class="description">
+        Para este ejemplo, <b>ProductCard</b> es un componente ficticio que representa una tarjeta de producto. En su archivo <b>ProductCard.module.scss</b>, importa SISASS y las variables instaladas. Las clases declaradas allí serán locales al componente:
+    </p>
+
+    <pre class="language-scss"><code>@use "sisass/src/sisass" as s;
+@use "../../assets/scss/core/variables" as variables;
+
+.product_card {
+    @include s.text((align: center));
+    background-color: variables.$c1;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.title {
+    color: variables.$c2;
+    margin: 0 0 10px;
+}
+
+.description {
+    margin: 0;
+}</code></pre>
+
+    <p class="description">
+        En <b>ProductCard.jsx</b>, importa el módulo como <b>styles</b> y accede a cada clase mediante ese objeto. Vite genera nombres únicos durante la compilación, por lo que estas clases no afectan otros componentes:
+    </p>
+
+    <pre class="language-javascript"><code>import styles from "./ProductCard.module.scss";
+
+export function ProductCard() {
+    return (
+        &lt;article className={styles.product_card}&gt;
+            &lt;h2 className={styles.title}&gt;Curso de SISASS&lt;/h2&gt;
+            &lt;p className={styles.description}&gt;
+                Estilos aislados para este componente.
+            &lt;/p&gt;
+        &lt;/article&gt;
+    );
+}</code></pre>
+
+    <p class="description">
+        Por último, importa <b>ProductCard</b> desde <b>App.jsx</b>. No necesitas importar nuevamente el SCSS porque el componente ya carga su propio módulo:
+    </p>
+
+    <pre class="language-javascript"><code>import { ProductCard } from "./components/ProductCard/ProductCard";
+
+export default function App() {
+    return &lt;ProductCard /&gt;;
+}</code></pre>
+
+        </div>
+
+        <div class="tab_panel_panel" data-tab-panel-panel="sqhtml">
+    <h2 id="installation_sqhtml" class="title">
+        Instalación en SQHTML
+    </h2>
+
+    <p class="description">
+        El modo SQHTML conserva el destino <b>assets/scss/core/</b> y aplica ajustes específicos de variables y fuentes.
+    </p>
+
+    <pre class="language-bash"><code>npm explore sisass -- npm run init -- --dep sqhtml</code></pre>
+
+    <p class="description">
+        Si necesitas otra raíz de recursos, combina <b>--dep sqhtml</b> con <b>--path</b>:
+    </p>
+
+    <pre class="language-bash"><code>npm explore sisass -- npm run init -- --dep sqhtml --path ../../resources/</code></pre>
+
+    <p class="description">
+        Después de copiar los archivos, el instalador añade <b>$c3: #1F567B</b> cuando todavía no existe el bloque de ejemplo de SQHTML, configura <b>$f1</b> con Roboto, ajusta <b>$i1</b> a <b>../../img/svg/</b> y reemplaza el bloque de ejemplo de <b>_fonts.scss</b> por declaraciones de Roboto.
+    </p>
+
+    <h2 id="installation_sqhtml2" class="title">
+        Instalación en SQHTML2
+    </h2>
+
+    <p class="description">
+        SQHTML2 es una integración especial del instalador. Su destino se fuerza a <b>src/core/</b> y no depende de <b>--path</b>.
+    </p>
+
+    <pre class="language-bash"><code>npm explore sisass -- npm run init -- --dep sqhtml2</code></pre>
+
+    <p class="description">
+        Además de aplicar los ajustes de SQHTML, el instalador regenera <b>_instances.scss</b> a partir de <b>instances.config.js</b>. En la configuración actual, el archivo reenvía <b>variables</b>, <b>base</b>, <b>mediaqueries</b> y <b>mixin</b>.
+    </p>
+
+    <aside class="note" aria-label="Estado de SQHTML2">
+        SQHTML2 continúa en desarrollo. Comprueba que los módulos que reenvía <b>_instances.scss</b> existan en el proyecto consumidor antes de compilar.
+    </aside>
+        </div>
+    </div>
+
+    <h2 id="installation_paths" class="title">
+        Rutas y modos del instalador
+    </h2>
+
+    <p class="description">
+        <b>npm explore sisass</b> ejecuta el script desde el directorio del paquete instalado. Por eso una ruta como <b>../../src/</b> se interpreta desde <b>node_modules/sisass</b> en una instalación npm convencional.
+    </p>
+
+    <div class="container_table">
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Modo</th>
+                    <th>Respeta <b>--path</b></th>
+                    <th>Destino</th>
+                    <th>Transformaciones adicionales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Normal</td>
+                    <td>Sí</td>
+                    <td><b>&lt;raíz&gt;/assets/scss/core/</b></td>
+                    <td>Ninguna</td>
+                </tr>
+                <tr>
+                    <td><b>sqhtml</b></td>
+                    <td>Sí</td>
+                    <td><b>&lt;raíz&gt;/assets/scss/core/</b></td>
+                    <td>Variables y fuentes de SQHTML</td>
+                </tr>
+                <tr>
+                    <td><b>sqhtml2</b></td>
+                    <td>No</td>
+                    <td><b>src/core/</b></td>
+                    <td>Variables, fuentes y generación de instancias</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 id="installation_troubleshooting" class="title">
+        Solución de problemas
+    </h2>
+
+    <div class="container_table">
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Problema</th>
+                    <th>Comprobación</th>
+                    <th>Solución</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>El comando Sass no existe.</td>
+                    <td>Ejecuta <b>npx sass --version</b>.</td>
+                    <td>Instala <b>sass</b> como dependencia de desarrollo o usa el script del proyecto.</td>
+                </tr>
+                <tr>
+                    <td>No se encuentra un módulo SCSS.</td>
+                    <td>Revisa el destino creado y las rutas de carga.</td>
+                    <td>Corrige <b>--path</b> o añade la carpeta correcta al compilador.</td>
+                </tr>
+                <tr>
+                    <td>SQHTML2 no respeta <b>--path</b>.</td>
+                    <td>Confirma que usaste <b>--dep sqhtml2</b>.</td>
+                    <td>Usa el destino fijo <b>src/core/</b> y no combines este modo con una ruta alternativa.</td>
+                </tr>
+                <tr>
+                    <td>Faltan módulos reenviados por SQHTML2.</td>
+                    <td>Revisa el contenido generado de <b>_instances.scss</b>.</td>
+                    <td>Añade los módulos requeridos al proyecto consumidor o espera una versión posterior de la integración.</td>
+                </tr>
+                <tr>
+                    <td>SISASS no se resuelve con <b>@use</b>.</td>
+                    <td>Comprueba el punto de entrada del paquete y la ruta de carga.</td>
+                    <td>Usa el punto de entrada Sass publicado y validado para la versión instalada.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="title">
+        Referencias oficiales
+    </h2>
+
+    <ul>
+        <li><a href="https://sass-lang.com/install/" target="_blank" rel="noreferrer">Instalación de Sass</a></li>
+        <li><a href="https://sass-lang.com/documentation/at-rules/use/" target="_blank" rel="noreferrer">Sistema de módulos @use de Sass</a></li>
+        <li><a href="https://react.dev/learn/" target="_blank" rel="noreferrer">Estilos en React</a></li>
+        <li><a href="https://vite.dev/guide/features" target="_blank" rel="noreferrer">Preprocesadores CSS en Vite</a></li>
+        <li><a href="https://webpack.js.org/loaders/sass-loader/" target="_blank" rel="noreferrer">sass-loader para Webpack</a></li>
+    </ul>
+</article>

@@ -2123,8 +2123,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
 .documentationpage .deprecated {
   color: var(--theme_accent);
 }
-.documentationpage .description,
-.documentationpage p {
+.documentationpage .description, .documentationpage p {
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -2138,15 +2137,13 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   background-color: transparent;
   color: var(--theme_text);
 }
-.documentationpage .description .tagline_sisass,
-.documentationpage p .tagline_sisass {
+.documentationpage .description .tagline_sisass, .documentationpage p .tagline_sisass {
   font-family: "Montserrat", "sans-serif";
   font-weight: 900;
   text-transform: uppercase;
   color: var(--theme_text);
 }
-.documentationpage .description b,
-.documentationpage p b {
+.documentationpage .description b, .documentationpage p b {
   background-color: transparent;
   color: var(--theme_text_bold);
   text-align: justify;
@@ -2159,8 +2156,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   font-style: normal;
   font-variant: normal;
 }
-.documentationpage .description,
-.documentationpage p {
+.documentationpage .description, .documentationpage p {
   margin-bottom: 15px;
 }
 .documentationpage .mb {
@@ -2421,6 +2417,39 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   border-right: none;
 }
 .documentationpage table tbody td {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.documentationpage table tbody td .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.documentationpage table tbody td b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.documentationpage table tbody td {
   padding: 10px 15px;
   border: 1px solid var(--theme_border);
 }
@@ -2612,7 +2641,8 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   line-height: 1.45;
 }
 
-.project_structure .tree_viewer {
+.project_structure .tree_viewer,
+.installation .tree_viewer {
   background-color: var(--theme_surface);
   color: var(--theme_text);
   -webkit-border-radius: 8px;
@@ -2627,16 +2657,19 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   overflow: hidden;
   border: 1px solid var(--theme_border);
 }
-.project_structure .tree_viewer__frame {
+.project_structure .tree_viewer__frame,
+.installation .tree_viewer__frame {
   display: block;
 }
-.project_structure .tree_viewer__header {
+.project_structure .tree_viewer__header,
+.installation .tree_viewer__header {
   background-color: var(--theme_surface_alt);
   color: var(--theme_text);
   padding: 14px 18px;
   border-bottom: 1px solid var(--theme_border);
 }
-.project_structure .tree_viewer__title {
+.project_structure .tree_viewer__title,
+.installation .tree_viewer__title {
   font-size: 1.25rem;
   font-family: "Fira Sans", "sans-serif";
   font-weight: bold;
@@ -2649,20 +2682,24 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   margin: 0;
   color: var(--theme_accent);
 }
-.project_structure .tree_viewer__content {
+.project_structure .tree_viewer__content,
+.installation .tree_viewer__content {
   display: block;
 }
-.project_structure .tree_viewer__viewport {
+.project_structure .tree_viewer__viewport,
+.installation .tree_viewer__viewport {
   overflow: overlay;
   overflow-x: hidden;
 }
 @supports (-moz-appearance: none) {
-  .project_structure .tree_viewer__viewport {
+  .project_structure .tree_viewer__viewport,
+  .installation .tree_viewer__viewport {
     scrollbar-color: #FBB03B var(--theme_scroll_track);
     scrollbar-width: auto;
   }
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar,
+.installation .tree_viewer__viewport::-webkit-scrollbar {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2670,7 +2707,8 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   height: 10px;
   background-color: var(--theme_scroll_track);
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar-thumb {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar-thumb,
+.installation .tree_viewer__viewport::-webkit-scrollbar-thumb {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -2680,13 +2718,16 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   background-color: #FBB03B;
   box-shadow: none;
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar-thumb:hover {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar-thumb:hover,
+.installation .tree_viewer__viewport::-webkit-scrollbar-thumb:hover {
   background-color: #FBB03B;
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar-thumb:active {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar-thumb:active,
+.installation .tree_viewer__viewport::-webkit-scrollbar-thumb:active {
   background-color: #FBB03B;
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar-track {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar-track,
+.installation .tree_viewer__viewport::-webkit-scrollbar-track {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -2696,25 +2737,31 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   background-color: var(--theme_scroll_track);
   box-shadow: none;
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar-track:hover {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar-track:hover,
+.installation .tree_viewer__viewport::-webkit-scrollbar-track:hover {
   background-color: var(--theme_scroll_track);
 }
-.project_structure .tree_viewer__viewport::-webkit-scrollbar-track:active {
+.project_structure .tree_viewer__viewport::-webkit-scrollbar-track:active,
+.installation .tree_viewer__viewport::-webkit-scrollbar-track:active {
   background-color: var(--theme_scroll_track);
 }
-.project_structure .tree_viewer__viewport {
+.project_structure .tree_viewer__viewport,
+.installation .tree_viewer__viewport {
   box-sizing: border-box;
   overflow: auto;
   padding: 20px;
 }
 @media only screen and (max-width: 980px) {
-  .project_structure .tree_viewer__viewport {
+  .project_structure .tree_viewer__viewport,
+  .installation .tree_viewer__viewport {
     max-height: 420px;
     padding: 15px;
   }
 }
 .project_structure .tree_viewer__tree,
-.project_structure .tree_viewer__children {
+.project_structure .tree_viewer__children,
+.installation .tree_viewer__tree,
+.installation .tree_viewer__children {
   margin: 0;
   margin-top: 0;
   margin-bottom: 0;
@@ -2727,7 +2774,8 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   padding-right: 0;
   list-style: none;
 }
-.project_structure .tree_viewer__node {
+.project_structure .tree_viewer__node,
+.installation .tree_viewer__node {
   font-size: 1rem;
   font-family: "Nunito Sans", "sans-serif";
   font-weight: normal;
@@ -2737,16 +2785,19 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   white-space: nowrap;
 }
 @media only screen and (max-width: 980px) {
-  .project_structure .tree_viewer__node {
+  .project_structure .tree_viewer__node,
+  .installation .tree_viewer__node {
     font-size: 0.875rem;
   }
 }
-.project_structure .tree_viewer__row {
+.project_structure .tree_viewer__row,
+.installation .tree_viewer__row {
   display: flex;
   align-items: center;
   min-height: 28px;
 }
-.project_structure .tree_viewer__branch {
+.project_structure .tree_viewer__branch,
+.installation .tree_viewer__branch {
   font-size: 100%;
   font-family: monospace;
   font-weight: normal;
@@ -2756,7 +2807,8 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   flex: 0 0 auto;
   white-space: pre;
 }
-.project_structure .tree_viewer__icon {
+.project_structure .tree_viewer__icon,
+.installation .tree_viewer__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2765,23 +2817,29 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   height: 20px;
   margin: 0 8px 0 6px;
 }
-.project_structure .tree_viewer__icon img {
+.project_structure .tree_viewer__icon img,
+.installation .tree_viewer__icon img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-.project_structure .tree_viewer__text {
+.project_structure .tree_viewer__text,
+.installation .tree_viewer__text {
   display: inline-block;
 }
-.project_structure .tree_viewer__node--folder > .tree_viewer__row {
+.project_structure .tree_viewer__node--folder > .tree_viewer__row,
+.installation .tree_viewer__node--folder > .tree_viewer__row {
   font-weight: bold;
 }
-.project_structure .tree_viewer__children {
+.project_structure .tree_viewer__children,
+.installation .tree_viewer__children {
   display: block;
 }
 .project_structure .tree_viewer__empty,
-.project_structure .tree_viewer__invalid {
+.project_structure .tree_viewer__invalid,
+.installation .tree_viewer__empty,
+.installation .tree_viewer__invalid {
   text-align: justify;
   text-decoration: initial;
   text-transform: initial;
@@ -2796,14 +2854,18 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   color: var(--theme_text_alt);
 }
 .project_structure .tree_viewer__empty .tagline_sisass,
-.project_structure .tree_viewer__invalid .tagline_sisass {
+.project_structure .tree_viewer__invalid .tagline_sisass,
+.installation .tree_viewer__empty .tagline_sisass,
+.installation .tree_viewer__invalid .tagline_sisass {
   font-family: "Montserrat", "sans-serif";
   font-weight: 900;
   text-transform: uppercase;
   color: var(--theme_text_alt);
 }
 .project_structure .tree_viewer__empty b,
-.project_structure .tree_viewer__invalid b {
+.project_structure .tree_viewer__invalid b,
+.installation .tree_viewer__empty b,
+.installation .tree_viewer__invalid b {
   background-color: transparent;
   color: var(--theme_text_bold);
   text-align: justify;
@@ -2817,11 +2879,15 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   font-variant: normal;
 }
 .project_structure .tree_viewer__empty,
-.project_structure .tree_viewer__invalid {
+.project_structure .tree_viewer__invalid,
+.installation .tree_viewer__empty,
+.installation .tree_viewer__invalid {
   margin: 0;
 }
 .project_structure .tree_viewer.without-data .tree_viewer__viewport,
-.project_structure .tree_viewer.invalid-data .tree_viewer__viewport {
+.project_structure .tree_viewer.invalid-data .tree_viewer__viewport,
+.installation .tree_viewer.without-data .tree_viewer__viewport,
+.installation .tree_viewer.invalid-data .tree_viewer__viewport {
   padding: 20px;
 }
 

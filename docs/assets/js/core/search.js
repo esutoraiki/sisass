@@ -9,7 +9,7 @@ const
     selector_search_results = "#page_search_results",
     selector_search_templates_mount = "body",
     search_templates_url = new URL("../../../templates/templates.html", import.meta.url).href,
-    search_index_url = new URL("../../json/search_index.json", import.meta.url).href,
+    search_index_url = new URL("../../json/components/search_index.json", import.meta.url).href,
     documentation_root_url = new URL("../../../", import.meta.url),
     class_active = "active",
     class_hide = "hide",

@@ -1,0 +1,54 @@
+[
+    {
+        "name": "src",
+        "type": "folder",
+        "children": [
+            {
+                "name": "assets",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "scss",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "core",
+                                "type": "folder",
+                                "children": [
+                                    {
+                                        "name": "_variables.scss",
+                                        "type": "file"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "components",
+                "type": "folder",
+                "children": [
+                    {
+                        "name": "ProductCard",
+                        "type": "folder",
+                        "children": [
+                            {
+                                "name": "ProductCard.jsx",
+                                "type": "file"
+                            },
+                            {
+                                "name": "ProductCard.module.scss",
+                                "type": "file"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "App.jsx",
+                "type": "file"
+            }
+        ]
+    }
+]
