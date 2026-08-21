@@ -199,7 +199,11 @@ npm install --save-dev sass-embedded
 npm explore sisass -- npm run init -- --path ../../src/</code></pre>
 
     <p class="description">
-        npm instala el paquete en <b>node_modules/sisass/</b>. El punto de entrada Sass de SISASS se encuentra en <b>node_modules/sisass/src/_sisass.scss</b>; por eso configura <b>node_modules</b> como una ruta de carga para que Vite pueda resolver <b>sisass/src/sisass</b>:
+        npm instala el paquete en <b>node_modules/sisass/</b>. El punto de entrada Sass de SISASS se encuentra en <b>node_modules/sisass/src/_sisass.scss</b>. Para que Sass pueda resolver <b>sisass/src/sisass</b>, configura <b>node_modules</b> como una ruta de carga en la configuración de Vite.
+    </p>
+
+    <p class="description">
+        Este bloque no se coloca en <b>src/main.scss</b>. Guárdalo en <b>vite.config.js</b>, en la raíz del proyecto, al mismo nivel que <b>package.json</b>. Si tu proyecto usa TypeScript, utiliza el mismo contenido en <b>vite.config.ts</b>:
     </p>
 
     <pre class="language-javascript"><code>import { defineConfig } from "vite";
@@ -213,6 +217,48 @@ export default defineConfig({
         }
     }
 });</code></pre>
+
+    <h3 class="subtitle_2">
+        Configuración opcional sin namespaces
+    </h3>
+
+    <p class="description">
+        Si no deseas escribir los namespaces <b>s</b> y <b>variables</b> en cada archivo SCSS, puedes configurar Vite para importar SISASS y sus variables globalmente mediante <b>additionalData</b>. Esta variante requiere <b>@vitejs/plugin-react</b> y debe guardarse en <b>vite.config.ts</b>, en la raíz del proyecto:
+    </p>
+
+    <pre class="language-bash"><code>npm install --save-dev @vitejs/plugin-react</code></pre>
+
+    <pre class="language-typescript"><code>import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+    plugins: [react()],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                loadPaths: [
+                    "./node_modules/sisass",
+                    "./node_modules/sisass/src",
+                    "./src/assets/scss"
+                ],
+                additionalData: "@use \"core\" as *;\n@use \"sisass\" as *;\n"
+            }
+        }
+    }
+});</code></pre>
+
+    <p class="description">
+        Con esta configuración, <b>src/main.scss</b> puede utilizar directamente los mixins y las variables sin prefijo:
+    </p>
+
+    <pre class="language-scss"><code>.installation_check {
+    @include text((align: center));
+    color: $c2;
+}</code></pre>
+
+    <p class="description">
+        El uso global es opcional y puede provocar colisiones con mixins o variables del proyecto. Para aplicaciones grandes, se recomienda conservar los namespaces y usar <b>s.text(...)</b> y <b>variables.$c2</b> de forma explícita.
+    </p>
 
     <p class="description">
         Crea <b>src/main.scss</b> e importa la carga instalada y el módulo de SISASS:
