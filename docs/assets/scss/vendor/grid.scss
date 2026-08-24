@@ -1,0 +1,41 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .grid_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+        @include wh(100%);
+
+        .subtitle { @include no-spacing; }
+
+        .box_group {
+            @include wh(100%);
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            &.is_grid {
+                @include grid;
+                @include gap(12px);
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .box {
+            @include center-flex-column;
+            min-height: 52px;
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            color: $c1;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .is_grid {
+            .box { margin-bottom: 0; }
+        }
+    }
+}

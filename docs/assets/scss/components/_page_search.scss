@@ -1,0 +1,218 @@
+@use "../core/instances" as *;
+@use "sass:list";
+
+.search_target {
+    @include transition(outline-color $t2 ease-in-out);
+    outline: 3px solid var(--theme_accent);
+    box-sizing: border-box;
+    outline-offset: 10px;
+}
+
+.documentationpage {
+    .main_header {
+        .page_search {
+            @include position((
+                p: absolute,
+                t: 50%,
+                l: 50%
+            ));
+            @include wh(min(32vw, 440px));
+            @include user-select;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+
+            @media print { display: none; }
+
+            &.active {
+                @include wh(min(32vw, 440px));
+            }
+
+            .openclose {
+                all: initial;
+                @include transform(translateY(-50%));
+                @include normalize-svg((
+                    w: list.nth($l2, 1),
+                    h: list.nth($l2, 1),
+                    position: (
+                        p: absolute,
+                        t: 50%,
+                        l: 14px
+                    )
+                ));
+                cursor: pointer;
+                z-index: 2;
+            }
+
+            .container_search {
+                display: block;
+
+                &.active {
+                    display: block;
+                }
+
+                .page_search_label {
+                    display: none;
+                }
+
+                .page_search_box {
+                    @include position;
+                    display: block;
+
+                    .page_search_input {
+                        @include font(szrem(16), $f1);
+                        @include border-radius(24px);
+                        @include bc(var(--theme_surface_alt), var(--theme_text));
+                        @include wh(100%);
+                        box-sizing: border-box;
+                        padding: 11px 70px 11px 48px;
+                        border: 1px solid var(--theme_border);
+                    }
+
+                    .page_search_shortcut {
+                        @include border-radius(6px);
+                        @include position((
+                            p: absolute,
+                            t: 50%,
+                            r: 10px
+                        ));
+                        @include font(szrem(12), $f1, bold);
+                        @include bc(var(--theme_surface), var(--theme_text_alt));
+                        transform: translateY(-50%);
+                        padding: 3px 6px;
+                        pointer-events: none;
+                    }
+                } // page_search_box
+
+                .page_search_results {
+                    @include scroll((
+                        color: $c4,
+                        bg: var(--theme_scroll_track),
+                        width: 10px,
+                        thumb_border: 3px solid var(--theme_scroll_track),
+                        radius: 5px
+                    ));
+                    @include bc(var(--theme_surface), var(--theme_text));
+                    @include border-radius(10px);
+                    @include wh(100%);
+                    @include position((
+                        p: absolute,
+                        t: calc(100% + 10px),
+                        l: 0
+                    ));
+                    max-height: min(60vh, 540px);
+                    box-sizing: border-box;
+                    overflow: auto;
+                    margin-top: 10px;
+                    display: none;
+
+                    &.is_visible { display: block; }
+
+                    .page_search_state {
+                        @include t1(( c: var(--theme_text_alt) ));
+                        margin-bottom: 0;
+                        padding: 14px 16px;
+                    }
+
+                    .page_search_item {
+                        display: block;
+                        text-decoration: none;
+                        border-bottom: 1px dashed var(--theme_border_soft);
+                        padding: 14px 16px;
+
+                        &:last-child { border-bottom: none; }
+                        &:hover { background-color: var(--theme_surface_alt); }
+
+                        .page_search_title {
+                            @include font(szrem(18), $f2, bold);
+                            @include text;
+                            margin-bottom: 6px;
+                            color: var(--theme_accent);
+                        }
+
+                        .page_search_page {
+                            @include font(szrem(13), $f2, bold);
+                            @include text;
+                            margin-bottom: 3px;
+                            color: var(--theme_accent_alt);
+                        }
+
+                        .page_search_category,
+                        .page_search_excerpt {
+                            @include t1(( c: var(--theme_text_alt) ));
+                            margin-bottom: 0;
+                        }
+
+                        .page_search_category {
+                            font-weight: bold;
+                            color: var(--theme_text);
+                        }
+
+                        .page_search_excerpt { margin-top: 6px; }
+                    } // page_search_item
+                } // page_search_results
+            } // container_search
+
+            @include brp($b6) {
+                @include position((
+                    p: absolute,
+                    t: 50%,
+                    r: 70px,
+                    l: auto
+                ));
+                @include wh(max-content);
+                transform: translateY(-50%);
+
+                &.active {
+                    @include border-radius(12px);
+                    @include bc(var(--theme_surface), var(--theme_text));
+                    @include position((
+                        p: absolute,
+                        t: 10px,
+                        r: 15px
+                    ));
+                    @include wh(min(90vw, 520px));
+                    transform: none;
+                    box-shadow: var(--theme_shadow);
+                    padding: 10px 10px 7px;
+                }
+
+                .openclose {
+                    @include position((
+                        p: relative,
+                        t: auto,
+                        l: auto
+                    ));
+                    transform: none;
+                }
+
+                .container_search {
+                    display: none;
+
+                    &.active {
+                        display: block;
+                    }
+
+                    .page_search_label {
+                        @include font(szrem(15), $f2, bold);
+                        @include text;
+                        margin-bottom: 8px;
+                        display: block;
+                        color: var(--theme_text);
+                    }
+
+                    .page_search_box {
+                        .page_search_input {
+                            @include border-radius(8px);
+                            @include bc(var(--theme_surface), var(--theme_text));
+                            padding: 14px 16px;
+                        }
+
+                        .page_search_shortcut {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        } // page_search
+    } // main_header
+} // documentationpage

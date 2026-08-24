@@ -1,0 +1,197 @@
+<article id="normalize_svg" class="normalize_svg">
+    <div class="group_title">
+        <h2 class="subtitle">
+            normalize-svg (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Normaliza estilos para elementos que representen un recurso SVG dentro
+        de la interfaz.
+    </p>
+    <p class="description">
+        Es un wrapper especializado sobre
+        <a href="../pages/base.html#replace_base">replace-base</a> para el flujo
+        de SVG. Su valor está en ofrecer una configuración predeterminada útil
+        para trabajar junto a <a href="../pages/base.html#icon-svg">icon-svg</a>,
+        y el bloque <b>position</b> se resuelve con el mixin
+        <a href="../pages/base.html#position">position</a>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin normalize-svg($attr: (
+    width: auto,
+    height: auto,
+    position: (
+        position: relative,
+        y: 0,
+        x: 0,
+        yaxis: top,
+        xaxis: left,
+        top: null,
+        right: null,
+        bottom: null,
+        left: null
+    ),
+    display: block,
+    z: 2,
+    ht: true
+));</code></pre>
+
+        <p class="description">
+            Equivale a usar
+            <a href="../pages/base.html#replace_base">replace-base</a> con
+            <b>position: relative</b>, <b>z: 2</b>, <b>display: block</b> y
+            <b>ht: true</b> como valores base. Por compatibilidad, también
+            puedes pasar las claves de posición en el nivel raíz del <b>map</b>,
+            incluidas <b>top</b>, <b>right</b>, <b>bottom</b> y <b>left</b>.
+        </p>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>width | w</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>width</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>height | h</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>height</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>position | p</b></td>
+                    <td>String | Map</td>
+                    <td>relative</td>
+                    <td>Define la propiedad <b>position</b> o recibe un map con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
+                </tr>
+                <tr>
+                    <td><b>x</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el desplazamiento horizontal.</td>
+                </tr>
+                <tr>
+                    <td><b>y</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el desplazamiento vertical.</td>
+                </tr>
+                <tr>
+                    <td><b>yaxis | ya</b></td>
+                    <td>String</td>
+                    <td>top</td>
+                    <td>Define la propiedad CSS usada para el eje Y.</td>
+                </tr>
+                <tr>
+                    <td><b>xaxis | xa</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Define la propiedad CSS usada para el eje X.</td>
+                </tr>
+                <tr>
+                    <td><b>top | t</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>top</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>right | r</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>right</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>bottom | b</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>bottom</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>left | l</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define la propiedad <b>left</b> cuando usas sintaxis plana.</td>
+                </tr>
+                <tr>
+                    <td><b>z</b></td>
+                    <td>Number</td>
+                    <td>2</td>
+                    <td>Define la propiedad <b>z-index</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display | d</b></td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Define la propiedad <b>display</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>ht</b></td>
+                    <td>Bool</td>
+                    <td>true</td>
+                    <td>Controla si se aplica el mixin <b>ht</b> para ocultar el texto.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="normalize_svg_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <span class="normalize_svg_example"></span>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/normalize_svg.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/normalize_svg.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;span&nbsp;class=&quot;normalize_svg_example&quot;&gt;&lt;/span&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

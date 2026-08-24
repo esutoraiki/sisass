@@ -1,0 +1,224 @@
+// Update: 20260316
+
+// Vendor.
+@mixin vendor-prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{"-" + $prefix + "-" + $property}: $value;
+  }
+  #{$property}: $value;
+}
+
+// Calc
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
+// Box Sizing.
+@mixin box-sizing($br) {
+    @include vendor-prefix(box-sizing, $br, webkit moz);
+}
+
+// Box Decoration Break.
+@mixin box-decoration-break($br) {
+    @include vendor-prefix(box-decoration-break, $br, webkit);
+}
+
+// backdrop-filter.
+@mixin backdrop-filter($br) {
+    @include vendor-prefix(backdrop-filter, $br, webkit);
+}
+
+// Text Stroke.
+@mixin text-stroke($br) {
+    @include vendor-prefix(text-stroke, $br, webkit);
+}
+
+// Hyphens.
+@mixin hyphens($br) {
+    @include vendor-prefix(hyphens, $br, webkit);
+}
+
+// Text Size Adjust.
+@mixin text-size-adjust($br) {
+    @include vendor-prefix(text-size-adjust, $br, webkit ms);
+}
+
+// Mask
+@mixin mask($br) {
+    @include vendor-prefix(mask, $br, webkit);
+}
+
+// Object Fit
+@mixin object-fit($br) {
+    @include vendor-prefix(object-fit, $br, o);
+}
+
+// Tap Highlight Color
+@mixin tap-highlight-color($br) {
+    @include vendor-prefix(tap-highlight-color, $br, webkit);
+}
+
+// Pointer Events
+@mixin pointer-events($br) {
+    @include vendor-prefix(pointer-events, $br, ms);
+}
+
+// Border Radius.
+@mixin border-radius($br) {
+  @include vendor-prefix(border-radius, $br, webkit moz ms o);
+}
+
+// Box Shadow.
+@mixin box-shadow($br: none) {
+  @include vendor-prefix(box-shadow, $br, webkit moz);
+}
+
+// Transform.
+@mixin transform($br: none) {
+    @include vendor-prefix(transform, $br, webkit moz ms o);
+}
+
+// Transform style.
+@mixin transform-style($br: none) {
+    @include vendor-prefix(transform-style, $br, webkit moz);
+}
+
+// Justify content.
+@mixin justify-content($br: initial) {
+    @include vendor-prefix(justify-content, $br, webkit);
+}
+
+// Justify self.
+@mixin justify-self($br: initial) {
+    @include vendor-prefix(justify-self, $br, webkit);
+}
+
+// Justify items.
+@mixin justify-items($br: initial) {
+    @include vendor-prefix(justify-items, $br, webkit);
+}
+
+// Align items.
+@mixin align-items($br: initial) {
+    @include vendor-prefix(align-items, $br, webkit);
+}
+
+// Align self.
+@mixin align-self($br: initial) {
+    @include vendor-prefix(align-self, $br, webkit);
+}
+
+// Align content.
+@mixin align-content($br: initial) {
+    @include vendor-prefix(align-content, $br, webkit);
+}
+
+// Flex direction.
+@mixin flex-direction($br: row) {
+    @include vendor-prefix(flex-direction, $br, webkit);
+}
+
+// Flex basis
+@mixin flex-basis($br: auto) {
+    @include vendor-prefix(flex-basis, $br, webkit);
+}
+
+// Flex.
+@mixin flex {
+    @include vendor-prefix(display, flex, webkit moz ms);
+}
+
+// Grid.
+@mixin grid {
+    @include vendor-prefix(display, grid, ms);
+}
+
+// Transition
+@mixin transition($br: none) {
+    @include vendor-prefix(transition, $br, webkit moz o);
+}
+
+// Animation
+@mixin animation($br: none) {
+    @include vendor-prefix(animation, $br, webkit moz);
+}
+
+// Animation fill mode
+@mixin animation-fill-mode($br) {
+    @include vendor-prefix(animation-fill-mode, $br, webkit moz);
+}
+
+// User select
+@mixin user-select($br: none) {
+    @include vendor-prefix(user-select, $br, webkit moz ms);
+}
+
+// Appearance
+@mixin appearance($br: none) {
+    @include vendor-prefix(appearance, $br, webkit moz);
+}
+
+// backface-visibility
+@mixin backface-visibility($br: hidden) {
+    @include vendor-prefix(backface-visibility, $br, webkit moz);
+}
+
+// clip-path
+@mixin clip-path($br) {
+    @include vendor-prefix(clip-path, $br, webkit);
+}
+
+// Background-clip
+@mixin background-clip($br) {
+    @include vendor-prefix(background-clip, $br, webkit);
+}
+
+// Text fill color
+@mixin text-fill-color($br) {
+    @include vendor-prefix(text-fill-color, $br, webkit);
+}
+
+// column count
+@mixin column-count($br) {
+    @include vendor-prefix(column-count, $br, webkit moz);
+}
+
+// Filter
+@mixin filter($br: none) {
+    @include vendor-prefix(filter, $br, webkit);
+}
+
+// linear-gradient
+@mixin linear-gradient($br) {
+    background-image: -webkit-linear-gradient(#{$br});
+    background-image: -moz-linear-gradient(#{$br});
+    background-image: -o-linear-gradient(#{$br});
+    background-image: linear-gradient(#{$br});
+}
+
+// Placeholder
+@mixin placeholder {
+    &::-ms-input-placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; }
+    &::placeholder { @content; }
+}
+
+// Keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}

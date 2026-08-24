@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .fn-list-add-items {
+        --list: #{list-add-items((a b), (b c d))};
+    }
+}

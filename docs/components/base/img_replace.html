@@ -1,0 +1,210 @@
+<article id="img_replace" class="img_replace">
+    <div class="group_title">
+        <h2 class="subtitle">
+            img-replace (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Reemplaza texto visual por una imagen de fondo, manteniendo el contenido
+        textual en el marcado.
+    </p>
+    <p class="description">
+        Aplica utilidades de fondo y delega la base del contenedor al mixin
+        <a href="../pages/base.html#replace_base"><b>replace-base</b></a>, por
+        lo que también puede personalizar tamaño,
+        <b>display</b>, ocultamiento de texto, posición y <b>z-index</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin img-replace($image, $iw: auto, $ih: auto, $display: block);</code></pre>
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+        <pre class="language-scss"><code>@include img-replace((
+    image: "",
+    width: auto,
+    height: auto,
+    display: block,
+    repeat: no-repeat,
+    position: center,
+    color: transparent,
+    size: cover,
+    base: (
+        width: auto,
+        height: auto,
+        display: block,
+        ht: true
+    )
+));</code></pre>
+        <p class="description">
+            Valores por defecto: iw auto, ih auto, display block, repeat no-repeat,
+            position center, color transparent y size cover. La clave
+            <b>base</b> se fusiona con <b>width</b>, <b>height</b> y
+            <b>display</b> ya resueltos por el mixin.
+        </p>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>image</b></td>
+                    <td>String</td>
+                    <td>Requerido</td>
+                    <td>Define la ruta de la imagen usada en <b>background-image</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>iw</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>width</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>ih</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>height</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display</b></td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Define el valor de <b>display</b> del elemento.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>image | url | i | u</b></td>
+                    <td>String</td>
+                    <td>""</td>
+                    <td>Ruta de la imagen de fondo. Prioridad de lectura: image, luego url, luego i, luego u.</td>
+                </tr>
+                <tr>
+                    <td><b>width | w</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>width</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>height | h</b></td>
+                    <td>Medida</td>
+                    <td>auto</td>
+                    <td>Define la propiedad <b>height</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display | d</b></td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Valor de <b>display</b> aplicado al elemento.</td>
+                </tr>
+                <tr>
+                    <td><b>repeat | r</b></td>
+                    <td>String</td>
+                    <td>no-repeat</td>
+                    <td>Valor de <b>background-repeat</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>position | p</b></td>
+                    <td>String</td>
+                    <td>center</td>
+                    <td>Valor de <b>background-position</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>color | c</b></td>
+                    <td>Color</td>
+                    <td>transparent</td>
+                    <td>Valor de <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>size | s</b></td>
+                    <td>String</td>
+                    <td>cover</td>
+                    <td>Valor de <b>background-size</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>base</b></td>
+                    <td>Map</td>
+                    <td>(width: auto, height: auto, display: block, ht: true)</td>
+                    <td>Permite sobrescribir la configuración enviada al mixin <a href="../pages/base.html#replace_base"><b>replace-base</b></a>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="img_replace_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <h2 class="img_replace_example">
+                        Gato
+                    </h2>
+                    <h2 class="img_replace_parameters">
+                        Perro
+                    </h2>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/img_replace.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/img_replace.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;h2&nbsp;class=&quot;img_replace_example&quot;&gt;Gato&lt;/h2&gt;&NewLine;&lt;h2&nbsp;class=&quot;img_replace_parameters&quot;&gt;Perro&lt;/h2&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

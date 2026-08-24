@@ -24,53 +24,90 @@ const
     })
 ;
 
-function contentLoad(attr = {}) {
+function waitNextFrame() {
+    return new Promise((resolve) => {
+        window.requestAnimationFrame(function () {
+            resolve();
+        });
+    });
+}
+
+function waitTimeout(delay = 300) {
+    return new Promise((resolve) => {
+        window.setTimeout(function () {
+            resolve();
+        }, delay);
+    });
+}
+
+async function contentLoad(attr = {}) {
     let
         url = attr.url || null,
-        success = attr.success || (function () { return undefined; })
+        current_page = attr.current_page || "both",
+        success = attr.success || (function () { return undefined; }),
+        complete = attr.complete || (function () { return undefined; })
     ;
 
-    fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-            for (const element in data.components) {
+    try {
+        const
+            response = await fetch(url),
+            data = await response.json(),
+            components = data.components || []
+        ;
+
+        if (components.length === 0) {
+            complete();
+            await waitNextFrame();
+            return [];
+        }
+
+        const
+            loaded_components = await Promise.all(components.map(async function (component, index) {
                 const
-                    component = data.components[element]
+                    component_page = component.page || "both"
                 ;
 
-                checkLoad[element] = false;
+                if (component_page !== "both" && component_page !== current_page) {
+                    checkLoad[index] = true;
+                    return component;
+                }
 
-                fetch(component.url)
-                    .then((text) => text.text())
-                    .then((content) => {
-                        let
-                            node_insert = document.getElementById(component.node),
-                            class_add = (component.class !== undefined) ? component.class : ""
-                        ;
+                checkLoad[index] = false;
 
-                        buildNode({
-                            content: content,
-                            insert: node_insert,
-                            position: component.position,
-                            attr: [
-                                ["id", "container_" + component.id],
-                                ["class", "container_" + component.id + " " + class_add]
-                            ],
-                            success: () => {
-                                checkLoad[element] = true;
-                                success(component.id);
-                            }
-                        });
-                    })
+                const
+                    text_response = await fetch(component.url),
+                    content = await text_response.text(),
+                    node_insert = document.getElementById(component.node),
+                    class_add = (component.class !== undefined) ? component.class : ""
                 ;
-            }
-        })
-        .catch(function (err) {
-            console.warn('Something went wrong.', err);
-        })
-    ;
 
-    return false;
+                buildNode({
+                    content: content,
+                    insert: node_insert,
+                    position: component.position,
+                    attr: [
+                        ["id", "container_" + component.id],
+                        ["class", "container_" + component.id + " " + class_add]
+                    ]
+                });
+
+                checkLoad[index] = true;
+                success(component.id);
+
+                return component;
+            }))
+        ;
+
+        await waitNextFrame();
+        await waitNextFrame();
+        complete();
+
+        return loaded_components;
+    } catch (err) {
+        console.warn("Something went wrong.", err);
+    }
+
+    return [];
 }
 
 /*
@@ -162,4 +199,90 @@ function buildNode(attr = {}) {
     return node;
 }
 
-export { loadAjax, buildNode, checkLoad, contentLoad };
+async function loadPageTemplates(attr = {}) {
+    const
+        url = attr.url || "templates/templates.html",
+        current_page = attr.current_page || "both",
+        insert_node = attr.insert || document.body,
+        position = attr.position || "beforeend",
+        template_ids = attr.template_ids || []
+    ;
+
+    if (!insert_node) {
+        return [];
+    }
+
+    if (template_ids.length > 0) {
+        const
+            has_all_templates = template_ids.every((template_id) => document.getElementById(template_id))
+        ;
+
+        if (has_all_templates) {
+            return template_ids.map((template_id) => document.getElementById(template_id));
+        }
+    } else {
+        const
+            existing_templates = Array.from(document.querySelectorAll("template[data-page]"))
+                .filter((template_node) => {
+                    const
+                        page_target = template_node.dataset.page || "both"
+                    ;
+
+                    return page_target === "both" || page_target === current_page;
+                })
+        ;
+
+        if (existing_templates.length > 0) {
+            return existing_templates;
+        }
+    }
+
+    try {
+        const
+            templates = await loadAjax({
+                url: url
+            }),
+            container = document.createElement("div"),
+            filtered_templates = []
+        ;
+
+        container.innerHTML = templates;
+
+        for (const template_node of container.querySelectorAll("template")) {
+            const
+                page_target = template_node.dataset.page || "both",
+                already_exists = template_node.id !== "" && document.getElementById(template_node.id)
+            ;
+
+            if (page_target !== "both" && page_target !== current_page) {
+                continue;
+            }
+
+            if (already_exists) {
+                filtered_templates.push(document.getElementById(template_node.id));
+                continue;
+            }
+
+            const
+                cloned_template = template_node.cloneNode(true)
+            ;
+
+            filtered_templates.push(cloned_template);
+        }
+
+        if (filtered_templates.length > 0) {
+            insert_node.insertAdjacentHTML(
+                position,
+                filtered_templates.map((template_node) => template_node.outerHTML).join("")
+            );
+        }
+
+        return filtered_templates.map((template_node) => document.getElementById(template_node.id));
+    } catch (err) {
+        console.error(err);
+    }
+
+    return [];
+}
+
+export { loadAjax, buildNode, checkLoad, contentLoad, loadPageTemplates, waitNextFrame, waitTimeout };

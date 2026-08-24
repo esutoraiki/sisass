@@ -1,0 +1,833 @@
+// Update: 20260802
+@use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+@use "sass:meta";
+@use "sass:color";
+
+@use "./vendor" as *;
+@use "./mediaqueries" as *;
+
+
+// Text
+@mixin text(
+    $aling: left,
+    $trans: initial,
+    $decor: initial,
+    $wrap: initial
+) {
+    $align_value: $aling;
+    $decor_value: $decor;
+    $trans_value: $trans;
+    $wrap_value: $wrap;
+
+    @if meta.type-of($aling) == "map" {
+        $align_value: mapv($aling, (align, a), left);
+        $decor_value: mapv($aling, (decoration, d), initial);
+        $trans_value: mapv($aling, (transform, t), initial);
+        $wrap_value: mapv($aling, (wrap, wr), initial);
+    }
+
+    text: {
+        align: $align_value;
+        decoration: $decor_value;
+        transform: $trans_value;
+        wrap: $wrap_value;
+    }
+}
+
+// Font
+@mixin font (
+    $size: 1em,
+    $family: "sans-serif",
+    $weight: normal,
+    $style: normal,
+    $line-height: "none",
+    $variant: normal
+) {
+    $size_value: $size;
+    $family_value: $family;
+    $weight_value: $weight;
+    $style_value: $style;
+    $line_height_value: $line-height;
+    $variant_value: $variant;
+
+    @if meta.type-of($size) == "map" {
+        $size_value: mapv($size, (size, s), 1em);
+        $family_value: mapv($size, (family, f), "sans-serif");
+        $weight_value: mapv($size, (weight, w), normal);
+        $style_value: mapv($size, style, normal);
+        $line_height_value: mapv($size, (line-height, lh), "none");
+        $variant_value: mapv($size, (variant, v), normal);
+    }
+
+    font: {
+        size   : $size_value;
+        family : $family_value;
+        weight : $weight_value;
+        style  : $style_value;
+        variant: $variant_value
+    }
+
+    @if $line_height_value != "none" { line-height: $line_height_value; }
+}
+
+// Text + Font
+@mixin tf($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "tf() only accepts a map with text and font options.";
+    }
+
+    $text_attr: (
+        align: mapv($attr, (align, a), left),
+        transform: mapv($attr, (transform, t), initial),
+        decoration: mapv($attr, (decoration, d), initial),
+        wrap: mapv($attr, (wrap, wr), initial)
+    );
+
+    $font_attr: (
+        size: mapv($attr, (size, s), 1em),
+        family: mapv($attr, (family, f), "sans-serif"),
+        weight: mapv($attr, (weight, w), normal),
+        style: mapv($attr, style, normal),
+        line-height: mapv($attr, (line-height, lh), "none"),
+        variant: mapv($attr, (variant, v), normal)
+    );
+
+    @include text($text_attr);
+    @include font($font_attr);
+}
+
+// Text gradient
+@mixin gradient-text($grad, $display: inline-block) {
+    @include linear-gradient($grad);
+    @include background-clip(text);
+    @include text-fill-color(transparent);
+    display: $display;
+}
+
+// Font Face
+@mixin font-face($attr: ()) {
+    $name: mapv($attr, (name, n), null);
+    $path: mapv($attr, (path, p), null);
+    $weight: mapv($attr, (weight, w), normal);
+    $style: mapv($attr, (style, s), normal);
+    $display: mapv($attr, (display, d), swap);
+    $exts: mapv($attr, (exts, e), (woff2, woff, ttf));
+
+    $valid_exts: (eot, woff2, woff, ttf, otf, svg);
+    $extmods: (
+        eot: "?#iefix",
+        svg: "#" + str-replace($name, " ", "_")
+    );
+    $formats: (
+        eot: "embedded-opentype",
+        otf: "opentype",
+        ttf: "truetype"
+    );
+
+    $src: ();
+    $has_eot: false;
+
+    @if $name == null or $path == null {
+        @error "font-face() requires `name` and `path`.";
+    }
+
+    @each $ext in $exts {
+        @if not list.index($valid_exts, $ext) {
+            @warn "font-face(): unsupported extension `#{$ext}` for `#{$name}`.";
+        } @else {
+            @if $ext == eot {
+                $has_eot: true;
+            }
+
+            $extmod: $ext;
+            $format: $ext;
+
+            @if map.has-key($extmods, $ext) {
+                $extmod: $ext + map.get($extmods, $ext);
+            }
+
+            @if map.has-key($formats, $ext) {
+                $format: map.get($formats, $ext);
+            }
+
+            $src: list.append(
+                $src,
+                url(string.quote($path + "." + $extmod)) format(string.quote($format)),
+                comma
+            );
+        }
+    }
+
+    @font-face {
+        font-family: string.quote($name);
+        font-style: $style;
+        font-weight: $weight;
+
+        @if $has_eot {
+            src: url(string.quote($path + ".eot"));
+        }
+
+        src: $src;
+        font-display: $display;
+    }
+}
+
+// hide text
+@mixin ht {
+    @include no-spacing;
+    text-indent: -10000000px;
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
+
+// autofill
+@mixin autofill($attr: ()) {
+    $background: mapv($attr, bg, initial);
+    $color: mapv($attr, (color, c), initial);
+    $padding: mapv($attr, (padding, p), null);
+    $border: mapv($attr, (border, b), null);
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus
+    {
+        @include box-shadow(inset 0 0 0 1000px $background);
+        @include transition(background-color 5000s ease-in-out 0);
+        -webkit-text-fill-color: $color;
+
+        @if $padding != null { padding: $padding; }
+        @if $border != null { border: $border; }
+    }
+}
+
+// Background
+@mixin background($attr: ()) {
+    $way: mapv($attr, (url, u), "");
+    $repeat: mapv($attr, (repeat, r), no-repeat);
+    $position: mapv($attr, (position, p), center);
+    $color: mapv($attr, (color, c), transparent);
+    $size: mapv($attr, (size, s), auto);
+    $image: mapv($attr, (image, i), "");
+
+    background: {
+        @if $way != ""   { image: url($way); }
+        @if $image != "" { image: $image; }
+
+        repeat   : $repeat;
+        position : $position;
+        color    : $color;
+        size     : $size;
+    }
+}
+
+// Background-color and Color
+@mixin bc($background: #FFF, $color: #000) {
+    background-color: $background;
+    color: $color;
+}
+
+
+// background opacity
+@mixin background-opacity($bg: #FFF, $opacity: 0.8, $use_legacy: false) {
+    $bg_value: $bg;
+    $opacity_value: $opacity;
+    $use_legacy_value: $use_legacy;
+
+    @if meta.type-of($bg) == "map" {
+        $bg_value: mapv($bg, (color, c), #FFF);
+        $opacity_value: mapv($bg, (opacity, o), 0.8);
+        $use_legacy_value: mapv($bg, (use_legacy, ul), false);
+    }
+
+    background-color: $bg_value;
+
+    @if $use_legacy_value {
+        background-color: rgba($bg_value, $opacity_value);
+    } @else {
+        background-color: rgb-alpha($bg_value, $opacity_value);
+    }
+}
+
+// Position
+@mixin position(
+    $position: relative,
+    $y: 0,
+    $x: 0,
+    $yaxis: top,
+    $xaxis: left,
+    $z: 1
+) {
+    $position_value: $position;
+    $v_y: $y;
+    $v_x: $x;
+    $pos_y: $yaxis;
+    $pos_x: $xaxis;
+
+    $top_value: null;
+    $right_value: null;
+    $bottom_value: null;
+    $left_value: null;
+
+    @if meta.type-of($position) == "map" {
+        $position_value: mapv($position, (position, p), $position_value);
+        $v_y: mapv($position, y, $v_y);
+        $v_x: mapv($position, x, $v_x);
+        $pos_y: mapv($position, (yaxis, ya), $pos_y);
+        $pos_x: mapv($position, (xaxis, xa), $pos_x);
+        $z: mapv($position, z, $z);
+
+        $top_value: mapv($position, (top, t), null);
+        $right_value: mapv($position, (right, r), null);
+        $bottom_value: mapv($position, (bottom, b), null);
+        $left_value: mapv($position, (left, l), null);
+    }
+
+    position : $position_value;
+
+    @if $top_value != null or $right_value != null or $bottom_value != null or $left_value != null {
+        @if $top_value != null { top : $top_value; }
+        @if $right_value != null { right : $right_value; }
+        @if $bottom_value != null { bottom : $bottom_value; }
+        @if $left_value != null { left : $left_value; }
+    } @else {
+        #{$pos_y} : $v_y;
+        #{$pos_x} : $v_x;
+    }
+
+    z-index: $z;
+}
+
+// Width Height
+@mixin wh($width: auto, $height: auto) {
+    width  : $width;
+    height : $height;
+}
+
+// Width and height equal
+@mixin whs($value_aa: auto) {
+    width  : $value_aa;
+    height : $value_aa;
+}
+
+// Absolute centering (principal)
+@mixin center-absolute {
+    @include position(absolute, 50%, 50%);
+    @include transform(translate(-50%, -50%));
+}
+
+// Backward compatibility alias
+@mixin hv-center {
+    @include center-absolute;
+}
+
+// Horizontal and vertical centering with flex for column
+@mixin center-flex-column {
+    @include flex-direction(column);
+    @include flex;
+    place-content: center;
+    place-items: center;
+}
+
+// Horizontal and vertical centering with flex for row
+@mixin center-flex-row {
+    @include flex-direction;
+    @include flex;
+    place-content: center;
+    place-items: center;
+}
+
+// Gap for flex
+@mixin gap($value) {
+    grid-gap: $value;
+    gap: $value;
+}
+
+@mixin cover {
+    @include whs(100%);
+    object-fit: cover;
+}
+
+@mixin contain {
+    @include whs(100%);
+    object-fit: contain;
+}
+
+// Image replace
+@mixin img-replace($image, $iw: auto, $ih: auto, $display: block) {
+    $image_value: $image;
+    $width_value: $iw;
+    $height_value: $ih;
+    $display_value: $display;
+
+    $repeat_value: no-repeat;
+    $position_value: center;
+    $color_value: transparent;
+    $size_value: cover;
+    $base_attr: (
+        width: $width_value,
+        height: $height_value,
+        display: $display_value,
+        ht: true
+    );
+
+    @if meta.type-of($image) == "map" {
+        $image_value: mapv($image, (image, url, i, u), "");
+        $width_value: mapv($image, (width, w), $width_value);
+        $height_value: mapv($image, (height, h), $height_value);
+        $display_value: mapv($image, (display, d), $display_value);
+
+        $repeat_value: mapv($image, (repeat, r), $repeat_value);
+        $position_value: mapv($image, (position, p), $position_value);
+        $color_value: mapv($image, (color, c), $color_value);
+        $size_value: mapv($image, (size, s), $size_value);
+
+        $base_attr: map.merge($base_attr, (
+            width: $width_value,
+            height: $height_value,
+            display: $display_value
+        ));
+
+        @if map.has-key($image, base) and meta.type-of(map.get($image, base)) == "map" {
+            $base_attr: map.merge($base_attr, map.get($image, base));
+        }
+    }
+
+    @include background((
+        url: $image_value,
+        repeat: $repeat_value,
+        position: $position_value,
+        color: $color_value,
+        size: $size_value
+    ));
+
+    @include replace-base($base_attr);
+}
+
+// Backward compatibility alias
+@mixin img-remplace($image, $iw: auto, $ih: auto, $display: block) {
+    @include img-replace($image, $iw, $ih, $display);
+}
+
+// Include svg inline (Need gulp-postcss and postcss-inline-svg)
+@mixin icon-svg(
+    $svg,
+    $w: auto,
+    $h: auto,
+    $fill: "none",
+    $def: "none",
+    $path: "../../img/svg/"
+) {
+    $svg_value: $svg;
+    $width_value: $w;
+    $height_value: $h;
+    $fill_value: $fill;
+    $def_value: $def;
+    $path_value: $path;
+    $position_attr: (
+        position: absolute,
+        y: 0,
+        x: 0,
+        yaxis: top,
+        xaxis: left,
+        top: null,
+        right: null,
+        bottom: null,
+        left: null
+    );
+    $background_attr: (
+        repeat: no-repeat,
+        position: top left,
+        color: transparent,
+        size: 100%
+    );
+
+    @if meta.type-of($svg) == "map" {
+        $svg_value: mapv($svg, (svg, icon, name), "");
+        $width_value: mapv($svg, (width, w), $width_value);
+        $height_value: mapv($svg, (height, h), $height_value);
+        $fill_value: mapv($svg, fill, $fill_value);
+        $def_value: mapv($svg, (def, inline, inline_svg), $def_value);
+        $path_value: mapv($svg, (path, base_path, svg_path), $path_value);
+
+        @if map.has-key($svg, position) and meta.type-of(map.get($svg, position)) == "map" {
+            $position_map: map.get($svg, position);
+            $position_attr: (
+                position: mapv($position_map, p, mapv($position_map, position, map.get($position_attr, position))),
+                y: mapv($position_map, y, map.get($position_attr, y)),
+                x: mapv($position_map, x, map.get($position_attr, x)),
+                yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
+                xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
+                top: mapv($position_map, top, map.get($position_attr, top)),
+                right: mapv($position_map, right, map.get($position_attr, right)),
+                bottom: mapv($position_map, bottom, map.get($position_attr, bottom)),
+                left: mapv($position_map, left, map.get($position_attr, left))
+            );
+        }
+
+        @if map.has-key($svg, background) and meta.type-of(map.get($svg, background)) == "map" {
+            $background_map: map.get($svg, background);
+            $background_attr: (
+                repeat: mapv($background_map, repeat, map.get($background_attr, repeat)),
+                position: mapv($background_map, position, map.get($background_attr, position)),
+                color: mapv($background_map, color, map.get($background_attr, color)),
+                size: mapv($background_map, size, map.get($background_attr, size))
+            );
+        }
+    }
+
+    $path_svg: $path_value + $svg_value + ".svg";
+    $background_image: url($path_svg);
+
+    @if $fill_value == "inline" {
+        $background_image: svg-inline($def_value);
+    } @else if $fill_value != "none" {
+        $background_image: svg-load($path_svg, fill=$fill_value);
+    }
+
+    @include position($position_attr);
+    @include wh($width_value, $height_value);
+    @include background((
+        image: $background_image,
+        repeat: map.get($background_attr, repeat),
+        position: map.get($background_attr, position),
+        color: map.get($background_attr, color),
+        size: map.get($background_attr, size)
+    ));
+}
+
+// Need gulp-postcss and postcss-inline-svg
+@mixin icon-svg-mask($attr: ()) {
+    $svg: mapv($attr, svg, false);
+    $color: mapv($attr, (color, c), #FFFFFF);
+    $pos: mapv($attr, (position, p), absolute);
+    $x: mapv($attr, x, 0);
+    $y: mapv($attr, y, 0);
+    $xaxis: mapv($attr, (xaxis, xa), left);
+    $yaxis: mapv($attr, (yaxis, ya), top);
+    $w: mapv($attr, (width, w), 100px);
+    $h: mapv($attr, (height, h), 100px);
+    $repeat: mapv($attr, (repeat, r), no-repeat);
+    $size: mapv($attr, (size, s), contain);
+    $path: mapv($attr, path, "../../img/svg/");
+    $display: mapv($attr, (display, d), block);
+
+    @if $svg != false {
+        @if $pos != false {
+            @include position($pos, $y, $x, $yaxis, $xaxis);
+        }
+
+        @include wh($w, $h);
+        $path_svg: $path +  $svg + ".svg";
+        mask-image: svg-load($path_svg, fill="currentColor");
+        mask-repeat: $repeat;
+        mask-size: $size;
+        display: $display;
+        background-color: $color;
+    }
+}
+
+// Base styles for visual replacement containers
+@mixin replace-base($attr: ()) {
+    $width: mapv($attr, (width, w), auto);
+    $height: mapv($attr, (height, h), auto);
+    $display: mapv($attr, (display, d), block);
+    $hide_text: mapv($attr, (ht, hide_text), true);
+    $z: mapv($attr, z, false);
+    $position_input: mapv($attr, (position, p), false);
+    $position_attr: false;
+
+    @if $hide_text == true {
+        @include ht;
+    }
+
+    @include wh($width, $height);
+    display: $display;
+
+    @if $position_input != false {
+        $position_attr: (
+            position: relative,
+            y: 0,
+            x: 0,
+            yaxis: top,
+            xaxis: left,
+            top: null,
+            right: null,
+            bottom: null,
+            left: null
+        );
+
+        @if meta.type-of($position_input) == "map" {
+            $position_map: $position_input;
+            $position_attr: (
+                position: mapv($position_map, type, mapv($position_map, (position, p), map.get($position_attr, position))),
+                y: mapv($position_map, y, map.get($position_attr, y)),
+                x: mapv($position_map, x, map.get($position_attr, x)),
+                yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
+                xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
+                top: mapv($position_map, (top, t), map.get($position_attr, top)),
+                right: mapv($position_map, (right, r), map.get($position_attr, right)),
+                bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
+                left: mapv($position_map, (left, l), map.get($position_attr, left))
+            );
+        } @else {
+            $position_attr: (
+                position: $position_input,
+                y: mapv($attr, y, map.get($position_attr, y)),
+                x: mapv($attr, x, map.get($position_attr, x)),
+                yaxis: mapv($attr, (yaxis, ya), map.get($position_attr, yaxis)),
+                xaxis: mapv($attr, (xaxis, xa), map.get($position_attr, xaxis)),
+                top: mapv($attr, (top, t), map.get($position_attr, top)),
+                right: mapv($attr, (right, r), map.get($position_attr, right)),
+                bottom: mapv($attr, (bottom, b), map.get($position_attr, bottom)),
+                left: mapv($attr, (left, l), map.get($position_attr, left))
+            );
+        }
+
+        @include position($position_attr);
+    }
+
+    @if $z != false {
+        z-index: $z;
+    }
+}
+
+// Normalize the styles for working with SVG files
+@mixin normalize-svg($attr: ()) {
+    @include replace-base(map.merge((
+        position: relative,
+        z: 2,
+        display: block,
+        ht: true
+    ), $attr));
+}
+
+// Add scroll
+@mixin scroll($attr: ()) {
+    $co: mapv($attr, (thumb_color, color, c), white);
+    $co_hover: mapv($attr, (thumb_hover_color, color_hover, ch), $co);
+    $co_active: mapv($attr, (thumb_active_color, color_active, ca), $co_hover);
+    $bg: mapv($attr, (background, bg, b), black);
+    $bg_track: mapv($attr, (track_color, bg_track, bt), $bg);
+    $bg_track_hover: mapv($attr, (track_hover_color, bg_track_hover, bth), $bg_track);
+    $bg_track_active: mapv($attr, (track_active_color, bg_track_active, bta), $bg_track_hover);
+    $wi: mapv($attr, (size, width, w), 15px);
+    $wi_x: mapv($attr, (size_x, width_x, wx), $wi);
+    $wi_y: mapv($attr, (size_y, width_y, wy), $wi);
+    $bdr: mapv($attr, (radius, r), 10px);
+    $bdr_track: mapv($attr, (radius_track, rt), $bdr);
+    $thumb_border: mapv($attr, (thumb_border, tb), 0 solid transparent);
+    $track_border: mapv($attr, (track_border, trb), 0 solid transparent);
+    $thumb_shadow: mapv($attr, (thumb_shadow, ts), none);
+    $track_shadow: mapv($attr, (track_shadow, trs), none);
+    $firefox_width: mapv($attr, (firefox_width, fw), auto);
+    $axis: mapv($attr, axis, y);
+    $hidden: mapv($attr, (hidden, hide, h), false);
+
+    @if $axis == y {
+        overflow: overlay;
+        overflow-x: hidden;
+    } @else if $axis == x {
+        overflow: overlay;
+        overflow-y: hidden;
+    } @else if $axis == both {
+        overflow-x: auto;
+        overflow-y: auto;
+    } @else {
+        @warn "scroll(): unsupported axis `#{$axis}`. Using `both`.";
+        overflow-x: auto;
+        overflow-y: auto;
+    }
+
+    @if $hidden {
+        -ms-overflow-style: none;
+
+        @supports (-moz-appearance: none) {
+            scrollbar-width: none;
+        }
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+    } @else {
+        @supports (-moz-appearance: none) {
+            scrollbar-color: #{$co} #{$bg_track};
+            scrollbar-width: $firefox_width;
+        }
+
+        &::-webkit-scrollbar {
+            @include appearance;
+            width: $wi_y;
+            height: $wi_x;
+            background-color: $bg_track;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            @include border-radius($bdr);
+            border: $thumb_border;
+            background-color: $co;
+            box-shadow: $thumb_shadow;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: $co_hover;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background-color: $co_active;
+        }
+
+        &::-webkit-scrollbar-track {
+            @include border-radius($bdr_track);
+            border: $track_border;
+            background-color: $bg_track;
+            box-shadow: $track_shadow;
+        }
+
+        &::-webkit-scrollbar-track:hover {
+            background-color: $bg_track_hover;
+        }
+
+        &::-webkit-scrollbar-track:active {
+            background-color: $bg_track_active;
+        }
+    }
+}
+
+// no spacing
+@mixin no-spacing {
+    margin: 0;
+    margin: {
+        top    : 0;
+        bottom : 0;
+        left   : 0;
+        right  : 0;
+    }
+    padding: 0;
+    padding: {
+        top    : 0;
+        bottom : 0;
+        left   : 0;
+        right  : 0;
+    }
+}
+
+// no border
+@mixin no-border {
+    border: 0 none transparent;
+    border: {
+        top    : 0 none transparent;
+        bottom : 0 none transparent;
+        left   : 0 none transparent;
+        right  : 0 none transparent;
+    }
+}
+
+///----------------------------------------------------
+// Functions
+//----------------------------------------------------
+
+// Size in Rem
+@function szrem($value_px: 14, $base: 16) {
+    @if meta.type-of($value_px) != "number" or meta.type-of($base) != "number" {
+        @error "szrem() only accepts numeric values.";
+    }
+
+    @if $base == 0 {
+        @error "szrem() base cannot be 0.";
+    }
+
+    @return (math.div($value_px, $base)) * 1rem;
+}
+
+// base porcentage
+@function bp($attr: ()) {
+    $base_i: mapv($attr, (base, b), 1920);
+    $unn: mapv($attr, (unit, u), "vw");
+    $value: mapv($attr, (value, v), 0);
+
+    @return #{math.div($value * 100, $base_i) + $unn};
+}
+
+// Remove unit of measurement from a value
+@function strip-unit($value) {
+    @return math.div($value, $value * 0 + 1);
+}
+
+// String Replace
+@function str-replace($string, $search, $replace: "") {
+    $index: string.index($string, $search);
+
+    @if $index {
+        @return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// Mapping lists with default value
+@function mapv($map, $key, $value) {
+    $return: $value;
+
+    @if meta.type-of($key) == "list" {
+        @each $key_item in $key {
+            @if map.has-key($map, $key_item) {
+                @return map.get($map, $key_item);
+            }
+        }
+
+        @return $return;
+    }
+
+    @if map.has-key($map, $key) {
+        $return: map.get($map, $key);
+    }
+
+    @return $return;
+}
+
+// RGB with alpha
+@function rgb-alpha($color, $alpha) {
+    $r: color.channel($color, "red", $space: rgb);
+    $g: color.channel($color, "green", $space: rgb);
+    $b: color.channel($color, "blue", $space: rgb);
+
+    @return string.unquote("rgb(#{$r} #{$g} #{$b} / #{$alpha})");
+}
+
+// Add item to list if not exist
+@function list-add-unique($list, $value) {
+    @if list.index($list, $value) {
+        @return $list;
+    }
+
+    @return list.append($list, $value, space);
+}
+
+// Add items to list
+@function list-add-items($list, $items) {
+    @each $item in $items {
+        $list: list-add-unique($list, $item);
+    }
+
+    @return $list;
+}
+
+// Append points
+@function append-points($list, $points) {
+    @each $point in $points {
+        $list: list.append($list, $point, comma);
+    }
+
+    @return $list;
+}
+
+//-----------------------------------
+//End Mixin
+//-----------------------------------

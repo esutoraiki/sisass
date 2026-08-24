@@ -1,13 +1,288 @@
-@import "instance";
+@use "../core/instances" as *;
+@use "sass:list";
+
+.domain {
+    &::before {
+        @include icon-svg((
+            svg: web,
+            w: list.nth($l10, 1),
+            h: list.nth($l10, 1),
+            fill: $c6,
+            position: (
+                p: relative
+            )
+        ));
+        display: inline-block;
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.link {
+    &::before {
+        @include icon-svg((
+            svg: link,
+            w: list.nth($l10, 1),
+            h: list.nth($l10, 1),
+            fill: $c6,
+            position: (
+                xaxis: right,
+                x: 15px,
+                y: 15px
+            )
+        ));
+        display: inline-block;
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
 
 .logo_sisass {
     &:before {
-        @include icon_svg(
+        @include icon-svg(
             sisass,
-            nth($l1x, 1),
-            nth($l1y, 1),
+            list.nth($l1x, 1),
+            list.nth($l1y, 1),
+            $c6
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.logo_github {
+    &:before {
+        @include icon-svg(
+            github,
+            list.nth($l2, 1),
+            list.nth($l2, 1),
+            $c6
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+@for $i from 1 through list.length($icon_reference) {
+    .logo_#{list.nth($icon_reference, $i)}_medium {
+        &::before {
+            @include transform(translate(-50%, -50%));
+            @include icon-svg((
+                svg: list.nth($icon_reference, $i),
+                w: list.nth($l11, 1),
+                h: list.nth($l11, 1),
+                position: (
+                    p: relative,
+                    x: 50%,
+                    y: 50%
+                )
+            ));
+            display: block;
+            content: "";
+        }
+    }
+}
+
+
+@for $i from 1 through list.length($icon_name) {
+    .icon_#{list.nth($icon_name, $i)} {
+        &::before {
+            @include transform(translateY(-50%));
+            @include icon-svg(
+                list.nth($icon_name, $i),
+                list.nth($l10, 1),
+                list.nth($l10, 1),
+                $c3
+            );
+            filter: var(--theme_icon_filter);
+            top: 50%;
+            content: "";
+        }
+    }
+}
+
+.icon_arrow {
+    &::after {
+        @include icon-svg((
+            svg: arrow,
+            w: list.nth($l7, 1),
+            h: list.nth($l7, 1),
+            fill: $c6
+        ));
+        filter: var(--theme_icon_filter);
+        display: block;
+        content: "";
+    }
+}
+
+.icon_arrow_2 {
+    &::after {
+        @include icon-svg((
+            svg: arrow_2,
+            w: list.nth($l4x, 1),
+            h: list.nth($l4y, 1),
+            fill: $c1,
+            position: (
+                p: relative
+            )
+        ));
+        filter: var(--theme_icon_filter);
+        display: block;
+        content: "";
+    }
+}
+
+.icon_arrow_3 {
+    &::after {
+        @include icon-svg((
+            svg: arrow_2,
+            w: list.nth($l4x, 1),
+            h: list.nth($l4y, 1),
+            fill: $c2,
+            position: (
+                p: relative
+            )
+        ));
+        filter: var(--theme_icon_filter);
+        display: block;
+        content: "";
+    }
+}
+
+@for $i from 1 through list.length($charecteristics_name) {
+    .icon_#{list.nth($charecteristics_name, $i)} {
+        &::after {
+            @include icon-svg-mask((
+                svg: list.nth($characteristics_svg, $i),
+                w: list.nth($l6, 1),
+                h: list.nth($l6, 1),
+                c: list.nth($characteristics_color, $i),
+                p: relative
+            ));
+            content: "";
+        }
+    }
+}
+
+@for $i from 1 through list.length($features_name) {
+    .icon_#{list.nth($features_name, $i)} {
+        &::after {
+            @include icon-svg-mask((
+                svg: list.nth($features_name, $i),
+                w: list.nth($l8, 1),
+                h: list.nth($l8, 1),
+                c: var(--theme_text_bold),
+                p: relative
+            ));
+            display: block;
+            content: "";
+        }
+    }
+}
+
+.icon_start {
+    &::after {
+        @include icon-svg-mask((
+            svg: start,
+            w: list.nth($l5, 1),
+            h: list.nth($l5, 1),
+            c: currentColor,
+            p: relative
+        ));
+        content: "";
+    }
+}
+
+.icon_email {
+    &::before {
+        @include icon-svg(
+            email,
+            list.nth($l2, 1),
+            list.nth($l2, 1),
             $c3
         );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_search {
+    &::before {
+        @include icon-svg(
+            search,
+            list.nth($l2, 1),
+            list.nth($l2, 1),
+            $c3
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_light {
+    &::before {
+        @include icon-svg(
+            light,
+            list.nth($l3, 1),
+            list.nth($l3, 1),
+            $c3
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_dark {
+    &::before {
+        @include icon-svg(
+            dark,
+            list.nth($l3, 1),
+            list.nth($l3, 1),
+            $c3
+        );
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.icon_help {
+    &::before {
+        @include icon-svg((
+            svg: help,
+            w: list.nth($l9x, 1),
+            h: list.nth($l9y, 1),
+            fill: $c1,
+            position: (
+                x: 50%,
+                y: 50%
+            )
+        ));
+        content: "";
+    }
+}
+
+.icon_guide {
+    &::after {
+        @include icon-svg-mask((
+            svg: guide,
+            w: list.nth($l5, 1),
+            h: list.nth($l5, 1),
+            c: currentColor,
+            p: relative
+        ));
+        content: "";
+    }
+}
+
+.icon_issue {
+    &::after {
+        @include icon-svg-mask((
+            svg: issue,
+            w: list.nth($l5, 1),
+            h: list.nth($l5, 1),
+            c: currentColor,
+            p: relative
+        ));
         content: "";
     }
 }

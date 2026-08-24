@@ -1,4 +1,13 @@
 {
+    "breadcrumb": [
+        {
+            "label": "src",
+            "url": "../pages/base.html#src"
+        },
+        {
+            "label": "_base.scss"
+        }
+    ],
     "components": [
         {
             "id": "src",
@@ -7,40 +16,226 @@
             "node": "src"
         },
         {
-            "id": "vendor_prefix",
-            "url": "../components/base/vendor_prefix.html",
+            "id": "base_description",
+            "url": "../components/base/base_description.html",
             "position": "beforeend",
-            "node": "vendorprefix"
+            "node": "base_description"
         },
         {
-            "id": "border_radius",
-            "url": "../components/base/border_radius.html",
+            "id": "text",
+            "url": "../components/base/text.html",
             "position": "beforeend",
-            "node": "borderradius"
+            "node": "text"
         },
         {
-            "id": "box_shadow",
-            "url": "../components/base/box_shadow.html",
+            "id": "font",
+            "url": "../components/base/font.html",
             "position": "beforeend",
-            "node": "boxshadow"
+            "node": "font"
         },
         {
-            "id": "transform",
-            "url": "../components/base/transform.html",
+            "id": "tf",
+            "url": "../components/base/tf.html",
             "position": "beforeend",
-            "node": "transform"
+            "node": "tf"
         },
         {
-            "id": "transformstyle",
-            "url": "../components/base/transform_style.html",
+            "id": "gradient_text",
+            "url": "../components/base/gradient_text.html",
             "position": "beforeend",
-            "node": "transformstyle"
+            "node": "gradient_text"
+        },
+        {
+            "id": "font_face",
+            "url": "../components/base/font_face.html",
+            "position": "beforeend",
+            "node": "font_face"
+        },
+        {
+            "id": "autofill",
+            "url": "../components/base/autofill.html",
+            "position": "beforeend",
+            "node": "autofill"
         },
         {
             "id": "background",
             "url": "../components/base/background.html",
             "position": "beforeend",
             "node": "background"
+        },
+        {
+            "id": "bc",
+            "url": "../components/base/bc.html",
+            "position": "beforeend",
+            "node": "bc"
+        },
+        {
+            "id": "background_opacity",
+            "url": "../components/base/background_opacity.html",
+            "position": "beforeend",
+            "node": "background_opacity"
+        },
+        {
+            "id": "rgb_alpha",
+            "url": "../components/base/rgb_alpha.html",
+            "position": "beforeend",
+            "node": "rgb_alpha"
+        },
+        {
+            "id": "position",
+            "url": "../components/base/position.html",
+            "position": "beforeend",
+            "node": "position"
+        },
+        {
+            "id": "wh",
+            "url": "../components/base/wh.html",
+            "position": "beforeend",
+            "node": "wh"
+        },
+        {
+            "id": "whs",
+            "url": "../components/base/whs.html",
+            "position": "beforeend",
+            "node": "whs"
+        },
+        {
+            "id": "ht",
+            "url": "../components/base/ht.html",
+            "position": "beforeend",
+            "node": "ht"
+        },
+        {
+            "id": "center_absolute",
+            "url": "../components/base/center_absolute.html",
+            "position": "beforeend",
+            "node": "center_absolute"
+        },
+        {
+            "id": "center_flex_column",
+            "url": "../components/base/center_flex_column.html",
+            "position": "beforeend",
+            "node": "center_flex_column"
+        },
+        {
+            "id": "center_flex_row",
+            "url": "../components/base/center_flex_row.html",
+            "position": "beforeend",
+            "node": "center_flex_row"
+        },
+        {
+            "id": "gap",
+            "url": "../components/base/gap.html",
+            "position": "beforeend",
+            "node": "gap"
+        },
+        {
+            "id": "icon-svg",
+            "url": "../components/base/icon-svg.html",
+            "position": "beforeend",
+            "node": "icon-svg"
+        },
+        {
+            "id": "icon-svg-mask",
+            "url": "../components/base/icon-svg-mask.html",
+            "position": "beforeend",
+            "node": "icon-svg-mask"
+        },
+        {
+            "id": "normalize_svg",
+            "url": "../components/base/normalize_svg.html",
+            "position": "beforeend",
+            "node": "normalize_svg"
+        },
+        {
+            "id": "img_replace",
+            "url": "../components/base/img_replace.html",
+            "position": "beforeend",
+            "node": "img_replace"
+        },
+        {
+            "id": "replace_base",
+            "url": "../components/base/replace_base.html",
+            "position": "beforeend",
+            "node": "replace_base"
+        },
+        {
+            "id": "scroll",
+            "url": "../components/base/scroll.html",
+            "position": "beforeend",
+            "node": "scroll"
+        },
+        {
+            "id": "cover",
+            "url": "../components/base/cover.html",
+            "position": "beforeend",
+            "node": "cover"
+        },
+        {
+            "id": "contain",
+            "url": "../components/base/contain.html",
+            "position": "beforeend",
+            "node": "contain"
+        },
+        {
+            "id": "no_spacing",
+            "url": "../components/base/no_spacing.html",
+            "position": "beforeend",
+            "node": "no_spacing"
+        },
+        {
+            "id": "no_border",
+            "url": "../components/base/no_border.html",
+            "position": "beforeend",
+            "node": "no_border"
+        },
+        {
+            "id": "szrem",
+            "url": "../components/base/szrem.html",
+            "position": "beforeend",
+            "node": "szrem"
+        },
+        {
+            "id": "str_replace",
+            "url": "../components/base/str_replace.html",
+            "position": "beforeend",
+            "node": "str_replace"
+        },
+        {
+            "id": "mapv",
+            "url": "../components/base/mapv.html",
+            "position": "beforeend",
+            "node": "mapv"
+        },
+        {
+            "id": "bp",
+            "url": "../components/base/bp.html",
+            "position": "beforeend",
+            "node": "bp"
+        },
+        {
+            "id": "strip_unit",
+            "url": "../components/base/strip_unit.html",
+            "position": "beforeend",
+            "node": "strip_unit"
+        },
+        {
+            "id": "list-add-unique",
+            "url": "../components/base/list-add-unique.html",
+            "position": "beforeend",
+            "node": "list-add-unique"
+        },
+        {
+            "id": "list-add-items",
+            "url": "../components/base/list-add-items.html",
+            "position": "beforeend",
+            "node": "list-add-items"
+        },
+        {
+            "id": "append-points",
+            "url": "../components/base/append-points.html",
+            "position": "beforeend",
+            "node": "append-points"
         }
     ]
 }

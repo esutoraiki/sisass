@@ -1,10 +1,49 @@
 {
+    "breadcrumb": [
+        {
+            "label": "src",
+            "url": "../pages/base.html#src"
+        },
+        {
+            "label": "_mediaqueries.scss"
+        }
+    ],
     "components": [
         {
             "id": "src",
             "url": "../components/base/src.html",
             "position": "beforeend",
             "node": "src"
+        },
+        {
+            "id": "brp",
+            "url": "../components/mediaqueries/brp.html",
+            "position": "beforeend",
+            "node": "brp"
+        },
+        {
+            "id": "brpp",
+            "url": "../components/mediaqueries/brpp.html",
+            "position": "beforeend",
+            "node": "brpp"
+        },
+        {
+            "id": "brpl",
+            "url": "../components/mediaqueries/brpl.html",
+            "position": "beforeend",
+            "node": "brpl"
+        },
+        {
+            "id": "brph",
+            "url": "../components/mediaqueries/brph.html",
+            "position": "beforeend",
+            "node": "brph"
+        },
+        {
+            "id": "brpwh",
+            "url": "../components/mediaqueries/brpwh.html",
+            "position": "beforeend",
+            "node": "brpwh"
         },
         {
             "id": "mbr",

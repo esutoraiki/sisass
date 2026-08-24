@@ -1,0 +1,54 @@
+.documentationpage .img_replace_example {
+  background-image: url("../img/test/1.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  background-size: cover;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+.documentationpage .img_replace_parameters {
+  border: 2px dashed #FBB03B;
+  background-image: url("../img/test/2.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  background-size: contain;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: 250px;
+  height: 150px;
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  z-index: 3;
+}

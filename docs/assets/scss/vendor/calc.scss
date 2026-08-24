@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .calc_example {
+        @include calc(width, "100% - 40px");
+    }
+}

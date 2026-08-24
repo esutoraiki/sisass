@@ -1,0 +1,68 @@
+<article id="contain" class="contain">
+    <div class="group_title">
+        <h2 class="subtitle">
+            contain (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Ajusta el contenido para mantenerse completo dentro de su contenedor
+        usando <b>object-fit: contain</b>.
+    </p>
+    <p class="description">
+        Internamente también aplica <b>width: 100%</b> y
+        <b>height: 100%</b> mediante <b>whs(100%)</b>, por lo que el elemento
+        ocupa todo el espacio disponible antes de calcular el ajuste visual.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin contain;</code></pre>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="contain_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="contain_container">
+                        <img class="contain_example" src="img/test/1.webp" alt="contain" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/contain.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/contain.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;contain_container&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;img&nbsp;class=&quot;contain_example&quot;&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;contain&quot;&nbsp;/&gt;&NewLine;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,131 @@
+<article id="box_decoration_break" class="box_decoration_break">
+    <div class="group_title">
+        <h2 class="subtitle">
+            box-decoration-break (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para aplicar la propiedad <b>box-decoration-break</b>
+        con su versión prefijada <b>-webkit-</b> y la sintaxis estándar.
+    </p>
+    <p class="description">
+        Esta propiedad controla cómo se repiten o se continúan decoraciones
+        como el <b>background</b>, el <b>border</b> y el <b>padding</b>
+        cuando una misma caja inline se fragmenta en varias líneas, columnas
+        o páginas. Resulta útil para textos destacados, etiquetas o chips
+        que necesitan conservar un acabado visual coherente al partirse.
+    </p>
+
+    <p class="note">
+        <b>Nota:</b> Su uso suele ser más útil en elementos con
+        <b>display: inline</b> o <b>inline-block</b> que realmente puedan
+        fragmentarse. Con <b>slice</b>, la decoración se trata como una sola
+        caja continua y se corta entre fragmentos; con <b>clone</b>, cada
+        fragmento vuelve a dibujar su fondo, borde y padding de forma
+        independiente.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin box-decoration-break($br);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword | String</td>
+                    <td>-</td>
+                    <td>Define el valor que se asignará a la propiedad <b>box-decoration-break</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="box_decoration_break_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="item">
+                        <h3 class="subtitle">
+                            Slice
+                        </h3>
+                        <p class="box_decoration_break_text box_decoration_break_text--slice">
+                            Un texto con salto de línea para mostrar el comportamiento del fondo.
+                        </p>
+                    </div>
+
+                    <div class="item">
+                        <h3 class="subtitle">
+                            Clone
+                        </h3>
+                        <p class="box_decoration_break_text box_decoration_break_text--clone">
+                            Un texto con salto de línea para mostrar el comportamiento del fondo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/box_decoration_break.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/box_decoration_break.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div class=&quot;box_decoration_break_example&quot;&gt;
+                    &lt;div class=&quot;box_decoration_break_item&quot;&gt;
+                        &lt;div class=&quot;box_decoration_break_label&quot;&gt;slice&lt;/div&gt;
+                        &lt;span class=&quot;box_decoration_break_text box_decoration_break_text--slice&quot;&gt;
+                            Un texto con salto de línea para mostrar el comportamiento del fondo.
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;box_decoration_break_item&quot;&gt;
+                        &lt;div class=&quot;box_decoration_break_label&quot;&gt;clone&lt;/div&gt;
+                        &lt;span class=&quot;box_decoration_break_text box_decoration_break_text--clone&quot;&gt;
+                            Un texto con salto de línea para mostrar el comportamiento del fondo.
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

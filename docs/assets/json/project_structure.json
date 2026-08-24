@@ -1,0 +1,18 @@
+{
+    "breadcrumb": [
+        {
+            "label": "articles"
+        },
+        {
+            "label": "project_structure.html"
+        }
+    ],
+    "components": [
+        {
+            "id": "project_structure",
+            "url": "../components/articles/project_structure.html",
+            "position": "beforeend",
+            "node": "project_structure"
+        }
+    ]
+}

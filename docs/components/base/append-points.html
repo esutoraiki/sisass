@@ -1,0 +1,78 @@
+<article id="append-points" class="append-points">
+    <div class="group_title">
+        <h2 class="subtitle">
+            append-points (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Agrega varios valores a una lista manteniendo separación por comas.
+    </p>
+    <p class="description">
+        Es útil cuando necesitas construir listas orientadas a coordenadas, puntos o secuencias que deben conservar formato separado por comas.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function append-points($list, $points);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>list</b></td>
+                    <td>List</td>
+                    <td>-</td>
+                    <td>Define la lista base a la que se anexarán nuevos valores.</td>
+                </tr>
+                <tr>
+                    <td><b>points</b></td>
+                    <td>List</td>
+                    <td>-</td>
+                    <td>Define la lista de valores que se agregarán al resultado final.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <p class="description">
+            La función recorre cada elemento de <b>points</b> con <b>@each</b> y lo agrega a <b>list</b> mediante
+            <b>list.append</b> usando el separador <b>comma</b>, por lo que el resultado conserva una lista separada por comas.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/append-points.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/append-points.css"></pre>
+        </div>
+    </section>
+</article>

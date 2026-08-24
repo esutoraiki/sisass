@@ -1,0 +1,8 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .gap_example {
+        @include flex;
+        @include gap(10px);
+    }
+}

@@ -1,44 +1,218 @@
-@import "instance";
+@use "../core/instances" as *;
 
-.main_menu {
-    padding-left: min(2.08vw, 40px);
+.container_menu {
+    @include position(sticky, 26px);
+    @include wh(100%, 85vh);
+    @include scroll((
+        width: 8px,
+        bg: $c0,
+        c: $c4
+    ));
+    margin-block-start: 25px;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     @include brp($b6) {
-        padding: {
-            top: 25px;
+        @include transform(translateX(100%));
+        @include flex-direction(column);
+        @include justify-content(initial);
+        @include align-items(center);
+        @include position(( p: fixed, t: 0, l: 0, z: 10 ));
+        @include whs(100%);
+        @include bc(var(--theme_surface_alt), var(--theme_text));
+        @include transition((
+            transform $t5 ease,
+            opacity $t5 ease,
+            display $t5 allow-discrete
+        ));
+        padding:
+            clamp(20px, 8.16vw, 80px)
+            0
+            clamp(10px, 4.08vw, 40px)
+        ;
+        margin-block-start: initial;
+        pointer-events: none;
+        overflow-y: auto;
+        inset-block: 0;
+        display: none;
+        opacity: 0;
+    }
+
+    @media print { display: none; }
+
+    &.open {
+        @include brp($b6) {
+            @include flex;
+            transform: translateX(0);
+            pointer-events: auto;
+            display: flex;
+            opacity: 1;
+
+            @starting-style {
+                transform: translateX(100%);
+                opacity: 0;
+            }
         }
     }
 
-    .group_1 {
-        @include flex-direction(column);
-        @include flex;
-        margin-bottom: 35px;
+    .main_menu {
+        padding-left: min(2.08vw, 40px);
+        margin-block-start: 30px;
 
-        &:last-child { margin-bottom: 0; }
-
-        .title {
-            @include font(
-                clamp(szrem(18), 1.25vw, szrem(24)),
-                $f2,
-                bold
-            );
-            @include text;
-            margin-bottom: 14px;
-            color: $c3;
+        @include brp($b6) {
+            padding: 0;
+            width: min(88vw, 320px);
         }
 
-        .item {
-            @include font(
-                clamp(szrem(14), 0.94vw, szrem(18)),
-                $f2
-            );
-            @include text;
-            margin-bottom: 10px;
-            color: $c3;
-
-            &:hover { color: $c5; }
-            &:last-child { margin-bottom: 0; }
-            &.active { color: $c5; }
+        .title_main_menu {
+            @include t1((
+                f: $f4,
+                s: szrem(14),
+                c: var(--theme_text_alt),
+                t: uppercase
+            ));
         }
+
+        .group_1 {
+            @include flex-direction(column);
+            @include flex;
+            margin-block-start: 20px;
+
+
+            .title {
+                @include t1((
+                    f: $f4,
+                    s: szrem(18),
+                    w: bold
+                ));
+                @include position;
+                @include wh(100%, 50px);
+                @include align-items(center);
+                @include flex;
+                padding-inline-start: 35px;
+                color: var(--theme_text);
+                margin-bottom: initial;
+
+                @include brp($b6) {
+                    color: var(--theme_text);
+                }
+            }
+
+            .item {
+                @include t1((
+                    f: $f2,
+                    s: szrem(14)
+                ));
+                @include wh(100%, 35px);
+                @include align-items(center);
+                @include flex;
+                padding-inline-start: 28px;
+
+
+                &:last-child { margin-bottom: 0; }
+
+                &:hover {
+                    color: var(--theme_accent);
+
+                    @include brp($b6) {
+                        color: var(--theme_accent_alt);
+                    }
+                }
+
+                &.active {
+                    @include wh(100%, 45px);
+                    @include border-radius(7px);
+                    @include bc(
+                        rgba($c16, 0.08),
+                        var(--theme_text_alt)
+                    );
+                    border-left: $bd8;
+
+                    @include brp($b6) {
+                        color: var(--theme_accent_alt);
+                    }
+                }
+            }
+
+            .submenu {
+                @include flex-direction(column);
+                @include flex;
+                margin: 2px 0 8px;
+                padding-left: 12px;
+                border-left: 1px solid var(--theme_border);
+
+                @include brp($b6) {
+                    border-left-color: var(--theme_border_soft);
+                }
+
+                .subitem {
+                    @include font(szrem(15), $f2);
+                    @include text;
+                    margin-bottom: 8px;
+                    color: var(--theme_text_alt);
+                    opacity: 0.8;
+
+                    @include brp($b6) {
+                        color: var(--theme_text_alt);
+                    }
+
+                    &:last-child { margin-bottom: 0; }
+
+                    &:hover {
+                        color: var(--theme_accent);
+                        opacity: 1;
+
+                        @include brp($b6) {
+                            color: var(--theme_accent_alt);
+                            opacity: 1;
+                        }
+                    }
+
+                    &.active {
+                        color: var(--theme_accent);
+                        opacity: 1;
+
+                        @include brp($b6) {
+                            color: var(--theme_accent_alt);
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.menu_close {
+    @include position(fixed, 50px, 20px, top, right);
+    @include border-radius(50%);
+    @include bc(var(--theme_inverted_surface), var(--theme_text));
+    @include whs(45px);
+    box-shadow: var(--theme_shadow);
+    cursor: pointer;
+    display: none;
+    padding: 10px;
+    z-index: 11;
+
+    &.open {
+        .mc { @include animation(menu_close_1 650ms linear forwards); }
+    }
+
+    &.close {
+        .mc { @include animation(menu_close_2 650ms linear forwards); }
+    }
+
+    .mc {
+        stroke: var(--theme_icon_stroke);
+        stroke: {
+            width: 10;
+            linecap: round;
+            dashoffset: -22;
+            dasharray: 60 272;
+        }
+    }
+
+    @include brp($b6) {
+        display: block;
     }
 }

@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .box_shadow_example {
+                @include box-shadow(7px 7px 7px #FBB03B);
+            }
+}

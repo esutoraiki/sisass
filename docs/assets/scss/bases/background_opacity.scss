@@ -1,0 +1,18 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .background_opacity_example_legacy {
+        @include background-opacity($c2, 0.35, true);
+        @include whs(100px);
+        margin-block-end: 20px;
+    }
+
+    .background_opacity_example_map {
+        @include background-opacity((
+            color: $c2,
+            o: 0.35,
+            ul: false
+        ));
+        @include whs(100px);
+    }
+}

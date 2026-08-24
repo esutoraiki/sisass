@@ -1,6 +1,0 @@
-@import "base";
-@import "vendor";
-
-.rotate_example {
-    @include transform(rotate(45deg));
-}

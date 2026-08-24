@@ -1,0 +1,246 @@
+<article id="scroll" class="scroll">
+    <div class="group_title">
+        <h2 class="subtitle">
+            scroll (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">Personaliza el scroll del elemento mediante una sintaxis basada en map, con soporte para color, grosor, radios, bordes, sombras y ocultación visual de la barra.</p>
+    <p class="description">Usa <b>axis</b> como mecanismo único para definir el eje con <b>x</b>, <b>y</b> o <b>both</b>. Para Firefox, el mixin aplica <b>scrollbar-color</b> y <b>scrollbar-width</b>, cuyo grosor solo admite <b>auto</b>, <b>thin</b> o <b>none</b> mediante <b>firefox_width</b>.</p>
+    <p class="note"><b>Nota:</b> La personalización no se comporta igual en todos los navegadores. En Firefox no es posible definir el ancho del scroll en píxeles y el soporte queda limitado a <b>scrollbar-color</b> y <b>scrollbar-width</b>. Además, la familia <b>::-webkit-scrollbar</b> es no estándar, por lo que Safari y navegadores basados en Chromium pueden mostrar diferencias de renderizado según la plataforma o la versión.</p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin scroll($attr: ());</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+
+        <div class="container_table">
+
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>thumb_color | color | c</b></td>
+                    <td>Color</td>
+                    <td>white</td>
+                    <td>Define el color del thumb.</td>
+                </tr>
+                <tr>
+                    <td><b>thumb_hover_color | color_hover | ch</b></td>
+                    <td>Color</td>
+                    <td>color</td>
+                    <td>Define el color del thumb al pasar el cursor.</td>
+                </tr>
+                <tr>
+                    <td><b>thumb_active_color | color_active | ca</b></td>
+                    <td>Color</td>
+                    <td>color_hover</td>
+                    <td>Define el color del thumb durante la interacción activa.</td>
+                </tr>
+                <tr>
+                    <td><b>background | bg | b</b></td>
+                    <td>Color</td>
+                    <td>black</td>
+                    <td>Define el color base del scrollbar y funciona como respaldo del track.</td>
+                </tr>
+                <tr>
+                    <td><b>track_color | bg_track | bt</b></td>
+                    <td>Color</td>
+                    <td>bg</td>
+                    <td>Define el color específico del track.</td>
+                </tr>
+                <tr>
+                    <td><b>track_hover_color | bg_track_hover | bth</b></td>
+                    <td>Color</td>
+                    <td>bg_track</td>
+                    <td>Define el color del track al pasar el cursor.</td>
+                </tr>
+                <tr>
+                    <td><b>track_active_color | bg_track_active | bta</b></td>
+                    <td>Color</td>
+                    <td>bg_track_hover</td>
+                    <td>Define el color del track durante la interacción activa.</td>
+                </tr>
+                <tr>
+                    <td><b>size | width | w</b></td>
+                    <td>Size</td>
+                    <td>15px</td>
+                    <td>Define el grosor base del scrollbar cuando no se especifica un eje concreto.</td>
+                </tr>
+                <tr>
+                    <td><b>size_x | width_x | wx</b></td>
+                    <td>Size</td>
+                    <td>width</td>
+                    <td>Controla la altura visual del scrollbar horizontal.</td>
+                </tr>
+                <tr>
+                    <td><b>size_y | width_y | wy</b></td>
+                    <td>Size</td>
+                    <td>width</td>
+                    <td>Controla el ancho visual del scrollbar vertical.</td>
+                </tr>
+                <tr>
+                    <td><b>radius | r</b></td>
+                    <td>Size</td>
+                    <td>10px</td>
+                    <td>Aplica el radio del thumb y funciona como respaldo del track.</td>
+                </tr>
+                <tr>
+                    <td><b>radius_track | rt</b></td>
+                    <td>Size</td>
+                    <td>radius</td>
+                    <td>Define el radio específico del track.</td>
+                </tr>
+                <tr>
+                    <td><b>thumb_border | tb</b></td>
+                    <td>Border</td>
+                    <td>0 solid transparent</td>
+                    <td>Define el borde del thumb.</td>
+                </tr>
+                <tr>
+                    <td><b>track_border | trb</b></td>
+                    <td>Border</td>
+                    <td>0 solid transparent</td>
+                    <td>Define el borde del track.</td>
+                </tr>
+                <tr>
+                    <td><b>thumb_shadow | ts</b></td>
+                    <td>Shadow</td>
+                    <td>none</td>
+                    <td>Define la sombra del thumb.</td>
+                </tr>
+                <tr>
+                    <td><b>track_shadow | trs</b></td>
+                    <td>Shadow</td>
+                    <td>none</td>
+                    <td>Define la sombra del track.</td>
+                </tr>
+                <tr>
+                    <td><b>firefox_width | fw</b></td>
+                    <td>Keyword</td>
+                    <td>auto</td>
+                    <td>Define scrollbar-width para Firefox. Admite auto, thin o none.</td>
+                </tr>
+                <tr>
+                    <td><b>axis</b></td>
+                    <td>Keyword</td>
+                    <td>y</td>
+                    <td>Define el eje del scroll con x, y o both.</td>
+                </tr>
+                <tr>
+                    <td><b>hidden | hide | h</b></td>
+                    <td>Boolean</td>
+                    <td>false</td>
+                    <td>Oculta visualmente la barra sin desactivar el scroll.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="scroll_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="group">
+                        <div class="scroll_y">
+                            <img src="img/test/1.webp" alt="cat" class="cat">
+                        </div>
+                        <p class="label">Scroll Y</p>
+                    </div>
+
+                    <div class="group">
+                        <div class="scroll_x">
+                            <img src="img/test/1.webp" alt="cat" class="cat">
+                        </div>
+                        <p class="label">Scroll X</p>
+                    </div>
+
+                    <div class="group">
+                        <div class="scroll_both">
+                            <img src="img/test/1.webp" alt="cat" class="cat">
+                        </div>
+                        <p class="label">Scroll Both</p>
+                    </div>
+
+                    <div class="group">
+                        <div class="scroll_hidden">
+                            <img src="img/test/1.webp" alt="cat" class="cat">
+                        </div>
+                        <p class="label">Scroll Hidden</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/scroll.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/scroll.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div class=&quot;group&quot;&gt;
+                    &lt;div class=&quot;scroll_y&quot;&gt;
+                        &lt;img src=&quot;img/test/1.webp&quot; alt=&quot;cat&quot; class=&quot;cat&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;label&quot;&gt;Scroll Y&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;group&quot;&gt;
+                    &lt;div class=&quot;scroll_x&quot;&gt;
+                        &lt;img src=&quot;img/test/1.webp&quot; alt=&quot;cat&quot; class=&quot;cat&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;label&quot;&gt;Scroll X&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;group&quot;&gt;
+                    &lt;div class=&quot;scroll_both&quot;&gt;
+                        &lt;img src=&quot;img/test/1.webp&quot; alt=&quot;cat&quot; class=&quot;cat&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;label&quot;&gt;Scroll Both&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&quot;group&quot;&gt;
+                    &lt;div class=&quot;scroll_hidden&quot;&gt;
+                        &lt;img src=&quot;img/test/1.webp&quot; alt=&quot;cat&quot; class=&quot;cat&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;label&quot;&gt;Scroll Hidden&lt;/p&gt;
+                &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

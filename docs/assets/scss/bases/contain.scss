@@ -1,0 +1,13 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .contain_container {
+        @include wh(100%, auto);
+        aspect-ratio: calc(16 / 9);
+        max-height: 500px;
+
+        .contain_example {
+            @include contain;
+        }
+    }
+}

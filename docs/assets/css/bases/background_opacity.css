@@ -1,0 +1,13 @@
+.documentationpage .background_opacity_example_legacy {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.35);
+  width: 100px;
+  height: 100px;
+  margin-block-end: 20px;
+}
+.documentationpage .background_opacity_example_map {
+  background-color: #000;
+  background-color: rgb(0 0 0 / 0.35);
+  width: 100px;
+  height: 100px;
+}

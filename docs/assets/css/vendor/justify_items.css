@@ -1,0 +1,50 @@
+.documentationpage .justify_items_example {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 12px;
+  gap: 12px;
+  width: 100%;
+  height: auto;
+}
+.documentationpage .justify_items_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.documentationpage .justify_items_example .grid {
+  -ms-display: grid;
+  display: grid;
+  grid-gap: 12px;
+  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  border: 1px solid #3A405A;
+  padding: 12px;
+  background-color: #FEFEFE;
+}
+.documentationpage .justify_items_example .grid.end {
+  -webkit-justify-items: end;
+  justify-items: end;
+}
+.documentationpage .justify_items_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  color: #FFF;
+}

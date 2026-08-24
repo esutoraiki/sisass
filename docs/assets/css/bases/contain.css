@@ -1,0 +1,11 @@
+.documentationpage .contain_container {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1.7777777778;
+  max-height: 500px;
+}
+.documentationpage .contain_container .contain_example {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,18 @@
+.example_brp {
+  background-color: #d7eef7;
+  color: #16313a;
+  padding: 20px;
+  border: 2px solid #16313a;
+}
+@media only screen and (max-width: 760px) {
+  .example_brp {
+    background-color: #f8d9dc;
+    color: #4d171d;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .example_brp {
+    background-color: #ddf2da;
+    color: #173f21;
+  }
+}

@@ -1,0 +1,25 @@
+.documentationpage .item {
+  width: 90vw;
+  height: auto;
+  max-width: 240px;
+}
+.documentationpage .box_decoration_break_text {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  background-color: #FBB03B;
+  color: #000;
+  padding-inline: 20px;
+  display: inline;
+  line-height: 1.7;
+}
+.documentationpage .box_decoration_break_text--slice {
+  -webkit-box-decoration-break: slice;
+  box-decoration-break: slice;
+}
+.documentationpage .box_decoration_break_text--clone {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}

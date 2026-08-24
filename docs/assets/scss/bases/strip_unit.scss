@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .fn_strip_unit {
+        --size: #{strip-unit(24px)};
+    }
+}

@@ -1,0 +1,43 @@
+@use "../core/instances" as *;
+
+@include keyframes(slide) {
+    from {
+        transform: translateX(0);
+        opacity: 0.45;
+    }
+    to {
+        transform: translateX(36px);
+        opacity: 1;
+        background-color: $c2;
+    }
+};
+
+.documentationpage {
+    .animation_fill_mode_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .button_replay {
+            cursor: pointer;
+        }
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .box {
+            @include center-flex-column;
+            @include wh(150px, 72px);
+            opacity: 0.45;
+
+            &.is_running {
+                @include animation(slide 1.2s 1 ease);
+
+                &.backwards { @include animation-fill-mode(backwards); }
+                &.forwards { @include animation-fill-mode(forwards); }
+            }
+        }
+    }
+}

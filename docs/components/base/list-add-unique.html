@@ -1,0 +1,78 @@
+<article id="list-add-unique" class="list-add-unique">
+    <div class="group_title">
+        <h2 class="subtitle">
+            list-add-unique (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Agrega un valor a una lista solo si ese valor todavía no existe en ella.
+    </p>
+    <p class="description">
+        Es útil para construir listas acumulativas sin duplicados, especialmente cuando el origen de los valores puede repetirse.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function list-add-unique($list, $value);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>list</b></td>
+                    <td>List</td>
+                    <td>-</td>
+                    <td>Define la lista base sobre la que se intentará agregar el nuevo valor.</td>
+                </tr>
+                <tr>
+                    <td><b>value</b></td>
+                    <td>Any</td>
+                    <td>-</td>
+                    <td>Define el valor que se agregará solo si no existe previamente en la lista.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <p class="description">
+            La función primero verifica si <b>value</b> ya existe dentro de <b>list</b> usando <b>list.index</b>. Si lo encuentra,
+            devuelve la lista original; si no lo encuentra, agrega el valor al final con <b>list.append</b>.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/list-add-unique.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/list-add-unique.css"></pre>
+        </div>
+    </section>
+</article>

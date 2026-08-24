@@ -1,0 +1,15 @@
+@use "../core/instances" as *;
+
+.example_brp {
+    @include bc(#d7eef7, #16313a);
+    padding: 20px;
+    border: 2px solid #16313a;
+
+    @include brp(760) {
+        @include bc(#f8d9dc, #4d171d);
+    }
+
+    @include brp(1024, min) {
+        @include bc(#ddf2da, #173f21);
+    }
+}

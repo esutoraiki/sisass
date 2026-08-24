@@ -1,0 +1,25 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    @mixin mapv_box($attr: ()) {
+        background-color: mapv($attr, (background-color, bg), orange);
+        color: mapv($attr, (color, c), navy);
+        padding: 16px;
+        margin-bottom: 12px;
+    }
+
+    .fn_mapv {
+        .box {
+            @include mapv_box((
+                background-color: black,
+                color: white
+            ));
+        }
+
+        .box_default_bg {
+            @include mapv_box((
+                c: maroon
+            ));
+        }
+    }
+}

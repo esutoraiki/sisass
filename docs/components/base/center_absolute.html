@@ -1,0 +1,78 @@
+<article id="center_absolute" class="center_absolute">
+    <div class="group_title">
+        <h2 class="subtitle">
+            center-absolute (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Centra un elemento de forma absoluta usando <b>position</b> y
+        <b>transform</b>.
+    </p>
+    <p class="description">
+        Internamente aplica <b>position: absolute</b>, ubica el elemento en
+        <b>50% / 50%</b> y luego corrige su propio tamaño con
+        <b>translate(-50%, -50%)</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin center-absolute;</code></pre>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+
+        <p class="note">
+            <b>Nota:</b> El elemento con <b>position: absolute</b> se centra
+            respecto de su ancestro posicionado más cercano, es decir, el
+            primer contenedor padre con una propiedad <b>position</b> distinta
+            de <b>static</b> como <b>relative</b>, <b>absolute</b>,
+            <b>fixed</b> o <b>sticky</b>. Si no existe uno, el cálculo se hace
+            respecto del contenedor inicial de la página.
+        </p>
+
+        <div
+            id="center_absolute_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="center_absolute_container">
+                        <div class="center_absolute_example box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/center_absolute.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/center_absolute.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;center_absolute_container&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;center_absolute_example&nbsp;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

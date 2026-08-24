@@ -1,0 +1,95 @@
+<article id="bc" class="bc">
+    <div class="group_title">
+        <h2 class="subtitle">
+            bc (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Aplica <b>background-color</b> y <b>color</b> en una sola llamada.
+        Es un atajo útil para definir el color de fondo y el color del texto
+        sobre el mismo selector.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin bc($background: #FFF, $color: #000);</code></pre>
+        <p class="description">
+            Valores por defecto: <b>#FFF, #000.</b>
+        </p>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>background</b></td>
+                    <td>Color</td>
+                    <td>#FFF</td>
+                    <td>Define la propiedad <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>color</b></td>
+                    <td>Color</td>
+                    <td>#000</td>
+                    <td>Define la propiedad <b>color</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="bc_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <p class="bc_example">Texto con background y color</p>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/bc.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/bc.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;p&nbsp;class=&quot;bc_example&quot;&gt;Texto&nbsp;con&nbsp;background&nbsp;y&nbsp;color&lt;/p&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

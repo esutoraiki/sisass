@@ -1,0 +1,69 @@
+<article id="center_flex_row" class="center_flex_row">
+    <div class="group_title">
+        <h2 class="subtitle">
+            center-flex-row (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Convierte el contenedor en un layout <b>flex</b> con dirección de
+        fila y centra sus hijos en ambos ejes.
+    </p>
+    <p class="description">
+        Internamente aplica la dirección por defecto de fila, habilita
+        <b>display: flex</b> y usa <b>place-content: center</b> junto con
+        <b>place-items: center</b> para alinear el contenido.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin center-flex-row;</code></pre>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="center_flex_row_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="center_flex_row_demo">
+                        <div class="box"></div>
+                        <div class="box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/center_flex_row.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/center_flex_row.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;center_flex_row_demo&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;box&quot;&gt;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

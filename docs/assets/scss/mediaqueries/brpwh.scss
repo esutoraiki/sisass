@@ -1,0 +1,11 @@
+@use "../core/instances" as *;
+
+.example_brpwh {
+    @include bc(#edf0d8, #3c4215);
+    padding: 20px;
+    border: 2px solid #3c4215;
+
+    @include brpwh(900, 700) {
+        @include bc(#f0d8e8, #421532);
+    }
+}

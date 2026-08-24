@@ -1,4 +1,4 @@
-<article id="mbr_article" class="mbr_article">
+<article id="mbr" class="mbr">
     <div class="group_title">
         <h2 class="subtitle">
             mbr (_mediaqueries.scscs)
@@ -7,20 +7,19 @@
             Tipo: Mixin
         </h3>
         <h3 class="attribute">
-            Versión: 1.1.13
+            Versión: 2.x.x
         </h3>
     </div>
 
     <p class="description">
-        Mbr permite la creación de múltiples breakpoint en los cuales
-        va a variar uno o varios atributos con la ayuda de una lista/s
-        de valores.
+        Crea múltiples breakpoints de ancho usando una lista de puntos de corte.
+        En cada iteración ejecuta el contenido recibido y entrega el índice
+        actual mediante <b>@content($i)</b>.
     </p>
-
-    <p class="note">
-        Este mixin se debe usar con al ayuda de la función
-        nth (<a href="https://sass-lang.com/documentation/modules/list#nth" target="_blank">Sass: sass:list</a>)
-        que permite obtener un elemento de una lista.
+    <p class="description">
+        Es útil cuando varias propiedades cambian siguiendo listas paralelas de
+        valores. Normalmente se combina con <b>list.nth()</b> para obtener el
+        valor correspondiente a cada breakpoint.
     </p>
 
     <section class="use">
@@ -30,17 +29,39 @@
 
         <pre class="language-scss"><code>@mixin mbr($points...) using ($i);</code></pre>
 
-        <p class="description">
-            <b>points</b>: Breakpoints o lista de dreakpoints en los cuales se realizara los cambios.
-        </p>
-        <p class="description">
-            <b>i</b>: Variable auto numerica la cual inicia desde 1.
-        </p>
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>points</b></td>
+                    <td>Arglist</td>
+                    <td>-</td>
+                    <td>Define los puntos de corte usados para generar media queries de ancho.</td>
+                </tr>
+                <tr>
+                    <td><b>i</b></td>
+                    <td>Number</td>
+                    <td>-</td>
+                    <td>Expone el índice actual del breakpoint dentro del bloque <b>using</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
 
         <h2 class="title">
-            Cambio de background color y tamaño según la resolución del navegador.
+            Ejemplo
         </h2>
-
         <div class="container_example">
             <h2 class="subtitle">
                 Ejemplo 1: SCSS
@@ -58,14 +79,14 @@
                 Ejemplo 1: HTML
             </h2>
 
-            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_mbr&quot;&gt;&lt;/div&gt;</code></pre>
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_mbr&quot;&gt;Ejemplo&nbsp;mbr&lt;/div&gt;</code></pre>
 
             <h2 class="subtitle">
                 Resultado
             </h2>
 
             <div class="result">
-                <div class="example_mbr"></div>
+                <div class="example_mbr">Ejemplo mbr</div>
             </div>
         </div>
     </section>

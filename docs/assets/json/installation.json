@@ -1,0 +1,18 @@
+{
+    "breadcrumb": [
+        {
+            "label": "articles"
+        },
+        {
+            "label": "installation.html"
+        }
+    ],
+    "components": [
+        {
+            "id": "installation",
+            "url": "../components/articles/installation.html",
+            "position": "beforeend",
+            "node": "installation"
+        }
+    ]
+}

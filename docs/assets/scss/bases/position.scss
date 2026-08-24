@@ -1,0 +1,28 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    [class*="position_container"] {
+        @include position;
+        @include wh(100%, 120px);
+        border: $bd1;
+        margin-block-end: 20px;
+
+        .position_example {
+            @include position((
+                position: absolute,
+                y: -17px,
+                x: 100px,
+                yaxis: top,
+                xaxis: left
+            ));
+        }
+
+        .position_example_explicit {
+            @include position((
+                position: absolute,
+                b: -10px,
+                r: 100px
+            ));
+        }
+    }
+}

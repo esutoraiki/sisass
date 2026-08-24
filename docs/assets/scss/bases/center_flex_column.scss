@@ -1,0 +1,10 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .center_flex_column_demo {
+        @include center-flex-column;
+        @include wh(100%, 200px);
+        @include gap(5px);
+        @include position;
+    }
+}

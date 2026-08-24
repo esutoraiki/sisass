@@ -1,0 +1,90 @@
+@use "sass:list";
+@use "../core/instances" as *;
+
+.container_header {
+    @include wh(min(100vw, 1920px), 100%);
+    @include center-flex-column;
+    padding: 7px 5vw;
+    margin-inline: auto;
+    border-bottom: 1px solid var(--theme_border);
+
+    .separator {
+        @include wh(2px, 20px);
+        @include bc(var(--theme_border), $c0);
+    }
+
+    .main_header {
+        @include position;
+        @include wh(100%, 100%);
+
+        @include brp($b6) {
+            grid-template-columns: 1fr;
+        }
+
+        .left_header {
+            @include align-items(center);
+            @include flex;
+            @include gap(14px);
+
+            .logo_sisass {
+                @include ht;
+                @include position;
+                @include wh(
+                    list.nth($l1x, 1),
+                    list.nth($l1y, 1)
+                );
+                display: block;
+            }
+
+            .separator {
+                @include brp($b6) {
+                    display: none;
+                }
+            }
+
+            .slogan {
+                @include t1(( s: szrem(14), c: var(--theme_text) ));
+
+                @include brp($b6) {
+                    display: none;
+                }
+            }
+        }
+
+        .tools_header {
+            @include flex;
+            @include align-self(center);
+            @include align-items(center);
+            @include gap(25px);
+
+            @include brp($b6) {
+                @include gap(15px);
+            }
+
+            @media print { display: none; }
+
+            .version {
+                @include t1(( s: szrem(12), lh: initial ));
+            }
+
+            .contact {
+                @include flex;
+                @include align-items(center);
+                @include gap(15px);
+
+                .github, .email {
+                    @include position;
+                    display: block;
+                    cursor: pointer;
+                }
+
+                .logo_github, .icon_email {
+                    @include normalize-svg((
+                        w: list.nth($l2, 1),
+                        h: list.nth($l2, 1)
+                    ));
+                }
+            }
+        }
+    }
+}

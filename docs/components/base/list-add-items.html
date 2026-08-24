@@ -1,0 +1,78 @@
+<article id="list-add-items" class="list-add-items">
+    <div class="group_title">
+        <h2 class="subtitle">
+            list-add-items (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Agrega varios valores a una lista base evitando duplicados.
+    </p>
+    <p class="description">
+        Es útil cuando necesitas combinar listas y conservar solo valores únicos en el resultado final.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function list-add-items($list, $items);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>list</b></td>
+                    <td>List</td>
+                    <td>-</td>
+                    <td>Define la lista base sobre la que se agregarán nuevos valores.</td>
+                </tr>
+                <tr>
+                    <td><b>items</b></td>
+                    <td>List</td>
+                    <td>-</td>
+                    <td>Define la lista de valores que se intentará incorporar sin duplicados.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <p class="description">
+            La función recorre cada elemento de <b>items</b> con <b>@each</b> y delega la inserción en
+            <b>list-add-unique</b>, por lo que cada valor se agrega solo si todavía no existe dentro de <b>list</b>.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/list-add-items.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/list-add-items.css"></pre>
+        </div>
+    </section>
+</article>

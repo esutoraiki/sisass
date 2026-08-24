@@ -1,0 +1,97 @@
+@-webkit-keyframes slide {
+  from {
+    transform: translateX(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateX(36px);
+    opacity: 1;
+    background-color: #000;
+  }
+}
+@-moz-keyframes slide {
+  from {
+    transform: translateX(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateX(36px);
+    opacity: 1;
+    background-color: #000;
+  }
+}
+@-ms-keyframes slide {
+  from {
+    transform: translateX(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateX(36px);
+    opacity: 1;
+    background-color: #000;
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateX(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateX(36px);
+    opacity: 1;
+    background-color: #000;
+  }
+}
+.documentationpage .animation_fill_mode_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .animation_fill_mode_example .button_replay {
+  cursor: pointer;
+}
+.documentationpage .animation_fill_mode_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 8px;
+}
+.documentationpage .animation_fill_mode_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 150px;
+  height: 72px;
+  opacity: 0.45;
+}
+.documentationpage .animation_fill_mode_example .box.is_running {
+  -webkit-animation: slide 1.2s 1 ease;
+  -moz-animation: slide 1.2s 1 ease;
+  animation: slide 1.2s 1 ease;
+}
+.documentationpage .animation_fill_mode_example .box.is_running.backwards {
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+.documentationpage .animation_fill_mode_example .box.is_running.forwards {
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}

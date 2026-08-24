@@ -1,0 +1,29 @@
+@use "../core/instances" as *;
+@use "sass:string";
+
+.documentationpage {
+    .transition_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .box {
+            @include center-flex-column;
+            font-size: szrem(18);
+            font-weight: bold;
+            opacity: 0.5;
+            color: $c1;
+
+            &:hover { opacity: 1; }
+
+            &.animated {
+                @include transition(opacity 5s ease);
+            }
+        }
+    }
+}

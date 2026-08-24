@@ -1,0 +1,732 @@
+{
+    "items": [
+        {
+            "url": "pages/articles/installation.html",
+            "anchor": "installation",
+            "title": "Instalación de SISASS",
+            "category": "Artículo",
+            "page_title": "Instalación",
+            "text": "Instalación de SISASS Tipo: Artículo Versión: 2.x.x Esta guía explica cómo instalar SISASS , copiar su carga core y conectar los archivos SCSS con el compilador de tu proyecto. Elige el procedimiento que corresponde a tu entorno. La instalación del paquete y la instalación del preprocesador Sass son pasos distintos, pero ambos son necesarios para compilar los estilos. Al ejecutar nuevamente el instalador, los archivos distribuidos pueden sobrescribir personalizaciones existentes en la carpeta de destino. Conserva tus cambios antes de reinstalar. Requisitos comunes Necesitas Node.js, npm y un proyecto con una carpeta raíz identificable. Si el proyecto todavía no tiene un archivo package.json , créalo antes de instalar el paquete. Entorno Preprocesador Instalador Destino principal HTML, CSS y JavaScript sass Normal assets/scss/core/ SQHTML sass --dep sqhtml assets/scss/core/ SQHTML2 sass --dep sqhtml2 src/core/ React sin Vite sass Normal con --path src/assets/scss/core/ React con Vite sass-embedded o sass Normal con --path src/assets/scss/core/ Instalar el paquete y el compilador SISASS 2.x.x utiliza el sistema de módulos de Sass. Escribe los nuevos ejemplos con @use y @forward ; no uses node-sass ni construyas integraciones nuevas con @import . Vanilla React sin Vite React con Vite SQHTML Proyecto HTML, CSS y JavaScript En un proyecto tradicional, el instalador normal crea la carga distribuida en assets/scss/core/ . Ejecuta el comando desde la raíz del proyecto consumidor: Crea un punto de entrada, por ejemplo assets/main.scss , e importa el módulo público de SISASS. La ruta sisass/src/sisass corresponde al árbol actual del paquete; si el paquete publicado incorpora un punto de entrada Sass, utiliza ese punto de entrada validado. Compila el archivo con la carpeta del proyecto y el paquete como rutas de carga: Enlaza assets/css/main.css desde tu HTML. Para observar cambios durante el desarrollo, puedes sustituir la compilación puntual por el modo --watch . React sin Vite React no define por sí mismo cómo se procesan los archivos SCSS. Esta ruta utiliza Webpack como ejemplo de un proyecto React existente. Si tu proyecto usa otra herramienta, conserva el procedimiento del instalador y sigue la integración Sass específica de esa herramienta. Verifica que Webpack tenga disponibles css-loader y style-loader . La regla para SCSS debe encadenar esos loaders con sass-loader : Importa un archivo como src/main.scss desde tu entrada JavaScript o JSX: Para estilos globales usa un archivo SCSS normal. Si el proyecto ya tiene CSS Modules, puedes usar la extensión .module.scss y consumir las clases mediante el objeto que devuelve el import. React con Vite Vite tiene soporte incorporado para archivos .scss y .sass ; no necesitas instalar un plugin específico de Vite. La documentación actual recomienda sass-embedded por su rendimiento y mantiene sass como alternativa. npm instala el paquete en node_modules/sisass/ . El punto de entrada Sass de SISASS se encuentra en node_modules/sisass/src/_sisass.scss . Para que Sass pueda resolver sisass/src/sisass , configura node_modules como una ruta de carga en la configuración de Vite. Este bloque no se coloca en src/main.scss . Guárdalo en vite.config.js , en la raíz del proyecto, al mismo nivel que package.json . Si tu proyecto usa TypeScript, utiliza el mismo contenido en vite.config.ts : Configuración opcional sin namespaces Si no deseas escribir los namespaces s y variables en cada archivo SCSS, puedes configurar Vite para importar SISASS y sus variables globalmente mediante additionalData . Esta variante requiere @vitejs/plugin-react y debe guardarse en vite.config.ts , en la raíz del proyecto: Con esta configuración, src/main.scss puede utilizar directamente los mixins y las variables sin prefijo: El uso global es opcional y puede provocar colisiones con mixins o variables del proyecto. Para aplicaciones grandes, se recomienda conservar los namespaces y usar s.text(...) y variables.$c2 de forma explícita. Crea src/main.scss e importa la carga instalada y el módulo de SISASS: Ejecuta el servidor de desarrollo y la construcción de producción para confirmar que Vite resuelve los módulos y genera CSS: Estilos locales con CSS Modules Vite reconoce como CSS Module cualquier archivo SCSS cuyo nombre termine en .module.scss . Crea el archivo junto al componente que va a utilizarlo; así resulta fácil identificar qué estilos le pertenecen. Esta es la estructura del ejemplo: Ejemplo: componente ProductCard Para este ejemplo, ProductCard es un componente ficticio que representa una tarjeta de producto. En su archivo ProductCard.module.scss , importa SISASS y las variables instaladas. Las clases declaradas allí serán locales al componente: En ProductCard.jsx , importa el módulo como styles y accede a cada clase mediante ese objeto. Vite genera nombres únicos durante la compilación, por lo que estas clases no afectan otros componentes: Por último, importa ProductCard desde App.jsx . No necesitas importar nuevamente el SCSS porque el componente ya carga su propio módulo: Instalación en SQHTML El modo SQHTML conserva el destino assets/scss/core/ y aplica ajustes específicos de variables y fuentes. Si necesitas otra raíz de recursos, combina --dep sqhtml con --path : Después de copiar los archivos, el instalador añade $c3: #1F567B cuando todavía no existe el bloque de ejemplo de SQHTML, configura $f1 con Roboto, ajusta $i1 a ../../img/svg/ y reemplaza el bloque de ejemplo de _fonts.scss por declaraciones de Roboto. Instalación en SQHTML2 SQHTML2 es una integración especial del instalador. Su destino se fuerza a src/core/ y no depende de --path . Además de aplicar los ajustes de SQHTML, el instalador regenera _index.scss a partir de instances.config.js . En la configuración actual, el archivo reenvía variables , base , mediaqueries y mixin . SQHTML2 continúa en desarrollo. Comprueba que los módulos que reenvía _index.scss existan en el proyecto consumidor antes de compilar. Rutas y modos del instalador npm explore sisass ejecuta el script desde el directorio del paquete instalado. Por eso una ruta como ../../src/ se interpreta desde node_modules/sisass en una instalación npm convencional. Modo Respeta --path Destino Transformaciones adicionales Normal Sí /assets/scss/core/ Ninguna sqhtml Sí /assets/scss/core/ Variables y fuentes de SQHTML sqhtml2 No src/core/ Variables, fuentes y generación de instancias Solución de problemas Problema Comprobación Solución El comando Sass no existe. Ejecuta npx sass --version . Instala sass como dependencia de desarrollo o usa el script del proyecto. No se encuentra un módulo SCSS. Revisa el destino creado y las rutas de carga. Corrige --path o añade la carpeta correcta al compilador. SQHTML2 no respeta --path . Confirma que usaste --dep sqhtml2 . Usa el destino fijo src/core/ y no combines este modo con una ruta alternativa. Faltan módulos reenviados por SQHTML2. Revisa el contenido generado de _index.scss . Añade los módulos requeridos al proyecto consumidor o espera una versión posterior de la integración. SISASS no se resuelve con @use . Comprueba el punto de entrada del paquete y la ruta de carga. Usa el punto de entrada Sass publicado y validado para la versión instalada. Referencias oficiales SASS Sass Instalación de Sass Guía oficial de instalación de Sass. sass-lang.com SASS Sass Sistema de módulos @use de Sass Documentación oficial sobre el sistema de módulos @use y @forward. sass-lang.com React React Estilos en React Aprende diferentes enfoques para manejar estilos en React. react.dev Vite Vite Preprocesadores CSS en Vite Cómo configurar y usar preprocesadores CSS en Vite vite.dev Webpack Webpack sass-loader para Webpack Loader oficial para compilar archiivos SASS en webpack. webpack.js.org"
+        },
+        {
+            "url": "pages/articles/project_structure.html",
+            "anchor": "project_structure",
+            "title": "Estructura del proyecto",
+            "category": "Artículo",
+            "page_title": "Estructura del proyecto",
+            "text": "Estructura del proyecto Tipo: Artículo Versión: 2.x.x Este artículo explica cómo se divide el repositorio de SISASS y dónde debes trabajar según el tipo de cambio. El proyecto separa el código fuente del framework, la carga core que usa el instalador y una explicación simple del sitio de documentación. Leyenda Raíz Carpeta Archivo JavaScript Archivo SCSS Descripción general src/ contiene el código de SISASS . Aquí se crean y mantienen los mixins, funciones y módulos SCSS que definen el comportamiento del framework. files/ contiene los archivos planos que install.js copia al instalar SISASS . El instalador reconstruye la ruta final assets/scss/core/ o src/core/ según el modo, y esa copia solo se hace en la instalación inicial; no se sincroniza después con src/ . docs/ contiene el sitio de documentación y toma como base los módulos de src/ , por eso refleja la estructura y el comportamiento del framework sin duplicarlo. Nota Los archivos que comienzan con \"_\" son parciales de SASS. Un partial en SASS es un archivo SCSS pensado para contener una parte del código de estilos y ser reutilizado desde otros archivos, en lugar de compilarse normalmente como una hoja CSS independiente. Es decir, un archivo modular de Sass que no se compila por separado. Puede entenderse como un fragmento que no genera un archivo CSS. Rutas principales del repositorio En esta parte se muestran las rutas principales de SISASS . Se omiten algunos scripts y archivos auxiliares. Ruta Responsabilidad Cuándo revisarla src/ Fuente de los módulos SCSS del framework. Si necesitas utilizar mixins, funciones o módulos de SISASS . files/ Archivos que utiliza el instalador, en el momento de realizar la primera instalación. Si realizas la instalación de SISASS y deseas entender mejor qué archivos se copian durante la instalación. install.js Script que copia los archivos de files/ en el proyecto que instala SISASS y aplica las variantes de instalación personalizadas. Cuando cambia el destino por defecto al hacer la instalación, o al usar --dep para realizar una instalación específica para algunos frameworks. docs/ Sitio de documentación y recursos para presentar y explicar el comportamiento de SISASS . Cuando cambia una explicación, aparece una nueva característica de SISASS . Fuente del framework: src La carpeta src/ es la base real del framework: concentra el código fuente que se mantiene y desde el que se construye todo el comportamiento distribuible. Ruta Qué contiene Relación con el framework src/_sisass.scss Punto de entrada de las utilidades core exportadas. Reexporta _vendor.scss , _base.scss y _mediaqueries.scss ; no reexporta reset, componentes, efectos ni formas. src/_base.scss Mixins y funciones de uso general. Centraliza utilidades base de SISASS . Para más info: Visita el artículo completo de los mixins y funciones presentes en _base.scss src/_vendor.scss Mixins de compatibilidad y prefijos. Proporciona utilidades para propiedades que necesitan tratamiento vendor. Para más info: Visita el artículo completo de los mixins y funciones presentes en _vendor.scss src/_mediaqueries.scss Mixins para breakpoints, altura y orientación. Construye las media queries usadas por las utilidades responsive. Para más info: Visita el artículo completo de los mixins y funciones presentes en _mediaqueries.scss src/_reset.scss Reset global de elementos HTML. Es un módulo independiente; no forma parte de los @forward de _sisass.scss . Para más info: Visita el artículo completo de los mixins y funciones presentes en _reset.scss src/components/ Componentes reutilizables. Son una colección de componentes como botones, carruseles y modales, realizados completamente en CSS sin JS, con ayuda de SISASS . src/effects/ Efectos visuales, animaciones y keyframes. Son una colección de animaciones, efectos visuales y keyframes. src/shapes/ Formas geométricas reutilizables. Contiene construcciones geométricas reutilizables. No existe un archivo de variables en src/ . Las variables distribuidas están en files/_variables.scss y la documentación define sus propias variables en docs/assets/scss/core/_variables.scss . La entrada _sisass.scss no representa todo el árbol de src : los componentes, efectos, formas y el reset se mantienen como módulos separados. Revisa el archivo que contiene la utilidad que vas a cambiar antes de editar el punto de entrada. Activos de instalación: files/ La ruta files/ agrupa la carga core que el instalador utiliza en algunos modos. Ahora contiene los parciales distribuidos de forma plana; no contiene una copia completa de los módulos de src . Archivo Estado y propósito actual files/_variables.scss Contiene valores base para colores, tipografía, ruta de iconos, breakpoints y tiempos. files/_fonts.scss Contiene una plantilla comentada para declarar fuentes; el modo sqhtml reemplaza esa plantilla por declaraciones de Roboto. files/_mixin.scss Es un archivo base para mixins distribuidos y actualmente funciona como placeholder. files/_keyframes.scss Es un archivo base para keyframes distribuidos y actualmente funciona como placeholder. files/_index.scss Es un placeholder en la carga normal; sqhtml2 lo genera de nuevo usando instances.config.js . files/_layout.scss Usa instances y sirve como punto de conexión para la composición distribuida. La distribución actual instala únicamente esta carga core. No instala sisass.scss , reset.scss , ni los directorios components/ , effects/ o shapes/ de src . Por tanto, no debes asumir que la instalación estándar entrega por sí sola todos los módulos disponibles en el repositorio. Cómo funciona la instalación Modo Origen Destino o efecto Instalación normal files/ Crea assets/scss/core/ en la raíz del proyecto consumidor y copia allí los parciales distribuidos. --path files/ Crea assets/scss/core/ dentro de la ruta indicada, por ejemplo resources/assets/scss/core/ . --dep sqhtml La misma carga que la instalación normal o --path . Después de copiar, ajusta _variables.scss y _fonts.scss para SQHTML en la ruta final generada. --dep sqhtml2 files/ Ignora --path , copia directamente en ../../src/core/ , aplica los ajustes de SQHTML y genera _index.scss . En una instalación personalizada, --path cambia la raíz de los recursos, no la fuente del framework. En cambio, sqhtml2 es una integración especial que fuerza su propio destino y genera referencias a módulos del proyecto consumidor; por eso no debe interpretarse como el flujo general de SISASS. Dónde trabajar según el cambio Necesidad Ubicación inicial Resultado esperado Cambiar el comportamiento de un mixin o una función. src/ Actualizas la fuente del framework; revisa la documentación porque sus estilos importan módulos desde esta ruta. Cambiar lo que instala el paquete. files/ e install.js Actualizas manualmente el activo distribuible y su proceso de copia. Cambiar la integración con SQHTML. install.js y, si aplica, instances.config.js Modificas la rama correspondiente de --dep . Corregir una explicación o una página del sitio. docs/ Modificas la documentación sin alterar la fuente ni la distribución del framework; su compilación sí depende de src . Implementar una tarea con criterios específicos. spec/ Consultas y verificas la especificación asociada. Regla práctica: modifica src para el framework, files/ para la carga core plana que se distribuye, install.js para el flujo de instalación y docs/ para explicar y compilar el sitio documental. No asumas que una carpeta se sincroniza automáticamente con otra ni que la carga instalada contiene todo el árbol fuente."
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "src",
+            "title": "src",
+            "category": "Documentación",
+            "page_title": "Base",
+            "text": "src (directorio) En src se encuentran los mixins, variables, funciones, componentes, efectos y formas disponibles en SISASS. Nota: Estos recursos no deben ser modificados por los desarrolladores que hagan uso de SISASS para la creación de sus interfaces."
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "base_description",
+            "title": "_base.scss (archivo)",
+            "category": "Documentación",
+            "page_title": "Base",
+            "text": "_base.scss (archivo) Versión: 2.x.x src/_base.scss centraliza utilidades base de SISASS: mixins para tipografía, fondos, layout, componentes UI y helpers responsive, además de funciones de apoyo para mapas, color, listas, strings y unidades. Muchas utilidades aceptan configuración mediante mapas para mantener una API consistente y escalable. Clasificación de mixins Categoría Mixins Texto text , font , tf , gradient-text , font-face , ht Formularios autofill Fondos/Color background , bc , background-opacity Layout/Posición position , wh , whs Layout/Alineación center-absolute , center-flex-column , center-flex-row Layout/Espaciado gap Imágenes cover , contain , img-replace , replace-base SVG icon-svg , icon-svg-mask , normalize-svg UI scroll Reset no-spacing , no-border Clasificación de funciones Categoría Funciones Responsive/Unidades szrem , bp , strip-unit Cadenas str-replace Mapas mapv Color rgb-alpha Listas list-add-unique , list-add-items , append-points Uso de parámetros y alias En SISASS, muchos mixins pueden usarse de dos formas. La primera es con parámetros secuenciales, es decir, pasando los valores en el mismo orden en que aparecen en la firma del mixin. La segunda es con sintaxis map , donde se envía un mapa de claves y valores para nombrar cada opción de forma explícita. Un map se escribe con pares clave: valor , por ejemplo: (position: absolute, y: 10px, x: 20px) . La diferencia práctica es importante: con parámetros secuenciales debes respetar el orden exacto de la firma del mixin, mientras que con sintaxis map el orden de las claves no altera el resultado, porque cada valor se resuelve por nombre. Por ejemplo, @include position(absolute, 10px, 20px); depende del orden, mientras que @include position((x: 20px, position: absolute, y: 10px)); produce la misma configuración aunque las claves estén reordenadas. En las tablas de parámetros, cuando una entrada aparece como position | p o top | t , significa que todas esas claves apuntan a la misma configuración dentro de la sintaxis map . El nombre ubicado más a la izquierda es el nombre principal y los siguientes son alias. La precedencia se resuelve en ese mismo orden: primero gana el nombre principal, luego el primer alias, después el siguiente, y así sucesivamente. Si una misma opción tiene más de un alias, el valor efectivo será el del primer nombre disponible según el orden documentado."
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "text",
+            "title": "text (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "text (_base.scscs) Tipo: Mixin Versión: 2.x.x Permite configurar alineación, transformación, decoración y wrap de texto. Ahora soporta dos formas de uso: pasando parámetros individuales o un mapa con las claves align | a , decoration | d , transform | t y wrap | wr . Interface Sintaxis alternativa (map) Parámetros secuenciales Parámetro Tipo Default Descripción align String left Define la propiedad text-align . trans String initial Define la propiedad text-transform . decor String initial Define la propiedad text-decoration . wrap String initial Define la propiedad text-wrap . Sintaxis map Clave Tipo Default Descripción align | a String left Define la propiedad text-align . decoration | d String initial Define la propiedad text-decoration . transform | t String initial Define la propiedad text-transform . wrap | wr String initial Define la propiedad text-wrap . Ejemplo Resultado SCSS CSS generado HTML Texto con parámetros individuales Texto usando map Texto con wrap pretty para probar líneas en un ancho reducido"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "font",
+            "title": "font (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "font (_base.scscs) Tipo: Mixin Versión: 2.x.x Permite configurar propiedades de tipografía como tamaño, familia, peso, estilo, line-height y variant. Ahora soporta dos formas de uso: pasando parámetros individuales o un mapa con las claves size | s , family | f , weight | w , style , line-height | lh y variant | v . Interface Sintaxis alternativa (map) Parámetros secuenciales Parámetro Tipo Default Descripción size String 1em Define la propiedad font-size . family String \"sans-serif\" Define la propiedad font-family . weight String | Number normal Define la propiedad font-weight . style String normal Define la propiedad font-style . line-height String | Number \"none\" Define la propiedad line-height cuando su valor es distinto de \"none\" . variant String normal Define la propiedad font-variant . Sintaxis map Clave Tipo Default Descripción size | s String 1em Define la propiedad font-size . family | f String \"sans-serif\" Define la propiedad font-family . weight | w String | Number normal Define la propiedad font-weight . style String normal Define la propiedad font-style . line-height | lh String | Number \"none\" Define la propiedad line-height cuando su valor es distinto de \"none\" . variant | v String normal Define la propiedad font-variant . Ejemplo Resultado SCSS CSS generado HTML Tipografía con parámetros individuales Tipografía usando map"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "tf",
+            "title": "tf (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "tf (_base.scscs) Tipo: Mixin Versión: 2.x.x Mixin combinado para texto y tipografía. Usa los mismos defaults de text y font , pero recibe un solo map con todas las claves. Este mixin solo acepta sintaxis map . Si se envía un valor distinto de un mapa, genera un error. Admite las claves align | a , transform | t , decoration | d , wrap | wr , size | s , family | f , weight | w , style , line-height | lh y variant | v . Interface Sintaxis map Clave Tipo Default Descripción align | a String left Define text-align . transform | t String initial Define text-transform . decoration | d String initial Define text-decoration . wrap | wr String initial Define text-wrap . size | s String 1em Define font-size . family | f String \"sans-serif\" Define font-family . weight | w String | Number normal Define font-weight . style String normal Define font-style . line-height | lh String | Number \"none\" Define line-height cuando su valor es distinto de \"none\" . variant | v String normal Define font-variant . Ejemplo Resultado SCSS CSS generado HTML TF usando map"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "gradient_text",
+            "title": "gradient-text (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "gradient-text (_base.scscs) Tipo: Mixin Versión: 2.x.x Aplica un gradiente al texto a partir de los argumentos que recibe linear-gradient . El mixin no espera la función completa, solo la lista de valores que se le pasarán internamente. Además aplica background-clip: text , text-fill-color: transparent y permite definir display , cuyo valor por defecto es inline-block , para que el gradiente se vea correctamente sobre el contenido del texto. Interface Parámetros secuenciales Parámetro Tipo Default Descripción grad String | List Sin default Define los argumentos que se envían a linear-gradient para generar background-image . display String inline-block Define la propiedad display aplicada al elemento con el texto degradado. Ejemplo Resultado SCSS CSS generado HTML Texto gradiente"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "font_face",
+            "title": "font-face (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "font-face (_base.scscs) Tipo: Mixin Versión: 2.x.x Declara un @font-face mediante un map de atributos. Requiere name y path , y permite configurar weight , style , display y exts . También admite los aliases n , p , w , s , d y e para esas mismas claves. Por defecto usa extensiones woff2 , woff y ttf . También admite eot , otf y svg en la lista exts ; cuando usas eot o svg , el mixin ajusta el valor de src con el formato requerido para cada caso. Interface Sintaxis map Clave Tipo Default Descripción name | n String null Nombre de la familia tipográfica para font-family . path | p String null Ruta base del archivo sin extensión. weight | w String | Number normal Define font-weight dentro de @font-face . style | s String normal Define font-style dentro de @font-face . display | d String swap Define font-display dentro de @font-face . exts | e List (woff2, woff, ttf) Lista de extensiones a generar en src . Soporta eot , woff2 , woff , ttf , otf y svg . Ejemplo Resultado SCSS CSS generado HTML Fira Sans normal Fira Sans bold"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "autofill",
+            "title": "autofill (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "autofill (_base.scscs) Tipo: Mixin Versión: 2.x.x El autofill es el estado que aplica el navegador cuando completa automáticamente un campo (por ejemplo, al sugerir un correo o una contraseña guardada). Este mixin te permite controlar el color de fondo y el color del texto en ese estado para mantener consistencia con tu UI. Interface Sintaxis map Clave Tipo Default Descripción bg Color initial Define el color de fondo aplicado al estado autofill. color | c Color initial Define el color del texto aplicado al estado autofill. padding | p Medida null Define un padding opcional para el estado autofill. border | b Border null Define un borde opcional para el estado autofill. Ejemplo Nota: En este ejemplo el input usa el mixin con $c4 como fondo y $c5 como color de texto. Para ver el efecto, escribe en el input y usa una sugerencia del navegador, o guarda un valor y vuelve a cargar la página. Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "background",
+            "title": "background (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "background (_base.scscs) Tipo: Mixin Versión: 2.x.x Normaliza los estilos para las propiedades referentes al background. Puedes usarlo para aplicar colores, imágenes de fondo o gradientes. El atributo url genera un background-image con url(), mientras que image permite pasar cualquier valor válido de background-image (por ejemplo, gradientes o imágenes inline). También puedes controlar repetición, posición y size del background con las claves disponibles en el map. El mixin también admite los aliases u , r , p , c , s e i para url , repeat , position , color , size e image . Interface Sintaxis map Clave Tipo Default Descripción url | u String \"\" Valor a utilizar en la función url con background-image. repeat | r String no-repeat Valor a utilizar con background-repeat. position | p String center Valor a utilizar con background-position. color | c Color transparent Valor a utilizar con background-color. size | s String auto Valor a utilizar con background-size. image | i String \"\" Valor a utilizar con background-image. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "bc",
+            "title": "bc (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "bc (_base.scscs) Tipo: Mixin Versión: 2.x.x Aplica background-color y color en una sola llamada. Es un atajo útil para definir el color de fondo y el color del texto sobre el mismo selector. Interface Valores por defecto: #FFF, #000. Parámetros secuenciales Parámetro Tipo Default Descripción background Color #FFF Define la propiedad background-color . color Color #000 Define la propiedad color . Ejemplo Resultado SCSS CSS generado HTML Texto con background y color"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "background_opacity",
+            "title": "background-opacity (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "background-opacity (_base.scscs) Tipo: Mixin Versión: 2.x.x Genera un color de fondo con opacidad usando sintaxis moderna rgb(... / alpha) o rgba(...) . Soporta dos formas de uso: parámetros individuales o sintaxis map . Cuando use_legacy es false , el mixin genera una salida moderna con canales RGB y alpha. Cuando es true , genera rgba(...) como valor final de background-color . En sintaxis map también admite los aliases c , o y ul . Interface Sintaxis alternativa (map) Valores por defecto: #FFF, 0.8, false. Parámetros secuenciales Parámetro Tipo Default Descripción bg Color #FFF Define el color base usado para generar background-color . opacity Number 0.8 Define el nivel de opacidad aplicado al color de fondo. use_legacy Bool false Define si el valor final usa rgba(...) en lugar de sintaxis moderna RGB con alpha. Sintaxis map Clave Tipo Default Descripción color | c Color #FFF Define el color base usado para generar background-color . opacity | o Number 0.8 Define el nivel de opacidad aplicado al color de fondo. use_legacy | ul Bool false Define si el valor final usa rgba(...) en lugar de sintaxis moderna RGB con alpha. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "rgb_alpha",
+            "title": "rgb-alpha (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "rgb-alpha (_base.scscs) Tipo: Function Versión: 2.x.x Convierte un color Sass y un valor alpha en un valor CSS con sintaxis moderna rgb(... / ...) . Es útil para reutilizar la misma conversión en propiedades que aceptan colores con transparencia. La función separa los canales rojo, verde y azul del color de entrada y los recombina con el nivel de opacidad indicado. El resultado puede usarse directamente en propiedades como background-color . Interface Parámetros secuenciales Parámetro Tipo Default Descripción color Color - Define el color Sass del que se extraen los canales RGB. alpha Number - Define el nivel de transparencia que se aplicará al color final. La función espera un color Sass válido porque necesita leer sus canales RGB para construir el resultado final. Si el valor de entrada no es un color, la conversión no puede resolverse de forma correcta. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "position",
+            "title": "position (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "position (_base.scscs) Tipo: Mixin Versión: 2.x.x Define la propiedad position y aplica offsets usando dos estrategias: sintaxis por ejes ( y/x ) o sintaxis explícita por lados ( top/right/bottom/left ) con alias cortos ( t/r/b/l ). La sintaxis y/x es útil para ajustes rápidos: y controla el eje vertical y x el horizontal; yaxis y xaxis indican qué propiedad CSS usa cada eje. Cuando el map incluye top , right , bottom o left , esos valores reemplazan la salida basada en ejes. Interface Sintaxis alternativa (map) Uso recomendado del map: define position o p y luego elige una sola estrategia. Si incluyes top/right/bottom/left o t/r/b/l , se usa sintaxis explícita; si no, se aplica la sintaxis por ejes y/x . Valores por defecto: position/p relative , y 0 , x 0 , yaxis top , xaxis left y top/right/bottom/left null . Parámetros secuenciales Parámetro Tipo Default Descripción position String relative Define la propiedad position . y Medida 0 Define el offset del eje Y cuando no se usa un lado explícito. x Medida 0 Define el offset del eje X cuando no se usa un lado explícito. yaxis String top Selecciona la propiedad CSS usada para el eje Y. xaxis String left Selecciona la propiedad CSS usada para el eje X. Sintaxis map Clave Tipo Default Descripción position | p String relative Define la propiedad position . y Medida 0 Define el offset del eje Y cuando no se usa un lado explícito. x Medida 0 Define el offset del eje X cuando no se usa un lado explícito. yaxis | ya String top Selecciona la propiedad CSS usada para el eje Y. xaxis | xa String left Selecciona la propiedad CSS usada para el eje X. top | t Medida | Null null Asigna top de forma explícita. right | r Medida | Null null Asigna right de forma explícita. bottom | b Medida | Null null Asigna bottom de forma explícita. left | l Medida | Null null Asigna left de forma explícita. Precedencia: si el map incluye top , right , bottom o left (o sus alias), esos lados reemplazan la salida basada en y/x . Si se define position y p al mismo tiempo, prevalece position . Si se define una clave larga y su alias al mismo tiempo, prevalece la clave larga. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "wh",
+            "title": "wh (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "wh (_base.scscs) Tipo: Mixin Versión: 2.x.x Asigna width y height en una sola llamada. Es útil para definir ambas dimensiones del mismo selector con una API breve y consistente. Interface Valores por defecto: width: auto, height: auto. Parámetros secuenciales Parámetro Tipo Default Descripción width Medida auto Define la propiedad width . height Medida auto Define la propiedad height . Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "whs",
+            "title": "whs (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "whs (_base.scscs) Tipo: Mixin Versión: 2.x.x Asigna width y height con el mismo valor. Es útil para definir dimensiones cuadradas o mantener ambas medidas sincronizadas con una sola entrada. Interface Valor por defecto: auto. Parámetros secuenciales Parámetro Tipo Default Descripción value_aa Medida auto Define las propiedades width y height con el mismo valor. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "ht",
+            "title": "ht (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "ht (_base.scscs) Tipo: Mixin Versión: 2.x.x Oculta el texto (hide text). Interface Ejemplo Resultado SCSS CSS generado HTML Texto oculto"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "center_absolute",
+            "title": "center-absolute (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "center-absolute (_base.scscs) Tipo: Mixin Versión: 2.x.x Centra un elemento de forma absoluta usando position y transform . Internamente aplica position: absolute , ubica el elemento en 50% / 50% y luego corrige su propio tamaño con translate(-50%, -50%) . Interface Ejemplo Nota: El elemento con position: absolute se centra respecto de su ancestro posicionado más cercano, es decir, el primer contenedor padre con una propiedad position distinta de static como relative , absolute , fixed o sticky . Si no existe uno, el cálculo se hace respecto del contenedor inicial de la página. Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "center_flex_column",
+            "title": "center-flex-column (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "center-flex-column (_base.scscs) Tipo: Mixin Versión: 2.x.x Convierte el contenedor en un layout flex con dirección de columna y centra sus hijos en ambos ejes. Internamente aplica flex-direction: column , habilita display: flex y usa place-content: center junto con place-items: center para alinear el contenido. Interface Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "center_flex_row",
+            "title": "center-flex-row (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "center-flex-row (_base.scscs) Tipo: Mixin Versión: 2.x.x Convierte el contenedor en un layout flex con dirección de fila y centra sus hijos en ambos ejes. Internamente aplica la dirección por defecto de fila, habilita display: flex y usa place-content: center junto con place-items: center para alinear el contenido. Interface Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "gap",
+            "title": "gap (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "gap (_base.scscs) Tipo: Mixin Versión: 2.x.x Define la separación entre elementos hijos en contenedores flex o grid . El mixin escribe grid-gap y gap para mantener compatibilidad, pero no define el tipo de layout del contenedor. Interface Sin valor por defecto: debes enviar la separación a aplicar. Parámetros secuenciales Parámetro Tipo Default Descripción value Medida | Lista Requerido Define el valor de gap y grid-gap . Acepta un valor o dos valores (fila/columna). Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "icon-svg",
+            "title": "icon-svg (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "icon-svg (_base.scscs) Tipo: Mixin Versión: 2.x.x Inserta un SVG como background-image . Requiere postcss-inline-svg para resolver las funciones usadas por el mixin. Admite firma posicional o sintaxis map con opciones para tamaño, color, ruta, posición y fondo. Las claves position y background reutilizan la sintaxis de los mixins position y background . Interface Valores por defecto: w auto, h auto, fill \"none\", def \"none\", path \"../../img/svg/\". Parámetros secuenciales Parámetro Tipo Default Descripción svg String - Define el nombre del archivo SVG. w Medida auto Define la propiedad width . h Medida auto Define la propiedad height . fill Color | String \"none\" Aplica el color del SVG con svg-load o activa el modo inline . def String \"none\" Define el SVG inline usado cuando fill es \"inline\" . path String \"../../img/svg/\" Define la ruta base desde donde se carga el archivo SVG. Sintaxis alternativa (map) Valores por defecto: svg \"\", width auto, height auto, fill \"none\", def \"none\", path \"../../img/svg/\". Uso recomendado: icon-svg dibuja el SVG y su fondo, mientras replace-base prepara el contenedor. Si buscas el flujo ya configurado para SVG, puedes usar normalize-svg como wrapper especializado. Sintaxis map Clave Tipo Default Descripción svg | icon | name String \"\" Define el nombre del archivo SVG a usar. width | w Medida auto Define el ancho aplicado al elemento. height | h Medida auto Define el alto aplicado al elemento. fill Color | String \"none\" Colorea el SVG con svg-load o usa \"inline\" . def | inline | inline_svg String \"none\" Define el contenido inline del SVG cuando se usa ese modo. path | base_path | svg_path String \"../../img/svg/\" Define la ruta base para construir la URL del SVG. position Map (position | p: absolute, y: 0, x: 0, yaxis | ya: top, xaxis | xa: left, top: null, right: null, bottom: null, left: null) Controla la posición usada por el mixin position y sigue su misma sintaxis map para esas claves. background Map (repeat: no-repeat, position: top left, color: transparent, size: 100%) Controla repeat , position , color y size del fondo final con la sintaxis map usada por el mixin background para esas claves. Ejemplo Nota: cuando el SVG se usa en ::before o ::after , normalmente se combina con replace-base para preparar el contenedor con tamaño, display , posición, z-index y ocultamiento opcional de texto. Si prefieres una configuración ya orientada a SVG, usa normalize-svg . Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "icon-svg-mask",
+            "title": "icon-svg-mask (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "icon-svg-mask (_base.scscs) Tipo: Mixin Versión: 2.x.x Aplica un SVG como máscara CSS y colorea el resultado con background-color . Requiere postcss-inline-svg porque utiliza svg-load() para construir mask-image . También usa el mixin position cuando la clave position | p es distinta de false . El mapa acepta aliases como color | c , position | p , xaxis | xa , yaxis | ya , width | w , height | h , repeat | r , size | s y display | d . Interface Valores por defecto: svg false , color | c #FFFFFF , position | p absolute , x 0 , y 0 , xaxis | xa left , yaxis | ya top , width | w 100px , height | h 100px , repeat | r no-repeat , size | s contain , path \"../../img/svg/\" y display | d block . Sintaxis map Clave Tipo Default Descripción svg String | Bool false Nombre base del archivo SVG. Si es false , no genera la máscara. color | c Color #FFFFFF Define el color final del icono mediante background-color . position | p String | Bool absolute Tipo de posicionamiento usado por el mixin position . Si es false , no aplica posicionamiento. x Medida 0 Desplazamiento horizontal aplicado por position() . y Medida 0 Desplazamiento vertical aplicado por position() . xaxis | xa String left Eje horizontal usado por position() . yaxis | ya String top Eje vertical usado por position() . width | w Medida 100px Asigna el ancho del área visible del icono. height | h Medida 100px Asigna el alto del área visible del icono. repeat | r String no-repeat Controla la repetición de la máscara. size | s String | Medida contain Controla el escalado de la máscara SVG. path String \"../../img/svg/\" Prefijo de ruta donde se busca el archivo SVG. display | d String block Define el valor de display del elemento. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "normalize_svg",
+            "title": "normalize-svg (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "normalize-svg (_base.scscs) Tipo: Mixin Versión: 2.x.x Normaliza estilos para elementos que representen un recurso SVG dentro de la interfaz. Es un wrapper especializado sobre replace-base para el flujo de SVG. Su valor está en ofrecer una configuración predeterminada útil para trabajar junto a icon-svg , y el bloque position se resuelve con el mixin position . Interface Equivale a usar replace-base con position: relative , z: 2 , display: block y ht: true como valores base. Por compatibilidad, también puedes pasar las claves de posición en el nivel raíz del map , incluidas top , right , bottom y left . Sintaxis map Clave Tipo Default Descripción width | w Medida auto Define la propiedad width . height | h Medida auto Define la propiedad height . position | p String | Map relative Define la propiedad position o recibe un map con la sintaxis del mixin position . x Medida 0 Define el desplazamiento horizontal. y Medida 0 Define el desplazamiento vertical. yaxis | ya String top Define la propiedad CSS usada para el eje Y. xaxis | xa String left Define la propiedad CSS usada para el eje X. top | t Medida null Define la propiedad top cuando usas sintaxis plana. right | r Medida null Define la propiedad right cuando usas sintaxis plana. bottom | b Medida null Define la propiedad bottom cuando usas sintaxis plana. left | l Medida null Define la propiedad left cuando usas sintaxis plana. z Number 2 Define la propiedad z-index . display | d String block Define la propiedad display . ht Bool true Controla si se aplica el mixin ht para ocultar el texto. Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "img_replace",
+            "title": "img-replace (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "img-replace (_base.scscs) Tipo: Mixin Versión: 2.x.x Reemplaza texto visual por una imagen de fondo, manteniendo el contenido textual en el marcado. Aplica utilidades de fondo y delega la base del contenedor al mixin replace-base , por lo que también puede personalizar tamaño, display , ocultamiento de texto, posición y z-index . Interface Sintaxis alternativa (map) Valores por defecto: iw auto, ih auto, display block, repeat no-repeat, position center, color transparent y size cover. La clave base se fusiona con width , height y display ya resueltos por el mixin. Parámetros secuenciales Parámetro Tipo Default Descripción image String Requerido Define la ruta de la imagen usada en background-image . iw Medida auto Define la propiedad width . ih Medida auto Define la propiedad height . display String block Define el valor de display del elemento. Sintaxis map Clave Tipo Default Descripción image | url | i | u String \"\" Ruta de la imagen de fondo. Prioridad de lectura: image, luego url, luego i, luego u. width | w Medida auto Define la propiedad width . height | h Medida auto Define la propiedad height . display | d String block Valor de display aplicado al elemento. repeat | r String no-repeat Valor de background-repeat . position | p String center Valor de background-position . color | c Color transparent Valor de background-color . size | s String cover Valor de background-size . base Map (width: auto, height: auto, display: block, ht: true) Permite sobrescribir la configuración enviada al mixin replace-base . Ejemplo Resultado SCSS CSS generado HTML Gato Perro"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "replace_base",
+            "title": "replace-base (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "replace-base (_base.scscs) Tipo: Mixin Versión: 2.x.x Prepara un contenedor para reemplazo visual con control de tamaño, display , ocultamiento opcional de texto, posición y z-index . Es la API base canónica para este patrón y pueden reutilizarla mixins como img-replace y normalize-svg . Interface Si position recibe un map , reutiliza la sintaxis del mixin position . Si recibe un string, también puedes pasar las claves planas de posición en el nivel raíz del map . Sintaxis map Clave Tipo Default Descripción width | w Medida auto Define la propiedad width . height | h Medida auto Define la propiedad height . display | d String block Define la propiedad display . ht | hide_text Bool true Controla si se aplica el mixin ht para ocultar el texto. position | p String | Map false Define la propiedad position o recibe un map con la sintaxis del mixin position . x Medida 0 Define el desplazamiento horizontal cuando usas sintaxis plana. y Medida 0 Define el desplazamiento vertical cuando usas sintaxis plana. yaxis | ya String top Define la propiedad CSS usada para el eje Y cuando usas sintaxis plana. xaxis | xa String left Define la propiedad CSS usada para el eje X cuando usas sintaxis plana. top | t Medida null Define la propiedad top cuando usas sintaxis plana. right | r Medida null Define la propiedad right cuando usas sintaxis plana. bottom | b Medida null Define la propiedad bottom cuando usas sintaxis plana. left | l Medida null Define la propiedad left cuando usas sintaxis plana. z Number | Bool false Define la propiedad z-index cuando recibe un valor distinto de false . Ejemplo Resultado SCSS CSS generado HTML SISASS"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "scroll",
+            "title": "scroll (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "scroll (_base.scscs) Tipo: Mixin Versión: 2.x.x Personaliza el scroll del elemento mediante una sintaxis basada en map, con soporte para color, grosor, radios, bordes, sombras y ocultación visual de la barra. Usa axis como mecanismo único para definir el eje con x , y o both . Para Firefox, el mixin aplica scrollbar-color y scrollbar-width , cuyo grosor solo admite auto , thin o none mediante firefox_width . Nota: La personalización no se comporta igual en todos los navegadores. En Firefox no es posible definir el ancho del scroll en píxeles y el soporte queda limitado a scrollbar-color y scrollbar-width . Además, la familia ::-webkit-scrollbar es no estándar, por lo que Safari y navegadores basados en Chromium pueden mostrar diferencias de renderizado según la plataforma o la versión. Interface Sintaxis map Clave Tipo Default Descripción thumb_color | color | c Color white Define el color del thumb. thumb_hover_color | color_hover | ch Color color Define el color del thumb al pasar el cursor. thumb_active_color | color_active | ca Color color_hover Define el color del thumb durante la interacción activa. background | bg | b Color black Define el color base del scrollbar y funciona como respaldo del track. track_color | bg_track | bt Color bg Define el color específico del track. track_hover_color | bg_track_hover | bth Color bg_track Define el color del track al pasar el cursor. track_active_color | bg_track_active | bta Color bg_track_hover Define el color del track durante la interacción activa. size | width | w Size 15px Define el grosor base del scrollbar cuando no se especifica un eje concreto. size_x | width_x | wx Size width Controla la altura visual del scrollbar horizontal. size_y | width_y | wy Size width Controla el ancho visual del scrollbar vertical. radius | r Size 10px Aplica el radio del thumb y funciona como respaldo del track. radius_track | rt Size radius Define el radio específico del track. thumb_border | tb Border 0 solid transparent Define el borde del thumb. track_border | trb Border 0 solid transparent Define el borde del track. thumb_shadow | ts Shadow none Define la sombra del thumb. track_shadow | trs Shadow none Define la sombra del track. firefox_width | fw Keyword auto Define scrollbar-width para Firefox. Admite auto, thin o none. axis Keyword y Define el eje del scroll con x, y o both. hidden | hide | h Boolean false Oculta visualmente la barra sin desactivar el scroll. Ejemplo Resultado SCSS CSS generado HTML Scroll Y Scroll X Scroll Both Scroll Hidden"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "cover",
+            "title": "cover (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "cover (_base.scscs) Tipo: Mixin Versión: 2.x.x Ajusta el contenido para cubrir por completo su contenedor usando object-fit: cover . Internamente también aplica width: 100% y height: 100% mediante whs(100%) , por lo que el elemento ocupa todo el espacio disponible antes de aplicar el recorte visual. Interface Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "contain",
+            "title": "contain (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "contain (_base.scscs) Tipo: Mixin Versión: 2.x.x Ajusta el contenido para mantenerse completo dentro de su contenedor usando object-fit: contain . Internamente también aplica width: 100% y height: 100% mediante whs(100%) , por lo que el elemento ocupa todo el espacio disponible antes de calcular el ajuste visual. Interface Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "no_spacing",
+            "title": "no-spacing (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "no-spacing (_base.scscs) Tipo: Mixin Versión: 2.x.x Resetea los márgenes y los paddings del elemento, dejando todos sus lados en 0 . Es un helper de reset útil para normalizar el espaciado base antes de aplicar una composición o un componente. Interface Ejemplo Resultado SCSS CSS generado HTML Sin márgenes ni padding"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "no_border",
+            "title": "no-border (_base.scscs)",
+            "category": "Mixin",
+            "page_title": "Base",
+            "text": "no-border (_base.scscs) Tipo: Mixin Versión: 2.x.x Elimina los bordes del elemento, dejando todos sus lados en 0 none transparent . Es un helper de reset útil para neutralizar estilos heredados o preparar una base visual sin bordes. Interface Ejemplo Resultado SCSS CSS generado HTML Sin borde"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "szrem",
+            "title": "szrem (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "szrem (_base.scscs) Tipo: Function Versión: 2.x.x Convierte un valor en píxeles a rem a partir de una base configurable. Es útil para normalizar escalas tipográficas y de espaciado cuando el proyecto trabaja con unidades relativas. La función recibe dos parámetros porque el cálculo necesita tanto el valor a convertir como la base de referencia. value_px representa la medida original en píxeles y base representa el tamaño base sobre el que se calcula 1rem . El resultado se obtiene dividiendo value_px entre base y multiplicando ese cociente por 1rem . Por ejemplo, szrem(24, 16) devuelve 1.5rem . Interface Parámetros secuenciales Parámetro Tipo Default Descripción value_px Number 14 Define el valor en píxeles que se convertirá a rem . base Number 16 Define la base usada para calcular la equivalencia en rem . Ejemplo Resultado SCSS CSS generado HTML Texto con szrem"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "str_replace",
+            "title": "str-replace (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "str-replace (_base.scscs) Tipo: Function Versión: 2.x.x Reemplaza coincidencias dentro de una cadena y devuelve el texto resultante. Es útil para normalizar nombres, construir identificadores o adaptar valores de texto antes de reutilizarlos en Sass. Interface Parámetros secuenciales Parámetro Tipo Default Descripción string String - Define la cadena base sobre la que se realizará la búsqueda. search String - Define el fragmento de texto que se buscará dentro de la cadena original. replace String \"\" Define el texto con el que se reemplazarán las coincidencias encontradas. La función busca la primera coincidencia de search , reemplaza ese fragmento por replace y repite el proceso de forma recursiva hasta que ya no existen más coincidencias. Por ejemplo, str-replace(\"foo-bar-bar\", \"bar\", \"baz\") devuelve \"foo-baz-baz\" . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "mapv",
+            "title": "mapv (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "mapv (_base.scscs) Tipo: Function Versión: 2.x.x Obtiene un valor de un map y devuelve un fallback cuando la clave no existe. También permite definir alias para una misma opción, lo que simplifica la captura de atributos en mixins y funciones con sintaxis map . Interface Parámetros secuenciales Parámetro Tipo Default Descripción map Map - Define el mapa desde el que se intentará leer el valor. key String | List - Define la clave principal o la lista de claves alias que se evaluarán en orden. value Any - Define el valor de respaldo que se devolverá si ninguna clave existe en el mapa. La creación de alias se hace pasando una lista de claves en el segundo parámetro. Por ejemplo, mapv($attr, (align, a), left) primero intenta leer align ; si no existe, intenta leer a ; y si ninguna está definida, devuelve left . La precedencia sigue exactamente el orden en que se escriben las claves en la lista. Usar mapv en mixins y funciones tiene dos ventajas principales: reduce código repetido al centralizar la lectura de atributos con fallback, y permite ofrecer una API más flexible con nombres principales y alias cortos sin duplicar lógica en cada captura. Eso facilita mantener firmas más limpias y hace más consistente la sintaxis map en todo SISASS. Ejemplo Resultado SCSS CSS generado HTML BG: black, Color: white BG: orange, Color: maroon"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "bp",
+            "title": "bp (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "bp (_base.scscs) Tipo: Function Versión: 2.x.x Calcula un valor proporcional a partir de una base de referencia y devuelve el resultado con la unidad indicada. Es útil para convertir medidas de diseño a unidades fluidas como vw , manteniendo una relación respecto a una base de referencia. Interface Sintaxis map Clave Tipo Default Descripción base | b Number 1920 Define la base de referencia sobre la que se calcula la proporción. unit | u String \"vw\" Define la unidad que se concatenará al resultado final. value | v Number 0 Define el valor que se convertirá en una medida proporcional. El cálculo se realiza con la fórmula (value * 100) / base y luego se concatena la unidad indicada en unit . Por ejemplo, con (base: 1920, value: 384, unit: \"vw\") el resultado será 20vw . Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "strip_unit",
+            "title": "strip-unit (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "strip-unit (_base.scscs) Tipo: Function Versión: 2.x.x Elimina la unidad de una medida y devuelve únicamente su valor numérico. Es útil cuando necesitas reutilizar un número en operaciones matemáticas sin conservar unidades como px , rem o em . Interface Parámetros secuenciales Parámetro Tipo Default Descripción value Number - Define el valor numérico del que se eliminará la unidad. La función divide el valor original entre una expresión equivalente a 1 con la misma unidad, de modo que el resultado conserva el número pero pierde la unidad. Por ejemplo, strip-unit(24px) devuelve 24 . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "list-add-unique",
+            "title": "list-add-unique (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "list-add-unique (_base.scscs) Tipo: Function Versión: 2.x.x Agrega un valor a una lista solo si ese valor todavía no existe en ella. Es útil para construir listas acumulativas sin duplicados, especialmente cuando el origen de los valores puede repetirse. Interface Parámetros secuenciales Parámetro Tipo Default Descripción list List - Define la lista base sobre la que se intentará agregar el nuevo valor. value Any - Define el valor que se agregará solo si no existe previamente en la lista. La función primero verifica si value ya existe dentro de list usando list.index . Si lo encuentra, devuelve la lista original; si no lo encuentra, agrega el valor al final con list.append . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "list-add-items",
+            "title": "list-add-items (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "list-add-items (_base.scscs) Tipo: Function Versión: 2.x.x Agrega varios valores a una lista base evitando duplicados. Es útil cuando necesitas combinar listas y conservar solo valores únicos en el resultado final. Interface Parámetros secuenciales Parámetro Tipo Default Descripción list List - Define la lista base sobre la que se agregarán nuevos valores. items List - Define la lista de valores que se intentará incorporar sin duplicados. La función recorre cada elemento de items con @each y delega la inserción en list-add-unique , por lo que cada valor se agrega solo si todavía no existe dentro de list . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado"
+        },
+        {
+            "url": "pages/base.html",
+            "anchor": "append-points",
+            "title": "append-points (_base.scscs)",
+            "category": "Function",
+            "page_title": "Base",
+            "text": "append-points (_base.scscs) Tipo: Function Versión: 2.x.x Agrega varios valores a una lista manteniendo separación por comas. Es útil cuando necesitas construir listas orientadas a coordenadas, puntos o secuencias que deben conservar formato separado por comas. Interface Parámetros secuenciales Parámetro Tipo Default Descripción list List - Define la lista base a la que se anexarán nuevos valores. points List - Define la lista de valores que se agregarán al resultado final. La función recorre cada elemento de points con @each y lo agrega a list mediante list.append usando el separador comma , por lo que el resultado conserva una lista separada por comas. Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado"
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "src",
+            "title": "src",
+            "category": "Documentación",
+            "page_title": "Mediaqueries",
+            "text": "src (directorio) En src se encuentran los mixins, variables, funciones, componentes, efectos y formas disponibles en SISASS. Nota: Estos recursos no deben ser modificados por los desarrolladores que hagan uso de SISASS para la creación de sus interfaces."
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "brp",
+            "title": "brp (_mediaqueries.scscs)",
+            "category": "Mixin",
+            "page_title": "Mediaqueries",
+            "text": "brp (_mediaqueries.scscs) Tipo: Mixin Versión: 2.x.x Crea una media query basada en el ancho del viewport. Por defecto genera una condición max-width , útil para aplicar estilos hasta un punto de corte específico. También puede generar una condición min-width cambiando el parámetro type . El contenido enviado al mixin se imprime dentro de la media query resultante. Interface Parámetros secuenciales Parámetro Tipo Default Descripción punto Number - Define el valor numérico usado en la condición de ancho. type String max Define si la condición será max-width o min-width . units String px Define la unidad que se concatena al punto de corte. means String screen Define el media type usado después de only . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Ejemplo brp"
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "brpp",
+            "title": "brpp (_mediaqueries.scscs)",
+            "category": "Mixin",
+            "page_title": "Mediaqueries",
+            "text": "brpp (_mediaqueries.scscs) Tipo: Mixin Versión: 2.x.x Crea una media query basada en la altura del viewport y restringida a orientación portrait . Por defecto genera una condición max-height . Usa este mixin cuando un ajuste depende de la altura disponible en pantallas verticales. El contenido enviado al mixin queda dentro de la regla @media . Interface Parámetros secuenciales Parámetro Tipo Default Descripción punto Number - Define el valor numérico usado en la condición de altura. type String max Define si la condición será max-height o min-height . units String px Define la unidad que se concatena al punto de corte. means String screen Define el media type usado después de only . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Ejemplo brpp"
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "brpl",
+            "title": "brpl (_mediaqueries.scscs)",
+            "category": "Mixin",
+            "page_title": "Mediaqueries",
+            "text": "brpl (_mediaqueries.scscs) Tipo: Mixin Versión: 2.x.x Crea una media query basada en el ancho del viewport y restringida a orientación landscape . Por defecto genera una condición max-width . Permite separar ajustes para pantallas horizontales sin repetir la estructura completa de la media query. Interface Parámetros secuenciales Parámetro Tipo Default Descripción punto Number - Define el valor numérico usado en la condición de ancho. type String max Define si la condición será max-width o min-width . units String px Define la unidad que se concatena al punto de corte. means String screen Define el media type usado después de only . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Ejemplo brpl"
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "brph",
+            "title": "brph (_mediaqueries.scscs)",
+            "category": "Mixin",
+            "page_title": "Mediaqueries",
+            "text": "brph (_mediaqueries.scscs) Tipo: Mixin Versión: 2.x.x Crea una media query basada en la altura del viewport. Por defecto genera una condición max-height . Es útil para adaptar interfaces cuando el espacio vertical disponible cambia, sin depender de la orientación del dispositivo. Interface Parámetros secuenciales Parámetro Tipo Default Descripción punto Number - Define el valor numérico usado en la condición de altura. type String max Define si la condición será max-height o min-height . units String px Define la unidad que se concatena al punto de corte. means String screen Define el media type usado después de only . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Ejemplo brph"
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "brpwh",
+            "title": "brpwh (_mediaqueries.scscs)",
+            "category": "Mixin",
+            "page_title": "Mediaqueries",
+            "text": "brpwh (_mediaqueries.scscs) Tipo: Mixin Versión: 2.x.x Crea una media query que combina condiciones de ancho y alto. Por defecto usa max-width y max-height con los puntos de corte recibidos. El parámetro type permite combinar límites máximos y mínimos para cubrir casos donde importan las dos dimensiones del viewport. Interface Parámetros secuenciales Parámetro Tipo Default Descripción puntow Number - Define el valor numérico usado en la condición de ancho. puntoh Number - Define el valor numérico usado en la condición de altura. type String max Define la combinación de condiciones: max , min , maxmin o minmax . units String px Define la unidad que se concatena a los puntos de corte. means String screen Define el media type usado después de only . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Ejemplo brpwh"
+        },
+        {
+            "url": "pages/mediaqueries.html",
+            "anchor": "mbr",
+            "title": "mbr (_mediaqueries.scscs)",
+            "category": "Mixin",
+            "page_title": "Mediaqueries",
+            "text": "mbr (_mediaqueries.scscs) Tipo: Mixin Versión: 2.x.x Crea múltiples breakpoints de ancho usando una lista de puntos de corte. En cada iteración ejecuta el contenido recibido y entrega el índice actual mediante @content($i) . Es útil cuando varias propiedades cambian siguiendo listas paralelas de valores. Normalmente se combina con list.nth() para obtener el valor correspondiente a cada breakpoint. Interface Parámetros secuenciales Parámetro Tipo Default Descripción points Arglist - Define los puntos de corte usados para generar media queries de ancho. i Number - Expone el índice actual del breakpoint dentro del bloque using . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Ejemplo mbr"
+        },
+        {
+            "url": "pages/reset.html",
+            "anchor": "src",
+            "title": "src",
+            "category": "Documentación",
+            "page_title": "Reset",
+            "text": "src (directorio) En src se encuentran los mixins, variables, funciones, componentes, efectos y formas disponibles en SISASS. Nota: Estos recursos no deben ser modificados por los desarrolladores que hagan uso de SISASS para la creación de sus interfaces."
+        },
+        {
+            "url": "pages/reset.html",
+            "anchor": "reset",
+            "title": "_reset.scss (archivo)",
+            "category": "Archivo base",
+            "page_title": "Reset",
+            "text": "_reset.scss (archivo) Tipo: Archivo base Versión: 2.x.x src/_reset.scss centraliza el reset global de SISASS. El archivo limpia estilos nativos para que la interfaz parta de una base predecible antes de aplicar componentes, utilidades y temas. Esta capa elimina márgenes, paddings, bordes y decoraciones heredadas, además de normalizar listas, tablas, enlaces, textarea y elementos semánticos HTML5. El ejemplo compara el mismo HTML en dos estados: antes del reset, restaurando estilos nativos con revert , y después del reset aplicado por SISASS. Selectores normalizados Selector Descripción * Resetea tipografía, espaciado, bordes, alineación vertical y box-sizing . *:focus Elimina el contorno visual del foco. html Fija line-height: 1 para la base del documento. ol, ul Elimina los marcadores de listas. table Colapsa bordes y espacios internos de la tabla. a Quita la decoración por defecto de los enlaces. textarea Desactiva el redimensionado manual. caption, th, td Alinea el contenido a la izquierda, normaliza el peso y centra verticalmente las celdas. q, blockquote Elimina las comillas tipográficas por defecto. q:before, q:after, blockquote:before, blockquote:after Impide que el navegador añada comillas generadas por CSS. img Desactiva los eventos de puntero sobre imágenes. article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary Fuerza estos elementos semánticos a comportarse como bloque. Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado Ejemplo 1: HTML Resultado Antes Encabezado uno Párrafo con un enlace y texto en línea. Primer elemento Segundo elemento Título de tabla Etiqueta Valor Alfa Beta Cita sin comillas por defecto. Cita en línea dentro de una frase. Texto sin redimensionado manual. Resumen El elemento summary también se comporta como contenido de bloque. Después Encabezado uno Párrafo con un enlace y texto en línea. Primer elemento Segundo elemento Título de tabla Etiqueta Valor Alfa Beta Cita sin comillas por defecto. Cita en línea dentro de una frase. Texto sin redimensionado manual. Resumen El elemento summary también se comporta como contenido de bloque."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "src",
+            "title": "src",
+            "category": "Documentación",
+            "page_title": "Vendor",
+            "text": "src (directorio) En src se encuentran los mixins, variables, funciones, componentes, efectos y formas disponibles en SISASS. Nota: Estos recursos no deben ser modificados por los desarrolladores que hagan uso de SISASS para la creación de sus interfaces."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "vendor_description",
+            "title": "_vendor.scss (archivo)",
+            "category": "Documentación",
+            "page_title": "Vendor",
+            "text": "_vendor.scss (archivo) Versión: 2.x.x src/_vendor.scss centraliza mixins orientados a la compatibilidad entre navegadores mediante prefijos y ayudas para propiedades que históricamente requirieron tratamiento vendor. Aquí se documentan las utilidades vendor expuestas actualmente en el proyecto para prefijos, cajas, texto, interacción, layout, fondos, filtros y transformaciones. Clasificación de mixins Categoría Mixins Prefijos y utilidades vendor-prefix , calc Cajas y visuales box-sizing , box-decoration-break , border-radius , box-shadow , column-count , clip-path , background-clip Texto e interfaz text-stroke , hyphens , text-size-adjust , text-fill-color , placeholder , tap-highlight-color , pointer-events , user-select , appearance Imágenes, layout y alineación object-fit , justify-content , justify-self , justify-items , align-items , align-self , align-content , flex-direction , flex-basis , flex , grid Fondos, filtros y máscaras backdrop-filter , mask , filter , linear-gradient Transformaciones y animación transform , transform-style , transition , animation , animation-fill-mode , backface-visibility , keyframes"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "vendor_prefix",
+            "title": "vendor-prefix (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "vendor-prefix (_vendor.scscs) Tipo: Mixin Versión: 2.x.x vendor-prefix funciona como una utilidad genérica para crear propiedades CSS prefijadas de forma reutilizable. Es útil cuando una misma propiedad debe emitirse con prefijos históricos como webkit , moz , ms u o , ya que automatiza esa generación y evita repetir bloques de código en otros mixins del archivo _vendor.scss . Interface Parámetros secuenciales Parámetro Tipo Default Descripción property String - Define la propiedad CSS que se generará con y sin prefijo. value String | Number | Color | List - Define el valor que se asignará a cada declaración generada. prefixes List () Define la lista de prefijos a generar, por ejemplo webkit , moz , ms u o . Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "calc",
+            "title": "calc (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "calc (_vendor.scscs) Tipo: Mixin Versión: 2.x.x calc es un mixin vendor de SISASS para asignar una propiedad CSS usando expresiones con calc() . Genera las variantes históricas -moz-calc() y -webkit-calc() , y luego agrega la versión estándar para la propiedad indicada. Interface Parámetros secuenciales Parámetro Tipo Default Descripción property String - Define la propiedad CSS sobre la que se aplicará el cálculo. expression String - Define la expresión que se insertará dentro de calc() . Ejemplo Ejemplo 1: SCSS Ejemplo 1: CSS generado"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "box_sizing",
+            "title": "box-sizing (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "box-sizing (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad box-sizing . Aplica los prefijos históricos -webkit- y -moz- , además de la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String - Define el valor que se asignará a la propiedad box-sizing . Ejemplo Resultado SCSS CSS generado HTML Ancho total: 180px"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "box_decoration_break",
+            "title": "box-decoration-break (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "box-decoration-break (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para aplicar la propiedad box-decoration-break con su versión prefijada -webkit- y la sintaxis estándar. Esta propiedad controla cómo se repiten o se continúan decoraciones como el background , el border y el padding cuando una misma caja inline se fragmenta en varias líneas, columnas o páginas. Resulta útil para textos destacados, etiquetas o chips que necesitan conservar un acabado visual coherente al partirse. Nota: Su uso suele ser más útil en elementos con display: inline o inline-block que realmente puedan fragmentarse. Con slice , la decoración se trata como una sola caja continua y se corta entre fragmentos; con clone , cada fragmento vuelve a dibujar su fondo, borde y padding de forma independiente. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String - Define el valor que se asignará a la propiedad box-decoration-break . Ejemplo Resultado SCSS CSS generado HTML Slice Un texto con salto de línea para mostrar el comportamiento del fondo. Clone Un texto con salto de línea para mostrar el comportamiento del fondo."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "borderradius",
+            "title": "border-radius (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "border-radius (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad border-radius . Aplica la propiedad con sus prefijos históricos y con la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Size | String - Define el valor que se asignará a border-radius . Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "boxshadow",
+            "title": "box-shadow (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "box-shadow (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad box-shadow . Aplica la propiedad con sus prefijos históricos y con la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Shadow | String none Define el valor que se asignará a box-shadow . Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "column_count",
+            "title": "column-count (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "column-count (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad column-count . Aplica la propiedad con los prefijos históricos -webkit- y -moz- , y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Number | String - Define la cantidad de columnas que se asignará a column-count . Ejemplo Resultado SCSS CSS generado HTML Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non turpis vitae lorem tincidunt finibus. Integer posuere, augue id malesuada aliquet, nibh massa gravida risus, vitae feugiat sapien velit et mauris. Curabitur sodales, lectus a tincidunt aliquet, lacus lectus vulputate justo, vitae consequat urna turpis et sem. Proin ac mi non erat cursus blandit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec posuere massa id turpis tincidunt, eu fermentum ligula bibendum. Aenean volutpat posuere neque, id viverra neque efficitur at. Nulla facilisi. Duis luctus sem at odio ullamcorper, nec porttitor nisl tempor. Praesent sed orci sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse ac nibh vel nibh aliquam auctor. Donec sit amet sapien nec velit facilisis molestie. Mauris tempus nibh et lectus dapibus, nec tincidunt metus luctus. Integer gravida aliquet nisl, in sollicitudin ligula tincidunt id. Vivamus blandit, sem nec fermentum luctus, arcu purus tristique magna, non posuere lorem turpis in libero. Aliquam erat volutpat. Cras euismod urna a velit fermentum, nec malesuada turpis pretium. In hac habitasse platea dictumst. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer dictum egestas dui, non feugiat sem viverra a. Vivamus in malesuada arcu. Nullam luctus nunc non lacus tristique, ac feugiat ex commodo. Nam at viverra nulla. Maecenas ultrices, orci a feugiat dignissim, eros ipsum bibendum risus, eu porttitor erat quam et sapien. Phasellus mollis neque non nunc pretium, ut faucibus tortor auctor. Donec sit amet augue sed libero cursus pretium. Quisque finibus risus ac ante volutpat, vitae interdum erat tristique. Donec ac orci lectus. Morbi quis magna sed massa gravida posuere. Nunc non dictum ipsum. Nulla pharetra posuere tellus, sed sodales arcu porttitor vel. Sed consequat lectus at nisl malesuada, a sagittis est placerat. Donec vitae aliquet dolor. Sed sollicitudin, nisi non interdum accumsan, nulla est faucibus tellus, ut faucibus leo dolor eget dui. Integer vel magna luctus, hendrerit tortor sit amet, efficitur quam. Curabitur suscipit ante ac libero feugiat, non gravida lacus sollicitudin. Nunc viverra mi vel felis volutpat, et vehicula nulla aliquet."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "clip_path",
+            "title": "clip-path (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "clip-path (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad clip-path . Aplica la propiedad con el prefijo histórico -webkit- y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Function | String - Define la forma o la ruta que se asignará a clip-path . Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "background_clip",
+            "title": "background-clip (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "background-clip (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad background-clip . Aplica la propiedad con el prefijo histórico -webkit- y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String - Define el área de recorte del fondo que se asignará a background-clip . Ejemplo Resultado SCSS CSS generado HTML SISASS"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "text_stroke",
+            "title": "text-stroke (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "text-stroke (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad text-stroke . Aplica la propiedad con el prefijo histórico -webkit- y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String | List - Define el grosor y el color del trazo que se asignará a text-stroke . Ejemplo Resultado SCSS CSS generado HTML SISASS"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "hyphens",
+            "title": "hyphens (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "hyphens (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad hyphens . Controla si el navegador puede dividir palabras con guiones cuando el texto no cabe en la línea disponible. Suele usarse en columnas estrechas, bloques de texto justificado o contenedores reducidos para evitar espacios irregulares y cortes bruscos. Aplica la propiedad con el prefijo histórico -webkit- y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String - Define cómo se dividirán las palabras al final de línea con hyphens . Ejemplo Resultado SCSS CSS generado HTML Antidisestablishmentarianism electroencephalographically disproportionableness characterization."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "text_size_adjust",
+            "title": "text-size-adjust (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "text-size-adjust (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad text-size-adjust . Controla el ajuste automático del tamaño del texto que algunos navegadores aplican, sobre todo en dispositivos móviles, para mejorar la legibilidad cuando cambia el ancho disponible. Aplica la propiedad con los prefijos históricos -webkit- y -ms- , y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Percentage | Keyword | String - Define el valor que controlará el ajuste del tamaño del texto en text-size-adjust . Ejemplo Este ejemplo se aprecia con mayor claridad cuando el device type es mobile , ya que el ajuste automático del texto suele manifestarse en navegadores móviles. Resultado SCSS CSS generado HTML Texto ajustado con text-size-adjust."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "text_fill_color",
+            "title": "text-fill-color (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "text-fill-color (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad text-fill-color . Permite definir el color de relleno del texto y aplicar la propiedad con el prefijo histórico -webkit- , seguido de la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Color | String - Define el color de relleno que se asignará a text-fill-color . Ejemplo En este ejemplo, text-fill-color se usa con el valor transparent para permitir que un degradado de fondo se vea dentro del texto. Resultado SCSS CSS generado HTML Texto con degradado"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "placeholder",
+            "title": "placeholder (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "placeholder (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para estilizar el pseudo-elemento placeholder . No recibe parámetros. Replica el bloque @content sobre los selectores vendor históricos y sobre la variante estándar ::placeholder . Es útil para centralizar estilos de texto de ayuda en campos de formulario y mantener compatibilidad con navegadores que todavía reconocen sintaxis prefijadas. Interface Ejemplo Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "tap_highlight_color",
+            "title": "tap-highlight-color (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "tap-highlight-color (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad tap-highlight-color . Controla el color del resaltado que algunos navegadores móviles muestran al tocar enlaces, botones u otros elementos interactivos. Aplica la propiedad con el prefijo histórico -webkit- y luego agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Color - Define el valor que se asignará a tap-highlight-color . Ejemplo En este ejemplo se usa el valor transparent para evitar el color de resaltado al tocar el enlace en navegadores móviles compatibles. Resultado SCSS CSS generado HTML Enlace táctil"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "pointer_events",
+            "title": "pointer-events (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "pointer-events (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad pointer-events . Define si un elemento responde o no a eventos del puntero, como clic, toque o paso del cursor. Aplica el prefijo histórico -ms- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String - Define el valor que se asignará a la propiedad pointer-events . Ejemplo En este ejemplo, ambos botones intentan ejecutar un alert() . El segundo usa el valor none , por lo que no responde al clic ni al toque del puntero. Resultado SCSS CSS generado HTML Botón activo Sin interacción"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "user_select",
+            "title": "user-select (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "user-select (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad user-select . Define si el usuario puede seleccionar o no el texto de un elemento. Aplica los prefijos históricos -webkit- , -moz- y -ms- , y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String none Define el valor que se asignará a la propiedad user-select . Ejemplo En este ejemplo, el primer bloque permite seleccionar el texto con normalidad. El segundo usa el valor none , por lo que evita la selección al arrastrar el cursor o mantener pulsado en pantallas táctiles. Resultado SCSS CSS generado HTML Puedes seleccionar este texto sin restricciones. Este texto no se puede seleccionar."
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "appearance",
+            "title": "appearance (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "appearance (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad appearance . Define la apariencia nativa de un control de interfaz. Aplica los prefijos históricos -webkit- y -moz- , y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String none Define el valor que se asignará a la propiedad appearance . Ejemplo En este ejemplo, el segundo control desactiva la apariencia nativa del navegador con el valor none . Esto permite personalizar el estilo visual sin depender del aspecto predeterminado del sistema. Resultado SCSS CSS generado HTML Apariencia nativa Apariencia personalizada"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "object_fit",
+            "title": "object-fit (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "object-fit (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad object-fit . Define cómo se ajusta una imagen o un video dentro de su contenedor. Aplica el prefijo histórico -o- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String - Define el valor que se asignará a la propiedad object-fit . Ejemplo En este ejemplo, ambas imágenes comparten el mismo contenedor. La segunda usa el valor cover , por lo que llena el área visible sin deformarse, aunque recorta parte del contenido. Resultado SCSS CSS generado HTML"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "justify_content",
+            "title": "justify-content (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "justify-content (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad justify-content . Define cómo se distribuyen los elementos a lo largo del eje principal en un contenedor flexible o de grid. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String initial Define el valor que se asignará a la propiedad justify-content . Ejemplo En este ejemplo, ambos contenedores usan flex. El segundo aplica el valor space-between , por lo que reparte los elementos con espacio uniforme entre ellos. Resultado SCSS CSS generado HTML 1 2 3 1 2 3"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "justify_self",
+            "title": "justify-self (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "justify-self (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad justify-self . Define la alineación horizontal de un elemento dentro de su área en un contenedor de grid. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String initial Define el valor que se asignará a la propiedad justify-self . Ejemplo En este ejemplo, ambos elementos comparten una celda amplia de grid. El segundo aplica el valor end , por lo que se alinea hacia el extremo horizontal de su área. Resultado SCSS CSS generado HTML Auto End"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "justify_items",
+            "title": "justify-items (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "justify-items (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad justify-items . Define la alineación horizontal predeterminada de los elementos dentro de sus áreas en un contenedor de grid. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String initial Define el valor que se asignará a la propiedad justify-items . Ejemplo En este ejemplo, ambos contenedores usan grid con celdas amplias. El segundo aplica el valor end , por lo que desplaza cada elemento hacia el extremo horizontal de su celda y hace visible la diferencia frente al comportamiento inicial. Resultado SCSS CSS generado HTML Valor inicial A B justify-items: end A B"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "align_items",
+            "title": "align-items (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "align-items (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad align-items . Define la alineación de los elementos en el eje transversal de un contenedor flex o grid. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String initial Define el valor que se asignará a la propiedad align-items . Ejemplo En este ejemplo, ambos contenedores usan flex en fila con una altura fija. El segundo aplica el valor center , por lo que centra verticalmente los elementos y permite comparar ese comportamiento frente al valor inicial. Resultado SCSS CSS generado HTML Valor inicial A B align-items: center A B"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "align_self",
+            "title": "align-self (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "align-self (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad align-self . Permite definir la alineación individual de un elemento en el eje transversal dentro de un contenedor flex o grid. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String initial Define el valor que se asignará a la propiedad align-self . Ejemplo En este ejemplo, cada celda usa grid y una altura fija. El segundo bloque aplica el valor end sobre un único elemento, por lo que ese elemento se desplaza hacia la parte inferior de su celda y se diferencia del comportamiento inicial. Resultado SCSS CSS generado HTML Valor inicial A align-self: end A"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "align_content",
+            "title": "align-content (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "align-content (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad align-content . Controla la distribución de varias filas o columnas dentro de un contenedor flex o grid cuando existe espacio disponible en el eje transversal. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String initial Define el valor que se asignará a la propiedad align-content . Ejemplo En este ejemplo, ambos contenedores usan flex con varias filas y una altura fija. El primero agrupa las filas al inicio con flex-start . El segundo aplica space-between , por lo que reparte el espacio vertical sobrante entre las filas y hace visible la diferencia. Resultado SCSS CSS generado HTML align-content: flex-start A B C D align-content: space-between A B C D"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "flex_direction",
+            "title": "flex-direction (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "flex-direction (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad flex-direction . Define la dirección principal en la que se distribuyen los elementos dentro de un contenedor flex. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword | String row Define el valor que se asignará a la propiedad flex-direction . Ejemplo En este ejemplo, ambos contenedores usan flex con los mismos elementos. El primero mantiene la dirección horizontal con row . El segundo aplica column , por lo que apila los elementos de arriba hacia abajo y hace evidente la diferencia. Resultado SCSS CSS generado HTML flex-direction: row A B C flex-direction: column A B C"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "flex_basis",
+            "title": "flex-basis (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "flex-basis (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad flex-basis . Define el tamaño base inicial de un elemento flex antes de repartir el espacio disponible en el contenedor. Aplica el prefijo histórico -webkit- y después agrega la propiedad estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Size | Keyword | String auto Define el valor que se asignará a la propiedad flex-basis . Ejemplo En este ejemplo, ambos contenedores usan flex en fila con ajuste de línea y un ancho fijo. El primero mantiene el tamaño base automático, por lo que los tres elementos caben en una sola fila. El segundo aplica flex-basis: 140px a cada elemento, así que cada caja reserva más espacio horizontal y el último elemento salta a una nueva línea. Resultado SCSS CSS generado HTML flex-basis: auto A B C flex-basis: 140px A B C"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "flex",
+            "title": "flex (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "flex (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para definir display: flex con prefijos históricos. Convierte un contenedor en un contexto flex y genera las variantes vendor históricas junto con la declaración estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción No aplica - - Este mixin no recibe parámetros. Ejemplo En este ejemplo, el primer contenedor conserva el flujo normal del documento, por lo que los elementos se apilan uno debajo del otro. El segundo aplica @include flex , así que los elementos pasan a distribuirse en una fila flex. Resultado SCSS CSS generado HTML Flujo normal A B C display: flex A B C"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "grid",
+            "title": "grid (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "grid (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para definir display: grid con prefijos históricos. Convierte un contenedor en un contexto grid y genera las variantes vendor históricas junto con la declaración estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción No aplica - - Este mixin no recibe parámetros. Ejemplo En este ejemplo, el primer contenedor conserva el flujo normal del documento, por lo que los elementos se apilan uno debajo del otro. El segundo aplica @include grid y define dos columnas, así que los elementos se distribuyen en una retícula. Resultado SCSS CSS generado HTML Flujo normal A B C D display: grid A B C D"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "backdrop_filter",
+            "title": "backdrop-filter (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "backdrop-filter (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad backdrop-filter . Aplica efectos visuales sobre el contenido situado detrás de un elemento, como desenfoque, saturación o contraste. Genera la propiedad con prefijo -webkit- y después agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String - Define el valor que se asignará a backdrop-filter . Ejemplo En este ejemplo, ambos paneles se colocan sobre un fondo decorativo. El primero usa solo transparencia. El segundo aplica blur(10px) mediante backdrop-filter , por lo que el fondo detrás del panel se suaviza y la diferencia resulta visible. Resultado SCSS CSS generado HTML Sin backdrop-filter Panel backdrop-filter: blur(10px) Panel"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "mask",
+            "title": "mask (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "mask (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad mask . Define una máscara visual que controla qué partes de un elemento permanecen visibles. Genera la propiedad con prefijo -webkit- y después agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String - Define el valor que se asignará a mask . Ejemplo En este ejemplo, ambos bloques comparten el mismo fondo con degradado. El primero se muestra completo. El segundo aplica una máscara radial con bordes transparentes, por lo que la figura visible se recorta hacia el centro y la diferencia se aprecia con claridad. Resultado SCSS CSS generado HTML Sin mask MASK mask: radial-gradient(...) MASK"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "filter",
+            "title": "filter (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "filter (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad filter . Aplica efectos visuales directamente sobre el propio elemento, como desenfoque, escala de grises o saturación. Genera la propiedad con prefijo -webkit- y después agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String none Define el valor que se asignará a filter . Ejemplo En este ejemplo, ambas tarjetas usan la misma imagen. La primera se muestra sin alteraciones. La segunda aplica grayscale(100%) , por lo que la imagen pierde su color y el efecto se distingue con facilidad. Resultado SCSS CSS generado HTML Sin filter filter: grayscale(100%)"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "linear_gradient",
+            "title": "linear-gradient (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "linear-gradient (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para construir un background-image con linear-gradient . Genera las variantes históricas de la función y la versión estándar del gradiente para aplicarlas como imagen de fondo. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String - Define la expresión que se enviará a linear-gradient . Ejemplo En este ejemplo, ambos bloques tienen el mismo tamaño. El primero usa un color de fondo sólido. El segundo aplica un gradiente lineal diagonal, por lo que el cambio visual resulta inmediato. Resultado SCSS CSS generado HTML Color sólido A linear-gradient(135deg, #A01303, #FBB03B) A"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "transform",
+            "title": "transform (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "transform (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad transform . Aplica la propiedad con sus prefijos históricos y con la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Transform | String none Define el valor que se asignará a transform . Ejemplo Resultado SCSS CSS generado HTML Para combinar múltiples transformaciones se puede escribir el valor compuesto en una sola llamada al mixin. Ejemplo adicional Ejemplo 2: SCSS Ejemplo 2: CSS generado Ejemplo 2: HTML Resultado"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "transformstyle",
+            "title": "transform-style (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "transform-style (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad transform-style . La propiedad transform-style establece si los elementos hijos conservan su posición en el espacio tridimensional con preserve-3d o si se integran en el plano del padre con flat . Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword none Define el valor que se asignará a transform-style . Ejemplo Resultado SCSS CSS generado HTML Padre Hijo Ejemplo adicional Resultado SCSS CSS generado HTML Padre Hijo Ejemplo adicional Resultado SCSS CSS generado HTML 1 2 3 4 5 6"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "transition",
+            "title": "transition (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "transition (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad transition . Define cómo cambian de forma animada una o varias propiedades CSS entre un estado y otro. Aplica la propiedad con los prefijos históricos disponibles y después agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String none Define el valor que se asignará a transition . Ejemplo En este ejemplo, ambos bloques parten con opacity: 0.5 . El primero cambia a opacidad completa de forma inmediata al pasar el cursor. El segundo aplica una transición sobre opacity , por lo que el cambio ocurre de manera gradual y la diferencia se percibe con claridad. Resultado SCSS CSS generado HTML Sin transition Hover transition: opacity .35s ease Hover"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "animation",
+            "title": "animation (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "animation (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad animation . Asigna la animación que debe ejecutarse sobre un elemento, incluyendo nombre, duración, función de tiempo, retraso, iteraciones, dirección, fill mode y estado. Aplica la propiedad con los prefijos históricos disponibles y después agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br String none Define el valor completo que se asignará a animation . Ejemplo Resultado SCSS CSS generado HTML Sin animation Con animation"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "animation_fill_mode",
+            "title": "animation-fill-mode (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "animation-fill-mode (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad animation-fill-mode . Controla qué estilos de una animación permanecen activos fuera de su tiempo de ejecución, tanto antes de que empiece como después de que termine. Esto permite decidir si el elemento debe conservar el estado del primer fotograma, el del último, ambos o ninguno cuando existe un retraso o cuando la animación finaliza. Resulta útil para evitar saltos visuales entre el estado base del elemento y los fotogramas definidos en la animación. Aplica la propiedad con los prefijos históricos disponibles y después agrega la versión estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword - Define el valor que se asignará a animation-fill-mode . Ejemplo En este ejemplo, ambos bloques usan la misma animación con retraso y una sola ejecución. Pulsa el botón para reiniciarla cuando quieras. El bloque backwards aplica el estilo inicial durante la espera; el bloque forwards conserva el estilo final cuando la animación termina. Resultado SCSS CSS generado HTML Reproducir animación backwards Backwards forwards Forwards"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "backface_visibility",
+            "title": "backface-visibility (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "backface-visibility (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para la propiedad backface-visibility . Controla si la cara trasera de un elemento transformado en 3D permanece visible cuando queda orientada hacia el usuario. Se usa sobre todo en giros con rotateY , rotateX o composiciones tipo card flip para evitar que el reverso se vea invertido cuando no corresponde. Interface Parámetros secuenciales Parámetro Tipo Default Descripción br Keyword hidden Define el valor que se asignará a backface-visibility . Ejemplo En este ejemplo, ambas tarjetas giran 180 grados al pasar el cursor. La primera usa hidden , por lo que la cara trasera no se muestra mientras queda invertida. La segunda usa visible , así que el reverso sigue siendo visible durante el giro. Resultado SCSS CSS generado HTML hidden Front Back visible Front Back"
+        },
+        {
+            "url": "pages/vendor.html",
+            "anchor": "keyframes",
+            "title": "keyframes (_vendor.scscs)",
+            "category": "Mixin",
+            "page_title": "Vendor",
+            "text": "keyframes (_vendor.scscs) Tipo: Mixin Versión: 2.x.x Mixin vendor de SISASS para declarar bloques @keyframes con prefijos históricos. Recibe el nombre de la animación y replica el bloque @content en las variantes -webkit- , -moz- , -ms- y en la regla estándar. Interface Parámetros secuenciales Parámetro Tipo Default Descripción name String - Define el nombre que se asignará al bloque @keyframes . Ejemplo Resultado SCSS CSS generado HTML"
+        }
+    ]
+}

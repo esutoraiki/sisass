@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .result {
+        .wh_example {
+            @include wh(140px, 60px);
+        }
+    }
+}

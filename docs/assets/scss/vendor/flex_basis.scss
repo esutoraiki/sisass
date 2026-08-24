@@ -1,0 +1,37 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .flex_basis_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+        @include wh(100%);
+
+        .subtitle {
+            @include no-spacing;
+        }
+
+        .row {
+            @include flex;
+            @include gap(12px);
+            flex-wrap: wrap;
+            width: 100%;
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            &.fixed_basis {
+                .box {
+                    @include flex-basis(140px);
+                }
+            }
+        }
+
+        .box {
+            @include center-flex-column;
+            min-height: 52px;
+            padding: 10px 14px;
+            color: $c1;
+        }
+    }
+}

@@ -1,0 +1,99 @@
+<article id="gradient_text" class="gradient_text">
+    <div class="group_title">
+        <h2 class="subtitle">
+            gradient-text (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Aplica un gradiente al texto a partir de los argumentos que recibe
+        <b>linear-gradient</b>. El mixin no espera la función completa, solo
+        la lista de valores que se le pasarán internamente.
+    </p>
+    <p class="description">
+        Además aplica <b>background-clip: text</b>,
+        <b>text-fill-color: transparent</b> y permite definir
+        <b>display</b>, cuyo valor por defecto es <b>inline-block</b>,
+        para que el gradiente se vea correctamente sobre el contenido del
+        texto.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin gradient-text($grad, $display: inline-block);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>grad</b></td>
+                    <td>String | List</td>
+                    <td>Sin default</td>
+                    <td>Define los argumentos que se envían a <b>linear-gradient</b> para generar <b>background-image</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display</b></td>
+                    <td>String</td>
+                    <td>inline-block</td>
+                    <td>Define la propiedad <b>display</b> aplicada al elemento con el texto degradado.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="gradient_text_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <span class="gradient_text_example">Texto gradiente</span>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/gradient_text.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/gradient_text.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;span&nbsp;class=&quot;gradient_text_example&quot;&gt;Texto&nbsp;gradiente&lt;/span&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,33 @@
+@use "../core/instances" as *;
+
+html.page {
+    color-scheme: light;
+    --theme_bg: #{light-dark($c7, $c9)};
+    --theme_bg_secondary: #{light-dark(rgba($c16, 0.1), rgba($c17, 0.1))};
+    --theme_surface: #{light-dark($c1, $c10)};
+    --theme_inverted_surface: #{light-dark($c10, $c1)};
+    --theme_surface_alt: #{light-dark($c7, $c11)};
+    --theme_text: #{light-dark($c6, $c12)};
+    --theme_text_alt: #{light-dark($c3, $c13)};
+    --theme_text_bold: #{light-dark($c16, $c17)};
+    --theme_accent: #{light-dark($c5, $c15)};
+    --theme_accent_alt: #{light-dark($c4, $c14)};
+    --theme_border: #{light-dark($c8, rgba($c1, 0.18))};
+    --theme_border_btn: #{light-dark($c16, $c17)};
+    --theme_border_soft: #{light-dark($c3, rgba($c1, 0.12))};
+    --theme_shadow: #{light-dark(rgba($c2, 0.08), rgba($c1, 0.1))};
+    --theme_scroll_track: #{light-dark($c2, $c9)};
+    --theme_icon_filter: none;
+    --theme_icon_stroke: #{light-dark($c4, $c9)};
+    --theme_black_white: #{light-dark($c2, $c1)};
+    --theme_white_black: #{light-dark($c1, $c2)};
+    --theme_btn_text: #{light-dark($c16, $c1)};
+    --theme_bg_th: #{light-dark($c6, $c11)};
+    --theme_text_th: #{light-dark($c1, $c12)};
+}
+
+html.page[data-theme="light"] { color-scheme: light; }
+html.page[data-theme="dark"] {
+    color-scheme: dark;
+    --theme_icon_filter: brightness(0) invert(1);
+}

@@ -1,0 +1,152 @@
+<article id="background_opacity" class="background_opacity">
+    <div class="group_title">
+        <h2 class="subtitle">
+            background-opacity (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Genera un color de fondo con opacidad usando sintaxis moderna
+        <b>rgb(... / alpha)</b> o <b>rgba(...)</b>. Soporta dos formas de uso:
+        parámetros individuales o sintaxis <b>map</b>.
+    </p>
+    <p class="description">
+        Cuando <b>use_legacy</b> es <b>false</b>, el mixin genera una salida
+        moderna con canales RGB y alpha. Cuando es <b>true</b>, genera
+        <b>rgba(...)</b> como valor final de <b>background-color</b>.
+        En sintaxis <b>map</b> también admite los aliases <b>c</b>,
+        <b>o</b> y <b>ul</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin background-opacity($bg: #FFF, $opacity: 0.8, $use_legacy: false);</code></pre>
+
+        <h2 class="title">
+            Sintaxis alternativa (map)
+        </h2>
+
+        <pre class="language-scss"><code>@include background-opacity((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;#FFF,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;opacity:&nbsp;0.8,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;use_legacy:&nbsp;false&NewLine;));</code></pre>
+
+        <p class="description">
+            Valores por defecto: <b>#FFF, 0.8, false.</b>
+        </p>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>bg</b></td>
+                    <td>Color</td>
+                    <td>#FFF</td>
+                    <td>Define el color base usado para generar <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>opacity</b></td>
+                    <td>Number</td>
+                    <td>0.8</td>
+                    <td>Define el nivel de opacidad aplicado al color de fondo.</td>
+                </tr>
+                <tr>
+                    <td><b>use_legacy</b></td>
+                    <td>Bool</td>
+                    <td>false</td>
+                    <td>Define si el valor final usa <b>rgba(...)</b> en lugar de sintaxis moderna RGB con alpha.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>color | c</b></td>
+                    <td>Color</td>
+                    <td>#FFF</td>
+                    <td>Define el color base usado para generar <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>opacity | o</b></td>
+                    <td>Number</td>
+                    <td>0.8</td>
+                    <td>Define el nivel de opacidad aplicado al color de fondo.</td>
+                </tr>
+                <tr>
+                    <td><b>use_legacy | ul</b></td>
+                    <td>Bool</td>
+                    <td>false</td>
+                    <td>Define si el valor final usa <b>rgba(...)</b> en lugar de sintaxis moderna RGB con alpha.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="background_opacity_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="background_opacity_example_legacy"></div>
+                    <div class="background_opacity_example_map"></div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/background_opacity.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/background_opacity.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;background_opacity_example_legacy&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;background_opacity_example_map&quot;&gt;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

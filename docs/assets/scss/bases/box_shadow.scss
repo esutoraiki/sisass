@@ -1,6 +1,0 @@
-@import "base";
-@import "vendor";
-
-.box_shadow_example {
-    @include box_shadow(7px 7px 7px #FBB03B);
-}

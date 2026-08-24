@@ -1,0 +1,125 @@
+<article id="font_face" class="font_face">
+    <div class="group_title">
+        <h2 class="subtitle">
+            font-face (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Declara un <b>@font-face</b> mediante un map de atributos.
+        Requiere <b>name</b> y <b>path</b>, y permite configurar
+        <b>weight</b>, <b>style</b>, <b>display</b> y <b>exts</b>.
+        También admite los aliases <b>n</b>, <b>p</b>, <b>w</b>, <b>s</b>,
+        <b>d</b> y <b>e</b> para esas mismas claves.
+    </p>
+    <p class="description">
+        Por defecto usa extensiones <b>woff2</b>, <b>woff</b> y <b>ttf</b>.
+        También admite <b>eot</b>, <b>otf</b> y <b>svg</b> en la lista
+        <b>exts</b>; cuando usas <b>eot</b> o <b>svg</b>, el mixin ajusta el
+        valor de <b>src</b> con el formato requerido para cada caso.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin&nbsp;font-face($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;path:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;weight:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;style:&nbsp;normal,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;swap,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;exts:&nbsp;(woff2,&nbsp;woff,&nbsp;ttf)&NewLine;);&NewLine;</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>name | n</b></td>
+                    <td>String</td>
+                    <td>null</td>
+                    <td>Nombre de la familia tipográfica para <b>font-family</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>path | p</b></td>
+                    <td>String</td>
+                    <td>null</td>
+                    <td>Ruta base del archivo sin extensión.</td>
+                </tr>
+                <tr>
+                    <td><b>weight | w</b></td>
+                    <td>String | Number</td>
+                    <td>normal</td>
+                    <td>Define <b>font-weight</b> dentro de <b>@font-face</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>style | s</b></td>
+                    <td>String</td>
+                    <td>normal</td>
+                    <td>Define <b>font-style</b> dentro de <b>@font-face</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>display | d</b></td>
+                    <td>String</td>
+                    <td>swap</td>
+                    <td>Define <b>font-display</b> dentro de <b>@font-face</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>exts | e</b></td>
+                    <td>List</td>
+                    <td>(woff2, woff, ttf)</td>
+                    <td>Lista de extensiones a generar en <b>src</b>. Soporta <b>eot</b>, <b>woff2</b>, <b>woff</b>, <b>ttf</b>, <b>otf</b> y <b>svg</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="font_face_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <p class="font_face_example_normal">Fira Sans normal</p>
+                    <p class="font_face_example_bold">Fira Sans bold</p>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/font_face.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/font_face.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;p&nbsp;class=&quot;font_face_example_normal&quot;&gt;Fira&nbsp;Sans&nbsp;normal&lt;/p&gt;&NewLine;&lt;p&nbsp;class=&quot;font_face_example_bold&quot;&gt;Fira&nbsp;Sans&nbsp;bold&lt;/p&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

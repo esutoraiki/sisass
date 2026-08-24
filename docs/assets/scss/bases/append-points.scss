@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .fn-append-points {
+        --list: #{append-points((1, 2), (3, 4))};
+    }
+}

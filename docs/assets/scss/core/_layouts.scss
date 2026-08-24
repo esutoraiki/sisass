@@ -1,11 +1,120 @@
-@import "instance";
+@use "../core/instances" as *;
 
-.layout_1 {
+.layout_header {
+    @include wh(min(95vw, 1920px));
     @include grid;
 
     grid: {
         template: {
-            columns: 230px auto;
+            areas: "l0 s0 t0";
+            columns: max-content auto max-content;
+        }
+    }
+
+    .b1 { grid-area: l0; }
+    .b2 { grid-area: s0; }
+    .b3 { grid-area: t0; }
+}
+
+.layout_home {
+    @include justify-content(center);
+    @include grid;
+
+    grid: {
+        template: {
+            columns: min(95vw, 1920px);
+            rows: 95px auto;
+            areas: "h2" "c2";
+        }
+    }
+
+    @include brp($b6) {
+        grid: {
+            template: {
+                rows: 45px auto;
+                columns: 1fr;
+            }
+        }
+    }
+
+    .c1 { grid-area: h2; }
+    .c2 { grid-area: c2; }
+}
+
+.layout_characteristics {
+    @include align-items(center);
+    @include gap(16px);
+    @include grid;
+
+    grid: {
+        template: {
+            columns: repeat(4, minmax(0, 1fr));
+        }
+    }
+
+    @include brp($b5) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include brp($b7) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.layout_block_3 {
+    @include grid;
+
+    grid: {
+        gap: 24px;
+        template: {
+            columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+
+    @include brp($b5) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+
+        &:has(> :nth-child(3):last-child) > :first-child {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @include brp($b7) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.layout_reference_link {
+    @include grid;
+    @include gap(25px);
+
+    grid: {
+        template: {
+            areas:
+                "lr cr"
+                "wr wr"
+            ;
+            columns: clamp(65px, 4.69vw, 90px) 1fr;
+            rows: auto 52px;
+        }
+    }
+
+    .e1 { grid-area: lr; }
+    .e2 { grid-area: cr; }
+    .e3 { grid-area: wr; }
+}
+
+.layout_1 {
+    @include wh(min(100vw, 1920px));
+    @include grid;
+    margin-inline: auto;
+
+    grid: {
+        template: {
+            rows: 95px auto;
+            columns: 280px auto;
             areas:
                 "h1 h1"
                 "m1 c1"
@@ -14,14 +123,14 @@
     }
 
     @include brp($b6) {
+        display: block;
+    }
+
+    @media print {
         grid: {
-            gap: 15px;
             template: {
-                columns: auto;
-                areas:
-                    "h1"
-                    "c1"
-                ;
+                columns: 1fr;
+                areas: "h1" "c1";
             }
         }
     }
@@ -29,4 +138,55 @@
     .a1 { grid-area: h1; }
     .a2 { grid-area: m1; }
     .a3 { grid-area: c1; }
+}
+
+.layout_2 {
+    @include grid;
+    @include gap(25px);
+
+    grid: {
+        template: {
+            areas: "c1 c2";
+            columns: 1fr 330px;
+        }
+    }
+
+    @include brp($b4) {
+        grid: {
+            template: {
+                areas: "c1" "c2";
+                columns: 1fr;
+            }
+        }
+    }
+
+    .d1 { grid-area: c1; }
+    .d2 { grid-area: c2; }
+}
+
+.layout_3 {
+    @include grid;
+    @include gap(25px);
+
+    grid: {
+        template: {
+            columns: repeat(3, 1fr);
+        }
+    }
+
+    @include brp($b4) {
+        grid: {
+            template: {
+                columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    @include brp($b7) {
+        grid: {
+            template: {
+                columns: 1fr;
+            }
+        }
+    }
 }

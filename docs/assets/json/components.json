@@ -33,19 +33,19 @@
         },
         {
             "id": "vendor_prefix",
-            "url": "../components/vendor_prefix.html",
+            "url": "../components/vendor/vendor_prefix.html",
             "position": "beforeend",
             "node": "vendorprefix"
         },
         {
             "id": "border_radius",
-            "url": "../components/border_radius.html",
+            "url": "../components/vendor/border_radius.html",
             "position": "beforeend",
             "node": "borderradius"
         },
         {
             "id": "box_shadow",
-            "url": "../components/box_shadow.html",
+            "url": "../components/vendor/box_shadow.html",
             "position": "beforeend",
             "node": "boxshadow"
         }

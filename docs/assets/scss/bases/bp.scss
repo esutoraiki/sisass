@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .fn_bp {
+        width: bp((value: 384, base: 1920, unit: "vw"));
+        height: 20px;
+        background-color: $c5;
+    }
+}

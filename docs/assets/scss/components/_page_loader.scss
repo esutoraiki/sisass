@@ -1,0 +1,59 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .loader {
+        @include bc(var(--theme_surface), var(--theme_text));
+        @include position(( p: fixed ));
+        @include whs(100%);
+        @include center-flex-column;
+        padding: 24px;
+        z-index: 30;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease
+        ;
+
+        &.close {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .box {
+            @include flex-direction(column);
+            @include border-radius(16px);
+            @include box-shadow($sh1);
+            @include bc(var(--theme_surface), var(--theme_text));
+            @include wh(min(90%, 420px));
+            @include flex;
+            @include gap(3px);
+            padding: 28px 24px 22px;
+
+            .title {
+                @include bc($c0, var(--theme_text));
+                @include tf((
+                    f: $f3,
+                    s: szrem(30),
+                    w: 900
+                ));
+                margin-bottom: 0;
+            }
+
+            .text { @include t1(( c: var(--theme_text_alt) )); }
+
+            .bar {
+                @include border-radius(10px);
+                @include bc($c0, $c0);
+                @include wh(100%, 10px);
+                overflow: hidden;
+
+                .progress {
+                    @include animation(loader_progress 1.4s ease-in-out infinite);;
+                    @include border-radius(inherit);
+                    @include wh(40%, 100%);
+                    @include background(( i: linear-gradient(90deg, var(--theme_accent) 0%, var(--theme_accent_alt) 100%) ));
+                }
+            }
+        }
+    }
+}

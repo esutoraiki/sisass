@@ -1,0 +1,14 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .replace_base_example {
+        @include replace-base((
+            width: 140px,
+            height: 140px,
+            display: inline-block,
+            position: relative,
+            z: 2
+        ));
+        @include bc($c5, transparent);
+    }
+}

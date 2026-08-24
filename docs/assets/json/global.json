@@ -11,8 +11,15 @@
             "url": "../components/global/menu.html",
             "class": "a2",
             "position": "afterend",
-            "node": "main_content"
+            "node": "main_content",
+            "page": "docs"
+        },
+        {
+            "id": "menu_close",
+            "url": "../components/global/menu_close.html",
+            "position": "afterend",
+            "node": "main_content",
+            "page": "docs"
         }
     ]
 }
-

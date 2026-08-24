@@ -1,0 +1,118 @@
+<article id="mapv" class="mapv">
+    <div class="group_title">
+        <h2 class="subtitle">
+            mapv (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Obtiene un valor de un <b>map</b> y devuelve un fallback cuando la clave no existe.
+    </p>
+    <p class="description">
+        También permite definir alias para una misma opción, lo que simplifica la captura de atributos en mixins y funciones con sintaxis <b>map</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function mapv($map, $key, $value);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>map</b></td>
+                    <td>Map</td>
+                    <td>-</td>
+                    <td>Define el mapa desde el que se intentará leer el valor.</td>
+                </tr>
+                <tr>
+                    <td><b>key</b></td>
+                    <td>String | List</td>
+                    <td>-</td>
+                    <td>Define la clave principal o la lista de claves alias que se evaluarán en orden.</td>
+                </tr>
+                <tr>
+                    <td><b>value</b></td>
+                    <td>Any</td>
+                    <td>-</td>
+                    <td>Define el valor de respaldo que se devolverá si ninguna clave existe en el mapa.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <p class="description">
+            La creación de alias se hace pasando una lista de claves en el segundo parámetro. Por ejemplo,
+            <b>mapv($attr, (align, a), left)</b> primero intenta leer <b>align</b>; si no existe, intenta leer <b>a</b>;
+            y si ninguna está definida, devuelve <b>left</b>. La precedencia sigue exactamente el orden en que se
+            escriben las claves en la lista.
+        </p>
+        <p class="description">
+            Usar <b>mapv</b> en mixins y funciones tiene dos ventajas principales: reduce código repetido al centralizar
+            la lectura de atributos con fallback, y permite ofrecer una API más flexible con nombres principales y alias
+            cortos sin duplicar lógica en cada captura. Eso facilita mantener firmas más limpias y hace más consistente
+            la sintaxis <b>map</b> en todo SISASS.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="mapv_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="fn_mapv">
+                        <div class="box">BG: black, Color: white</div>
+                        <div class="box box_default_bg">BG: orange, Color: maroon</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/mapv.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/mapv.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div class=&quot;fn_mapv&quot;&gt;
+                    &lt;div class=&quot;box&quot;&gt;Box con background-color y color&lt;/div&gt;
+                    &lt;div class=&quot;box box_default_bg&quot;&gt;Box con color y background-color por defecto&lt;/div&gt;
+                &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

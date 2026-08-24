@@ -1,0 +1,30 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .mask_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .sample {
+            @include center-flex-column;
+            @include border-radius(18px);
+            @include wh(220px, 220px);
+            background:
+                linear-gradient(135deg, $c5, $c4 50%, $c6);
+            color: $c1;
+            font-size: szrem(38);
+            font-weight: bold;
+            letter-spacing: 0.12em;
+
+            &.masked {
+                @include mask(radial-gradient(circle, rgba($c1, 1) 46%, rgba($c1, 0) 72%));
+            }
+        }
+    }
+}

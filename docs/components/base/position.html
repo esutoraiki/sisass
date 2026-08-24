@@ -1,0 +1,219 @@
+<article id="position" class="position">
+    <div class="group_title">
+        <h2 class="subtitle">
+            position (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Define la propiedad <b>position</b> y aplica offsets usando dos
+        estrategias: sintaxis por ejes (<b>y/x</b>) o sintaxis explícita por
+        lados (<b>top/right/bottom/left</b>) con alias cortos
+        (<b>t/r/b/l</b>).
+    </p>
+    <p class="description">
+        La sintaxis <b>y/x</b> es útil para ajustes rápidos: <b>y</b> controla
+        el eje vertical y <b>x</b> el horizontal; <b>yaxis</b> y
+        <b>xaxis</b> indican qué propiedad CSS usa cada eje. Cuando el map
+        incluye <b>top</b>, <b>right</b>, <b>bottom</b> o <b>left</b>, esos
+        valores reemplazan la salida basada en ejes.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin&nbsp;position($position:&nbsp;relative,&nbsp;$y:&nbsp;0,&nbsp;$x:&nbsp;0,&nbsp;$yaxis:&nbsp;top,&nbsp;$xaxis:&nbsp;left);</code></pre>
+        <h3 class="subtitle">
+            Sintaxis alternativa (map)
+        </h3>
+        <pre class="language-scss"><code>@include&nbsp;position((&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;relative,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;0,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;yaxis:&nbsp;top,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;xaxis:&nbsp;left,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;top:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;right:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bottom:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;left:&nbsp;null&NewLine;));</code></pre>
+        <p class="description">
+            Uso recomendado del map: define <b>position</b> o <b>p</b> y luego
+            elige una sola estrategia. Si incluyes <b>top/right/bottom/left</b>
+            o <b>t/r/b/l</b>, se usa sintaxis explícita; si no, se aplica la
+            sintaxis por ejes <b>y/x</b>.
+        </p>
+
+        <p class="description">
+            Valores por defecto: <b>position/p relative</b>, <b>y 0</b>,
+            <b>x 0</b>, <b>yaxis top</b>, <b>xaxis left</b> y
+            <b>top/right/bottom/left null</b>.
+        </p>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>position</b></td>
+                    <td>String</td>
+                    <td>relative</td>
+                    <td>Define la propiedad <b>position</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>y</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el offset del eje Y cuando no se usa un lado explícito.</td>
+                </tr>
+                <tr>
+                    <td><b>x</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el offset del eje X cuando no se usa un lado explícito.</td>
+                </tr>
+                <tr>
+                    <td><b>yaxis</b></td>
+                    <td>String</td>
+                    <td>top</td>
+                    <td>Selecciona la propiedad CSS usada para el eje Y.</td>
+                </tr>
+                <tr>
+                    <td><b>xaxis</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Selecciona la propiedad CSS usada para el eje X.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>position | p</b></td>
+                    <td>String</td>
+                    <td>relative</td>
+                    <td>Define la propiedad <b>position</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>y</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el offset del eje Y cuando no se usa un lado explícito.</td>
+                </tr>
+                <tr>
+                    <td><b>x</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Define el offset del eje X cuando no se usa un lado explícito.</td>
+                </tr>
+                <tr>
+                    <td><b>yaxis | ya</b></td>
+                    <td>String</td>
+                    <td>top</td>
+                    <td>Selecciona la propiedad CSS usada para el eje Y.</td>
+                </tr>
+                <tr>
+                    <td><b>xaxis | xa</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Selecciona la propiedad CSS usada para el eje X.</td>
+                </tr>
+                <tr>
+                    <td><b>top | t</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>top</b> de forma explícita.</td>
+                </tr>
+                <tr>
+                    <td><b>right | r</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>right</b> de forma explícita.</td>
+                </tr>
+                <tr>
+                    <td><b>bottom | b</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>bottom</b> de forma explícita.</td>
+                </tr>
+                <tr>
+                    <td><b>left | l</b></td>
+                    <td>Medida | Null</td>
+                    <td>null</td>
+                    <td>Asigna <b>left</b> de forma explícita.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <p class="description">
+            Precedencia: si el map incluye <b>top</b>, <b>right</b>,
+            <b>bottom</b> o <b>left</b> (o sus alias), esos lados reemplazan
+            la salida basada en <b>y/x</b>. Si se define <b>position</b> y
+            <b>p</b> al mismo tiempo, prevalece <b>position</b>. Si se define
+            una clave larga y su alias al mismo tiempo, prevalece la clave
+            larga.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="position_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="position_container">
+                        <div class="position_example box"></div>
+                    </div>
+                    <div class="position_container_explicit">
+                        <div class="position_example_explicit box"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/position.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/position.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;position_container&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;position_example&nbsp;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;position_container_explicit&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;position_example_explicit&nbsp;box&quot;&gt;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,5 @@
+.documentationpage .calc_example {
+  width: -moz-calc(100% - 40px);
+  width: -webkit-calc(100% - 40px);
+  width: calc(100% - 40px);
+}

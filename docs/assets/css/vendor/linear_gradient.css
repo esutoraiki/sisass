@@ -1,0 +1,49 @@
+.documentationpage .linear_gradient_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .linear_gradient_example .subtitle {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 8px;
+}
+.documentationpage .linear_gradient_example .sample {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  border-radius: 18px;
+  width: 220px;
+  height: 160px;
+  background-color: #A01303;
+  color: #FFF;
+  font-size: 2.125rem;
+  font-weight: bold;
+}
+.documentationpage .linear_gradient_example .sample.gradient {
+  background-image: -webkit-linear-gradient(135deg, #A01303, #FBB03B);
+  background-image: -moz-linear-gradient(135deg, #A01303, #FBB03B);
+  background-image: -o-linear-gradient(135deg, #A01303, #FBB03B);
+  background-image: linear-gradient(135deg, #A01303, #FBB03B);
+}

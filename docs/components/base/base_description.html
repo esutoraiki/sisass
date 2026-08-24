@@ -1,0 +1,146 @@
+<article id="base_description" class="base_description">
+    <div class="group_title">
+        <h2 class="subtitle">
+            _base.scss (archivo)
+        </h2>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        <b>src/_base.scss</b> centraliza utilidades base de SISASS: mixins para tipografía, fondos, layout,
+        componentes UI y helpers responsive, además de funciones de apoyo para mapas, color, listas, strings y
+        unidades. Muchas utilidades aceptan configuración mediante mapas para mantener una API consistente y
+        escalable.
+    </p>
+    <div class="group_title">
+        <h2 class="subtitle">
+            Clasificación de mixins
+        </h2>
+    </div>
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Mixins</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Texto</b></td>
+                <td>
+                    <a href="../pages/base.html#text">text</a>,
+                    <a href="../pages/base.html#font">font</a>,
+                    <a href="../pages/base.html#tf">tf</a>,
+                    <a href="../pages/base.html#gradient_text">gradient-text</a>,
+                    <a href="../pages/base.html#font_face">font-face</a>,
+                    <a href="../pages/base.html#ht">ht</a>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Formularios</b></td>
+                <td><a href="../pages/base.html#autofill">autofill</a></td>
+            </tr>
+            <tr>
+                <td><b>Fondos/Color</b></td>
+                <td><a href="../pages/base.html#background">background</a>, <a href="../pages/base.html#bc">bc</a>, <a href="../pages/base.html#background_opacity">background-opacity</a></td>
+            </tr>
+            <tr>
+                <td><b>Layout/Posición</b></td>
+                <td><a href="../pages/base.html#position">position</a>, <a href="../pages/base.html#wh">wh</a>, <a href="../pages/base.html#whs">whs</a></td>
+            </tr>
+            <tr>
+                <td><b>Layout/Alineación</b></td>
+                <td><a href="../pages/base.html#center_absolute">center-absolute</a>, <a href="../pages/base.html#center_flex_column">center-flex-column</a>, <a href="../pages/base.html#center_flex_row">center-flex-row</a></td>
+            </tr>
+            <tr>
+                <td><b>Layout/Espaciado</b></td>
+                <td><a href="../pages/base.html#gap">gap</a></td>
+            </tr>
+            <tr>
+                <td><b>Imágenes</b></td>
+                <td><a href="../pages/base.html#cover">cover</a>, <a href="../pages/base.html#contain">contain</a>, <a href="../pages/base.html#img_replace">img-replace</a>, <a href="../pages/base.html#replace_base">replace-base</a></td>
+            </tr>
+            <tr>
+                <td><b>SVG</b></td>
+                <td><a href="../pages/base.html#icon-svg">icon-svg</a>, <a href="../pages/base.html#icon-svg-mask">icon-svg-mask</a>, <a href="../pages/base.html#normalize_svg">normalize-svg</a></td>
+            </tr>
+            <tr>
+                <td><b>UI</b></td>
+                <td><a href="../pages/base.html#scroll">scroll</a></td>
+            </tr>
+            <tr>
+                <td><b>Reset</b></td>
+                <td><a href="../pages/base.html#no_spacing">no-spacing</a>, <a href="../pages/base.html#no_border">no-border</a></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="group_title">
+        <h2 class="subtitle">
+            Clasificación de funciones
+        </h2>
+    </div>
+    <div class="container_table">
+        <table class="full">
+        <thead>
+            <tr>
+                <th>Categoría</th>
+                <th>Funciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><b>Responsive/Unidades</b></td>
+                <td><a href="../pages/base.html#szrem">szrem</a>, <a href="../pages/base.html#bp">bp</a>, <a href="../pages/base.html#strip_unit">strip-unit</a></td>
+            </tr>
+            <tr>
+                <td><b>Cadenas</b></td>
+                <td><a href="../pages/base.html#str_replace">str-replace</a></td>
+            </tr>
+            <tr>
+                <td><b>Mapas</b></td>
+                <td><a href="../pages/base.html#mapv">mapv</a></td>
+            </tr>
+            <tr>
+                <td><b>Color</b></td>
+                <td><a href="../pages/base.html#rgb_alpha">rgb-alpha</a></td>
+            </tr>
+            <tr>
+                <td><b>Listas</b></td>
+                <td><a href="../pages/base.html#list-add-unique">list-add-unique</a>, <a href="../pages/base.html#list-add-items">list-add-items</a>, <a href="../pages/base.html#append-points">append-points</a></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+    <div class="group_title">
+        <h2 class="subtitle">
+            Uso de parámetros y alias
+        </h2>
+    </div>
+    <p class="description">
+        En SISASS, muchos mixins pueden usarse de dos formas. La primera es con parámetros secuenciales, es decir,
+        pasando los valores en el mismo orden en que aparecen en la firma del mixin. La segunda es con sintaxis
+        <b>map</b>, donde se envía un mapa de claves y valores para nombrar cada opción de forma explícita.
+        Un <b>map</b> se escribe con pares <b>clave: valor</b>, por ejemplo:
+        <b>(position: absolute, y: 10px, x: 20px)</b>.
+    </p>
+    <p class="description">
+        La diferencia práctica es importante: con parámetros secuenciales debes respetar el orden exacto de la firma
+        del mixin, mientras que con sintaxis <b>map</b> el orden de las claves no altera el resultado, porque cada valor
+        se resuelve por nombre. Por ejemplo, <b>@include position(absolute, 10px, 20px);</b> depende del orden,
+        mientras que <b>@include position((x: 20px, position: absolute, y: 10px));</b> produce la misma configuración
+        aunque las claves estén reordenadas.
+    </p>
+    <p class="description">
+        En las tablas de parámetros, cuando una entrada aparece como <b>position | p</b> o <b>top | t</b>, significa que
+        todas esas claves apuntan a la misma configuración dentro de la sintaxis <b>map</b>. El nombre ubicado más a la
+        izquierda es el nombre principal y los siguientes son alias. La precedencia se resuelve en ese mismo orden:
+        primero gana el nombre principal, luego el primer alias, después el siguiente, y así sucesivamente. Si una misma
+        opción tiene más de un alias, el valor efectivo será el del primer nombre disponible según el orden documentado.
+    </p>
+</article>

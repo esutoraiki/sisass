@@ -1,0 +1,303 @@
+@use "../core/instances" as * ;
+@use "sass:list";
+
+.documentationpage {
+    .welcome {
+        @include no-border;
+        @include no-spacing;
+    }
+}
+
+.welcome {
+    .header_welcome {
+        @include flex;
+        @include gap(min(7.68vw, 120px));
+
+        @include brp($b4) {
+            @include flex-direction(column);
+        }
+
+        .group_1 {
+            flex: 0 0 48%;
+
+            .btn_group {
+                @include flex-direction(row);
+                @include flex;
+                @include gap(15px);
+                margin-top: 32px;
+
+                @include brp($b4) {
+                    @include justify_content(center);
+                    @include align_items(center);
+                }
+
+                @include brp($b7) {
+                    @include flex-direction(column);
+                    flex: 0 0 100%;
+                }
+
+                .btn_bg, .btn {
+                    @include wh(250px, 50px);
+                    @include gap(15px);
+                }
+            }
+        }
+
+        .group_2 {
+            @include wh(min(100%, 700px));
+            @include align_self(center);
+            aspect-ratio: calc(700 / 394);
+            display: block;
+
+            .img {
+                @include wh(inherit, inherit);
+                object-fit: contain;
+            }
+        }
+    } // .header_welcome
+
+    .characteristics_welcome {
+        margin-top: 50px;
+
+        .characteristic {
+            @include bc(var(--theme_surface), var(--theme_text));
+            @include align_items(center);
+            @include border-radius(18px);
+            @include gap(16px);
+            @include whs(100%);
+            @include flex;
+            padding: 25px 15px;
+            border: $bd9;
+
+            [class^="bg_icon"] {
+                @include border-radius(18px);
+                @include center-flex-row;
+                @include whs(52px);
+                @include position;
+                flex: 0 0 52px;
+            }
+
+            @for $i from 1 through list.length($charecteristics_name) {
+                .bg_icon_#{list.nth($charecteristics_name, $i)} {
+                    @include bc(rgba(list.nth($characteristics_color, $i), 0.12), $c0);
+                }
+            }
+
+            .content_characteristic {
+                @include flex;
+                @include flex-direction(column);
+                @include gap(6px);
+                min-width: 0;
+
+                .title_characteristic {
+                    @include t1(( f: $f2, s: szrem(18), w: bold, lh: 1.1 ));
+                    margin-bottom: 0;
+                }
+
+                .description_characteristic {
+                    @include t1(( s: szrem(14), a: left, wr: balance ));
+                    margin-bottom: 0;
+                }
+            }
+        }
+    } // .characteristics_welcome
+
+    .feature_welcome {
+        margin-top: 56px;
+
+        .feature_block {
+            @include flex-direction(column);
+            @include gap(8px);
+            @include flex;
+            min-width: 0;
+
+            .feature_title {
+                @include t1(( f: $f2, s: szrem(20), w: bold, lh: 1.15, a: left ));
+                @include bc($c0, var(--theme_black_white));
+                @include gap(10px);
+                @include flex;
+                margin-bottom: 7px;
+
+                .feature_tag {
+                    @include t1(( f: $f1, w: bold, s: szrem(12), lh: 1, a: center ));
+                    @include border-radius(20px);;
+                    @include bc(rgba($c18, 0.16), $c18);
+                    padding: 6px 10px;
+                }
+            }
+
+            .feature_card {
+                @include bc(var(--theme_surface), var(--theme_text));
+                @include border-radius(12px);
+                @include flex-direction(column);
+                @include wh(auto, 100%);
+                @include position;
+                padding: 15px 15px 55px;
+                overflow: hidden;
+                border: $bd9;
+
+                &.feature_card_modules {
+                    .feature_list {
+                        .feature_item {
+                            @include align-items(center);
+                            border-bottom: $bd9;
+
+                            &:last-child { border-bottom: 0 none transparent; }
+                            .feature_content {
+                                flex: 0 0 calc(100% - 115px);
+                            }
+                        }
+                    }
+                }
+
+                .feature_icon { @include bg_list; }
+
+                .feature_count {
+                    @include t1(( f: $f3, s: szrem(13), w: 800, lh: 1, a: center ));
+                    @include bc(rgb-alpha($c17, 0.14), var(--theme_text_bold));
+                    @include wh(50px, 30px);
+                    @include center-flex-column;
+                    @include border-radius(15px);
+                    flex: 0 0 50px;
+                }
+            }
+
+            .feature_list {
+                @include no-spacing;
+
+                .feature_item {
+                    @include flex;
+                    @include gap(15px);
+                    padding: 15px;
+
+                    &[href] {
+                        cursor: pointer;
+                        text-decoration: none;
+                    }
+
+                    .feature_index { @include bg_list; }
+
+                    .feature_content {
+                        @include flex-direction(column);
+                        @include gap(4px);
+                        @include flex;
+                        flex: 0 0 calc(100% - 78px);
+
+                        .feature_item_title {
+                            @include t1(( f: $f2, s: szrem(16), w: bold, lh: 1.15, a: left ));
+                            margin-bottom: 0;
+                            color: var(--theme_text_bold);
+                        }
+
+                        .feature_item_description {
+                            @include t1(( f: $f1, s: szrem(13), lh: 1.35, a: left, wr: balance ));
+                            margin-bottom: 0;
+                            color: var(--theme_text);
+                        }
+                    }
+
+                    .icon_arrow {
+                        @include align_self(center);
+                        @include normalize-svg((
+                        width: list.nth($l7, 1),
+                        height: list.nth($l7, 1)
+                        ));
+                        flex: 0 0 32px;
+                    }
+                }
+            }
+
+            .feature_link {
+                @include t1(( f: $f4, s: szrem(14), w: 700, lh: 1.15, a: left ));
+                @include transition(color $t2 ease);
+                @include position(( p: absolute, b: 0, l: 0 ));
+                @include wh(100%, 55px);
+                @include bc($c0, $c16);
+                @include align_items(center);
+                @include justify_content(space-between);
+                @include gap(12px);
+                @include flex;
+                border-top: $bd9;
+                padding: 18px 20px 20px;
+
+                &:hover {
+                    @include transition(color $t2 ease);
+                    @include bc($c0, $c17);
+                }
+            }
+
+            .feature_dot {
+                @include bc($c18, $c0);
+                @include border-radius(50%);
+                @include whs(10px);
+                display: inline-flex;
+                box-shadow: $sh3 ;
+                margin-top: 6px;
+            }
+        } // .feature_block
+    } // .feature_welcome
+
+    .help_welcome {
+        @include bc(
+            var(--theme_bg_secondary),
+            var(--theme_text)
+        );
+        @include border-radius(12px);
+        @include flex-direction(row);
+        @include align_items(center);
+        @include gap(15px);
+        @include flex;
+        padding: 20px 15px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+
+        .icon_help {
+            @include normalize-svg((
+                width: 40px,
+                height: 40px
+            ));
+            @include border-radius(50%);
+            @include bc($c16, $c1);
+            flex: 0 0 40px;
+            display: block;
+
+            @include brp($b8) {
+                @include wh(40px, 70px);
+                @include border-radius(7px);
+            }
+
+            &::before {
+                @include transform(translate(-50%, -50%));
+            }
+        }
+
+        .help_content {
+            @include flex-direction(column);
+            @include flex;
+            flex: 0 0 calc(100% - 485px);
+
+            @include brp($b6) {
+                flex: 0 0 calc(100% - 66px);
+            }
+
+            .help_title {
+                @include t1(( f: $f2, s: szrem(16), w: bold, lh: 1.15, a: left ));
+                @include bc($c0, var(--theme_text_bold));
+                margin-bottom: 0;
+            }
+
+            .help_description {
+                text-wrap-style: pretty;
+                text-align: left;
+                margin-bottom: 0;
+            }
+        }
+
+        .group_contact {
+            @include justify_content(center);
+            @include gap(10px);
+            @include flex;
+            flex-wrap: wrap;
+        }
+    } // .help_welcome
+} // .feature_welcom

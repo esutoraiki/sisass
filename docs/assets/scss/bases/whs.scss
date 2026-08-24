@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .result {
+        .whs_example {
+            @include whs(20px);
+        }
+    }
+}

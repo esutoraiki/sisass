@@ -4,7 +4,7 @@
             "id": "welcome",
             "url": "../components/home/welcome.html",
             "position": "beforeend",
-            "node": "welcome"
+            "node": "welcome_container"
         },
         {
             "id": "workflow",

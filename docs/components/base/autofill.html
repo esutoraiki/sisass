@@ -1,0 +1,113 @@
+<article id="autofill" class="autofill">
+    <div class="group_title">
+        <h2 class="subtitle">
+            autofill (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        El autofill es el estado que aplica el navegador cuando completa
+        automáticamente un campo (por ejemplo, al sugerir un correo o una
+        contraseña guardada). Este mixin te permite controlar el color de fondo
+        y el color del texto en ese estado para mantener consistencia con tu UI.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin&nbsp;autofill($attr:&nbsp;(&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;bg:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;initial,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;padding:&nbsp;null,&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;border:&nbsp;null&NewLine;);&NewLine;</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>bg</b></td>
+                    <td>Color</td>
+                    <td>initial</td>
+                    <td>Define el color de fondo aplicado al estado autofill.</td>
+                </tr>
+                <tr>
+                    <td><b>color | c</b></td>
+                    <td>Color</td>
+                    <td>initial</td>
+                    <td>Define el color del texto aplicado al estado autofill.</td>
+                </tr>
+                <tr>
+                    <td><b>padding | p</b></td>
+                    <td>Medida</td>
+                    <td>null</td>
+                    <td>Define un padding opcional para el estado autofill.</td>
+                </tr>
+                <tr>
+                    <td><b>border | b</b></td>
+                    <td>Border</td>
+                    <td>null</td>
+                    <td>Define un borde opcional para el estado autofill.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+
+        <p class="note">
+            <b>Nota:</b> En este ejemplo el input usa el mixin con <b>$c4</b>
+            como fondo y <b>$c5</b> como color de texto. Para ver el efecto,
+            escribe en el input y usa una sugerencia del navegador, o guarda un
+            valor y vuelve a cargar la página.
+        </p>
+
+        <div
+            id="autofill_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <input class="input_autofill" type="email" name="email" autocomplete="email" />
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/autofill.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/autofill.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;input&nbsp;class=&quot;input_autofill&quot;&nbsp;type=&quot;email&quot;&nbsp;name=&quot;email&quot;&nbsp;autocomplete=&quot;email&quot;&nbsp;/&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,12 @@
+.documentationpage .fn_mapv .box {
+  background-color: black;
+  color: white;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.documentationpage .fn_mapv .box_default_bg {
+  background-color: orange;
+  color: maroon;
+  padding: 16px;
+  margin-bottom: 12px;
+}

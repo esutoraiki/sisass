@@ -1,0 +1,93 @@
+<article id="text_size_adjust" class="text_size_adjust">
+    <div class="group_title">
+        <h2 class="subtitle">
+            text-size-adjust (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>text-size-adjust</b>.
+    </p>
+    <p class="description">
+        Controla el ajuste automático del tamaño del texto que algunos navegadores aplican, sobre todo en dispositivos móviles, para mejorar la legibilidad cuando cambia el ancho disponible.
+    </p>
+    <p class="description">
+        Aplica la propiedad con los prefijos históricos <b>-webkit-</b> y <b>-ms-</b>, y luego agrega la versión estándar.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin text-size-adjust($br);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Percentage | Keyword | String</td>
+                    <td>-</td>
+                    <td>Define el valor que controlará el ajuste del tamaño del texto en <b>text-size-adjust</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <p class="description">
+            Este ejemplo se aprecia con mayor claridad cuando el <b>device type</b> es <b>mobile</b>, ya que el ajuste automático del texto suele manifestarse en navegadores móviles.
+        </p>
+        <div
+            id="text_size_adjust_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <p class="text_size_adjust_example">Texto ajustado con text-size-adjust.</p>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/text_size_adjust.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/text_size_adjust.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;p&nbsp;class=&quot;text_size_adjust_example&quot;&gt;Texto ajustado con text-size-adjust.&lt;/p&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

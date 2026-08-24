@@ -1,0 +1,42 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .icon-svg-example {
+        @include normalize-svg((
+            w: 263px,
+            h: 99px
+        ));
+
+        &::before {
+            @include icon-svg("sisass", 263px, 99px, $c5);
+            content: "";
+        }
+    }
+
+    .icon-svg-example-map {
+        @include normalize-svg((
+            w: 150px,
+            h: 56px
+        ));
+
+        &::before {
+            @include icon-svg((
+                svg: "sisass",
+                w: 150px,
+                h: 56px,
+                fill: $c3,
+                position: (
+                    p: absolute,
+                    x: 0,
+                    y: 0
+                ),
+                background: (
+                    repeat: no-repeat,
+                    position: center center,
+                    size: contain
+                )
+            ));
+            content: "";
+        }
+    }
+}

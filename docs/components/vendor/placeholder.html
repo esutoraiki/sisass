@@ -1,0 +1,66 @@
+<article id="placeholder" class="placeholder">
+    <div class="group_title">
+        <h2 class="subtitle">
+            placeholder (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para estilizar el pseudo-elemento <b>placeholder</b>.
+    </p>
+    <p class="description">
+        No recibe parámetros. Replica el bloque <b>@content</b> sobre los selectores vendor históricos y sobre la variante estándar <b>::placeholder</b>.
+    </p>
+    <p class="description">
+        Es útil para centralizar estilos de texto de ayuda en campos de formulario y mantener compatibilidad con navegadores que todavía reconocen sintaxis prefijadas.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin placeholder { @content; }</code></pre>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="placeholder_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <input class="placeholder_example" placeholder="Escribe tu nombre" />
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/placeholder.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/placeholder.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;input&nbsp;class=&quot;placeholder_example&quot;&nbsp;placeholder=&quot;Escribe&nbsp;tu&nbsp;nombre&quot;&nbsp;/&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

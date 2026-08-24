@@ -1,0 +1,15 @@
+@use "../core/instances" as * ;
+
+@media print {
+    .container_tree {
+        + .title {
+            break-before: page;
+            page-break-before: always;
+        }
+    }
+
+    .break_page_print {
+        break-before: page;
+        page-break-before: always;
+    }
+}

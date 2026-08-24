@@ -1,0 +1,31 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .justify_items_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+        @include wh(100%);
+
+        .subtitle { @include no-spacing; }
+
+        .grid {
+            @include grid;
+            @include gap(12px);
+            grid-template-columns: repeat(2, 1fr);
+            width: 100%;
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            &.end {
+                @include justify-items(end);
+            }
+        }
+
+        .box {
+            @include center-flex-column;
+            color: $c1;
+        }
+    }
+}

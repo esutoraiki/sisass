@@ -1,0 +1,68 @@
+@-webkit-keyframes pulse {
+  from {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+@-moz-keyframes pulse {
+  from {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+@-ms-keyframes pulse {
+  from {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+@keyframes pulse {
+  from {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+}
+.documentationpage .animation_example {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.documentationpage .animation_example .box {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+}
+.documentationpage .animation_example .box.active {
+  background-color: #2D396C;
+  color: #FFF;
+  -webkit-animation: pulse 1.2s infinite ease alternate;
+  -moz-animation: pulse 1.2s infinite ease alternate;
+  animation: pulse 1.2s infinite ease alternate;
+}

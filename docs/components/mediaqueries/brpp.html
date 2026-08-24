@@ -1,0 +1,105 @@
+<article id="brpp" class="brpp">
+    <div class="group_title">
+        <h2 class="subtitle">
+            brpp (_mediaqueries.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Crea una media query basada en la altura del viewport y restringida a
+        orientación <b>portrait</b>. Por defecto genera una condición
+        <b>max-height</b>.
+    </p>
+    <p class="description">
+        Usa este mixin cuando un ajuste depende de la altura disponible en
+        pantallas verticales. El contenido enviado al mixin queda dentro de la
+        regla <b>@media</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin brpp($punto, $type: max, $units: px, $means: screen);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>punto</b></td>
+                    <td>Number</td>
+                    <td>-</td>
+                    <td>Define el valor numérico usado en la condición de altura.</td>
+                </tr>
+                <tr>
+                    <td><b>type</b></td>
+                    <td>String</td>
+                    <td>max</td>
+                    <td>Define si la condición será <b>max-height</b> o <b>min-height</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>units</b></td>
+                    <td>String</td>
+                    <td>px</td>
+                    <td>Define la unidad que se concatena al punto de corte.</td>
+                </tr>
+                <tr>
+                    <td><b>means</b></td>
+                    <td>String</td>
+                    <td>screen</td>
+                    <td>Define el media type usado después de <b>only</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/mediaqueries/brpp.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/mediaqueries/brpp.css"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: HTML
+            </h2>
+
+            <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_brpp&quot;&gt;Ejemplo&nbsp;brpp&lt;/div&gt;</code></pre>
+
+            <h2 class="subtitle">
+                Resultado
+            </h2>
+
+            <div class="result">
+                <div class="example_brpp">Ejemplo brpp</div>
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,75 @@
+<article id="calc" class="calc">
+    <div class="group_title">
+        <h2 class="subtitle">
+            calc (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        <b>calc</b> es un mixin vendor de SISASS para asignar una propiedad CSS usando expresiones con <b>calc()</b>.
+    </p>
+    <p class="description">
+        Genera las variantes históricas <b>-moz-calc()</b> y <b>-webkit-calc()</b>, y luego agrega la versión estándar para la propiedad indicada.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin calc($property, $expression);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>property</b></td>
+                    <td>String</td>
+                    <td>-</td>
+                    <td>Define la propiedad CSS sobre la que se aplicará el cálculo.</td>
+                </tr>
+                <tr>
+                    <td><b>expression</b></td>
+                    <td>String</td>
+                    <td>-</td>
+                    <td>Define la expresión que se insertará dentro de <b>calc()</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+
+            <pre class="language-scss" data-src="../assets/scss/vendor/calc.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+
+            <pre class="language-css" data-src="../assets/css/vendor/calc.css"></pre>
+        </div>
+    </section>
+</article>

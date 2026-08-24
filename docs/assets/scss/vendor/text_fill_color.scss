@@ -1,0 +1,12 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .text_fill_color_example {
+        background-image: linear-gradient(90deg, #A01303, #FBB03B);
+        @include background-clip(text);
+        @include text-fill-color(transparent);
+        display: inline-block;
+        font-size: 2.5rem;
+        font-weight: 800;
+    }
+}

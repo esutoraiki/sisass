@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .clip_path_example {
+        @include clip-path(polygon(50% 0%, 100% 35%, 82% 100%, 18% 100%, 0% 35%));
+    }
+}

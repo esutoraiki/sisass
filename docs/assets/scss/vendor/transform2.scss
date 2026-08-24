@@ -1,0 +1,10 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .scale_rotate_example {
+                @include transform(
+                    rotate(45deg)
+                    scale(0.5)
+                );
+            }
+}

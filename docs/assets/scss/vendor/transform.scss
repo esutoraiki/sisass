@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .rotate_example {
+                @include transform(rotate(45deg));
+            }
+}

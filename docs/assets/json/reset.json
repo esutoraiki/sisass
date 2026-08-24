@@ -1,0 +1,25 @@
+{
+    "breadcrumb": [
+        {
+            "label": "src",
+            "url": "../pages/base.html#src"
+        },
+        {
+            "label": "_reset.scss"
+        }
+    ],
+    "components": [
+        {
+            "id": "src",
+            "url": "../components/base/src.html",
+            "position": "beforeend",
+            "node": "src"
+        },
+        {
+            "id": "reset",
+            "url": "../components/reset/reset.html",
+            "position": "beforeend",
+            "node": "reset"
+        }
+    ]
+}

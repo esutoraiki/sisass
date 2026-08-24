@@ -1,0 +1,11 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .text_stroke_example {
+        @include text-stroke(2px #A01303);
+        color: #FBB03B;
+        display: inline-block;
+        font-size: 2.5rem;
+        font-weight: 800;
+    }
+}

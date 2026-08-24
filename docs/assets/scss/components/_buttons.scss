@@ -1,0 +1,4 @@
+@use "../core/instances" as * ;
+
+.btn { @include btn; }
+.btn_bg { @include btn(( bg: var(--theme_text_bold), c: $c1 )); }

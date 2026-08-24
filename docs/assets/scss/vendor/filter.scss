@@ -1,0 +1,25 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .filter_example {
+        @include flex;
+        @include gap(16px);
+        flex-wrap: wrap;
+
+        .subtitle {
+            @include no-spacing;
+            margin-bottom: 8px;
+        }
+
+        .img {
+            @include border-radius(16px);
+            @include wh(260px, 180px);
+            display: block;
+            object-fit: cover;
+
+            &.grayscale {
+                @include filter(grayscale(100%));
+            }
+        }
+    }
+}

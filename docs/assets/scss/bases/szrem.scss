@@ -1,0 +1,7 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+            .fn_szrem {
+                font-size: szrem(20);
+            }
+}

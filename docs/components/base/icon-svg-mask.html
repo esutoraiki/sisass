@@ -1,0 +1,189 @@
+<article id="icon-svg-mask" class="icon-svg-mask">
+    <div class="group_title">
+        <h2 class="subtitle">
+            icon-svg-mask (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Aplica un SVG como máscara CSS y colorea el resultado con
+        <b>background-color</b>.
+    </p>
+    <p class="description">
+        Requiere <b>postcss-inline-svg</b> porque utiliza
+        <b>svg-load()</b> para construir <b>mask-image</b>. También
+        usa el mixin <a href="../pages/base.html#position">position</a> cuando
+        la clave <b>position | p</b> es distinta de <b>false</b>. El mapa
+        acepta aliases como <b>color | c</b>, <b>position | p</b>,
+        <b>xaxis | xa</b>, <b>yaxis | ya</b>, <b>width | w</b>,
+        <b>height | h</b>, <b>repeat | r</b>, <b>size | s</b> y
+        <b>display | d</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin icon-svg-mask($attr: (
+    svg: false,
+    color: #FFFFFF,
+    position: absolute,
+    x: 0,
+    y: 0,
+    xaxis: left,
+    yaxis: top,
+    width: 100px,
+    height: 100px,
+    repeat: no-repeat,
+    size: contain,
+    path: "../../img/svg/",
+    display: block
+));</code></pre>
+        <p class="description">
+            Valores por defecto: svg <b>false</b>, color | c
+            <b>#FFFFFF</b>, position | p <b>absolute</b>, x <b>0</b>,
+            y <b>0</b>, xaxis | xa <b>left</b>, yaxis | ya <b>top</b>,
+            width | w <b>100px</b>, height | h <b>100px</b>, repeat | r
+            <b>no-repeat</b>, size | s <b>contain</b>, path
+            <b>"../../img/svg/"</b> y display | d <b>block</b>.
+        </p>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>svg</b></td>
+                    <td>String | Bool</td>
+                    <td>false</td>
+                    <td>Nombre base del archivo SVG. Si es <b>false</b>, no genera la máscara.</td>
+                </tr>
+                <tr>
+                    <td><b>color | c</b></td>
+                    <td>Color</td>
+                    <td>#FFFFFF</td>
+                    <td>Define el color final del icono mediante <b>background-color</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>position | p</b></td>
+                    <td>String | Bool</td>
+                    <td>absolute</td>
+                    <td>Tipo de posicionamiento usado por el mixin <a href="../pages/base.html#position">position</a>. Si es <b>false</b>, no aplica posicionamiento.</td>
+                </tr>
+                <tr>
+                    <td><b>x</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Desplazamiento horizontal aplicado por <b>position()</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>y</b></td>
+                    <td>Medida</td>
+                    <td>0</td>
+                    <td>Desplazamiento vertical aplicado por <b>position()</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>xaxis | xa</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>Eje horizontal usado por <b>position()</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>yaxis | ya</b></td>
+                    <td>String</td>
+                    <td>top</td>
+                    <td>Eje vertical usado por <b>position()</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>width | w</b></td>
+                    <td>Medida</td>
+                    <td>100px</td>
+                    <td>Asigna el ancho del área visible del icono.</td>
+                </tr>
+                <tr>
+                    <td><b>height | h</b></td>
+                    <td>Medida</td>
+                    <td>100px</td>
+                    <td>Asigna el alto del área visible del icono.</td>
+                </tr>
+                <tr>
+                    <td><b>repeat | r</b></td>
+                    <td>String</td>
+                    <td>no-repeat</td>
+                    <td>Controla la repetición de la máscara.</td>
+                </tr>
+                <tr>
+                    <td><b>size | s</b></td>
+                    <td>String | Medida</td>
+                    <td>contain</td>
+                    <td>Controla el escalado de la máscara SVG.</td>
+                </tr>
+                <tr>
+                    <td><b>path</b></td>
+                    <td>String</td>
+                    <td>"../../img/svg/"</td>
+                    <td>Prefijo de ruta donde se busca el archivo SVG.</td>
+                </tr>
+                <tr>
+                    <td><b>display | d</b></td>
+                    <td>String</td>
+                    <td>block</td>
+                    <td>Define el valor de <b>display</b> del elemento.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="icon-svg-mask_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <span class="icon-svg-mask-example"></span>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/bases/icon-svg-mask.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/bases/icon-svg-mask.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;span&nbsp;class=&quot;icon-svg-mask-example&quot;&gt;&lt;/span&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

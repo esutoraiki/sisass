@@ -1,0 +1,76 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .result {
+        @include flex;
+        @include gap(20px);
+        flex-wrap: wrap;
+
+        .group {
+            @include flex;
+            @include gap(10px);
+            flex-direction: column;
+        }
+
+        .cat {
+            @include wh(1920px);
+            aspect-ratio: calc(16 / 9);
+        }
+    }
+
+    [class^="scroll_"] {
+        @include wh(250px, 150px);
+    }
+
+    .scroll_y {
+        @include scroll((
+            color: $c5,
+            background: $c0,
+            thumb_border: 2px solid $c7,
+            size_y: 18,
+            radius: 6px
+        ));
+    }
+
+    .scroll_x {
+        @include scroll((
+            thumb_color: $c5,
+            thumb_hover_color: $c4,
+            thumb_active_color: $c6,
+            background: $c7,
+            track_color: $c1,
+            track_hover_color: $c7,
+            track_active_color: $c6,
+            track_border: 3px solid $c6,
+            size_x: 8px,
+            radius: 6px,
+            radius_track: 2px,
+            thumb_border: 2px solid $c1,
+            thumb_shadow: inset 0 0 0 1px rgba($c7, 0.4),
+            track_shadow: inset 0 0 6px rgba($c2, 0.1),
+            firefox_width: auto,
+            axis: x
+        ));
+    }
+
+    .scroll_both {
+        @include scroll((
+            thumb_color: $c6,
+            thumb_hover_color: $c5,
+            thumb_active_color: $c4,
+            background: $c7,
+            track_color: $c1,
+            size: 8px,
+            size_x: 10px,
+            size_y: 10px,
+            radius: 6px,
+            radius_track: 3px,
+            firefox_width: thin,
+            axis: both
+        ));
+    }
+
+    .scroll_hidden {
+        @include scroll(( hidden: true ));
+    }
+}

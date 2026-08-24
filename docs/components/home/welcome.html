@@ -1,21 +1,406 @@
 <article id="welcome" class="welcome">
-    <h1 class="title">
-        Bienvenido/a
-    </h1>
+    <!-- header_welcome -->
+    <header class="header_welcome">
+        <div class="group_1">
+            <h1 class="title">
+                Bienvenido a <span class="tagline_sisass">SISASS</span>
+            </h1>
 
-    <p class="description">
-        <b>SISASS</b> (Abreviatura de <b>Simple Interface for SASS</b>) es un framework de SASS cuyo objetivo
-        principal es crear un entorno de trabajo organizado para la construcción de interfaces
-        complejas; para lo cual posee un conjunto de variables, mixins, clases silenciosas,
-        funciones y más.
-    </p>
+            <p class="description">
+                <b class="tagline_sisass">SISASS</b>, abreviatura de <b>Simple Interface for SASS</b>, es un framework orientado a construir interfaces de forma más organizada, reutilizable y escalable. Reúne variables, mixins, funciones y utilidades listas para acelerar el desarrollo de estilos en proyectos reales.
+            </p>
 
-    <p class="description">
-        Está documentación sera una guía para explicar el uso y funcionamiento, proporcionando
-        ayudas y explicaciones del código.
-    </p>
+            <p class="description">
+                Esta documentación reúne la referencia de sus módulos principales, explica el propósito de cada archivo base y muestra ejemplos prácticos para entender cómo usar sus utilidades en contexto. La idea no es solo listar la API, sino ayudarte a integrar el framework y comprender la lógica detrás de cada herramienta.
+            </p>
 
-    <p class="description">
-        Muchas gracias por usarnos en tus proyectos.
-    </p>
+            <div class="btn_group">
+                <button class="btn_bg icon_arrow_2">
+                    <span class="content_text">
+                        Comenzar a explorar
+                    </span>
+                </button>
+
+                <button class="btn icon_start">
+                    <span class="content_text">
+                        ¿Qué hay de nuevo?
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <picture class="group_2">
+            <img src="img/bg/flow.png" alt="Flujo de trabajo de SISASS" class="img theme_only_light" loading="lazy"/>
+            <img src="img/bg/flow_dark.png" alt="Flujo de trabajo de SISASS en tema oscuro" class="img theme_only_dark" loading="lazy"/>
+        </picture>
+    </header>
+    <!-- end header_welcome -->
+
+    <!-- characteristics_welcome -->
+    <section class="characteristics_welcome layout_characteristics">
+        <div class="characteristic">
+            <div class="bg_icon_organized" aria-hidden="true">
+                <div class="icon_organized"> </div>
+            </div>
+
+            <div class="content_characteristic">
+                <h3 class="title_characteristic">
+                    Organizado
+                </h3>
+
+                <p class="description_characteristic">
+                    Estructura modular pensada para mantenimiento y escalabilidad.
+                </p>
+            </div>
+        </div>
+
+        <div class="characteristic">
+            <div class="bg_icon_reusable" aria-hidden="true">
+                <div class="icon_reusable"> </div>
+            </div>
+
+            <div class="content_characteristic">
+                <h3 class="title_characteristic">
+                    Reutilizable
+                </h3>
+
+                <p class="description_characteristic">
+                    Mixins, funciones y variables listas para usar en cualquier proyecto.
+                </p>
+            </div>
+        </div>
+
+        <div class="characteristic">
+            <div class="bg_icon_consistent" aria-hidden="true">
+                <div class="icon_consistent"> </div>
+            </div>
+
+            <div class="content_characteristic">
+                <h3 class="title_characteristic">
+                    Consistente
+                </h3>
+
+                <p class="description_characteristic">
+                    Convenciones claras que garantizan interfaces uniformes.
+                </p>
+            </div>
+        </div>
+
+        <div class="characteristic">
+            <div class="bg_icon_productive" aria-hidden="true">
+                <div class="icon_productive"> </div>
+            </div>
+
+            <div class="content_characteristic">
+                <h3 class="title_characteristic">
+                    Productivo
+                </h3>
+
+                <p class="description_characteristic">
+                    Acelera tu flujo de trabajo con utilidades y helpers.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- end characteristics_welcome -->
+
+    <!-- feature_welcome -->
+    <section id="feature_welcome" class="feature_welcome layout_block_3">
+        <!-- feature_start -->
+        <div class="feature_block feature_start">
+            <h2 class="feature_title">
+                Comienza rápido
+            </h2>
+
+            <div class="feature_card feature_card_start">
+                <nav class="feature_list feature_list_steps">
+                    <a class="feature_item" href="../pages/articles/installation.html">
+                        <div class="feature_index">
+                            1
+                        </div>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Integra en tu proyecto
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Sigue la guía de instalación y configuración.
+                            </p>
+                        </div>
+
+                        <span class="icon_arrow" aria-hidden="true">›</span>
+                    </a>
+
+                    <a class="feature_item" href="../pages/articles/project_structure.html">
+                        <div class="feature_index">
+                            2
+                        </div>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Revisa la estructura del proyecto
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Conoce los archivos base y su propósito.
+                            </p>
+                        </div>
+
+                        <span class="icon_arrow" aria-hidden="true">›</span>
+                    </a>
+
+                    <a class="feature_item">
+                        <div class="feature_index">
+                            3
+                        </div>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Explora mixins y funciones
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Descubre las utilidades disponibles.
+                            </p>
+                        </div>
+
+                        <span class="icon_arrow" aria-hidden="true">›</span>
+                    </a>
+
+                    <a class="feature_item">
+                        <div class="feature_index">
+                            4
+                        </div>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Consulta ejemplos prácticos
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Aprende viendo casos de uso reales.
+                            </p>
+                        </div>
+
+                        <span class="icon_arrow" aria-hidden="true">›</span>
+                    </a>
+                </nav>
+
+                <a class="feature_link" href="../pages/articles/project_structure.html">
+                    <span class="feature_link_text">
+                        Ver estructura del proyecto
+                    </span>
+                    <span class="icon_arrow_3" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+        <!-- end feature_start -->
+
+        <div class="feature_block feature_modules">
+            <h2 class="feature_title">
+                Módulos principales
+            </h2>
+
+            <div class="feature_card feature_card_modules">
+                <nav class="feature_list feature_list_modules">
+                    <li class="feature_item feature_item_module">
+                        <span class="feature_icon icon_mixins" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Mixins
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Utilidades reutilizables con @mixin
+                            </p>
+                        </div>
+
+                        <span class="feature_count">94</span>
+                    </li>
+
+                    <li class="feature_item feature_item_module">
+                        <span class="feature_icon icon_functions" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Funciones
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Funciones de apoyo en SASS
+                            </p>
+                        </div>
+
+                        <span class="feature_count">9</span>
+                    </li>
+
+                    <li class="feature_item feature_item_module">
+                        <span class="feature_icon icon_variables" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Variables
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Variables de diseño y configuración
+                            </p>
+                        </div>
+
+                        <span class="feature_count">26</span>
+                    </li>
+
+                    <li class="feature_item feature_item_module">
+                        <span class="feature_icon icon_helpers" aria-hidden="true"> </span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Helpers
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Clases y helpers de utilidad
+                            </p>
+                        </div>
+
+                        <span class="feature_count">4</span>
+                    </li>
+
+                    <li class="feature_item feature_item_module">
+                        <span class="feature_icon icon_layouts" aria-hidden="true"> </span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Layouts
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Herramientas para maquetación
+                            </p>
+                        </div>
+
+                        <span class="feature_count">10</span>
+                    </li>
+                </nav>
+
+                <a class="feature_link" href="../pages/base.html">
+                    <span class="feature_link_text">
+                        Ver todos los módulos
+                    </span>
+                    <span class="icon_arrow_3" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+
+        <div class="feature_block feature_news">
+            <h2 class="feature_title">
+                Novedades
+                <span class="feature_tag">
+                    v2.0.0
+                </span>
+            </h2>
+
+            <div class="feature_card feature_card_news">
+                <nav class="feature_list feature_list_news">
+                    <a class="feature_item">
+                        <span class="feature_dot" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Nuevos mixins para tipografía fluida
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Mejora la gestión de escalas tipográficas.
+                            </p>
+                        </div>
+                    </a>
+
+                    <a class="feature_item">
+                        <span class="feature_dot" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Variables de color mejoradas
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Nuevas variables semánticas y tonos.
+                            </p>
+                        </div>
+                    </a>
+
+                    <a class="feature_item">
+                        <span class="feature_dot" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Helpers para espaciado
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Clases de utilidad para espaciado rápido.
+                            </p>
+                        </div>
+                    </a>
+
+                    <a class="feature_item">
+                        <span class="feature_dot" aria-hidden="true"></span>
+
+                        <div class="feature_content">
+                            <h3 class="feature_item_title">
+                                Mejoras en rendimiento
+                            </h3>
+
+                            <p class="feature_item_description">
+                                Optimizaciones internas y build más rápido.
+                            </p>
+                        </div>
+                    </a>
+                </nav>
+
+                <a class="feature_link" href="../pages/mediaqueries.html">
+                    <span class="feature_link_text">
+                        Ver todas las novedades
+                    </span>
+                    <span class="icon_arrow_3" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- end feature_welcome -->
+
+    <!-- help_welcome -->
+    <section id="help_welcome" class="help_welcome">
+        <div class="icon_help"></div>
+
+        <div class="help_content">
+            <h2 class="help_title">
+                Necesitas ayuda?
+            </h2>
+
+            <p class="help_description">
+                Consulta nuestra guía de uso o contacta con nuestro equipo de SISASS.
+            </p>
+        </div>
+
+        <div class="group_contact">
+            <a class=" btn help_link" href="../pages/guide.html">
+                <span class="help_link_text">
+                    Ver guía
+                </span>
+                <span class="icon_guide" aria-hidden="true"></span>
+            </a>
+
+            <a class="btn help_link" href="https://github.com/sisass/sisass/issues" target="_blank">
+                <span class="help_link_text">
+                    Contactar
+                </span>
+                <span class="icon_issue" aria-hidden="true"></span>
+            </a>
+        </div>
+    </section>
+    <!-- end help_welcome -->
 </article>

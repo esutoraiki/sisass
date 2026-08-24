@@ -1,0 +1,13 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .cover_container {
+        @include wh(100%, auto);
+        aspect-ratio: calc(16 / 9);
+        max-height: 500px;
+
+        .cover_example {
+            @include cover;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .box_sizing_example {
+        @include box-sizing(border-box);
+        width: 180px;
+        padding: 20px;
+        border: 10px solid $c4;
+    }
+}

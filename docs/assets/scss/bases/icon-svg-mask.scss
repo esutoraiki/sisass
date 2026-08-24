@@ -1,0 +1,16 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .icon-svg-mask-example {
+        @include icon-svg-mask((
+            svg: "sisass",
+            c: $c5,
+            p: relative,
+            w: 220px,
+            h: 83px,
+            s: contain,
+            r: no-repeat,
+            path: "../../img/svg/"
+        ));
+    }
+}

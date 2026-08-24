@@ -1,0 +1,36 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .align_items_example {
+        @include flex-direction(column);
+        @include flex;
+        @include gap(12px);
+        @include wh(100%);
+
+        .subtitle { @include no-spacing; }
+
+        .row {
+            @include flex;
+            @include gap(12px);
+            @include wh(100%, 250px);
+            border: $bd2;
+            padding: 12px;
+            background-color: $c7;
+
+            @include brp($b6) {
+                @include wh(100%, 150px);
+            }
+
+            &.center {
+                @include align-items(center);
+            }
+        }
+
+        .box {
+            @include center-flex-column;
+            min-width: 72px;
+            padding: 10px 14px;
+            color: $c1;
+        }
+    }
+}

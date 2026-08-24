@@ -1,0 +1,154 @@
+.reference .element_list .link {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0 0 6px var(--theme_shadow);
+  -moz-box-shadow: 0 0 6px var(--theme_shadow);
+  box-shadow: 0 0 6px var(--theme_shadow);
+  width: 100%;
+  height: 100%;
+  padding: 15px 15px 0;
+}
+.reference .element_list .link .tag {
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  background-color: rgba(42, 71, 206, 0.08);
+  color: var(--theme_text);
+  width: max-content;
+  height: 25px;
+  padding: 10px 14px;
+  margin-block-end: 10px;
+}
+.reference .element_list .link .title {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: clamp(1.125rem, 1.25vw, 1.5rem);
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.reference .element_list .link .title .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.reference .element_list .link .title b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: clamp(1.125rem, 1.25vw, 1.5rem);
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.reference .element_list .link .title {
+  margin-block-end: 0;
+}
+.reference .element_list .link .description {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.reference .element_list .link .description .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.reference .element_list .link .description b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.reference .element_list .link .description {
+  margin-block-end: 0;
+}
+.reference .element_list .link .domain {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 15px;
+  gap: 15px;
+  padding-block: 15px;
+  border-block-start: 1px solid var(--theme_border);
+  margin-block: 0px;
+}
+.reference .element_list .link [class^=logo_] {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: calc(clamp(45px, 3.65vw, 70px) + 10px);
+  height: calc(clamp(45px, 3.65vw, 70px) + 10px);
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  z-index: 2;
+  -webkit-justify-self: center;
+  justify-self: center;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  background-color: rgba(42, 71, 206, 0.08);
+  color: transparent;
+}

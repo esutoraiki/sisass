@@ -1,0 +1,182 @@
+<article id="transformstyle" class="transformstyle">
+    <div class="group_title">
+        <h2 class="subtitle">
+            transform-style (_vendor.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Mixin vendor de SISASS para la propiedad <b>transform-style</b>.
+    </p>
+
+    <p class="description">
+        La propiedad <b>transform-style</b> establece si los elementos hijos conservan su posición en el espacio
+        tridimensional con <b>preserve-3d</b> o si se integran en el plano del padre con <b>flat</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin transform-style($br: none);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>br</b></td>
+                    <td>Keyword</td>
+                    <td>none</td>
+                    <td>Define el valor que se asignará a <b>transform-style</b>.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="transformstyle_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="transform_style_preserve_3d center_element">
+                        <p class="text">Padre</p>
+                        <div class="children center_element">
+                            <p class="text">
+                                Hijo
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/transformstyle.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/transformstyle.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;transform_style_preserve_3d&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;Padre&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;children&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hijo&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine; &lt;/div&gt;&NewLine;</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title">
+            Ejemplo adicional
+        </h2>
+        <div
+            id="transformstyle_example_2_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="transform_style_flat center_element">
+                        <p class="text">Padre</p>
+                        <div class="children center_element">
+                            <p class="text">
+                                Hijo
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/transformstyle2.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/transformstyle2.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;transform_style_flat&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;Padre&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;children&nbsp;center_element&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&nbsp;class=&quot;text&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hijo&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine; &lt;/div&gt;&NewLine;</code></pre>
+            </div>
+        </div>
+
+        <h2 class="title">
+            Ejemplo adicional
+        </h2>
+        <div
+            id="transformstyle_example_3_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="cube_transform_style_scene">
+                        <div class="cube_transform_style">
+                            <div class="face front">1</div>
+                            <div class="face back">2</div>
+                            <div class="face right">3</div>
+                            <div class="face left">4</div>
+                            <div class="face top">5</div>
+                            <div class="face bottom">6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/vendor/cube_transformstyle.scss"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/vendor/cube_transformstyle.css"></pre>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;cube_transform_style_scene&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;cube_transform_style&quot;&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;face&nbsp;front&quot;&gt;1&lt;/div&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;face&nbsp;back&quot;&gt;2&lt;/div&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;face&nbsp;right&quot;&gt;3&lt;/div&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;face&nbsp;left&quot;&gt;4&lt;/div&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;face&nbsp;top&quot;&gt;5&lt;/div&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;face&nbsp;bottom&quot;&gt;6&lt;/div&gt;&NewLine; &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine; &lt;/div&gt;&NewLine;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>
