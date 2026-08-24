@@ -318,6 +318,25 @@ summary {
   }
 }
 
+.layout_reference_link {
+  -ms-display: grid;
+  display: grid;
+  grid-gap: 25px;
+  gap: 25px;
+  grid-template-areas: "lr cr" "wr wr";
+  grid-template-columns: clamp(65px, 4.69vw, 90px) 1fr;
+  grid-template-rows: auto 52px;
+}
+.layout_reference_link .e1 {
+  grid-area: lr;
+}
+.layout_reference_link .e2 {
+  grid-area: cr;
+}
+.layout_reference_link .e3 {
+  grid-area: wr;
+}
+
 .layout_1 {
   width: min(100vw, 1920px);
   height: auto;
@@ -368,6 +387,24 @@ summary {
 }
 .layout_2 .d2 {
   grid-area: c2;
+}
+
+.layout_3 {
+  -ms-display: grid;
+  display: grid;
+  grid-gap: 25px;
+  gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media only screen and (max-width: 1280px) {
+  .layout_3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .layout_3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 html.page {
@@ -1909,7 +1946,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-family: "Roboto", "sans-serif";
   font-weight: bold;
   font-style: normal;
@@ -1931,14 +1968,14 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-family: "Roboto", "sans-serif";
   font-weight: bold;
   font-style: normal;
   font-variant: normal;
 }
 .documentationpage .title {
-  margin-bottom: 30px;
+  margin-block: 30px 20px;
 }
 @media only screen and (max-width: 980px) {
   .documentationpage .title {
@@ -1947,7 +1984,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   }
 }
 .documentationpage .subtitle {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-family: "Montserrat", "sans-serif";
   font-weight: 900;
   font-style: normal;
@@ -1969,7 +2006,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: "Fira Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
@@ -1991,7 +2028,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   text-decoration: initial;
   text-transform: initial;
   text-wrap: initial;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: "Fira Sans", "sans-serif";
   font-weight: bold;
   font-style: normal;
@@ -2275,17 +2312,21 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   box-sizing: border-box;
   padding: 0px min(0.78vw, 15px) 15px;
 }
-.documentationpage .tab_panel_list {
+.documentationpage .tab_panel {
+  border: 1px solid #FBB03B;
+  border-block-start: 10px solid #FBB03B;
+}
+.documentationpage .tab_panel .tab_panel_list {
   overflow: overlay;
   overflow-x: hidden;
 }
 @supports (-moz-appearance: none) {
-  .documentationpage .tab_panel_list {
+  .documentationpage .tab_panel .tab_panel_list {
     scrollbar-color: #FBB03B var(--theme_scroll_track);
     scrollbar-width: auto;
   }
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2293,7 +2334,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   height: 8px;
   background-color: var(--theme_scroll_track);
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar-thumb {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar-thumb {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
@@ -2303,13 +2344,13 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   background-color: #FBB03B;
   box-shadow: none;
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar-thumb:hover {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar-thumb:hover {
   background-color: #FBB03B;
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar-thumb:active {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar-thumb:active {
   background-color: #FBB03B;
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar-track {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar-track {
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
@@ -2319,19 +2360,19 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   background-color: var(--theme_scroll_track);
   box-shadow: none;
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar-track:hover {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar-track:hover {
   background-color: var(--theme_scroll_track);
 }
-.documentationpage .tab_panel_list::-webkit-scrollbar-track:active {
+.documentationpage .tab_panel .tab_panel_list::-webkit-scrollbar-track:active {
   background-color: var(--theme_scroll_track);
 }
-.documentationpage .tab_panel_list {
+.documentationpage .tab_panel .tab_panel_list {
   display: flex;
   gap: 4px;
   padding-block: 10px;
   overflow-x: auto;
 }
-.documentationpage .tab_panel_tab {
+.documentationpage .tab_panel .tab_panel_tab {
   font-size: 1rem;
   font-family: "Fira Sans", "sans-serif";
   font-weight: bold;
@@ -2349,16 +2390,16 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   cursor: pointer;
   white-space: nowrap;
 }
-.documentationpage .tab_panel_tab.is_active {
+.documentationpage .tab_panel .tab_panel_tab.is_active {
   background-color: var(--theme_accent);
   color: var(--theme_surface);
   border-color: var(--theme_accent);
 }
-.documentationpage .tab_panel_panel {
+.documentationpage .tab_panel .tab_panel_panel {
   padding-block-start: 5px;
 }
-.documentationpage .tab_panel_panel > pre,
-.documentationpage .tab_panel_panel > .result {
+.documentationpage .tab_panel .tab_panel_panel > pre,
+.documentationpage .tab_panel .tab_panel_panel > .result {
   margin-block-end: 0;
 }
 .documentationpage code {

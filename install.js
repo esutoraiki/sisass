@@ -13,7 +13,7 @@ const
         "_fonts.scss",
         "_mixin.scss",
         "_keyframes.scss",
-        "_instances.scss",
+        "_index.scss",
         "_layout.scss"
     ];
 
@@ -165,11 +165,11 @@ const generate_instances_file = core_dir => {
 
     const instances_content = build_instances_content(config);
     if (!instances_content) {
-        console.warn("Instances configuration is empty. Skipping _instances.scss generation.");
+        console.warn("Instances configuration is empty. Skipping _index.scss generation.");
         return;
     }
 
-    const instances_path = path.join(core_dir, "_instances.scss");
+    const instances_path = path.join(core_dir, "_index.scss");
     fs.writeFileSync(instances_path, `${instances_content}\n`, "utf8");
     console.log(`Generated instances file at ${instances_path}`);
 };

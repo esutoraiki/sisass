@@ -86,6 +86,26 @@
     }
 }
 
+.layout_reference_link {
+    @include grid;
+    @include gap(25px);
+
+    grid: {
+        template: {
+            areas:
+                "lr cr"
+                "wr wr"
+            ;
+            columns: clamp(65px, 4.69vw, 90px) 1fr;
+            rows: auto 52px;
+        }
+    }
+
+    .e1 { grid-area: lr; }
+    .e2 { grid-area: cr; }
+    .e3 { grid-area: wr; }
+}
+
 .layout_1 {
     @include wh(min(100vw, 1920px));
     @include grid;
@@ -142,4 +162,31 @@
 
     .d1 { grid-area: c1; }
     .d2 { grid-area: c2; }
+}
+
+.layout_3 {
+    @include grid;
+    @include gap(25px);
+
+    grid: {
+        template: {
+            columns: repeat(3, 1fr);
+        }
+    }
+
+    @include brp($b4) {
+        grid: {
+            template: {
+                columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    @include brp($b7) {
+        grid: {
+            template: {
+                columns: 1fr;
+            }
+        }
+    }
 }

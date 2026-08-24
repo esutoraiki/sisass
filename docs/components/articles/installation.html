@@ -79,9 +79,9 @@
         </table>
     </div>
 
-    <h3 class="subtitle_2">
+    <h2 class="title">
         Instalar el paquete y el compilador
-    </h3>
+    </h2>
 
     <pre class="language-bash"><code>npm init -y
 npm install sisass
@@ -385,11 +385,11 @@ export default function App() {
     <pre class="language-bash"><code>npm explore sisass -- npm run init -- --dep sqhtml2</code></pre>
 
     <p class="description">
-        Además de aplicar los ajustes de SQHTML, el instalador regenera <b>_instances.scss</b> a partir de <b>instances.config.js</b>. En la configuración actual, el archivo reenvía <b>variables</b>, <b>base</b>, <b>mediaqueries</b> y <b>mixin</b>.
+        Además de aplicar los ajustes de SQHTML, el instalador regenera <b>_index.scss</b> a partir de <b>instances.config.js</b>. En la configuración actual, el archivo reenvía <b>variables</b>, <b>base</b>, <b>mediaqueries</b> y <b>mixin</b>.
     </p>
 
     <aside class="note" aria-label="Estado de SQHTML2">
-        SQHTML2 continúa en desarrollo. Comprueba que los módulos que reenvía <b>_instances.scss</b> existan en el proyecto consumidor antes de compilar.
+        SQHTML2 continúa en desarrollo. Comprueba que los módulos que reenvía <b>_index.scss</b> existan en el proyecto consumidor antes de compilar.
     </aside>
         </div>
     </div>
@@ -466,7 +466,7 @@ export default function App() {
                 </tr>
                 <tr>
                     <td>Faltan módulos reenviados por SQHTML2.</td>
-                    <td>Revisa el contenido generado de <b>_instances.scss</b>.</td>
+                    <td>Revisa el contenido generado de <b>_index.scss</b>.</td>
                     <td>Añade los módulos requeridos al proyecto consumidor o espera una versión posterior de la integración.</td>
                 </tr>
                 <tr>
@@ -482,11 +482,114 @@ export default function App() {
         Referencias oficiales
     </h2>
 
-    <ul>
-        <li><a href="https://sass-lang.com/install/" target="_blank" rel="noreferrer">Instalación de Sass</a></li>
-        <li><a href="https://sass-lang.com/documentation/at-rules/use/" target="_blank" rel="noreferrer">Sistema de módulos @use de Sass</a></li>
-        <li><a href="https://react.dev/learn/" target="_blank" rel="noreferrer">Estilos en React</a></li>
-        <li><a href="https://vite.dev/guide/features" target="_blank" rel="noreferrer">Preprocesadores CSS en Vite</a></li>
-        <li><a href="https://webpack.js.org/loaders/sass-loader/" target="_blank" rel="noreferrer">sass-loader para Webpack</a></li>
+    <ul class="reference layout_3">
+        <li class="element_list">
+            <a class="link layout_reference_link" href="https://sass-lang.com/install/" target="_blank" rel="noreferrer">
+                <div class="logo_sass_medium e1">
+                    SASS
+                </div>
+                <div class="group e2">
+                    <div class="tag">
+                        Sass
+                    </div>
+                    <h2 class="title">
+                        Instalación de Sass
+                    </h2>
+                    <p class="description">
+                        Guía oficial de instalación de Sass.
+                    </p>
+                </div>
+                <p class="domain e3">
+                    sass-lang.com
+                </p>
+            </a>
+        </li>
+
+        <li class="element_list">
+            <a class="link layout_reference_link" href="https://sass-lang.com/documentation/at-rules/use/" target="_blank" rel="noreferrer">
+                <div class="logo_sass_medium e1">
+                    SASS
+                </div>
+                <div class="group e2">
+                    <div class="tag">
+                        Sass
+                    </div>
+                    <h2 class="title">
+                        Sistema de módulos @use de Sass
+                    </h2>
+                    <p class="description">
+                        Documentación oficial sobre el sistema de módulos @use y @forward.
+                    </p>
+                </div>
+                <p class="domain e3">
+                    sass-lang.com
+                </p>
+            </a>
+        </li>
+
+        <li class="element_list">
+            <a class="link layout_reference_link" href="https://react.dev/learn/" target="_blank" rel="noreferrer">
+                <div class="logo_react_medium">
+                    React
+                </div>
+                <div class="group e2">
+                    <div class="tag">
+                        React
+                    </div>
+                    <h2 class="title">
+                        Estilos en React
+                    </h2>
+                    <p class="description">
+                        Aprende diferentes enfoques para manejar estilos en React.
+                    </p>
+                </div>
+                <p class="domain e3">
+                    react.dev
+                </p>
+            </a>
+        </li>
+
+        <li class="element_list">
+            <a class="link layout_reference_link" href="https://vite.dev/guide/features" target="_blank" rel="noreferrer">
+                <div class="logo_vite_medium">
+                    Vite
+                </div>
+                <div class="group e2">
+                    <div class="tag">
+                        Vite
+                    </div>
+                    <h2 class="title">
+                        Preprocesadores CSS en Vite
+                    </h2>
+                    <p class="description">
+                        Cómo configurar y usar preprocesadores CSS en Vite
+                    </p>
+                </div>
+                <p class="domain e3">
+                    vite.dev
+                </p>
+            </a>
+        </li>
+        <li class="element_list">
+            <a class="link layout_reference_link" href="https://webpack.js.org/loaders/sass-loader/" target="_blank" rel="noreferrer">
+                <div class="logo_webpack_medium">
+                    Webpack
+                </div>
+                <div class="group e2">
+                    <div class="tag">
+                        Webpack
+                    </div>
+                    <h2 class="title">
+                        sass-loader para Webpack
+                    </h2>
+                    <p class="description">
+                        Loader oficial para compilar archiivos SASS en webpack.
+                    </p>
+                </div>
+                <p class="domain e3">
+                    webpack.js.org
+                </p>
+            </a>
+        </li>
     </ul>
 </article>

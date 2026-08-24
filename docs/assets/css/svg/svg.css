@@ -1,3 +1,37 @@
+.domain::before {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' fill='%232D396C'%3E%3Cpath d='M52.49 309.83a14.15 14.02 0 0 0-14.15 14.02 14.15 14.02 0 0 0 14.15 14.02h395.02a14.15 14.02 0 0 0 14.15-14.02 14.15 14.02 0 0 0-14.15-14.02zm.68-149.5a14.15 14.02 0 0 0-14.15 14.01 14.15 14.02 0 0 0 14.16 14.03h393.64a14.15 14.02 0 0 0 14.15-14.02 14.15 14.02 0 0 0-14.15-14.02zM249.39 25c-36.89 0-67.08 28.68-87.53 69.19s-32.51 94.78-32.51 154.6 12.06 114.09 32.51 154.6 50.64 69.19 87.53 69.19 67.08-28.68 87.53-69.19 32.51-94.78 32.51-154.6-12.06-114.09-32.51-154.6S286.28 25 249.39 25m0 28.04c21.59 0 44.34 18.28 62.21 53.69s29.52 86.02 29.52 142.06c0 56.03-11.65 106.65-29.52 142.06s-40.62 53.69-62.21 53.69-44.33-18.28-62.21-53.69c-17.87-35.41-29.52-86.03-29.52-142.06s11.65-106.65 29.52-142.06 40.62-53.69 62.21-53.69M250 25C125.83 25 25 125.98 25 250s100.83 225 225 225 225-100.98 225-225S374.17 25 250 25m0 28.04c108.72 0 196.69 87.94 196.69 196.96S358.72 446.96 250 446.96 53.31 359.02 53.31 250 141.28 53.04 250 53.04'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: 100%;
+  display: inline-block;
+  filter: var(--theme_icon_filter);
+  content: "";
+}
+
+.link::before {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' fill='%232D396C'%3E%3Cpath d='M200 100v50H75v275h275V300h50v150c0 13.81-11.19 25-25 25H50c-13.81 0-25-11.19-25-25V125c0-13.81 11.19-25 25-25zm275-75v225l-94.85-94.82-149.97 150-35.36-35.36L344.8 119.83 250 25Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: 100%;
+  display: inline-block;
+  filter: var(--theme_icon_filter);
+  content: "";
+}
+
 .logo_sisass:before {
   position: absolute;
   top: 0;
@@ -27,6 +61,90 @@
   background-color: transparent;
   background-size: 100%;
   filter: var(--theme_icon_filter);
+  content: "";
+}
+
+.logo_sass_medium::before {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: clamp(45px, 3.65vw, 70px);
+  height: clamp(45px, 3.65vw, 70px);
+  background-image: url("../../img/svg/sass.svg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: 100%;
+  display: block;
+  content: "";
+}
+
+.logo_react_medium::before {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: clamp(45px, 3.65vw, 70px);
+  height: clamp(45px, 3.65vw, 70px);
+  background-image: url("../../img/svg/react.svg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: 100%;
+  display: block;
+  content: "";
+}
+
+.logo_vite_medium::before {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: clamp(45px, 3.65vw, 70px);
+  height: clamp(45px, 3.65vw, 70px);
+  background-image: url("../../img/svg/vite.svg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: 100%;
+  display: block;
+  content: "";
+}
+
+.logo_webpack_medium::before {
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  width: clamp(45px, 3.65vw, 70px);
+  height: clamp(45px, 3.65vw, 70px);
+  background-image: url("../../img/svg/webpack.svg");
+  background-repeat: no-repeat;
+  background-position: top left;
+  background-color: transparent;
+  background-size: 100%;
+  display: block;
   content: "";
 }
 

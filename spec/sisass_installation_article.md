@@ -134,9 +134,9 @@ El artículo debe explicar que este modo:
 - Ignora cualquier valor recibido mediante `--path`.
 - Fuerza el destino `src/core/` dentro del proyecto consumidor.
 - Aplica los mismos ajustes de variables y fuentes que el modo SQHTML.
-- Regenera `_instances.scss` con los módulos definidos en `instances.config.js`.
+- Regenera `_index.scss` con los módulos definidos en `instances.config.js`.
 
-El artículo debe mostrar el resultado esperado de `_instances.scss` según la configuración vigente, pero debe señalar que SQHTML2 continúa en desarrollo.
+El artículo debe mostrar el resultado esperado de `_index.scss` según la configuración vigente, pero debe señalar que SQHTML2 continúa en desarrollo.
 
 Antes de publicar, se debe volver a comparar esta sección con `install.js` e `instances.config.js`. No se debe afirmar que SQHTML2 produce una compilación independiente si todavía depende de módulos aportados por el proyecto consumidor.
 
@@ -350,7 +350,7 @@ Las fuentes externas determinan la recomendación del preprocesador. El comporta
 - La instalación normal crea `assets/scss/core/`.
 - `--path ../../src/` crea `src/assets/scss/core/` en la estructura npm prevista.
 - `--dep sqhtml` aplica las transformaciones descritas.
-- `--dep sqhtml2` crea `src/core/`, ignora `--path` y genera `_instances.scss`.
+- `--dep sqhtml2` crea `src/core/`, ignora `--path` y genera `_index.scss`.
 - Los ejemplos HTML y React producen CSS observable.
 - La integración Webpack funciona en desarrollo y producción.
 - La integración Vite funciona con el servidor de desarrollo y con la construcción de producción.

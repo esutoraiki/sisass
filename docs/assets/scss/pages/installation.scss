@@ -1,0 +1,47 @@
+@use "../core/instances" as *;
+@use "sass:list";
+
+.reference {
+    .element_list {
+        .link {
+            @include position;
+            @include border-radius(12px);
+            @include box-shadow($sh1);
+            @include whs(100%);
+            padding: 15px 15px 0;
+
+            .tag {
+                @include tagline;
+                margin-block-end: 10px;
+            }
+
+            .title {
+                @include t1(( s: clamp(szrem(18), 1.25vw, szrem(24)), f: $f4, w: bold, a: left ));
+                margin-block-end: 0;
+            }
+
+            .description {
+                @include t1(( s: szrem(16), f: $f1, w: normal, a: left ));
+                margin-block-end: 0;
+            }
+
+            .domain {
+                @include flex;
+                @include gap(15px);
+                padding-block: 15px;
+                border-block-start: $bd9;
+                margin-block: 0px;
+            }
+
+            [class^="logo_"] {
+                @include normalize-svg((
+                    w: calc(list.nth($l11, 1) + 10px),
+                    h: calc(list.nth($l11, 1) + 10px)
+                ));
+                @include justify-self(center);
+                @include border-radius(7px);
+                @include bc($c21, $c0);
+            }
+        }
+    }
+}

@@ -1,6 +1,42 @@
 @use "../core/instances" as *;
 @use "sass:list";
 
+.domain {
+    &::before {
+        @include icon-svg((
+            svg: web,
+            w: list.nth($l10, 1),
+            h: list.nth($l10, 1),
+            fill: $c6,
+            position: (
+                p: relative
+            )
+        ));
+        display: inline-block;
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.link {
+    &::before {
+        @include icon-svg((
+            svg: link,
+            w: list.nth($l10, 1),
+            h: list.nth($l10, 1),
+            fill: $c6,
+            position: (
+                xaxis: right,
+                x: 15px,
+                y: 15px
+            )
+        ));
+        display: inline-block;
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
 .logo_sisass {
     &:before {
         @include icon-svg(
@@ -26,6 +62,27 @@
         content: "";
     }
 }
+
+@for $i from 1 through list.length($icon_reference) {
+    .logo_#{list.nth($icon_reference, $i)}_medium {
+        &::before {
+            @include transform(translate(-50%, -50%));
+            @include icon-svg((
+                svg: list.nth($icon_reference, $i),
+                w: list.nth($l11, 1),
+                h: list.nth($l11, 1),
+                position: (
+                    p: relative,
+                    x: 50%,
+                    y: 50%
+                )
+            ));
+            display: block;
+            content: "";
+        }
+    }
+}
+
 
 @for $i from 1 through list.length($icon_name) {
     .icon_#{list.nth($icon_name, $i)} {

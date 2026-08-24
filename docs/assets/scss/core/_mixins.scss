@@ -78,6 +78,21 @@
     display: inline-flex;
 }
 
+ @mixin tagline($attr: ()) {
+    $bg: mapv($attr, bg, $c21);
+    $c: mapv($attr, c, var(--theme_text));
+    $w: mapv($attr, w, max-content);
+    $h: mapv($attr, h, 25px);
+    $r: mapv($attr, r, 15px);
+    $p: mapv($attr, p, 10px 14px);
+
+    @include center-flex-row;
+    @include border-radius($r);
+    @include bc($bg, $c);
+    @include wh($w, $h);
+    padding: $p;
+ }
+
 //-----------------------------------
 //End Mixin
 //-----------------------------------

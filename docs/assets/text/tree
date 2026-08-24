@@ -1,7 +1,7 @@
 └── .
     ├── files
     │   ├── _fonts.scss
-    │   ├── _instances.scss
+    │   ├── _index.scss
     │   ├── _keyframes.scss
     │   ├── _layout.scss
     │   ├── _mixin.scss
