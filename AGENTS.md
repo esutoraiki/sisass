@@ -1,5 +1,15 @@
 # Repository Guidelines
 
+## Avoid overengineering
+
+Always prefer the smallest, simplest correct change:
+- Keep changes local and minimize the diff.
+- Follow existing patterns before introducing new ones.
+- Do not refactor unrelated code.
+- Do not add abstractions, wrappers, helpers, interfaces, configuration, or new files unless they solve a concrete current need.
+- Do not design for hypothetical future requirements.
+- Do not add behavior or fallbacks that were not requested.
+
 ## Project Structure & Module Organization
 - Root scripts `install.js` and `arg.js` copy framework assets; pass `--path` to choose the target directory (defaults to `../../`).
 - Source SASS lives in `src` (base, reset, media queries, vendor overrides). Treat it as the editable core when improving the framework.
