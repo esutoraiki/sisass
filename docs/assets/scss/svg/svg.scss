@@ -1,6 +1,72 @@
 @use "../core/instances" as *;
 @use "sass:list";
 
+@for $i from 1 through list.length($requirements_icon) {
+    .logo_#{list.nth($requirements_icon, $i)} {
+        &::before {
+            @include transform(translate(-50%, -50%));
+            @include icon-svg((
+                svg: list.nth($requirements_icon, $i),
+                w: list.nth($l13, 1),
+                h: list.nth($l13, 1),
+                fill: list.nth($requirements_color, $i),
+                position: (
+                    x: 50%,
+                    y: 50%
+                )
+            ));
+            content: "";
+        }
+    }
+}
+
+@for $i from 1 through list.length($requirements_color) {
+    .icon_copy_#{$i} {
+        &::after {
+            @include icon-svg((
+                svg: copy,
+                w: list.nth($l10, 1),
+                h: list.nth($l10, 1),
+                fill: list.nth($requirements_color, $i),
+                position: ( p: relative )
+            ));
+            content: "";
+        }
+    }
+}
+
+.tip {
+    &::before {
+        @include icon-svg((
+            svg: idea,
+            w: list.nth($l14, 1),
+            h: list.nth($l14, 1),
+            fill: $c17,
+            position: (
+                p: relative
+            )
+        ));
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
+.notice {
+    &::before {
+        @include icon-svg((
+            svg: info,
+            w: list.nth($l12, 1),
+            h: list.nth($l12, 1),
+            fill: $c17,
+            position: (
+                p: relative
+            )
+        ));
+        filter: var(--theme_icon_filter);
+        content: "";
+    }
+}
+
 .domain {
     &::before {
         @include icon-svg((

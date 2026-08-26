@@ -503,7 +503,7 @@ html.page[data-theme=dark] {
   font-weight: 900;
   font-style: normal;
   font-variant: normal;
-  margin-bottom: 0;
+  margin-block: 0;
 }
 .documentationpage .loader .box .text {
   text-align: justify;
@@ -1268,7 +1268,6 @@ html.page[data-theme=dark] {
   position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
   z-index: 2;
 }
 
@@ -1333,7 +1332,6 @@ html.page[data-theme=dark] {
   position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
   z-index: 2;
   display: block;
 }
@@ -1436,7 +1434,6 @@ html.page[data-theme=dark] {
   position: absolute;
   top: 50%;
   left: 14px;
-  z-index: 1;
   z-index: 2;
   cursor: pointer;
   z-index: 2;
@@ -2197,7 +2194,7 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   margin-bottom: 15px;
 }
 .documentationpage .mb {
-  margin-bottom: 25px;
+  margin-bottom: 25px !important;
 }
 .documentationpage .note {
   text-align: justify;
@@ -2659,7 +2656,6 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
   z-index: 2;
 }
 .assets_tree .tree_note .tree_note_header .tree_note_title {

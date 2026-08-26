@@ -142,7 +142,7 @@ html.page[data-theme="dark"] {
         margin-bottom: 15px;
     }
 
-    .mb { margin-bottom: 25px; }
+    .mb { margin-bottom: 25px !important; }
 
     .note {
         @include t1(( c: var(--theme_text_alt) ));

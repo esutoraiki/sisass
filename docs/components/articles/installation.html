@@ -26,58 +26,95 @@
         Al ejecutar nuevamente el instalador, los archivos distribuidos pueden sobrescribir personalizaciones existentes en la carpeta de destino. Conserva tus cambios antes de reinstalar.
     </aside>
 
-    <h2 id="installation_requirements" class="title">
-        Requisitos comunes
-    </h2>
 
-    <p class="description">
-        Necesitas Node.js, npm y un proyecto con una carpeta raíz identificable. Si el proyecto todavía no tiene un archivo <b>package.json</b>, créalo antes de instalar el paquete.
-    </p>
+    <section id="installation_requirements" class="installation_requirements">
+        <h2 class="title" id="installation_requirements">
+            Requisitos comunes
+        </h2>
 
-    <div class="container_table">
-        <table class="full">
-            <thead>
-                <tr>
-                    <th>Entorno</th>
-                    <th>Preprocesador</th>
-                    <th>Instalador</th>
-                    <th>Destino principal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>HTML, CSS y JavaScript</td>
-                    <td><b>sass</b></td>
-                    <td>Normal</td>
-                    <td><b>assets/scss/core/</b></td>
-                </tr>
-                <tr>
-                    <td>SQHTML</td>
-                    <td><b>sass</b></td>
-                    <td><b>--dep sqhtml</b></td>
-                    <td><b>assets/scss/core/</b></td>
-                </tr>
-                <tr>
-                    <td>SQHTML2</td>
-                    <td><b>sass</b></td>
-                    <td><b>--dep sqhtml2</b></td>
-                    <td><b>src/core/</b></td>
-                </tr>
-                <tr>
-                    <td>React sin Vite</td>
-                    <td><b>sass</b></td>
-                    <td>Normal con <b>--path</b></td>
-                    <td><b>src/assets/scss/core/</b></td>
-                </tr>
-                <tr>
-                    <td>React con Vite</td>
-                    <td><b>sass-embedded</b> o <b>sass</b></td>
-                    <td>Normal con <b>--path</b></td>
-                    <td><b>src/assets/scss/core/</b></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <p class="description">
+            Antes de instalar <b class="tagline_sisass">SISASS</b>, asegúrate de cumplir con los siguientes requisitos.
+        </p>
+
+        <aside class="notice" aria-label="Información sobre los requisitos">
+            <p class="description"class>Estos requisitos son necesarios para garantizar una instalación y funcionamiento correctos.</p>
+        </aside>
+
+        <article class="cards">
+            <div class="card nodejs">
+                <div class="heading">
+                    <div class="icon nodejs">
+                        <div class="logo_nodejs">
+                            Nodejs
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <h3 class="title">Node.js</h3>
+                        <span class="badge">Requerido</span>
+                    </div>
+                </div>
+
+                <p class="version">Versión recomendada: 18.x o superior</p>
+                <p class="description">Entorno de ejecución de JavaScript necesario para SISASS.</p>
+
+                <div class="command icon_copy_1">
+                    <span>node -v</span>
+                </div>
+            </div>
+
+            <div class="card npm">
+                <div class="heading">
+                    <div class="icon npm">
+                        <div class="logo_npm">
+                            npm
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <h3 class="title">npm</h3>
+                        <span class="badge">Requerido</span>
+                    </div>
+                </div>
+
+                <p class="version">Versión recomendada: 9.x o superior</p>
+                <p class="description">Gestor de paquetes de Node.js para instalar y administrar dependencias.</p>
+
+                <div class="command icon_copy_2">
+                    <span>npm -v</span>
+                </div>
+            </div>
+
+            <div class="card articles">
+                <div class="heading">
+                    <div class="icon articles">
+                        <div class="logo_articles">
+                            Proyecto
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <h3 class="title">Proyecto con raíz</h3>
+                        <span class="badge">Requerido</span>
+                    </div>
+                </div>
+
+                <p class="version">Estructura de proyecto con una carpeta raíz identificable</p>
+                <p class="description">Tu proyecto debe tener una carpeta raíz identificable y un archivo <b>package.json</b>.</p>
+
+                <div class="command icon_copy_3">
+                    <span>package.json</span>
+                </div>
+            </div>
+        </article>
+
+        <aside class="tip" aria-labelledby="installation_requirements_tip_title">
+            <div class="group">
+                <h3 class="title" id="installation_requirements_tip_title">¿No tienes un package.json?</h3>
+                <p class="description">Si tu proyecto todavía no tiene un archivo <b>package.json</b>, créalo antes de instalar el paquete.</p>
+            </div>
+        </aside>
+    </section>
 
     <h2 class="title">
         Instalar el paquete y el compilador
@@ -191,91 +228,113 @@ npm explore sisass -- npm run init -- --path ../../src/</code></pre>
     </h2>
 
     <p class="description">
-        Vite tiene soporte incorporado para archivos <b>.scss</b> y <b>.sass</b>; no necesitas instalar un plugin específico de Vite. La documentación actual recomienda <b>sass-embedded</b> por su rendimiento y mantiene <b>sass</b> como alternativa.
+        Vite tiene soporte incorporado para archivos <b>.scss</b> y <b>.sass</b>; solo necesitas instalar un compilador Sass. La opción recomendada es <b>sass-embedded</b> y <b>sass</b> es una alternativa compatible. No necesitas instalar un plugin específico de Vite para procesar Sass.
+    </p>
+
+    <p class="description">
+        Ejecuta los siguientes comandos desde la raíz del proyecto para instalar SISASS, el compilador Sass y el procesador de SVG. El último comando copia la carga distribuida de SISASS en <b>src/assets/scss/core/</b>:
     </p>
 
     <pre class="language-bash"><code>npm install sisass
 npm install --save-dev sass-embedded
+npm install --save-dev postcss-inline-svg
 npm explore sisass -- npm run init -- --path ../../src/</code></pre>
 
     <p class="description">
-        npm instala el paquete en <b>node_modules/sisass/</b>. El punto de entrada Sass de SISASS se encuentra en <b>node_modules/sisass/src/_sisass.scss</b>. Para que Sass pueda resolver <b>sisass/src/sisass</b>, configura <b>node_modules</b> como una ruta de carga en la configuración de Vite.
+        El instalador crea la carga distribuida en <b>src/assets/scss/core/</b>. Por su parte, npm instala el paquete en <b>node_modules/sisass/</b>, donde su punto de entrada Sass es <b>src/_sisass.scss</b>. La ruta <b>../../src/</b> funciona porque <b>npm explore sisass</b> ejecuta el instalador desde <b>node_modules/sisass/</b>.
     </p>
 
     <p class="description">
-        Este bloque no se coloca en <b>src/main.scss</b>. Guárdalo en <b>vite.config.js</b>, en la raíz del proyecto, al mismo nivel que <b>package.json</b>. Si tu proyecto usa TypeScript, utiliza el mismo contenido en <b>vite.config.ts</b>:
+        Ambas formas de uso parten de la misma instalación. La diferencia está en cómo cada archivo SCSS accede a los módulos de SISASS: mediante un alias explícito, llamado <b>namespace</b>, o de forma global mediante <b>additionalData</b>. Configura primero las rutas de carga en <b>vite.config.js</b>, en la raíz del proyecto, al mismo nivel que <b>package.json</b>. Si el proyecto usa TypeScript, utiliza <b>vite.config.ts</b>:
     </p>
 
-    <pre class="language-javascript"><code>import { defineConfig } from "vite";
+    <pre class="language-typescript"><code>import { defineConfig } from "vite";
+import postcss_inline_svg from "postcss-inline-svg";
+import { resolve } from "node:path";
 
 export default defineConfig({
     css: {
+        postcss: {
+            plugins: [
+                postcss_inline_svg({
+                    paths: [resolve(process.cwd(), "src/assets/img/svg")]
+                })
+            ]
+        },
         preprocessorOptions: {
             scss: {
-                loadPaths: ["./node_modules"]
+                loadPaths: [
+                    "./node_modules/sisass",
+                    "./src/assets/scss"
+                ]
             }
         }
     }
 });</code></pre>
 
     <h3 class="subtitle_2">
-        Configuración opcional sin namespaces
+        Forma 1: con namespace (recomendada)
     </h3>
 
     <p class="description">
-        Si no deseas escribir los namespaces <b>s</b> y <b>variables</b> en cada archivo SCSS, puedes configurar Vite para importar SISASS y sus variables globalmente mediante <b>additionalData</b>. Esta variante requiere <b>@vitejs/plugin-react</b> y debe guardarse en <b>vite.config.ts</b>, en la raíz del proyecto:
+        La forma recomendada importa SISASS en cada archivo que lo necesita y le asigna un namespace, por ejemplo <b>sisass</b>. Así queda claro de dónde provienen los mixins y se reducen las colisiones con otros módulos del proyecto. Esta variante no utiliza <b>additionalData</b>:
     </p>
 
-    <pre class="language-bash"><code>npm install --save-dev @vitejs/plugin-react</code></pre>
-
-    <pre class="language-typescript"><code>import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-
-export default defineConfig({
-    plugins: [react()],
-    css: {
-        preprocessorOptions: {
-            scss: {
-                loadPaths: [
-                    "./node_modules/sisass",
-                    "./node_modules/sisass/src",
-                    "./src/assets/scss"
-                ],
-                additionalData: "@use \"core\" as *;\n@use \"sisass\" as *;\n"
-            }
-        }
-    }
-});</code></pre>
-
-    <p class="description">
-        Con esta configuración, <b>src/main.scss</b> puede utilizar directamente los mixins y las variables sin prefijo:
-    </p>
-
-    <pre class="language-scss"><code>.installation_check {
-    @include text((align: center));
-    color: $c2;
-}</code></pre>
-
-    <p class="description">
-        El uso global es opcional y puede provocar colisiones con mixins o variables del proyecto. Para aplicaciones grandes, se recomienda conservar los namespaces y usar <b>s.text(...)</b> y <b>variables.$c2</b> de forma explícita.
-    </p>
-
-    <p class="description">
-        Crea <b>src/main.scss</b> e importa la carga instalada y el módulo de SISASS:
-    </p>
-
-    <pre class="language-scss"><code>@use "./assets/scss/core/variables" as variables;
-@use "sisass/src/sisass" as s;
+    <pre class="language-scss"><code>@use "src/sisass" as sisass;
+@use "core/variables" as variables;
 
 .installation_check {
-    @include s.text((align: center));
+    @include sisass.text((align: center));
     color: variables.$c2;
 }</code></pre>
+
+    <h3 class="subtitle_2">
+        Forma 2: sin namespace
+    </h3>
+
+    <p class="description">
+        Si prefieres no repetir los namespaces, añade <b>additionalData</b> dentro de <b>scss</b>. Vite inyectará estos módulos al comienzo de cada archivo SCSS y sus variables, mixins y funciones estarán disponibles sin prefijo:
+    </p>
+
+    <pre class="language-typescript"><code>scss: {
+    loadPaths: [
+        "./node_modules/sisass",
+        "./src/assets/scss"
+    ],
+    additionalData: "@use \"core\" as *;\n@use \"src/sisass\" as *;\n"
+}</code></pre>
+
+    <p class="description">
+        Con esta variante, el mismo ejemplo se escribe sin namespace. No combines este código con los <b>@use</b> del ejemplo anterior:
+    </p>
+
+    <pre class="language-scss"><code>@use "core/fonts" as *;
+@use "core/keyframes" as *;
+@use "core/layout" as *;
+
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+body {
+    @include no-spacing;
+    @include bc($c2, $c1);
+}</code></pre>
+
+    <p class="description">
+        La configuración de <b>postcss-inline-svg</b> es necesaria cuando se usan mixins de SISASS que generan <b>svg-load()</b> o <b>svg-inline()</b>. En este proyecto, los archivos SVG deben estar en <b>src/assets/img/svg/</b>; Vite los convierte en URLs <b>data:image/svg+xml</b> durante la compilación CSS. Si no utilizas esas funciones, puedes omitir el bloque <b>postcss</b> y su dependencia.
+    </p>
+
+    <p class="description">
+        En cualquiera de las dos formas, guarda los estilos en <b>src/main.scss</b> e impórtalos desde <b>main.jsx</b>, <b>main.tsx</b> o el componente que actúe como entrada de la aplicación:
+    </p>
 
     <pre class="language-javascript"><code>import "./main.scss";</code></pre>
 
     <p class="description">
-        Ejecuta el servidor de desarrollo y la construcción de producción para confirmar que Vite resuelve los módulos y genera CSS:
+        Ejecuta el servidor de desarrollo y la construcción de producción para confirmar que Vite resuelve los módulos, procesa los SVG configurados y genera CSS:
     </p>
 
     <pre class="language-bash"><code>npm run dev
@@ -298,14 +357,14 @@ npm run build</code></pre>
     </div>
 
     <h3 class="subtitle_2">
-        Ejemplo: componente ProductCard
+        Ejemplo con namespace: componente ProductCard
     </h3>
 
     <p class="description">
-        Para este ejemplo, <b>ProductCard</b> es un componente ficticio que representa una tarjeta de producto. En su archivo <b>ProductCard.module.scss</b>, importa SISASS y las variables instaladas. Las clases declaradas allí serán locales al componente:
+        Para este ejemplo, <b>ProductCard</b> es un componente ficticio que representa una tarjeta de producto. El ejemplo utiliza explícitamente la forma <b>con namespace</b>: en <b>ProductCard.module.scss</b>, SISASS se importa como <b>s</b> y las variables como <b>variables</b>. Las clases declaradas allí serán locales al componente:
     </p>
 
-    <pre class="language-scss"><code>@use "sisass/src/sisass" as s;
+    <pre class="language-scss"><code>@use "src/sisass" as s;
 @use "../../assets/scss/core/variables" as variables;
 
 .product_card {
