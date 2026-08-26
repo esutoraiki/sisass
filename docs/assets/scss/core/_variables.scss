@@ -17,6 +17,7 @@ $c16: #2A47CE;
 $c18: #12CFC8;
 $c19: #FE00BE;
 $c20: #458ED1;
+$c22: #2BB673;
 
 // Theme colors
 $c9: #10151F;
@@ -29,15 +30,19 @@ $c15: #F38845;
 $c17: #007AFF;
 
 $c21: rgba($c16, 0.08);
+$c23: rgba($c22, 0.1);
+$c24: rgba($c17, 0.1);
+$c25: rgba($c4, 0.1);
+$c26: rgba($c16, 0.2);
 
 // Border
 $bd1: 2px dashed $c3;
 $bd2: 1px solid $c3;
 $bd3: 1px solid $c4;
 $bd4: 10px solid $c4;
-// $bd5: 1px solid $c6;
-// $bd6: 3px solid $c5;
-// $bd7: 1px dashed $c3;
+$bd5: 1px solid currentColor;
+$bd6: 1px solid $c26;
+$bd7: 2px dashed $c26;
 $bd8: 10px solid $c6;
 $bd9: 1px solid var(--theme_border);
 $bd10: 2px solid var(--theme_border_btn);
@@ -94,10 +99,12 @@ $characteristics_svg: (cube, code, palette, rocket);
 $characteristics_color: ($c16, $c18, $c15, $c19);
 
 $features_name: (mixins, functions, variables, helpers, layouts);
-
 $icon_name: (info, articles, folder_2);
-
 $icon_reference: (sass, react, vite, webpack);
+
+$requirements_icon: (nodejs, npm, articles);
+$requirements_color: ($c22, $c17, $c4);
+$requirements_bg: ($c23, $c24, $c25);
 
 // logo sisass
 $l1x: (clamp(130px, 10.44vw, 200px));
@@ -129,11 +136,20 @@ $l8: (26px);
 $l9x: (15px);
 $l9y: (22px);
 
-// icon menu
+// icon menu, icon copy
 $l10: (20px);
 
 // icon reference
 $l11: (clamp(45px, 3.65vw, 70px));
+
+// icon notice
+$l12: (30px);
+
+// icon requeriment
+$l13: (clamp(15px, 1.56vw, 30px));
+
+// icon tip
+$l14: (45px);
 
 //-----------------------------------
 //End Variables

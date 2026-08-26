@@ -20,6 +20,49 @@ import { TabPanel } from "../libraries/tab_panel.min.js";
         url_icon_sass = "img/svg/sass.svg",
 
         NSInstallation = (function () {
+            function copy_text(text_value) {
+                if (navigator.clipboard?.writeText) {
+                    return navigator.clipboard.writeText(text_value);
+                }
+
+                const text_area = document.createElement("textarea");
+
+                text_area.value = text_value;
+                text_area.setAttribute("readonly", "true");
+                text_area.style.position = "fixed";
+                text_area.style.opacity = "0";
+                document.body.appendChild(text_area);
+                text_area.select();
+
+                const copied = document.execCommand("copy");
+
+                text_area.remove();
+
+                if (!copied) {
+                    throw new Error("The command could not be copied to the clipboard.");
+                }
+            }
+
+            function init_copy_commands() {
+                const command_nodes = document.querySelectorAll(".installation .cards .command");
+
+                for (const command_node of command_nodes) {
+                    command_node.addEventListener("click", async function () {
+                        const command_value = command_node.querySelector("span")?.textContent.trim();
+
+                        if (!command_value) {
+                            return;
+                        }
+
+                        try {
+                            await copy_text(command_value);
+                        } catch (error) {
+                            console.error("Unable to copy the command to the clipboard.", error);
+                        }
+                    });
+                }
+            }
+
             async function init_css_modules_tree() {
                 const tree_node = document.getElementById("installation_css_modules_tree");
 
@@ -80,6 +123,8 @@ import { TabPanel } from "../libraries/tab_panel.min.js";
                     await contentLoad({
                         url: url_json_installation
                     });
+
+                    init_copy_commands();
 
                     const tab_panels = Array.from(document.querySelectorAll("[data-tab-panel]"));
 

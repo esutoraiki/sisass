@@ -1,46 +1,156 @@
 @use "../core/instances" as *;
 @use "sass:list";
 
-.reference {
-    .element_list {
-        .link {
-            @include position;
-            @include border-radius(12px);
-            @include box-shadow($sh1);
-            @include whs(100%);
-            padding: 15px 15px 0;
+@forward "../components/_reference";
 
-            .tag {
-                @include tagline;
-                margin-block-end: 10px;
-            }
+.tab_panel { pre { margin-block-end: 25px !important; } }
+
+.installation {
+    .installation_requirements {
+        margin-block: 30px 45px;
+    }
+
+    .notice,
+    .tip {
+        @include bc($c21, var(--theme_text));
+        @include align-items(center);
+        @include border-radius(16px);
+        @include flex;
+        @include gap(18px);
+        border: $bd6;
+        padding: 10px 28px;
+        margin-bottom: 30px;
+
+        .description { @include no-spacing; }
+    }
+
+    .tip {
+        border: $bd7;
+
+        .group {
+            @include flex-direction(column);
+            @include flex;
 
             .title {
-                @include t1(( s: clamp(szrem(18), 1.25vw, szrem(24)), f: $f4, w: bold, a: left ));
-                margin-block-end: 0;
+                @include no-spacing;
+                font-size: szrem(20);
+            }
+        }
+    }
+
+    .cards {
+        @include grid;
+        @include gap(28px);
+        grid: {
+            template: {
+                columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        border-block-end: 0px none $c0;
+        padding-block-end: 0px;
+        margin-bottom: 40px;
+
+        @include brp($b3) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include brp($b6) {
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            @include box-shadow(0 0 5px rgba($c3, 0.12));
+            @include wh(auto, 100%);
+            @include bc($c0, var(--theme_text));
+            @include grid;
+            min-width: 0;
+            grid: {
+                template: {
+                    rows: repeat(3, auto) 42px;
+                }
+            }
+            border: 1px solid var(--theme_border);
+            border-radius: 16px;
+            padding: 25px;
+
+            @for $i from 1 through list.length($requirements_icon) {
+                $bg: list.nth($requirements_bg, $i);
+                $color: list.nth($requirements_color, $i);
+
+                &.#{list.nth($requirements_icon, $i)} {
+                    .heading {
+                        .icon { @include bc($bg, $color); }
+                        .group {
+                            .badge { @include bc($bg, $color); }
+                        }
+                    }
+
+                    .command { @include bc($bg, $color); }
+                }
+            }
+
+            .heading {
+                @include align-items(flex-start);
+                @include flex;
+                @include gap(22px);
+                margin-block-end: 30px;
+
+                .icon {
+                    @include border-radius(50%);
+                    @include normalize-svg((
+                        width: calc(list.nth($l13, 1) + 30px),
+                        height: calc(list.nth($l13, 1) + 30px)
+                    ));
+                }
+
+                .group {
+                    min-width: 0;
+
+                    .title {
+                        @include no-spacing;
+                        @include t1((
+                            f: $f2,
+                            t: uppercase,
+                            a: left,
+                            w: bold,
+                            s: szrem(24)
+                        ));
+                    }
+
+                    .badge {
+                        @include border-radius(20px);
+                        @include t1(( w: bold, s: szrem(12) ));
+                        display: inline-block;
+                        margin-block-start: 4px;
+                        padding: 6px 12px;
+                        border: $bd5;
+                    }
+                }
+            }
+
+            .version {
+                white-space: normal;
+                overflow-wrap: anywhere;
             }
 
             .description {
-                @include t1(( s: szrem(16), f: $f1, w: normal, a: left ));
-                margin-block-end: 0;
+                border-top: 1px solid var(--theme_border);
+                padding-block-start: 15px;
+                margin-block-end: 25px;
             }
 
-            .domain {
+            .command {
+                @include position;
+                @include border-radius(10px);
+                @include t1;
+                @include align-items(center);
+                @include justify-content(space-between);
                 @include flex;
-                @include gap(15px);
-                padding-block: 15px;
-                border-block-start: $bd9;
-                margin-block: 0px;
-            }
+                cursor: pointer;
+                padding: 10px 20px;
+                border: $bd5;
 
-            [class^="logo_"] {
-                @include normalize-svg((
-                    w: calc(list.nth($l11, 1) + 10px),
-                    h: calc(list.nth($l11, 1) + 10px)
-                ));
-                @include justify-self(center);
-                @include border-radius(7px);
-                @include bc($c21, $c0);
+                img { @include whs(20px); }
             }
         }
     }

@@ -299,7 +299,9 @@
         #{$pos_x} : $v_x;
     }
 
-    z-index: $z;
+    @if $z != false {
+        z-index: $z;
+    }
 }
 
 // Width Height
@@ -558,7 +560,8 @@
             top: null,
             right: null,
             bottom: null,
-            left: null
+            left: null,
+            z: $z
         );
 
         @if meta.type-of($position_input) == "map" {
@@ -572,7 +575,8 @@
                 top: mapv($position_map, (top, t), map.get($position_attr, top)),
                 right: mapv($position_map, (right, r), map.get($position_attr, right)),
                 bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
-                left: mapv($position_map, (left, l), map.get($position_attr, left))
+                left: mapv($position_map, (left, l), map.get($position_attr, left)),
+                z: map.get($position_attr, z)
             );
         } @else {
             $position_attr: (
@@ -584,14 +588,15 @@
                 top: mapv($attr, (top, t), map.get($position_attr, top)),
                 right: mapv($attr, (right, r), map.get($position_attr, right)),
                 bottom: mapv($attr, (bottom, b), map.get($position_attr, bottom)),
-                left: mapv($attr, (left, l), map.get($position_attr, left))
+                left: mapv($attr, (left, l), map.get($position_attr, left)),
+                z: map.get($position_attr, z)
             );
         }
 
         @include position($position_attr);
     }
 
-    @if $z != false {
+    @if $position_input == false and $z != false {
         z-index: $z;
     }
 }

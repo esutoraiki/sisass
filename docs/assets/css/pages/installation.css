@@ -140,7 +140,6 @@
   position: relative;
   top: 0;
   left: 0;
-  z-index: 1;
   z-index: 2;
   -webkit-justify-self: center;
   justify-self: center;
@@ -151,4 +150,339 @@
   border-radius: 7px;
   background-color: rgba(42, 71, 206, 0.08);
   color: transparent;
+}
+
+.tab_panel pre {
+  margin-block-end: 25px !important;
+}
+
+.installation .installation_requirements {
+  margin-block: 30px 45px;
+}
+.installation .notice,
+.installation .tip {
+  background-color: rgba(42, 71, 206, 0.08);
+  color: var(--theme_text);
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 18px;
+  gap: 18px;
+  border: 1px solid rgba(42, 71, 206, 0.2);
+  padding: 10px 28px;
+  margin-bottom: 30px;
+}
+.installation .notice .description,
+.installation .tip .description {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.installation .tip {
+  border: 2px dashed rgba(42, 71, 206, 0.2);
+}
+.installation .tip .group {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+}
+.installation .tip .group .title {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 1.25rem;
+}
+.installation .cards {
+  -ms-display: grid;
+  display: grid;
+  grid-gap: 28px;
+  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-block-end: 0px none transparent;
+  padding-block-end: 0px;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 1366px) {
+  .installation .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .installation .cards {
+    grid-template-columns: 1fr;
+  }
+}
+.installation .cards .card {
+  -webkit-box-shadow: 0 0 5px rgba(58, 64, 90, 0.12);
+  -moz-box-shadow: 0 0 5px rgba(58, 64, 90, 0.12);
+  box-shadow: 0 0 5px rgba(58, 64, 90, 0.12);
+  width: auto;
+  height: 100%;
+  background-color: transparent;
+  color: var(--theme_text);
+  -ms-display: grid;
+  display: grid;
+  min-width: 0;
+  grid-template-rows: repeat(3, auto) 42px;
+  border: 1px solid var(--theme_border);
+  border-radius: 16px;
+  padding: 25px;
+}
+.installation .cards .card.nodejs .heading .icon {
+  background-color: rgba(43, 182, 115, 0.1);
+  color: #2BB673;
+}
+.installation .cards .card.nodejs .heading .group .badge {
+  background-color: rgba(43, 182, 115, 0.1);
+  color: #2BB673;
+}
+.installation .cards .card.nodejs .command {
+  background-color: rgba(43, 182, 115, 0.1);
+  color: #2BB673;
+}
+.installation .cards .card.npm .heading .icon {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: #007AFF;
+}
+.installation .cards .card.npm .heading .group .badge {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: #007AFF;
+}
+.installation .cards .card.npm .command {
+  background-color: rgba(0, 122, 255, 0.1);
+  color: #007AFF;
+}
+.installation .cards .card.articles .heading .icon {
+  background-color: rgba(251, 176, 59, 0.1);
+  color: #FBB03B;
+}
+.installation .cards .card.articles .heading .group .badge {
+  background-color: rgba(251, 176, 59, 0.1);
+  color: #FBB03B;
+}
+.installation .cards .card.articles .command {
+  background-color: rgba(251, 176, 59, 0.1);
+  color: #FBB03B;
+}
+.installation .cards .card .heading {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  grid-gap: 22px;
+  gap: 22px;
+  margin-block-end: 30px;
+}
+.installation .cards .card .heading .icon {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: calc(clamp(15px, 1.56vw, 30px) + 30px);
+  height: calc(clamp(15px, 1.56vw, 30px) + 30px);
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.installation .cards .card .heading .group {
+  min-width: 0;
+}
+.installation .cards .card .heading .group .title {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  font-size: 1.5rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.installation .cards .card .heading .group .title .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.installation .cards .card .heading .group .title b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1.5rem;
+  font-family: "Fira Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.installation .cards .card .heading .group .badge {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 0.75rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.installation .cards .card .heading .group .badge .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.installation .cards .card .heading .group .badge b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 0.75rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.installation .cards .card .heading .group .badge {
+  display: inline-block;
+  margin-block-start: 4px;
+  padding: 6px 12px;
+  border: 1px solid currentColor;
+}
+.installation .cards .card .version {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.installation .cards .card .description {
+  border-top: 1px solid var(--theme_border);
+  padding-block-start: 15px;
+  margin-block-end: 25px;
+}
+.installation .cards .card .command {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.3;
+  background-color: transparent;
+  color: var(--theme_text);
+}
+.installation .cards .card .command .tagline_sisass {
+  font-family: "Montserrat", "sans-serif";
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--theme_text);
+}
+.installation .cards .card .command b {
+  background-color: transparent;
+  color: var(--theme_text_bold);
+  text-align: justify;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+}
+.installation .cards .card .command {
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid currentColor;
+}
+.installation .cards .card .command img {
+  width: 20px;
+  height: 20px;
 }
