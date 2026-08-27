@@ -1,7 +1,7 @@
 .reference .element_list .link {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
@@ -138,8 +138,8 @@
   height: calc(clamp(45px, 3.65vw, 70px) + 10px);
   display: block;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 2;
   -webkit-justify-self: center;
   justify-self: center;
@@ -320,12 +320,12 @@
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
-  width: calc(clamp(15px, 1.56vw, 30px) + 30px);
-  height: calc(clamp(15px, 1.56vw, 30px) + 30px);
+  width: calc(clamp(20px, 1.56vw, 30px) + 30px);
+  height: calc(clamp(20px, 1.56vw, 30px) + 30px);
   display: block;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 2;
 }
 .installation .cards .card .heading .group {
@@ -429,8 +429,8 @@
 }
 .installation .cards .card .command {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
