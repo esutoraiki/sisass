@@ -1,4 +1,4 @@
-// Update: 20260802
+// Update: 20260827
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -54,7 +54,7 @@
     $variant_value: $variant;
 
     @if meta.type-of($size) == "map" {
-        $size_value: mapv($size, (size, s), 1em);
+        $size_value: mapv($size, (size, s), 1rem);
         $family_value: mapv($size, (family, f), "sans-serif");
         $weight_value: mapv($size, (weight, w), normal);
         $style_value: mapv($size, style, normal);
@@ -63,9 +63,9 @@
     }
 
     font: {
-        size   : $size_value;
+        size   : normalize-px($size_value);
         family : $family_value;
-        weight : $weight_value;
+        weight : strip-unit($weight_value);
         style  : $style_value;
         variant: $variant_value
     }
@@ -87,7 +87,7 @@
     );
 
     $font_attr: (
-        size: mapv($attr, (size, s), 1em),
+        size: mapv($attr, (size, s), 1rem),
         family: mapv($attr, (family, f), "sans-serif"),
         weight: mapv($attr, (weight, w), normal),
         style: mapv($attr, style, normal),
@@ -164,7 +164,7 @@
     @font-face {
         font-family: string.quote($name);
         font-style: $style;
-        font-weight: $weight;
+        font-weight: strip-unit($weight);
 
         @if $has_eot {
             src: url(string.quote($path + ".eot"));
@@ -200,7 +200,7 @@
         @include transition(background-color 5000s ease-in-out 0);
         -webkit-text-fill-color: $color;
 
-        @if $padding != null { padding: $padding; }
+        @if $padding != null { padding: normalize-px($padding); }
         @if $border != null { border: $border; }
     }
 }
@@ -219,9 +219,9 @@
         @if $image != "" { image: $image; }
 
         repeat   : $repeat;
-        position : $position;
+        position : normalize-px($position);
         color    : $color;
-        size     : $size;
+        size     : normalize-px($size);
     }
 }
 
@@ -235,12 +235,12 @@
 // background opacity
 @mixin background-opacity($bg: #FFF, $opacity: 0.8, $use_legacy: false) {
     $bg_value: $bg;
-    $opacity_value: $opacity;
+    $opacity_value: strip-unit($opacity);
     $use_legacy_value: $use_legacy;
 
     @if meta.type-of($bg) == "map" {
         $bg_value: mapv($bg, (color, c), #FFF);
-        $opacity_value: mapv($bg, (opacity, o), 0.8);
+        $opacity_value: strip-unit(mapv($bg, (opacity, o), 0.8));
         $use_legacy_value: mapv($bg, (use_legacy, ul), false);
     }
 
@@ -260,7 +260,7 @@
     $x: 0,
     $yaxis: top,
     $xaxis: left,
-    $z: 1
+    $z_value: 1
 ) {
     $position_value: $position;
     $v_y: $y;
@@ -279,7 +279,7 @@
         $v_x: mapv($position, x, $v_x);
         $pos_y: mapv($position, (yaxis, ya), $pos_y);
         $pos_x: mapv($position, (xaxis, xa), $pos_x);
-        $z: mapv($position, z, $z);
+        $z_value: mapv($position, z, $z_value);
 
         $top_value: mapv($position, (top, t), null);
         $right_value: mapv($position, (right, r), null);
@@ -288,15 +288,16 @@
     }
 
     position : $position_value;
+    $z: strip-unit($z_value);
 
     @if $top_value != null or $right_value != null or $bottom_value != null or $left_value != null {
-        @if $top_value != null { top : $top_value; }
-        @if $right_value != null { right : $right_value; }
-        @if $bottom_value != null { bottom : $bottom_value; }
-        @if $left_value != null { left : $left_value; }
+        @if $top_value != null { top : normalize-px($top_value); }
+        @if $right_value != null { right : normalize-px($right_value); }
+        @if $bottom_value != null { bottom : normalize-px($bottom_value); }
+        @if $left_value != null { left : normalize-px($left_value); }
     } @else {
-        #{$pos_y} : $v_y;
-        #{$pos_x} : $v_x;
+        #{$pos_y} : normalize-px($v_y);
+        #{$pos_x} : normalize-px($v_x);
     }
 
     @if $z != false {
@@ -306,12 +307,17 @@
 
 // Width Height
 @mixin wh($width: auto, $height: auto) {
+    $width: normalize-px($width);
+    $height: normalize-px($height);
+
     width  : $width;
     height : $height;
 }
 
 // Width and height equal
 @mixin whs($value_aa: auto) {
+    $value_aa: normalize-px($value_aa);
+
     width  : $value_aa;
     height : $value_aa;
 }
@@ -323,9 +329,7 @@
 }
 
 // Backward compatibility alias
-@mixin hv-center {
-    @include center-absolute;
-}
+@mixin hv-center { @include center-absolute; }
 
 // Horizontal and vertical centering with flex for column
 @mixin center-flex-column {
@@ -345,8 +349,8 @@
 
 // Gap for flex
 @mixin gap($value) {
-    grid-gap: $value;
-    gap: $value;
+    grid-gap: normalize-px($value);
+    gap: normalize-px($value);
 }
 
 @mixin cover {
@@ -527,7 +531,7 @@
         $path_svg: $path +  $svg + ".svg";
         mask-image: svg-load($path_svg, fill="currentColor");
         mask-repeat: $repeat;
-        mask-size: $size;
+        mask-size: normalize-px($size);
         display: $display;
         background-color: $color;
     }
@@ -597,7 +601,7 @@
     }
 
     @if $position_input == false and $z != false {
-        z-index: $z;
+        z-index: strip-unit($z);
     }
 }
 
@@ -668,13 +672,13 @@
 
         &::-webkit-scrollbar {
             @include appearance;
-            width: $wi_y;
-            height: $wi_x;
+            width: normalize-px($wi_y);
+            height: normalize-px($wi_x);
             background-color: $bg_track;
         }
 
         &::-webkit-scrollbar-thumb {
-            @include border-radius($bdr);
+            @include border-radius(normalize-px($bdr));
             border: $thumb_border;
             background-color: $co;
             box-shadow: $thumb_shadow;
@@ -689,7 +693,7 @@
         }
 
         &::-webkit-scrollbar-track {
-            @include border-radius($bdr_track);
+            @include border-radius(normalize-px($bdr_track));
             border: $track_border;
             background-color: $bg_track;
             box-shadow: $track_shadow;
@@ -740,7 +744,9 @@
 
 // Size in Rem
 @function szrem($value_px: 14, $base: 16) {
-    @if meta.type-of($value_px) != "number" or meta.type-of($base) != "number" {
+   $value: strip-unit($value_px);
+
+    @if meta.type-of($value) != "number" or meta.type-of($base) != "number" {
         @error "szrem() only accepts numeric values.";
     }
 
@@ -748,7 +754,7 @@
         @error "szrem() base cannot be 0.";
     }
 
-    @return (math.div($value_px, $base)) * 1rem;
+    @return (math.div($value, $base)) * 1rem;
 }
 
 // base porcentage
@@ -762,7 +768,20 @@
 
 // Remove unit of measurement from a value
 @function strip-unit($value) {
+    @if meta.type-of($value) != "number" {
+        @return $value;
+    }
+
     @return math.div($value, $value * 0 + 1);
+}
+
+// Normalize px
+@function normalize-px($value) {
+    @if meta.type-of($value) == "number" and math.is-unitless($value) {
+        @return $value * 1px;
+    }
+
+    @return $value;
 }
 
 // String Replace

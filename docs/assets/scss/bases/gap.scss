@@ -3,6 +3,6 @@
 .documentationpage {
     .gap_example {
         @include flex;
-        @include gap(10px);
+        @include gap(15);
     }
 }

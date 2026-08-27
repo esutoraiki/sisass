@@ -1,0 +1,72 @@
+<article id="normalize_px" class="normalize_px">
+    <div class="group_title">
+        <h2 class="subtitle">
+            normalize-px (_base.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Normaliza un valor para que use <b>px</b> cuando llega sin unidad y
+        conserve el valor original cuando ya la incluye.
+    </p>
+    <p class="description">
+        Por ejemplo, si pasas <b>220</b>, la función devuelve <b>220px</b>; si
+        pasas <b>220px</b>, lo deja igual; y si pasas <b>auto</b>, también lo
+        deja igual. Así puedes escribir valores sin unidad y obtener una
+        medida en <b>px</b> automáticamente, sin alterar palabras clave como
+        <b>auto, inherit, max-content, ...</b>.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function normalize-px($value);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Parámetro</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>value</b></td>
+                    <td>Number | Medida</td>
+                    <td>-</td>
+                    <td>Define el valor que se normaliza a <b>px</b> si llega sin unidad.</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/normalize_px.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/normalize_px.css"></pre>
+        </div>
+    </section>
+</article>

@@ -446,8 +446,8 @@ html.page[data-theme=dark] {
   background-color: var(--theme_surface);
   color: var(--theme_text);
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -667,7 +667,7 @@ html.page[data-theme=dark] {
 .container_menu {
   position: sticky;
   top: 26px;
-  left: 0;
+  left: 0px;
   z-index: 1;
   width: 100%;
   height: 85vh;
@@ -739,8 +739,8 @@ html.page[data-theme=dark] {
     -webkit-align-items: center;
     align-items: center;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     z-index: 10;
     width: 100%;
     height: 100%;
@@ -869,8 +869,8 @@ html.page[data-theme=dark] {
 }
 .container_menu .main_menu .group_1 .title {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 100%;
   height: 50px;
@@ -1086,8 +1086,8 @@ html.page[data-theme=dark] {
 }
 .container_header .main_header {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 100%;
   height: 100%;
@@ -1123,8 +1123,8 @@ html.page[data-theme=dark] {
   text-shadow: none;
   color: transparent;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: clamp(130px, 10.44vw, 200px);
   height: clamp(29px, 2.3vw, 44px);
@@ -1241,8 +1241,8 @@ html.page[data-theme=dark] {
 }
 .container_header .main_header .tools_header .contact .github, .container_header .main_header .tools_header .contact .email {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   display: block;
   cursor: pointer;
@@ -1266,8 +1266,8 @@ html.page[data-theme=dark] {
   height: 26px;
   display: block;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 2;
 }
 
@@ -1330,8 +1330,8 @@ html.page[data-theme=dark] {
   height: 24px;
   display: block;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 2;
   display: block;
 }
@@ -1449,8 +1449,8 @@ html.page[data-theme=dark] {
 }
 .documentationpage .main_header .page_search .container_search .page_search_box {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   display: block;
 }
@@ -1556,7 +1556,7 @@ html.page[data-theme=dark] {
   height: auto;
   position: absolute;
   top: calc(100% + 10px);
-  left: 0;
+  left: 0px;
   z-index: 1;
   max-height: min(60vh, 540px);
   box-sizing: border-box;
@@ -2654,8 +2654,8 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   height: 20px;
   display: block;
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 2;
 }
 .assets_tree .tree_note .tree_note_header .tree_note_title {

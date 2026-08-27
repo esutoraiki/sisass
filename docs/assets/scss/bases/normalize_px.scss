@@ -1,0 +1,11 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .fn_normalize_px:before {
+        content: "normalize-px(220) = " normalize-px(220);
+    }
+
+    .fn_normalize_px_unit:before {
+        content: "normalize-px(220px) = " normalize-px(220px);
+    }
+}

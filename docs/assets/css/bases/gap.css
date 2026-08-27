@@ -3,6 +3,6 @@
   -moz-display: flex;
   -ms-display: flex;
   display: flex;
-  grid-gap: 10px;
-  gap: 10px;
+  grid-gap: 15px;
+  gap: 15px;
 }
