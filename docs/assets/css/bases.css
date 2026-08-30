@@ -859,6 +859,12 @@
   background-color: #A01303;
 }
 
+.documentationpage .fn_pb {
+  width: 384px;
+  height: 20px;
+  background-color: #A01303;
+}
+
 .documentationpage .fn_strip_unit {
   --size: 24;
 }

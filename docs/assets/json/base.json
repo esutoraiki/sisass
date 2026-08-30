@@ -214,6 +214,12 @@
             "node": "bp"
         },
         {
+            "id": "pb",
+            "url": "../components/base/pb.html",
+            "position": "beforeend",
+            "node": "pb"
+        },
+        {
             "id": "strip_unit",
             "url": "../components/base/strip_unit.html",
             "position": "beforeend",

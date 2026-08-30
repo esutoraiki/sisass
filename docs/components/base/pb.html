@@ -1,7 +1,7 @@
-<article id="bp" class="bp">
+<article id="pb" class="pb">
     <div class="group_title">
         <h2 class="subtitle">
-            bp (_base.scscs)
+            pb (_base.scscs)
         </h2>
         <h3 class="attribute">
             Tipo: Function
@@ -12,11 +12,12 @@
     </div>
 
     <p class="description">
-        Calcula un valor proporcional a partir de una base de referencia y devuelve el resultado con la unidad indicada.
+        Calcula la medida que representa un porcentaje dentro de una base de referencia y devuelve el resultado con
+        la unidad indicada.
     </p>
     <p class="description">
-        Es útil para convertir medidas de diseño a unidades fluidas como <b>vw</b>, manteniendo una relación respecto
-        a una base de referencia.
+        Es la operación inversa conceptual de <b>bp</b> y resulta útil para recuperar una medida a partir de una
+        proporción conocida.
     </p>
 
     <section class="use">
@@ -24,7 +25,7 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@function bp($attr: ());</code></pre>
+        <pre class="language-scss"><code>@function pb($attr: ());</code></pre>
 
         <h3 class="subtitle">
             Sintaxis map
@@ -44,27 +45,27 @@
                     <td><b>base | b</b></td>
                     <td>Number</td>
                     <td>1920</td>
-                    <td>Define la base de referencia sobre la que se calcula la proporción.</td>
+                    <td>Define la base de referencia usada para calcular la medida.</td>
                 </tr>
                 <tr>
                     <td><b>unit | u</b></td>
                     <td>String</td>
-                    <td>"vw"</td>
+                    <td>"px"</td>
                     <td>Define la unidad que se concatenará al resultado final.</td>
                 </tr>
                 <tr>
                     <td><b>value | v</b></td>
                     <td>Number</td>
                     <td>0</td>
-                    <td>Define el valor que se convertirá en una medida proporcional.</td>
+                    <td>Define el porcentaje que se calculará respecto a la base.</td>
                 </tr>
             </tbody>
             </table>
         </div>
 
         <p class="description">
-            El cálculo se realiza con la fórmula <b>(value * 100) / base</b> y luego se concatena la unidad indicada en
-            <b>unit</b>. Por ejemplo, con <b>(base: 1920, value: 384, unit: "vw")</b> el resultado será <b>20vw</b>.
+            El cálculo se realiza con la fórmula <b>(value * base) / 100</b> y luego se concatena la unidad indicada en
+            <b>unit</b>. Por ejemplo, con <b>(value: 20, base: 1920, unit: "px")</b> el resultado será <b>384px</b>.
         </p>
 
         <h2 class="title">
@@ -72,13 +73,12 @@
         </h2>
 
         <p class="description">
-            La barra roja recibe un ancho calculado con <b>value: 384</b> y <b>base: 1920</b>. La función determina que
-            384 equivale al 20 % de la base y genera <b>width: 20vw</b>; por eso, la barra ocupa siempre una quinta
-            parte del ancho de la ventana, incluso cuando cambia el tamaño del navegador.
+            La barra roja recibe un ancho calculado con <b>value: 20</b> y <b>base: 1920</b>. La función determina que
+            el 20 % de la base equivale a <b>384px</b> y genera <b>width: 384px</b>.
         </p>
 
         <div
-            id="bp_example_tabs"
+            id="pb_example_tabs"
             class="container_example tab_panel"
             data-tab-panel
             data-active-tab="result"
@@ -92,20 +92,20 @@
 
             <div class="tab_panel_panel" data-tab-panel-panel="result">
                 <div class="result">
-                    <div class="fn_bp"></div>
+                    <div class="fn_pb"></div>
                 </div>
             </div>
 
             <div class="tab_panel_panel" data-tab-panel-panel="scss">
-                <pre class="language-scss" data-src="../assets/scss/bases/bp.scss"></pre>
+                <pre class="language-scss" data-src="../assets/scss/bases/pb.scss"></pre>
             </div>
 
             <div class="tab_panel_panel" data-tab-panel-panel="css">
-                <pre class="language-css" data-src="../assets/css/bases/bp.css"></pre>
+                <pre class="language-css" data-src="../assets/css/bases/pb.css"></pre>
             </div>
 
             <div class="tab_panel_panel" data-tab-panel-panel="html">
-                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;fn_bp&quot;&gt;&lt;/div&gt;</code></pre>
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;fn_pb&quot;&gt;&lt;/div&gt;</code></pre>
             </div>
         </div>
     </section>

@@ -766,6 +766,15 @@
     @return #{math.div($value * 100, $base_i) + $unn};
 }
 
+// Percentage to base
+@function pb($attr: ()) {
+    $base_i: mapv($attr, (base, b), 1920);
+    $unn: mapv($attr, (unit, u), "px");
+    $value: mapv($attr, (value, v), 0);
+
+    @return #{math.div($value * $base_i, 100) + $unn};
+}
+
 // Remove unit of measurement from a value
 @function strip-unit($value) {
     @if meta.type-of($value) != "number" {
