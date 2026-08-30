@@ -16,6 +16,12 @@
             "node": "src"
         },
         {
+            "id": "mediaqueries_overview",
+            "url": "../components/mediaqueries/overview.html",
+            "position": "beforeend",
+            "node": "mediaqueries_overview"
+        },
+        {
             "id": "brp",
             "url": "../components/mediaqueries/brp.html",
             "position": "beforeend",
@@ -44,6 +50,24 @@
             "url": "../components/mediaqueries/brpwh.html",
             "position": "beforeend",
             "node": "brpwh"
+        },
+        {
+            "id": "media_range",
+            "url": "../components/mediaqueries/media_range.html",
+            "position": "beforeend",
+            "node": "media_range"
+        },
+        {
+            "id": "media",
+            "url": "../components/mediaqueries/media.html",
+            "position": "beforeend",
+            "node": "media"
+        },
+        {
+            "id": "container_query",
+            "url": "../components/mediaqueries/container_query.html",
+            "position": "beforeend",
+            "node": "container_query"
         },
         {
             "id": "mbr",

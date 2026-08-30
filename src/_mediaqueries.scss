@@ -1,80 +1,640 @@
-// Update: 20220401
+// Update: 20260830
 
 //-----------------------------------
-//Mixin Media Queries
+// Mixins Media Queries
 //-----------------------------------
-@use "sass:math";
 @use "sass:list";
+@use "sass:map";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+$_media_types: (all, print, screen, speech);
+$_dimension_units: (
+    px, cm, mm, q, in, pc, pt,
+    em, rem, ex, ch, cap, ic, lh, rlh,
+    vw, vh, vi, vb, vmin, vmax,
+    svw, svh, svi, svb, svmin, svmax,
+    lvw, lvh, lvi, lvb, lvmin, lvmax,
+    dvw, dvh, dvi, dvb, dvmin, dvmax
+);
+$_resolution_units: (dppx, dpi, dpcm);
+
+@function _media_map_value($attr, $keys, $default: null) {
+    @each $key in $keys {
+        @if map.has-key($attr, $key) {
+            @return map.get($attr, $key);
+        }
+    }
+
+    @return $default;
+}
+
+@function _media_validate_keys($mixin_name, $attr, $allowed_keys) {
+    @if meta.type-of($attr) != "map" {
+        @error "#{$mixin_name}(): expected a map.";
+    }
+
+    @each $key, $value in $attr {
+        @if not list.index($allowed_keys, $key) {
+            @error "#{$mixin_name}(): unknown key `#{$key}`.";
+        }
+    }
+
+    @return true;
+}
+
+@function _media_validate_type($mixin_name, $type, $allowed_types: (max, min)) {
+    @if not list.index($allowed_types, $type) {
+        @error "#{$mixin_name}(): unsupported type `#{$type}`. Expected one of #{$allowed_types}.";
+    }
+
+    @return $type;
+}
+
+@function _media_validate_media_type($mixin_name, $media_type) {
+    @if not list.index($_media_types, $media_type) {
+        @error "#{$mixin_name}(): unsupported media type `#{$media_type}`.";
+    }
+
+    @return $media_type;
+}
+
+@function _media_validate_unit($mixin_name, $unit) {
+    @if meta.type-of($unit) != "string" {
+        @error "#{$mixin_name}(): unit must be a string.";
+    }
+
+    $normalized_unit: string.to-lower-case(string.unquote($unit));
+
+    @if not list.index($_dimension_units, $normalized_unit) {
+        @error "#{$mixin_name}(): unsupported dimension unit `#{$unit}`.";
+    }
+
+    @return $normalized_unit;
+}
+
+@function _media_dimension($mixin_name, $value, $unit: px, $label: point) {
+    @if meta.type-of($value) != "number" {
+        @error "#{$mixin_name}(): `#{$label}` must be a Sass number.";
+    }
+
+    @if math.is-unitless($value) {
+        $normalized_unit: _media_validate_unit($mixin_name, $unit);
+
+        @return string.unquote($value + "" + $normalized_unit);
+    }
+
+    $value_unit: string.to-lower-case(math.unit($value));
+
+    @if not list.index($_dimension_units, $value_unit) {
+        @error "#{$mixin_name}(): `#{$label}` uses unsupported unit `#{$value_unit}`.";
+    }
+
+    @return $value;
+}
+
+@function _media_resolution($mixin_name, $value, $label) {
+    @if meta.type-of($value) != "number" {
+        @error "#{$mixin_name}(): `#{$label}` must be a Sass number.";
+    }
+
+    @if math.is-unitless($value) {
+        @return string.unquote($value + "dppx");
+    }
+
+    $value_unit: string.to-lower-case(math.unit($value));
+
+    @if not list.index($_resolution_units, $value_unit) {
+        @error "#{$mixin_name}(): `#{$label}` uses incompatible unit `#{$value_unit}`.";
+    }
+
+    @return $value;
+}
+
+@function _media_ratio($mixin_name, $value, $label) {
+    @if meta.type-of($value) == "number" {
+        @if not math.is-unitless($value) or $value <= 0 {
+            @error "#{$mixin_name}(): `#{$label}` must be a positive unitless ratio.";
+        }
+
+        @return $value;
+    }
+
+    @if meta.type-of($value) == "list" and list.separator($value) == slash and list.length($value) == 2 {
+        $numerator: list.nth($value, 1);
+        $denominator: list.nth($value, 2);
+
+        @if meta.type-of($numerator) != "number" or
+            meta.type-of($denominator) != "number" or
+            not math.is-unitless($numerator) or
+            not math.is-unitless($denominator) or
+            $numerator <= 0 or
+            $denominator <= 0 {
+            @error "#{$mixin_name}(): `#{$label}` must be a positive unitless ratio.";
+        }
+
+        @return $value;
+    }
+
+    @error "#{$mixin_name}(): `#{$label}` must be a positive ratio.";
+}
+
+@function _media_discrete($mixin_name, $key, $value, $allowed_values) {
+    @if not list.index($allowed_values, $value) {
+        @error "#{$mixin_name}(): unsupported value `#{$value}` for `#{$key}`.";
+    }
+
+    @return $value;
+}
+
+@function _media_join_conditions($conditions, $operator) {
+    $query: list.nth($conditions, 1);
+
+    @if list.length($conditions) > 1 {
+        @for $index from 2 through list.length($conditions) {
+            $query: $query + " " + $operator + " " + list.nth($conditions, $index);
+        }
+    }
+
+    @return string.unquote($query);
+}
+
+@function _container_validate_name($mixin_name, $name) {
+    @if $name == null {
+        @return null;
+    }
+
+    @if meta.type-of($name) != "string" {
+        @error "#{$mixin_name}(): `name` must be a string or keyword.";
+    }
+
+    $normalized_name: string.unquote($name);
+    $reserved_names: (
+        "and", "default", "inherit", "initial", "none", "not", "or",
+        "revert", "revert-layer", "unset"
+    );
+
+    @if string.length($normalized_name) == 0 {
+        @error "#{$mixin_name}(): `name` cannot be empty.";
+    }
+
+    @if list.index($reserved_names, string.to-lower-case($normalized_name)) {
+        @error "#{$mixin_name}(): unsupported container name `#{$name}`.";
+    }
+
+    $invalid_characters: (
+        " ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*",
+        "+", ",", ".", "/", ":", ";", "<", "=", ">", "?", "@",
+        "[", "]", "^", "`", "{", "|", "}", "~"
+    );
+    $has_invalid_character: false;
+
+    @each $character in $invalid_characters {
+        @if string.index($normalized_name, $character) {
+            $has_invalid_character: true;
+        }
+    }
+
+    @if $has_invalid_character {
+        @error "#{$mixin_name}(): invalid container name `#{$name}`.";
+    }
+
+    $first_character: string.slice($normalized_name, 1, 1);
+    $second_character: string.slice($normalized_name, 2, 2);
+    $digits: ("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+
+    @if list.index($digits, $first_character) or
+        ($first_character == "-" and string.length($normalized_name) == 1) or
+        ($first_character == "-" and list.index($digits, $second_character)) {
+        @error "#{$mixin_name}(): invalid container name `#{$name}`.";
+    }
+
+    @return $normalized_name;
+}
+
+@function _container_ratio_number($value) {
+    @if meta.type-of($value) == "number" {
+        @return $value;
+    }
+
+    @return math.div(list.nth($value, 1), list.nth($value, 2));
+}
+
+@mixin _media_single_axis($mixin_name, $point, $type, $units, $means, $axis, $orientation: null) {
+    $normalized_type: _media_validate_type($mixin_name, $type);
+    $normalized_media: _media_validate_media_type($mixin_name, $means);
+    $normalized_point: _media_dimension($mixin_name, $point, $units, point);
+
+    @if $orientation == null {
+        @media only #{$normalized_media} and (#{$normalized_type}-#{$axis}: #{$normalized_point}) {
+            @content;
+        }
+    } @else {
+        @media only #{$normalized_media} and (#{$normalized_type}-#{$axis}: #{$normalized_point}) and (orientation: #{$orientation}) {
+            @content;
+        }
+    }
+}
 
 // Width
-@mixin brp($punto, $type: max, $units: px, $means: screen){
-    //Max => hasta //min => desde
-    @if      $type == max { @media only #{$means} and (max-width: $punto + $units) { @content; }}
-    @else if $type == min { @media only #{$means} and (min-width: $punto + $units) { @content; }}
+@mixin brp($punto, $type: max, $units: px, $means: screen) {
+    @if meta.type-of($punto) == "map" {
+        $valid_keys: _media_validate_keys("brp", $punto, (point, p, type, t, unit, units, u, media, means, m));
+        $type: _media_map_value($punto, (type, t), max);
+        $units: _media_map_value($punto, (unit, units, u), px);
+        $means: _media_map_value($punto, (media, means, m), screen);
+        $punto: _media_map_value($punto, (point, p));
+    }
+
+    @if $punto == null {
+        @error "brp(): required `point` is missing.";
+    }
+
+    @include _media_single_axis("brp", $punto, $type, $units, $means, width) {
+        @content;
+    }
 }
 
-// Height And Portrait
+// Height and portrait
 @mixin brpp($punto, $type: max, $units: px, $means: screen) {
-    //Max => hasta //min => desde
-    @if $type == max {
-        @media only #{$means} and (max-height: $punto + $units)
-        and (orientation: portrait) { @content; }
+    @if meta.type-of($punto) == "map" {
+        $valid_keys: _media_validate_keys("brpp", $punto, (point, p, type, t, unit, units, u, media, means, m));
+        $type: _media_map_value($punto, (type, t), max);
+        $units: _media_map_value($punto, (unit, units, u), px);
+        $means: _media_map_value($punto, (media, means, m), screen);
+        $punto: _media_map_value($punto, (point, p));
     }
-    @else if $type == min {
-        @media only #{$means} and (min-height: $punto + $units)
-        and (orientation: portrait) { @content; }
+
+    @if $punto == null {
+        @error "brpp(): required `point` is missing.";
+    }
+
+    @include _media_single_axis("brpp", $punto, $type, $units, $means, height, portrait) {
+        @content;
     }
 }
 
-// Width And Landscape
+// Width and landscape
 @mixin brpl($punto, $type: max, $units: px, $means: screen) {
-    //Max => hasta //min => desde
-    @if $type == max {
-        @media only #{$means} and (max-width: $punto + $units)
-        and (orientation: landscape) { @content; }
+    @if meta.type-of($punto) == "map" {
+        $valid_keys: _media_validate_keys("brpl", $punto, (point, p, type, t, unit, units, u, media, means, m));
+        $type: _media_map_value($punto, (type, t), max);
+        $units: _media_map_value($punto, (unit, units, u), px);
+        $means: _media_map_value($punto, (media, means, m), screen);
+        $punto: _media_map_value($punto, (point, p));
     }
-    @else if $type == min {
-        @media only #{$means} and (min-width: $punto + $units)
-        and (orientation: landscape) { @content; }
+
+    @if $punto == null {
+        @error "brpl(): required `point` is missing.";
+    }
+
+    @include _media_single_axis("brpl", $punto, $type, $units, $means, width, landscape) {
+        @content;
     }
 }
 
 // Height
-@mixin brph($punto, $type: max, $units: px, $means: screen){
-    //Max => hasta //min => desde
-    @if      $type == max { @media only #{$means} and (max-height: $punto + $units) { @content; }}
-    @else if $type == min { @media only #{$means} and (min-height: $punto + $units) { @content; }}
-}
+@mixin brph($punto, $type: max, $units: px, $means: screen) {
+    @if meta.type-of($punto) == "map" {
+        $valid_keys: _media_validate_keys("brph", $punto, (point, p, type, t, unit, units, u, media, means, m));
+        $type: _media_map_value($punto, (type, t), max);
+        $units: _media_map_value($punto, (unit, units, u), px);
+        $means: _media_map_value($punto, (media, means, m), screen);
+        $punto: _media_map_value($punto, (point, p));
+    }
 
-// Width and heigh
-@mixin brpwh($puntow, $puntoh, $type: max, $units: px, $means: screen){
-    //Max => hasta //min => desde
-    @if $type == max {
-        @media only #{$means} and (max-width: $puntow + $units)
-        and (max-height: $puntoh + $units) { @content; }
+    @if $punto == null {
+        @error "brph(): required `point` is missing.";
     }
-    @else if $type == min {
-        @media only #{$means} and (min-width: $puntow + $units)
-        and (min-height: $puntoh + $units) { @content; }
-    }
-    @else if $type == maxmin {
-        @media only #{$means} and (max-width: $puntow + $units)
-        and (min-height: $puntoh + $units) { @content; }
-    }
-    @else if $type == minmax {
-        @media only #{$means} and (min-width: $puntow + $units)
-        and (max-height: $puntoh + $units) { @content; }
+
+    @include _media_single_axis("brph", $punto, $type, $units, $means, height) {
+        @content;
     }
 }
 
-// Multiple breakpoint
+// Width and height
+@mixin brpwh($puntow, $puntoh: null, $type: max, $units: px, $means: screen) {
+    @if meta.type-of($puntow) == "map" {
+        $valid_keys: _media_validate_keys("brpwh", $puntow, (width, w, height, h, type, t, unit, units, u, media, means, m));
+        $puntoh: _media_map_value($puntow, (height, h));
+        $type: _media_map_value($puntow, (type, t), max);
+        $units: _media_map_value($puntow, (unit, units, u), px);
+        $means: _media_map_value($puntow, (media, means, m), screen);
+        $puntow: _media_map_value($puntow, (width, w));
+    }
+
+    @if $puntow == null or $puntoh == null {
+        @error "brpwh(): required `width` and `height` are missing.";
+    }
+
+    $normalized_type: _media_validate_type("brpwh", $type, (max, min, maxmin, minmax));
+    $normalized_media: _media_validate_media_type("brpwh", $means);
+    $width: _media_dimension("brpwh", $puntow, $units, width);
+    $height: _media_dimension("brpwh", $puntoh, $units, height);
+    $width_type: max;
+    $height_type: max;
+
+    @if $normalized_type == min {
+        $width_type: min;
+        $height_type: min;
+    } @else if $normalized_type == maxmin {
+        $height_type: min;
+    } @else if $normalized_type == minmax {
+        $width_type: min;
+    }
+
+    @media only #{$normalized_media} and (#{$width_type}-width: #{$width}) and (#{$height_type}-height: #{$height}) {
+        @content;
+    }
+}
+
+// Inclusive range on one axis
+@mixin media-range($min, $max: null, $axis: width, $units: px, $means: screen) {
+    @if meta.type-of($min) == "map" {
+        $valid_keys: _media_validate_keys("media-range", $min, (min, max, axis, unit, units, u, media, means, m));
+        $max: _media_map_value($min, (max));
+        $axis: _media_map_value($min, (axis), width);
+        $units: _media_map_value($min, (unit, units, u), px);
+        $means: _media_map_value($min, (media, means, m), screen);
+        $min: _media_map_value($min, (min));
+    }
+
+    @if $min == null or $max == null {
+        @error "media-range(): required `min` and `max` are missing.";
+    }
+
+    @if not list.index((width, height), $axis) {
+        @error "media-range(): unsupported axis `#{$axis}`. Expected `width` or `height`.";
+    }
+
+    $normalized_media: _media_validate_media_type("media-range", $means);
+    $min_value: _media_dimension("media-range", $min, $units, min);
+    $max_value: _media_dimension("media-range", $max, $units, max);
+
+    @if math.compatible($min, $max) and $min > $max {
+        @error "media-range(): `min` cannot be greater than `max`.";
+    }
+
+    @media only #{$normalized_media} and (min-#{$axis}: #{$min_value}) and (max-#{$axis}: #{$max_value}) {
+        @content;
+    }
+}
+
+// Combined modern media features
+@mixin media($attr: ()) {
+    @if $attr == () {
+        @error "media(): the configuration map cannot be empty.";
+    }
+
+    $allowed_keys: (
+        media, operator, "not",
+        width, min_width, max_width,
+        height, min_height, max_height,
+        orientation,
+        aspect_ratio, min_aspect_ratio, max_aspect_ratio,
+        resolution, min_resolution, max_resolution,
+        color_gamut, dynamic_range, display_mode,
+        hover, any_hover, pointer, any_pointer,
+        reduced_motion, color_scheme, contrast, forced_colors,
+        reduced_transparency, reduced_data
+    );
+    $valid_keys: _media_validate_keys("media", $attr, $allowed_keys);
+
+    $media_type: _media_validate_media_type("media", _media_map_value($attr, (media), screen));
+    $operator: _media_map_value($attr, (operator), and);
+    $negate: _media_map_value($attr, ("not"), false);
+    $conditions: ();
+
+    @if not list.index((and, or), $operator) {
+        @error "media(): `operator` must be `and` or `or`.";
+    }
+
+    @if meta.type-of($negate) != "bool" {
+        @error "media(): `not` must be boolean.";
+    }
+
+    $dimension_features: (
+        width: width,
+        min_width: min-width,
+        max_width: max-width,
+        height: height,
+        min_height: min-height,
+        max_height: max-height
+    );
+
+    @each $key, $feature in $dimension_features {
+        @if map.has-key($attr, $key) {
+            $value: _media_dimension("media", map.get($attr, $key), px, $key);
+            $conditions: list.append($conditions, string.unquote("(" + $feature + ": " + $value + ")"), comma);
+        }
+    }
+
+    $ratio_features: (
+        aspect_ratio: aspect-ratio,
+        min_aspect_ratio: min-aspect-ratio,
+        max_aspect_ratio: max-aspect-ratio
+    );
+
+    @each $key, $feature in $ratio_features {
+        @if map.has-key($attr, $key) {
+            $value: _media_ratio("media", map.get($attr, $key), $key);
+            $conditions: list.append($conditions, string.unquote("(" + $feature + ": " + $value + ")"), comma);
+        }
+    }
+
+    $resolution_features: (
+        resolution: resolution,
+        min_resolution: min-resolution,
+        max_resolution: max-resolution
+    );
+
+    @each $key, $feature in $resolution_features {
+        @if map.has-key($attr, $key) {
+            $value: _media_resolution("media", map.get($attr, $key), $key);
+            $conditions: list.append($conditions, string.unquote("(" + $feature + ": " + $value + ")"), comma);
+        }
+    }
+
+    $discrete_features: (
+        orientation: (orientation, (portrait, landscape)),
+        color_gamut: (color-gamut, (srgb, p3, rec2020)),
+        dynamic_range: (dynamic-range, (standard, high)),
+        display_mode: (display-mode, (browser, fullscreen, standalone, minimal-ui, window-controls-overlay, picture-in-picture)),
+        hover: (hover, (none, hover)),
+        any_hover: (any-hover, (none, hover)),
+        pointer: (pointer, (none, coarse, fine)),
+        any_pointer: (any-pointer, (none, coarse, fine)),
+        reduced_motion: (prefers-reduced-motion, (no-preference, reduce)),
+        color_scheme: (prefers-color-scheme, (light, dark)),
+        contrast: (prefers-contrast, (no-preference, less, more, custom)),
+        forced_colors: (forced-colors, (none, active)),
+        reduced_transparency: (prefers-reduced-transparency, (no-preference, reduce)),
+        reduced_data: (prefers-reduced-data, (no-preference, reduce))
+    );
+
+    @each $key, $settings in $discrete_features {
+        @if map.has-key($attr, $key) {
+            $feature: list.nth($settings, 1);
+            $value: _media_discrete("media", $key, map.get($attr, $key), list.nth($settings, 2));
+            $conditions: list.append($conditions, string.unquote("(" + $feature + ": " + $value + ")"), comma);
+        }
+    }
+
+    @if list.length($conditions) == 0 {
+        @error "media(): at least one media feature is required.";
+    }
+
+    $condition_query: _media_join_conditions($conditions, $operator);
+
+    @if $negate {
+        $condition_query: string.unquote("not (" + $condition_query + ")");
+    }
+
+    @media #{$media_type} and (#{$condition_query}) {
+        @content;
+    }
+}
+
+// Container queries
+@mixin container-query($point: 1920, $name: null, $units: px) {
+    $conditions: ();
+    $operator: and;
+    $normalized_name: null;
+
+    @if $point == () {
+        @error "container-query(): the configuration map cannot be empty.";
+    }
+
+    @if meta.type-of($point) == "map" {
+        $allowed_keys: (
+            name, operator, unit, units, u,
+            width, min_width, max_width,
+            height, min_height, max_height,
+            aspect_ratio, min_aspect_ratio, max_aspect_ratio,
+            orientation
+        );
+        $valid_keys: _media_validate_keys("container-query", $point, $allowed_keys);
+        $name: _media_map_value($point, (name));
+        $operator: _media_map_value($point, (operator), and);
+        $units: _media_map_value($point, (unit, units, u), px);
+        $normalized_name: _container_validate_name("container-query", $name);
+        $units: _media_validate_unit("container-query", $units);
+
+        @if not list.index((and, or), $operator) {
+            @error "container-query(): `operator` must be `and` or `or`.";
+        }
+
+        $dimension_features: (
+            width: width,
+            min_width: min-width,
+            max_width: max-width,
+            height: height,
+            min_height: min-height,
+            max_height: max-height
+        );
+
+        @each $key, $feature in $dimension_features {
+            @if map.has-key($point, $key) {
+                $value: _media_dimension("container-query", map.get($point, $key), $units, $key);
+                $conditions: list.append($conditions, string.unquote("(" + $feature + ": " + $value + ")"), comma);
+            }
+        }
+
+        @if map.has-key($point, min_width) and map.has-key($point, max_width) {
+            $min_width: map.get($point, min_width);
+            $max_width: map.get($point, max_width);
+
+            @if math.compatible($min_width, $max_width) and $min_width > $max_width {
+                @error "container-query(): `min_width` cannot be greater than `max_width`.";
+            }
+        }
+
+        @if map.has-key($point, min_height) and map.has-key($point, max_height) {
+            $min_height: map.get($point, min_height);
+            $max_height: map.get($point, max_height);
+
+            @if math.compatible($min_height, $max_height) and $min_height > $max_height {
+                @error "container-query(): `min_height` cannot be greater than `max_height`.";
+            }
+        }
+
+        $ratio_features: (
+            aspect_ratio: aspect-ratio,
+            min_aspect_ratio: min-aspect-ratio,
+            max_aspect_ratio: max-aspect-ratio
+        );
+        $normalized_ratios: ();
+
+        @each $key, $feature in $ratio_features {
+            @if map.has-key($point, $key) {
+                $value: _media_ratio("container-query", map.get($point, $key), $key);
+                $normalized_ratios: map.set($normalized_ratios, $key, $value);
+                $conditions: list.append($conditions, string.unquote("(" + $feature + ": " + $value + ")"), comma);
+            }
+        }
+
+        @if map.has-key($normalized_ratios, min_aspect_ratio) and
+            map.has-key($normalized_ratios, max_aspect_ratio) and
+            _container_ratio_number(map.get($normalized_ratios, min_aspect_ratio)) >
+            _container_ratio_number(map.get($normalized_ratios, max_aspect_ratio)) {
+            @error "container-query(): `min_aspect_ratio` cannot be greater than `max_aspect_ratio`.";
+        }
+
+        @if map.has-key($point, orientation) {
+            $orientation: _media_discrete(
+                "container-query",
+                orientation,
+                map.get($point, orientation),
+                (portrait, landscape)
+            );
+            $conditions: list.append($conditions, string.unquote("(orientation: " + $orientation + ")"), comma);
+        }
+
+        @if list.length($conditions) == 0 {
+            @if $normalized_name == null {
+                @error "container-query(): at least one container feature or `name` is required.";
+            }
+
+            $conditions: list.append($conditions, string.unquote("(max-width: 1920px)"), comma);
+        }
+    } @else {
+        $normalized_name: _container_validate_name("container-query", $name);
+        $normalized_point: _media_dimension("container-query", $point, $units, point);
+        $conditions: list.append($conditions, string.unquote("(max-width: " + $normalized_point + ")"), comma);
+    }
+
+    $condition_query: _media_join_conditions($conditions, $operator);
+
+    @if $normalized_name == null {
+        @container #{$condition_query} {
+            @content;
+        }
+    } @else {
+        @container #{$normalized_name} #{$condition_query} {
+            @content;
+        }
+    }
+}
+
+// Multiple breakpoints
 @mixin mbr($points...) {
-    @for $i from 1 through list.length($points) {
-        @include brp(list.nth($points, $i)) {
-            @content($i);
+    @if list.length($points) == 0 {
+        @error "mbr(): at least one breakpoint is required.";
+    }
+
+    @for $index from 1 through list.length($points) {
+        $point: list.nth($points, $index);
+
+        @if meta.type-of($point) != "number" and meta.type-of($point) != "map" {
+            @error "mbr(): breakpoint #{$index} must be a number or a map.";
+        }
+
+        @include brp($point) {
+            @content($index);
         }
     }
 }
 //-----------------------------------
-//END Media Queries
+// END Media Queries
 //-----------------------------------

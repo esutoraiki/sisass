@@ -5,7 +5,7 @@
     padding: 20px;
     border: 2px solid #2d214a;
 
-    @include brpp(860) {
+    @include brpp((point: 860, type: max)) {
         @include bc(#fff0c2, #4a3700);
     }
 }

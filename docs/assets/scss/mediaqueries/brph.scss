@@ -5,7 +5,7 @@
     padding: 20px;
     border: 2px solid #4a2914;
 
-    @include brph(700) {
+    @include brph((point: 700, type: max)) {
         @include bc(#d8edf0, #153c42);
     }
 }

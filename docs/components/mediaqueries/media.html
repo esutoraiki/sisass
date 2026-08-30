@@ -1,0 +1,106 @@
+<article id="media" class="media">
+    <div class="group_title">
+        <h2 id="media_heading" class="subtitle" data-page-menu-item data-page-menu-label="media">
+            media (_mediaqueries.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Combina dimensiones, orientación, pantalla, interacción y preferencias
+        del usuario mediante un único mapa. Las condiciones usan <b>and</b> de
+        forma predeterminada y también admiten <b>or</b>.
+    </p>
+    <p class="description">
+        Para negar el grupo completo usa la clave entre comillas
+        <b>"not"</b>, porque <b>not</b> es una palabra reservada en Sass. Las
+        claves desconocidas y los valores incompatibles detienen la compilación.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin media($attr: ());</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr><th>Clave</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>media</b></td><td>Keyword</td><td>screen</td><td>Define <b>all</b>, <b>print</b>, <b>screen</b> o <b>speech</b>.</td></tr>
+                <tr><td><b>operator</b></td><td>Keyword</td><td>and</td><td>Combina todas las condiciones con <b>and</b> u <b>or</b>.</td></tr>
+                <tr><td><b>"not"</b></td><td>Bool</td><td>false</td><td>Niega el grupo completo de condiciones.</td></tr>
+                <tr><td><b>width</b></td><td>Number</td><td>-</td><td>Genera <b>width</b>.</td></tr>
+                <tr><td><b>min_width</b></td><td>Number</td><td>-</td><td>Genera <b>min-width</b>.</td></tr>
+                <tr><td><b>max_width</b></td><td>Number</td><td>-</td><td>Genera <b>max-width</b>.</td></tr>
+                <tr><td><b>height</b></td><td>Number</td><td>-</td><td>Genera <b>height</b>.</td></tr>
+                <tr><td><b>min_height</b></td><td>Number</td><td>-</td><td>Genera <b>min-height</b>.</td></tr>
+                <tr><td><b>max_height</b></td><td>Number</td><td>-</td><td>Genera <b>max-height</b>.</td></tr>
+                <tr><td><b>orientation</b></td><td>Keyword</td><td>-</td><td>Define <b>portrait</b> o <b>landscape</b>.</td></tr>
+                <tr><td><b>aspect_ratio</b></td><td>Ratio</td><td>-</td><td>Genera <b>aspect-ratio</b> con un ratio positivo.</td></tr>
+                <tr><td><b>min_aspect_ratio</b></td><td>Ratio</td><td>-</td><td>Genera <b>min-aspect-ratio</b> con un ratio positivo.</td></tr>
+                <tr><td><b>max_aspect_ratio</b></td><td>Ratio</td><td>-</td><td>Genera <b>max-aspect-ratio</b> con un ratio positivo.</td></tr>
+                <tr><td><b>resolution</b></td><td>Number</td><td>-</td><td>Genera una resolución exacta; un valor sin unidad usa <b>dppx</b>.</td></tr>
+                <tr><td><b>min_resolution</b></td><td>Number</td><td>-</td><td>Genera <b>min-resolution</b>.</td></tr>
+                <tr><td><b>max_resolution</b></td><td>Number</td><td>-</td><td>Genera <b>max-resolution</b>.</td></tr>
+                <tr><td><b>color_gamut</b></td><td>Keyword</td><td>-</td><td>Admite <b>srgb</b>, <b>p3</b> o <b>rec2020</b>.</td></tr>
+                <tr><td><b>dynamic_range</b></td><td>Keyword</td><td>-</td><td>Admite <b>standard</b> o <b>high</b>.</td></tr>
+                <tr><td><b>display_mode</b></td><td>Keyword</td><td>-</td><td>Define el modo de visualización de la aplicación.</td></tr>
+                <tr><td><b>hover</b></td><td>Keyword</td><td>-</td><td>Admite <b>none</b> o <b>hover</b> para el mecanismo principal.</td></tr>
+                <tr><td><b>any_hover</b></td><td>Keyword</td><td>-</td><td>Admite <b>none</b> o <b>hover</b> para cualquier mecanismo.</td></tr>
+                <tr><td><b>pointer</b></td><td>Keyword</td><td>-</td><td>Admite <b>none</b>, <b>coarse</b> o <b>fine</b> para el puntero principal.</td></tr>
+                <tr><td><b>any_pointer</b></td><td>Keyword</td><td>-</td><td>Admite <b>none</b>, <b>coarse</b> o <b>fine</b> para cualquier puntero.</td></tr>
+                <tr><td><b>reduced_motion</b></td><td>Keyword</td><td>-</td><td>Admite <b>no-preference</b> o <b>reduce</b>.</td></tr>
+                <tr><td><b>color_scheme</b></td><td>Keyword</td><td>-</td><td>Admite <b>light</b> o <b>dark</b>.</td></tr>
+                <tr><td><b>contrast</b></td><td>Keyword</td><td>-</td><td>Admite <b>no-preference</b>, <b>less</b>, <b>more</b> o <b>custom</b>.</td></tr>
+                <tr><td><b>forced_colors</b></td><td>Keyword</td><td>-</td><td>Admite <b>none</b> o <b>active</b>.</td></tr>
+                <tr><td><b>reduced_transparency</b></td><td>Keyword</td><td>-</td><td>Admite <b>no-preference</b> o <b>reduce</b>.</td></tr>
+                <tr><td><b>reduced_data</b></td><td>Keyword</td><td>-</td><td>Admite <b>no-preference</b> o <b>reduce</b>.</td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="media_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="example_media">Preferencias e interacción</div>
+                </div>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/mediaqueries/media.scss"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/mediaqueries/media.css"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_media&quot;&gt;Preferencias&nbsp;e&nbsp;interacción&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

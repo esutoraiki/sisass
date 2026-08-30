@@ -1,0 +1,99 @@
+<article id="media_range" class="media_range">
+    <div class="group_title">
+        <h2 id="media_range_heading" class="subtitle" data-page-menu-item data-page-menu-label="media_range">
+            media-range (_mediaqueries.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Genera un rango inclusivo entre dos medidas del mismo eje. Por defecto
+        combina <b>min-width</b> y <b>max-width</b> mediante <b>and</b>.
+    </p>
+    <p class="description">
+        Los números sin unidad se interpretan con <b>px</b>; las medidas que ya
+        incluyen una unidad, como <b>rem</b>, se conservan sin alteraciones.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin media-range($min, $max, $axis: width, $units: px, $means: screen);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>min</b></td><td>Number</td><td>-</td><td>Define el límite inferior inclusivo.</td></tr>
+                <tr><td><b>max</b></td><td>Number</td><td>-</td><td>Define el límite superior inclusivo.</td></tr>
+                <tr><td><b>axis</b></td><td>Keyword</td><td>width</td><td>Selecciona el eje <b>width</b> o <b>height</b>.</td></tr>
+                <tr><td><b>units</b></td><td>String</td><td>px</td><td>Define la unidad para límites sin unidad.</td></tr>
+                <tr><td><b>means</b></td><td>Keyword</td><td>screen</td><td>Define el media type de la consulta.</td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis alternativa (map)
+        </h3>
+        <pre class="language-scss"><code>@include media-range((&NewLine;    min: 48rem,&NewLine;    max: 75rem,&NewLine;    axis: width,&NewLine;    unit: px,&NewLine;    media: screen&NewLine;)) { ... }</code></pre>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr><th>Clave</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>min</b></td><td>Number</td><td>-</td><td>Define el límite inferior inclusivo.</td></tr>
+                <tr><td><b>max</b></td><td>Number</td><td>-</td><td>Define el límite superior inclusivo.</td></tr>
+                <tr><td><b>axis</b></td><td>Keyword</td><td>width</td><td>Selecciona el eje <b>width</b> o <b>height</b>.</td></tr>
+                <tr><td><b>unit | units | u</b></td><td>String</td><td>px</td><td>Define la unidad para límites sin unidad.</td></tr>
+                <tr><td><b>media | means | m</b></td><td>Keyword</td><td>screen</td><td>Define el media type de la consulta.</td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="media_range_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="example_media_range">Rango de ancho inclusivo</div>
+                </div>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/mediaqueries/media_range.scss"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/mediaqueries/media_range.css"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_media_range&quot;&gt;Rango&nbsp;de&nbsp;ancho&nbsp;inclusivo&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

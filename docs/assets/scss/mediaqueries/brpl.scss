@@ -5,7 +5,7 @@
     padding: 20px;
     border: 2px solid #153443;
 
-    @include brpl(960) {
+    @include brpl((point: 60, unit: rem)) {
         @include bc(#dff1d6, #253f18);
     }
 }

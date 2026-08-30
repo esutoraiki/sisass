@@ -1,0 +1,16 @@
+.example_media_range {
+  background-color: #e8edf8;
+  color: #1d315f;
+  padding: 20px;
+  border: 2px solid #1d315f;
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .example_media_range {
+    background-color: #d7f0df;
+  }
+}
+@media only screen and (min-width: 48rem) and (max-width: 75rem) {
+  .example_media_range {
+    color: #174928;
+  }
+}
