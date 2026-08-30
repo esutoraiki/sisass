@@ -1,0 +1,18 @@
+{
+    "breadcrumb": [
+        {
+            "label": "articles"
+        },
+        {
+            "label": "new.html"
+        }
+    ],
+    "components": [
+        {
+            "id": "new",
+            "url": "../components/articles/new.html",
+            "position": "beforeend",
+            "node": "new"
+        }
+    ]
+}

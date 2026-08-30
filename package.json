@@ -1,6 +1,6 @@
 {
   "name": "sisass",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple Interface for SASS",
   "main": "index.js",
   "scripts": {

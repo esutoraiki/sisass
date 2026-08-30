@@ -1,0 +1,99 @@
+@use "../core/instances" as *;
+
+.new {
+    max-width: 960px;
+    margin-inline: auto;
+
+    .release_intro {
+        @include t1((
+            s: szrem(16),
+            a: left,
+            lh: 1.5,
+            wr: balance
+        ));
+        margin-block-end: 30px;
+    }
+
+    .release_section {
+        @include bc(var(--theme_surface), var(--theme_text));
+        @include border-radius(16px);
+        padding: 28px 30px;
+        border: $bd9;
+        margin-block-end: 24px;
+
+        @include brp($b7) {
+            padding: 22px 20px;
+            margin-block-end: 18px;
+        }
+
+        > .title {
+            @include no-spacing;
+            font-size: szrem(24);
+            line-height: 1.25;
+            padding-inline-start: 14px;
+            border-inline-start: 5px solid var(--theme_accent_alt);
+        }
+    }
+
+    .release_list {
+        @include no-spacing;
+        margin-block-start: 14px;
+        list-style: none;
+    }
+
+    .release_item {
+        position: relative;
+        padding: 18px 0 18px 28px;
+        border-block-end: $bd9;
+
+        @include brp($b7) {
+            padding-inline-start: 24px;
+        }
+
+        &::before {
+            @include whs(10px);
+            @include border-radius(50%);
+            content: "";
+            position: absolute;
+            inset-block-start: 24px;
+            inset-inline-start: 2px;
+            background-color: var(--theme_accent_alt);
+        }
+
+        &:last-child {
+            padding-block-end: 0;
+            border-block-end: 0;
+        }
+    }
+
+    .release_item_title {
+        @include t1((
+            f: $f2,
+            s: szrem(18),
+            w: bold,
+            a: left,
+            lh: 1.3
+        ));
+        margin-block-end: 7px;
+        color: var(--theme_text_bold);
+    }
+
+    .release_item_description {
+        @include t1((
+            s: szrem(16),
+            a: left,
+            lh: 1.55,
+            wr: pretty
+        ));
+        max-width: 72ch;
+        margin: 0;
+    }
+}
+
+@media print {
+    .new {
+        .release_item {
+            break-inside: avoid;
+        }
+    }
+}
