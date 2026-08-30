@@ -5,7 +5,7 @@
     padding: 20px;
     border: 2px solid #3c4215;
 
-    @include brpwh(900, 700) {
+    @include brpwh((width: 900, height: 700, type: max)) {
         @include bc(#f0d8e8, #421532);
     }
 }

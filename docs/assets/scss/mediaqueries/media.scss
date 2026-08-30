@@ -1,0 +1,22 @@
+@use "../core/instances" as *;
+
+.example_media {
+    background-color: #f2e7f7;
+    color: #40214e;
+    padding: 20px;
+    border: 2px solid #40214e;
+    transition: transform 200ms ease;
+
+    @include media((orientation: landscape, hover: hover, pointer: fine)) {
+        transform: translateY(-4px);
+    }
+
+    @include media((reduced_motion: reduce)) {
+        transition: none;
+    }
+
+    @include media((color_scheme: dark)) {
+        background-color: #2d2033;
+        color: #f7e9ff;
+    }
+}

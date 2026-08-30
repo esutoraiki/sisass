@@ -1,0 +1,126 @@
+<article id="container_query" class="container_query">
+    <div class="group_title">
+        <h2
+            id="container_query_heading"
+            class="subtitle"
+            data-page-menu-item
+            data-page-menu-label="container_query"
+        >
+            container-query (_mediaqueries.scscs)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.0.1
+        </h3>
+    </div>
+
+    <p class="description">
+        Genera una regla <b>@container</b> para adaptar un componente al espacio disponible en su contenedor. A
+        diferencia de <b>media</b>, <b>media-range</b> y <b>brp</b>, la consulta no depende del tamaño general de la
+        ventana, sino del ancestro que establece el contexto de contención.
+    </p>
+    <p class="description">
+        La interfaz secuencial consulta <b>max-width</b> con un enfoque desktop-first y usa <b>1920px</b> de forma
+        predeterminada. El mixin no declara <b>container-name</b> ni <b>container-type</b>: debes configurarlos en el
+        contenedor; para consultar el alto, utiliza un tipo de contención que también controle esa dimensión.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin container-query($point: 1920, $name: null, $units: px);</code></pre>
+
+        <h3 class="subtitle">
+            Parámetros secuenciales
+        </h3>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr><th>Parámetro</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>point</b></td><td>Number</td><td>1920</td><td>Genera el límite <b>max-width</b> de la consulta desktop-first.</td></tr>
+                <tr><td><b>name</b></td><td>String | Keyword</td><td>null</td><td>Selecciona un contenedor nombrado; <b>null</b> usa el contenedor elegible más cercano.</td></tr>
+                <tr><td><b>units</b></td><td>String</td><td>px</td><td>Define la unidad aplicada a <b>point</b> cuando no tiene unidad.</td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis alternativa (map)
+        </h3>
+        <pre class="language-scss"><code>@include container-query((&NewLine;    name: product_card_demo,&NewLine;    operator: and,&NewLine;    unit: px,&NewLine;    max_width: 480&NewLine;)) { ... }</code></pre>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr><th>Clave</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>name</b></td><td>String | Keyword</td><td>null</td><td>Selecciona el nombre establecido mediante <b>container-name</b>.</td></tr>
+                <tr><td><b>operator</b></td><td>Keyword</td><td>and</td><td>Combina todas las condiciones mediante <b>and</b> u <b>or</b>.</td></tr>
+                <tr><td><b>unit | units | u</b></td><td>String</td><td>px</td><td>Define la unidad aplicada a las dimensiones sin unidad.</td></tr>
+                <tr><td><b>width</b></td><td>Number</td><td>null</td><td>Genera una condición <b>width</b> exacta.</td></tr>
+                <tr><td><b>min_width</b></td><td>Number</td><td>null</td><td>Genera una condición <b>min-width</b> inclusiva.</td></tr>
+                <tr><td><b>max_width</b></td><td>Number</td><td>null</td><td>Genera una condición <b>max-width</b> inclusiva.</td></tr>
+                <tr><td><b>height</b></td><td>Number</td><td>null</td><td>Genera una condición <b>height</b> exacta.</td></tr>
+                <tr><td><b>min_height</b></td><td>Number</td><td>null</td><td>Genera una condición <b>min-height</b> inclusiva.</td></tr>
+                <tr><td><b>max_height</b></td><td>Number</td><td>null</td><td>Genera una condición <b>max-height</b> inclusiva.</td></tr>
+                <tr><td><b>aspect_ratio</b></td><td>Number | Ratio</td><td>null</td><td>Genera una condición <b>aspect-ratio</b> exacta.</td></tr>
+                <tr><td><b>min_aspect_ratio</b></td><td>Number | Ratio</td><td>null</td><td>Genera una condición <b>min-aspect-ratio</b> inclusiva.</td></tr>
+                <tr><td><b>max_aspect_ratio</b></td><td>Number | Ratio</td><td>null</td><td>Genera una condición <b>max-aspect-ratio</b> inclusiva.</td></tr>
+                <tr><td><b>orientation</b></td><td>Keyword</td><td>null</td><td>Genera <b>portrait</b> o <b>landscape</b>.</td></tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+
+        <p class="note">
+            Arrastra horizontalmente la esquina inferior derecha del contenedor. Cuando su ancho es igual o menor a
+            <b>480px</b>, la tarjeta cambia de dos columnas a una, aunque el ancho de la ventana no cambie.
+        </p>
+
+        <div
+            id="container_query_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="example_container_query">
+                        <div class="example_container_query_card">
+                            <div class="example_container_query_image">SISASS</div>
+                            <div class="example_container_query_content">
+                                <strong>Componente adaptable</strong>
+                                <span>Su distribución depende del contenedor.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/mediaqueries/container_query.scss"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/mediaqueries/container_query.css"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;example_container_query&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;example_container_query_card&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;example_container_query_image&quot;&gt;SISASS&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;example_container_query_content&quot;&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;strong&gt;Componente&nbsp;adaptable&lt;/strong&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;Su&nbsp;distribución&nbsp;depende&nbsp;del&nbsp;contenedor.&lt;/span&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;&NewLine;&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

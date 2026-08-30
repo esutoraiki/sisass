@@ -1,0 +1,16 @@
+@use "../core/instances" as *;
+
+.example_media_range {
+    background-color: #e8edf8;
+    color: #1d315f;
+    padding: 20px;
+    border: 2px solid #1d315f;
+
+    @include media-range(768, 1200) {
+        background-color: #d7f0df;
+    }
+
+    @include media-range((min: 48rem, max: 75rem)) {
+        color: #174928;
+    }
+}

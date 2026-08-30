@@ -1,6 +1,6 @@
 <article id="brp" class="brp">
     <div class="group_title">
-        <h2 class="subtitle">
+        <h2 id="brp_heading" class="subtitle" data-page-menu-item data-page-menu-label="brp">
             brp (_mediaqueries.scscs)
         </h2>
         <h3 class="attribute">
@@ -59,7 +59,7 @@
                     <td><b>units</b></td>
                     <td>String</td>
                     <td>px</td>
-                    <td>Define la unidad que se concatena al punto de corte.</td>
+                    <td>Define la unidad aplicada cuando el punto no tiene unidad.</td>
                 </tr>
                 <tr>
                     <td><b>means</b></td>
@@ -67,6 +67,29 @@
                     <td>screen</td>
                     <td>Define el media type usado después de <b>only</b>.</td>
                 </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis alternativa (map)
+        </h3>
+        <pre class="language-scss"><code>@include brp((&NewLine;    point: 768,&NewLine;    type: max,&NewLine;    unit: px,&NewLine;    media: screen&NewLine;)) { ... }</code></pre>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Tipo</th>
+                    <th>Default</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td><b>point | p</b></td><td>Number</td><td>-</td><td>Define el límite de ancho.</td></tr>
+                <tr><td><b>type | t</b></td><td>Keyword</td><td>max</td><td>Selecciona <b>min-width</b> o <b>max-width</b>.</td></tr>
+                <tr><td><b>unit | units | u</b></td><td>String</td><td>px</td><td>Define la unidad para un número sin unidad.</td></tr>
+                <tr><td><b>media | means | m</b></td><td>Keyword</td><td>screen</td><td>Define el media type de la consulta.</td></tr>
             </tbody>
             </table>
         </div>

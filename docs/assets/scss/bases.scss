@@ -18,7 +18,6 @@
 @forward "bases/img_replace";
 @forward "bases/no_border";
 @forward "bases/no_spacing";
-@forward "bases/reset";
 @forward "bases/normalize_svg";
 @forward "bases/keyframes";
 @forward "bases/placeholder";
@@ -30,9 +29,11 @@
 @forward "bases/text";
 @forward "bases/tf";
 @forward "bases/szrem";
+@forward "bases/normalize_px";
 @forward "bases/str_replace";
 @forward "bases/mapv";
 @forward "bases/bp";
+@forward "bases/pb";
 @forward "bases/strip_unit";
 @forward "bases/list-add-unique";
 @forward "bases/list-add-items";

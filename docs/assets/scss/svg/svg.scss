@@ -15,6 +15,7 @@
                     y: 50%
                 )
             ));
+            flex-shrink: 0;
             content: "";
         }
     }
@@ -47,6 +48,7 @@
             )
         ));
         filter: var(--theme_icon_filter);
+        flex-shrink: 0;
         content: "";
     }
 }
@@ -63,6 +65,7 @@
             )
         ));
         filter: var(--theme_icon_filter);
+        flex-shrink: 0;
         content: "";
     }
 }

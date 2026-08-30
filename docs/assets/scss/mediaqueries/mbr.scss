@@ -4,9 +4,9 @@
 $colors: (#cfebf3, #e5f0d3, #f6d8df);
 $sizes: (300px, 220px, 150px);
 
-$breakpoint_1: 1920;
-$breakpoint_2: 980;
-$breakpoint_3: 640;
+$breakpoint_1: (point: 1200, type: max);
+$breakpoint_2: (point: 768, type: max);
+$breakpoint_3: (point: 48, type: max, unit: rem);
 
 .example_mbr {
     background-color: #cfebf3;
@@ -15,8 +15,8 @@ $breakpoint_3: 640;
     padding: 20px;
     border: 2px solid #123743;
 
-    @include mbr($breakpoint_1, $breakpoint_2, $breakpoint_3) using ($i) {
-        width: list.nth($sizes, $i);
-        background-color: list.nth($colors, $i);
+    @include mbr($breakpoint_1, $breakpoint_2, $breakpoint_3) using ($index) {
+        width: list.nth($sizes, $index);
+        background-color: list.nth($colors, $index);
     }
 }

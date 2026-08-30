@@ -1,0 +1,173 @@
+<article id="new" class="new">
+    <div class="group_title">
+        <h1 class="title">
+            Novedades Versión 2.0.1
+        </h1>
+
+        <div class="container_attributes">
+            <span class="attribute">
+                Tipo: Artículo
+            </span>
+            <span class="attribute">
+                Versión: 2.0.1
+            </span>
+        </div>
+    </div>
+
+    <p class="release_intro">
+        La versión 2.0.1 reúne correcciones en las utilidades base, mejora la guía de instalación e incorpora nuevas formas de construir consultas de medios y de contenedor.
+    </p>
+
+    <section class="release_section" aria-labelledby="corrections">
+        <h2
+            id="corrections"
+            class="title"
+            data-page-menu-item
+        >
+            Correcciones
+        </h2>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Una sola declaración de <b>z-index</b> en <b>normalize-svg</b>
+                </h3>
+                <p class="release_item_description">
+                    Se corrigió la integración de <b>normalize-svg</b> con <b>replace-base</b> y <b>position</b>. Antes podía generarse primero el <b>z-index</b> predeterminado de <b>position</b> y después el configurado para el SVG, lo cual causaba como efecto la aparición de un <b>z-index</b> duplicado. Ahora el valor se propaga directamente y el CSS resultante contiene una sola declaración.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Unidades consistentes en <b>_base.scss</b>
+                </h3>
+                <p class="release_item_description">
+                    Las utilidades de tamaño y posición convierten automáticamente a píxeles los números sin unidad. La normalización se aplica a tamaños tipográficos, desplazamientos, ancho, alto, separación, máscaras SVG y dimensiones del scroll, mientras conserva medidas que ya tienen unidad y valores como <b>auto</b>.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Nueva función <b>normalize-px</b>
+                </h3>
+                <p class="release_item_description">
+                    <b>normalize-px</b> agrega <b>px</b> únicamente a un número sin unidad. Por ejemplo, <b>normalize-px(220)</b> devuelve <b>220px</b>; valores como <b>20rem</b> o <b>auto</b> se mantienen sin cambios.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    <b>strip-unit</b> admite valores no numéricos
+                </h3>
+                <p class="release_item_description">
+                    La función elimina la unidad solo cuando recibe un número. Si recibe una palabra clave u otro tipo de valor, lo devuelve sin modificar; así evita operaciones matemáticas inválidas con entradas como <b>normal</b> y conserva el resultado esperado de <b>strip-unit(24px)</b>: <b>24</b>.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Menú secundario para la página actual
+                </h3>
+                <p class="release_item_description">
+                    El nuevo menú se construye con los encabezados seleccionados de cada página, conserva la jerarquía de secciones, navega mediante hashes y destaca el contenido visible durante el desplazamiento. En pantallas estrechas se vuelve desplegable, se oculta al imprimir y excluye los encabezados internos de <b>TabPanel</b>.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="installation_article">
+        <h2
+            id="installation_article"
+            class="title"
+            data-page-menu-item
+        >
+            Artículo de instalación
+        </h2>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Requisitos más fáciles de comprobar
+                </h3>
+                <p class="release_item_description">
+                    Node.js, npm y la raíz del proyecto se presentan en tarjetas independientes con versiones recomendadas y comandos de comprobación. Los comandos pueden copiarse desde la tarjeta y la distribución se adapta al ancho disponible.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Flujo de instalación reorganizado
+                </h3>
+                <p class="release_item_description">
+                    La guía separa los pasos comunes de los específicos de cada entorno. <b>npm init -y</b> solo se indica cuando falta <b>package.json</b>; <b class="tagline_sisass">SISASS</b> se instala una vez; y cada integración especifica su compilador: <b>sass</b> para Vanilla, SQHTML y React con Webpack, o preferentemente <b>sass-embedded</b> para React con Vite.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="new_capabilities">
+        <h2
+            id="new_capabilities"
+            class="title"
+            data-page-menu-item
+        >
+            Nuevas capacidades
+        </h2>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Nueva función <b>pb</b>
+                </h3>
+                <p class="release_item_description">
+                    <b>pb</b> calcula la medida representada por un porcentaje respecto a una base mediante la operación <b>(value * base) / 100</b>. Usa <b>px</b> como unidad predeterminada: un valor de <b>20</b> sobre una base de <b>1920</b> devuelve <b>384px</b>. Es la operación inversa conceptual de <b>bp</b>.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    API modernizada para los mixins existentes
+                </h3>
+                <p class="release_item_description">
+                    <b>brp</b>, <b>brpp</b>, <b>brpl</b>, <b>brph</b> y <b>brpwh</b> conservan sus llamadas posicionales y añaden una sintaxis alternativa mediante mapas y alias. También validan claves, tipos y unidades, y conservan medidas propias como <b>48rem</b> sin convertirlas en valores inválidos como <b>48rempx</b>. <b>mbr</b> acepta ahora números o mapas para cada breakpoint.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Nuevo mixin <b>media-range</b>
+                </h3>
+                <p class="release_item_description">
+                    Genera un rango inclusivo mínimo y máximo sobre <b>width</b> o <b>height</b>. Comprueba que existan ambos límites, valida el eje y evita rangos en los que el valor mínimo sea mayor que el máximo.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Nuevo mixin <b>media</b>
+                </h3>
+                <p class="release_item_description">
+                    Construye media queries mediante un único mapa. Admite dimensiones, orientación, relación de aspecto, resolución, gama y rango de color, modo de visualización, capacidades de interacción y preferencias de accesibilidad. Las condiciones usan <b>and</b> de forma predeterminada y también admiten <b>or</b> y negación.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Nuevo mixin <b>container-query</b>
+                </h3>
+                <p class="release_item_description">
+                    Genera reglas <b>@container</b> para adaptar un componente al espacio disponible en su contenedor, sin depender del tamaño de la ventana. Admite contenedores nombrados, dimensiones, rangos, relación de aspecto y orientación.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h3 class="release_item_title">
+                    Lógica interna compartida
+                </h3>
+                <p class="release_item_description">
+                    El nuevo mixin privado <b>_media_single_axis</b> centraliza la construcción y validación de consultas sobre un solo eje. <b>brp</b>, <b>brpp</b>, <b>brpl</b> y <b>brph</b> lo reutilizan para mantener un comportamiento consistente sin duplicar lógica.
+                </p>
+            </li>
+        </ul>
+    </section>
+</article>

@@ -1,8 +1,8 @@
 <article id="installation" class="installation">
     <div class="group_title">
-        <h2 class="subtitle">
+        <h1 class="title">
             Instalación de SISASS
-        </h2>
+        </h1>
 
         <div class="container_attributes">
             <h3 class="attribute">
@@ -19,7 +19,7 @@
     </p>
 
     <p class="description">
-        Elige el procedimiento que corresponde a tu entorno. La instalación del paquete y la instalación del preprocesador Sass son pasos distintos, pero ambos son necesarios para compilar los estilos.
+        Elige el procedimiento que corresponde a tu entorno. La instalación de <b class="tagline_sisass">SISASS</b> y la del compilador Sass son pasos distintos. Cada entorno indica qué implementación de Sass debes instalar para compilar los estilos.
     </p>
 
     <aside class="note" aria-label="Advertencia de instalación">
@@ -27,8 +27,12 @@
     </aside>
 
 
-    <section id="installation_requirements" class="installation_requirements">
-        <h2 class="title" id="installation_requirements">
+    <section class="installation_requirements">
+        <h2
+            id="installation_requirements"
+            class="title"
+            data-page-menu-item
+        >
             Requisitos comunes
         </h2>
 
@@ -56,7 +60,7 @@
                 </div>
 
                 <p class="version">Versión recomendada: 18.x o superior</p>
-                <p class="description">Entorno de ejecución de JavaScript necesario para SISASS.</p>
+                <p class="description">Entorno de ejecución de JavaScript necesario para <b class="tagline_sisass">SISASS</b>.</p>
 
                 <div class="command icon_copy_1">
                     <span>node -v</span>
@@ -94,7 +98,7 @@
                     </div>
 
                     <div class="group">
-                        <h3 class="title">Proyecto con raíz</h3>
+                        <h3 class="title">Root</h3>
                         <span class="badge">Requerido</span>
                     </div>
                 </div>
@@ -116,16 +120,36 @@
         </aside>
     </section>
 
-    <h2 class="title">
-        Instalar el paquete y el compilador
+    <h2
+        id="installation_package_json"
+        class="title"
+        data-page-menu-item
+    >
+        Crear package.json cuando sea necesario
     </h2>
 
-    <pre class="language-bash"><code>npm init -y
-npm install sisass
-npm install --save-dev sass</code></pre>
+    <p class="description">
+        <b>npm init -y</b> crea el archivo <b>package.json</b> con los valores predeterminados de npm. Ejecútalo únicamente si el proyecto todavía no tiene este archivo; si ya existe, continúa con la instalación de <b class="tagline_sisass">SISASS</b>.
+    </p>
+
+    <pre class="language-bash"><code>npm init -y</code></pre>
+
+    <h2
+        id="installation_sisass"
+        class="title"
+        data-page-menu-item
+    >
+        Instalar SISASS
+    </h2>
 
     <p class="description">
-        SISASS 2.x.x utiliza el sistema de módulos de Sass. Escribe los nuevos ejemplos con <b>@use</b> y <b>@forward</b>; no uses <b>node-sass</b> ni construyas integraciones nuevas con <b>@import</b>.
+        Instala <b class="tagline_sisass">SISASS</b> desde la raíz del proyecto. Este paso es común para todos los entornos de la guía:
+    </p>
+
+    <pre class="language-bash"><code>npm install sisass</code></pre>
+
+    <p class="description">
+        El compilador no se instala como un paso común: Vanilla, SQHTML y React con Webpack usan <b>sass</b>, mientras que React con Vite usa preferentemente <b>sass-embedded</b>. Selecciona tu entorno para continuar con el comando correspondiente.
     </p>
 
     <div
@@ -147,13 +171,19 @@ npm install --save-dev sass</code></pre>
     </h2>
 
     <p class="description">
-        En un proyecto tradicional, el instalador normal crea la carga distribuida en <b>assets/scss/core/</b>. Ejecuta el comando desde la raíz del proyecto consumidor:
+        En un proyecto tradicional, instala <b>sass</b> como dependencia de desarrollo para disponer del compilador local:
+    </p>
+
+    <pre class="language-bash"><code>npm install --save-dev sass</code></pre>
+
+    <p class="description">
+        Después, ejecuta el instalador normal desde la raíz del proyecto consumidor. Este comando crea la carga distribuida en <b>assets/scss/core/</b>:
     </p>
 
     <pre class="language-bash"><code>npm explore sisass -- npm run init</code></pre>
 
     <p class="description">
-        Crea un punto de entrada, por ejemplo <b>assets/main.scss</b>, e importa el módulo público de SISASS. La ruta <b>sisass/src/sisass</b> corresponde al árbol actual del paquete; si el paquete publicado incorpora un punto de entrada Sass, utiliza ese punto de entrada validado.
+        Crea un punto de entrada, por ejemplo <b>assets/main.scss</b>, e importa el módulo público de <b class="tagline_sisass">SISASS</b>. La ruta <b>sisass/src/sisass</b> corresponde al árbol actual del paquete; si el paquete publicado incorpora un punto de entrada Sass, utiliza ese punto de entrada validado.
     </p>
 
     <pre class="language-scss"><code>@use "sisass/src/sisass" as s;
@@ -187,8 +217,7 @@ npm install --save-dev sass</code></pre>
         React no define por sí mismo cómo se procesan los archivos SCSS. Esta ruta utiliza Webpack como ejemplo de un proyecto React existente. Si tu proyecto usa otra herramienta, conserva el procedimiento del instalador y sigue la integración Sass específica de esa herramienta.
     </p>
 
-    <pre class="language-bash"><code>npm install sisass
-npm install --save-dev sass sass-loader
+    <pre class="language-bash"><code>npm install --save-dev sass sass-loader
 npm explore sisass -- npm run init -- --path ../../src/</code></pre>
 
     <p class="description">
@@ -232,11 +261,10 @@ npm explore sisass -- npm run init -- --path ../../src/</code></pre>
     </p>
 
     <p class="description">
-        Ejecuta los siguientes comandos desde la raíz del proyecto para instalar SISASS, el compilador Sass y el procesador de SVG. El último comando copia la carga distribuida de SISASS en <b>src/assets/scss/core/</b>:
+        Ejecuta los siguientes comandos desde la raíz del proyecto para instalar el compilador Sass y el procesador de SVG. <b class="tagline_sisass">SISASS</b> ya se instaló en el paso común; el último comando copia su carga distribuida en <b>src/assets/scss/core/</b>:
     </p>
 
-    <pre class="language-bash"><code>npm install sisass
-npm install --save-dev sass-embedded
+    <pre class="language-bash"><code>npm install --save-dev sass-embedded
 npm install --save-dev postcss-inline-svg
 npm explore sisass -- npm run init -- --path ../../src/</code></pre>
 
@@ -245,7 +273,7 @@ npm explore sisass -- npm run init -- --path ../../src/</code></pre>
     </p>
 
     <p class="description">
-        Ambas formas de uso parten de la misma instalación. La diferencia está en cómo cada archivo SCSS accede a los módulos de SISASS: mediante un alias explícito, llamado <b>namespace</b>, o de forma global mediante <b>additionalData</b>. Configura primero las rutas de carga en <b>vite.config.js</b>, en la raíz del proyecto, al mismo nivel que <b>package.json</b>. Si el proyecto usa TypeScript, utiliza <b>vite.config.ts</b>:
+        Ambas formas de uso parten de la misma instalación. La diferencia está en cómo cada archivo SCSS accede a los módulos de <b class="tagline_sisass">SISASS</b>: mediante un alias explícito, llamado <b>namespace</b>, o de forma global mediante <b>additionalData</b>. Configura primero las rutas de carga en <b>vite.config.js</b>, en la raíz del proyecto, al mismo nivel que <b>package.json</b>. Si el proyecto usa TypeScript, utiliza <b>vite.config.ts</b>:
     </p>
 
     <pre class="language-typescript"><code>import { defineConfig } from "vite";
@@ -277,7 +305,7 @@ export default defineConfig({
     </h3>
 
     <p class="description">
-        La forma recomendada importa SISASS en cada archivo que lo necesita y le asigna un namespace, por ejemplo <b>sisass</b>. Así queda claro de dónde provienen los mixins y se reducen las colisiones con otros módulos del proyecto. Esta variante no utiliza <b>additionalData</b>:
+        La forma recomendada importa <b class="tagline_sisass">SISASS</b> en cada archivo que lo necesita y le asigna un namespace, por ejemplo <b>sisass</b>. Así queda claro de dónde provienen los mixins y se reducen las colisiones con otros módulos del proyecto. Esta variante no utiliza <b>additionalData</b>:
     </p>
 
     <pre class="language-scss"><code>@use "src/sisass" as sisass;
@@ -324,7 +352,7 @@ body {
 }</code></pre>
 
     <p class="description">
-        La configuración de <b>postcss-inline-svg</b> es necesaria cuando se usan mixins de SISASS que generan <b>svg-load()</b> o <b>svg-inline()</b>. En este proyecto, los archivos SVG deben estar en <b>src/assets/img/svg/</b>; Vite los convierte en URLs <b>data:image/svg+xml</b> durante la compilación CSS. Si no utilizas esas funciones, puedes omitir el bloque <b>postcss</b> y su dependencia.
+        La configuración de <b>postcss-inline-svg</b> es necesaria cuando se usan mixins de <b class="tagline_sisass">SISASS</b> que generan <b>svg-load()</b> o <b>svg-inline()</b>. En este proyecto, los archivos SVG deben estar en <b>src/assets/img/svg/</b>; Vite los convierte en URLs <b>data:image/svg+xml</b> durante la compilación CSS. Si no utilizas esas funciones, puedes omitir el bloque <b>postcss</b> y su dependencia.
     </p>
 
     <p class="description">
@@ -361,7 +389,7 @@ npm run build</code></pre>
     </h3>
 
     <p class="description">
-        Para este ejemplo, <b>ProductCard</b> es un componente ficticio que representa una tarjeta de producto. El ejemplo utiliza explícitamente la forma <b>con namespace</b>: en <b>ProductCard.module.scss</b>, SISASS se importa como <b>s</b> y las variables como <b>variables</b>. Las clases declaradas allí serán locales al componente:
+        Para este ejemplo, <b>ProductCard</b> es un componente ficticio que representa una tarjeta de producto. El ejemplo utiliza explícitamente la forma <b>con namespace</b>: en <b>ProductCard.module.scss</b>, <b class="tagline_sisass">SISASS</b> se importa como <b>s</b> y las variables como <b>variables</b>. Las clases declaradas allí serán locales al componente:
     </p>
 
     <pre class="language-scss"><code>@use "src/sisass" as s;
@@ -421,6 +449,12 @@ export default function App() {
         El modo SQHTML conserva el destino <b>assets/scss/core/</b> y aplica ajustes específicos de variables y fuentes.
     </p>
 
+    <p class="description">
+        SQHTML y SQHTML2 usan el compilador <b>sass</b>. Instálalo como dependencia de desarrollo si el proyecto todavía no lo incluye:
+    </p>
+
+    <pre class="language-bash"><code>npm install --save-dev sass</code></pre>
+
     <pre class="language-bash"><code>npm explore sisass -- npm run init -- --dep sqhtml</code></pre>
 
     <p class="description">
@@ -453,7 +487,11 @@ export default function App() {
         </div>
     </div>
 
-    <h2 id="installation_paths" class="title">
+    <h2
+        id="installation_paths"
+        class="title"
+        data-page-menu-item
+    >
         Rutas y modos del instalador
     </h2>
 
@@ -494,7 +532,11 @@ export default function App() {
         </table>
     </div>
 
-    <h2 id="installation_troubleshooting" class="title">
+    <h2
+        id="installation_troubleshooting"
+        class="title"
+        data-page-menu-item
+    >
         Solución de problemas
     </h2>
 
@@ -529,7 +571,7 @@ export default function App() {
                     <td>Añade los módulos requeridos al proyecto consumidor o espera una versión posterior de la integración.</td>
                 </tr>
                 <tr>
-                    <td>SISASS no se resuelve con <b>@use</b>.</td>
+                    <td><b class="tagline_sisass">SISASS</b> no se resuelve con <b>@use</b>.</td>
                     <td>Comprueba el punto de entrada del paquete y la ruta de carga.</td>
                     <td>Usa el punto de entrada Sass publicado y validado para la versión instalada.</td>
                 </tr>
@@ -537,7 +579,11 @@ export default function App() {
         </table>
     </div>
 
-    <h2 class="title">
+    <h2
+        id="installation_references"
+        class="title"
+        data-page-menu-item
+    >
         Referencias oficiales
     </h2>
 
@@ -642,7 +688,7 @@ export default function App() {
                         sass-loader para Webpack
                     </h2>
                     <p class="description">
-                        Loader oficial para compilar archiivos SASS en webpack.
+                        Loader oficial para compilar archivos Sass en Webpack.
                     </p>
                 </div>
                 <p class="domain e3">

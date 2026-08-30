@@ -1,6 +1,11 @@
 <article id="reset" class="reset">
     <div class="group_title">
-        <h2 class="subtitle">
+        <h2
+            id="reset_overview_heading"
+            class="subtitle"
+            data-page-menu-item
+            data-page-menu-label="Descripción general"
+        >
             _reset.scss (archivo)
         </h2>
         <h3 class="attribute">
@@ -19,13 +24,11 @@
     <p class="description">
         Esta capa elimina márgenes, paddings, bordes y decoraciones heredadas,
         además de normalizar listas, tablas, enlaces, <b>textarea</b> y
-        elementos semánticos HTML5. El ejemplo compara el mismo HTML en dos
-        estados: antes del reset, restaurando estilos nativos con
-        <b>revert</b>, y después del reset aplicado por SISASS.
+        elementos semánticos HTML5.
     </p>
 
     <div class="group_title">
-        <h2 class="subtitle">
+        <h2 id="reset_selectors_heading" class="subtitle" data-page-menu-item>
             Selectores normalizados
         </h2>
     </div>
@@ -89,172 +92,5 @@
             </tr>
         </tbody>
         </table>
-    </div>
-
-    <h2 class="title">
-        Ejemplo
-    </h2>
-    <div class="container_example">
-        <h2 class="subtitle">
-            Ejemplo 1: SCSS
-        </h2>
-        <pre class="language-scss" data-src="../assets/scss/bases/reset.scss"></pre>
-
-        <h2 class="subtitle">
-            Ejemplo 1: CSS generado
-        </h2>
-        <pre class="language-css" data-src="../assets/css/bases/reset.css"></pre>
-
-        <h2 class="subtitle">
-            Ejemplo 1: HTML
-        </h2>
-
-        <pre class="language-html"><code>&lt;div&nbsp;class=&quot;reset_example&quot;&gt;
-    &lt;section&nbsp;class=&quot;reset_panel reset_before&quot;&gt;
-        &lt;h3&nbsp;class=&quot;reset_label&quot;&gt;Antes&lt;/h3&gt;
-        &lt;div&nbsp;class=&quot;reset_demo&quot;&gt;
-            &lt;h1&gt;Encabezado&nbsp;uno&lt;/h1&gt;
-            &lt;p&gt;Párrafo&nbsp;con&nbsp;&lt;a&nbsp;href=&quot;#&quot;&gt;un&nbsp;enlace&lt;/a&gt;&nbsp;y&nbsp;texto&nbsp;en&nbsp;línea.&lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Primer&nbsp;elemento&lt;/li&gt;
-                &lt;li&gt;Segundo&nbsp;elemento&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;table&gt;
-                &lt;caption&gt;Título&nbsp;de&nbsp;tabla&lt;/caption&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Etiqueta&lt;/th&gt;
-                        &lt;th&gt;Valor&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Alfa&lt;/td&gt;
-                        &lt;td&gt;Beta&lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;blockquote&gt;Cita&nbsp;sin&nbsp;comillas&nbsp;por&nbsp;defecto.&lt;/blockquote&gt;
-            &lt;p&gt;&lt;q&gt;Cita&nbsp;en&nbsp;l&iacute;nea&lt;/q&gt;&nbsp;dentro&nbsp;de&nbsp;una&nbsp;frase.&lt;/p&gt;
-            &lt;textarea&gt;Texto&nbsp;sin&nbsp;redimensionado&nbsp;manual.&lt;/textarea&gt;
-            &lt;img&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;Imagen&nbsp;de&nbsp;ejemplo&quot;&gt;
-            &lt;details&gt;
-                &lt;summary&gt;Resumen&lt;/summary&gt;
-                &lt;p&gt;El&nbsp;elemento&nbsp;summary&nbsp;tambi&eacute;n&nbsp;se&nbsp;comporta&nbsp;como&nbsp;contenido&nbsp;de&nbsp;bloque.&lt;/p&gt;
-            &lt;/details&gt;
-        &lt;/div&gt;
-    &lt;/section&gt;
-    &lt;section&nbsp;class=&quot;reset_panel reset_after&quot;&gt;
-        &lt;h3&nbsp;class=&quot;reset_label&quot;&gt;Después&lt;/h3&gt;
-        &lt;div&nbsp;class=&quot;reset_demo&quot;&gt;
-            &lt;h1&gt;Encabezado&nbsp;uno&lt;/h1&gt;
-            &lt;p&gt;Párrafo&nbsp;con&nbsp;&lt;a&nbsp;href=&quot;#&quot;&gt;un&nbsp;enlace&lt;/a&gt;&nbsp;y&nbsp;texto&nbsp;en&nbsp;línea.&lt;/p&gt;
-            &lt;ul&gt;
-                &lt;li&gt;Primer&nbsp;elemento&lt;/li&gt;
-                &lt;li&gt;Segundo&nbsp;elemento&lt;/li&gt;
-            &lt;/ul&gt;
-            &lt;table&gt;
-                &lt;caption&gt;Título&nbsp;de&nbsp;tabla&lt;/caption&gt;
-                &lt;thead&gt;
-                    &lt;tr&gt;
-                        &lt;th&gt;Etiqueta&lt;/th&gt;
-                        &lt;th&gt;Valor&lt;/th&gt;
-                    &lt;/tr&gt;
-                &lt;/thead&gt;
-                &lt;tbody&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Alfa&lt;/td&gt;
-                        &lt;td&gt;Beta&lt;/td&gt;
-                    &lt;/tr&gt;
-                &lt;/tbody&gt;
-            &lt;/table&gt;
-            &lt;blockquote&gt;Cita&nbsp;sin&nbsp;comillas&nbsp;por&nbsp;defecto.&lt;/blockquote&gt;
-            &lt;p&gt;&lt;q&gt;Cita&nbsp;en&nbsp;l&iacute;nea&lt;/q&gt;&nbsp;dentro&nbsp;de&nbsp;una&nbsp;frase.&lt;/p&gt;
-            &lt;textarea&gt;Texto&nbsp;sin&nbsp;redimensionado&nbsp;manual.&lt;/textarea&gt;
-            &lt;img&nbsp;src=&quot;img/test/1.webp&quot;&nbsp;alt=&quot;Imagen&nbsp;de&nbsp;ejemplo&quot;&gt;
-            &lt;details&gt;
-                &lt;summary&gt;Resumen&lt;/summary&gt;
-                &lt;p&gt;El&nbsp;elemento&nbsp;summary&nbsp;tambi&eacute;n&nbsp;se&nbsp;comporta&nbsp;como&nbsp;contenido&nbsp;de&nbsp;bloque.&lt;/p&gt;
-            &lt;/details&gt;
-        &lt;/div&gt;
-    &lt;/section&gt;
-&lt;/div&gt;</code></pre>
-
-        <h2 class="subtitle">
-            Resultado
-        </h2>
-
-        <div class="result">
-            <div class="reset_example">
-                <section class="reset_panel reset_before">
-                    <h3 class="reset_label">Antes</h3>
-                    <div class="reset_demo">
-                        <h1>Encabezado uno</h1>
-                        <p>Párrafo con <a href="#">un enlace</a> y texto en línea.</p>
-                        <ul>
-                            <li>Primer elemento</li>
-                            <li>Segundo elemento</li>
-                        </ul>
-                        <table>
-                            <caption>Título de tabla</caption>
-                            <thead>
-                                <tr>
-                                    <th>Etiqueta</th>
-                                    <th>Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Alfa</td>
-                                    <td>Beta</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <blockquote>Cita sin comillas por defecto.</blockquote>
-                        <p><q>Cita en línea</q> dentro de una frase.</p>
-                        <textarea>Texto sin redimensionado manual.</textarea>
-                        <img src="img/test/1.webp" alt="Imagen de ejemplo">
-                        <details>
-                            <summary>Resumen</summary>
-                            <p>El elemento summary también se comporta como contenido de bloque.</p>
-                        </details>
-                    </div>
-                </section>
-                <section class="reset_panel reset_after">
-                    <h3 class="reset_label">Después</h3>
-                    <div class="reset_demo">
-                        <h1>Encabezado uno</h1>
-                        <p>Párrafo con <a href="#">un enlace</a> y texto en línea.</p>
-                        <ul>
-                            <li>Primer elemento</li>
-                            <li>Segundo elemento</li>
-                        </ul>
-                        <table>
-                            <caption>Título de tabla</caption>
-                            <thead>
-                                <tr>
-                                    <th>Etiqueta</th>
-                                    <th>Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Alfa</td>
-                                    <td>Beta</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <blockquote>Cita sin comillas por defecto.</blockquote>
-                        <p><q>Cita en línea</q> dentro de una frase.</p>
-                        <textarea>Texto sin redimensionado manual.</textarea>
-                        <img src="img/test/1.webp" alt="Imagen de ejemplo">
-                        <details>
-                            <summary>Resumen</summary>
-                            <p>El elemento summary también se comporta como contenido de bloque.</p>
-                        </details>
-                    </div>
-                </section>
-            </div>
-        </div>
     </div>
 </article>

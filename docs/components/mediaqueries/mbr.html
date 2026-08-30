@@ -1,6 +1,6 @@
 <article id="mbr" class="mbr">
     <div class="group_title">
-        <h2 class="subtitle">
+        <h2 id="mbr_heading" class="subtitle" data-page-menu-item data-page-menu-label="mbr">
             mbr (_mediaqueries.scscs)
         </h2>
         <h3 class="attribute">
@@ -12,9 +12,9 @@
     </div>
 
     <p class="description">
-        Crea múltiples breakpoints de ancho usando una lista de puntos de corte.
-        En cada iteración ejecuta el contenido recibido y entrega el índice
-        actual mediante <b>@content($i)</b>.
+        Crea múltiples breakpoints de ancho usando números, mapas o una mezcla
+        de ambos. En cada iteración ejecuta el contenido recibido y entrega el
+        índice actual mediante <b>@content($index)</b>.
     </p>
     <p class="description">
         Es útil cuando varias propiedades cambian siguiendo listas paralelas de
@@ -27,7 +27,7 @@
             Interface
         </h2>
 
-        <pre class="language-scss"><code>@mixin mbr($points...) using ($i);</code></pre>
+        <pre class="language-scss"><code>@mixin mbr($points...) using ($index);</code></pre>
 
         <h3 class="subtitle">
             Parámetros secuenciales
@@ -50,11 +50,29 @@
                     <td>Define los puntos de corte usados para generar media queries de ancho.</td>
                 </tr>
                 <tr>
-                    <td><b>i</b></td>
+                    <td><b>index</b></td>
                     <td>Number</td>
                     <td>-</td>
                     <td>Expone el índice actual del breakpoint dentro del bloque <b>using</b>.</td>
                 </tr>
+            </tbody>
+            </table>
+        </div>
+
+        <h3 class="subtitle">
+            Sintaxis alternativa (map)
+        </h3>
+        <pre class="language-scss"><code>@include mbr((&NewLine;    point: 1200,&NewLine;    type: max,&NewLine;    unit: px,&NewLine;    media: screen&NewLine;)) using ($index) { ... }</code></pre>
+        <div class="container_table">
+            <table class="full">
+            <thead>
+                <tr><th>Clave</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><b>point | p</b></td><td>Number</td><td>-</td><td>Define el límite de ancho de la iteración.</td></tr>
+                <tr><td><b>type | t</b></td><td>Keyword</td><td>max</td><td>Selecciona <b>min-width</b> o <b>max-width</b>.</td></tr>
+                <tr><td><b>unit | units | u</b></td><td>String</td><td>px</td><td>Define la unidad para un número sin unidad.</td></tr>
+                <tr><td><b>media | means | m</b></td><td>Keyword</td><td>screen</td><td>Define el media type de la iteración.</td></tr>
             </tbody>
             </table>
         </div>

@@ -92,19 +92,19 @@ function get_html_text(value = "") {
 function get_component_title(value, fallback) {
     const
         group_match = value.match(/<div[^>]*class=["'][^"']*group_title[^"']*["'][^>]*>([\s\S]*?)<\/div>/i),
-        title_match = group_match ? group_match[1].match(/<h[1-6][^>]*class=["'][^"']*subtitle[^"']*["'][^>]*>([\s\S]*?)<\/h[1-6]>/i) : null
+        title_match = group_match ? group_match[1].match(/<([a-z][\w-]*)[^>]*class=["'][^"']*(?:subtitle|title)[^"']*["'][^>]*>([\s\S]*?)<\/\1>/i) : null
     ;
 
-    return title_match ? get_html_text(title_match[1]) : fallback;
+    return title_match ? get_html_text(title_match[2]) : fallback;
 }
 
 function get_component_category(value) {
     const
         group_match = value.match(/<div[^>]*class=["'][^"']*group_title[^"']*["'][^>]*>([\s\S]*?)<\/div>/i),
-        category_match = group_match ? group_match[1].match(/<h[1-6][^>]*class=["'][^"']*attribute[^"']*["'][^>]*>\s*Tipo:\s*([\s\S]*?)<\/h[1-6]>/i) : null
+        category_match = group_match ? group_match[1].match(/<([a-z][\w-]*)[^>]*class=["'][^"']*attribute[^"']*["'][^>]*>\s*Tipo:\s*([\s\S]*?)<\/\1>/i) : null
     ;
 
-    return category_match ? get_html_text(category_match[1]) : "Documentación";
+    return category_match ? get_html_text(category_match[2]) : "Documentación";
 }
 
 function format_page_title(value) {

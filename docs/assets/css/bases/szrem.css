@@ -1,3 +1,26 @@
-.documentationpage .fn_szrem {
+.documentationpage .result_szrem {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+}
+.documentationpage .result_szrem .fn_szrem {
   font-size: 1.25rem;
+}
+.documentationpage .result_szrem .fn_szrem_px {
+  font-size: 1rem;
+}
+.documentationpage .result_szrem p {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
 }

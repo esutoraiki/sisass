@@ -1,7 +1,13 @@
 @use "../core/instances" as *;
 
 .documentationpage {
-            .fn_szrem {
-                font-size: szrem(20);
-            }
+    .result_szrem {
+        @include flex-direction(column);
+        @include flex;
+
+        .fn_szrem { font-size: szrem(20); }
+        .fn_szrem_px { font-size: szrem(16px); }
+
+        p { @include no-spacing; }
+    }
 }

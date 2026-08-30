@@ -90,7 +90,11 @@
         de Sass que no se compila por separado. Puede entenderse como un fragmento que no genera un archivo CSS.
     </p>
 
-    <h2 class="title">
+    <h2
+        id="project_structure_paths"
+        class="title"
+        data-page-menu-item
+    >
         Rutas principales del repositorio
     </h2>
 
@@ -130,7 +134,11 @@
         </table>
     </div>
 
-    <h2 class="title">
+    <h2
+        id="project_structure_source"
+        class="title"
+        data-page-menu-item
+    >
         Fuente del framework: src
     </h2>
 
@@ -208,7 +216,11 @@
         No existe un archivo de variables en <b>src/</b>. Las variables distribuidas están en <b>files/_variables.scss</b> y la documentación define sus propias variables en <b>docs/assets/scss/core/_variables.scss</b>. La entrada <b>_sisass.scss</b> no representa todo el árbol de <b>src</b>: los componentes, efectos, formas y el reset se mantienen como módulos separados. Revisa el archivo que contiene la utilidad que vas a cambiar antes de editar el punto de entrada.
     </p>
 
-    <h2 class="title break_page_print">
+    <h2
+        id="project_structure_files"
+        class="title break_page_print"
+        data-page-menu-item
+    >
         Activos de instalación: files/
     </h2>
 
@@ -257,7 +269,11 @@
         La distribución actual instala únicamente esta carga core. No instala <b>sisass.scss</b>, <b>reset.scss</b>, ni los directorios <b>components/</b>, <b>effects/</b> o <b>shapes/</b> de <b>src</b>. Por tanto, no debes asumir que la instalación estándar entrega por sí sola todos los módulos disponibles en el repositorio.
     </p>
 
-    <h2 class="title">
+    <h2
+        id="project_structure_installation"
+        class="title"
+        data-page-menu-item
+    >
         Cómo funciona la instalación
     </h2>
 
@@ -299,7 +315,11 @@
         En una instalación personalizada, <b>--path</b> cambia la raíz de los recursos, no la fuente del framework. En cambio, <b>sqhtml2</b> es una integración especial que fuerza su propio destino y genera referencias a módulos del proyecto consumidor; por eso no debe interpretarse como el flujo general de SISASS.
     </p>
 
-    <h2 class="title">
+    <h2
+        id="project_structure_changes"
+        class="title"
+        data-page-menu-item
+    >
         Dónde trabajar según el cambio
     </h2>
 

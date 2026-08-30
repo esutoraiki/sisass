@@ -1,0 +1,9 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .fn_pb {
+        width: pb((value: 20, base: 1920, unit: "px"));
+        height: 20px;
+        background-color: $c5;
+    }
+}

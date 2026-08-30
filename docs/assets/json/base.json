@@ -214,10 +214,22 @@
             "node": "bp"
         },
         {
+            "id": "pb",
+            "url": "../components/base/pb.html",
+            "position": "beforeend",
+            "node": "pb"
+        },
+        {
             "id": "strip_unit",
             "url": "../components/base/strip_unit.html",
             "position": "beforeend",
             "node": "strip_unit"
+        },
+        {
+            "id": "normalize_px",
+            "url": "../components/base/normalize_px.html",
+            "position": "beforeend",
+            "node": "normalize_px"
         },
         {
             "id": "list-add-unique",

@@ -5,19 +5,19 @@
   padding: 20px;
   border: 2px solid #123743;
 }
-@media only screen and (max-width: 1920px) {
+@media only screen and (max-width: 1200px) {
   .example_mbr {
     width: 300px;
     background-color: #cfebf3;
   }
 }
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 768px) {
   .example_mbr {
     width: 220px;
     background-color: #e5f0d3;
   }
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 48rem) {
   .example_mbr {
     width: 150px;
     background-color: #f6d8df;

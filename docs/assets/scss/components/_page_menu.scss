@@ -1,0 +1,151 @@
+@use "../core/instances" as *;
+
+.sidebar_menu {
+    min-width: 0;
+    padding: 30px 20px 50px 0;
+
+    @include brp($b6) {
+        @include position((p: sticky, t: 0, z: 8));
+        @include bc(var(--theme_bg), var(--theme_text));
+        padding: 12px min(5vw, 48px);
+        border-bottom: 1px solid var(--theme_border);
+    }
+
+    @media print {
+        display: none;
+    }
+}
+
+.page_menu {
+    @include scroll((
+        color: var(--theme_accent),
+        bg: var(--theme_bg),
+        width: 8px,
+        firefox_width: thin
+    ));
+    @include position(sticky, 120px);
+    max-height: calc(100vh - 150px);
+    padding: 20px 0 20px 20px;
+    border-left: 1px solid var(--theme_border);
+
+    @include brp($b6) {
+        position: static;
+        max-height: none;
+        padding: 0;
+        border-left: 0;
+        overflow: visible;
+    }
+
+    .page_menu_title,
+    .page_menu_toggle {
+        @include font(szrem(16), $f2, bold);
+        color: var(--theme_text);
+    }
+
+    .page_menu_title {
+        margin: 0 0 16px;
+
+        @include brp($b6) {
+            display: none;
+        }
+    }
+
+    .page_menu_toggle {
+        @include wh(100%);
+        @include align-items(center);
+        @include justify-content(space-between);
+        @include bc($c0, var(--theme_text));
+        display: none;
+        padding: 10px 0;
+        border: 0;
+        cursor: pointer;
+
+        @include brp($b6) {
+            @include flex;
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--theme_accent);
+            outline-offset: 3px;
+        }
+    }
+
+    .page_menu_toggle_icon {
+        @include whs(10px);
+        @include transform(rotate(45deg));
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    &.is_open {
+        .page_menu_toggle_icon {
+            @include transform(rotate(225deg));
+        }
+    }
+
+    .page_menu_content {
+        @include brp($b6) {
+            padding-block: 8px 12px;
+            border-top: 1px solid var(--theme_border);
+        }
+    }
+
+    .page_menu_list,
+    .page_menu_sublist {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .page_menu_sublist {
+        margin-block-start: 4px;
+        padding-inline-start: 14px;
+    }
+
+    .page_menu_item {
+        @include wh(90%);
+        margin-block-end: 10px;
+    }
+
+    .page_menu_link {
+        @include font(szrem(14), $f2);
+        @include border-radius(5px);
+        display: block;
+        padding: 5px 10px;
+        border-left: 3px solid transparent;
+        color: var(--theme_text_alt);
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--theme_surface_alt);
+            color: var(--theme_accent);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--theme_accent);
+            outline-offset: 2px;
+        }
+
+        &.is_active {
+            background-color: var(--theme_surface_alt);
+            border-left-color: var(--theme_accent);
+            color: var(--theme_accent);
+            font-weight: bold;
+        }
+    }
+
+    .page_menu_item_level_3 {
+        .page_menu_link {
+            font-size: szrem(13);
+        }
+    }
+
+    .page_menu_item.has_active_child {
+        > .page_menu_link {
+            color: var(--theme_text);
+            font-weight: bold;
+        }
+    }
+}
