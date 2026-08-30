@@ -63,8 +63,8 @@
 
 .icon_copy_1::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -78,8 +78,8 @@
 
 .icon_copy_2::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -93,8 +93,8 @@
 
 .icon_copy_3::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -108,8 +108,8 @@
 
 .tip::before {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 45px;
   height: 45px;
@@ -125,8 +125,8 @@
 
 .notice::before {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 30px;
   height: 30px;
@@ -142,8 +142,8 @@
 
 .domain::before {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -176,8 +176,8 @@
 
 .logo_sisass:before {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: clamp(130px, 10.44vw, 200px);
   height: clamp(29px, 2.3vw, 44px);
@@ -192,8 +192,8 @@
 
 .logo_github:before {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -297,8 +297,8 @@
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -319,8 +319,8 @@
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -341,8 +341,8 @@
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -358,8 +358,8 @@
 
 .icon_arrow::after {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 12px;
   height: 12px;
@@ -375,8 +375,8 @@
 
 .icon_arrow_2::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 15px;
   height: 10px;
@@ -392,8 +392,8 @@
 
 .icon_arrow_3::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 15px;
   height: 10px;
@@ -409,8 +409,8 @@
 
 .icon_organized::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 40px;
   height: 40px;
@@ -424,8 +424,8 @@
 
 .icon_reusable::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 40px;
   height: 40px;
@@ -439,8 +439,8 @@
 
 .icon_consistent::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 40px;
   height: 40px;
@@ -454,8 +454,8 @@
 
 .icon_productive::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 40px;
   height: 40px;
@@ -469,8 +469,8 @@
 
 .icon_mixins::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -485,8 +485,8 @@
 
 .icon_functions::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -501,8 +501,8 @@
 
 .icon_variables::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -517,8 +517,8 @@
 
 .icon_helpers::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -533,8 +533,8 @@
 
 .icon_layouts::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -549,8 +549,8 @@
 
 .icon_start::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 18px;
   height: 18px;
@@ -564,8 +564,8 @@
 
 .icon_email::before {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -580,8 +580,8 @@
 
 .icon_search::before {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 26px;
   height: 26px;
@@ -596,8 +596,8 @@
 
 .icon_light::before {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 24px;
   height: 24px;
@@ -612,8 +612,8 @@
 
 .icon_dark::before {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 24px;
   height: 24px;
@@ -643,8 +643,8 @@
 
 .icon_guide::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 18px;
   height: 18px;
@@ -658,8 +658,8 @@
 
 .icon_issue::after {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   z-index: 1;
   width: 18px;
   height: 18px;
