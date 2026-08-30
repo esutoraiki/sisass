@@ -98,6 +98,46 @@ Always prefer the smallest, simplest correct change:
 - When a docs page references a mixin source file, keep naming consistent with the current docs convention (for base mixins: `_base.scscs`).
 - Do not introduce component-specific theme logic into unrelated style partials.
 
+### Menú De La Página Actual
+
+- Usa `docs/assets/js/core/page_menu.js` para construir el submenú de la página actual a partir de encabezados `h2` y `h3` seleccionados explícitamente. Los estilos compartidos viven en `docs/assets/scss/components/_page_menu.scss` y se cargan desde `docs/assets/scss/main.scss`; no dupliques esta lógica ni estos estilos por página.
+- Para habilitar el submenú, agrega el siguiente `aside` dentro de `.container_main.layout_1`, antes de `#main_content`:
+
+  ```html
+  <aside id="sidebar_menu" class="sidebar_menu a4" hidden></aside>
+  ```
+
+- Marca únicamente los encabezados que deban aparecer con `data-page-menu-item`. Cada encabezado marcado debe tener un `id` explícito, estable y único en el documento:
+
+  ```html
+  <h2 id="section_name" data-page-menu-item>Nombre de la sección</h2>
+  <h3 id="subsection_name" data-page-menu-item>Nombre de la subsección</h3>
+  ```
+
+- Usa `data-page-menu-label` cuando el texto visible del enlace deba ser más corto o diferente del encabezado. Si no se define, el menú usa el contenido textual del encabezado.
+- Un `h3` marcado se anida bajo el último `h2` marcado y válido que lo preceda. No marques un `h3` sin un `h2` anterior. El generador omite y reporta en consola encabezados sin `id`, identificadores duplicados, etiquetas vacías y `h3` huérfanos.
+- Los encabezados dentro de `[data-tab-panel-panel]` se excluyen automáticamente, aunque tengan `data-page-menu-item`. No los uses para construir el menú.
+- Importa el inicializador desde el script de la página:
+
+  ```js
+  import { init_page_menu } from "../core/page_menu.js";
+  ```
+
+- Ejecuta `init_page_menu()` después de completar `await contentLoad(...)` y después de inicializar los componentes de la página que puedan afectar el contenido. El marcado debe existir en el DOM antes de generar el menú:
+
+  ```js
+  await contentLoad({
+      url: url_json_page
+  });
+
+  init_page_menu();
+  ```
+
+- Mantén `hidden` en el `aside` inicial. El módulo lo muestra cuando encuentra entradas válidas y lo conserva oculto cuando la página no tiene encabezados seleccionados.
+- No construyas los enlaces manualmente con rutas relativas. El módulo conserva `window.location.pathname` y `window.location.search` antes de agregar el hash para evitar que la etiqueta `base` de las páginas redirija la navegación hacia `docs/assets/`.
+- El menú es fijo en escritorio, colapsable en pantallas estrechas y se oculta al imprimir. Al modificar sus estilos, ejecuta `npm exec gulp scss` desde `docs/` y conserva actualizado `docs/assets/css/main.css`.
+- Después de habilitarlo en una página, valida al menos: navegación por clic sin abandonar la página actual, acceso directo mediante hash, sección activa durante el desplazamiento, estado colapsado en móvil, ausencia del menú en impresión y exclusión de encabezados internos de `TabPanel`.
+
 ### Uso De `TabPanel` En Ejemplos
 
 - Para convertir un ejemplo convencional existente, ejecuta desde la raíz:
