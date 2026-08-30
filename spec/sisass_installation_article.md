@@ -282,7 +282,7 @@ Cada entorno debe disponer de un `id` estable para navegación y búsqueda. Como
 
 Todas las tablas deben tener la clase `full` y estar envueltas en `div.container_table`.
 
-Los ejemplos se presentarán como secciones consecutivas. No se debe utilizar `TabPanel` en esta página.
+Los entornos pueden conservarse dentro de `TabPanel`. El menú de la página no debe incluir encabezados ubicados dentro de sus paneles, conforme a `page_menu.md`.
 
 ### JSON y breadcrumb
 
@@ -303,7 +303,7 @@ Los ejemplos se presentarán como secciones consecutivas. No se debe utilizar `T
 5. Inicializar el buscador global.
 6. Marcar cada estado como completado en el orden correspondiente.
 
-No debe importar ni inicializar `TabPanel`.
+Puede importar e inicializar `TabPanel` antes del menú de la página cuando los entornos se presenten mediante pestañas.
 
 ## Estilo editorial
 
