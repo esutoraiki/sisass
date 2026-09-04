@@ -15,6 +15,21 @@ import { get_theme, init_theme_toggle, set_theme } from "./components/theme_togg
         mobile_breakpoint = 980,
         url_json_global = "json/global.json",
 
+        set_home_link = () => {
+            const
+                logo = document.querySelector("[data-home-link]"),
+                current_path = window.location.pathname,
+                pages_index = current_path.indexOf("/pages/"),
+                documentation_root = pages_index >= 0
+                    ? current_path.slice(0, pages_index + 1)
+                    : current_path.replace(/(?:index\.html)?$/, "")
+            ;
+
+            if (logo) {
+                logo.href = documentation_root || "/";
+            }
+        },
+
         NSDocumentation = (function () {
             let is_menu_locked = false;
 
@@ -142,6 +157,8 @@ import { get_theme, init_theme_toggle, set_theme } from "./components/theme_togg
                             }
                         }
                     });
+
+                    set_home_link();
 
                     if (current_page === "home") {
                         const
