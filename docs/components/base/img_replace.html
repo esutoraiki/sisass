@@ -21,6 +21,10 @@
         lo que también puede personalizar tamaño,
         <b>display</b>, ocultamiento de texto, posición y <b>z-index</b>.
     </p>
+    <p class="description">
+        La propiedad <b>z-index</b> se configura con <b>z</b> dentro del
+        <b>map</b> <b>base.position</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -44,7 +48,8 @@
         width: auto,
         height: auto,
         display: block,
-        ht: true
+        ht: true,
+        position: false
     )
 ));</code></pre>
         <p class="description">
@@ -161,8 +166,8 @@
                 <tr>
                     <td><b>base</b></td>
                     <td>Map</td>
-                    <td>(width: auto, height: auto, display: block, ht: true)</td>
-                    <td>Permite sobrescribir la configuración enviada al mixin <a href="../pages/base.html#replace_base"><b>replace-base</b></a>.</td>
+                    <td>(width: auto, height: auto, display: block, ht: true, position: false)</td>
+                    <td>Permite sobrescribir la configuración enviada a <a href="../pages/base.html#replace_base"><b>replace-base</b></a>; <b>z</b> pertenece al <b>map</b> <b>position</b>.</td>
                 </tr>
             </tbody>
             </table>

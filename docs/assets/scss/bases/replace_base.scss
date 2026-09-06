@@ -6,8 +6,10 @@
             width: 140px,
             height: 140px,
             display: inline-block,
-            position: relative,
-            z: 2
+            position: (
+                position: relative,
+                z: 9
+            )
         ));
         @include bc($c5, transparent);
     }

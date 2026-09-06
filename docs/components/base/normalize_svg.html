@@ -41,20 +41,20 @@
         top: null,
         right: null,
         bottom: null,
-        left: null
+        left: null,
+        z: 2
     ),
     display: block,
-    z: 2,
     ht: true
 ));</code></pre>
 
         <p class="description">
             Equivale a usar
             <a href="../pages/base.html#replace_base">replace-base</a> con
-            <b>position: relative</b>, <b>z: 2</b>, <b>display: block</b> y
-            <b>ht: true</b> como valores base. Por compatibilidad, también
-            puedes pasar las claves de posición en el nivel raíz del <b>map</b>,
-            incluidas <b>top</b>, <b>right</b>, <b>bottom</b> y <b>left</b>.
+            <b>position: (position: relative, z: 2)</b>, <b>display: block</b>
+            y <b>ht: true</b> como valores base. Las opciones de posición se
+            configuran dentro del <b>map</b> anidado de <b>position</b>, y sus
+            valores predeterminados se conservan al sobrescribir solo una clave.
         </p>
 
         <h3 class="subtitle">
@@ -85,63 +85,69 @@
                 </tr>
                 <tr>
                     <td><b>position | p</b></td>
-                    <td>String | Map</td>
+                    <td>Map</td>
+                    <td>(position: relative, z: 2)</td>
+                    <td>Configura la posición mediante un <b>map</b> anidado con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
+                </tr>
+                <tr>
+                    <td><b>position.position | position.p</b></td>
+                    <td>String</td>
                     <td>relative</td>
-                    <td>Define la propiedad <b>position</b> o recibe un map con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
+                    <td>Define la propiedad <b>position</b> dentro del <b>map</b> anidado.</td>
                 </tr>
                 <tr>
-                    <td><b>x</b></td>
+                    <td><b>position.y</b></td>
                     <td>Medida</td>
                     <td>0</td>
-                    <td>Define el desplazamiento horizontal.</td>
+                    <td>Define el desplazamiento vertical dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>y</b></td>
+                    <td><b>position.x</b></td>
                     <td>Medida</td>
                     <td>0</td>
-                    <td>Define el desplazamiento vertical.</td>
+                    <td>Define el desplazamiento horizontal dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>yaxis | ya</b></td>
+                    <td><b>position.yaxis | position.ya</b></td>
                     <td>String</td>
                     <td>top</td>
-                    <td>Define la propiedad CSS usada para el eje Y.</td>
+                    <td>Define la propiedad CSS usada para el eje Y dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>xaxis | xa</b></td>
+                    <td><b>position.xaxis | position.xa</b></td>
                     <td>String</td>
                     <td>left</td>
-                    <td>Define la propiedad CSS usada para el eje X.</td>
+                    <td>Define la propiedad CSS usada para el eje X dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>top | t</b></td>
-                    <td>Medida</td>
+                    <td><b>position.top | position.t</b></td>
+                    <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Define la propiedad <b>top</b> cuando usas sintaxis plana.</td>
+                    <td>Define la propiedad <b>top</b> dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>right | r</b></td>
-                    <td>Medida</td>
+                    <td><b>position.right | position.r</b></td>
+                    <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Define la propiedad <b>right</b> cuando usas sintaxis plana.</td>
+                    <td>Define la propiedad <b>right</b> dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>bottom | b</b></td>
-                    <td>Medida</td>
+                    <td><b>position.bottom | position.b</b></td>
+                    <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Define la propiedad <b>bottom</b> cuando usas sintaxis plana.</td>
+                    <td>Define la propiedad <b>bottom</b> dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>left | l</b></td>
-                    <td>Medida</td>
+                    <td><b>position.left | position.l</b></td>
+                    <td>Medida | Null</td>
                     <td>null</td>
-                    <td>Define la propiedad <b>left</b> cuando usas sintaxis plana.</td>
+                    <td>Define la propiedad <b>left</b> dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
-                    <td><b>z</b></td>
+                    <td><b>position.z</b></td>
                     <td>Number</td>
                     <td>2</td>
-                    <td>Define la propiedad <b>z-index</b>.</td>
+                    <td>Define <b>z-index</b> dentro del <b>map</b> de <b>position</b>.</td>
                 </tr>
                 <tr>
                     <td><b>display | d</b></td>

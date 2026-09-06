@@ -15,8 +15,10 @@
             size: contain,
             display: inline-block,
             base: (
-                position: relative,
-                z: 3
+                position: (
+                    position: relative,
+                    z: 4
+                )
             )
         ));
     }

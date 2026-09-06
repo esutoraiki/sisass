@@ -32,15 +32,14 @@
     height: auto,
     display: block,
     ht: true,
-    position: false,
-    z: false
+    position: false
 ));</code></pre>
 
         <p class="description">
-            Si <b>position</b> recibe un <b>map</b>, reutiliza la sintaxis del
-            mixin <a href="../pages/base.html#position">position</a>. Si recibe
-            un string, también puedes pasar las claves planas de posición en el
-            nivel raíz del <b>map</b>.
+            <b>position</b> recibe únicamente un <b>map</b> anidado y reutiliza
+            la sintaxis del mixin <a href="../pages/base.html#position">position</a>.
+            El valor <b>false</b> desactiva la posición; cuando se usa el
+            <b>map</b>, <b>z</b> se configura dentro de él.
         </p>
 
         <h3 class="subtitle">
@@ -83,63 +82,9 @@
                 </tr>
                 <tr>
                     <td><b>position | p</b></td>
-                    <td>String | Map</td>
+                    <td>Map</td>
                     <td>false</td>
-                    <td>Define la propiedad <b>position</b> o recibe un <b>map</b> con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
-                </tr>
-                <tr>
-                    <td><b>x</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Define el desplazamiento horizontal cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>y</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Define el desplazamiento vertical cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>yaxis | ya</b></td>
-                    <td>String</td>
-                    <td>top</td>
-                    <td>Define la propiedad CSS usada para el eje Y cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>xaxis | xa</b></td>
-                    <td>String</td>
-                    <td>left</td>
-                    <td>Define la propiedad CSS usada para el eje X cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>top | t</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>top</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>right | r</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>right</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>bottom | b</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>bottom</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>left | l</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>left</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>z</b></td>
-                    <td>Number | Bool</td>
-                    <td>false</td>
-                    <td>Define la propiedad <b>z-index</b> cuando recibe un valor distinto de <b>false</b>.</td>
+                    <td>Configura la posición mediante un <b>map</b> con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
                 </tr>
             </tbody>
             </table>
@@ -181,5 +126,11 @@
                 <pre class="language-html"><code>&lt;span&nbsp;class=&quot;replace_base_example&quot;&gt;SISASS&lt;/span&gt;</code></pre>
             </div>
         </div>
+
+        <p class="note">
+            <b>Nota:</b> si necesitas configurar <b>position</b>, hazlo
+            siempre como un <b>map</b> anidado. Por ejemplo,
+            <b>position: (position: relative, z: 2)</b>.
+        </p>
     </section>
 </article>

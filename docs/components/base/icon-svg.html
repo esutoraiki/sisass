@@ -21,7 +21,9 @@
         color, ruta, posición y fondo. Las claves <b>position</b> y
         <b>background</b> reutilizan la sintaxis de los mixins
         <a href="../pages/base.html#position">position</a> y
-        <a href="../pages/base.html#background">background</a>.
+        <a href="../pages/base.html#background">background</a>. En el map
+        anidado de <b>position</b> también puedes usar los alias cortos
+        <b>t</b>, <b>r</b>, <b>b</b> y <b>l</b>.
     </p>
 
     <section class="use">
@@ -105,10 +107,10 @@
         x: 0,
         yaxis: top,
         xaxis: left,
-        top: null,
-        right: null,
-        bottom: null,
-        left: null
+        t: null,
+        r: null,
+        b: null,
+        l: null
     ),
     background: (
         repeat: no-repeat,
@@ -119,6 +121,11 @@
 ));</code></pre>
         <p class="description">
             Valores por defecto: svg "", width auto, height auto, fill "none", def "none", path "../../img/svg/".
+        </p>
+        <p class="description">
+            En el ejemplo, <b>position</b> usa <b>t</b> y <b>l</b> para dejar
+            explícito que el map anidado acepta la misma sintaxis de
+            <a href="../pages/base.html#position">position</a>.
         </p>
         <p class="description">
             Uso recomendado: <b>icon-svg</b> dibuja el SVG y su fondo, mientras
@@ -182,7 +189,7 @@
                     <td><b>position</b></td>
                     <td>Map</td>
                     <td>(position | p: absolute, y: 0, x: 0, yaxis | ya: top, xaxis | xa: left, top: null, right: null, bottom: null, left: null)</td>
-                    <td>Controla la posición usada por el mixin <a href="../pages/base.html#position">position</a> y sigue su misma sintaxis map para esas claves.</td>
+                    <td>Controla la posición usada por el mixin <a href="../pages/base.html#position">position</a> y sigue su misma sintaxis map para esas claves, incluidos los alias <b>t</b>, <b>r</b>, <b>b</b> y <b>l</b>.</td>
                 </tr>
                 <tr>
                     <td><b>background</b></td>
