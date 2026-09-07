@@ -1,0 +1,19 @@
+{
+    "breadcrumb": [
+        {
+            "label": "articles"
+        },
+        {
+            "label": "nested_maps.html"
+        }
+    ],
+    "components": [
+        {
+            "id": "nested_maps",
+            "url": "../components/articles/nested_maps.html",
+            "position": "beforeend",
+            "node": "nested_maps",
+            "search_icon": "icon_articles"
+        }
+    ]
+}

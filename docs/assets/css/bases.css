@@ -378,7 +378,7 @@
   position: relative;
   top: 0px;
   left: 0px;
-  z-index: 3;
+  z-index: 4;
 }
 
 .documentationpage .no_border_example {
@@ -529,7 +529,7 @@
   position: relative;
   top: 0px;
   left: 0px;
-  z-index: 2;
+  z-index: 9;
   background-color: #A01303;
   color: transparent;
 }

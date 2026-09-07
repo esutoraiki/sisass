@@ -39,7 +39,7 @@
 
 // Font
 @mixin font (
-    $size: 1em,
+    $size: 1rem,
     $family: "sans-serif",
     $weight: normal,
     $style: normal,
@@ -109,6 +109,10 @@
 
 // Font Face
 @mixin font-face($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "font-face() only accepts a map with font options.";
+    }
+
     $name: mapv($attr, (name, n), null);
     $path: mapv($attr, (path, p), null);
     $weight: mapv($attr, (weight, w), normal);
@@ -187,6 +191,10 @@
 
 // autofill
 @mixin autofill($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "autofill() only accepts a map with autofill options.";
+    }
+
     $background: mapv($attr, bg, initial);
     $color: mapv($attr, (color, c), initial);
     $padding: mapv($attr, (padding, p), null);
@@ -207,6 +215,10 @@
 
 // Background
 @mixin background($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "background() only accepts a map with background options.";
+    }
+
     $way: mapv($attr, (url, u), "");
     $repeat: mapv($attr, (repeat, r), no-repeat);
     $position: mapv($attr, (position, p), center);
@@ -245,7 +257,6 @@
     }
 
     background-color: $bg_value;
-
     @if $use_legacy_value {
         background-color: rgba($bg_value, $opacity_value);
     } @else {
@@ -262,32 +273,28 @@
     $xaxis: left,
     $z_value: 1
 ) {
-    $position_value: $position;
-    $v_y: $y;
-    $v_x: $x;
-    $pos_y: $yaxis;
-    $pos_x: $xaxis;
-
     $top_value: null;
     $right_value: null;
     $bottom_value: null;
     $left_value: null;
 
     @if meta.type-of($position) == "map" {
-        $position_value: mapv($position, (position, p), $position_value);
-        $v_y: mapv($position, y, $v_y);
-        $v_x: mapv($position, x, $v_x);
-        $pos_y: mapv($position, (yaxis, ya), $pos_y);
-        $pos_x: mapv($position, (xaxis, xa), $pos_x);
-        $z_value: mapv($position, z, $z_value);
+        $position_attr: $position;
 
-        $top_value: mapv($position, (top, t), null);
-        $right_value: mapv($position, (right, r), null);
-        $bottom_value: mapv($position, (bottom, b), null);
-        $left_value: mapv($position, (left, l), null);
+        $position: mapv($position_attr, (position, p), relative);
+        $y: mapv($position_attr, y, $y);
+        $x: mapv($position_attr, x, $x);
+        $yaxis: mapv($position_attr, (yaxis, ya), $yaxis);
+        $xaxis: mapv($position_attr, (xaxis, xa), $xaxis);
+        $z_value: mapv($position_attr, z, $z_value);
+
+        $top_value: mapv($position_attr, (top, t), null);
+        $right_value: mapv($position_attr, (right, r), null);
+        $bottom_value: mapv($position_attr, (bottom, b), null);
+        $left_value: mapv($position_attr, (left, l), null);
     }
 
-    position : $position_value;
+    position: $position;
     $z: strip-unit($z_value);
 
     @if $top_value != null or $right_value != null or $bottom_value != null or $left_value != null {
@@ -296,8 +303,8 @@
         @if $bottom_value != null { bottom : normalize-px($bottom_value); }
         @if $left_value != null { left : normalize-px($left_value); }
     } @else {
-        #{$pos_y} : normalize-px($v_y);
-        #{$pos_x} : normalize-px($v_x);
+        #{$yaxis}: normalize-px($y);
+        #{$xaxis}: normalize-px($x);
     }
 
     @if $z != false {
@@ -468,10 +475,10 @@
                 x: mapv($position_map, x, map.get($position_attr, x)),
                 yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
                 xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
-                top: mapv($position_map, top, map.get($position_attr, top)),
-                right: mapv($position_map, right, map.get($position_attr, right)),
-                bottom: mapv($position_map, bottom, map.get($position_attr, bottom)),
-                left: mapv($position_map, left, map.get($position_attr, left))
+                top: mapv($position_map, (top, t), map.get($position_attr, top)),
+                right: mapv($position_map, (right, r), map.get($position_attr, right)),
+                bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
+                left: mapv($position_map, (left, l), map.get($position_attr, left))
             );
         }
 
@@ -508,13 +515,15 @@
 
 // Need gulp-postcss and postcss-inline-svg
 @mixin icon-svg-mask($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "icon-svg-mask() only accepts a map with SVG mask options.";
+    }
+
     $svg: mapv($attr, svg, false);
     $color: mapv($attr, (color, c), #FFFFFF);
-    $pos: mapv($attr, (position, p), absolute);
-    $x: mapv($attr, x, 0);
-    $y: mapv($attr, y, 0);
-    $xaxis: mapv($attr, (xaxis, xa), left);
-    $yaxis: mapv($attr, (yaxis, ya), top);
+    $position_attr: mapv($attr, (position, p), (
+        position: absolute
+    ));
     $w: mapv($attr, (width, w), 100px);
     $h: mapv($attr, (height, h), 100px);
     $repeat: mapv($attr, (repeat, r), no-repeat);
@@ -523,8 +532,8 @@
     $display: mapv($attr, (display, d), block);
 
     @if $svg != false {
-        @if $pos != false {
-            @include position($pos, $y, $x, $yaxis, $xaxis);
+        @if $position_attr != false {
+            @include position($position_attr);
         }
 
         @include wh($w, $h);
@@ -543,7 +552,6 @@
     $height: mapv($attr, (height, h), auto);
     $display: mapv($attr, (display, d), block);
     $hide_text: mapv($attr, (ht, hide_text), true);
-    $z: mapv($attr, z, false);
     $position_input: mapv($attr, (position, p), false);
     $position_attr: false;
 
@@ -565,58 +573,71 @@
             right: null,
             bottom: null,
             left: null,
-            z: $z
+            z: false
         );
 
-        @if meta.type-of($position_input) == "map" {
-            $position_map: $position_input;
-            $position_attr: (
-                position: mapv($position_map, type, mapv($position_map, (position, p), map.get($position_attr, position))),
-                y: mapv($position_map, y, map.get($position_attr, y)),
-                x: mapv($position_map, x, map.get($position_attr, x)),
-                yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
-                xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
-                top: mapv($position_map, (top, t), map.get($position_attr, top)),
-                right: mapv($position_map, (right, r), map.get($position_attr, right)),
-                bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
-                left: mapv($position_map, (left, l), map.get($position_attr, left)),
-                z: map.get($position_attr, z)
-            );
-        } @else {
-            $position_attr: (
-                position: $position_input,
-                y: mapv($attr, y, map.get($position_attr, y)),
-                x: mapv($attr, x, map.get($position_attr, x)),
-                yaxis: mapv($attr, (yaxis, ya), map.get($position_attr, yaxis)),
-                xaxis: mapv($attr, (xaxis, xa), map.get($position_attr, xaxis)),
-                top: mapv($attr, (top, t), map.get($position_attr, top)),
-                right: mapv($attr, (right, r), map.get($position_attr, right)),
-                bottom: mapv($attr, (bottom, b), map.get($position_attr, bottom)),
-                left: mapv($attr, (left, l), map.get($position_attr, left)),
-                z: map.get($position_attr, z)
-            );
+        @if meta.type-of($position_input) != "map" {
+            @error "The position key in replace-base must receive a map.";
         }
 
-        @include position($position_attr);
-    }
+        $position_map: $position_input;
+        $position_attr: (
+            position: mapv($position_map, type, mapv($position_map, (position, p), map.get($position_attr, position))),
+            y: mapv($position_map, y, map.get($position_attr, y)),
+            x: mapv($position_map, x, map.get($position_attr, x)),
+            yaxis: mapv($position_map, (yaxis, ya), map.get($position_attr, yaxis)),
+            xaxis: mapv($position_map, (xaxis, xa), map.get($position_attr, xaxis)),
+            top: mapv($position_map, (top, t), map.get($position_attr, top)),
+            right: mapv($position_map, (right, r), map.get($position_attr, right)),
+            bottom: mapv($position_map, (bottom, b), map.get($position_attr, bottom)),
+            left: mapv($position_map, (left, l), map.get($position_attr, left)),
+            z: mapv($position_map, z, map.get($position_attr, z))
+        );
 
-    @if $position_input == false and $z != false {
-        z-index: strip-unit($z);
+        @include position($position_attr);
     }
 }
 
 // Normalize the styles for working with SVG files
 @mixin normalize-svg($attr: ()) {
-    @include replace-base(map.merge((
-        position: relative,
-        z: 2,
+    @if meta.type-of($attr) != "map" {
+        @error "normalize-svg() only accepts a map with SVG options.";
+    }
+
+    $position_input: (
+        z: 2
+    );
+
+    @if map.has-key($attr, position) {
+        $position_input: map.get($attr, position);
+    } @else if map.has-key($attr, p) {
+        $position_input: map.get($attr, p);
+    }
+
+    $position_attr: $position_input;
+
+    @if meta.type-of($position_input) == "map" {
+        $position_attr: map.merge((
+            z: 2
+        ), $position_input);
+    }
+
+    $replace_attr: map.merge((
         display: block,
         ht: true
-    ), $attr));
+    ), $attr);
+
+    $replace_attr: map.set($replace_attr, position, $position_attr);
+
+    @include replace-base($replace_attr);
 }
 
 // Add scroll
 @mixin scroll($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "scroll() only accepts a map with scroll options.";
+    }
+
     $co: mapv($attr, (thumb_color, color, c), white);
     $co_hover: mapv($attr, (thumb_hover_color, color_hover, ch), $co);
     $co_active: mapv($attr, (thumb_active_color, color_active, ca), $co_hover);

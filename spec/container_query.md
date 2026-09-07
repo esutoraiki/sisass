@@ -2,7 +2,7 @@
 
 ## Estado
 
-Definida para implementación.
+Implementada.
 
 ## Historia de usuario
 

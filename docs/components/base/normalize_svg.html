@@ -17,11 +17,11 @@
     </p>
     <p class="description">
         Es un wrapper especializado sobre
-        <a href="../pages/base.html#replace_base">replace-base</a> para el flujo
+        <a class="link" href="../pages/base.html#replace_base">replace-base</a> para el flujo
         de SVG. Su valor está en ofrecer una configuración predeterminada útil
-        para trabajar junto a <a href="../pages/base.html#icon-svg">icon-svg</a>,
+        para trabajar junto a <a class="link" href="../pages/base.html#icon-svg">icon-svg</a>,
         y el bloque <b>position</b> se resuelve con el mixin
-        <a href="../pages/base.html#position">position</a>.
+        <a class="link" href="../pages/base.html#position">position</a>.
     </p>
 
     <section class="use">
@@ -41,20 +41,21 @@
         top: null,
         right: null,
         bottom: null,
-        left: null
+        left: null,
+        z: 2
     ),
     display: block,
-    z: 2,
     ht: true
 ));</code></pre>
 
         <p class="description">
             Equivale a usar
-            <a href="../pages/base.html#replace_base">replace-base</a> con
-            <b>position: relative</b>, <b>z: 2</b>, <b>display: block</b> y
-            <b>ht: true</b> como valores base. Por compatibilidad, también
-            puedes pasar las claves de posición en el nivel raíz del <b>map</b>,
-            incluidas <b>top</b>, <b>right</b>, <b>bottom</b> y <b>left</b>.
+            <a class="link" href="../pages/base.html#replace_base">replace-base</a> con
+            <b>position: (position: relative, z: 2)</b>, <b>display: block</b>
+            y <b>ht: true</b> como valores base. El bloque
+            <b>position</b> se resuelve con el mixin
+            <a class="link" href="../pages/base.html#position">position</a>
+            y conserva sus valores por defecto al sobrescribir solo una clave.
         </p>
 
         <h3 class="subtitle">
@@ -85,63 +86,9 @@
                 </tr>
                 <tr>
                     <td><b>position | p</b></td>
-                    <td>String | Map</td>
-                    <td>relative</td>
-                    <td>Define la propiedad <b>position</b> o recibe un map con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
-                </tr>
-                <tr>
-                    <td><b>x</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Define el desplazamiento horizontal.</td>
-                </tr>
-                <tr>
-                    <td><b>y</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Define el desplazamiento vertical.</td>
-                </tr>
-                <tr>
-                    <td><b>yaxis | ya</b></td>
-                    <td>String</td>
-                    <td>top</td>
-                    <td>Define la propiedad CSS usada para el eje Y.</td>
-                </tr>
-                <tr>
-                    <td><b>xaxis | xa</b></td>
-                    <td>String</td>
-                    <td>left</td>
-                    <td>Define la propiedad CSS usada para el eje X.</td>
-                </tr>
-                <tr>
-                    <td><b>top | t</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>top</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>right | r</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>right</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>bottom | b</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>bottom</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>left | l</b></td>
-                    <td>Medida</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>left</b> cuando usas sintaxis plana.</td>
-                </tr>
-                <tr>
-                    <td><b>z</b></td>
-                    <td>Number</td>
-                    <td>2</td>
-                    <td>Define la propiedad <b>z-index</b>.</td>
+                    <td>Map</td>
+                    <td>(position: relative, z: 2)</td>
+                    <td>Configura la posición del contenedor y permite sobrescribir el bloque anidado con la sintaxis del mixin <a class="link" href="../pages/base.html#position">position</a>.</td>
                 </tr>
                 <tr>
                     <td><b>display | d</b></td>

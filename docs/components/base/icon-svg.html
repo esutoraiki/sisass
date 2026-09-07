@@ -12,16 +12,20 @@
     </div>
 
     <p class="description">
-        Inserta un SVG como <b>background-image</b>. Requiere
-        <b>postcss-inline-svg</b> para resolver las funciones usadas por el
-        mixin.
+        Inserta un SVG como <b>background-image</b> y lo guarda dentro de la
+        hoja de estilos CSS. A diferencia de <a class="link"
+        href="../pages/base.html#icon-svg-mask">icon-svg-mask</a>, el recurso
+        SVG queda integrado en el CSS generado. Requiere
+        <b>postcss-inline-svg</b> para resolver las funciones usadas por el mixin.
     </p>
     <p class="description">
         Admite firma posicional o sintaxis <b>map</b> con opciones para tamaño,
         color, ruta, posición y fondo. Las claves <b>position</b> y
         <b>background</b> reutilizan la sintaxis de los mixins
-        <a href="../pages/base.html#position">position</a> y
-        <a href="../pages/base.html#background">background</a>.
+        <a class="link" href="../pages/base.html#position">position</a> y
+        <a class="link" href="../pages/base.html#background">background</a>. En el map
+        anidado de <b>position</b> también puedes usar los alias cortos
+        <b>t</b>, <b>r</b>, <b>b</b> y <b>l</b>.
     </p>
 
     <section class="use">
@@ -105,10 +109,10 @@
         x: 0,
         yaxis: top,
         xaxis: left,
-        top: null,
-        right: null,
-        bottom: null,
-        left: null
+        t: null,
+        r: null,
+        b: null,
+        l: null
     ),
     background: (
         repeat: no-repeat,
@@ -121,10 +125,15 @@
             Valores por defecto: svg "", width auto, height auto, fill "none", def "none", path "../../img/svg/".
         </p>
         <p class="description">
+            En el ejemplo, <b>position</b> usa <b>t</b> y <b>l</b> para dejar
+            explícito que el map anidado acepta la misma sintaxis de
+            <a class="link" href="../pages/base.html#position">position</a>.
+        </p>
+        <p class="description">
             Uso recomendado: <b>icon-svg</b> dibuja el SVG y su fondo, mientras
-            <a href="../pages/base.html#replace_base">replace-base</a> prepara
+            <a class="link" href="../pages/base.html#replace_base">replace-base</a> prepara
             el contenedor. Si buscas el flujo ya configurado para SVG, puedes
-            usar <a href="../pages/base.html#normalize_svg">normalize-svg</a>
+            usar <a class="link" href="../pages/base.html#normalize_svg">normalize-svg</a>
             como wrapper especializado.
         </p>
 
@@ -182,13 +191,13 @@
                     <td><b>position</b></td>
                     <td>Map</td>
                     <td>(position | p: absolute, y: 0, x: 0, yaxis | ya: top, xaxis | xa: left, top: null, right: null, bottom: null, left: null)</td>
-                    <td>Controla la posición usada por el mixin <a href="../pages/base.html#position">position</a> y sigue su misma sintaxis map para esas claves.</td>
+                    <td>Controla la posición usada por el mixin <a class="link" href="../pages/base.html#position">position</a> y sigue su misma sintaxis map para esas claves, incluidos los alias <b>t</b>, <b>r</b>, <b>b</b> y <b>l</b>.</td>
                 </tr>
                 <tr>
                     <td><b>background</b></td>
                     <td>Map</td>
                     <td>(repeat: no-repeat, position: top left, color: transparent, size: 100%)</td>
-                    <td>Controla <b>repeat</b>, <b>position</b>, <b>color</b> y <b>size</b> del fondo final con la sintaxis map usada por el mixin <a href="../pages/base.html#background">background</a> para esas claves.</td>
+                    <td>Controla <b>repeat</b>, <b>position</b>, <b>color</b> y <b>size</b> del fondo final con la sintaxis map usada por el mixin <a class="link" href="../pages/base.html#background">background</a> para esas claves.</td>
                 </tr>
             </tbody>
             </table>
@@ -200,11 +209,11 @@
         <p class="note">
             Nota: cuando el SVG se usa en <b>::before</b> o <b>::after</b>,
             normalmente se combina con
-            <a href="../pages/base.html#replace_base">replace-base</a> para
+            <a class="link" href="../pages/base.html#replace_base">replace-base</a> para
             preparar el contenedor con tamaño, <b>display</b>, posición,
             <b>z-index</b> y ocultamiento opcional de texto. Si prefieres una
             configuración ya orientada a SVG, usa
-            <a href="../pages/base.html#normalize_svg">normalize-svg</a>.
+            <a class="link" href="../pages/base.html#normalize_svg">normalize-svg</a>.
         </p>
         <div
             id="icon-svg_example_tabs"

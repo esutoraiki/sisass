@@ -9,10 +9,16 @@
     ],
     "components": [
         {
-            "id": "new",
-            "url": "../components/articles/new.html",
+            "id": "version_2_0_2",
+            "url": "../components/articles/new_2_0_2.html",
             "position": "beforeend",
-            "node": "new"
+            "node": "version_2_0_2"
+        },
+        {
+            "id": "version_2_0_1",
+            "url": "../components/articles/new_2_0_1.html",
+            "position": "beforeend",
+            "node": "version_2_0_1"
         }
     ]
 }

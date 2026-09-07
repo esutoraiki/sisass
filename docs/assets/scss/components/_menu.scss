@@ -91,7 +91,7 @@
                 @include flex;
                 padding-inline-start: 35px;
                 color: var(--theme_text);
-                margin-bottom: initial;
+                margin-block: initial;
 
                 @include brp($b6) {
                     color: var(--theme_text);
@@ -99,15 +99,11 @@
             }
 
             .item {
-                @include t1((
-                    f: $f2,
-                    s: szrem(14)
-                ));
+                @include t1((f: $f2, s: szrem(14)));
                 @include wh(100%, 35px);
                 @include align-items(center);
                 @include flex;
                 padding-inline-start: 28px;
-
 
                 &:last-child { margin-bottom: 0; }
 

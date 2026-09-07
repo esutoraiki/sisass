@@ -107,6 +107,47 @@ function get_component_category(value) {
     return category_match ? get_html_text(category_match[2]) : "Documentación";
 }
 
+function get_component_summary(value) {
+    const
+        content_without_title = value.replace(
+            /<div[^>]*class=["'][^"']*group_title[^"']*["'][^>]*>[\s\S]*?<\/div>/i,
+            ""
+        ),
+        paragraph_match = content_without_title.match(/<p[^>]*>([\s\S]*?)<\/p>/i)
+    ;
+
+    return paragraph_match ? get_html_text(paragraph_match[1]) : "";
+}
+
+function get_search_metadata(title, category, page_data, page_url, component) {
+    const
+        source_match = title.match(/^(.+?)\s+\((_[^)]+\.(?:sass|scss|scscs|css|js|html))\)$/i),
+        breadcrumb = Array.isArray(page_data.breadcrumb) ? page_data.breadcrumb : [],
+        breadcrumb_path = breadcrumb
+            .map((item) => typeof item.label === "string" ? item.label.trim() : "")
+            .filter(Boolean)
+            .join("/"),
+        is_source_document = breadcrumb_path.startsWith("src/"),
+        display_title = source_match ? source_match[1] : title,
+        source_file = source_match ? source_match[2] : "",
+        display_path = is_source_document ? breadcrumb_path : page_url,
+        normalized_category = category.toLowerCase(),
+        default_icon = normalized_category === "artículo" ? "file" : (
+            source_file.endsWith(".js") ? "js" : (
+                normalized_category === "mixin" || normalized_category === "function" ? "sass" : "file"
+            )
+        ),
+        icon = component.search_icon || default_icon
+    ;
+
+    return {
+        display_title,
+        source_file,
+        display_path,
+        icon
+    };
+}
+
 function format_page_title(value) {
     return value.charAt(0).toUpperCase() + value.slice(1);
 }
@@ -171,13 +212,21 @@ gulp.task("search_index", async function () {
                 continue;
             }
 
+            const
+                title = get_component_title(component_source, component.id),
+                category = get_component_category(component_source),
+                search_metadata = get_search_metadata(title, category, page_data, page_url, component)
+            ;
+
             index.push({
                 url: page_url,
                 anchor: component.node || component.id,
-                title: get_component_title(component_source, component.id),
-                category: get_component_category(component_source),
+                title,
+                category,
                 page_title,
-                text: get_html_text(component_source)
+                text: get_html_text(component_source),
+                summary: get_component_summary(component_source),
+                ...search_metadata
             });
         }
     }
@@ -243,7 +292,7 @@ gulp.task("css_svg", function () {
         .pipe(gulp.dest(path_dest_svg));
 });
 
-gulp.task("scss", function () {
+gulp.task("compile_scss", function () {
     console.log("");
     console.log("---- Styles ----");
     console.log("");
@@ -255,6 +304,8 @@ gulp.task("scss", function () {
         }))
         .pipe(gulp.dest("assets/css"));
 });
+
+gulp.task("scss", gulp.series("compile_scss", "process_svg"));
 
 gulp.task("lint", function() {
     console.log("");
@@ -307,7 +358,7 @@ gulp.task("watch", function () {
         "assets/json/!(search_index).json"
     ], gulp.series("search_index"));
 
-    gulp.watch(paths_compile_scss, gulp.series("scss", "process_svg"));
+    gulp.watch(paths_compile_scss, gulp.series("scss"));
     gulp.watch(path_svg, gulp.series("css_svg", "process_svg"));
     gulp.watch(path_orig_img_svg, gulp.series(
         "delete_svg",
@@ -316,9 +367,9 @@ gulp.task("watch", function () {
         "process_svg"
     ));
 
-    gulp.watch("assets/scss/core/*.scss", gulp.parallel(
-        "scss",
-        gulp.series("css_svg", "process_svg")
+    gulp.watch("assets/scss/core/*.scss", gulp.series(
+        gulp.parallel("compile_scss", "css_svg"),
+        "process_svg"
     ));
 
     gulp.watch("assets/scss/pages/*.scss", gulp.series("scss"));

@@ -5,7 +5,9 @@
         @include icon-svg-mask((
             svg: "sisass",
             c: $c5,
-            p: relative,
+            position: (
+                position: relative
+            ),
             w: 220px,
             h: 83px,
             s: contain,

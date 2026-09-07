@@ -1,6 +1,6 @@
 <header id="main_header" class="main_header layout_header">
     <div class="left_header b1">
-        <a class="logo_sisass" href="/">
+        <a class="logo_sisass" href="./" data-home-link>
             SISASS Simple Interface for SASS
         </a>
         <div class="separator"> </div>
@@ -27,14 +27,48 @@
                     id="page_search_input"
                     class="page_search_input"
                     type="search"
+                    role="combobox"
                     aria-label="Buscar en la documentación"
+                    aria-autocomplete="list"
+                    aria-controls="page_search_list"
+                    aria-expanded="false"
                     placeholder="Buscar en la documentación..."
                     autocomplete="off"
                     spellcheck="false"
                     />
+                <button
+                    id="page_search_clear"
+                    class="page_search_clear"
+                    type="button"
+                    aria-label="Limpiar búsqueda"
+                    hidden
+                    >
+                </button>
                 <kbd class="page_search_shortcut" aria-hidden="true">⌘ K</kbd>
             </div>
-            <div id="page_search_results" class="page_search_results" aria-live="polite"></div>
+            <div id="page_search_results" class="page_search_results" hidden>
+                <div class="page_search_results_header">
+                    <p id="page_search_results_title" class="page_search_results_title"></p>
+                    <p class="page_search_results_count"></p>
+                </div>
+                <div
+                    id="page_search_list"
+                    class="page_search_list"
+                    role="listbox"
+                    aria-labelledby="page_search_results_title"
+                ></div>
+                <div class="page_search_results_footer" hidden>
+                    <button class="page_search_show_all" type="button">
+                        <span class="page_search_show_all_label"></span>
+                        <span class="page_search_show_all_hint" aria-hidden="true">
+                            <kbd class="page_search_show_all_shortcut"></kbd>
+                            <span>para ver todos</span>
+                        </span>
+                    </button>
+                    <p class="page_search_all_results" hidden>Mostrando todos los resultados</p>
+                </div>
+            </div>
+            <p id="page_search_status" class="page_search_status" aria-live="polite"></p>
         </div>
     </div>
 

@@ -1,0 +1,169 @@
+.recommendations_list {
+  -ms-display: grid;
+  display: grid;
+  grid-gap: 15px;
+  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media only screen and (max-width: 768px) {
+  .recommendations_list {
+    grid-template-columns: 1fr;
+  }
+}
+.recommendations_list .recommendation {
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  background-color: var(--theme_bg_secondary);
+  color: var(--theme_text);
+  width: auto;
+  height: 100%;
+  grid-gap: 20px;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid var(--theme_border);
+}
+.recommendations_list .recommendation .icon_tags {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: clamp(20px, 1.56vw, 30px);
+  height: clamp(20px, 1.56vw, 30px);
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+.recommendations_list .recommendation .icon_edit {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: clamp(20px, 1.56vw, 30px);
+  height: clamp(20px, 1.56vw, 30px);
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+.recommendations_list .recommendation .icon_prohibited {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: clamp(20px, 1.56vw, 30px);
+  height: clamp(20px, 1.56vw, 30px);
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+.recommendations_list .recommendation .icon_map {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: clamp(20px, 1.56vw, 30px);
+  height: clamp(20px, 1.56vw, 30px);
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+.recommendations_list .recommendation .icon_branch {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: clamp(20px, 1.56vw, 30px);
+  height: clamp(20px, 1.56vw, 30px);
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}
+.recommendations_list .recommendation .icon_documentation {
+  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-indent: -10000000px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  width: clamp(20px, 1.56vw, 30px);
+  height: clamp(20px, 1.56vw, 30px);
+  display: block;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+}

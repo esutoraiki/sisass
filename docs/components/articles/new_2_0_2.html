@@ -1,0 +1,326 @@
+<article id="new_2_0_2" class="new">
+    <div class="group_title">
+        <h2
+            id="version_2_0_2_heading"
+            class="title"
+            data-page-menu-item
+            data-page-menu-label="Versión 2.0.2"
+        >
+            Novedades Versión 2.0.2
+        </h2>
+
+        <div class="container_attributes">
+            <span class="attribute">
+                Tipo: Artículo
+            </span>
+            <span class="attribute">
+                Versión: 2.0.2
+            </span>
+        </div>
+    </div>
+
+    <p class="release_intro">
+        La versión 2.0.2 amplía la documentación conceptual, actualiza las
+        referencias de bienvenida y media queries, corrige detalles visuales y
+        de rutas, mejora utilidades de <b>_base.scss</b> y renueva el buscador
+        global de la documentación.
+    </p>
+
+    <section class="release_section" aria-labelledby="version_2_0_2_articles">
+        <h3
+            id="version_2_0_2_articles"
+            class="title"
+        >
+            Artículos
+        </h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Mapas anidados en SISASS
+                </h4>
+                <p class="release_item_description">
+                    Se añadió un <a class="link" href="../pages/articles/nested_maps.html">artículo dedicado a los mapas anidados</a> para explicar sus niveles, claves contenedoras, aliases, valores predeterminados y uso en las APIs públicas de SISASS.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_2_updates">
+        <h3
+            id="version_2_0_2_updates"
+            class="title"
+        >
+            Actualizaciones
+        </h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Información de bienvenida
+                </h4>
+                <p class="release_item_description">
+                    Se actualizó la información presentada en la página de bienvenida para mantenerla alineada con la estructura y las capacidades actuales del proyecto.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Clasificación de media queries
+                </h4>
+                <p class="release_item_description">
+                    La <a class="link" href="../pages/mediaqueries.html">documentación de media queries</a> incorpora una clasificación de sus mixins, títulos visibles para cada categoría y un menú de página limitado a las referencias públicas.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_2_corrections">
+        <h3
+            id="version_2_0_2_corrections"
+            class="title"
+        >
+            Correcciones
+        </h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Ruta del logotipo según el entorno
+                </h4>
+                <p class="release_item_description">
+                    Se incorporó una solución dinámica para ajustar la ruta del logotipo según el entorno de desarrollo o producción.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Presentación de hipervínculos
+                </h4>
+                <p class="release_item_description">
+                    Se mejoró la presentación de los hipervínculos para diferenciarlos correctamente del texto en negrilla, ya que ambos estilos se percibían casi iguales.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Posicionamiento de <b>icon-svg-mask</b>
+                </h4>
+                <p class="release_item_description">
+                    El mixin <a class="link" href="../pages/base.html#icon-svg-mask">icon-svg-mask</a> ahora delega su configuración de posición al mixin <b>position</b> y admite su sintaxis mediante un mapa anidado.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_2_base_corrections">
+        <h3
+            id="version_2_0_2_base_corrections"
+            class="title"
+        >
+            Correcciones para <b>_base.scss</b>
+        </h3>
+
+        <div class="container_table">
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Prioridad</th>
+                        <th>Mixin</th>
+                        <th>Ajuste recomendado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alta</td>
+                        <td><b>position</b></td>
+                        <td>Usar <b>relative</b> como fallback cuando el mapa no incluya <b>position</b> ni <b>p</b>, y eliminar variables intermedias redundantes.</td>
+                    </tr>
+                    <tr>
+                        <td>Alta</td>
+                        <td><b>replace-base</b></td>
+                        <td>Eliminar el soporte de parámetros posicionales y conservar únicamente la sintaxis map para reducir redundancias y complejidad.</td>
+                    </tr>
+                    <tr>
+                        <td>Media</td>
+                        <td><b>font</b></td>
+                        <td>Corregir el valor predeterminado a <b>1rem</b>.</td>
+                    </tr>
+                    <tr>
+                        <td>Media</td>
+                        <td><b>tf</b></td>
+                        <td>Corregir el valor predeterminado a <b>1rem</b>.</td>
+                    </tr>
+                    <tr>
+                        <td>Media</td>
+                        <td><b>icon-svg</b></td>
+                        <td>Procesar los aliases <b>t</b>, <b>r</b>, <b>b</b> y <b>l</b> dentro del mapa anidado de <b>position</b>.</td>
+                    </tr>
+                    <tr>
+                        <td>Media</td>
+                        <td><b>replace-base</b></td>
+                        <td>Simplificar y resolver la redundancia de lógica relacionada con el atributo <b>z</b>.</td>
+                    </tr>
+                    <tr>
+                        <td>Baja</td>
+                        <td><b>font-face</b></td>
+                        <td>Añadir una validación explícita para confirmar que <b>$attr</b> sea un mapa.</td>
+                    </tr>
+                    <tr>
+                        <td>Baja</td>
+                        <td><b>autofill</b></td>
+                        <td>Añadir una validación explícita para confirmar que <b>$attr</b> sea un mapa.</td>
+                    </tr>
+                    <tr>
+                        <td>Baja</td>
+                        <td><b>background</b></td>
+                        <td>Añadir una validación explícita para confirmar que <b>$attr</b> sea un mapa.</td>
+                    </tr>
+                    <tr>
+                        <td>Baja</td>
+                        <td><b>icon-svg-mask</b></td>
+                        <td>Añadir una validación explícita para confirmar que <b>$attr</b> sea un mapa.</td>
+                    </tr>
+                    <tr>
+                        <td>Baja</td>
+                        <td><b>normalize-svg</b></td>
+                        <td>Añadir una validación explícita para confirmar que <b>$attr</b> sea un mapa.</td>
+                    </tr>
+                    <tr>
+                        <td>Baja</td>
+                        <td><b>scroll</b></td>
+                        <td>Añadir una validación explícita para confirmar que <b>$attr</b> sea un mapa.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_2_search">
+        <h3
+            id="version_2_0_2_search"
+            class="title"
+        >
+            Buscador
+        </h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Interfaz del desplegable
+                </h4>
+                <ul class="release_detail_list">
+                    <li class="release_detail_item">El nuevo panel aparece centrado debajo del campo de búsqueda.</li>
+                    <li class="release_detail_item">La cabecera muestra la consulta actual y el total real de resultados.</li>
+                    <li class="release_detail_item">Cada resultado presenta icono, nombre, archivo de origen cuando está disponible, tipo, extracto contextual, ruta documental y flecha de navegación.</li>
+                    <li class="release_detail_item">Las coincidencias se resaltan en títulos y extractos, y el resultado activo tiene un estado visual diferenciado.</li>
+                    <li class="release_detail_item">Se añadieron un botón para limpiar, la acción «Ver todos los resultados», temas claro y oscuro y adaptación para pantallas estrechas.</li>
+                </ul>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Cantidad y expansión de resultados
+                </h4>
+                <ul class="release_detail_list">
+                    <li class="release_detail_item">Se eliminó el límite anterior de 12 coincidencias y la vista inicial muestra un máximo de cinco.</li>
+                    <li class="release_detail_item">El contador conserva el total real y «Ver todos los resultados» presenta todas las coincidencias en el mismo panel.</li>
+                    <li class="release_detail_item">La cabecera y el pie permanecen fuera de la región desplazable, mientras la lista completa utiliza scroll vertical interno.</li>
+                    <li class="release_detail_item">El panel conserva su geometría y reserva el scrollbar con <b>scrollbar-gutter: stable</b>.</li>
+                    <li class="release_detail_item">La lista usa <b>box-sizing: border-box</b> y mantiene espacio inferior incluso cuando hay pocos resultados.</li>
+                </ul>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Funcionamiento de la búsqueda
+                </h4>
+                <ul class="release_detail_list">
+                    <li class="release_detail_item">La búsqueda comprende toda la documentación indexada.</li>
+                    <li class="release_detail_item">La relevancia prioriza el inicio del título, coincidencias dentro del título, categoría y contenido documental.</li>
+                    <li class="release_detail_item">Las consultas con varias palabras requieren que coincidan todos los términos.</li>
+                    <li class="release_detail_item">La búsqueda ignora mayúsculas, minúsculas y tildes, pero el resaltado conserva la escritura original.</li>
+                    <li class="release_detail_item">La consulta se procesa como texto, sin insertar HTML ni construir expresiones regulares inseguras.</li>
+                    <li class="release_detail_item">Al cambiar la consulta se recupera la vista de cinco resultados, se selecciona el primero y el scroll vuelve al inicio.</li>
+                </ul>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Extractos y metadatos
+                </h4>
+                <p class="release_item_description">
+                    Durante esta renovación se auditaron 98 entradas documentales obtenidas del contenido real del sitio. El generador utiliza los componentes, sus bloques <b>group_title</b>, los breadcrumbs y los JSON documentales; no incorpora rutas ni resultados ficticios.
+                </p>
+                <div class="container_table">
+                    <table class="full">
+                        <thead>
+                            <tr>
+                                <th>Campo</th>
+                                <th>Contenido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>display_title</b></td>
+                                <td>Título visible sin repetir el archivo.</td>
+                            </tr>
+                            <tr>
+                                <td><b>source_file</b></td>
+                                <td>Archivo fuente documentado.</td>
+                            </tr>
+                            <tr>
+                                <td><b>display_path</b></td>
+                                <td>Ruta fuente o ruta documental comprobada.</td>
+                            </tr>
+                            <tr>
+                                <td><b>icon</b></td>
+                                <td>Icono existente asociado al tipo de recurso.</td>
+                            </tr>
+                            <tr>
+                                <td><b>summary</b></td>
+                                <td>Resumen documental utilizado para el extracto.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Navegación mediante teclado
+                </h4>
+                <ul class="release_detail_list">
+                    <li class="release_detail_item"><b>/</b> enfoca el buscador; <b>Ctrl + K</b> o <b>⌘ + K</b> lo enfoca y selecciona la consulta.</li>
+                    <li class="release_detail_item">Las teclas <b>↓</b> y <b>↑</b> cambian el resultado activo sin recorrido circular.</li>
+                    <li class="release_detail_item"><b>Enter</b> abre el resultado y <b>Ctrl + Enter</b> o <b>⌘ + Enter</b> muestra la lista completa.</li>
+                    <li class="release_detail_item"><b>Escape</b> cierra el desplegable sin borrar la consulta y volver a enfocar el campo lo abre nuevamente.</li>
+                    <li class="release_detail_item">El último resultado de la lista completa es accesible mediante teclado y scroll.</li>
+                </ul>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Navegación documental
+                </h4>
+                <p class="release_item_description">
+                    Los resultados abren la página y el hash correspondientes. Los destinos de la página actual usan la navegación interna existente, mientras los resultados externos conservan la ruta documental completa. Los clics modificados, como <b>Ctrl + clic</b>, permiten abrir el enlace en otra pestaña.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Estados de búsqueda
+                </h4>
+                <ul class="release_detail_list">
+                    <li class="release_detail_item">Se diferenciaron los estados de campo vacío, carga, resultados encontrados, ausencia de coincidencias y fallo al cargar el índice.</li>
+                    <li class="release_detail_item">También se contemplan la búsqueda local de respaldo y la lista completa desplegada.</li>
+                    <li class="release_detail_item">El índice se carga en segundo plano y una respuesta tardía no vuelve a abrir una búsqueda cerrada o limpiada.</li>
+                </ul>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Accesibilidad
+                </h4>
+                <ul class="release_detail_list">
+                    <li class="release_detail_item">El campo usa semántica de combobox; la lista utiliza listbox y cada resultado actúa como option.</li>
+                    <li class="release_detail_item">Se mantienen <b>aria-expanded</b>, <b>aria-activedescendant</b> y un único <b>aria-selected="true"</b>.</li>
+                    <li class="release_detail_item">El contador y los estados se anuncian mediante una región <b>aria-live</b>.</li>
+                    <li class="release_detail_item">Los botones para limpiar y mostrar todos tienen nombres accesibles.</li>
+                    <li class="release_detail_item">Los iconos son decorativos, no duplican el texto anunciado y el foco no queda atrapado en el panel.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</article>

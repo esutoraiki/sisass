@@ -2,7 +2,7 @@
 
 ## Estado
 
-Definida para implementación.
+Implementada.
 
 ## Historia de usuario
 
@@ -601,4 +601,3 @@ confirmar que abre `pages/mediaqueries.html` con el hash correcto.
 - [Media Queries Level 4](https://www.w3.org/TR/mediaqueries-4/)
 - [Media Queries Level 5](https://www.w3.org/TR/mediaqueries-5/)
 - [CSS Containment Level 3](https://www.w3.org/TR/css-contain-3/)
-

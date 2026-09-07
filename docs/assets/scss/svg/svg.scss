@@ -1,6 +1,21 @@
 @use "../core/instances" as *;
 @use "sass:list";
 
+@for $i from 1 through list.length($recommendation_name) {
+    .icon_#{list.nth($recommendation_name, $i)} {
+        &::before {
+            @include icon-svg((
+                svg: list.nth($recommendation_name, $i),
+                w: list.nth($l13, 1),
+                h: list.nth($l13, 1),
+                fill: $c6,
+            ));
+            filter: var(--theme_icon_filter);
+            content: "";
+        }
+    }
+}
+
 @for $i from 1 through list.length($requirements_icon) {
     .logo_#{list.nth($requirements_icon, $i)} {
         &::before {
@@ -88,20 +103,20 @@
 }
 
 .link {
-    &::before {
+    &::after {
         @include icon-svg((
             svg: link,
-            w: list.nth($l10, 1),
-            h: list.nth($l10, 1),
-            fill: $c6,
+            w: list.nth($l15, 1),
+            h: list.nth($l15, 1),
+            fill: $c17,
             position: (
-                xaxis: right,
-                x: 15px,
-                y: 15px
+                p: relative,
+                x: 4px,
+                y: 1px
             )
         ));
-        display: inline-block;
         filter: var(--theme_icon_filter);
+        display: inline-block;
         content: "";
     }
 }

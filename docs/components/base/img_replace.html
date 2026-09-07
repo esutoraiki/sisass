@@ -17,9 +17,13 @@
     </p>
     <p class="description">
         Aplica utilidades de fondo y delega la base del contenedor al mixin
-        <a href="../pages/base.html#replace_base"><b>replace-base</b></a>, por
+        <a class="link" href="../pages/base.html#replace_base"><b>replace-base</b></a>, por
         lo que también puede personalizar tamaño,
         <b>display</b>, ocultamiento de texto, posición y <b>z-index</b>.
+    </p>
+    <p class="description">
+        La propiedad <b>z-index</b> se configura con <b>z</b> dentro del
+        <b>map</b> <b>base.position</b>.
     </p>
 
     <section class="use">
@@ -44,7 +48,8 @@
         width: auto,
         height: auto,
         display: block,
-        ht: true
+        ht: true,
+        position: false
     )
 ));</code></pre>
         <p class="description">
@@ -161,8 +166,8 @@
                 <tr>
                     <td><b>base</b></td>
                     <td>Map</td>
-                    <td>(width: auto, height: auto, display: block, ht: true)</td>
-                    <td>Permite sobrescribir la configuración enviada al mixin <a href="../pages/base.html#replace_base"><b>replace-base</b></a>.</td>
+                    <td>(width: auto, height: auto, display: block, ht: true, position: false)</td>
+                    <td>Permite sobrescribir la configuración enviada a <a class="link" href="../pages/base.html#replace_base"><b>replace-base</b></a>; <b>z</b> pertenece al <b>map</b> <b>position</b>.</td>
                 </tr>
             </tbody>
             </table>

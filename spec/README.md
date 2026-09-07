@@ -19,8 +19,12 @@ Esta carpeta contiene especificaciones de producto e interfaz para funcionalidad
 | [installer_structure.md](./installer_structure.md) | Define la reorganización lógica de `files/` y la creación de la estructura de instalación por parte de `install.js`. |
 | [sisass_installation_article.md](./sisass_installation_article.md) | Define el artículo para instalar SISASS en proyectos HTML, SQHTML, SQHTML2, React y React con Vite. |
 | [mediaqueries_modernization.md](./mediaqueries_modernization.md) | Define la modernización de los mixins de media queries, sus APIs secuenciales y map, las nuevas condiciones y su documentación. |
+| [mediaqueries_classification.md](./mediaqueries_classification.md) | Define la tabla y los títulos que clasifican los mixins públicos de media queries dentro de la documentación. |
 | [container_query.md](./container_query.md) | Define el mixin `container-query`, sus interfaces posicional y map, las consultas admitidas y su documentación. |
 | [page_menu.md](./page_menu.md) | Define el menú de navegación de la página actual generado desde encabezados seleccionados explícitamente. |
+| [search_dropdown.md](./search_dropdown.md) | Define el desplegable de búsqueda global con resultados enriquecidos, navegación por teclado y listado completo con espacio de scroll reservado. |
+| [new_article_versions.md](./new_article_versions.md) | Define el historial de versiones del artículo de novedades en una única página. |
+| [nested_maps.md](./nested_maps.md) | Define el artículo conceptual sobre mapas anidados, sus patrones de uso y las APIs públicas de SISASS que los admiten. |
 
 ## Convenciones
 
