@@ -109,6 +109,10 @@
 
 // Font Face
 @mixin font-face($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "font-face() only accepts a map with font options.";
+    }
+
     $name: mapv($attr, (name, n), null);
     $path: mapv($attr, (path, p), null);
     $weight: mapv($attr, (weight, w), normal);
@@ -187,6 +191,10 @@
 
 // autofill
 @mixin autofill($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "autofill() only accepts a map with autofill options.";
+    }
+
     $background: mapv($attr, bg, initial);
     $color: mapv($attr, (color, c), initial);
     $padding: mapv($attr, (padding, p), null);
@@ -207,6 +215,10 @@
 
 // Background
 @mixin background($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "background() only accepts a map with background options.";
+    }
+
     $way: mapv($attr, (url, u), "");
     $repeat: mapv($attr, (repeat, r), no-repeat);
     $position: mapv($attr, (position, p), center);
@@ -503,13 +515,15 @@
 
 // Need gulp-postcss and postcss-inline-svg
 @mixin icon-svg-mask($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "icon-svg-mask() only accepts a map with SVG mask options.";
+    }
+
     $svg: mapv($attr, svg, false);
     $color: mapv($attr, (color, c), #FFFFFF);
-    $pos: mapv($attr, (position, p), absolute);
-    $x: mapv($attr, x, 0);
-    $y: mapv($attr, y, 0);
-    $xaxis: mapv($attr, (xaxis, xa), left);
-    $yaxis: mapv($attr, (yaxis, ya), top);
+    $position_attr: mapv($attr, (position, p), (
+        position: absolute
+    ));
     $w: mapv($attr, (width, w), 100px);
     $h: mapv($attr, (height, h), 100px);
     $repeat: mapv($attr, (repeat, r), no-repeat);
@@ -518,8 +532,8 @@
     $display: mapv($attr, (display, d), block);
 
     @if $svg != false {
-        @if $pos != false {
-            @include position($pos, $y, $x, $yaxis, $xaxis);
+        @if $position_attr != false {
+            @include position($position_attr);
         }
 
         @include wh($w, $h);
@@ -586,6 +600,10 @@
 
 // Normalize the styles for working with SVG files
 @mixin normalize-svg($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "normalize-svg() only accepts a map with SVG options.";
+    }
+
     $position_input: (
         z: 2
     );
@@ -616,6 +634,10 @@
 
 // Add scroll
 @mixin scroll($attr: ()) {
+    @if meta.type-of($attr) != "map" {
+        @error "scroll() only accepts a map with scroll options.";
+    }
+
     $co: mapv($attr, (thumb_color, color, c), white);
     $co_hover: mapv($attr, (thumb_hover_color, color_hover, ch), $co);
     $co_active: mapv($attr, (thumb_active_color, color_active, ca), $co_hover);
