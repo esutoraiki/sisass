@@ -885,7 +885,7 @@ html.page[data-theme=dark] {
   display: flex;
   padding-inline-start: 35px;
   color: var(--theme_text);
-  margin-bottom: initial;
+  margin-block: initial;
 }
 @media only screen and (max-width: 980px) {
   .container_menu .main_menu .group_1 .title {
@@ -1091,7 +1091,7 @@ html.page[data-theme=dark] {
   position: relative;
   top: 0px;
   left: 0px;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   height: 100%;
 }
@@ -1897,6 +1897,9 @@ html.page[data-theme=dark] {
 .documentationpage .main_header .page_search .page_search_icon[data-search-icon=js] {
   background-image: url("../img/svg/js.svg");
 }
+.documentationpage .main_header .page_search .page_search_icon[data-search-icon=icon_articles] {
+  background-image: url("../img/svg/icon_articles.svg");
+}
 .documentationpage .main_header .page_search .page_search_icon[data-search-icon=articles] {
   background-image: url("../img/svg/file.svg");
 }
@@ -2549,6 +2552,23 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   color: var(--theme_text);
   min-height: 100vh;
   height: 100vh;
+}
+.documentationpage .link {
+  background-color: transparent;
+  color: #007AFF;
+  -webkit-border-radius: 17px;
+  -moz-border-radius: 17px;
+  -ms-border-radius: 17px;
+  -o-border-radius: 17px;
+  border-radius: 17px;
+  text-decoration: underline;
+  padding-block: 2px;
+  padding-inline: 10px;
+  cursor: pointer;
+}
+.documentationpage .link:hover {
+  background-color: rgba(42, 71, 206, 0.08);
+  color: var(--theme_text_alt);
 }
 .documentationpage article {
   border-bottom: 2px dashed var(--theme_border);

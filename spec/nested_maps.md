@@ -2,7 +2,7 @@
 
 ## Estado
 
-Definida para implementación.
+Implementada.
 
 ## Historia de usuario
 
@@ -61,7 +61,8 @@ cada mixin continúan siendo la fuente de verdad de sus claves y valores.
 9. Los mapas usados solo dentro de una implementación no formarán parte del
    inventario público.
 10. Los ejemplos cubrirán `replace-base`, `normalize-svg`, `img-replace` e
-    `icon-svg`.
+    `icon-svg`. El inventario también incluirá `icon-svg-mask`, cuya clave
+    `position | p` admite la sintaxis map de `position`.
 11. Los ejemplos serán bloques explicativos de SCSS y CSS, sin resultado visual
     interactivo ni `TabPanel`.
 12. El artículo explicará el comportamiento relevante de `map.merge`, pero no
@@ -255,6 +256,7 @@ durante la implementación:
 | Mixin | `normalize-svg` | `position \| p` | Configura la posición de `replace-base` y conserva `z: 2` como valor predeterminado. | `src/_base.scss` |
 | Mixin | `icon-svg` | `position` | Reutiliza las opciones de posicionamiento admitidas por `position`. | `src/_base.scss` |
 | Mixin | `icon-svg` | `background` | Agrupa `repeat`, `position`, `color` y `size` para construir el fondo del SVG. | `src/_base.scss` |
+| Mixin | `icon-svg-mask` | `position \| p` | Reutiliza la sintaxis map de `position`; también admite un valor escalar o `false`. | `src/_base.scss` |
 | Mixin | `img-replace` | `base` | Envía la configuración interior a `replace-base`; puede contener otro nivel como `base.position`. | `src/_base.scss` |
 
 `img-remplace` es un alias de compatibilidad de `img-replace` y no debe
@@ -488,8 +490,9 @@ añadirlos.
    un mapa interior completo.
 10. El artículo no promete fusión profunda como comportamiento general de
     SISASS.
-11. La tabla incluye `replace-base`, `normalize-svg`, `icon-svg` e
-    `img-replace`, con todas sus claves anidadas públicas vigentes.
+11. La tabla incluye `replace-base`, `normalize-svg`, `icon-svg`,
+    `icon-svg-mask` e `img-replace`, con todas sus claves anidadas públicas
+    vigentes.
 12. La tabla no incluye APIs que solo reciben mapas planos ni mapas internos de
     implementación.
 13. El artículo indica que actualmente no existen funciones públicas con mapas
@@ -528,4 +531,3 @@ añadirlos.
   `docs/assets/json/components/search_index.json`.
 - Si `docs/package.json` incorpora un script `test`, ejecutar también
   `npm run test` desde `docs/`.
-

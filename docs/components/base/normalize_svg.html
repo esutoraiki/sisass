@@ -17,11 +17,11 @@
     </p>
     <p class="description">
         Es un wrapper especializado sobre
-        <a href="../pages/base.html#replace_base">replace-base</a> para el flujo
+        <a class="link" href="../pages/base.html#replace_base">replace-base</a> para el flujo
         de SVG. Su valor está en ofrecer una configuración predeterminada útil
-        para trabajar junto a <a href="../pages/base.html#icon-svg">icon-svg</a>,
+        para trabajar junto a <a class="link" href="../pages/base.html#icon-svg">icon-svg</a>,
         y el bloque <b>position</b> se resuelve con el mixin
-        <a href="../pages/base.html#position">position</a>.
+        <a class="link" href="../pages/base.html#position">position</a>.
     </p>
 
     <section class="use">
@@ -50,11 +50,12 @@
 
         <p class="description">
             Equivale a usar
-            <a href="../pages/base.html#replace_base">replace-base</a> con
+            <a class="link" href="../pages/base.html#replace_base">replace-base</a> con
             <b>position: (position: relative, z: 2)</b>, <b>display: block</b>
-            y <b>ht: true</b> como valores base. Las opciones de posición se
-            configuran dentro del <b>map</b> anidado de <b>position</b>, y sus
-            valores predeterminados se conservan al sobrescribir solo una clave.
+            y <b>ht: true</b> como valores base. El bloque
+            <b>position</b> se resuelve con el mixin
+            <a class="link" href="../pages/base.html#position">position</a>
+            y conserva sus valores por defecto al sobrescribir solo una clave.
         </p>
 
         <h3 class="subtitle">
@@ -87,67 +88,7 @@
                     <td><b>position | p</b></td>
                     <td>Map</td>
                     <td>(position: relative, z: 2)</td>
-                    <td>Configura la posición mediante un <b>map</b> anidado con la sintaxis del mixin <a href="../pages/base.html#position">position</a>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.position | position.p</b></td>
-                    <td>String</td>
-                    <td>relative</td>
-                    <td>Define la propiedad <b>position</b> dentro del <b>map</b> anidado.</td>
-                </tr>
-                <tr>
-                    <td><b>position.y</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Define el desplazamiento vertical dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.x</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Define el desplazamiento horizontal dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.yaxis | position.ya</b></td>
-                    <td>String</td>
-                    <td>top</td>
-                    <td>Define la propiedad CSS usada para el eje Y dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.xaxis | position.xa</b></td>
-                    <td>String</td>
-                    <td>left</td>
-                    <td>Define la propiedad CSS usada para el eje X dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.top | position.t</b></td>
-                    <td>Medida | Null</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>top</b> dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.right | position.r</b></td>
-                    <td>Medida | Null</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>right</b> dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.bottom | position.b</b></td>
-                    <td>Medida | Null</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>bottom</b> dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.left | position.l</b></td>
-                    <td>Medida | Null</td>
-                    <td>null</td>
-                    <td>Define la propiedad <b>left</b> dentro del <b>map</b> de <b>position</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>position.z</b></td>
-                    <td>Number</td>
-                    <td>2</td>
-                    <td>Define <b>z-index</b> dentro del <b>map</b> de <b>position</b>.</td>
+                    <td>Configura la posición del contenedor y permite sobrescribir el bloque anidado con la sintaxis del mixin <a class="link" href="../pages/base.html#position">position</a>.</td>
                 </tr>
                 <tr>
                     <td><b>display | d</b></td>

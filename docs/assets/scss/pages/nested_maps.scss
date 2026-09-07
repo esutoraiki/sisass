@@ -1,0 +1,31 @@
+@use "../core/instances" as *;
+@use "sass:list";
+
+.recommendations_list {
+    @include grid;
+    @include gap(15px);
+    grid-template-columns: repeat(2, 1fr);
+
+    @include brp($b7) {
+        grid-template-columns: 1fr;
+    }
+
+    .recommendation {
+        @include border-radius(12px);
+        @include flex;
+        @include bc(var(--theme_bg_secondary), var(--theme_text));
+        @include wh(auto, 100%);
+        @include gap(20px);
+        padding: 15px;
+        border: $bd9;
+
+        @for $i from 1 through list.length($recommendation_name) {
+            .icon_#{list.nth($recommendation_name, $i)} {
+                @include normalize-svg((
+                    w: list.nth($l13, 1),
+                    h: list.nth($l13, 1)
+                ));
+            }
+        }
+    }
+}

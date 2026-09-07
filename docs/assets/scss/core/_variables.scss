@@ -99,12 +99,14 @@ $characteristics_svg: (cube, code, palette, rocket);
 $characteristics_color: ($c16, $c18, $c15, $c19);
 
 $features_name: (mixins, functions, variables, helpers, layouts);
-$icon_name: (info, articles, folder_2);
+$icon_name: (info, documents, folder_2, articles);
 $icon_reference: (sass, react, vite, webpack);
 
 $requirements_icon: (nodejs, npm, articles);
 $requirements_color: ($c22, $c17, $c4);
 $requirements_bg: ($c23, $c24, $c25);
+
+$recommendation_name: (tags, edit, prohibited, map, branch, documentation);
 
 // logo sisass
 $l1x: (clamp(130px, 10.44vw, 200px));
@@ -145,11 +147,15 @@ $l11: (clamp(45px, 3.65vw, 70px));
 // icon notice
 $l12: (30px);
 
-// icon requeriment
+// icon requeriment, icon recommendation
 $l13: (clamp(20px, 1.56vw, 30px));
 
 // icon tip
 $l14: (45px);
+
+// icon link
+$l15: (15px);
+
 
 //-----------------------------------
 //End Variables

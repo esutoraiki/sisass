@@ -1,0 +1,442 @@
+<article id="nested_maps" class="nested_maps">
+    <div class="group_title">
+        <h1 class="title">
+            Mapas anidados en SISASS
+        </h1>
+
+        <div class="container_attributes">
+            <h2 class="attribute">
+                Tipo: Artículo
+            </h2>
+            <h2 class="attribute">
+                Versión: 2.x.x
+            </h2>
+        </div>
+    </div>
+
+    <p class="description">
+        <b class="tagline_sisass">SISASS</b> utiliza mapas anidados para agrupar una configuración especializada
+        y entregarla al mixin que conoce ese contrato. Así, una API puede delegar
+        opciones de posición o de fondo sin repetir todas sus claves en el nivel
+        exterior.
+    </p>
+    <p class="description">
+        El anidamiento no es obligatorio para todos los mixins que reciben un
+        <b>map</b>. Este patrón también se denomina <b>map anidado</b>. El artículo
+        explica cómo reconocerlo; las páginas de referencia de cada API siguen
+        siendo la fuente de verdad para sus claves, alias y valores predeterminados.
+    </p>
+
+    <h2 id="nested_maps_basics" class="title" data-page-menu-item>
+        Mapas planos y mapas anidados
+    </h2>
+
+    <p class="description">
+        Un mapa plano contiene claves cuyos valores son datos finales para la API
+        que lo recibe. En este ejemplo, <b>width</b> y <b>display</b> pertenecen al
+        mismo nivel:
+    </p>
+
+<pre class="language-scss"><code>$flat_map: (
+    width: 140px,
+    display: block
+);</code></pre>
+
+    <p class="description">
+        Un mapa anidado contiene al menos una clave cuyo valor es otro mapa. Aquí,
+        el primer <b>position</b> es la clave contenedora que reconoce
+        <a class="link" href="../pages/base.html#replace_base">replace-base</a>;
+        el segundo <b>position</b> y <b>z</b> pertenecen al mapa interior procesado
+        con la sintaxis del mixin
+        <a class="link" href="../pages/base.html#position">position</a>.
+    </p>
+
+<pre class="language-scss"><code>$nested_map: (
+    width: 140px,
+    position: (
+        position: relative,
+        z: 2
+    )
+);</code></pre>
+
+    <h2 id="nested_maps_paths" class="title" data-page-menu-item>
+        Claves contenedoras y rutas documentales
+    </h2>
+
+    <p class="description">
+        Una clave contenedora tiene un contrato propio. Puede aceptar únicamente
+        un mapa, ser opcional o usar un valor como <b>false</b> para desactivar un
+        bloque. Sus claves interiores siguen el contrato de la API delegada y no
+        se pueden trasladar automáticamente al mapa exterior.
+    </p>
+    <p class="description">
+        La documentación usa puntos para representar la jerarquía. Por ejemplo,
+        <b>position.z</b> significa «clave <b>z</b> dentro del mapa
+        <b>position</b>». Es una ruta documental: no es la clave literal
+        <b>"position.z"</b> ni una sintaxis de acceso válida de Sass.
+    </p>
+
+    <div class="container_table">
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Ruta documental</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>position.z</b></td>
+                    <td>Clave <b>z</b> dentro del mapa <b>position</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>base.position</b></td>
+                    <td>Clave <b>position</b> dentro del mapa <b>base</b>.</td>
+                </tr>
+                <tr>
+                    <td><b>base.position.z</b></td>
+                    <td>Clave <b>z</b> dentro de <b>position</b>, que a su vez está dentro de <b>base</b>.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="note">
+        Una clave con el mismo nombre en niveles distintos no representa
+        necesariamente el mismo dato. Por ejemplo, un <b>z</b> exterior no forma
+        parte del contrato de <b>replace-base</b>; debe escribirse como
+        <b>position.z</b> dentro del mapa de posición.
+    </p>
+
+    <h2 id="nested_maps_defaults" class="title" data-page-menu-item>
+        Valores predeterminados, centinelas y alias
+    </h2>
+
+    <p class="description">
+        Un valor predeterminado se usa cuando una clave no está presente. Un
+        centinela comunica un comportamiento especial: en <b>replace-base</b>,
+        <b>position: false</b> desactiva todo el bloque de posición, mientras que
+        <b>position.z: false</b> evita generar <b>z-index</b> sin desactivar las
+        demás propiedades de posición. Un valor explícito sustituye el valor que
+        la API habría utilizado por defecto.
+    </p>
+    <p class="description">
+        <a class="link" href="../pages/base.html#normalize_svg">normalize-svg</a>
+        parte de <b>position: relative</b> y <b>position.z: 2</b>. Si se proporciona
+        solo una clave en su mapa de posición, el wrapper conserva los demás
+        valores interiores definidos por su integración con
+        <b>replace-base</b>.
+    </p>
+    <p class="description">
+        Los alias pertenecen al nivel donde se definen. En el siguiente mapa,
+        <b>p</b>, <b>t</b> y <b>l</b> son alias interiores de
+        <b>position</b>; escribirlos en el nivel exterior no produce la misma
+        configuración. Consulta la página de referencia de cada mixin para conocer
+        la precedencia exacta entre una clave principal y sus alias.
+    </p>
+
+<pre class="language-scss"><code>position: (
+    p: absolute,
+    t: 0,
+    l: 0
+)</code></pre>
+
+    <h2 id="nested_maps_merge" class="title" data-page-menu-item>
+        Fusión y reemplazo de mapas
+    </h2>
+
+    <p class="description">
+        <b>map.merge</b> realiza una fusión superficial. Cuando dos mapas contienen
+        la misma clave contenedora, el segundo valor reemplaza el mapa interior
+        completo; no se fusionan automáticamente sus claves internas.
+    </p>
+
+<pre class="language-scss"><code>@use "sass:map";
+
+$defaults: (
+    position: (
+        position: relative,
+        z: 2
+    )
+);
+
+$custom: (
+    position: (
+        top: 10px
+    )
+);
+
+$result: map.merge($defaults, $custom);</code></pre>
+
+    <p class="description">
+        En <b>$result</b>, el mapa <b>position</b> de <b>$custom</b> reemplaza al de
+        <b>$defaults</b>. Por ello, no conserva automáticamente
+        <b>position: relative</b> ni <b>z: 2</b>. Una API puede implementar una
+        fusión específica para preservar valores interiores, como hace
+        <b>normalize-svg</b>, pero <b class="tagline_sisass">SISASS</b> no promete una fusión profunda general.
+    </p>
+
+    <h2 id="nested_maps_inventory" class="title" data-page-menu-item>
+        Mixins y funciones que utilizan mapas anidados
+    </h2>
+
+    <p class="description">
+        El inventario siguiente incluye únicamente APIs públicas que aceptan un
+        mapa como valor de una de sus claves. Excluye mapas planos y estructuras
+        creadas solo dentro de una implementación.
+    </p>
+
+    <div class="container_table">
+        <table class="full">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>API pública</th>
+                    <th>Clave anidada</th>
+                    <th>API o comportamiento interior</th>
+                    <th>Ruta fuente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mixin</td>
+                    <td><a class="link" href="../pages/base.html#replace_base">replace-base</a></td>
+                    <td><b>position | p</b></td>
+                    <td>Reutiliza la sintaxis <b>map</b> de <b>position</b>.</td>
+                    <td><b>src/_base.scss</b></td>
+                </tr>
+                <tr>
+                    <td>Mixin</td>
+                    <td><a class="link" href="../pages/base.html#normalize_svg">normalize-svg</a></td>
+                    <td><b>position | p</b></td>
+                    <td>Configura la posición de <b>replace-base</b> y conserva <b>z: 2</b> como valor predeterminado.</td>
+                    <td><b>src/_base.scss</b></td>
+                </tr>
+                <tr>
+                    <td>Mixin</td>
+                    <td><a class="link" href="../pages/base.html#icon-svg">icon-svg</a></td>
+                    <td><b>position</b></td>
+                    <td>Reutiliza las opciones admitidas por <b>position</b>.</td>
+                    <td><b>src/_base.scss</b></td>
+                </tr>
+                <tr>
+                    <td>Mixin</td>
+                    <td><a class="link" href="../pages/base.html#icon-svg">icon-svg</a></td>
+                    <td><b>background</b></td>
+                    <td>Agrupa <b>repeat</b>, <b>position</b>, <b>color</b> y <b>size</b> para construir el fondo.</td>
+                    <td><b>src/_base.scss</b></td>
+                </tr>
+                <tr>
+                    <td>Mixin</td>
+                    <td><a class="link" href="../pages/base.html#icon-svg-mask">icon-svg-mask</a></td>
+                    <td><b>position | p</b></td>
+                    <td>Reutiliza la sintaxis <b>map</b> de <b>position</b>; también admite un valor escalar o <b>false</b>.</td>
+                    <td><b>src/_base.scss</b></td>
+                </tr>
+                <tr>
+                    <td>Mixin</td>
+                    <td><a class="link" href="../pages/base.html#img_replace">img-replace</a></td>
+                    <td><b>base</b></td>
+                    <td>Entrega la configuración a <b>replace-base</b> y puede contener otro nivel como <b>base.position</b>.</td>
+                    <td><b>src/_base.scss</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="note">
+        <b>img-remplace</b> es un alias de compatibilidad de <b>img-replace</b>,
+        no una API anidada independiente. Actualmente, <b class="tagline_sisass">SISASS</b> no expone funciones
+        públicas cuya configuración requiera mapas anidados. Funciones como
+        <b>bp</b>, <b>pb</b> y <b>mapv</b> reciben o procesan mapas planos.
+    </p>
+
+    <h2 id="nested_maps_examples" class="title" data-page-menu-item>
+        Ejemplos del proyecto
+    </h2>
+
+    <h3 id="nested_maps_replace_base" class="subtitle" data-page-menu-item>
+        replace-base y position.z
+    </h3>
+
+    <p class="description">
+        <b>position</b> es la clave contenedora y <b>z</b> pertenece a su mapa
+        interior. Un <b>z: 2</b> situado junto a <b>position</b> sería ignorado
+        porque no forma parte del nivel exterior de <b>replace-base</b>.
+    </p>
+
+<pre class="language-scss"><code>.correct {
+    @include replace-base((
+        position: (
+            position: relative,
+            z: 2
+        )
+    ));
+}
+
+.incorrect {
+    @include replace-base((
+        position: (
+            position: relative
+        ),
+        z: 2
+    ));
+}</code></pre>
+
+<pre class="language-css"><code>/* Fragmento relevante del CSS generado */
+.correct {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.incorrect {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}</code></pre>
+
+    <h3 id="nested_maps_normalize_svg" class="subtitle" data-page-menu-item>
+        normalize-svg y sus valores interiores
+    </h3>
+
+    <p class="description">
+        El wrapper fusiona esta personalización con su configuración interior y
+        conserva <b>position: relative</b> y <b>z-index: 2</b>.
+    </p>
+
+<pre class="language-scss"><code>.icon {
+    @include normalize-svg((
+        position: (
+            top: 4px
+        )
+    ));
+}</code></pre>
+
+<pre class="language-css"><code>/* Fragmento relevante del CSS generado */
+.icon {
+    position: relative;
+    top: 4px;
+    z-index: 2;
+}</code></pre>
+
+    <h3 id="nested_maps_img_replace" class="subtitle" data-page-menu-item>
+        img-replace con dos niveles
+    </h3>
+
+    <p class="description">
+        <b>base.position</b> identifica el mapa de posición dentro de
+        <b>base</b>, y <b>base.position.z</b> identifica su clave <b>z</b>.
+    </p>
+
+<pre class="language-scss"><code>.logo {
+    @include img-replace((
+        image: "../img/logo.svg",
+        base: (
+            position: (
+                position: relative,
+                z: 3
+            )
+        )
+    ));
+}</code></pre>
+
+<pre class="language-css"><code>/* Fragmento relevante del CSS generado */
+.logo {
+    background-image: url("../img/logo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-size: cover;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+}</code></pre>
+
+    <h3 id="nested_maps_icon_svg" class="subtitle" data-page-menu-item>
+        icon-svg con mapas hermanos
+    </h3>
+
+    <p class="description">
+        <b>position</b> y <b>background</b> son mapas hermanos. La ruta
+        <b>position.position</b> configura la propiedad CSS de posicionamiento,
+        mientras <b>background.position</b> configura la posición del fondo,
+        aunque ambas claves interiores se llamen <b>position</b>.
+    </p>
+
+<pre class="language-scss"><code>&amp;::before {
+    @include icon-svg((
+        svg: "arrow",
+        position: (
+            p: absolute,
+            t: 0,
+            l: 0
+        ),
+        background: (
+            repeat: no-repeat,
+            position: center,
+            size: contain
+        )
+    ));
+}</code></pre>
+
+<pre class="language-css"><code>/* Fragmento relevante del CSS generado */
+.arrow::before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: auto;
+    height: auto;
+    background-image: url("../../img/svg/arrow.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-size: contain;
+}</code></pre>
+
+    <h2 id="nested_maps_recommendations" class="title" data-page-menu-item>
+        Recomendaciones y errores frecuentes
+    </h2>
+
+    <ul class="recommendations_list">
+        <li class="recommendation">
+            <div class="icon_tags"></div>
+            <div class="content">
+                Identifica primero la clave contenedora y consulta qué tipo de valor admite.
+            </div>
+        </li>
+        <li class="recommendation">
+            <div class="icon_edit"></div>
+            <div class="content">
+                Escribe cada alias en el nivel donde lo define la API delegada.
+            </div>
+        </li>
+        <li class="recommendation">
+            <div class="icon_prohibited"></div>
+            <div class="content">
+                No interpretes una ruta como <b>base.position.z</b> como una clave literal de Sass.
+            </div>
+        </li>
+        <li class="recommendation">
+            <div class="icon_map"></div>
+            <div class="content">
+                No supongas que <b>map.merge</b> conserva las claves de un mapa interior reemplazado.
+            </div>
+        </li>
+        <li class="recommendation">
+            <div class="icon_branch"></div>
+            <div class="content">
+                Distingue entre una clave ausente, un valor explícito y un centinela como <b>false</b>.
+            </div>
+        </li>
+        <li class="recommendation">
+            <div class="icon_documentation"></div>
+            <div class="content">
+                Consulta la referencia del mixin antes de trasladar una clave de un nivel a otro.
+            </div>
+        </li>
+    </ul>
+</article>

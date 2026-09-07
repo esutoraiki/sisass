@@ -14,7 +14,7 @@
     }
 
     .main_header {
-        @include position;
+        @include position((z: 2));
         @include wh(100%, 100%);
 
         @include brp($b6) {

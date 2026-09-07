@@ -28,6 +28,19 @@ html.page[data-theme="dark"] {
     min-height: 100vh;
     height: 100vh;
 
+    .link {
+        @include bc($c0, $c17);
+        @include border-radius(17px);
+        text-decoration: underline;
+        padding-block: 2px;
+        padding-inline: 10px;
+        cursor: pointer;
+
+        &:hover {
+            @include bc($c21, var(--theme_text_alt));
+        }
+    }
+
     article {
         border-bottom: 2px dashed var(--theme_border);
         padding-bottom: 40px;

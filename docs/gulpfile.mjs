@@ -119,7 +119,7 @@ function get_component_summary(value) {
     return paragraph_match ? get_html_text(paragraph_match[1]) : "";
 }
 
-function get_search_metadata(title, category, page_data, page_url) {
+function get_search_metadata(title, category, page_data, page_url, component) {
     const
         source_match = title.match(/^(.+?)\s+\((_[^)]+\.(?:sass|scss|scscs|css|js|html))\)$/i),
         breadcrumb = Array.isArray(page_data.breadcrumb) ? page_data.breadcrumb : [],
@@ -132,11 +132,12 @@ function get_search_metadata(title, category, page_data, page_url) {
         source_file = source_match ? source_match[2] : "",
         display_path = is_source_document ? breadcrumb_path : page_url,
         normalized_category = category.toLowerCase(),
-        icon = normalized_category === "artículo" ? "file" : (
+        default_icon = normalized_category === "artículo" ? "file" : (
             source_file.endsWith(".js") ? "js" : (
                 normalized_category === "mixin" || normalized_category === "function" ? "sass" : "file"
             )
-        )
+        ),
+        icon = component.search_icon || default_icon
     ;
 
     return {
@@ -214,7 +215,7 @@ gulp.task("search_index", async function () {
             const
                 title = get_component_title(component_source, component.id),
                 category = get_component_category(component_source),
-                search_metadata = get_search_metadata(title, category, page_data, page_url)
+                search_metadata = get_search_metadata(title, category, page_data, page_url, component)
             ;
 
             index.push({

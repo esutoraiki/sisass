@@ -18,12 +18,10 @@
     <p class="description">
         Requiere <b>postcss-inline-svg</b> porque utiliza
         <b>svg-load()</b> para construir <b>mask-image</b>. También
-        usa el mixin <a href="../pages/base.html#position">position</a> cuando
-        la clave <b>position | p</b> es distinta de <b>false</b>. El mapa
-        acepta aliases como <b>color | c</b>, <b>position | p</b>,
-        <b>xaxis | xa</b>, <b>yaxis | ya</b>, <b>width | w</b>,
-        <b>height | h</b>, <b>repeat | r</b>, <b>size | s</b> y
-        <b>display | d</b>.
+        usa el mixin <a class="link" href="../pages/base.html#position">position</a> cuando
+        la clave <b>position | p</b> es distinta de <b>false</b>. Esta clave
+        acepta el mapa completo del mixin <b>position</b>; también admite un
+        valor escalar para definir únicamente la propiedad <b>position</b>.
     </p>
 
     <section class="use">
@@ -34,11 +32,18 @@
         <pre class="language-scss"><code>@mixin icon-svg-mask($attr: (
     svg: false,
     color: #FFFFFF,
-    position: absolute,
-    x: 0,
-    y: 0,
-    xaxis: left,
-    yaxis: top,
+    position: (
+        position: absolute,
+        y: 0,
+        x: 0,
+        yaxis: top,
+        xaxis: left,
+        top: null,
+        right: null,
+        bottom: null,
+        left: null,
+        z: 1
+    ),
     width: 100px,
     height: 100px,
     repeat: no-repeat,
@@ -48,8 +53,7 @@
 ));</code></pre>
         <p class="description">
             Valores por defecto: svg <b>false</b>, color | c
-            <b>#FFFFFF</b>, position | p <b>absolute</b>, x <b>0</b>,
-            y <b>0</b>, xaxis | xa <b>left</b>, yaxis | ya <b>top</b>,
+            <b>#FFFFFF</b>, position | p <b>(position: absolute)</b>,
             width | w <b>100px</b>, height | h <b>100px</b>, repeat | r
             <b>no-repeat</b>, size | s <b>contain</b>, path
             <b>"../../img/svg/"</b> y display | d <b>block</b>.
@@ -83,33 +87,9 @@
                 </tr>
                 <tr>
                     <td><b>position | p</b></td>
-                    <td>String | Bool</td>
-                    <td>absolute</td>
-                    <td>Tipo de posicionamiento usado por el mixin <a href="../pages/base.html#position">position</a>. Si es <b>false</b>, no aplica posicionamiento.</td>
-                </tr>
-                <tr>
-                    <td><b>x</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Desplazamiento horizontal aplicado por <b>position()</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>y</b></td>
-                    <td>Medida</td>
-                    <td>0</td>
-                    <td>Desplazamiento vertical aplicado por <b>position()</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>xaxis | xa</b></td>
-                    <td>String</td>
-                    <td>left</td>
-                    <td>Eje horizontal usado por <b>position()</b>.</td>
-                </tr>
-                <tr>
-                    <td><b>yaxis | ya</b></td>
-                    <td>String</td>
-                    <td>top</td>
-                    <td>Eje vertical usado por <b>position()</b>.</td>
+                    <td>Map | String | Bool</td>
+                    <td>(position: absolute)</td>
+                    <td>Configura el posicionamiento con la sintaxis del mixin <a class="link" href="../pages/base.html#position">position</a>. Si es <b>false</b>, no genera propiedades de posición.</td>
                 </tr>
                 <tr>
                     <td><b>width | w</b></td>

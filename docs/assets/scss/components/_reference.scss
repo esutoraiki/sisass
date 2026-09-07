@@ -8,7 +8,13 @@
             @include border-radius(12px);
             @include box-shadow($sh1);
             @include whs(100%);
+            text-decoration: none;
             padding: 15px 15px 0;
+
+            &::after {
+                @include position((l: initial, r: 15px, t: 15px, p: absolute));
+                content: "";
+            }
 
             .tag {
                 @include tagline;
