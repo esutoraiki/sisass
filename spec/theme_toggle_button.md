@@ -1,5 +1,9 @@
 # Historia de Usuario: Botón para cambio de tema
 
+## Estado
+
+Implementada.
+
 ## Objetivo
 
 Como usuario de la documentación de SISASS, quiero alternar entre tema claro y tema oscuro mediante un botón en la cabecera, para adaptar la lectura a mi preferencia visual.

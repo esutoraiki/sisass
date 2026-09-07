@@ -1,5 +1,9 @@
 # Historia de Usuario: Documentación de `rgb-alpha`
 
+## Estado
+
+Implementada.
+
 ## Objetivo
 
 Como desarrollador que usa SISASS, quiero consultar la documentación de `rgb-alpha` para entender qué hace, qué recibe y qué devuelve, de modo que pueda reutilizarla sin revisar el código fuente.

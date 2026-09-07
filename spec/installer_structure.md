@@ -1,5 +1,9 @@
 # Historia de Usuario: Estructura lógica de instalación de SISASS
 
+## Estado
+
+Implementada.
+
 ## Objetivo
 
 Como mantenedor de SISASS, quiero que los archivos distribuidos vivan en una estructura lógica y plana dentro de `files/`, para que el instalador sea quien construya la jerarquía final en el proyecto consumidor, tanto en la instalación por defecto como en una instalación personalizada con `--path`.

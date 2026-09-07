@@ -2,7 +2,8 @@
 
 ## Estado
 
-Definida para implementación.
+Implementada. Pendiente de validación integral en proyectos externos con
+Webpack, Vite, SQHTML y SQHTML2.
 
 ## Historia de usuario
 
