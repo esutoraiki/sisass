@@ -446,7 +446,7 @@ export default function App() {
     </h2>
 
     <p class="description">
-        El modo SQHTML conserva el destino <b>assets/scss/core/</b> y aplica ajustes específicos de variables y fuentes.
+        El modo SQHTML conserva el destino <b>assets/scss/core/</b> y aplica ajustes específicos a los parciales de core, variables y fuentes.
     </p>
 
     <p class="description">
@@ -464,8 +464,42 @@ export default function App() {
     <pre class="language-bash"><code>npm explore sisass -- npm run init -- --dep sqhtml --path ../../resources/</code></pre>
 
     <p class="description">
-        Después de copiar los archivos, el instalador añade <b>$c3: #1F567B</b> cuando todavía no existe el bloque de ejemplo de SQHTML, configura <b>$f1</b> con Roboto, ajusta <b>$i1</b> a <b>../../img/svg/</b> y reemplaza el bloque de ejemplo de <b>_fonts.scss</b> por declaraciones de Roboto.
+        Después de copiar los archivos, el instalador reemplaza <b>_index.scss</b>, <b>_keyframes.scss</b>, <b>_layout.scss</b> y <b>_mixin.scss</b>. El índice reenvía SISASS, variables y mixins; <b>_keyframes.scss</b> y <b>_layout.scss</b> usan <b>@use "index" as *</b>, mientras que <b>_mixin.scss</b> no lo importa para evitar un ciclo. También añade <b>$c3: #1F567B</b> cuando todavía no existe el bloque de ejemplo de SQHTML, configura <b>$f1</b> con Roboto, ajusta <b>$i1</b> a <b>../../img/svg/</b> y reemplaza el bloque de ejemplo de <b>_fonts.scss</b> por declaraciones de Roboto.
     </p>
+
+    <pre class="language-scss"><code>// _index.scss
+@forward "sisass/src/sisass";
+@forward "./variables";
+@forward "./mixin";
+
+// _keyframes.scss
+//---------
+//Keyframes
+//---------
+@use "index" as *;
+
+//---------
+//End Keyframes
+//---------
+
+// _layout.scss
+//------
+// Layout
+//------
+@use "index" as *;
+
+//------
+// End Layout
+//------
+
+// _mixin.scss
+//------
+// Mixin
+//------
+
+//------
+// End Mixin
+//------</code></pre>
 
     <h2 id="installation_sqhtml2" class="title">
         Instalación en SQHTML2
@@ -520,7 +554,7 @@ export default function App() {
                     <td><b>sqhtml</b></td>
                     <td>Sí</td>
                     <td><b>&lt;raíz&gt;/assets/scss/core/</b></td>
-                    <td>Variables y fuentes de SQHTML</td>
+                    <td>Parciales de core, variables y fuentes de SQHTML</td>
                 </tr>
                 <tr>
                     <td><b>sqhtml2</b></td>

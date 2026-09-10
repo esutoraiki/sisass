@@ -115,6 +115,9 @@ También debe documentar la combinación de `--dep sqhtml` con `--path` para cam
 El artículo debe explicar que este modo:
 
 - Copia los archivos distribuidos en `assets/scss/core/` dentro de la raíz elegida.
+- Reemplaza `_index.scss` para reenviar `sisass/src/sisass`, `./variables` y `./mixin`.
+- Reemplaza `_keyframes.scss` y `_layout.scss` para usar `@use "index" as *;` dentro de sus secciones correspondientes.
+- Reemplaza `_mixin.scss` sin importar `index`, para evitar el ciclo con el `@forward "./mixin";` de `_index.scss`.
 - Añade `$c3: #1F567B;` cuando el bloque de ejemplo de SQHTML todavía no existe.
 - Configura `$f1` con Roboto.
 - Configura `$i1` como `../../img/svg/`.
@@ -207,7 +210,7 @@ Debe incluir una tabla con estos comportamientos:
 | Modo | Respeta `--path` | Destino | Transformaciones adicionales |
 | --- | --- | --- | --- |
 | Normal | Sí | `<raíz>/assets/scss/core/` | Ninguna |
-| `sqhtml` | Sí | `<raíz>/assets/scss/core/` | Variables y fuentes de SQHTML |
+| `sqhtml` | Sí | `<raíz>/assets/scss/core/` | Parciales de core, variables y fuentes de SQHTML |
 | `sqhtml2` | No | `src/core/` | Variables, fuentes y generación de instancias |
 
 ### 10. Advertencia de sobrescritura
