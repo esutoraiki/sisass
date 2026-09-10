@@ -1,0 +1,63 @@
+<article id="new_2_0_3" class="new">
+    <div class="group_title">
+        <h2
+            id="version_2_0_3_heading"
+            class="title"
+            data-page-menu-item
+            data-page-menu-label="Versión 2.0.3"
+        >
+            Novedades Versión 2.0.3
+        </h2>
+
+        <div class="container_attributes">
+            <span class="attribute">
+                Tipo: Artículo
+            </span>
+            <span class="attribute">
+                Versión: 2.0.3
+            </span>
+        </div>
+    </div>
+
+    <p class="release_intro">
+        La versión 2.0.3 corrige la composición de los parciales instalados para SQHTML y actualiza la documentación de instalación para reflejar el resultado generado.
+    </p>
+
+    <section class="release_section" aria-labelledby="version_2_0_3_sqhtml">
+        <h3
+            id="version_2_0_3_sqhtml"
+            class="title"
+        >
+            Instalación en SQHTML
+        </h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Parciales de core personalizados
+                </h4>
+                <p class="release_item_description">
+                    El modo <b>--dep sqhtml</b> ahora genera <b>_index.scss</b> con los reenvíos de SISASS, variables y mixins. También prepara <b>_keyframes.scss</b>, <b>_layout.scss</b> y <b>_mixin.scss</b> con la estructura requerida por SQHTML.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Prevención de ciclos de módulos Sass
+                </h4>
+                <p class="release_item_description">
+                    <b>_keyframes.scss</b> y <b>_layout.scss</b> usan <b>@use "index" as *</b>. En cambio, <b>_mixin.scss</b> no importa <b>index</b>, porque <b>_index.scss</b> ya reenvía <b>./mixin</b>; así se evita un ciclo al resolver los módulos.
+                </p>
+            </li>
+
+            <li class="release_item">
+                <h4 class="release_item_title">
+                    Guía de instalación sincronizada
+                </h4>
+                <p class="release_item_description">
+                    La <a class="link" href="../pages/articles/installation.html#installation_sqhtml">guía de instalación de SQHTML</a> y la referencia de estructura del proyecto describen los parciales sobrescritos, junto con los ajustes existentes de variables y fuentes.
+                </p>
+            </li>
+        </ul>
+    </section>
+</article>

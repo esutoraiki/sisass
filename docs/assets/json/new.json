@@ -9,6 +9,12 @@
     ],
     "components": [
         {
+            "id": "version_2_0_3",
+            "url": "../components/articles/new_2_0_3.html",
+            "position": "beforeend",
+            "node": "version_2_0_3"
+        },
+        {
             "id": "version_2_0_2",
             "url": "../components/articles/new_2_0_2.html",
             "position": "beforeend",

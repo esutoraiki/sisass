@@ -45,6 +45,39 @@ const roboto_fonts_block = `@include font-face(
 
 `;
 
+const sqhtml_core_files = {
+    "_index.scss": `@forward "sisass/src/sisass";
+@forward "./variables";
+@forward "./mixin";
+`,
+    "_keyframes.scss": `//---------
+//Keyframes
+//---------
+@use "index" as *;
+
+//---------
+//End Keyframes
+//---------
+`,
+    "_layout.scss": `//------
+// Layout
+//------
+@use "index" as *;
+
+//------
+// End Layout
+//------
+`,
+    "_mixin.scss": `//------
+// Mixin
+//------
+
+//------
+// End Mixin
+//------
+`
+};
+
 const ensure_directory = directory_path => {
     fs.mkdirSync(directory_path, {recursive: true});
 };
@@ -133,9 +166,24 @@ const update_fonts_sqhtml = core_dir => {
     console.log(`Updated SQHTML fonts at ${fonts_path}`);
 };
 
-const apply_sqhtml_overrides = core_dir => {
+const update_core_files_sqhtml = core_dir => {
+    Object.entries(sqhtml_core_files).forEach(([file_name, content]) => {
+        const file_path = path.join(core_dir, file_name);
+
+        fs.writeFileSync(file_path, content, "utf8");
+    });
+
+    console.log(`Updated SQHTML core files at ${core_dir}`);
+};
+
+const apply_sqhtml_variables_and_fonts = core_dir => {
     update_variables_sqhtml(core_dir);
     update_fonts_sqhtml(core_dir);
+};
+
+const apply_sqhtml_overrides = core_dir => {
+    apply_sqhtml_variables_and_fonts(core_dir);
+    update_core_files_sqhtml(core_dir);
 };
 
 const load_instances_config = () => {
@@ -182,7 +230,7 @@ if (dependents === "sqhtml") {
 if (dependents === "sqhtml2") {
     target_path = "../../src/core/";
     after_copy = () => {
-        apply_sqhtml_overrides(target_path);
+        apply_sqhtml_variables_and_fonts(target_path);
         generate_instances_file(target_path);
     };
 }
