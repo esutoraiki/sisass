@@ -8,7 +8,7 @@
     │   └── _variables.scss
     ├── docs (folder)
     ├── src
-    │   ├── components
+    │   ├── sisass_components
     │   │   ├── _buttons.scss
     │   │   ├── _carousel.scss
     │   │   └── _modal.scss

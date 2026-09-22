@@ -1,30 +1,37 @@
-// Update: 20260208
+// Update: 20260918
 //---------------------
 @use "../base" as *;
 @use "../vendor" as *;
 
 @mixin button_simple($attr: ()) {
     $bg: mapv($attr, bg, #FFF);
-    $bgh: mapv($attr, bg_hover, #000);
-    $color: mapv($attr, color, #000);
-    $colorh: mapv($attr, color_hover, #FFF);
-    $size: mapv($attr, size, 18);
-    $font: mapv($attr, font, "sans-serif");
-    $weight: mapv($attr, weight, normal);
-    $align: mapv($attr, align, center);
-    $uppercase: mapv($attr, uppercase, uppercase);
-    $w: mapv($attr, width, 65px);
-    $h: mapv($attr, height, 45px);
-    $bd: mapv($attr, border_color, #000);
-    $bdh: mapv($attr, border_color_hover, #000);
-    $bdsize: mapv($attr, border_size, 1px);
-    $bdstyle: mapv($attr, border_style, solid);
-    $time: mapv($attr, time, 500ms);
+    $bgh: mapv($attr, (bg_hover, bgh), #000);
+    $color: mapv($attr, (color, c), #000);
+    $colorh: mapv($attr, (color_hover, ch), #FFF);
+    $tf_input: mapv($attr, tf, ());
+    $tf_attr: (
+        align: mapv($tf_input, (align, a), center),
+        transform: mapv($tf_input, (transform, t), uppercase),
+        decoration: mapv($tf_input, (decoration, d), initial),
+        wrap: mapv($tf_input, (wrap, wr), initial),
+        size: mapv($tf_input, (size, s), szrem(18)),
+        family: mapv($tf_input, (family, f), "sans-serif"),
+        weight: mapv($tf_input, (weight, w), normal),
+        style: mapv($tf_input, style, normal),
+        line-height: mapv($tf_input, (line-height, lh), "none"),
+        variant: mapv($tf_input, (variant, v), normal)
+    );
+    $w: mapv($attr, (width, w), 65px);
+    $h: mapv($attr, (height, h), 45px);
+    $bd: mapv($attr, (border_color, bd), #000);
+    $bdh: mapv($attr, (border_color_hover, bdh), #000);
+    $bdsize: mapv($attr, (border_size, bds), 1px);
+    $bdstyle: mapv($attr, (border_style, bdsy), solid);
+    $time: mapv($attr, (time, t), 500ms);
 
     all: initial;
-    @include font(szrem($size), $font, $weight);
+    @include tf($tf_attr);
     @include transition(all $time);
-    @include text($align, $uppercase);
     @include center-flex-column;
     @include user-select;
     @include wh($w, $h);
@@ -78,7 +85,7 @@
         @include position(absolute);
         @include wh(99%, 97%);
         border: $bdsize $bdstyle $bd;
-        background-color: $c0;
+        background-color: transparent;
         content: "";
         z-index: 0;
     }
