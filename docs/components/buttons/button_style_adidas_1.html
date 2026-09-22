@@ -1,0 +1,143 @@
+<article id="button_style_adidas_1" class="button_style_adidas_1">
+    <div class="group_title">
+        <h2 class="subtitle">
+            button_style_adidas_1 (_buttons.scss)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Crea un botón con doble contorno y desplaza el plano posterior durante <b>:hover</b>. También permite mostrar
+        una flecha a la izquierda o a la derecha y dispone de estilos para <b>:disabled</b> y <b>.disabled</b>.
+    </p>
+    <p class="description">
+        El botón debe contener un elemento <b>.content_link</b>. El mixin aplica a ese nodo el contenido visual, la
+        tipografía, los colores, el borde y las flechas opcionales.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin button_style_adidas_1($attr: (
+    width: 280px,
+    ratio: 5.16,
+    bg: #000,
+    bg_hover: #000,
+    bg_disabled: lighten(#000, 80%),
+    color: #FFF,
+    color_hover: #FFF,
+    color_disabled: lighten(#000, 40%),
+    font: "sans-serif",
+    size: 18,
+    weight: bold,
+    transform: uppercase,
+    align: center,
+    time: 200ms,
+    border_color: #000,
+    border_color_hover: #000,
+    border_color_disabled: lighten(#000, 80%),
+    border_size: 1px,
+    border_style: solid,
+    icon_right: false,
+    icon_left: false
+));</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Tipo</th>
+                        <th>Default</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>width</b></td><td>Medida</td><td>280px</td><td>Define el ancho del botón y de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>ratio</b></td><td>Number</td><td>5.16</td><td>Define la relación de aspecto exterior e interior.</td></tr>
+                    <tr><td><b>bg</b></td><td>Color</td><td>#000</td><td>Define el fondo normal de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>bg_hover</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>.content_link</b> durante hover.</td></tr>
+                    <tr><td><b>bg_disabled</b></td><td>Color</td><td>lighten(#000, 80%)</td><td>Define el fondo del estado disabled.</td></tr>
+                    <tr><td><b>color</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido normal.</td></tr>
+                    <tr><td><b>color_hover</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido durante hover.</td></tr>
+                    <tr><td><b>color_disabled</b></td><td>Color</td><td>lighten(#000, 40%)</td><td>Define el color del contenido disabled.</td></tr>
+                    <tr><td><b>font</b></td><td>String</td><td>"sans-serif"</td><td>Define la familia tipográfica.</td></tr>
+                    <tr><td><b>size</b></td><td>Number</td><td>18</td><td>Define el tamaño de fuente normalizado por SISASS.</td></tr>
+                    <tr><td><b>weight</b></td><td>String | Number</td><td>bold</td><td>Define el peso tipográfico.</td></tr>
+                    <tr><td><b>transform</b></td><td>String</td><td>uppercase</td><td>Define la propiedad <b>text-transform</b>.</td></tr>
+                    <tr><td><b>align</b></td><td>String</td><td>center</td><td>Define la propiedad <b>text-align</b>.</td></tr>
+                    <tr><td><b>time</b></td><td>Tiempo</td><td>200ms</td><td>Define la duración de las transiciones.</td></tr>
+                    <tr><td><b>border_color</b></td><td>Color</td><td>#000</td><td>Define el color del borde normal.</td></tr>
+                    <tr><td><b>border_color_hover</b></td><td>Color</td><td>#000</td><td>Define el color del borde durante hover.</td></tr>
+                    <tr><td><b>border_color_disabled</b></td><td>Color</td><td>lighten(#000, 80%)</td><td>Define el color del borde disabled.</td></tr>
+                    <tr><td><b>border_size</b></td><td>Medida</td><td>1px</td><td>Define el grosor del borde.</td></tr>
+                    <tr><td><b>border_style</b></td><td>String</td><td>solid</td><td>Define el estilo del borde.</td></tr>
+                    <tr><td><b>icon_right</b></td><td>Boolean</td><td>false</td><td>Añade una flecha derecha mediante <b>::after</b>.</td></tr>
+                    <tr><td><b>icon_left</b></td><td>Boolean</td><td>false</td><td>Añade una flecha izquierda mediante <b>::before</b>.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="button_style_adidas_1_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="button_adidas_example_group">
+                        <button class="button_adidas_example button_adidas_example_right">
+                            <span class="content_link">Siguiente</span>
+                        </button>
+                        <button class="button_adidas_example button_adidas_example_left">
+                            <span class="content_link">Anterior</span>
+                        </button>
+                        <button class="button_adidas_example button_adidas_example_disabled" disabled>
+                            <span class="content_link">No disponible</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/buttons/button_style_adidas_1.scss"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/buttons/button_style_adidas_1.css"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div class="button_adidas_example_group"&gt;
+    &lt;button class="button_adidas_example button_adidas_example_right"&gt;
+        &lt;span class="content_link"&gt;Siguiente&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="button_adidas_example button_adidas_example_left"&gt;
+        &lt;span class="content_link"&gt;Anterior&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="button_adidas_example button_adidas_example_disabled" disabled&gt;
+        &lt;span class="content_link"&gt;No disponible&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

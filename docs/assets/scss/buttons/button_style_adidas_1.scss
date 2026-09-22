@@ -1,0 +1,50 @@
+@use "sisass_components/buttons" as *;
+
+.documentationpage {
+    .button_adidas_example_group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .button_adidas_example {
+        appearance: none;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+    .button_adidas_example_right {
+        @include button_style_adidas_1((
+            width: 210px,
+            bg: #202735,
+            bg_hover: #324C8C,
+            border_color: #202735,
+            border_color_hover: #324C8C,
+            icon_right: true
+        ));
+    }
+
+    .button_adidas_example_left {
+        @include button_style_adidas_1((
+            width: 210px,
+            bg: #FFFFFF,
+            bg_hover: #E8EDF8,
+            color: #202735,
+            color_hover: #202735,
+            border_color: #202735,
+            border_color_hover: #324C8C,
+            icon_left: true
+        ));
+    }
+
+    .button_adidas_example_disabled {
+        @include button_style_adidas_1((
+            width: 210px,
+            bg_disabled: #DDE1E8,
+            color_disabled: #697386,
+            border_color_disabled: #AAB2C0
+        ));
+    }
+}

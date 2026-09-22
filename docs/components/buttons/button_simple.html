@@ -1,0 +1,124 @@
+<article id="button_simple" class="button_simple">
+    <div class="group_title">
+        <h2 class="subtitle">
+            button_simple (_buttons.scss)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Crea un botón básico y restablece sus estilos iniciales antes de aplicar dimensiones, estilos de texto, colores y
+        borde. El contenido queda centrado mediante flexbox y no puede seleccionarse.
+    </p>
+    <p class="description">
+        La clave <b>tf</b> recibe un mapa propio con la misma sintaxis del mixin
+        <a class="link" href="../pages/base.html#tf">tf</a>; sus opciones no se declaran directamente en
+        <b>button_simple</b>. Los estados <b>:hover</b> y <b>.active</b> comparten el fondo, el color de texto y el borde
+        alternativos, y <b>time</b> controla la duración de la transición.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin button_simple($attr: (
+    bg: #FFF,
+    bg_hover: #000,
+    color: #000,
+    color_hover: #FFF,
+    tf: (
+        align: center,
+        transform: uppercase,
+        decoration: initial,
+        wrap: initial,
+        size: 1.125rem,
+        family: "sans-serif",
+        weight: normal,
+        style: normal,
+        line-height: "none",
+        variant: normal
+    ),
+    width: 65px,
+    height: 45px,
+    border_color: #000,
+    border_color_hover: #000,
+    border_size: 1px,
+    border_style: solid,
+    time: 500ms
+));</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Tipo</th>
+                        <th>Default</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>bg</b></td><td>Color</td><td>#FFF</td><td>Define el fondo del estado normal.</td></tr>
+                    <tr><td><b>bg_hover | bgh</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>:hover</b> y <b>.active</b>.</td></tr>
+                    <tr><td><b>color | c</b></td><td>Color</td><td>#000</td><td>Define el color del texto en el estado normal.</td></tr>
+                    <tr><td><b>color_hover | ch</b></td><td>Color</td><td>#FFF</td><td>Define el color del texto en <b>:hover</b> y <b>.active</b>.</td></tr>
+                    <tr><td><b>tf</b></td><td>Map</td><td>(align: center, transform: uppercase, decoration: initial, wrap: initial, size: 1.125rem, family: "sans-serif", weight: normal, style: normal, line-height: "none", variant: normal)</td><td>Configura texto y tipografía con las claves y los alias admitidos por el mixin <a class="link" href="../pages/base.html#tf">tf</a>.</td></tr>
+                    <tr><td><b>width | w</b></td><td>Medida</td><td>65px</td><td>Define el ancho del botón.</td></tr>
+                    <tr><td><b>height | h</b></td><td>Medida</td><td>45px</td><td>Define el alto del botón.</td></tr>
+                    <tr><td><b>border_color | bd</b></td><td>Color</td><td>#000</td><td>Define el color del borde normal.</td></tr>
+                    <tr><td><b>border_color_hover | bdh</b></td><td>Color</td><td>#000</td><td>Define el color del borde de <b>:hover</b> y <b>.active</b>.</td></tr>
+                    <tr><td><b>border_size | bds</b></td><td>Medida</td><td>1px</td><td>Define el grosor del borde.</td></tr>
+                    <tr><td><b>border_style | bdsy</b></td><td>String</td><td>solid</td><td>Define el estilo del borde.</td></tr>
+                    <tr><td><b>time | t</b></td><td>Tiempo</td><td>500ms</td><td>Define la duración de la transición.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="button_simple_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="button_simple_example_group">
+                        <button class="button_simple_example">Continuar</button>
+                        <button class="button_simple_example active">Activo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/buttons/button_simple.scss"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/buttons/button_simple.css"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div class="button_simple_example_group"&gt;
+    &lt;button class="button_simple_example"&gt;Continuar&lt;/button&gt;
+    &lt;button class="button_simple_example active"&gt;Activo&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>

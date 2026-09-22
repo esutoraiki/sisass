@@ -1,0 +1,356 @@
+@charset "UTF-8";
+.documentationpage .button_adidas_example_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+.documentationpage .button_adidas_example {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.documentationpage .button_adidas_example_right {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 210px;
+  aspect-ratio: 5.16;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: block;
+  cursor: pointer;
+}
+.documentationpage .button_adidas_example_right:before {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 99%;
+  height: 97%;
+  border: 1px solid #202735;
+  background-color: transparent;
+  content: "";
+  z-index: 0;
+}
+.documentationpage .button_adidas_example_right:hover:before {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 1;
+  border: 1px solid #324C8C;
+}
+.documentationpage .button_adidas_example_right:hover .content_link {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  background-color: #324C8C;
+  color: #FFF;
+}
+.documentationpage .button_adidas_example_right:hover .content_link:after {
+  position: relative;
+  top: -2px;
+  left: 15px;
+  z-index: 1;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.documentationpage .button_adidas_example_right:disabled, .documentationpage .button_adidas_example_right.disabled {
+  cursor: not-allowed;
+}
+.documentationpage .button_adidas_example_right:disabled:hover:before, .documentationpage .button_adidas_example_right.disabled:hover:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.documentationpage .button_adidas_example_right:disabled:before, .documentationpage .button_adidas_example_right.disabled:before {
+  border: 1px solid #cccccc;
+}
+.documentationpage .button_adidas_example_right:disabled .content_link, .documentationpage .button_adidas_example_right.disabled .content_link {
+  border: 1px solid #cccccc;
+  background-color: #cccccc;
+  color: #666666;
+}
+.documentationpage .button_adidas_example_right .content_link {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 210px;
+  aspect-ratio: 5.16;
+  font-size: 1.125rem;
+  font-family: "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  border: 1px solid #202735;
+  background-color: #202735;
+  color: #FFF;
+  z-index: 0;
+  padding-right: 5px;
+}
+.documentationpage .button_adidas_example_right .content_link:after {
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  font-size: 0.9375rem;
+  content: "→";
+}
+.documentationpage .button_adidas_example_left {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 210px;
+  aspect-ratio: 5.16;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: block;
+  cursor: pointer;
+}
+.documentationpage .button_adidas_example_left:before {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 99%;
+  height: 97%;
+  border: 1px solid #202735;
+  background-color: transparent;
+  content: "";
+  z-index: 0;
+}
+.documentationpage .button_adidas_example_left:hover:before {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 1;
+  border: 1px solid #324C8C;
+}
+.documentationpage .button_adidas_example_left:hover .content_link {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  background-color: #E8EDF8;
+  color: #202735;
+}
+.documentationpage .button_adidas_example_left:hover .content_link:before {
+  position: relative;
+  top: -2px;
+  left: -15px;
+  z-index: 1;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.documentationpage .button_adidas_example_left:disabled, .documentationpage .button_adidas_example_left.disabled {
+  cursor: not-allowed;
+}
+.documentationpage .button_adidas_example_left:disabled:hover:before, .documentationpage .button_adidas_example_left.disabled:hover:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.documentationpage .button_adidas_example_left:disabled:before, .documentationpage .button_adidas_example_left.disabled:before {
+  border: 1px solid #cccccc;
+}
+.documentationpage .button_adidas_example_left:disabled .content_link, .documentationpage .button_adidas_example_left.disabled .content_link {
+  border: 1px solid #cccccc;
+  background-color: #cccccc;
+  color: #666666;
+}
+.documentationpage .button_adidas_example_left .content_link {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 210px;
+  aspect-ratio: 5.16;
+  font-size: 1.125rem;
+  font-family: "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  border: 1px solid #202735;
+  background-color: #FFFFFF;
+  color: #202735;
+  z-index: 0;
+  padding-left: 5px;
+}
+.documentationpage .button_adidas_example_left .content_link:before {
+  position: relative;
+  top: -2px;
+  left: -10px;
+  z-index: 1;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  font-size: 0.9375rem;
+  content: "←";
+}
+.documentationpage .button_adidas_example_disabled {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 210px;
+  aspect-ratio: 5.16;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: block;
+  cursor: pointer;
+}
+.documentationpage .button_adidas_example_disabled:before {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  width: 99%;
+  height: 97%;
+  border: 1px solid #000;
+  background-color: transparent;
+  content: "";
+  z-index: 0;
+}
+.documentationpage .button_adidas_example_disabled:hover:before {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 1;
+  border: 1px solid #000;
+}
+.documentationpage .button_adidas_example_disabled:hover .content_link {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  background-color: #000;
+  color: #FFF;
+}
+.documentationpage .button_adidas_example_disabled:disabled, .documentationpage .button_adidas_example_disabled.disabled {
+  cursor: not-allowed;
+}
+.documentationpage .button_adidas_example_disabled:disabled:hover:before, .documentationpage .button_adidas_example_disabled.disabled:hover:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
+.documentationpage .button_adidas_example_disabled:disabled:before, .documentationpage .button_adidas_example_disabled.disabled:before {
+  border: 1px solid #AAB2C0;
+}
+.documentationpage .button_adidas_example_disabled:disabled .content_link, .documentationpage .button_adidas_example_disabled.disabled .content_link {
+  border: 1px solid #AAB2C0;
+  background-color: #DDE1E8;
+  color: #697386;
+}
+.documentationpage .button_adidas_example_disabled .content_link {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 210px;
+  aspect-ratio: 5.16;
+  font-size: 1.125rem;
+  font-family: "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
+  transition: all 200ms linear;
+  border: 1px solid #000;
+  background-color: #000;
+  color: #FFF;
+  z-index: 0;
+}

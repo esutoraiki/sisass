@@ -1,0 +1,131 @@
+.documentationpage .button_bisel_example_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+.documentationpage .button_bisel_example {
+  all: initial;
+  width: 160px;
+  height: 58px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
+  cursor: pointer;
+  display: block;
+}
+.documentationpage .button_bisel_example:hover:before {
+  background: linear-gradient(to top, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
+}
+.documentationpage .button_bisel_example:hover .content_link {
+  color: #FFFFFF;
+}
+.documentationpage .button_bisel_example:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 150px;
+  aspect-ratio: 3;
+  opacity: 1;
+  background: linear-gradient(to bottom, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
+  z-index: 0;
+  content: "";
+}
+.documentationpage .button_bisel_example .content_link {
+  font-size: 1.125rem;
+  font-family: "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+  width: 95%;
+  z-index: 2;
+}
+.documentationpage .button_bisel_example_border {
+  all: initial;
+  width: 160px;
+  height: 58px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
+  cursor: pointer;
+  display: block;
+  border: 2px solid #9A315A;
+}
+.documentationpage .button_bisel_example_border:hover:before {
+  background: linear-gradient(to top, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
+}
+.documentationpage .button_bisel_example_border:hover .content_link {
+  color: #FFFFFF;
+}
+.documentationpage .button_bisel_example_border:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 150px;
+  aspect-ratio: 3;
+  opacity: 1;
+  background: linear-gradient(to bottom, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
+  z-index: 0;
+  content: "";
+}
+.documentationpage .button_bisel_example_border .content_link {
+  font-size: 1.125rem;
+  font-family: "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #FFFFFF;
+  width: 95%;
+  z-index: 2;
+}

@@ -1,0 +1,28 @@
+@use "sisass_components/buttons" as *;
+
+.documentationpage {
+    .button_simple_example_group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .button_simple_example {
+        @include button_simple((
+            bg: #FFFFFF,
+            bg_hover: #202735,
+            color: #202735,
+            color_hover: #FFFFFF,
+            tf: (
+                s: 1.125rem,
+                w: 600
+            ),
+            w: 150px,
+            height: 48px,
+            border_color: #202735,
+            border_color_hover: #202735,
+            time: 220ms
+        ));
+    }
+}

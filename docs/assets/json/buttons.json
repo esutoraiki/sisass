@@ -1,0 +1,46 @@
+{
+    "breadcrumb": [
+        {
+            "label": "src",
+            "url": "../pages/base.html#src"
+        },
+        {
+            "label": "sisass_components"
+        },
+        {
+            "label": "_buttons.scss"
+        }
+    ],
+    "components": [
+        {
+            "id": "sisass_components",
+            "url": "../components/buttons/sisass_components.html",
+            "position": "beforeend",
+            "node": "sisass_components"
+        },
+        {
+            "id": "buttons_overview",
+            "url": "../components/buttons/overview.html",
+            "position": "beforeend",
+            "node": "buttons_overview"
+        },
+        {
+            "id": "button_simple",
+            "url": "../components/buttons/button_simple.html",
+            "position": "beforeend",
+            "node": "button_simple"
+        },
+        {
+            "id": "button_style_adidas_1",
+            "url": "../components/buttons/button_style_adidas_1.html",
+            "position": "beforeend",
+            "node": "button_style_adidas_1"
+        },
+        {
+            "id": "button_bisel",
+            "url": "../components/buttons/button_bisel.html",
+            "position": "beforeend",
+            "node": "button_bisel"
+        }
+    ]
+}

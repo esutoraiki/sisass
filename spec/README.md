@@ -25,6 +25,7 @@ Esta carpeta contiene especificaciones de producto e interfaz para funcionalidad
 | [search_dropdown.md](./search_dropdown.md) | Define el desplegable de búsqueda global con resultados enriquecidos, navegación por teclado y listado completo con espacio de scroll reservado. |
 | [new_article_versions.md](./new_article_versions.md) | Define el historial de versiones del artículo de novedades en una única página. |
 | [nested_maps.md](./nested_maps.md) | Define el artículo conceptual sobre mapas anidados, sus patrones de uso y las APIs públicas de SISASS que los admiten. |
+| [buttons.md](./buttons.md) | Define la página de referencia de `src/sisass_components/_buttons.scss`, sus tres mixins y sus ejemplos visuales. |
 
 ## Convenciones
 

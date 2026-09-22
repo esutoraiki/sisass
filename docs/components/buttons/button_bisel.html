@@ -1,0 +1,125 @@
+<article id="button_bisel" class="button_bisel">
+    <div class="group_title">
+        <h2 class="subtitle">
+            button_bisel (_buttons.scss)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Mixin
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Crea un botón con apariencia biselada mediante dos gradientes opuestos: uno en el contenedor y otro en el
+        pseudoelemento interior. El gradiente interno cambia de dirección durante <b>:hover</b>.
+    </p>
+    <p class="description">
+        El botón debe contener un elemento <b>.content_link</b>, que se centra sobre el pseudoelemento y recibe la
+        tipografía y los colores del contenido.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@mixin button_bisel($attr: (
+    width: 140px,
+    height: 55px,
+    diff: 10px,
+    bg1: #FFF,
+    bg2: #000,
+    bg_opacity: 0.4,
+    border_contain: false,
+    border: 2px solid #000,
+    aspect_inside: 2.8,
+    font: "sans-serif",
+    size: 18,
+    weight: bold,
+    opacity_before: 1,
+    color: #FFF,
+    color_hover: #FFF
+));</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Tipo</th>
+                        <th>Default</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><b>width</b></td><td>Medida</td><td>140px</td><td>Define el ancho exterior del botón.</td></tr>
+                    <tr><td><b>height</b></td><td>Medida</td><td>55px</td><td>Define el alto exterior del botón.</td></tr>
+                    <tr><td><b>diff</b></td><td>Medida</td><td>10px</td><td>Reduce el ancho interior respecto al ancho exterior.</td></tr>
+                    <tr><td><b>bg1</b></td><td>Color</td><td>#FFF</td><td>Define el primer color de los gradientes.</td></tr>
+                    <tr><td><b>bg2</b></td><td>Color</td><td>#000</td><td>Define el segundo color de los gradientes.</td></tr>
+                    <tr><td><b>bg_opacity</b></td><td>Number</td><td>0.4</td><td>Define la opacidad de los colores de los gradientes.</td></tr>
+                    <tr><td><b>border_contain</b></td><td>Boolean</td><td>false</td><td>Activa el borde del contenedor exterior.</td></tr>
+                    <tr><td><b>border</b></td><td>Border</td><td>2px solid #000</td><td>Define el borde exterior cuando está habilitado.</td></tr>
+                    <tr><td><b>aspect_inside</b></td><td>Number</td><td>2.8</td><td>Define la relación de aspecto del pseudoelemento interior.</td></tr>
+                    <tr><td><b>font</b></td><td>String</td><td>"sans-serif"</td><td>Define la familia tipográfica.</td></tr>
+                    <tr><td><b>size</b></td><td>Number</td><td>18</td><td>Define el tamaño de fuente normalizado por SISASS.</td></tr>
+                    <tr><td><b>weight</b></td><td>String | Number</td><td>bold</td><td>Define el peso tipográfico.</td></tr>
+                    <tr><td><b>opacity_before</b></td><td>Number</td><td>1</td><td>Define la opacidad del pseudoelemento interior.</td></tr>
+                    <tr><td><b>color</b></td><td>Color</td><td>#FFF</td><td>Define el color normal de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>color_hover</b></td><td>Color</td><td>#FFF</td><td>Define el color de <b>.content_link</b> durante hover.</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+        <div
+            id="button_bisel_example_tabs"
+            class="container_example tab_panel"
+            data-tab-panel
+            data-active-tab="result"
+        >
+            <div class="tab_panel_list" data-tab-panel-list>
+                <button class="tab_panel_tab" data-tab-panel-tab="result">Resultado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="scss">SCSS</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="css">CSS generado</button>
+                <button class="tab_panel_tab" data-tab-panel-tab="html">HTML</button>
+            </div>
+
+            <div class="tab_panel_panel" data-tab-panel-panel="result">
+                <div class="result">
+                    <div class="button_bisel_example_group">
+                        <button class="button_bisel_example">
+                            <span class="content_link">Explorar</span>
+                        </button>
+                        <button class="button_bisel_example button_bisel_example_border">
+                            <span class="content_link">Con borde</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="scss">
+                <pre class="language-scss" data-src="../assets/scss/buttons/button_bisel.scss"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="css">
+                <pre class="language-css" data-src="../assets/css/buttons/button_bisel.css"></pre>
+            </div>
+            <div class="tab_panel_panel" data-tab-panel-panel="html">
+                <pre class="language-html"><code>&lt;div class="button_bisel_example_group"&gt;
+    &lt;button class="button_bisel_example"&gt;
+        &lt;span class="content_link"&gt;Explorar&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="button_bisel_example button_bisel_example_border"&gt;
+        &lt;span class="content_link"&gt;Con borde&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </section>
+</article>
