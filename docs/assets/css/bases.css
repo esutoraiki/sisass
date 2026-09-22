@@ -758,6 +758,17 @@
   height: auto;
 }
 
+.documentationpage .tf_map_no_params {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+}
 .documentationpage .tf_example_map {
   text-align: right;
   text-decoration: underline;

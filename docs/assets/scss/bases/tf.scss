@@ -1,6 +1,8 @@
 @use "../core/instances" as *;
 
 .documentationpage {
+    .tf_map_no_params { @include tf; }
+
     .tf_example_map {
         @include tf((
             align: right,

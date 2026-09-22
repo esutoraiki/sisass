@@ -1,4 +1,4 @@
-// Update: 20260827
+// Update: 20260922
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -75,7 +75,7 @@
 
 // Text + Font
 @mixin tf($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "tf() only accepts a map with text and font options.";
     }
 
@@ -109,7 +109,7 @@
 
 // Font Face
 @mixin font-face($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "font-face() only accepts a map with font options.";
     }
 
@@ -191,7 +191,7 @@
 
 // autofill
 @mixin autofill($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "autofill() only accepts a map with autofill options.";
     }
 
@@ -215,7 +215,7 @@
 
 // Background
 @mixin background($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "background() only accepts a map with background options.";
     }
 
@@ -515,7 +515,7 @@
 
 // Need gulp-postcss and postcss-inline-svg
 @mixin icon-svg-mask($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "icon-svg-mask() only accepts a map with SVG mask options.";
     }
 
@@ -600,7 +600,7 @@
 
 // Normalize the styles for working with SVG files
 @mixin normalize-svg($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "normalize-svg() only accepts a map with SVG options.";
     }
 
@@ -634,7 +634,7 @@
 
 // Add scroll
 @mixin scroll($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "scroll() only accepts a map with scroll options.";
     }
 
