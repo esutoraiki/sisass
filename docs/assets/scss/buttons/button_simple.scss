@@ -1,28 +1,45 @@
-@use "sisass_components/buttons" as *;
+@use "../core/_instances" as *;
+@use "sisass_components/_buttons" as *;
 
 .documentationpage {
     .button_simple_example_group {
-        display: flex;
+        @include align-items(center);
+        @include gap(16px);
+        @include flex;
         flex-wrap: wrap;
-        gap: 16px;
-        align-items: center;
-    }
+        margin-bottom: 24px;
 
-    .button_simple_example {
-        @include button_simple((
-            bg: #FFFFFF,
-            bg_hover: #202735,
-            color: #202735,
-            color_hover: #FFFFFF,
-            tf: (
-                s: 1.125rem,
-                w: 600
-            ),
-            w: 150px,
-            height: 48px,
-            border_color: #202735,
-            border_color_hover: #202735,
-            time: 220ms
-        ));
+        @include brp($b7) {
+            @include flex-direction(column);
+        }
+
+        .button_simple_example_no_params {
+            @include button_simple;
+        }
+
+        .button_simple_example {
+            @include button_simple(
+                (
+                    radius: 7px,
+                    bg: $c4,
+                    c: $c5,
+                    bgh: $c5,
+                    ch: $c4,
+                    bga: $c6,
+                    ca: $c7,
+                    bgd: $c8,
+                    cd: $c1,
+                    w: 130px,
+                    h: 40px,
+                    border: $bd3,
+                    tf: (
+                        s: szrem(14),
+                        f: $f4,
+                        w: bold,
+                        t: uppercase
+                    )
+                )
+            );
+        }
     }
 }

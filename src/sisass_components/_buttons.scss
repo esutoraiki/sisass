@@ -1,52 +1,63 @@
 // Update: 20260918
 //---------------------
+@use "sass:color";
 @use "../base" as *;
 @use "../vendor" as *;
 
 @mixin button_simple($attr: ()) {
+    $radius: mapv($attr, (border-radius, radius), 0px);
     $bg: mapv($attr, bg, #FFF);
     $bgh: mapv($attr, (bg_hover, bgh), #000);
+    $bga: mapv($attr, (bg_active, bga), #000);
+    $bgd: mapv($attr, (bg_disabled, bgd), color.adjust(#000, $lightness: 70%));
     $color: mapv($attr, (color, c), #000);
     $colorh: mapv($attr, (color_hover, ch), #FFF);
-    $tf_input: mapv($attr, tf, ());
-    $tf_attr: (
-        align: mapv($tf_input, (align, a), center),
-        transform: mapv($tf_input, (transform, t), uppercase),
-        decoration: mapv($tf_input, (decoration, d), initial),
-        wrap: mapv($tf_input, (wrap, wr), initial),
-        size: mapv($tf_input, (size, s), szrem(18)),
-        family: mapv($tf_input, (family, f), "sans-serif"),
-        weight: mapv($tf_input, (weight, w), normal),
-        style: mapv($tf_input, style, normal),
-        line-height: mapv($tf_input, (line-height, lh), "none"),
-        variant: mapv($tf_input, (variant, v), normal)
-    );
-    $w: mapv($attr, (width, w), 65px);
-    $h: mapv($attr, (height, h), 45px);
-    $bd: mapv($attr, (border_color, bd), #000);
-    $bdh: mapv($attr, (border_color_hover, bdh), #000);
-    $bdsize: mapv($attr, (border_size, bds), 1px);
-    $bdstyle: mapv($attr, (border_style, bdsy), solid);
+    $colora: mapv($attr, (color_active, ca), #FFF);
+    $colord: mapv($attr, (color_disabled, cd), color.adjust(#000, $lightness: 40%));
+    $w: mapv($attr, (width, w), 110px);
+    $h: mapv($attr, (height, h), 47px);
+    $bd: mapv($attr, (border, bd), 1px solid #000);
+    $bdh: mapv($attr, (border_hover, bdh), 1px solid #000);
+    $bda: mapv($attr, (border_active, bda), 1px solid #000);
+    $bdd: mapv($attr, (border_disabled, bdd), 1px solid color.adjust(#000, $lightness: 70%));
     $time: mapv($attr, (time, t), 500ms);
+    $tf_attr: mapv($attr, tf, ());
+    $reset: mapv($attr, (reset, r), true);
+    $cursor: mapv($attr, (cursor, cur), pointer);
+    $cursord: mapv($attr, (cursor_disabled, curd), not-allowed);
 
-    all: initial;
-    @include tf($tf_attr);
+    @if $reset {
+        all: initial;
+    }
+
     @include transition(all $time);
     @include center-flex-column;
+    @include border-radius($radius);
     @include user-select;
+    @include tf($tf_attr);
     @include wh($w, $h);
-    border: $bdsize $bdstyle $bd;
-    background-color: $bg;
-    cursor: pointer;
-    color: $color;
+    @include bc($bg, $color);
+    cursor: $cursor;
+    border: $bd;
 
-    &:hover,
-    &.active
-    {
+    &:hover {
         @include transition(all $time);
-        border: $bdsize $bdstyle $bdh;
-        background-color: $bgh;
-        color: $colorh;
+        @include bc($bgh, $colorh);
+        border: $bdh;
+    }
+
+    &:disabled,
+    &.disabled {
+        @include transition(all $time);
+        @include bc($bgd, $colord);
+        cursor: $cursord;
+        border: $bdd;
+    }
+
+    &.active {
+        @include transition(all $time);
+        @include bc($bga, $colora);
+        border: $bda;
     }
 }
 
@@ -55,10 +66,10 @@
     $ar: mapv($attr, ratio, 5.16);
     $bg: mapv($attr, bg, #000);
     $bgh: mapv($attr, bg_hover, #000);
-    $bgd: mapv($attr, bg_disabled, lighten(#000, 80%));
+    $bgd: mapv($attr, bg_disabled, color.adjust(#000, $lightness: 80%));
     $color: mapv($attr, color, #FFF);
     $colorh: mapv($attr, color_hover, #FFF);
-    $colord: mapv($attr, color_disabled, lighten(#000, 40%));
+    $colord: mapv($attr, color_disabled, color.adjust(#000, $lightness: 40%));
     $font: mapv($attr, font, "sans-serif");
     $size: mapv($attr, size, 18);
     $weight: mapv($attr, weight, bold);
@@ -67,7 +78,7 @@
     $time: mapv($attr, time, 200ms);
     $bd: mapv($attr, border_color, #000);
     $bdh: mapv($attr, border_color_hover, #000);
-    $bdd: mapv($attr, border_color_disabled, lighten(#000, 80%));
+    $bdd: mapv($attr, border_color_disabled, color.adjust(#000, $lightness: 80%));
     $bdsize: mapv($attr, border_size, 1px);
     $bdstyle: mapv($attr, border_style, solid);
     $iconr: mapv($attr, icon_right, false);

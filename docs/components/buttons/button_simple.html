@@ -18,8 +18,8 @@
     <p class="description">
         La clave <b>tf</b> recibe un mapa propio con la misma sintaxis del mixin
         <a class="link" href="../pages/base.html#tf">tf</a>; sus opciones no se declaran directamente en
-        <b>button_simple</b>. Los estados <b>:hover</b> y <b>.active</b> comparten el fondo, el color de texto y el borde
-        alternativos, y <b>time</b> controla la duración de la transición.
+        <b>button_simple</b>. Los estados <b>:hover</b>, <b>.active</b> y <b>:disabled</b> aceptan fondo, color de
+        texto y borde propios, y <b>time</b> controla la duración de la transición.
     </p>
 
     <section class="use">
@@ -28,29 +28,26 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin button_simple($attr: (
+    border-radius: 0px,
     bg: #FFF,
     bg_hover: #000,
+    bg_active: #000,
+    bg_disabled: color.adjust(#000, $lightness: 70%),
     color: #000,
     color_hover: #FFF,
-    tf: (
-        align: center,
-        transform: uppercase,
-        decoration: initial,
-        wrap: initial,
-        size: 1.125rem,
-        family: "sans-serif",
-        weight: normal,
-        style: normal,
-        line-height: "none",
-        variant: normal
-    ),
-    width: 65px,
-    height: 45px,
-    border_color: #000,
-    border_color_hover: #000,
-    border_size: 1px,
-    border_style: solid,
-    time: 500ms
+    color_active: #FFF,
+    color_disabled: color.adjust(#000, $lightness: 40%),
+    width: 110px,
+    height: 47px,
+    border: 1px solid #000,
+    border_hover: 1px solid #000,
+    border_active: 1px solid #000,
+    border_disabled: 1px solid color.adjust(#000, $lightness: 70%),
+    time: 500ms,
+    tf: (),
+    reset: true,
+    cursor: pointer,
+    cursor_disabled: not-allowed
 ));</code></pre>
 
         <h3 class="subtitle">
@@ -67,18 +64,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr><td><b>border-radius | radius</b></td><td>Medida</td><td>0px</td><td>Define el radio de borde del botón.</td></tr>
                     <tr><td><b>bg</b></td><td>Color</td><td>#FFF</td><td>Define el fondo del estado normal.</td></tr>
-                    <tr><td><b>bg_hover | bgh</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>:hover</b> y <b>.active</b>.</td></tr>
+                    <tr><td><b>bg_hover | bgh</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>:hover</b>.</td></tr>
+                    <tr><td><b>bg_active | bga</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>.active</b>.</td></tr>
+                    <tr><td><b>bg_disabled | bgd</b></td><td>Color</td><td>color.adjust(#000, $lightness: 70%)</td><td>Define el fondo de <b>:disabled</b> y <b>.disabled</b>.</td></tr>
                     <tr><td><b>color | c</b></td><td>Color</td><td>#000</td><td>Define el color del texto en el estado normal.</td></tr>
-                    <tr><td><b>color_hover | ch</b></td><td>Color</td><td>#FFF</td><td>Define el color del texto en <b>:hover</b> y <b>.active</b>.</td></tr>
-                    <tr><td><b>tf</b></td><td>Map</td><td>(align: center, transform: uppercase, decoration: initial, wrap: initial, size: 1.125rem, family: "sans-serif", weight: normal, style: normal, line-height: "none", variant: normal)</td><td>Configura texto y tipografía con las claves y los alias admitidos por el mixin <a class="link" href="../pages/base.html#tf">tf</a>.</td></tr>
-                    <tr><td><b>width | w</b></td><td>Medida</td><td>65px</td><td>Define el ancho del botón.</td></tr>
-                    <tr><td><b>height | h</b></td><td>Medida</td><td>45px</td><td>Define el alto del botón.</td></tr>
-                    <tr><td><b>border_color | bd</b></td><td>Color</td><td>#000</td><td>Define el color del borde normal.</td></tr>
-                    <tr><td><b>border_color_hover | bdh</b></td><td>Color</td><td>#000</td><td>Define el color del borde de <b>:hover</b> y <b>.active</b>.</td></tr>
-                    <tr><td><b>border_size | bds</b></td><td>Medida</td><td>1px</td><td>Define el grosor del borde.</td></tr>
-                    <tr><td><b>border_style | bdsy</b></td><td>String</td><td>solid</td><td>Define el estilo del borde.</td></tr>
+                    <tr><td><b>color_hover | ch</b></td><td>Color</td><td>#FFF</td><td>Define el color del texto en <b>:hover</b>.</td></tr>
+                    <tr><td><b>color_active | ca</b></td><td>Color</td><td>#FFF</td><td>Define el color del texto en <b>.active</b>.</td></tr>
+                    <tr><td><b>color_disabled | cd</b></td><td>Color</td><td>color.adjust(#000, $lightness: 40%)</td><td>Define el color del texto en <b>:disabled</b> y <b>.disabled</b>.</td></tr>
+                    <tr><td><b>width | w</b></td><td>Medida</td><td>110px</td><td>Define el ancho del botón.</td></tr>
+                    <tr><td><b>height | h</b></td><td>Medida</td><td>47px</td><td>Define el alto del botón.</td></tr>
+                    <tr><td><b>border | bd</b></td><td>String</td><td>1px solid #000</td><td>Define el borde del estado normal.</td></tr>
+                    <tr><td><b>border_hover | bdh</b></td><td>String</td><td>1px solid #000</td><td>Define el borde de <b>:hover</b>.</td></tr>
+                    <tr><td><b>border_active | bda</b></td><td>String</td><td>1px solid #000</td><td>Define el borde de <b>.active</b>.</td></tr>
+                    <tr><td><b>border_disabled | bdd</b></td><td>String</td><td>1px solid color.adjust(#000, $lightness: 70%)</td><td>Define el borde de <b>:disabled</b> y <b>.disabled</b>.</td></tr>
                     <tr><td><b>time | t</b></td><td>Tiempo</td><td>500ms</td><td>Define la duración de la transición.</td></tr>
+                    <tr><td><b>tf</b></td><td>Map</td><td>()</td><td>Configura texto y tipografía con las claves y los alias admitidos por el mixin <a class="link" href="../pages/base.html#tf">tf</a>.</td></tr>
+                    <tr><td><b>reset | r</b></td><td>Boolean</td><td>true</td><td>Activa el restablecimiento inicial con <b>all: initial</b>.</td></tr>
+                    <tr><td><b>cursor | cur</b></td><td>String</td><td>pointer</td><td>Define el cursor del estado normal.</td></tr>
+                    <tr><td><b>cursor_disabled | curd</b></td><td>String</td><td>not-allowed</td><td>Define el cursor de <b>:disabled</b> y <b>.disabled</b>.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -86,6 +91,12 @@
         <h2 class="title">
             Ejemplo
         </h2>
+        <p class="description">
+            Este ejemplo compara el resultado por defecto del mixin con una variante configurada mediante map.
+            También muestra el mismo patrón aplicado sobre enlaces con etiqueta <b>a</b>. En cada grupo se muestran
+            los estados normal, <b>.active</b> y deshabilitado para verificar cómo cambian los colores, bordes,
+            dimensiones y estilos de texto.
+        </p>
         <div
             id="button_simple_example_tabs"
             class="container_example tab_panel"
@@ -102,8 +113,26 @@
             <div class="tab_panel_panel" data-tab-panel-panel="result">
                 <div class="result">
                     <div class="button_simple_example_group">
+                        <h3 class="subtitle">Sin parámetros</h3>
+                        <button class="button_simple_example_no_params">Continuar</button>
+                        <button class="button_simple_example_no_params active">Activo</button>
+                        <button class="button_simple_example_no_params" disabled>No disponible</button>
+                    </div>
+
+                    <div class="button_simple_example_group">
+                        <h3 class="subtitle">Con parámetros</h3>
+
                         <button class="button_simple_example">Continuar</button>
                         <button class="button_simple_example active">Activo</button>
+                        <button class="button_simple_example" disabled>No disponible</button>
+                    </div>
+
+                    <div class="button_simple_example_group">
+                        <h3 class="subtitle">Con etiqueta a</h3>
+
+                        <a class="button_simple_example" href="#">Continuar</a>
+                        <a class="button_simple_example active" href="#">Activo</a>
+                        <a class="button_simple_example disabled" href="#" aria-disabled="true">No disponible</a>
                     </div>
                 </div>
             </div>
@@ -115,8 +144,24 @@
             </div>
             <div class="tab_panel_panel" data-tab-panel-panel="html">
                 <pre class="language-html"><code>&lt;div class="button_simple_example_group"&gt;
+    &lt;h3 class="subtitle"&gt;Sin parámetros&lt;/h3&gt;
+    &lt;button class="button_simple_example_no_params"&gt;Continuar&lt;/button&gt;
+    &lt;button class="button_simple_example_no_params active"&gt;Activo&lt;/button&gt;
+    &lt;button class="button_simple_example_no_params" disabled&gt;No disponible&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="button_simple_example_group"&gt;
+    &lt;h3 class="subtitle"&gt;Con parámetros&lt;/h3&gt;
     &lt;button class="button_simple_example"&gt;Continuar&lt;/button&gt;
     &lt;button class="button_simple_example active"&gt;Activo&lt;/button&gt;
+    &lt;button class="button_simple_example" disabled&gt;No disponible&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="button_simple_example_group"&gt;
+    &lt;h3 class="subtitle"&gt;Con etiqueta a&lt;/h3&gt;
+    &lt;a class="button_simple_example_link" href="#"&gt;Continuar&lt;/a&gt;
+    &lt;a class="button_simple_example_link active" href="#"&gt;Activo&lt;/a&gt;
+    &lt;a class="button_simple_example_link disabled" href="#" aria-disabled="true"&gt;No disponible&lt;/a&gt;
 &lt;/div&gt;</code></pre>
             </div>
         </div>

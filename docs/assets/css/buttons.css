@@ -1,25 +1,28 @@
 @charset "UTF-8";
 .documentationpage .button_simple_example_group {
+  -webkit-align-items: center;
+  align-items: center;
+  grid-gap: 16px;
+  gap: 16px;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
+  margin-bottom: 24px;
 }
-.documentationpage .button_simple_example {
+@media only screen and (max-width: 768px) {
+  .documentationpage .button_simple_example_group {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params {
   all: initial;
-  text-align: center;
-  text-decoration: initial;
-  text-transform: uppercase;
-  text-wrap: initial;
-  font-size: 1.125rem;
-  font-family: "sans-serif";
-  font-weight: 600;
-  font-style: normal;
-  font-variant: normal;
-  -webkit-transition: all 220ms;
-  -moz-transition: all 220ms;
-  -o-transition: all 220ms;
-  transition: all 220ms;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
   -webkit-flex-direction: column;
   flex-direction: column;
   -webkit-display: flex;
@@ -28,25 +31,125 @@
   display: flex;
   place-content: center;
   place-items: center;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 150px;
-  height: 48px;
-  border: 1px solid #202735;
-  background-color: #FFFFFF;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  width: 110px;
+  height: 47px;
+  background-color: #FFF;
+  color: #000;
   cursor: pointer;
-  color: #202735;
+  border: 1px solid #000;
 }
-.documentationpage .button_simple_example:hover, .documentationpage .button_simple_example.active {
-  -webkit-transition: all 220ms;
-  -moz-transition: all 220ms;
-  -o-transition: all 220ms;
-  transition: all 220ms;
-  border: 1px solid #202735;
-  background-color: #202735;
-  color: #FFFFFF;
+.documentationpage .button_simple_example_group .button_simple_example_no_params:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params:disabled, .documentationpage .button_simple_example_group .button_simple_example_no_params.disabled {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: rgb(178.5, 178.5, 178.5);
+  color: #666666;
+  cursor: not-allowed;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params.active {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example {
+  all: initial;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  font-size: 0.875rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  width: 130px;
+  height: 40px;
+  background-color: #FBB03B;
+  color: #A01303;
+  cursor: pointer;
+  border: 1px solid #FBB03B;
+}
+.documentationpage .button_simple_example_group .button_simple_example:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #A01303;
+  color: #FBB03B;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example:disabled, .documentationpage .button_simple_example_group .button_simple_example.disabled {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #DDDDDD;
+  color: #FFF;
+  cursor: not-allowed;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_simple_example_group .button_simple_example.active {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #2D396C;
+  color: #FEFEFE;
+  border: 1px solid #000;
 }
 
 .documentationpage .button_adidas_example_group {
