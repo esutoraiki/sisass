@@ -140,6 +140,58 @@ Prefiere siempre el cambio correcto más pequeño y simple:
 - El menú es fijo en escritorio, colapsable en pantallas estrechas y se oculta al imprimir. Al modificar sus estilos, ejecuta `npm exec gulp scss` desde `docs/` y conserva actualizado `docs/assets/css/main.css`.
 - Después de habilitarlo en una página, valida al menos: navegación por clic sin abandonar la página actual, acceso directo mediante hash, sección activa durante el desplazamiento, estado colapsado en móvil, ausencia del menú en impresión y exclusión de encabezados internos de `TabPanel`.
 
+### Constructores Interactivos Para Mixins
+
+- Usa el constructor de `button_simple` como referencia funcional y visual para cualquier constructor nuevo. Conserva la misma arquitectura general, terminología, jerarquía, comportamiento adaptable y tratamiento de estados; personaliza únicamente los controles, presets, vista previa y código que dependan de la API real del mixin.
+- Un constructor complementa la documentación y no sustituye la interface, la tabla de parámetros ni el ejemplo estático. Sin JavaScript, la referencia y el ejemplo deben seguir siendo suficientes para comprender y verificar el mixin.
+- Antes de implementarlo, inspecciona la fuente del mixin y su documentación vigente. Registra los parámetros públicos, aliases, tipos, defaults, relaciones entre parámetros, estados admitidos y estructura HTML requerida. No expongas opciones que la implementación real no soporte.
+- Define cada constructor mediante un esquema independiente en `docs/assets/json/builders/<mixin>.json`. El esquema es la fuente de verdad de la herramienta para el módulo SCSS, nombre del mixin, selector generado, grupos, campos, orden, aliases, alias preferido, defaults, mapas anidados, campos compuestos, dependencias, estados y presets.
+- No presupongas que un constructor representa botones ni que tendrá colores, bordes, tipografía o estados interactivos. El núcleo debe construir únicamente los grupos, controles y capacidades declarados por el esquema; no muestres secciones vacías para conservar una plantilla visual.
+- Mantén la generación de formularios, estado, presets, restauración, aliases, mapa SCSS, copiado, pestañas y fullscreen en un núcleo común dirigido por esquemas. El núcleo no debe contener claves, defaults o presets exclusivos de un mixin.
+- Coloca la herramienta dentro del componente documental del mixin, después del ejemplo salvo que la lectura de la página justifique otra posición. Identifica la sección con un `h3` estable y único marcado con `data-page-menu-item`, anidado bajo el `h2` del mixin. En el submenú muestra los mixins como entradas principales y cada constructor como entrada secundaria; no uses las categorías como entradas del submenú.
+- Usa una raíz única con clase `interactive_builder`, un atributo `data-*` específico para inicialización y un bloque de respaldo visible cuando JavaScript no esté disponible. Evita ids globales genéricos; deriva ids, selectores y clases específicas del nombre del mixin.
+- Mantén esta composición común:
+  - cabecera con `Constructor de <mixin>`, etiqueta `Mixin`, descripción breve, selector de preset y acción `Restablecer`;
+  - columna de controles agrupados en tarjetas plegables por propósito;
+  - tarjeta de vista previa con `Resultado en tiempo real`, selector de fondo, selector de estado y control de pantalla completa;
+  - salidas de SCSS y HTML en pestañas, cada una con su acción `Copiar`.
+- Agrupa los controles según la API concreta, usando categorías como contenido, dimensiones, colores, bordes, tipografía y comportamiento solo cuando correspondan. No muestres grupos vacíos ni inventes una taxonomía que no aporte a ese mixin.
+- Elige el control adecuado para cada tipo: `select` para conjuntos cerrados, selector visual para colores, checkbox para booleanos y campo textual para medidas o expresiones SCSS. Cuando un parámetro compuesto sea difícil de editar, sepáralo visualmente en partes manejables y recompón el valor requerido por la API; por ejemplo, ancho, estilo y color deben generar una sola cadena de borde.
+- La primera versión del esquema debe admitir como mínimo controles de texto, selección, booleano, color y borde compuesto. Añade otro tipo de control solo cuando lo requiera un mixin real; evita convertir el JSON en un lenguaje de programación o permitir la ejecución de código arbitrario.
+- Muestra valores, unidades y etiquetas con claridad. Los identificadores técnicos, nombres de parámetros y valores literales permanecen en inglés; las instrucciones, ayudas, estados de interfaz y mensajes se redactan en español natural.
+- Los presets deben ser puntos de partida neutrales y reutilizables, no variantes ligadas a la paleta de la documentación. Incluye siempre `Por defecto` y `Personalizado`; agrega solo presets que representen capacidades reales y reconocibles del mixin. Cualquier edición manual posterior debe cambiar el selector a `Personalizado`.
+- El estado inicial y la acción `Restablecer` deben reproducir exactamente los defaults vigentes. Al cambiar un control, actualiza en una sola operación los controles dependientes, la vista previa, el preset activo y las salidas de código.
+- Conserva un estado canónico independiente de los valores internos del DOM. Un control visual no puede reemplazar silenciosamente valores válidos que no represente: por ejemplo, un `input[type="color"]` no debe convertir `transparent`, `currentColor`, variables o funciones en `#000000`. Presets, aliases, pestañas, estados y fullscreen deben operar sobre el estado canónico.
+- La salida SCSS debe incluir el `@use` real del módulo y el `@include` del mixin. Omite toda clave cuyo valor coincida con el default vigente; si ninguna clave cambió, genera el include sin mapa de parámetros. Conserva mapas anidados cuando la API los use y no aplanes sus claves.
+- Junto a la acción `Copiar` de la salida SCSS, incluye un toggle `Alias`. Cuando esté activo, usa el alias preferido indicado por el esquema y, si falta, el alias público más corto; las claves sin alias conservan su nombre completo. El toggle debe usar `aria-pressed`, mostrar un estado activo visible y regenerar únicamente la salida SCSS, sin alterar valores, presets, vista previa ni HTML.
+- El HTML generado debe ser exactamente el marcado usado por la vista previa, incluida cualquier estructura interna obligatoria del mixin. No muestres clases, nodos o atributos que no participen en el resultado.
+- Ofrece únicamente los estados visuales implementados por el mixin. Usa etiquetas consistentes como `Normal`, `Active` y `Disabled`; no agregues `Hover` o `Focus` salvo que sean necesarios para comprender una capacidad específica solicitada.
+- El selector de fondo de la vista previa debe ser independiente del tema global de la documentación. Usa fondo blanco para `Claro` y negro para `Oscuro`, de modo que pueda comprobarse el contraste sin cambiar el tema del sitio.
+- Mantén el modo de pantalla completa mediante la Fullscreen API. Usa `docs/assets/img/svg/fullmax.svg` para entrar y `docs/assets/img/svg/fullmin.svg` para salir. Conserva visibles los controles de la vista previa, permite salir con `Esc`, restaura la posición previa de desplazamiento y devuelve el foco al control con `preventScroll` al abandonar el modo.
+- Usa variables de tema existentes para superficies, texto, bordes, acentos y sombras. Los estilos compartidos viven en `docs/assets/scss/components/_interactive_builder.scss`; agrega modificadores específicos solo cuando la estructura real de otro mixin lo requiera. No dupliques el sistema visual en parciales por página ni introduzcas lógica del constructor en un parcial de tema.
+- En escritorio, distribuye controles y resultado en dos columnas y permite que el panel de vista previa permanezca visible mientras se recorren los controles. En pantallas estrechas, apila las áreas sin perder controles ni salidas. Evita alturas rígidas, doble scroll y barras verticales internas en el formulario; permite scroll horizontal en código únicamente cuando sea imprescindible.
+- Oculta el constructor al imprimir y conserva imprimibles la referencia API y el ejemplo estático.
+- Mantén la interacción accesible: usa botones reales, labels asociados, estados `aria-expanded`, `aria-selected` o `aria-pressed` cuando correspondan, foco visible y mensajes de copia comprensibles. No dependas solo del color o del icono para comunicar un estado.
+- Inicializa cada constructor después de `await contentLoad(...)` y antes de `init_page_menu()`, esperando también la carga y validación de su esquema. El contenido, los encabezados y los listeners deben existir antes de construir la navegación. Protege la inicialización repetida mediante un estado `data-*` en la raíz.
+- Mantén el núcleo común en `docs/assets/js/components/`. No crees un módulo JavaScript completo por mixin: agrega primero su esquema JSON. Usa un adapter opcional solo cuando la vista previa, el HTML, una normalización o una validación particular no puedan expresarse limpiamente mediante el esquema.
+- Un adapter no puede duplicar presets, aliases, generación del mapa SCSS, copiado, pestañas, fullscreen ni administración general del estado. Registra la excepción de forma localizada y no crees un adapter si el constructor funciona únicamente con el esquema.
+- Valida el esquema antes de renderizar. Si está incompleto, contiene ids, claves o aliases incompatibles, referencia grupos o campos inexistentes, solicita controles desconocidos o requiere un adapter no registrado, no muestres una herramienta parcialmente funcional: conserva el ejemplo estático, presenta el fallback y registra el detalle técnico en consola.
+- Si el constructor incorpora familias tipográficas cargadas por la documentación, explica que esas opciones solo están disponibles en la vista previa y que el proyecto consumidor debe cargar la fuente elegida para reproducir el resultado.
+- Al terminar, valida como mínimo:
+  - defaults, presets y restauración;
+  - sincronización entre controles, vista previa, SCSS y HTML;
+  - carga y validación del esquema JSON;
+  - omisión de parámetros con valor default;
+  - alternancia entre nombres completos y aliases cortos en el SCSS;
+  - conservación de expresiones como `transparent` que un control visual no represente;
+  - estados soportados y fondos claro/oscuro;
+  - copia independiente de cada salida;
+  - entrada, salida y retorno de foco del modo de pantalla completa;
+  - navegación directa y estado activo del submenú;
+  - composición en escritorio y pantallas estrechas, sin doble scroll;
+  - fallback sin JavaScript e impresión sin la herramienta.
+- Después de cambiar el constructor, ejecuta `npm exec gulp scss` cuando haya SCSS, `npm exec gulp process_svg` cuando cambien SVG procesados, `npm exec gulp lint`, `npm exec gulp search_index` si cambian encabezados o prosa indexable y `npm exec gulp jsonlint`. Ejecuta también `node --check` sobre cada módulo JavaScript modificado, valida al menos un esquema correcto y casos representativos de esquema inválido, y conserva actualizado `docs/assets/css/main.css`.
+
 ### Uso De `TabPanel` En Ejemplos
 
 - Para convertir un ejemplo convencional existente, ejecuta desde la raíz:
