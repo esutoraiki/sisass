@@ -18,7 +18,7 @@ Crear una página de referencia homogénea con la documentación de
 `src/sisass_components/_buttons.scss`:
 
 - `button_simple`
-- `button_style_adidas_1`
+- `button_style_arrow`
 - `button_bisel`
 
 La documentación debe describir el comportamiento actual de estos mixins sin
@@ -40,7 +40,7 @@ modificar su API ni su implementación.
    actuales.
 9. La versión visible de los mixins será `2.x.x`.
 10. La documentación explicará el requisito estructural de `.content_link` en
-    `button_style_adidas_1` y `button_bisel`.
+    `button_style_arrow` y `button_bisel`.
 11. La tarea no añadirá aliases, validaciones ni cambios de comportamiento a
     los mixins.
 12. La especificación se mantendrá en `spec/buttons.md` y se registrará en
@@ -85,7 +85,7 @@ recursos:
 | `docs/assets/json/buttons.json` | Breadcrumb y registro ordenado de los componentes de la página. |
 | `docs/components/buttons/overview.html` | Descripción de `_buttons.scss` y clasificación de sus mixins. |
 | `docs/components/buttons/button_simple.html` | Referencia y ejemplo de `button_simple`. |
-| `docs/components/buttons/button_style_adidas_1.html` | Referencia y ejemplo de `button_style_adidas_1`. |
+| `docs/components/buttons/button_style_arrow.html` | Referencia y ejemplo de `button_style_arrow`. |
 | `docs/components/buttons/button_bisel.html` | Referencia y ejemplo de `button_bisel`. |
 | `docs/assets/scss/buttons.scss` | Agregador de los estilos de ejemplo de la página. |
 | `docs/assets/scss/buttons/*.scss` | SCSS real utilizado por cada ejemplo. |
@@ -109,13 +109,13 @@ referencia existentes:
 5. Fragmento introductorio de `_buttons.scss`.
 6. Encabezado `Botones básicos` y sección `button_simple`.
 7. Encabezado `Botones estilizados` y secciones
-   `button_style_adidas_1` y `button_bisel`.
+   `button_style_arrow` y `button_bisel`.
 
 Los encabezados de categoría deben tener identificadores estables y
 `data-page-menu-item`. Los anchors públicos de los mixins serán:
 
 - `button_simple`
-- `button_style_adidas_1`
+- `button_style_arrow`
 - `button_bisel`
 
 ## Breadcrumb
@@ -167,22 +167,27 @@ ellos.
 
 ```scss
 @mixin button_simple($attr: (
+    width: 110px,
+    height: 47px,
+    aspect_ratio: 0,
     bg: #FFF,
     bg_hover: #000,
+    bg_active: #000,
+    bg_disabled: color.adjust(#000, $lightness: 70%),
     color: #000,
     color_hover: #FFF,
-    size: 18,
-    font: "sans-serif",
-    weight: normal,
-    align: center,
-    uppercase: uppercase,
-    width: 65px,
-    height: 45px,
-    border_color: #000,
-    border_color_hover: #000,
-    border_size: 1px,
-    border_style: solid,
-    time: 500ms
+    color_active: #FFF,
+    color_disabled: color.adjust(#000, $lightness: 40%),
+    border-radius: 0px,
+    border: 1px solid #000,
+    border_hover: 1px solid #000,
+    border_active: 1px solid #000,
+    border_disabled: 1px solid color.adjust(#000, $lightness: 70%),
+    time: 500ms,
+    tf: (),
+    cursor: pointer,
+    cursor_disabled: not-allowed,
+    reset: true
 ));
 ```
 
@@ -191,21 +196,23 @@ ellos.
 | Clave | Tipo | Default | Comportamiento documentado |
 | --- | --- | --- | --- |
 | `bg` | Color | `#FFF` | Define el fondo del estado normal. |
-| `bg_hover` | Color | `#000` | Define el fondo de `:hover` y `.active`. |
+| `bg_hover` | Color | `#000` | Define el fondo de `:hover`. |
+| `bg_active` | Color | `#000` | Define el fondo de `.active`. |
+| `bg_disabled` | Color | `color.adjust(#000, $lightness: 70%)` | Define el fondo de `:disabled` y `.disabled`. |
 | `color` | Color | `#000` | Define el color del texto en el estado normal. |
-| `color_hover` | Color | `#FFF` | Define el color del texto en `:hover` y `.active`. |
-| `size` | Number | `18` | Define el tamaño de fuente normalizado por SISASS. |
-| `font` | String | `"sans-serif"` | Define la familia tipográfica. |
-| `weight` | String \| Number | `normal` | Define el peso tipográfico. |
-| `align` | String | `center` | Define la alineación del texto. |
-| `uppercase` | String | `uppercase` | Define la transformación del texto. |
-| `width` | Medida | `65px` | Define el ancho del botón. |
-| `height` | Medida | `45px` | Define el alto del botón. |
-| `border_color` | Color | `#000` | Define el color del borde normal. |
-| `border_color_hover` | Color | `#000` | Define el color del borde de `:hover` y `.active`. |
-| `border_size` | Medida | `1px` | Define el grosor del borde. |
-| `border_style` | String | `solid` | Define el estilo del borde. |
+| `color_hover` | Color | `#FFF` | Define el color del texto en `:hover`. |
+| `color_active` | Color | `#FFF` | Define el color del texto en `.active`. |
+| `color_disabled` | Color | `color.adjust(#000, $lightness: 40%)` | Define el color del texto en `:disabled` y `.disabled`. |
+| `border-radius` | Medida | `0px` | Define el radio de borde del botón. |
+| `border` | String | `1px solid #000` | Define el borde normal. |
+| `border_hover` | String | `1px solid #000` | Define el borde de `:hover`. |
+| `border_active` | String | `1px solid #000` | Define el borde de `.active`. |
+| `border_disabled` | String | `1px solid color.adjust(#000, $lightness: 70%)` | Define el borde de `:disabled` y `.disabled`. |
 | `time` | Tiempo | `500ms` | Define la duración de la transición. |
+| `tf` | Map | `()` | Configura texto y tipografía mediante el mixin `tf`. |
+| `cursor` | String | `pointer` | Define el cursor normal. |
+| `cursor_disabled` | String | `not-allowed` | Define el cursor de `:disabled` y `.disabled`. |
+| `reset` | Boolean | `true` | Activa `all: initial` antes de aplicar los estilos. |
 
 ### Ejemplo requerido
 
@@ -213,7 +220,7 @@ El resultado debe mostrar al menos un botón interactivo y una variante con la
 clase `.active`. El ejemplo debe permitir comprobar los estilos normal, hover y
 activo sin JavaScript específico.
 
-## Mixin `button_style_adidas_1`
+## Mixin `button_style_arrow`
 
 ### Propósito
 
@@ -227,23 +234,22 @@ borde y los iconos se aplican a ese nodo interno.
 ### Interface documentada
 
 ```scss
-@mixin button_style_adidas_1($attr: (
+@mixin button_style_arrow($attr: (
     width: 280px,
     ratio: 5.16,
     bg: #000,
     bg_hover: #000,
+    bg_active: #000,
     bg_disabled: lighten(#000, 80%),
     color: #FFF,
     color_hover: #FFF,
+    color_active: #FFF,
     color_disabled: lighten(#000, 40%),
-    font: "sans-serif",
-    size: 18,
-    weight: bold,
-    transform: uppercase,
-    align: center,
+    tf: (),
     time: 200ms,
     border_color: #000,
     border_color_hover: #000,
+    border_color_active: #000,
     border_color_disabled: lighten(#000, 80%),
     border_size: 1px,
     border_style: solid,
@@ -260,18 +266,17 @@ borde y los iconos se aplican a ese nodo interno.
 | `ratio` | Number | `5.16` | Define la relación de aspecto exterior e interior. |
 | `bg` | Color | `#000` | Define el fondo normal de `.content_link`. |
 | `bg_hover` | Color | `#000` | Define el fondo de `.content_link` durante hover. |
+| `bg_active` | Color | `#000` | Define el fondo de `.content_link` en `.active`. |
 | `bg_disabled` | Color | `lighten(#000, 80%)` | Define el fondo del estado disabled. |
 | `color` | Color | `#FFF` | Define el color del contenido normal. |
 | `color_hover` | Color | `#FFF` | Define el color del contenido durante hover. |
+| `color_active` | Color | `#FFF` | Define el color del contenido en `.active`. |
 | `color_disabled` | Color | `lighten(#000, 40%)` | Define el color del contenido disabled. |
-| `font` | String | `"sans-serif"` | Define la familia tipográfica. |
-| `size` | Number | `18` | Define el tamaño de fuente normalizado por SISASS. |
-| `weight` | String \| Number | `bold` | Define el peso tipográfico. |
-| `transform` | String | `uppercase` | Define la transformación del texto. |
-| `align` | String | `center` | Define la alineación del texto. |
+| `tf` | Map | `()` | Configura la tipografía y el texto con las claves y alias admitidos por el mixin `tf`. |
 | `time` | Tiempo | `200ms` | Define la duración de las transiciones. |
 | `border_color` | Color | `#000` | Define el color del borde normal. |
 | `border_color_hover` | Color | `#000` | Define el color del borde durante hover. |
+| `border_color_active` | Color | `#000` | Define el color del borde en `.active`. |
 | `border_color_disabled` | Color | `lighten(#000, 80%)` | Define el color del borde disabled. |
 | `border_size` | Medida | `1px` | Define el grosor del borde. |
 | `border_style` | String | `solid` | Define el estilo del borde. |
@@ -284,6 +289,7 @@ El resultado debe incluir:
 
 - Una variante con `icon_right: true`.
 - Una variante con `icon_left: true`.
+- Una variante con la clase `.active` para comprobar sus colores y borde.
 - Una variante disabled que permita comprobar sus colores, borde y cursor.
 - El nodo `.content_link` en cada botón.
 
@@ -386,7 +392,7 @@ con su sección renderizada. Después de crear la página y sus componentes se
 debe regenerar `docs/assets/json/components/search_index.json`.
 
 Como mínimo deben validarse las búsquedas `button_simple`,
-`button_style_adidas_1` y `button_bisel`. Cada resultado debe abrir
+`button_style_arrow` y `button_bisel`. Cada resultado debe abrir
 `pages/buttons.html` con el anchor correspondiente.
 
 ## Criterios de aceptación
@@ -395,7 +401,7 @@ Como mínimo deben validarse las búsquedas `button_simple`,
    menú global.
 2. El breadcrumb muestra `src / sisass_components / _buttons.scss`.
 3. La introducción describe el archivo y clasifica sus tres mixins.
-4. `button_simple`, `button_style_adidas_1` y `button_bisel` tienen fragmentos
+4. `button_simple`, `button_style_arrow` y `button_bisel` tienen fragmentos
    independientes y anchors estables.
 5. Cada fragmento contiene descripción, interface, tabla completa y ejemplo.
 6. Las tablas coinciden con las claves y defaults implementados en el archivo
@@ -404,7 +410,7 @@ Como mínimo deben validarse las búsquedas `button_simple`,
    implementación.
 8. Cada ejemplo presenta `Resultado`, `SCSS`, `CSS generado` y `HTML` en un
    `TabPanel` válido.
-9. Los ejemplos de `button_style_adidas_1` y `button_bisel` usan
+9. Los ejemplos de `button_style_arrow` y `button_bisel` usan
    `.content_link` correctamente.
 10. Los estados normal, hover, active o disabled requeridos para cada mixin son
     verificables en el resultado visual.

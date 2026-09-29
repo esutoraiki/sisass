@@ -1,41 +1,69 @@
-// Update: 20260918
+// Update: 20260924
 //---------------------
 @use "sass:color";
+@use "sass:map";
 @use "../base" as *;
 @use "../vendor" as *;
 
+$btn_default: (
+    width: 110px,
+    height: 47px,
+    aspect_ratio: null,
+    bg: #FFF,
+    bg_hover: #000,
+    bg_active: #000,
+    bg_disabled: color.adjust(#000, $lightness: 70%),
+    color_hover: #FFF,
+    color_active: #FFF,
+    color_disabled: color.adjust(#000, $lightness: 40%),
+    border-radius: 0px,
+    border: 1px solid #000,
+    border_hover: 1px solid #000,
+    border_disabled: 1px solid color.adjust(#000, $lightness: 70%),
+    time: 500ms,
+    tf: (),
+    display: flex,
+    cursor: pointer,
+    cursor_disabled: not-allowed,
+    reset: true
+);
+
 @mixin button_simple($attr: ()) {
-    $radius: mapv($attr, (border-radius, radius), 0px);
-    $bg: mapv($attr, bg, #FFF);
-    $bgh: mapv($attr, (bg_hover, bgh), #000);
-    $bga: mapv($attr, (bg_active, bga), #000);
-    $bgd: mapv($attr, (bg_disabled, bgd), color.adjust(#000, $lightness: 70%));
+    $w: mapv($attr, (width, w), map.get($btn_default, width));
+    $h: mapv($attr, (height, h), map.get($btn_default, height));
+    $ar: mapv($attr, (aspect_ratio, ratio, ar), map.get($btn_default, aspect_ratio));
+    $bg: mapv($attr, bg, map.get($btn_default, bg));
+    $bgh: mapv($attr, (bg_hover, bgh), map.get($btn_default, bg_hover));
+    $bga: mapv($attr, (bg_active, bga), map.get($btn_default, bg_active));
+    $bgd: mapv($attr, (bg_disabled, bgd), map.get($btn_default, bg_disabled));
     $color: mapv($attr, (color, c), #000);
-    $colorh: mapv($attr, (color_hover, ch), #FFF);
-    $colora: mapv($attr, (color_active, ca), #FFF);
-    $colord: mapv($attr, (color_disabled, cd), color.adjust(#000, $lightness: 40%));
-    $w: mapv($attr, (width, w), 110px);
-    $h: mapv($attr, (height, h), 47px);
-    $bd: mapv($attr, (border, bd), 1px solid #000);
-    $bdh: mapv($attr, (border_hover, bdh), 1px solid #000);
+    $colorh: mapv($attr, (color_hover, ch), map.get($btn_default, color_hover));
+    $colora: mapv($attr, (color_active, ca), map.get($btn_default, color_active));
+    $colord: mapv($attr, (color_disabled, cd), map.get($btn_default, color_disabled));
+    $radius: mapv($attr, (border-radius, radius), map.get($btn_default, border-radius));
+    $bd: mapv($attr, (border, bd), map.get($btn_default, border));
+    $bdh: mapv($attr, (border_hover, bdh), map.get($btn_default, border_hover));
     $bda: mapv($attr, (border_active, bda), 1px solid #000);
-    $bdd: mapv($attr, (border_disabled, bdd), 1px solid color.adjust(#000, $lightness: 70%));
-    $time: mapv($attr, (time, t), 500ms);
-    $tf_attr: mapv($attr, tf, ());
-    $reset: mapv($attr, (reset, r), true);
-    $cursor: mapv($attr, (cursor, cur), pointer);
-    $cursord: mapv($attr, (cursor_disabled, curd), not-allowed);
+    $bdd: mapv($attr, (border_disabled, bdd), map.get($btn_default, border_disabled));
+    $time: mapv($attr, (time, t), map.get($btn_default, time));
+    $tf_attr: mapv($attr, tf, map.get($btn_default, tf));
+    $cursor: mapv($attr, (cursor, cur), map.get($btn_default, cursor));
+    $cursord: mapv($attr, (cursor_disabled, curd), map.get($btn_default, cursor_disabled));
+    $reset: mapv($attr, (reset, r), map.get($btn_default, reset));
 
     @if $reset {
         all: initial;
     }
+
+    @if $ar != null { $h: null }
+    @include resolve-size(( w: $w, h: $h, r: $ar));
+
 
     @include transition(all $time);
     @include center-flex-column;
     @include border-radius($radius);
     @include user-select;
     @include tf($tf_attr);
-    @include wh($w, $h);
     @include bc($bg, $color);
     cursor: $cursor;
     border: $bd;
@@ -61,41 +89,50 @@
     }
 }
 
-@mixin button_style_adidas_1($attr: ()) {
-    $w: mapv($attr, width, 280px);
-    $ar: mapv($attr, ratio, 5.16);
-    $bg: mapv($attr, bg, #000);
-    $bgh: mapv($attr, bg_hover, #000);
-    $bgd: mapv($attr, bg_disabled, color.adjust(#000, $lightness: 80%));
-    $color: mapv($attr, color, #FFF);
-    $colorh: mapv($attr, color_hover, #FFF);
-    $colord: mapv($attr, color_disabled, color.adjust(#000, $lightness: 40%));
-    $font: mapv($attr, font, "sans-serif");
-    $size: mapv($attr, size, 18);
-    $weight: mapv($attr, weight, bold);
-    $transform: mapv($attr, transform, uppercase);
-    $align: mapv($attr, align, center);
-    $time: mapv($attr, time, 200ms);
-    $bd: mapv($attr, border_color, #000);
-    $bdh: mapv($attr, border_color_hover, #000);
-    $bdd: mapv($attr, border_color_disabled, color.adjust(#000, $lightness: 80%));
-    $bdsize: mapv($attr, border_size, 1px);
-    $bdstyle: mapv($attr, border_style, solid);
-    $iconr: mapv($attr, icon_right, false);
-    $iconl: mapv($attr, icon_left, false);
+@mixin button_style_arrow($attr: ()) {
+    $w: mapv($attr, (width, w), map.get($btn_default, width));
+    $h: mapv($attr, (height, h), map.get($btn_default, height));
+    $ar: mapv($attr, (aspect_ratio, ratio, ar), map.get($btn_default, aspect_ratio));
+    $bg: mapv($attr, bg, map.get($btn_default, bg));
+    $bgh: mapv($attr, (bg_hover, bgh), map.get($btn_default, bg_hover));
+    $bga: mapv($attr, (bg_active, bga), map.get($btn_default, bg_active));
+    $bgd: mapv($attr, (bg_disabled, bgd), map.get($btn_default, bg_disabled));
+    $color: mapv($attr, (color, c), #FFF);
+    $colorh: mapv($attr, (color_hover, ch), map.get($btn_default, color_hover));
+    $colora: mapv($attr, (color_active, ca), map.get($btn_default, color_active));
+    $colord: mapv($attr, (color_disabled, cd), map.get($btn_default, color_disabled));
+    $radius: mapv($attr, (border-radius, radius), map.get($btn_default, border-radius));
+    $bd: mapv($attr, (border, bd), map.get($btn_default, border));
+    $bdh: mapv($attr, (border_hover, bdh), map.get($btn_default, border_hover));
+    $bda: mapv($attr, (border_active, bda), 1px solid #000);
+    $bdd: mapv($attr, (border_disabled, bdd), map.get($btn_default, border_disabled));
+    $time: mapv($attr, (time, t), map.get($btn_default, time));
+    $tf_attr: mapv($attr, tf, map.get($btn_default, tf));
+    $iconr: mapv($attr, (icon_right, ir), false);
+    $iconl: mapv($attr, (icon_left, il), false);
+    $cursor: mapv($attr, (cursor, cur), map.get($btn_default, cursor));
+    $cursord: mapv($attr, (cursor_disabled, curd), map.get($btn_default, cursor_disabled));
+    $reset: mapv($attr, (reset, r), map.get($btn_default, reset));
+    $display: mapv($attr, (display, d), map.get($btn_default, display));
+
+    @if $reset {
+        all: initial;
+    }
+
+    @if $ar != null { $h: null }
+    @include resolve-size(( w: $w, h: $h, r: $ar));
 
     @include position;
-    width: $w;
-    aspect-ratio: $ar;
+    @include border-radius($radius);
     @include user-select;
+    cursor: $cursor;
     display: block;
-    cursor: pointer;
 
     &:before {
         @include transition(all $time linear);
         @include position(absolute);
         @include wh(99%, 97%);
-        border: $bdsize $bdstyle $bd;
+        border: $bd;
         background-color: transparent;
         content: "";
         z-index: 0;
@@ -105,13 +142,12 @@
         &:before {
             @include transition(all $time linear);
             @include position(absolute, 4px, 4px);
-            border: $bdsize $bdstyle $bdh;
+            border: $bdh;
         }
 
         .content_link {
             @include transition(all $time linear);
-            background-color: $bgh;
-            color: $colorh;
+            @include bc($bgh, $colorh);
 
             @if $iconr {
                 &:after {
@@ -131,7 +167,7 @@
 
     &:disabled,
     &.disabled {
-        cursor: not-allowed;
+        cursor: $cursord;
 
         &:hover {
             &:before {
@@ -140,28 +176,42 @@
         }
 
         &:before {
-            border: $bdsize $bdstyle $bdd;
+            border: $bdd;
         }
 
         .content_link {
-            border: $bdsize $bdstyle $bdd;
-            background-color: $bgd;
-            color: $colord;
+            @include bc($bgd, $colord);
+            border:  $bdd;
+        }
+    }
+
+    &.active {
+        &:before {
+            @include transition(all $time linear);
+            border: $bda;
         }
 
+        .content_link {
+            @include transition(all $time linear);
+            @include bc($bga, $colora);
+            border: $bda;
+        }
     }
 
     .content_link {
+        @if $ar != 0 {
+            @include wh($w);
+            aspect-ratio: $ar;
+        } @else {
+            @include wh($w, $h);
+        }
+
         @include position;
         @include center-flex-row;
-        width: $w;
-        aspect-ratio: $ar;
-        @include font(szrem($size), $font, $weight);
-        @include text($align, $transform);
+        @include tf($tf_attr);
         @include transition(all $time linear);
-        border: $bdsize $bdstyle $bd;
-        background-color: $bg;
-        color: $color;
+        @include bc($bg, $color);
+        border: $bd;
         z-index: 0;
 
         @if $iconr {
@@ -170,7 +220,6 @@
             &:after {
                 @include position(relative, -2px, 10px);
                 @include transition(all $time linear);
-                font-size: szrem($size - 3);
                 content: "\2192";
             }
         }
@@ -181,7 +230,6 @@
             &:before {
                 @include position(relative, -2px, -10px);
                 @include transition(all $time linear);
-                font-size: szrem($size - 3);
                 content: "\2190";
             }
         }

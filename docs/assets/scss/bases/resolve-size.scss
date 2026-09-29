@@ -1,0 +1,32 @@
+@use "../core/instances" as *;
+
+.documentationpage {
+    .resolve_size_example_result {
+        // Give styles to the box
+        [class^="resolve_size_example_"] {
+            @include center-flex-column;
+            border: $bd1;
+        }
+
+        .resolve_size_example_width_height {
+            @include resolve-size((
+                width: 180px,
+                height: 80px
+            ));
+        }
+
+        .resolve_size_example_width_ratio {
+            @include resolve-size((
+                width: 180px,
+                ratio: 2.25
+            ));
+        }
+
+        .resolve_size_example_height_ratio {
+            @include resolve-size((
+                height: 80px,
+                ratio: 2.25
+            ));
+        }
+    }
+}

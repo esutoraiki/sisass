@@ -21,6 +21,11 @@
         <b>button_simple</b>. Los estados <b>:hover</b>, <b>.active</b> y <b>:disabled</b> aceptan fondo, color de
         texto y borde propios, y <b>time</b> controla la duración de la transición.
     </p>
+    <p class="note">
+        Cuando se utiliza <b>aspect_ratio</b>, también debe enviarse <b>width</b>. En ese caso, <b>button_simple</b>
+        anula <b>height</b> y delega la resolución en <b>resolve-size</b> mediante la combinación
+        <b>width + aspect_ratio</b>. Si no se envía una proporción, utiliza <b>width + height</b>.
+    </p>
 
     <section class="use">
         <h2 class="title">
@@ -28,7 +33,9 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin button_simple($attr: (
-    border-radius: 0px,
+    width: 110px,
+    height: 47px,
+    aspect_ratio: null,
     bg: #FFF,
     bg_hover: #000,
     bg_active: #000,
@@ -37,8 +44,7 @@
     color_hover: #FFF,
     color_active: #FFF,
     color_disabled: color.adjust(#000, $lightness: 40%),
-    width: 110px,
-    height: 47px,
+    border-radius: 0px,
     border: 1px solid #000,
     border_hover: 1px solid #000,
     border_active: 1px solid #000,
@@ -64,7 +70,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><b>border-radius | radius</b></td><td>Medida</td><td>0px</td><td>Define el radio de borde del botón.</td></tr>
+                    <tr><td><b>width | w</b></td><td>Medida</td><td>110px</td><td>Define el ancho del botón.</td></tr>
+                    <tr><td><b>height | h</b></td><td>Medida</td><td>47px</td><td>Define el alto del botón cuando no se utiliza <b>aspect_ratio</b>.</td></tr>
+                    <tr><td><b>aspect_ratio | ratio | ar</b></td><td>Number</td><td>null</td><td>Define la relación de aspecto; requiere <b>width</b> y reemplaza <b>height</b>.</td></tr>
                     <tr><td><b>bg</b></td><td>Color</td><td>#FFF</td><td>Define el fondo del estado normal.</td></tr>
                     <tr><td><b>bg_hover | bgh</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>:hover</b>.</td></tr>
                     <tr><td><b>bg_active | bga</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>.active</b>.</td></tr>
@@ -73,8 +81,7 @@
                     <tr><td><b>color_hover | ch</b></td><td>Color</td><td>#FFF</td><td>Define el color del texto en <b>:hover</b>.</td></tr>
                     <tr><td><b>color_active | ca</b></td><td>Color</td><td>#FFF</td><td>Define el color del texto en <b>.active</b>.</td></tr>
                     <tr><td><b>color_disabled | cd</b></td><td>Color</td><td>color.adjust(#000, $lightness: 40%)</td><td>Define el color del texto en <b>:disabled</b> y <b>.disabled</b>.</td></tr>
-                    <tr><td><b>width | w</b></td><td>Medida</td><td>110px</td><td>Define el ancho del botón.</td></tr>
-                    <tr><td><b>height | h</b></td><td>Medida</td><td>47px</td><td>Define el alto del botón.</td></tr>
+                    <tr><td><b>border-radius | radius</b></td><td>Medida</td><td>0px</td><td>Define el radio de borde del botón.</td></tr>
                     <tr><td><b>border | bd</b></td><td>String</td><td>1px solid #000</td><td>Define el borde del estado normal.</td></tr>
                     <tr><td><b>border_hover | bdh</b></td><td>String</td><td>1px solid #000</td><td>Define el borde de <b>:hover</b>.</td></tr>
                     <tr><td><b>border_active | bda</b></td><td>String</td><td>1px solid #000</td><td>Define el borde de <b>.active</b>.</td></tr>

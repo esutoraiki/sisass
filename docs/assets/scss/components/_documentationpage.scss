@@ -199,6 +199,7 @@ html.page[data-theme="dark"] {
         .box {
             @include whs(100px);
             @include bc(var(--theme_accent), var(--theme_surface));
+            @include center-flex-column;
 
             @include brp($b9) {
                 @include whs(50px);

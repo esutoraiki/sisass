@@ -360,11 +360,40 @@
     gap: normalize-px($value);
 }
 
+// Resolve size
+@mixin resolve-size($attr: ()) {
+    @if meta.type-of($attr) != "map" and $attr != () {
+        @error "resolve-size() only accepts a map with width + height, width + ratio, or height + ratio .";
+    }
+    $w: mapv($attr, (width, w), null);
+    $h: mapv($attr, (height, h), null);
+    $r: mapv($attr, (aspect_ratio, ratio, r), null);
+
+    $has_width: $w != null;
+    $has_height: $h != null;
+    $has_ratio: $r != null;
+
+    @if $has_width and $has_height and not $has_ratio {
+        width: $w;
+        height: $h;
+    } @else if $has_width and $has_ratio and not $has_height {
+        width: $w;
+        aspect-ratio: $r;
+    } @else if $has_height and $has_ratio and not $has_width {
+        height: $h;
+        aspect-ratio: $r;
+    } @else {
+        @error "resolve-size() requires exactly two values: width + height, width + ratio, or height + ratio.";
+    }
+}
+
+// Cover
 @mixin cover {
     @include whs(100%);
     object-fit: cover;
 }
 
+// Contain
 @mixin contain {
     @include whs(100%);
     object-fit: contain;

@@ -18,6 +18,8 @@
 }
 .documentationpage .button_simple_example_group .button_simple_example_no_params {
   all: initial;
+  width: 110px;
+  height: 47px;
   -webkit-transition: all 500ms;
   -moz-transition: all 500ms;
   -o-transition: all 500ms;
@@ -48,8 +50,6 @@
   font-weight: normal;
   font-style: normal;
   font-variant: normal;
-  width: 110px;
-  height: 47px;
   background-color: #FFF;
   color: #000;
   cursor: pointer;
@@ -85,6 +85,8 @@
 }
 .documentationpage .button_simple_example_group .button_simple_example {
   all: initial;
+  width: 130px;
+  aspect-ratio: 3.25;
   -webkit-transition: all 500ms;
   -moz-transition: all 500ms;
   -o-transition: all 500ms;
@@ -115,8 +117,6 @@
   font-weight: bold;
   font-style: normal;
   font-variant: normal;
-  width: 130px;
-  height: 40px;
   background-color: #FBB03B;
   color: #A01303;
   cursor: pointer;

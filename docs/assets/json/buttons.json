@@ -31,10 +31,10 @@
             "node": "button_simple"
         },
         {
-            "id": "button_style_adidas_1",
-            "url": "../components/buttons/button_style_adidas_1.html",
+            "id": "button_style_arrow",
+            "url": "../components/buttons/button_style_arrow.html",
             "position": "beforeend",
-            "node": "button_style_adidas_1"
+            "node": "button_style_arrow"
         },
         {
             "id": "button_bisel",

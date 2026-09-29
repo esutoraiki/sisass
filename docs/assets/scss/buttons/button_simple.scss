@@ -30,7 +30,7 @@
                     bgd: $c8,
                     cd: $c1,
                     w: 130px,
-                    h: 40px,
+                    ar: calc(130 / 40),
                     border: $bd3,
                     tf: (
                         s: szrem(14),

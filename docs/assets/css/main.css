@@ -2933,6 +2933,14 @@ html.page[data-theme=dark] .documentationpage pre[class*=language-] > code {
   height: 100px;
   background-color: var(--theme_accent);
   color: var(--theme_surface);
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
 }
 @media only screen and (max-width: 480px) {
   .documentationpage .result .box {
