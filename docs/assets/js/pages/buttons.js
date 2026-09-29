@@ -4,6 +4,7 @@ import { init_hash_navigation } from "../core/hash_navigation.js";
 import { init_page_menu } from "../core/page_menu.js";
 import { loader } from "../core/page_loader.js";
 import { init_documentation_search } from "../core/search.js";
+import { init_interactive_builders } from "../components/interactive_builder.js";
 import { TabPanel } from "../libraries/tab_panel.min.js";
 
 (function () {
@@ -31,6 +32,8 @@ import { TabPanel } from "../libraries/tab_panel.min.js";
                     for (const tab_panel of tab_panels) {
                         new TabPanel(tab_panel).init();
                     }
+
+                    await init_interactive_builders();
 
                     init_page_menu();
 

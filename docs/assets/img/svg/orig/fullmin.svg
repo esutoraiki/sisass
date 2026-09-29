@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="500"
+   viewBox="0 0 500 500"
+   inkscape:version="1.4.3 (1:1.4.3+202512261034+0d15f75042)"
+   sodipodi:docname="fullmin.svg"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.74386223"
+     inkscape:cx="396.57881"
+     inkscape:cy="561.25984"
+     inkscape:window-width="2560"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <defs
+     id="defs1" />
+  <path
+     d="m 162.46,43.78 c 0,-10.36 -8.39,-18.75 -18.75,-18.75 -10.36,0 -18.75,8.39 -18.75,18.75 v 62.51 c 0,10.36 -8.39,18.75 -18.75,18.75 h -62.46 c -10.36,0 -18.75,8.39 -18.75,18.75 0,10.36 8.39,18.75 18.75,18.75 h 62.51 c 31.07,0 56.24,-25.17 56.24,-56.24 z m 0,412.47 c 0,10.36 -8.39,18.75 -18.75,18.75 -10.36,0 -18.75,-8.39 -18.75,-18.75 v -62.51 c 0,-10.36 -8.39,-18.75 -18.75,-18.75 h -62.46 c -10.36,0 -18.75,-8.39 -18.75,-18.75 0,-10.36 8.39,-18.75 18.75,-18.75 h 62.51 c 31.07,0 56.24,25.17 56.24,56.24 z M 356.24,25 c -10.36,0 -18.75,8.39 -18.75,18.75 v 62.51 c 0,31.07 25.17,56.24 56.24,56.24 h 62.51 c 10.36,0 18.75,-8.39 18.75,-18.75 0,-10.36 -8.39,-18.75 -18.75,-18.75 h -62.51 c -10.36,0 -18.75,-8.39 -18.75,-18.75 V 43.78 c 0,-10.36 -8.39,-18.75 -18.75,-18.75 z m -18.74,431.25 c 0,10.36 8.39,18.75 18.75,18.75 10.36,0 18.75,-8.39 18.75,-18.75 v -62.51 c 0,-10.36 8.39,-18.75 18.75,-18.75 h 62.51 c 10.36,0 18.75,-8.39 18.75,-18.75 0,-10.36 -8.39,-18.75 -18.75,-18.75 h -62.51 c -31.07,0 -56.24,25.17 -56.24,56.24 z"
+     id="path1" />
+</svg>

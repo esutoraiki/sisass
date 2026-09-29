@@ -1,6 +1,11 @@
 <article id="button_simple" class="button_simple">
     <div class="group_title">
-        <h2 class="subtitle">
+        <h2
+            id="button_simple_mixin"
+            class="subtitle"
+            data-page-menu-item
+            data-page-menu-label="button_simple"
+        >
             button_simple (_buttons.scss)
         </h2>
         <h3 class="attribute">
@@ -170,6 +175,522 @@
     &lt;a class="button_simple_example_link active" href="#"&gt;Activo&lt;/a&gt;
     &lt;a class="button_simple_example_link disabled" href="#" aria-disabled="true"&gt;No disponible&lt;/a&gt;
 &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        <h3
+            id="button_simple_builder_section"
+            class="title"
+            data-page-menu-item
+            data-page-menu-label="Constructor interactivo"
+        >
+            Constructor interactivo
+        </h3>
+        <p class="description">
+            Modifica los parámetros públicos de <b>button_simple</b> y consulta el resultado, el SCSS y el HTML de la
+            configuración actual. La vista previa permite revisar los estados que admite el mixin.
+        </p>
+        <div
+            id="button_simple_builder"
+            class="interactive_builder"
+            data-interactive-builder
+            data-builder-schema="../assets/json/builders/button_simple.json"
+        >
+            <div class="interactive_builder_fallback" data-builder-fallback>
+                <p class="note">
+                    El constructor interactivo necesita JavaScript. Puedes consultar el ejemplo estático anterior para
+                    revisar el comportamiento de <b>button_simple</b>.
+                </p>
+            </div>
+
+            <div class="interactive_builder_app" data-builder-app hidden>
+                <div class="interactive_builder_header">
+                    <div class="interactive_builder_heading">
+                        <div class="interactive_builder_title_row">
+                            <h3 class="interactive_builder_title">
+                                Constructor de <b>button_simple</b>
+                            </h3>
+                            <span class="interactive_builder_badge">Mixin</span>
+                        </div>
+                        <p class="interactive_builder_description">
+                            Elige un punto de partida visual y ajusta sus parámetros para generar un botón reutilizable.
+                        </p>
+                    </div>
+                    <div class="interactive_builder_actions">
+                        <label class="interactive_builder_field">
+                            <span>Preset</span>
+                            <select class="interactive_builder_select" data-builder-preset>
+                                <option value="default">Por defecto</option>
+                                <option value="light">Claro</option>
+                                <option value="dark">Oscuro</option>
+                                <option value="outline">Con contorno</option>
+                                <option value="disabled">Deshabilitado</option>
+                                <option value="custom">Personalizado</option>
+                            </select>
+                        </label>
+                        <button class="interactive_builder_button interactive_builder_button_secondary" type="button" data-builder-reset>
+                            Restablecer
+                        </button>
+                    </div>
+                </div>
+
+                <div class="interactive_builder_layout">
+                    <div class="interactive_builder_controls" data-builder-controls>
+                        <details class="interactive_builder_fieldset" open>
+                            <summary class="interactive_builder_legend">Contenido</summary>
+                            <div class="interactive_builder_field_grid">
+                                <label class="interactive_builder_field interactive_builder_field_full" for="button_builder_label">
+                                    <span>Texto del botón</span>
+                                    <input id="button_builder_label" class="interactive_builder_input" type="text" value="Continuar" data-builder-field="label" />
+                                </label>
+                            </div>
+                        </details>
+
+                        <details class="interactive_builder_fieldset" open>
+                            <summary class="interactive_builder_legend">Dimensiones</summary>
+                            <div class="interactive_builder_field_grid">
+                                <label class="interactive_builder_field" for="button_builder_width">
+                                    <span>Width</span>
+                                    <input id="button_builder_width" class="interactive_builder_input" type="text" value="110px" data-builder-field="width" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_height">
+                                    <span>Height</span>
+                                    <input id="button_builder_height" class="interactive_builder_input" type="text" value="47px" data-builder-field="height" />
+                                </label>
+                                <label class="interactive_builder_field interactive_builder_field_full" for="button_builder_aspect_ratio">
+                                    <span>Aspect ratio <small>(opcional)</small></span>
+                                    <input id="button_builder_aspect_ratio" class="interactive_builder_input" type="text" placeholder="null" data-builder-field="aspect_ratio" />
+                                </label>
+                            </div>
+                        </details>
+
+                        <details class="interactive_builder_fieldset" open>
+                            <summary class="interactive_builder_legend">Colores</summary>
+                            <div class="interactive_builder_field_grid">
+                                <label class="interactive_builder_field" for="button_builder_bg">
+                                    <span>Fondo normal <output class="interactive_builder_color_value" data-builder-color-value="bg">#ffffff</output></span>
+                                    <input id="button_builder_bg" class="interactive_builder_input" type="color" value="#ffffff" data-builder-field="bg" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_color">
+                                    <span>Texto normal <output class="interactive_builder_color_value" data-builder-color-value="color">#000000</output></span>
+                                    <input id="button_builder_color" class="interactive_builder_input" type="color" value="#000000" data-builder-field="color" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_bg_hover">
+                                    <span>Fondo hover <output class="interactive_builder_color_value" data-builder-color-value="bg_hover">#000000</output></span>
+                                    <input id="button_builder_bg_hover" class="interactive_builder_input" type="color" value="#000000" data-builder-field="bg_hover" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_color_hover">
+                                    <span>Texto hover <output class="interactive_builder_color_value" data-builder-color-value="color_hover">#ffffff</output></span>
+                                    <input id="button_builder_color_hover" class="interactive_builder_input" type="color" value="#ffffff" data-builder-field="color_hover" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_bg_active">
+                                    <span>Fondo activo <output class="interactive_builder_color_value" data-builder-color-value="bg_active">#000000</output></span>
+                                    <input id="button_builder_bg_active" class="interactive_builder_input" type="color" value="#000000" data-builder-field="bg_active" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_color_active">
+                                    <span>Texto activo <output class="interactive_builder_color_value" data-builder-color-value="color_active">#ffffff</output></span>
+                                    <input id="button_builder_color_active" class="interactive_builder_input" type="color" value="#ffffff" data-builder-field="color_active" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_bg_disabled">
+                                    <span>Fondo disabled <output class="interactive_builder_color_value" data-builder-color-value="bg_disabled">#b2b2b2</output></span>
+                                    <input id="button_builder_bg_disabled" class="interactive_builder_input" type="color" value="#b2b2b2" data-builder-field="bg_disabled" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_color_disabled">
+                                    <span>Texto disabled <output class="interactive_builder_color_value" data-builder-color-value="color_disabled">#666666</output></span>
+                                    <input id="button_builder_color_disabled" class="interactive_builder_input" type="color" value="#666666" data-builder-field="color_disabled" />
+                                </label>
+                            </div>
+                        </details>
+
+                        <details class="interactive_builder_fieldset">
+                            <summary class="interactive_builder_legend">Bordes</summary>
+                            <div class="interactive_builder_field_grid">
+                                <label class="interactive_builder_field" for="button_builder_border_radius">
+                                    <span>Border radius</span>
+                                    <input id="button_builder_border_radius" class="interactive_builder_input" type="text" value="0px" data-builder-field="border_radius" />
+                                </label>
+                                <div class="interactive_builder_border_control interactive_builder_field_full" data-builder-border="border">
+                                    <span class="interactive_builder_border_label">Border normal</span>
+                                    <div class="interactive_builder_border_parts">
+                                        <label class="interactive_builder_field">
+                                            <span>Width</span>
+                                            <input class="interactive_builder_input" type="text" value="1px" data-builder-border="border" data-builder-border-part="width" />
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Style</span>
+                                            <select class="interactive_builder_select" data-builder-border="border" data-builder-border-part="style">
+                                                <option value="none">none</option>
+                                                <option value="solid" selected>solid</option>
+                                                <option value="dashed">dashed</option>
+                                                <option value="dotted">dotted</option>
+                                                <option value="double">double</option>
+                                                <option value="groove">groove</option>
+                                                <option value="ridge">ridge</option>
+                                                <option value="inset">inset</option>
+                                                <option value="outset">outset</option>
+                                            </select>
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Color</span>
+                                            <input class="interactive_builder_input" type="color" value="#000000" data-builder-border="border" data-builder-border-part="color" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="interactive_builder_border_control interactive_builder_field_full" data-builder-border="border_hover">
+                                    <span class="interactive_builder_border_label">Border hover</span>
+                                    <div class="interactive_builder_border_parts">
+                                        <label class="interactive_builder_field">
+                                            <span>Width</span>
+                                            <input class="interactive_builder_input" type="text" value="1px" data-builder-border="border_hover" data-builder-border-part="width" />
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Style</span>
+                                            <select class="interactive_builder_select" data-builder-border="border_hover" data-builder-border-part="style">
+                                                <option value="none">none</option>
+                                                <option value="solid" selected>solid</option>
+                                                <option value="dashed">dashed</option>
+                                                <option value="dotted">dotted</option>
+                                                <option value="double">double</option>
+                                                <option value="groove">groove</option>
+                                                <option value="ridge">ridge</option>
+                                                <option value="inset">inset</option>
+                                                <option value="outset">outset</option>
+                                            </select>
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Color</span>
+                                            <input class="interactive_builder_input" type="color" value="#000000" data-builder-border="border_hover" data-builder-border-part="color" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="interactive_builder_border_control interactive_builder_field_full" data-builder-border="border_active">
+                                    <span class="interactive_builder_border_label">Border activo</span>
+                                    <div class="interactive_builder_border_parts">
+                                        <label class="interactive_builder_field">
+                                            <span>Width</span>
+                                            <input class="interactive_builder_input" type="text" value="1px" data-builder-border="border_active" data-builder-border-part="width" />
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Style</span>
+                                            <select class="interactive_builder_select" data-builder-border="border_active" data-builder-border-part="style">
+                                                <option value="none">none</option>
+                                                <option value="solid" selected>solid</option>
+                                                <option value="dashed">dashed</option>
+                                                <option value="dotted">dotted</option>
+                                                <option value="double">double</option>
+                                                <option value="groove">groove</option>
+                                                <option value="ridge">ridge</option>
+                                                <option value="inset">inset</option>
+                                                <option value="outset">outset</option>
+                                            </select>
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Color</span>
+                                            <input class="interactive_builder_input" type="color" value="#000000" data-builder-border="border_active" data-builder-border-part="color" />
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="interactive_builder_border_control interactive_builder_field_full" data-builder-border="border_disabled">
+                                    <span class="interactive_builder_border_label">Border disabled</span>
+                                    <div class="interactive_builder_border_parts">
+                                        <label class="interactive_builder_field">
+                                            <span>Width</span>
+                                            <input class="interactive_builder_input" type="text" value="1px" data-builder-border="border_disabled" data-builder-border-part="width" />
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Style</span>
+                                            <select class="interactive_builder_select" data-builder-border="border_disabled" data-builder-border-part="style">
+                                                <option value="none">none</option>
+                                                <option value="solid" selected>solid</option>
+                                                <option value="dashed">dashed</option>
+                                                <option value="dotted">dotted</option>
+                                                <option value="double">double</option>
+                                                <option value="groove">groove</option>
+                                                <option value="ridge">ridge</option>
+                                                <option value="inset">inset</option>
+                                                <option value="outset">outset</option>
+                                            </select>
+                                        </label>
+                                        <label class="interactive_builder_field">
+                                            <span>Color</span>
+                                            <input class="interactive_builder_input" type="color" value="#b2b2b2" data-builder-border="border_disabled" data-builder-border-part="color" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="interactive_builder_fieldset">
+                            <summary class="interactive_builder_legend">Tipografía</summary>
+                            <p class="interactive_builder_disclaimer">
+                                Las fuentes disponibles en el campo <b>Family</b> son las tipografías usadas por esta
+                                documentación y solo están cargadas aquí para la vista previa. Si eliges una para tu
+                                botón, también debes incorporarla en tu proyecto; de lo contrario, el navegador usará
+                                otra fuente disponible y el resultado puede verse diferente.
+                            </p>
+                            <div class="interactive_builder_field_grid">
+                                <label class="interactive_builder_field" for="button_builder_tf_align">
+                                    <span>Align</span>
+                                    <select id="button_builder_tf_align" class="interactive_builder_select" data-builder-field="tf.align">
+                                        <option value="left">left</option>
+                                        <option value="center">center</option>
+                                        <option value="right">right</option>
+                                        <option value="justify">justify</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_transform">
+                                    <span>Transform</span>
+                                    <select id="button_builder_tf_transform" class="interactive_builder_select" data-builder-field="tf.transform">
+                                        <option value="initial">initial</option>
+                                        <option value="uppercase">uppercase</option>
+                                        <option value="lowercase">lowercase</option>
+                                        <option value="capitalize">capitalize</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_decoration">
+                                    <span>Decoration</span>
+                                    <select id="button_builder_tf_decoration" class="interactive_builder_select" data-builder-field="tf.decoration">
+                                        <option value="initial">initial</option>
+                                        <option value="none">none</option>
+                                        <option value="underline">underline</option>
+                                        <option value="line-through">line-through</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_wrap">
+                                    <span>Wrap</span>
+                                    <select id="button_builder_tf_wrap" class="interactive_builder_select" data-builder-field="tf.wrap">
+                                        <option value="initial">initial</option>
+                                        <option value="nowrap">nowrap</option>
+                                        <option value="wrap">wrap</option>
+                                        <option value="balance">balance</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_size">
+                                    <span>Size</span>
+                                    <input id="button_builder_tf_size" class="interactive_builder_input" type="text" value="1rem" data-builder-field="tf.size" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_family">
+                                    <span>Family</span>
+                                    <select id="button_builder_tf_family" class="interactive_builder_select" data-builder-field="tf.family">
+                                        <option value="sans-serif">sans-serif (predeterminada)</option>
+                                        <option value="Nunito Sans">Nunito Sans</option>
+                                        <option value="Fira Sans">Fira Sans</option>
+                                        <option value="Montserrat">Montserrat</option>
+                                        <option value="Roboto">Roboto</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_weight">
+                                    <span>Weight</span>
+                                    <select id="button_builder_tf_weight" class="interactive_builder_select" data-builder-field="tf.weight">
+                                        <option value="normal">normal</option>
+                                        <option value="bold">bold</option>
+                                        <option value="300">300</option>
+                                        <option value="500">500</option>
+                                        <option value="700">700</option>
+                                        <option value="900">900</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_style">
+                                    <span>Style</span>
+                                    <select id="button_builder_tf_style" class="interactive_builder_select" data-builder-field="tf.style">
+                                        <option value="normal">normal</option>
+                                        <option value="italic">italic</option>
+                                        <option value="oblique">oblique</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_line_height">
+                                    <span>Line height</span>
+                                    <input id="button_builder_tf_line_height" class="interactive_builder_input" type="text" value="none" data-builder-field="tf.line_height" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_tf_variant">
+                                    <span>Variant</span>
+                                    <select id="button_builder_tf_variant" class="interactive_builder_select" data-builder-field="tf.variant">
+                                        <option value="normal">normal</option>
+                                        <option value="small-caps">small-caps</option>
+                                    </select>
+                                </label>
+                            </div>
+                        </details>
+
+                        <details class="interactive_builder_fieldset">
+                            <summary class="interactive_builder_legend">Comportamiento</summary>
+                            <div class="interactive_builder_field_grid">
+                                <label class="interactive_builder_field" for="button_builder_time">
+                                    <span>Time</span>
+                                    <input id="button_builder_time" class="interactive_builder_input" type="text" value="500ms" data-builder-field="time" />
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_cursor">
+                                    <span>Cursor</span>
+                                    <select id="button_builder_cursor" class="interactive_builder_select" data-builder-field="cursor">
+                                        <option value="auto">auto</option>
+                                        <option value="default">default</option>
+                                        <option value="none">none</option>
+                                        <option value="context-menu">context-menu</option>
+                                        <option value="help">help</option>
+                                        <option value="pointer">pointer</option>
+                                        <option value="progress">progress</option>
+                                        <option value="wait">wait</option>
+                                        <option value="cell">cell</option>
+                                        <option value="crosshair">crosshair</option>
+                                        <option value="text">text</option>
+                                        <option value="vertical-text">vertical-text</option>
+                                        <option value="alias">alias</option>
+                                        <option value="copy">copy</option>
+                                        <option value="move">move</option>
+                                        <option value="no-drop">no-drop</option>
+                                        <option value="not-allowed">not-allowed</option>
+                                        <option value="grab">grab</option>
+                                        <option value="grabbing">grabbing</option>
+                                        <option value="e-resize">e-resize</option>
+                                        <option value="n-resize">n-resize</option>
+                                        <option value="ne-resize">ne-resize</option>
+                                        <option value="nw-resize">nw-resize</option>
+                                        <option value="s-resize">s-resize</option>
+                                        <option value="se-resize">se-resize</option>
+                                        <option value="sw-resize">sw-resize</option>
+                                        <option value="w-resize">w-resize</option>
+                                        <option value="ew-resize">ew-resize</option>
+                                        <option value="ns-resize">ns-resize</option>
+                                        <option value="nesw-resize">nesw-resize</option>
+                                        <option value="nwse-resize">nwse-resize</option>
+                                        <option value="col-resize">col-resize</option>
+                                        <option value="row-resize">row-resize</option>
+                                        <option value="all-scroll">all-scroll</option>
+                                        <option value="zoom-in">zoom-in</option>
+                                        <option value="zoom-out">zoom-out</option>
+                                        <option value="inherit">inherit</option>
+                                        <option value="initial">initial</option>
+                                        <option value="revert">revert</option>
+                                        <option value="revert-layer">revert-layer</option>
+                                        <option value="unset">unset</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_field" for="button_builder_cursor_disabled">
+                                    <span>Cursor disabled</span>
+                                    <select id="button_builder_cursor_disabled" class="interactive_builder_select" data-builder-field="cursor_disabled">
+                                        <option value="auto">auto</option>
+                                        <option value="default">default</option>
+                                        <option value="none">none</option>
+                                        <option value="context-menu">context-menu</option>
+                                        <option value="help">help</option>
+                                        <option value="pointer">pointer</option>
+                                        <option value="progress">progress</option>
+                                        <option value="wait">wait</option>
+                                        <option value="cell">cell</option>
+                                        <option value="crosshair">crosshair</option>
+                                        <option value="text">text</option>
+                                        <option value="vertical-text">vertical-text</option>
+                                        <option value="alias">alias</option>
+                                        <option value="copy">copy</option>
+                                        <option value="move">move</option>
+                                        <option value="no-drop">no-drop</option>
+                                        <option value="not-allowed">not-allowed</option>
+                                        <option value="grab">grab</option>
+                                        <option value="grabbing">grabbing</option>
+                                        <option value="e-resize">e-resize</option>
+                                        <option value="n-resize">n-resize</option>
+                                        <option value="ne-resize">ne-resize</option>
+                                        <option value="nw-resize">nw-resize</option>
+                                        <option value="s-resize">s-resize</option>
+                                        <option value="se-resize">se-resize</option>
+                                        <option value="sw-resize">sw-resize</option>
+                                        <option value="w-resize">w-resize</option>
+                                        <option value="ew-resize">ew-resize</option>
+                                        <option value="ns-resize">ns-resize</option>
+                                        <option value="nesw-resize">nesw-resize</option>
+                                        <option value="nwse-resize">nwse-resize</option>
+                                        <option value="col-resize">col-resize</option>
+                                        <option value="row-resize">row-resize</option>
+                                        <option value="all-scroll">all-scroll</option>
+                                        <option value="zoom-in">zoom-in</option>
+                                        <option value="zoom-out">zoom-out</option>
+                                        <option value="inherit">inherit</option>
+                                        <option value="initial">initial</option>
+                                        <option value="revert">revert</option>
+                                        <option value="revert-layer">revert-layer</option>
+                                        <option value="unset">unset</option>
+                                    </select>
+                                </label>
+                                <label class="interactive_builder_check interactive_builder_field_full" for="button_builder_reset">
+                                    <input id="button_builder_reset" type="checkbox" checked data-builder-field="reset" />
+                                    <span>Aplicar reset inicial (all: initial;)</span>
+                                </label>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="interactive_builder_stage">
+                        <div class="interactive_builder_preview_card">
+                            <div class="interactive_builder_preview_header">
+                                <div class="interactive_builder_preview_heading">
+                                    <span class="interactive_builder_preview_label">Vista previa</span>
+                                    <span class="interactive_builder_preview_hint">Resultado en tiempo real</span>
+                                </div>
+                                <div class="interactive_builder_preview_controls">
+                                    <label class="interactive_builder_field interactive_builder_preview_theme" for="button_builder_preview_theme">
+                                        <span>Fondo</span>
+                                        <select id="button_builder_preview_theme" class="interactive_builder_select" data-builder-preview-theme>
+                                            <option value="light">Claro</option>
+                                            <option value="dark">Oscuro</option>
+                                        </select>
+                                    </label>
+                                    <label class="interactive_builder_field interactive_builder_preview_state" for="button_builder_preview_state">
+                                        <span>Estado</span>
+                                        <select id="button_builder_preview_state" class="interactive_builder_select" data-builder-preview-state>
+                                            <option value="normal">Normal</option>
+                                            <option value="active">Active</option>
+                                            <option value="disabled">Disabled</option>
+                                        </select>
+                                    </label>
+                                    <button
+                                        class="interactive_builder_fullscreen"
+                                        type="button"
+                                        aria-label="Ver vista previa en pantalla completa"
+                                        aria-pressed="false"
+                                        title="Ver en pantalla completa"
+                                        data-builder-preview-fullscreen
+                                    ></button>
+                                </div>
+                            </div>
+                            <div class="interactive_builder_preview" data-builder-preview-container>
+                                <button class="interactive_builder_button_preview" type="button" data-builder-preview>Continuar</button>
+                            </div>
+                        </div>
+
+                        <div class="interactive_builder_outputs">
+                            <div class="interactive_builder_output_tabs">
+                                <div class="interactive_builder_output_tab_list" role="tablist">
+                                    <button class="interactive_builder_output_tab is_active" type="button" role="tab" aria-selected="true" data-builder-output-tab="scss">SCSS</button>
+                                    <button class="interactive_builder_output_tab" type="button" role="tab" aria-selected="false" data-builder-output-tab="html">HTML</button>
+                                </div>
+                                <div class="interactive_builder_output_panel" data-builder-output-panel="scss" role="tabpanel">
+                                    <div class="interactive_builder_output_header">
+                                        <span class="interactive_builder_output_title">SCSS generado</span>
+                                        <div class="interactive_builder_output_actions">
+                                            <button
+                                                class="interactive_builder_aliases"
+                                                type="button"
+                                                aria-pressed="false"
+                                                data-builder-aliases
+                                            >
+                                                Alias
+                                            </button>
+                                            <button class="interactive_builder_copy" type="button" data-builder-copy="scss">Copiar</button>
+                                        </div>
+                                    </div>
+                                    <pre class="language-scss"><code data-builder-output="scss"></code></pre>
+                                </div>
+                                <div class="interactive_builder_output_panel" data-builder-output-panel="html" role="tabpanel" hidden>
+                                    <div class="interactive_builder_output_header">
+                                        <span class="interactive_builder_output_title">HTML generado</span>
+                                        <button class="interactive_builder_copy" type="button" data-builder-copy="html">Copiar</button>
+                                    </div>
+                                    <pre class="language-html"><code data-builder-output="html"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="interactive_builder_copy_feedback" data-builder-copy-feedback aria-live="polite"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
