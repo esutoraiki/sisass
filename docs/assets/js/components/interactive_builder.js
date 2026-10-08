@@ -876,6 +876,7 @@ async function init_builder(root) {
 
             current_state = merge_values(defaults, preset.values);
             sync_controls(root, schema, current_state);
+            validate_controls(root, schema, current_state);
             render_builder(
                 root,
                 schema,
@@ -892,6 +893,7 @@ async function init_builder(root) {
             preset_select.value = "default";
             preview_state_select.value = schema.preview.default_state;
             sync_controls(root, schema, current_state);
+            validate_controls(root, schema, current_state);
             render_builder(
                 root,
                 schema,
@@ -953,6 +955,7 @@ async function init_builder(root) {
         fallback.hidden = true;
         app.hidden = false;
         sync_controls(root, schema, current_state);
+        validate_controls(root, schema, current_state);
         render_builder(
             root,
             schema,

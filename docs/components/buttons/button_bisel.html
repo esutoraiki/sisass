@@ -31,24 +31,19 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin button_bisel($attr: (
-    width: 140px,
-    height: 55px,
+    width: 150px,
+    height: 47px,
     diff: 10px,
     bg1: #FFF,
     bg2: #000,
     bg_opacity: 0.4,
     border_contain: false,
-    border: 2px solid #000,
-    aspect_inside: 2.8,
-    tf: (
-        size: 18,
-        family: "sans-serif",
-        weight: bold,
-        align: center,
-        transform: uppercase
-    ),
+    border: 1px solid #000,
+    cursor: pointer,
+    aspect_inside: 3.7,
+    tf: (),
     opacity_before: 1,
-    color: #FFF,
+    color: #000,
     color_hover: #FFF
 ));</code></pre>
 
@@ -66,19 +61,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><b>width</b></td><td>Medida</td><td>140px</td><td>Define el ancho exterior del botón.</td></tr>
-                    <tr><td><b>height</b></td><td>Medida</td><td>55px</td><td>Define el alto exterior del botón.</td></tr>
-                    <tr><td><b>diff</b></td><td>Medida</td><td>10px</td><td>Reduce el ancho interior respecto al ancho exterior.</td></tr>
+                    <tr><td><b>width | w</b></td><td>Medida</td><td>150px</td><td>Define el ancho exterior del botón.</td></tr>
+                    <tr><td><b>height | h</b></td><td>Medida</td><td>47px</td><td>Define el alto exterior del botón.</td></tr>
+                    <tr><td><b>diff | dif</b></td><td>Medida</td><td>10px</td><td>Reduce el ancho interior respecto al ancho exterior.</td></tr>
                     <tr><td><b>bg1</b></td><td>Color</td><td>#FFF</td><td>Define el primer color de los gradientes.</td></tr>
                     <tr><td><b>bg2</b></td><td>Color</td><td>#000</td><td>Define el segundo color de los gradientes.</td></tr>
-                    <tr><td><b>bg_opacity</b></td><td>Number</td><td>0.4</td><td>Define la opacidad de los colores de los gradientes.</td></tr>
-                    <tr><td><b>border_contain</b></td><td>Boolean</td><td>false</td><td>Activa el borde del contenedor exterior.</td></tr>
-                    <tr><td><b>border</b></td><td>Border</td><td>2px solid #000</td><td>Define el borde exterior cuando está habilitado.</td></tr>
-                    <tr><td><b>aspect_inside</b></td><td>Number</td><td>2.8</td><td>Define la relación de aspecto del pseudoelemento interior.</td></tr>
-                    <tr><td><b>tf</b></td><td>Map</td><td>(size: 18, family: "sans-serif", weight: bold, align: center, transform: uppercase)</td><td>Configura la tipografía y el texto de <b>.content_link</b> mediante las claves y aliases admitidos por el mixin <b>tf</b>.</td></tr>
+                    <tr><td><b>bg_opacity | bgo</b></td><td>Number</td><td>0.4</td><td>Define la opacidad de los colores de los gradientes.</td></tr>
+                    <tr><td><b>border_contain | bdc</b></td><td>Boolean</td><td>false</td><td>Activa el borde del contenedor exterior.</td></tr>
+                    <tr><td><b>border | bd</b></td><td>Border</td><td>1px solid #000</td><td>Define el borde exterior cuando está habilitado.</td></tr>
+                    <tr><td><b>cursor | cur</b></td><td>String</td><td>pointer</td><td>Define el cursor mostrado sobre el botón.</td></tr>
+                    <tr><td><b>aspect_inside | inside | i</b></td><td>Number</td><td>3.7</td><td>Define la relación de aspecto del pseudoelemento interior.</td></tr>
+                    <tr><td><b>tf</b></td><td>Map</td><td>()</td><td>Configura la tipografía y el texto de <b>.content_link</b> mediante las claves y aliases admitidos por el mixin <b>tf</b>.</td></tr>
                     <tr><td><b>opacity_before</b></td><td>Number</td><td>1</td><td>Define la opacidad del pseudoelemento interior.</td></tr>
-                    <tr><td><b>color</b></td><td>Color</td><td>#FFF</td><td>Define el color normal de <b>.content_link</b>.</td></tr>
-                    <tr><td><b>color_hover</b></td><td>Color</td><td>#FFF</td><td>Define el color de <b>.content_link</b> durante hover.</td></tr>
+                    <tr><td><b>color | c</b></td><td>Color</td><td>#000</td><td>Define el color normal de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>color_hover | ch</b></td><td>Color</td><td>#FFF</td><td>Define el color de <b>.content_link</b> durante hover.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -126,6 +122,113 @@
         &lt;span class="content_link"&gt;Con borde&lt;/span&gt;
     &lt;/button&gt;
 &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        <h3
+            id="button_bisel_builder_section"
+            class="title"
+            data-page-menu-item
+            data-page-menu-label="Constructor interactivo"
+        >
+            Constructor interactivo
+        </h3>
+        <p class="description">
+            Ajusta las dimensiones, los gradientes, el bisel interior, el borde y la tipografía de
+            <b>button_bisel</b>. La vista previa permite fijar el estado <b>Hover</b> para comprobar la inversión del
+            gradiente interior y el color del contenido.
+        </p>
+        <div
+            id="button_bisel_builder"
+            class="interactive_builder interactive_builder_bisel"
+            data-interactive-builder
+            data-builder-schema="../assets/json/builders/button_bisel.json"
+        >
+            <div class="interactive_builder_fallback" data-builder-fallback>
+                <p class="note">
+                    El constructor interactivo necesita JavaScript. Puedes consultar el ejemplo estático anterior para
+                    revisar el comportamiento de <b>button_bisel</b>.
+                </p>
+            </div>
+
+            <div class="interactive_builder_app" data-builder-app hidden>
+                <div class="interactive_builder_header">
+                    <div class="interactive_builder_heading">
+                        <div class="interactive_builder_title_row">
+                            <h3 class="interactive_builder_title">Constructor de <b>button_bisel</b></h3>
+                            <span class="interactive_builder_badge">Mixin</span>
+                        </div>
+                        <p class="interactive_builder_description">
+                            Configura los gradientes, el bisel interior, el borde y la tipografía del botón.
+                        </p>
+                    </div>
+                    <div class="interactive_builder_actions">
+                        <label class="interactive_builder_field" for="button_bisel_builder_preset">
+                            <span>Preset</span>
+                            <select id="button_bisel_builder_preset" class="interactive_builder_select" data-builder-preset></select>
+                        </label>
+                        <button class="interactive_builder_button interactive_builder_button_secondary" type="button" data-builder-reset>Restablecer</button>
+                    </div>
+                </div>
+
+                <div class="interactive_builder_layout">
+                    <div class="interactive_builder_controls" data-builder-controls></div>
+                    <div class="interactive_builder_stage">
+                        <div class="interactive_builder_preview_card">
+                            <div class="interactive_builder_preview_header">
+                                <div class="interactive_builder_preview_heading">
+                                    <span class="interactive_builder_preview_label">Vista previa</span>
+                                    <span class="interactive_builder_preview_hint">Resultado en tiempo real</span>
+                                </div>
+                                <div class="interactive_builder_preview_controls">
+                                    <label class="interactive_builder_field interactive_builder_preview_theme" for="button_bisel_builder_preview_theme">
+                                        <span>Fondo</span>
+                                        <select id="button_bisel_builder_preview_theme" class="interactive_builder_select" data-builder-preview-theme></select>
+                                    </label>
+                                    <label class="interactive_builder_field interactive_builder_preview_state" for="button_bisel_builder_preview_state">
+                                        <span>Estado</span>
+                                        <select id="button_bisel_builder_preview_state" class="interactive_builder_select" data-builder-preview-state></select>
+                                    </label>
+                                    <button
+                                        class="interactive_builder_fullscreen"
+                                        type="button"
+                                        aria-label="Ver vista previa en pantalla completa"
+                                        aria-pressed="false"
+                                        title="Ver en pantalla completa"
+                                        data-builder-preview-fullscreen
+                                    ></button>
+                                </div>
+                            </div>
+                            <div class="interactive_builder_preview" data-builder-preview-container></div>
+                        </div>
+
+                        <div class="interactive_builder_outputs">
+                            <div class="interactive_builder_output_tabs">
+                                <div class="interactive_builder_output_tab_list" role="tablist">
+                                    <button class="interactive_builder_output_tab is_active" type="button" role="tab" aria-selected="true" data-builder-output-tab="scss">SCSS</button>
+                                    <button class="interactive_builder_output_tab" type="button" role="tab" aria-selected="false" data-builder-output-tab="html">HTML</button>
+                                </div>
+                                <div class="interactive_builder_output_panel" data-builder-output-panel="scss" role="tabpanel">
+                                    <div class="interactive_builder_output_header">
+                                        <span class="interactive_builder_output_title">SCSS generado</span>
+                                        <div class="interactive_builder_output_actions">
+                                            <button class="interactive_builder_aliases" type="button" aria-pressed="false" data-builder-aliases>Alias</button>
+                                            <button class="interactive_builder_copy" type="button" data-builder-copy="scss">Copiar</button>
+                                        </div>
+                                    </div>
+                                    <pre class="language-scss"><code data-builder-output="scss"></code></pre>
+                                </div>
+                                <div class="interactive_builder_output_panel" data-builder-output-panel="html" role="tabpanel" hidden>
+                                    <div class="interactive_builder_output_header">
+                                        <span class="interactive_builder_output_title">HTML generado</span>
+                                        <button class="interactive_builder_copy" type="button" data-builder-copy="html">Copiar</button>
+                                    </div>
+                                    <pre class="language-html"><code data-builder-output="html"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="interactive_builder_copy_feedback" data-builder-copy-feedback aria-live="polite"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
