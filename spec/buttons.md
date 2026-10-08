@@ -316,7 +316,7 @@ y posicionar correctamente el contenido del botón.
     bg_opacity: 0.4,
     border_contain: false,
     border: 2px solid #000,
-    aspect_inside: 2.8,
+    aspect_inside: 3.7,
     font: "sans-serif",
     size: 18,
     weight: bold,
@@ -338,7 +338,7 @@ y posicionar correctamente el contenido del botón.
 | `bg_opacity` | Number | `0.4` | Define la opacidad aplicada a los colores de los gradientes. |
 | `border_contain` | Boolean | `false` | Activa el borde del contenedor exterior. |
 | `border` | Border | `2px solid #000` | Define el borde exterior cuando está habilitado. |
-| `aspect_inside` | Number | `2.8` | Define la relación de aspecto del pseudoelemento interior. |
+| `aspect_inside` | Number | `3.7` | Define la relación de aspecto del pseudoelemento interior. |
 | `font` | String | `"sans-serif"` | Define la familia tipográfica. |
 | `size` | Number | `18` | Define el tamaño de fuente normalizado por SISASS. |
 | `weight` | String \| Number | `bold` | Define el peso tipográfico. |

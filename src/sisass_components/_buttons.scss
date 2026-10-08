@@ -252,7 +252,7 @@ $btn_default: (
     $bdc: mapv($attr, (border_contain, bdc), false);
     $bd: mapv($attr, (border, bd), map.get($btn_default, border));
     $cursor: mapv($attr, (cursor, cur), map.get($btn_default, cursor));
-    $asi: mapv($attr, (aspect_inside, inside, i), 2.8);
+    $asi: mapv($attr, (aspect_inside, inside, i), 3.7);
     $tf_attr: mapv($attr, tf, map.get($btn_default, tf));
     $ob: mapv($attr, opacity_before, 1);
     $color: mapv($attr, (color, c), map.get($btn_default, color));
