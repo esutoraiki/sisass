@@ -2,7 +2,7 @@
 @use "sisass_components/buttons" as *;
 
 .documentationpage {
-    .button_pagination_example_group {
+    .button_example_group {
         @include align-items(center);
         @include gap(16px);
         @include flex;
@@ -14,74 +14,80 @@
         }
     }
 
-    .button_pagination_example {
-        appearance: none;
-        padding: 0;
-        border: 0;
-        background: transparent;
-    }
-
-    .button_pagination_example_no_params {
+    .button_style_arrow_no_params {
         @include button_style_arrow;
     }
 
     .button_pagination_example_right,
     .button_pagination_example_link_right {
-        @include button_style_arrow((
-            width: 210px,
-            bg: #202735,
-            bg_hover: #324C8C,
-            bg_active: #4F6FBF,
-            color_active: #FFFFFF,
-            border_color: #202735,
-            border_color_hover: #324C8C,
-            border_color_active: #4F6FBF,
-            icon_right: true,
-            tf: (
-                s: szrem(18),
-                w: bold,
-                t: uppercase,
-                a: center
+        @include button_style_arrow(
+            (
+                border_radius: 32px,
+                width: 180px,
+                bg: $c4,
+                bg_hover: $c5,
+                bg_active: $c6,
+                bg_disabled: $c8,
+                color: $c5,
+                color_hover: $c4,
+                color_disabled: $c1,
+                border: $bd11,
+                border_hover: $bd5,
+                border_active: $bd12,
+                border_disabled: $bd13,
+                icon: right,
+                tf: (
+                    f: $f4,
+                    s: szrem(16),
+                    w: bold,
+                    t: uppercase,
+                    a: center
+                )
             )
-        ));
+        );
     }
 
     .button_pagination_example_left,
     .button_pagination_example_link_left {
-        @include button_style_arrow((
-            width: 210px,
-            bg: #FFFFFF,
-            bg_hover: #E8EDF8,
-            bg_active: #D5DDF2,
-            color: #202735,
-            color_hover: #202735,
-            color_active: #202735,
-            border_color: #202735,
-            border_color_hover: #324C8C,
-            border_color_active: #324C8C,
-            icon_left: true,
-            tf: (
-                s: szrem(18),
-                w: bold,
-                t: uppercase,
-                a: center
+        @include button_style_arrow(
+            (
+                radius: 32px,
+                w: 180px,
+                bg: $c4,
+                bg_hover: $c5,
+                c: $c5,
+                ch: $c4,
+                bd: $bd11,
+                bdh: $bd5,
+                icon: left,
+                tf: (
+                    f: $f4,
+                    s: szrem(16),
+                    w: bold,
+                    t: uppercase,
+                    a: center
+                )
             )
-        ));
+        );
     }
 
     .button_pagination_example_disabled,
     .button_pagination_example_link_disabled {
-        @include button_style_arrow((
-            width: 210px,
-            bg_disabled: #DDE1E8,
-            color_disabled: #697386,
-            border_color_disabled: #AAB2C0,
-            tf: (
-                s: szrem(18),
-                w: bold,
-                t: uppercase,
-                a: center
+        @include button_style_arrow(
+            (
+                border_radius: 32px,
+                width: 180px,
+                bg_disabled: $c8,
+                color_disabled: $c1,
+                border_disabled: $bd13,
+                tf: (
+                    f: $f4,
+                    s: szrem(16),
+                    w: bold,
+                    t: uppercase,
+                    a: center
+                )
             )
-        ));
+        );
     }
 }

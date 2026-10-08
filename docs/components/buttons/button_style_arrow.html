@@ -17,9 +17,9 @@
     </div>
 
     <p class="description">
-        Crea un botón con doble contorno y desplaza el plano posterior durante <b>:hover</b>. También permite mostrar
-        una flecha a la izquierda o a la derecha y dispone de estilos para <b>.active</b>, <b>:disabled</b> y
-        <b>.disabled</b>.
+        Crea un botón con doble contorno y desplaza el plano posterior durante <b>:hover</b>. Permite elegir una
+        flecha a la izquierda o a la derecha, con dirección derecha por defecto, y dispone de estilos para
+        <b>.active</b>, <b>:disabled</b> y <b>.disabled</b>.
     </p>
     <p class="description">
         El botón debe contener un elemento <b>.content_link</b>. El mixin aplica a ese nodo el contenido visual, la
@@ -32,26 +32,31 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin button_style_arrow($attr: (
-    width: 280px,
-    ratio: 5.16,
-    bg: #000,
+    width: 150px,
+    height: 47px,
+    aspect_ratio: null,
+    bg: #FFF,
     bg_hover: #000,
     bg_active: #000,
-    bg_disabled: lighten(#000, 80%),
-    color: #FFF,
+    bg_disabled: color.adjust(#000, $lightness: 70%),
+    color: #000,
     color_hover: #FFF,
     color_active: #FFF,
-    color_disabled: lighten(#000, 40%),
+    color_disabled: color.adjust(#000, $lightness: 40%),
+    border_radius: 0px,
+    border: 1px solid #000,
+    border_hover: 1px solid #000,
+    border_active: 1px solid #000,
+    border_disabled: 1px solid color.adjust(#000, $lightness: 70%),
+    padding: 10px,
     tf: (),
-    time: 200ms,
-    border_color: #000,
-    border_color_hover: #000,
-    border_color_active: #000,
-    border_color_disabled: lighten(#000, 80%),
-    border_size: 1px,
-    border_style: solid,
-    icon_right: false,
-    icon_left: false
+    time: 500ms,
+    position: (),
+    icon: right,
+    display: flex,
+    cursor: pointer,
+    cursor_disabled: not-allowed,
+    reset: true
 ));</code></pre>
 
         <h3 class="subtitle">
@@ -68,26 +73,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td><b>width</b></td><td>Medida</td><td>280px</td><td>Define el ancho del botón y de <b>.content_link</b>.</td></tr>
-                    <tr><td><b>ratio</b></td><td>Number</td><td>5.16</td><td>Define la relación de aspecto exterior e interior.</td></tr>
-                    <tr><td><b>bg</b></td><td>Color</td><td>#000</td><td>Define el fondo normal de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>width | w</b></td><td>Medida</td><td>150px</td><td>Define el ancho del botón.</td></tr>
+                    <tr><td><b>height | h</b></td><td>Medida</td><td>47px</td><td>Define el alto del botón cuando no se utiliza <b>aspect_ratio</b>.</td></tr>
+                    <tr><td><b>aspect_ratio | ratio | ar</b></td><td>Number</td><td>null</td><td>Define la relación de aspecto; requiere <b>width</b> y reemplaza <b>height</b>.</td></tr>
+                    <tr><td><b>bg</b></td><td>Color</td><td>#FFF</td><td>Define el fondo normal del botón y de <b>.content_link</b>.</td></tr>
                     <tr><td><b>bg_hover</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>.content_link</b> durante hover.</td></tr>
                     <tr><td><b>bg_active</b></td><td>Color</td><td>#000</td><td>Define el fondo de <b>.content_link</b> en <b>.active</b>.</td></tr>
-                    <tr><td><b>bg_disabled</b></td><td>Color</td><td>lighten(#000, 80%)</td><td>Define el fondo del estado disabled.</td></tr>
-                    <tr><td><b>color</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido normal.</td></tr>
-                    <tr><td><b>color_hover</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido durante hover.</td></tr>
-                    <tr><td><b>color_active</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido en <b>.active</b>.</td></tr>
-                    <tr><td><b>color_disabled</b></td><td>Color</td><td>lighten(#000, 40%)</td><td>Define el color del contenido disabled.</td></tr>
+                    <tr><td><b>bg_disabled | bgd</b></td><td>Color</td><td>color.adjust(#000, $lightness: 70%)</td><td>Define el fondo del estado disabled.</td></tr>
+                    <tr><td><b>color | c</b></td><td>Color</td><td>#000</td><td>Define el color del contenido normal.</td></tr>
+                    <tr><td><b>color_hover | ch</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido durante hover.</td></tr>
+                    <tr><td><b>color_active | ca</b></td><td>Color</td><td>#FFF</td><td>Define el color del contenido en <b>.active</b>.</td></tr>
+                    <tr><td><b>color_disabled | cd</b></td><td>Color</td><td>color.adjust(#000, $lightness: 40%)</td><td>Define el color del contenido disabled.</td></tr>
+                    <tr><td><b>border_radius | radius</b></td><td>Medida</td><td>0px</td><td>Define el radio de borde del botón y de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>border | bd</b></td><td>String</td><td>1px solid #000</td><td>Define el borde normal del botón y de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>border_hover | bdh</b></td><td>String</td><td>1px solid #000</td><td>Define el borde durante <b>:hover</b>.</td></tr>
+                    <tr><td><b>border_active | bda</b></td><td>String</td><td>1px solid #000</td><td>Define el borde en <b>.active</b>.</td></tr>
+                    <tr><td><b>border_disabled | bdd</b></td><td>String</td><td>1px solid color.adjust(#000, $lightness: 70%)</td><td>Define el borde en <b>:disabled</b> y <b>.disabled</b>.</td></tr>
+                    <tr><td><b>padding | pa</b></td><td>Medida</td><td>10px</td><td>Define el espacio interior de <b>.content_link</b>.</td></tr>
+                    <tr><td><b>time | t</b></td><td>Tiempo</td><td>500ms</td><td>Define la duración de las transiciones.</td></tr>
                     <tr><td><b>tf</b></td><td>Map</td><td>()</td><td>Configura la tipografía y el texto con las claves y alias admitidos por el mixin <a class="link" href="../pages/base.html#tf">tf</a>.</td></tr>
-                    <tr><td><b>time</b></td><td>Tiempo</td><td>200ms</td><td>Define la duración de las transiciones.</td></tr>
-                    <tr><td><b>border_color</b></td><td>Color</td><td>#000</td><td>Define el color del borde normal.</td></tr>
-                    <tr><td><b>border_color_hover</b></td><td>Color</td><td>#000</td><td>Define el color del borde durante hover.</td></tr>
-                    <tr><td><b>border_color_active</b></td><td>Color</td><td>#000</td><td>Define el color del borde en <b>.active</b>.</td></tr>
-                    <tr><td><b>border_color_disabled</b></td><td>Color</td><td>lighten(#000, 80%)</td><td>Define el color del borde disabled.</td></tr>
-                    <tr><td><b>border_size</b></td><td>Medida</td><td>1px</td><td>Define el grosor del borde.</td></tr>
-                    <tr><td><b>border_style</b></td><td>String</td><td>solid</td><td>Define el estilo del borde.</td></tr>
-                    <tr><td><b>icon_right</b></td><td>Boolean</td><td>false</td><td>Añade una flecha derecha mediante <b>::after</b>.</td></tr>
-                    <tr><td><b>icon_left</b></td><td>Boolean</td><td>false</td><td>Añade una flecha izquierda mediante <b>::before</b>.</td></tr>
+                    <tr><td><b>position | p</b></td><td>Map</td><td>()</td><td>Configura la posición del botón mediante el mixin <a class="link" href="../pages/base.html#position">position</a>.</td></tr>
+                    <tr><td><b>icon | i</b></td><td>String</td><td>right</td><td>Define la dirección de la flecha: <b>right</b> mediante <b>::after</b> o <b>left</b> mediante <b>::before</b>.</td></tr>
+                    <tr><td><b>display | d</b></td><td>String</td><td>flex</td><td>Define el modo de visualización del botón.</td></tr>
+                    <tr><td><b>cursor | cur</b></td><td>String</td><td>pointer</td><td>Define el cursor del estado normal.</td></tr>
+                    <tr><td><b>cursor_disabled | curd</b></td><td>String</td><td>not-allowed</td><td>Define el cursor de <b>:disabled</b> y <b>.disabled</b>.</td></tr>
+                    <tr><td><b>reset | r</b></td><td>Boolean</td><td>true</td><td>Activa el restablecimiento inicial con <b>all: initial</b>.</td></tr>
                 </tbody>
             </table>
         </div>
@@ -95,6 +105,12 @@
         <h2 class="title">
             Ejemplo
         </h2>
+        <p class="description">
+            Este ejemplo compara el resultado por defecto del mixin con variantes configuradas mediante map para
+            mostrar las direcciones <b>icon: right</b> e <b>icon: left</b>. También muestra los estados normal,
+            <b>.active</b> y deshabilitado, además del mismo patrón aplicado sobre elementos con etiqueta
+            <b>a</b>.
+        </p>
         <div
             id="button_style_arrow_example_tabs"
             class="container_example tab_panel"
@@ -110,51 +126,55 @@
 
             <div class="tab_panel_panel" data-tab-panel-panel="result">
                 <div class="result">
-                    <div class="button_pagination_example_group">
-                        <h3 class="subtitle">Sin parámetros</h3>
+                    <div class="button_example_group">
+                        <h3 class="subtitle">
+                            Sin parámetros
+                        </h3>
 
-                        <button class="button_pagination_example button_pagination_example_no_params">
-                            <span class="content_link">Siguiente</span>
+                        <button class="button_pagination_example button_style_arrow_no_params">
+                            <span class="content_link">
+                                Siguiente
+                            </span>
                         </button>
-                        <button class="button_pagination_example button_pagination_example_no_params">
+                        <button class="button_pagination_example button_style_arrow_no_params">
                             <span class="content_link">Anterior</span>
                         </button>
-                        <button class="button_pagination_example button_pagination_example_no_params active">
+                        <button class="button_pagination_example button_style_arrow_no_params active">
                             <span class="content_link">Activo</span>
                         </button>
-                        <button class="button_pagination_example button_pagination_example_no_params" disabled>
+                        <button class="button_pagination_example button_style_arrow_no_params" disabled>
                             <span class="content_link">No disponible</span>
                         </button>
                     </div>
 
-                    <div class="button_pagination_example_group">
+                    <div class="button_example_group">
                         <h3 class="subtitle">Con parámetros</h3>
 
                         <button class="button_pagination_example button_pagination_example_right">
                             <span class="content_link">Siguiente</span>
                         </button>
-                        <button class="button_pagination_example button_pagination_example_right active">
-                            <span class="content_link">Activo</span>
-                        </button>
                         <button class="button_pagination_example button_pagination_example_left">
                             <span class="content_link">Anterior</span>
+                        </button>
+                        <button class="button_pagination_example button_pagination_example_right active">
+                            <span class="content_link">Activo</span>
                         </button>
                         <button class="button_pagination_example button_pagination_example_disabled" disabled>
                             <span class="content_link">No disponible</span>
                         </button>
                     </div>
 
-                    <div class="button_pagination_example_group">
+                    <div class="button_example_group">
                         <h3 class="subtitle">Con etiqueta a</h3>
 
                         <a class="button_pagination_example button_pagination_example_link_right" href="#">
                             <span class="content_link">Siguiente</span>
                         </a>
-                        <a class="button_pagination_example button_pagination_example_link_right active" href="#">
-                            <span class="content_link">Activo</span>
-                        </a>
                         <a class="button_pagination_example button_pagination_example_link_left" href="#">
                             <span class="content_link">Anterior</span>
+                        </a>
+                        <a class="button_pagination_example button_pagination_example_link_right active" href="#">
+                            <span class="content_link">Activo</span>
                         </a>
                         <a class="button_pagination_example button_pagination_example_link_disabled disabled" href="#" aria-disabled="true">
                             <span class="content_link">No disponible</span>
@@ -169,53 +189,159 @@
                 <pre class="language-css" data-src="../assets/css/buttons/button_style_arrow.css"></pre>
             </div>
             <div class="tab_panel_panel" data-tab-panel-panel="html">
-                <pre class="language-html"><code>&lt;div class="button_pagination_example_group"&gt;
+                <pre class="language-html"><code>&lt;div class="button_example_group"&gt;
     &lt;h3 class="subtitle"&gt;Sin parámetros&lt;/h3&gt;
-    &lt;button class="button_pagination_example button_pagination_example_no_params"&gt;
+    &lt;button class="button_pagination_example button_style_arrow_no_params"&gt;
         &lt;span class="content_link"&gt;Siguiente&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class="button_pagination_example button_pagination_example_no_params"&gt;
+    &lt;button class="button_pagination_example button_style_arrow_no_params"&gt;
         &lt;span class="content_link"&gt;Anterior&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class="button_pagination_example button_pagination_example_no_params active"&gt;
+    &lt;button class="button_pagination_example button_style_arrow_no_params active"&gt;
         &lt;span class="content_link"&gt;Activo&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class="button_pagination_example button_pagination_example_no_params" disabled&gt;
+    &lt;button class="button_pagination_example button_style_arrow_no_params" disabled&gt;
         &lt;span class="content_link"&gt;No disponible&lt;/span&gt;
     &lt;/button&gt;
 &lt;/div&gt;
 
-&lt;div class="button_pagination_example_group"&gt;
+&lt;div class="button_example_group"&gt;
     &lt;h3 class="subtitle"&gt;Con parámetros&lt;/h3&gt;
     &lt;button class="button_pagination_example button_pagination_example_right"&gt;
         &lt;span class="content_link"&gt;Siguiente&lt;/span&gt;
     &lt;/button&gt;
-    &lt;button class="button_pagination_example button_pagination_example_right active"&gt;
-        &lt;span class="content_link"&gt;Activo&lt;/span&gt;
-    &lt;/button&gt;
     &lt;button class="button_pagination_example button_pagination_example_left"&gt;
         &lt;span class="content_link"&gt;Anterior&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="button_pagination_example button_pagination_example_right active"&gt;
+        &lt;span class="content_link"&gt;Activo&lt;/span&gt;
     &lt;/button&gt;
     &lt;button class="button_pagination_example button_pagination_example_disabled" disabled&gt;
         &lt;span class="content_link"&gt;No disponible&lt;/span&gt;
     &lt;/button&gt;
 &lt;/div&gt;
 
-&lt;div class="button_pagination_example_group"&gt;
+&lt;div class="button_example_group"&gt;
     &lt;h3 class="subtitle"&gt;Con etiqueta a&lt;/h3&gt;
     &lt;a class="button_pagination_example button_pagination_example_link_right" href="#"&gt;
         &lt;span class="content_link"&gt;Siguiente&lt;/span&gt;
     &lt;/a&gt;
-    &lt;a class="button_pagination_example button_pagination_example_link_right active" href="#"&gt;
-        &lt;span class="content_link"&gt;Activo&lt;/span&gt;
-    &lt;/a&gt;
     &lt;a class="button_pagination_example button_pagination_example_link_left" href="#"&gt;
         &lt;span class="content_link"&gt;Anterior&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a class="button_pagination_example button_pagination_example_link_right active" href="#"&gt;
+        &lt;span class="content_link"&gt;Activo&lt;/span&gt;
     &lt;/a&gt;
     &lt;a class="button_pagination_example button_pagination_example_link_disabled disabled" href="#" aria-disabled="true"&gt;
         &lt;span class="content_link"&gt;No disponible&lt;/span&gt;
     &lt;/a&gt;
 &lt;/div&gt;</code></pre>
+            </div>
+        </div>
+        <h3
+            id="button_style_arrow_builder_section"
+            class="title"
+            data-page-menu-item
+            data-page-menu-label="Constructor interactivo"
+        >
+            Constructor interactivo
+        </h3>
+        <p class="description">
+            Ajusta el contorno, la dirección de la flecha y los estados de <b>button_style_arrow</b>.
+            El constructor genera el SCSS y el HTML correspondientes a la vista previa.
+        </p>
+        <div
+            id="button_style_arrow_builder"
+            class="interactive_builder interactive_builder_arrow"
+            data-interactive-builder
+            data-builder-schema="../assets/json/builders/button_style_arrow.json"
+        >
+            <div class="interactive_builder_fallback" data-builder-fallback>
+                <p class="note">
+                    El constructor interactivo necesita JavaScript. Puedes consultar el ejemplo estático anterior para
+                    revisar el comportamiento de <b>button_style_arrow</b>.
+                </p>
+            </div>
+
+            <div class="interactive_builder_app" data-builder-app hidden>
+                <div class="interactive_builder_header">
+                    <div class="interactive_builder_heading">
+                        <div class="interactive_builder_title_row">
+                            <h3 class="interactive_builder_title">Constructor de <b>button_style_arrow</b></h3>
+                            <span class="interactive_builder_badge">Mixin</span>
+                        </div>
+                        <p class="interactive_builder_description">
+                            Configura el doble contorno, la dirección de la flecha y los estados del botón.
+                        </p>
+                    </div>
+                    <div class="interactive_builder_actions">
+                        <label class="interactive_builder_field" for="button_style_arrow_builder_preset">
+                            <span>Preset</span>
+                            <select id="button_style_arrow_builder_preset" class="interactive_builder_select" data-builder-preset></select>
+                        </label>
+                        <button class="interactive_builder_button interactive_builder_button_secondary" type="button" data-builder-reset>Restablecer</button>
+                    </div>
+                </div>
+
+                <div class="interactive_builder_layout">
+                    <div class="interactive_builder_controls" data-builder-controls></div>
+                    <div class="interactive_builder_stage">
+                        <div class="interactive_builder_preview_card">
+                            <div class="interactive_builder_preview_header">
+                                <div class="interactive_builder_preview_heading">
+                                    <span class="interactive_builder_preview_label">Vista previa</span>
+                                    <span class="interactive_builder_preview_hint">Resultado en tiempo real</span>
+                                </div>
+                                <div class="interactive_builder_preview_controls">
+                                    <label class="interactive_builder_field interactive_builder_preview_theme" for="button_style_arrow_builder_preview_theme">
+                                        <span>Fondo</span>
+                                        <select id="button_style_arrow_builder_preview_theme" class="interactive_builder_select" data-builder-preview-theme></select>
+                                    </label>
+                                    <label class="interactive_builder_field interactive_builder_preview_state" for="button_style_arrow_builder_preview_state">
+                                        <span>Estado</span>
+                                        <select id="button_style_arrow_builder_preview_state" class="interactive_builder_select" data-builder-preview-state></select>
+                                    </label>
+                                    <button
+                                        class="interactive_builder_fullscreen"
+                                        type="button"
+                                        aria-label="Ver vista previa en pantalla completa"
+                                        aria-pressed="false"
+                                        title="Ver en pantalla completa"
+                                        data-builder-preview-fullscreen
+                                    ></button>
+                                </div>
+                            </div>
+                            <div class="interactive_builder_preview" data-builder-preview-container></div>
+                        </div>
+
+                        <div class="interactive_builder_outputs">
+                            <div class="interactive_builder_output_tabs">
+                                <div class="interactive_builder_output_tab_list" role="tablist">
+                                    <button class="interactive_builder_output_tab is_active" type="button" role="tab" aria-selected="true" data-builder-output-tab="scss">SCSS</button>
+                                    <button class="interactive_builder_output_tab" type="button" role="tab" aria-selected="false" data-builder-output-tab="html">HTML</button>
+                                </div>
+                                <div class="interactive_builder_output_panel" data-builder-output-panel="scss" role="tabpanel">
+                                    <div class="interactive_builder_output_header">
+                                        <span class="interactive_builder_output_title">SCSS generado</span>
+                                        <div class="interactive_builder_output_actions">
+                                            <button class="interactive_builder_aliases" type="button" aria-pressed="false" data-builder-aliases>Alias</button>
+                                            <button class="interactive_builder_copy" type="button" data-builder-copy="scss">Copiar</button>
+                                        </div>
+                                    </div>
+                                    <pre class="language-scss"><code data-builder-output="scss"></code></pre>
+                                </div>
+                                <div class="interactive_builder_output_panel" data-builder-output-panel="html" role="tabpanel" hidden>
+                                    <div class="interactive_builder_output_header">
+                                        <span class="interactive_builder_output_title">HTML generado</span>
+                                        <button class="interactive_builder_copy" type="button" data-builder-copy="html">Copiar</button>
+                                    </div>
+                                    <pre class="language-html"><code data-builder-output="html"></code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="interactive_builder_copy_feedback" data-builder-copy-feedback aria-live="polite"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

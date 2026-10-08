@@ -138,6 +138,16 @@
             "css_variable": "--builder-aspect-ratio"
         },
         {
+            "path": "padding",
+            "key": "padding",
+            "aliases": ["p"],
+            "label": "Padding",
+            "group": "dimensions",
+            "control": "text",
+            "default": "10px",
+            "css_variable": "--builder-padding"
+        },
+        {
             "path": "bg",
             "key": "bg",
             "aliases": [],

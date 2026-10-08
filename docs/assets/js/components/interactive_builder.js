@@ -137,6 +137,12 @@ export function validate_builder_schema(schema, adapter_exists = true) {
         }
     }
 
+    for (const [parent, alias] of Object.entries(schema.parent_aliases || {})) {
+        if (!schema.fields.some((field) => field.parent === parent) || typeof alias !== "string" || alias.trim() === "" || scoped_names.get("root")?.has(alias)) {
+            errors.push("El alias del mapa `" + parent + "` no es válido o coincide con otra clave.");
+        }
+    }
+
     if (schema.adapter && !adapter_exists) {
         errors.push("El adapter `" + schema.adapter + "` no está registrado.");
     }
@@ -382,6 +388,12 @@ function set_control_value(control, value) {
 
     if (control.type === "color" && !/^#[0-9a-f]{6}$/i.test(String(value))) {
         control.dataset.builderRawValue = String(value);
+        const rgb_parts = String(value).match(/^rgb\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*\)$/i);
+
+        if (rgb_parts) {
+            control.value = "#" + rgb_parts.slice(1).map((part) => Math.round(Number(part)).toString(16).padStart(2, "0")).join("");
+        }
+
         return;
     }
 
@@ -570,7 +582,7 @@ function format_scss(schema, state, defaults, use_aliases) {
         }
 
         return [
-            block.parent + ": (",
+            (use_aliases ? schema.parent_aliases?.[block.parent] || block.parent : block.parent) + ": (",
             ...block.lines.map((line, index) => "    " + line + (index < block.lines.length - 1 ? "," : "")),
             ")"
         ];

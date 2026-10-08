@@ -40,9 +40,13 @@
     border_contain: false,
     border: 2px solid #000,
     aspect_inside: 2.8,
-    font: "sans-serif",
-    size: 18,
-    weight: bold,
+    tf: (
+        size: 18,
+        family: "sans-serif",
+        weight: bold,
+        align: center,
+        transform: uppercase
+    ),
     opacity_before: 1,
     color: #FFF,
     color_hover: #FFF
@@ -71,9 +75,7 @@
                     <tr><td><b>border_contain</b></td><td>Boolean</td><td>false</td><td>Activa el borde del contenedor exterior.</td></tr>
                     <tr><td><b>border</b></td><td>Border</td><td>2px solid #000</td><td>Define el borde exterior cuando está habilitado.</td></tr>
                     <tr><td><b>aspect_inside</b></td><td>Number</td><td>2.8</td><td>Define la relación de aspecto del pseudoelemento interior.</td></tr>
-                    <tr><td><b>font</b></td><td>String</td><td>"sans-serif"</td><td>Define la familia tipográfica.</td></tr>
-                    <tr><td><b>size</b></td><td>Number</td><td>18</td><td>Define el tamaño de fuente normalizado por SISASS.</td></tr>
-                    <tr><td><b>weight</b></td><td>String | Number</td><td>bold</td><td>Define el peso tipográfico.</td></tr>
+                    <tr><td><b>tf</b></td><td>Map</td><td>(size: 18, family: "sans-serif", weight: bold, align: center, transform: uppercase)</td><td>Configura la tipografía y el texto de <b>.content_link</b> mediante las claves y aliases admitidos por el mixin <b>tf</b>.</td></tr>
                     <tr><td><b>opacity_before</b></td><td>Number</td><td>1</td><td>Define la opacidad del pseudoelemento interior.</td></tr>
                     <tr><td><b>color</b></td><td>Color</td><td>#FFF</td><td>Define el color normal de <b>.content_link</b>.</td></tr>
                     <tr><td><b>color_hover</b></td><td>Color</td><td>#FFF</td><td>Define el color de <b>.content_link</b> durante hover.</td></tr>

@@ -253,8 +253,7 @@ borde y los iconos se aplican a ese nodo interno.
     border_color_disabled: lighten(#000, 80%),
     border_size: 1px,
     border_style: solid,
-    icon_right: false,
-    icon_left: false
+    icon: right
 ));
 ```
 
@@ -280,15 +279,14 @@ borde y los iconos se aplican a ese nodo interno.
 | `border_color_disabled` | Color | `lighten(#000, 80%)` | Define el color del borde disabled. |
 | `border_size` | Medida | `1px` | Define el grosor del borde. |
 | `border_style` | String | `solid` | Define el estilo del borde. |
-| `icon_right` | Boolean | `false` | Añade una flecha derecha mediante `::after`. |
-| `icon_left` | Boolean | `false` | Añade una flecha izquierda mediante `::before`. |
+| `icon` | String | `right` | Define la dirección de la flecha: `right` mediante `::after` o `left` mediante `::before`. |
 
 ### Ejemplo requerido
 
 El resultado debe incluir:
 
-- Una variante con `icon_right: true`.
-- Una variante con `icon_left: true`.
+- Una variante con `icon: right`.
+- Una variante con `icon: left`.
 - Una variante con la clase `.active` para comprobar sus colores y borde.
 - Una variante disabled que permita comprobar sus colores, borde y cursor.
 - El nodo `.content_link` en cada botón.

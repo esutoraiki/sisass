@@ -16,9 +16,14 @@
   top: 0px;
   left: 0px;
   z-index: 1;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
   background: linear-gradient(to top, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
   cursor: pointer;
-  display: block;
 }
 .documentationpage .button_bisel_example:hover:before {
   background: linear-gradient(to top, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
@@ -44,24 +49,23 @@
   content: "";
 }
 .documentationpage .button_bisel_example .content_link {
-  font-size: 1.125rem;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
   font-family: "sans-serif";
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
   font-variant: normal;
-  text-align: center;
-  text-decoration: initial;
-  text-transform: uppercase;
-  text-wrap: initial;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   color: #FFFFFF;
   width: 95%;
   z-index: 2;
@@ -78,9 +82,14 @@
   top: 0px;
   left: 0px;
   z-index: 1;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
   background: linear-gradient(to top, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
   cursor: pointer;
-  display: block;
   border: 2px solid #9A315A;
 }
 .documentationpage .button_bisel_example_border:hover:before {
@@ -107,24 +116,23 @@
   content: "";
 }
 .documentationpage .button_bisel_example_border .content_link {
-  font-size: 1.125rem;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
   font-family: "sans-serif";
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
   font-variant: normal;
-  text-align: center;
-  text-decoration: initial;
-  text-transform: uppercase;
-  text-wrap: initial;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   color: #FFFFFF;
   width: 95%;
   z-index: 2;

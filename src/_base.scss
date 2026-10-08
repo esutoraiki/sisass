@@ -278,7 +278,7 @@
     $bottom_value: null;
     $left_value: null;
 
-    @if meta.type-of($position) == "map" {
+    @if meta.type-of($position) == "map" or $position == () {
         $position_attr: $position;
 
         $position: mapv($position_attr, (position, p), relative);
