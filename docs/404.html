@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>404 | SISASS</title>
+        <style>
+            @font-face {
+                font-family: "Montserrat";
+                src: url("assets/fonts/montserrat/montserrat_black.woff2") format("woff2");
+                font-display: swap;
+                font-weight: 900;
+            }
+
+            @font-face {
+                font-family: "Nunito Sans";
+                src: url("assets/fonts/nunito_sans/nunito_sans.woff2") format("woff2");
+                font-display: swap;
+                font-weight: 400;
+            }
+
+            :root {
+                color-scheme: light;
+                font-family: "Nunito Sans", Arial, sans-serif;
+                background: #ffffff;
+                color: #235f89;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                width: 100%;
+                min-height: 100%;
+                margin: 0;
+            }
+
+            body {
+                display: grid;
+                min-height: 100vh;
+                place-items: center;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            main {
+                transform: translateY(-1.5rem);
+            }
+
+            h1 {
+                margin: 0;
+                font-family: "Montserrat", Arial, sans-serif;
+                font-size: clamp(5rem, 10vw, 7rem);
+                font-weight: 900;
+                line-height: 0.95;
+                letter-spacing: -0.08em;
+            }
+
+            p {
+                margin: 0.55rem 0 0;
+                font-size: clamp(0.8rem, 1.2vw, 1rem);
+                line-height: 1.2;
+            }
+
+            a {
+                display: inline-block;
+                margin-top: 1.5rem;
+                padding: 0.7rem 1.25rem;
+                border: 2px solid #235f89;
+                border-radius: 0.25rem;
+                color: #235f89;
+                font-size: 0.9rem;
+                text-decoration: none;
+                transition: background-color 150ms ease, color 150ms ease;
+            }
+
+            a:hover,
+            a:focus-visible {
+                background-color: #235f89;
+                color: #ffffff;
+            }
+        </style>
+    </head>
+    <body>
+        <main aria-labelledby="error_title">
+            <h1 id="error_title">404</h1>
+            <p>Page not found</p>
+            <a id="home_link" href="/sisass/">Volver al inicio</a>
+        </main>
+
+        <script>
+            const home_link = document.getElementById("home_link");
+            const is_local_environment = window.location.hostname === "sisass.local";
+            const home_path = is_local_environment ? "/" : "/sisass/";
+
+            home_link.href = home_path;
+        </script>
+    </body>
+</html>
