@@ -49,8 +49,10 @@ degradar ninguna capacidad ya aprobada para `button_simple`.
    alcance.
 4. La apariencia y las funciones actuales de `button_simple` se conservarán,
    salvo correcciones necesarias para cumplir esta especificación.
-5. Los adapters JavaScript serán opcionales y se limitarán a comportamientos
-   que no puedan expresarse limpiamente de manera declarativa.
+5. Cada constructor utilizará un adapter JavaScript registrado para crear y
+   actualizar su vista previa y generar el HTML. El adapter se limitará a esas
+   responsabilidades y a adaptar, cuando corresponda, valores aplicados a las
+   variables CSS de la vista previa.
 6. La generación del mapa SCSS será responsabilidad del núcleo común.
 7. La solución no utilizará frameworks externos.
 8. No se extraerán automáticamente parámetros desde los archivos SCSS.
@@ -71,8 +73,8 @@ degradar ninguna capacidad ya aprobada para `button_simple`.
 - Sincronizar controles, presets, vista previa, SCSS y HTML.
 - Conservar las funciones compartidas de accesibilidad, copiado, pestañas,
   fullscreen, responsive, impresión y fallback progresivo.
-- Permitir adapters opcionales para la vista previa, el HTML y reglas
-  particulares.
+- Usar adapters registrados para la vista previa, el HTML y la adaptación de
+  valores aplicados a sus variables CSS.
 - Migrar `button_simple` al nuevo sistema.
 - Retirar del módulo actual la configuración que pase a ser responsabilidad del
   esquema o del núcleo.
@@ -87,6 +89,9 @@ degradar ninguna capacidad ya aprobada para `button_simple`.
 - Ejecutar código arbitrario declarado en los esquemas.
 - Generar automáticamente esquemas desde SCSS.
 - Crear una interfaz para editar o exportar esquemas.
+- Interpretar dependencias declarativas, obligatoriedad condicional o
+  expresiones entre campos.
+- Ejecutar constructores sin un adapter registrado.
 - Incorporar dependencias o frameworks para formularios o administración de
   estado.
 - Persistir configuraciones entre sesiones o compartirlas mediante URL.
@@ -132,7 +137,6 @@ El esquema será la fuente de verdad del constructor para:
 - orden de presentación y serialización;
 - mapas anidados;
 - campos compuestos;
-- reglas declarativas de dependencia y obligatoriedad;
 - estados de vista previa;
 - presets.
 
@@ -140,21 +144,25 @@ Los valores del esquema deben verificarse contra la implementación SCSS y la
 tabla de parámetros documentada. El esquema no autoriza APIs que el mixin no
 soporte.
 
-### Adapters opcionales
+### Adapters requeridos
 
-Un adapter puede utilizarse cuando el comportamiento no se pueda representar de
-forma clara mediante controles y metadatos. Sus responsabilidades permitidas
-son:
+La implementación vigente requiere que cada esquema declare un adapter
+registrado. El núcleo común administra el formulario y la experiencia general,
+pero no presupone una estructura HTML válida para todos los mixins. Las
+responsabilidades permitidas del adapter son:
 
 - crear o actualizar una vista previa particular;
 - generar una estructura HTML específica;
-- normalizar relaciones complejas entre parámetros;
-- validar una regla propia del mixin;
-- convertir un campo compuesto cuando el núcleo no disponga de ese tipo.
+- adaptar un valor antes de aplicarlo a una variable CSS de la vista previa.
 
 Los adapters no deben volver a implementar presets, aliases, generación del
 mapa SCSS, copiado, pestañas, fullscreen ni administración general del estado.
-Si un mixin puede funcionar sin adapter, no debe crearse uno.
+
+La posibilidad de ejecutar un constructor sin adapter queda como una evolución
+diferida. Solo debe implementarse cuando exista un constructor real cuya vista
+previa y cuyo HTML puedan describirse mediante un contrato genérico compartido.
+Esa causalidad debe documentarse y acompañarse de la validación y las pruebas
+del nuevo contrato; no debe añadirse como abstracción preventiva.
 
 ## Formato funcional del esquema
 
@@ -186,16 +194,22 @@ Cada entrada de `fields` debe poder declarar:
 - grupo;
 - tipo de control;
 - valor predeterminado;
-- carácter opcional u obligatorio;
+- aceptación de un valor nulo opcional mediante `optional`;
 - ruta de un mapa padre, cuando corresponda;
-- reglas declarativas de dependencia;
 - opciones para controles cerrados;
 - aceptación de valores CSS o SCSS que no pueda representar el control visual;
 - metadatos necesarios para un campo compuesto.
 
-La primera versión debe admitir como mínimo controles de texto, selección,
-booleano, color y borde compuesto. Se añadirán tipos adicionales solamente
-cuando un mixin real los requiera.
+El núcleo admite controles de texto, selección, booleano, color y borde
+compuesto. Se añadirán tipos adicionales solamente cuando un mixin real los
+requiera.
+
+El esquema vigente no admite dependencias declarativas, obligatoriedad
+condicional ni expresiones entre campos. Estas capacidades quedan diferidas y
+solo deben incorporarse cuando una relación real entre parámetros no pueda
+resolverse con el contrato actual. La ampliación debe partir de ese caso de uso,
+definir una semántica acotada y actualizar conjuntamente el núcleo, el
+validador, las pruebas y esta especificación.
 
 ### Aliases
 
@@ -273,8 +287,7 @@ resultados estables y legibles.
 ### HTML
 
 El HTML generado debe coincidir exactamente con el marcado utilizado por la
-vista previa. Puede provenir del comportamiento estándar del núcleo o de un
-adapter cuando el mixin requiera estructura interna particular.
+vista previa y proviene del adapter registrado por el constructor.
 
 No se mostrarán nodos, clases ni atributos que no participen en el resultado.
 
@@ -313,7 +326,7 @@ detectar:
 - tipo de control desconocido;
 - preset que referencia un campo inexistente;
 - mapa padre inválido;
-- adapter solicitado pero no registrado.
+- adapter ausente o no registrado.
 
 Cuando el esquema sea inválido o no pueda cargarse:
 
@@ -356,8 +369,10 @@ constructores interactivos de `AGENTS.md`. Esa guía deberá establecer:
 - las claves mínimas y los tipos de controles admitidos;
 - el estado canónico como fuente de verdad;
 - la selección de aliases y el toggle `Alias`;
-- cuándo está permitido crear un adapter;
+- la obligación actual de declarar un adapter registrado;
 - qué responsabilidades nunca deben duplicarse en un adapter;
+- que los adapters opcionales y las dependencias declarativas son capacidades
+  diferidas, condicionadas a una necesidad real y verificable;
 - la conservación del ejemplo estático y del fallback;
 - la integración con `contentLoad`, el menú de página y el buscador;
 - los comandos y pruebas obligatorios.
@@ -373,7 +388,7 @@ La implementación deberá resolver, como mínimo, estas responsabilidades en la
 | Área | Responsabilidad |
 | --- | --- |
 | `docs/assets/json/` | Esquemas de constructores por mixin. |
-| `docs/assets/js/components/` | Núcleo común y registro opcional de adapters. |
+| `docs/assets/js/components/` | Núcleo común y registro de adapters requeridos. |
 | `docs/components/` | Contenedor documental, ejemplo estático y fallback. |
 | `docs/assets/scss/components/_interactive_builder.scss` | Presentación compartida de los constructores. |
 | `AGENTS.md` | Convenciones obligatorias para constructores futuros. |
@@ -437,7 +452,8 @@ suficiente ni crear carpetas profundas innecesarias.
 4. Los formularios se generarán desde los esquemas.
 5. Se admitirán campos simples, compuestos y mapas anidados.
 6. Se conservarán valores CSS y SCSS que un control visual no represente.
-7. Los adapters serán opcionales y limitados a excepciones reales.
+7. Cada constructor declarará un adapter registrado y limitado a la vista
+   previa, el HTML y excepciones propias del mixin.
 8. El núcleo será responsable de la generación del mapa SCSS.
 9. El alias preferido tendrá prioridad y, en su ausencia, se usará el más corto.
 10. Un esquema inválido mostrará el fallback sin romper la página.
@@ -447,3 +463,26 @@ suficiente ni crear carpetas profundas innecesarias.
 14. Se conservarán la estética y las convenciones de accesibilidad actuales.
 15. `AGENTS.md` documentará el flujo completo y su validación.
 16. La especificación se redactará en español y se registrará en `spec/`.
+
+## Capacidades diferidas
+
+Las siguientes ideas se conservan como posibles evoluciones, pero no forman
+parte del contrato implementado y no deben condicionar constructores nuevos:
+
+- adapters opcionales mediante una representación genérica de vista previa y
+  HTML;
+- dependencias declarativas entre campos;
+- obligatoriedad condicional;
+- expresiones o reglas ejecutables desde el esquema;
+- normalizaciones de estado o validaciones particulares ejecutadas por un
+  adapter;
+- nuevos tipos de control sin un mixin consumidor.
+
+Una capacidad diferida solo debe implementarse cuando exista una necesidad
+actual demostrable o una causalidad técnica adecuada: un mixin real que no
+pueda representarse correctamente con las capacidades vigentes. Antes de
+ampliar el núcleo se debe documentar el caso, limitar el alcance al problema
+observado y definir su validación. La ampliación debe incluir pruebas del caso
+válido y de esquemas inválidos, además de actualizar `AGENTS.md` y esta
+especificación. No se implementarán estas capacidades para anticipar requisitos
+hipotéticos.
