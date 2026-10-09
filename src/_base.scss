@@ -1,4 +1,4 @@
-// Update: 20260922
+// Update: 20261008
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -548,7 +548,7 @@
         @error "icon-svg-mask() only accepts a map with SVG mask options.";
     }
 
-    $svg: mapv($attr, svg, false);
+    $svg: mapv($attr, svg, null);
     $color: mapv($attr, (color, c), #FFFFFF);
     $position_attr: mapv($attr, (position, p), (
         position: absolute
@@ -560,7 +560,7 @@
     $path: mapv($attr, path, "../../img/svg/");
     $display: mapv($attr, (display, d), block);
 
-    @if $svg != false {
+    @if $svg != null {
         @if $position_attr != false {
             @include position($position_attr);
         }
