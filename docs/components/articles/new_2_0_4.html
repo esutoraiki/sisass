@@ -1,0 +1,110 @@
+<article id="new_2_0_4" class="new">
+    <div class="group_title">
+        <h2
+            id="version_2_0_4_heading"
+            class="title"
+            data-page-menu-item
+            data-page-menu-label="Versión 2.0.4"
+        >
+            Novedades Versión 2.0.4
+        </h2>
+
+        <div class="container_attributes">
+            <span class="attribute">Tipo: Artículo</span>
+            <span class="attribute">Versión: 2.0.4</span>
+        </div>
+    </div>
+
+    <p class="release_intro">
+        La versión 2.0.4 mejora la invocación de mixins base, actualiza los componentes de botones y amplía la documentación con constructores interactivos, una página 404 y un buscador adaptable.
+    </p>
+
+    <section class="release_section" aria-labelledby="version_2_0_4_corrections">
+        <h3 id="version_2_0_4_corrections" class="title">Correcciones</h3>
+
+        <div class="container_table">
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Razón del cambio</th>
+                        <th>Mixins afectados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Permitir la invocación sin parámetros.</td>
+                        <td><b>tf</b>, <b>autofill</b></td>
+                    </tr>
+                    <tr>
+                        <td>Alinear la invocación sin parámetros con el comportamiento esperado del resto de mixins.</td>
+                        <td><b>font-face</b>, <b>background</b>, <b>icon-svg-mask</b>, <b>normalize-svg</b>, <b>scroll</b></td>
+                    </tr>
+                    <tr>
+                        <td>Expresar con mayor claridad la ausencia de un recurso SVG.</td>
+                        <td><b>icon-svg-mask</b>: la clave <b>svg</b> usa <b>null</b> como valor predeterminado.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="release_item_description">
+            <b>font-face</b> admite una llamada sin argumentos, pero sigue requiriendo <b>name</b> y <b>path</b> para emitir una declaración de fuente válida.
+        </p>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_4_documentation">
+        <h3 id="version_2_0_4_documentation" class="title">Documentación</h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">Referencia de botones</h4>
+                <p class="release_item_description">
+                    Se creó la <a class="link" href="../pages/buttons.html">sección de documentación de los componentes de botones</a> para consultar sus interfaces, parámetros y ejemplos.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_4_components">
+        <h3 id="version_2_0_4_components" class="title">Componentes</h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">Botones alineados con SISASS</h4>
+                <p class="release_item_description">
+                    Se refactorizaron <a class="link" href="../pages/buttons.html#button_simple">button_simple</a>, <a class="link" href="../pages/buttons.html#button_bisel">button_bisel</a> y <a class="link" href="../pages/buttons.html#button_style_arrow">button_style_arrow</a> para ajustarlos a los nuevos lineamientos de SISASS.
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="release_section" aria-labelledby="version_2_0_4_capabilities">
+        <h3 id="version_2_0_4_capabilities" class="title">Nuevas capacidades</h3>
+
+        <ul class="release_list">
+            <li class="release_item">
+                <h4 class="release_item_title">Mixin <b>resolve-size</b></h4>
+                <p class="release_item_description">
+                    El nuevo mixin <a class="link" href="../pages/base.html#resolve-size">resolve-size</a> determina dos dimensiones compatibles a partir de <b>width</b>, <b>height</b> y <b>aspect_ratio</b>. Requiere exactamente una combinación: ancho y alto, ancho y relación de aspecto, o alto y relación de aspecto.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">Constructores interactivos de botones</h4>
+                <p class="release_item_description">
+                    La <a class="link" href="../pages/buttons.html">referencia de botones</a> incorpora constructores interactivos para <b>button_simple</b>, <b>button_style_arrow</b> y <b>button_bisel</b>. Permiten ajustar opciones y consultar la vista previa junto con el SCSS y el HTML generados.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">Página 404 de la documentación</h4>
+                <p class="release_item_description">
+                    Se añadió <b>docs/404.html</b> para orientar la navegación cuando una ruta de la documentación no existe.
+                </p>
+            </li>
+            <li class="release_item">
+                <h4 class="release_item_title">Buscador adaptable</h4>
+                <p class="release_item_description">
+                    El buscador de la documentación mejora su presentación y acceso en pantallas de hasta 980 px, incluso después de desplazarse por una página.
+                </p>
+            </li>
+        </ul>
+    </section>
+</article>

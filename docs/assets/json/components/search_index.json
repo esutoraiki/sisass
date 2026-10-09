@@ -28,6 +28,19 @@
         },
         {
             "url": "pages/articles/new.html",
+            "anchor": "version_2_0_4",
+            "title": "Novedades Versión 2.0.4",
+            "category": "Artículo",
+            "page_title": "Novedades",
+            "text": "Novedades Versión 2.0.4 Tipo: Artículo Versión: 2.0.4 La versión 2.0.4 mejora la invocación de mixins base, actualiza los componentes de botones y amplía la documentación con constructores interactivos, una página 404 y un buscador adaptable. Correcciones Razón del cambio Mixins afectados Permitir la invocación sin parámetros. tf , autofill Alinear la invocación sin parámetros con el comportamiento esperado del resto de mixins. font-face , background , icon-svg-mask , normalize-svg , scroll Expresar con mayor claridad la ausencia de un recurso SVG. icon-svg-mask : la clave svg usa null como valor predeterminado. font-face admite una llamada sin argumentos, pero sigue requiriendo name y path para emitir una declaración de fuente válida. Documentación Referencia de botones Se creó la sección de documentación de los componentes de botones para consultar sus interfaces, parámetros y ejemplos. Componentes Botones alineados con SISASS Se refactorizaron button_simple , button_bisel y button_style_arrow para ajustarlos a los nuevos lineamientos de SISASS. Nuevas capacidades Mixin resolve-size El nuevo mixin resolve-size determina dos dimensiones compatibles a partir de width , height y aspect_ratio . Requiere exactamente una combinación: ancho y alto, ancho y relación de aspecto, o alto y relación de aspecto. Constructores interactivos de botones La referencia de botones incorpora constructores interactivos para button_simple , button_style_arrow y button_bisel . Permiten ajustar opciones y consultar la vista previa junto con el SCSS y el HTML generados. Página 404 de la documentación Se añadió docs/404.html para orientar la navegación cuando una ruta de la documentación no existe. Buscador adaptable El buscador de la documentación mejora su presentación y acceso en pantallas de hasta 980 px, incluso después de desplazarse por una página.",
+            "summary": "La versión 2.0.4 mejora la invocación de mixins base, actualiza los componentes de botones y amplía la documentación con constructores interactivos, una página 404 y un buscador adaptable.",
+            "display_title": "Novedades Versión 2.0.4",
+            "source_file": "",
+            "display_path": "pages/articles/new.html",
+            "icon": "file"
+        },
+        {
+            "url": "pages/articles/new.html",
             "anchor": "version_2_0_3",
             "title": "Novedades Versión 2.0.3",
             "category": "Artículo",

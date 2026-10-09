@@ -5,6 +5,12 @@
     margin-inline: auto;
     margin-block-end: 56px;
 
+    .container_table {
+        .full {
+            margin-block-start: 15px;
+        }
+    }
+
     .release_intro {
         @include t1((
             s: szrem(16),
