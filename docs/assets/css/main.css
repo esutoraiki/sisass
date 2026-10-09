@@ -472,6 +472,11 @@ html.page[data-theme=dark] {
   visibility: hidden;
   pointer-events: none;
 }
+.documentationpage .loader.hide .box .bar .progress {
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
 .documentationpage .loader .box {
   -webkit-flex-direction: column;
   flex-direction: column;
@@ -570,6 +575,12 @@ html.page[data-theme=dark] {
   background-position: center;
   background-color: transparent;
   background-size: auto;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  will-change: transform;
 }
 
 .btn {
