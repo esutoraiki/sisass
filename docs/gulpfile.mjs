@@ -33,6 +33,7 @@ const
         "assets/scss/*.scss",
         "assets/scss/components/*.scss",
         "assets/scss/bases/[^_]*.scss",
+        "assets/scss/buttons/[^_]*.scss",
         "assets/scss/pages/*.scss",
         "assets/scss/vendor/[^_]*.scss",
         "assets/scss/mediaqueries/[^_]*.scss"
@@ -287,7 +288,8 @@ gulp.task("css_svg", function () {
         .pipe(plumber({ errorHandler: handle_sass_error }))
         .pipe(sass({
             outputStyle: "expanded",
-            includePaths: paths_scss
+            includePaths: paths_scss,
+            loadPaths: paths_scss
         }))
         .pipe(gulp.dest(path_dest_svg));
 });
@@ -300,7 +302,8 @@ gulp.task("compile_scss", function () {
         .pipe(plumber({ errorHandler: handle_sass_error }))
         .pipe(sass({
             outputStyle: "expanded",
-            includePaths: paths_scss
+            includePaths: paths_scss,
+            loadPaths: paths_scss
         }))
         .pipe(gulp.dest("assets/css"));
 });

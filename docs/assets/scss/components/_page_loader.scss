@@ -27,7 +27,7 @@
             @include wh(min(90%, 420px));
             @include flex;
             @include gap(3px);
-            padding: 28px 24px 22px;
+            padding: 20px 24px 22px;
 
             .title {
                 @include bc($c0, var(--theme_text));

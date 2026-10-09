@@ -1,0 +1,1114 @@
+@charset "UTF-8";
+.documentationpage .button_simple_example_group {
+  -webkit-align-items: center;
+  align-items: center;
+  grid-gap: 16px;
+  gap: 16px;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+@media only screen and (max-width: 768px) {
+  .documentationpage .button_simple_example_group {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params {
+  all: initial;
+  width: 150px;
+  height: 47px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  background-color: #FFF;
+  color: #000;
+  box-sizing: border-box;
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params:disabled, .documentationpage .button_simple_example_group .button_simple_example_no_params.disabled {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: rgb(178.5, 178.5, 178.5);
+  color: #666666;
+  cursor: not-allowed;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_simple_example_group .button_simple_example_no_params.active {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example {
+  all: initial;
+  width: 145px;
+  aspect-ratio: 3.625;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  font-size: 0.875rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  background-color: #FBB03B;
+  color: #A01303;
+  box-sizing: border-box;
+  padding: 12px 18px;
+  cursor: pointer;
+  border: 1px solid #FBB03B;
+}
+.documentationpage .button_simple_example_group .button_simple_example:hover {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #A01303;
+  color: #FBB03B;
+  border: 1px solid #000;
+}
+.documentationpage .button_simple_example_group .button_simple_example:disabled, .documentationpage .button_simple_example_group .button_simple_example.disabled {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #DDDDDD;
+  color: #FFF;
+  cursor: not-allowed;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_simple_example_group .button_simple_example.active {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #2D396C;
+  color: #FEFEFE;
+  border: 1px solid #000;
+}
+
+.documentationpage .button_example_group {
+  -webkit-align-items: center;
+  align-items: center;
+  grid-gap: 16px;
+  gap: 16px;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+@media only screen and (max-width: 768px) {
+  .documentationpage .button_example_group {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+.documentationpage .button_style_arrow_no_params {
+  all: initial;
+  width: 150px;
+  height: 47px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #FFF;
+  color: #000;
+  box-sizing: border-box;
+  display: flex;
+  cursor: pointer;
+}
+.documentationpage .button_style_arrow_no_params:before {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid #000;
+  content: "";
+}
+.documentationpage .button_style_arrow_no_params:hover:not(:disabled):not(.disabled):not(.active):before {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 0;
+  border: 1px solid #000;
+}
+.documentationpage .button_style_arrow_no_params:hover:not(:disabled):not(.disabled):not(.active) .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+}
+.documentationpage .button_style_arrow_no_params:hover:not(:disabled):not(.disabled):not(.active) .content_link::after {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: relative;
+  top: -2px;
+  left: 15px;
+  z-index: 1;
+}
+.documentationpage .button_style_arrow_no_params:disabled, .documentationpage .button_style_arrow_no_params.disabled {
+  cursor: not-allowed;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_style_arrow_no_params:disabled:before, .documentationpage .button_style_arrow_no_params.disabled:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_style_arrow_no_params:disabled .content_link, .documentationpage .button_style_arrow_no_params.disabled .content_link {
+  background-color: rgb(178.5, 178.5, 178.5);
+  color: #666666;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_style_arrow_no_params:disabled .content_link::after, .documentationpage .button_style_arrow_no_params.disabled .content_link::after {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+}
+.documentationpage .button_style_arrow_no_params.active:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 1px solid #000;
+}
+.documentationpage .button_style_arrow_no_params.active .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+}
+.documentationpage .button_style_arrow_no_params.active .content_link::after {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+}
+.documentationpage .button_style_arrow_no_params .content_link {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  color: #000;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-right: 5px;
+}
+.documentationpage .button_style_arrow_no_params .content_link:after {
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  content: "→";
+}
+.documentationpage .button_pagination_example_right,
+.documentationpage .button_pagination_example_link_right {
+  all: initial;
+  width: 180px;
+  height: 47px;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #FBB03B;
+  color: #A01303;
+  box-sizing: border-box;
+  display: flex;
+  cursor: pointer;
+}
+.documentationpage .button_pagination_example_right:before,
+.documentationpage .button_pagination_example_link_right:before {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid #A01303;
+  content: "";
+}
+.documentationpage .button_pagination_example_right:hover:not(:disabled):not(.disabled):not(.active):before,
+.documentationpage .button_pagination_example_link_right:hover:not(:disabled):not(.disabled):not(.active):before {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 0;
+  border: 1px solid currentColor;
+}
+.documentationpage .button_pagination_example_right:hover:not(:disabled):not(.disabled):not(.active) .content_link,
+.documentationpage .button_pagination_example_link_right:hover:not(:disabled):not(.disabled):not(.active) .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #A01303;
+  color: #FBB03B;
+}
+.documentationpage .button_pagination_example_right:hover:not(:disabled):not(.disabled):not(.active) .content_link::after,
+.documentationpage .button_pagination_example_link_right:hover:not(:disabled):not(.disabled):not(.active) .content_link::after {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: relative;
+  top: -2px;
+  left: 15px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_right:disabled, .documentationpage .button_pagination_example_right.disabled,
+.documentationpage .button_pagination_example_link_right:disabled,
+.documentationpage .button_pagination_example_link_right.disabled {
+  cursor: not-allowed;
+  border: 1px solid #DDDDDD;
+}
+.documentationpage .button_pagination_example_right:disabled:before, .documentationpage .button_pagination_example_right.disabled:before,
+.documentationpage .button_pagination_example_link_right:disabled:before,
+.documentationpage .button_pagination_example_link_right.disabled:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  border: 1px solid #DDDDDD;
+}
+.documentationpage .button_pagination_example_right:disabled .content_link, .documentationpage .button_pagination_example_right.disabled .content_link,
+.documentationpage .button_pagination_example_link_right:disabled .content_link,
+.documentationpage .button_pagination_example_link_right.disabled .content_link {
+  background-color: #DDDDDD;
+  color: #FFF;
+  border: 1px solid #DDDDDD;
+}
+.documentationpage .button_pagination_example_right:disabled .content_link::after, .documentationpage .button_pagination_example_right.disabled .content_link::after,
+.documentationpage .button_pagination_example_link_right:disabled .content_link::after,
+.documentationpage .button_pagination_example_link_right.disabled .content_link::after {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_right.active:before,
+.documentationpage .button_pagination_example_link_right.active:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  border: 1px solid #2D396C;
+}
+.documentationpage .button_pagination_example_right.active .content_link,
+.documentationpage .button_pagination_example_link_right.active .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #2D396C;
+  color: #FFF;
+}
+.documentationpage .button_pagination_example_right.active .content_link::after,
+.documentationpage .button_pagination_example_link_right.active .content_link::after {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_right .content_link,
+.documentationpage .button_pagination_example_link_right .content_link {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  width: 100%;
+  height: 100%;
+  background-color: #FBB03B;
+  color: #A01303;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-right: 5px;
+}
+.documentationpage .button_pagination_example_right .content_link:after,
+.documentationpage .button_pagination_example_link_right .content_link:after {
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  content: "→";
+}
+.documentationpage .button_pagination_example_left,
+.documentationpage .button_pagination_example_link_left {
+  all: initial;
+  width: 180px;
+  height: 47px;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #FBB03B;
+  color: #A01303;
+  box-sizing: border-box;
+  display: flex;
+  cursor: pointer;
+}
+.documentationpage .button_pagination_example_left:before,
+.documentationpage .button_pagination_example_link_left:before {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid #A01303;
+  content: "";
+}
+.documentationpage .button_pagination_example_left:hover:not(:disabled):not(.disabled):not(.active):before,
+.documentationpage .button_pagination_example_link_left:hover:not(:disabled):not(.disabled):not(.active):before {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: 4px;
+  left: -4px;
+  z-index: 0;
+  border: 1px solid currentColor;
+}
+.documentationpage .button_pagination_example_left:hover:not(:disabled):not(.disabled):not(.active) .content_link,
+.documentationpage .button_pagination_example_link_left:hover:not(:disabled):not(.disabled):not(.active) .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #A01303;
+  color: #FBB03B;
+}
+.documentationpage .button_pagination_example_left:hover:not(:disabled):not(.disabled):not(.active) .content_link::before,
+.documentationpage .button_pagination_example_link_left:hover:not(:disabled):not(.disabled):not(.active) .content_link::before {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: relative;
+  top: -2px;
+  left: -15px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_left:disabled, .documentationpage .button_pagination_example_left.disabled,
+.documentationpage .button_pagination_example_link_left:disabled,
+.documentationpage .button_pagination_example_link_left.disabled {
+  cursor: not-allowed;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_pagination_example_left:disabled:before, .documentationpage .button_pagination_example_left.disabled:before,
+.documentationpage .button_pagination_example_link_left:disabled:before,
+.documentationpage .button_pagination_example_link_left.disabled:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_pagination_example_left:disabled .content_link, .documentationpage .button_pagination_example_left.disabled .content_link,
+.documentationpage .button_pagination_example_link_left:disabled .content_link,
+.documentationpage .button_pagination_example_link_left.disabled .content_link {
+  background-color: rgb(178.5, 178.5, 178.5);
+  color: #666666;
+  border: 1px solid rgb(178.5, 178.5, 178.5);
+}
+.documentationpage .button_pagination_example_left:disabled .content_link::before, .documentationpage .button_pagination_example_left.disabled .content_link::before,
+.documentationpage .button_pagination_example_link_left:disabled .content_link::before,
+.documentationpage .button_pagination_example_link_left.disabled .content_link::before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: -10px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_left.active:before,
+.documentationpage .button_pagination_example_link_left.active:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  border: 1px solid #000;
+}
+.documentationpage .button_pagination_example_left.active .content_link,
+.documentationpage .button_pagination_example_link_left.active .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+}
+.documentationpage .button_pagination_example_left.active .content_link::before,
+.documentationpage .button_pagination_example_link_left.active .content_link::before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: -10px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_left .content_link,
+.documentationpage .button_pagination_example_link_left .content_link {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  width: 100%;
+  height: 100%;
+  background-color: #FBB03B;
+  color: #A01303;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-left: 5px;
+}
+.documentationpage .button_pagination_example_left .content_link:before,
+.documentationpage .button_pagination_example_link_left .content_link:before {
+  position: relative;
+  top: -2px;
+  left: -10px;
+  z-index: 1;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  content: "←";
+}
+.documentationpage .button_pagination_example_disabled,
+.documentationpage .button_pagination_example_link_disabled {
+  all: initial;
+  width: 180px;
+  height: 47px;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #FFF;
+  color: #000;
+  box-sizing: border-box;
+  display: flex;
+  cursor: pointer;
+}
+.documentationpage .button_pagination_example_disabled:before,
+.documentationpage .button_pagination_example_link_disabled:before {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 1px solid #000;
+  content: "";
+}
+.documentationpage .button_pagination_example_disabled:hover:not(:disabled):not(.disabled):not(.active):before,
+.documentationpage .button_pagination_example_link_disabled:hover:not(:disabled):not(.disabled):not(.active):before {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 0;
+  border: 1px solid #000;
+}
+.documentationpage .button_pagination_example_disabled:hover:not(:disabled):not(.disabled):not(.active) .content_link,
+.documentationpage .button_pagination_example_link_disabled:hover:not(:disabled):not(.disabled):not(.active) .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+}
+.documentationpage .button_pagination_example_disabled:hover:not(:disabled):not(.disabled):not(.active) .content_link::after,
+.documentationpage .button_pagination_example_link_disabled:hover:not(:disabled):not(.disabled):not(.active) .content_link::after {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  position: relative;
+  top: -2px;
+  left: 15px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_disabled:disabled, .documentationpage .button_pagination_example_disabled.disabled,
+.documentationpage .button_pagination_example_link_disabled:disabled,
+.documentationpage .button_pagination_example_link_disabled.disabled {
+  cursor: not-allowed;
+  border: 1px solid #DDDDDD;
+}
+.documentationpage .button_pagination_example_disabled:disabled:before, .documentationpage .button_pagination_example_disabled.disabled:before,
+.documentationpage .button_pagination_example_link_disabled:disabled:before,
+.documentationpage .button_pagination_example_link_disabled.disabled:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  border: 1px solid #DDDDDD;
+}
+.documentationpage .button_pagination_example_disabled:disabled .content_link, .documentationpage .button_pagination_example_disabled.disabled .content_link,
+.documentationpage .button_pagination_example_link_disabled:disabled .content_link,
+.documentationpage .button_pagination_example_link_disabled.disabled .content_link {
+  background-color: #DDDDDD;
+  color: #FFF;
+  border: 1px solid #DDDDDD;
+}
+.documentationpage .button_pagination_example_disabled:disabled .content_link::after, .documentationpage .button_pagination_example_disabled.disabled .content_link::after,
+.documentationpage .button_pagination_example_link_disabled:disabled .content_link::after,
+.documentationpage .button_pagination_example_link_disabled.disabled .content_link::after {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_disabled.active:before,
+.documentationpage .button_pagination_example_link_disabled.active:before {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 0;
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  border: 1px solid #000;
+}
+.documentationpage .button_pagination_example_disabled.active .content_link,
+.documentationpage .button_pagination_example_link_disabled.active .content_link {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  background-color: #000;
+  color: #FFF;
+}
+.documentationpage .button_pagination_example_disabled.active .content_link::after,
+.documentationpage .button_pagination_example_link_disabled.active .content_link::after {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+}
+.documentationpage .button_pagination_example_disabled .content_link,
+.documentationpage .button_pagination_example_link_disabled .content_link {
+  -webkit-border-radius: 32px;
+  -moz-border-radius: 32px;
+  -ms-border-radius: 32px;
+  -o-border-radius: 32px;
+  border-radius: 32px;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  text-decoration: initial;
+  text-transform: uppercase;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "Roboto", "sans-serif";
+  font-weight: bold;
+  font-style: normal;
+  font-variant: normal;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  color: #000;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-right: 5px;
+}
+.documentationpage .button_pagination_example_disabled .content_link:after,
+.documentationpage .button_pagination_example_link_disabled .content_link:after {
+  position: relative;
+  top: -2px;
+  left: 10px;
+  z-index: 1;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -o-transition: all 500ms;
+  transition: all 500ms;
+  content: "→";
+}
+
+.documentationpage .button_bisel_example_group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+.documentationpage .button_bisel_example {
+  all: initial;
+  width: 160px;
+  height: 58px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  background: linear-gradient(to top, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
+  cursor: pointer;
+}
+.documentationpage .button_bisel_example:hover:before {
+  background: linear-gradient(to top, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
+}
+.documentationpage .button_bisel_example:hover .content_link {
+  color: #FFFFFF;
+}
+.documentationpage .button_bisel_example:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 150px;
+  aspect-ratio: 3;
+  opacity: 1;
+  background: linear-gradient(to bottom, rgba(100, 216, 203, 0.85), rgba(32, 39, 53, 0.85));
+  z-index: 0;
+  content: "";
+}
+.documentationpage .button_bisel_example .content_link {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  color: #FFFFFF;
+  width: 95%;
+  z-index: 2;
+}
+.documentationpage .button_bisel_example_border {
+  all: initial;
+  width: 160px;
+  height: 58px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  background: linear-gradient(to top, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
+  cursor: pointer;
+  border: 2px solid #9A315A;
+}
+.documentationpage .button_bisel_example_border:hover:before {
+  background: linear-gradient(to top, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
+}
+.documentationpage .button_bisel_example_border:hover .content_link {
+  color: #FFFFFF;
+}
+.documentationpage .button_bisel_example_border:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 150px;
+  aspect-ratio: 3;
+  opacity: 1;
+  background: linear-gradient(to bottom, rgba(245, 196, 81, 0.85), rgba(154, 49, 90, 0.85));
+  z-index: 0;
+  content: "";
+}
+.documentationpage .button_bisel_example_border .content_link {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  color: #FFFFFF;
+  width: 95%;
+  z-index: 2;
+}

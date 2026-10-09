@@ -46,6 +46,9 @@ $bd7: 2px dashed $c26;
 $bd8: 10px solid $c6;
 $bd9: 1px solid var(--theme_border);
 $bd10: 2px solid var(--theme_border_btn);
+$bd11: 1px solid $c5;
+$bd12: 1px solid $c6;
+$bd13: 1px solid $c8;
 
 // shadow
 $sh1: 0 0 6px var(--theme_shadow);
@@ -98,7 +101,7 @@ $charecteristics_name: (organized, reusable, consistent, productive);
 $characteristics_svg: (cube, code, palette, rocket);
 $characteristics_color: ($c16, $c18, $c15, $c19);
 
-$features_name: (mixins, functions, variables, helpers, layouts);
+$features_name: (mixins, functions, variables, helpers, layouts, components);
 $icon_name: (info, documents, folder_2, articles);
 $icon_reference: (sass, react, vite, webpack);
 

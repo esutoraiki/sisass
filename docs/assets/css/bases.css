@@ -732,6 +732,30 @@
   height: 60px;
 }
 
+.documentationpage .resolve_size_example_result [class^=resolve_size_example_] {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  border: 2px dashed #3A405A;
+}
+.documentationpage .resolve_size_example_result .resolve_size_example_width_height {
+  width: 180px;
+  height: 80px;
+}
+.documentationpage .resolve_size_example_result .resolve_size_example_width_ratio {
+  width: 180px;
+  aspect-ratio: 2.25;
+}
+.documentationpage .resolve_size_example_result .resolve_size_example_height_ratio {
+  height: 80px;
+  aspect-ratio: 2.25;
+}
+
 .documentationpage .result .whs_example {
   width: 20px;
   height: 20px;
@@ -758,6 +782,17 @@
   height: auto;
 }
 
+.documentationpage .tf_map_no_params {
+  text-align: left;
+  text-decoration: initial;
+  text-transform: initial;
+  text-wrap: initial;
+  font-size: 1rem;
+  font-family: "sans-serif";
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+}
 .documentationpage .tf_example_map {
   text-align: right;
   text-decoration: underline;

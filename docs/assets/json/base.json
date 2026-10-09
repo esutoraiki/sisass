@@ -130,6 +130,12 @@
             "node": "gap"
         },
         {
+            "id": "resolve-size",
+            "url": "../components/base/resolve-size.html",
+            "position": "beforeend",
+            "node": "resolve-size"
+        },
+        {
             "id": "icon-svg",
             "url": "../components/base/icon-svg.html",
             "position": "beforeend",

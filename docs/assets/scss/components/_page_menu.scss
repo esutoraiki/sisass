@@ -5,10 +5,22 @@
     padding: 30px 20px 50px 0;
 
     @include brp($b6) {
-        @include position((p: sticky, t: 0, z: 8));
-        @include bc(var(--theme_bg), var(--theme_text));
-        padding: 12px min(5vw, 48px);
+        @include position((p: sticky, t: 64px, z: 8));
+        @include bc(var(--theme_surface), var(--theme_text));
+        @include wh(100%);
+        min-height: 54px;
+        box-sizing: border-box;
+        padding: 0 100px 0 clamp(18px, 8vw, 32px);
         border-bottom: 1px solid var(--theme_border);
+        box-shadow: var(--theme_shadow);
+    }
+
+    &:has(.page_menu.is_open) {
+        @include brp($b6) {
+            height: calc(100vh - 64px);
+            height: calc(100dvh - 64px);
+            overflow-y: auto;
+        }
     }
 
     @media print {
@@ -62,11 +74,9 @@
 
         @include brp($b6) {
             @include flex;
-        }
-
-        &:focus-visible {
-            outline: 3px solid var(--theme_accent);
-            outline-offset: 3px;
+            @include font(szrem(14), $f2);
+            min-height: 54px;
+            padding: 0;
         }
     }
 

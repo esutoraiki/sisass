@@ -1,0 +1,46 @@
+@use "../core/_instances" as *;
+@use "sisass_components/_buttons" as *;
+
+.documentationpage {
+    .button_simple_example_group {
+        @include align-items(center);
+        @include gap(16px);
+        @include flex;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+
+        @include brp($b7) {
+            @include flex-direction(column);
+        }
+
+        .button_simple_example_no_params {
+            @include button_simple;
+        }
+
+        .button_simple_example {
+            @include button_simple(
+                (
+                    radius: 7px,
+                    bg: $c4,
+                    c: $c5,
+                    bgh: $c5,
+                    ch: $c4,
+                    bga: $c6,
+                    ca: $c7,
+                    bgd: $c8,
+                    cd: $c1,
+                    w: 145px,
+                    ar: calc(145 / 40),
+                    p: 12px 18px,
+                    border: $bd3,
+                    tf: (
+                        s: szrem(14),
+                        f: $f4,
+                        w: bold,
+                        t: uppercase
+                    )
+                )
+            );
+        }
+    }
+}

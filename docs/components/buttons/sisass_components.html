@@ -1,0 +1,27 @@
+<article id="sisass_components" class="sisass_components">
+    <h1 class="title">sisass_components (directorio)</h1>
+
+    <p class="description">
+        En <b>src/sisass_components</b> se encuentran los mixins de componentes disponibles en SISASS.
+        Estos recursos agrupan piezas de interfaz reutilizables, como botones. Para usarlos, importa el módulo
+        del grupo de componentes en tu archivo SCSS y llama el mixin dentro del selector que recibirá el estilo.
+    </p>
+    <pre class="language-scss"><code>@use "sisass_components/buttons" as *;
+
+.button_primary {
+    @include button_simple(
+        (
+            bg: #FFF,
+            c: #000,
+            bgh: #000,
+            ch: #FFF
+        )
+    );
+}</code></pre>
+    <p class="note">
+        <b>Nota:</b> Los archivos de <b>src/sisass_components</b> pertenecen al framework y no deben editarse
+        desde un proyecto consumidor. Para personalizar un componente, usa sus parámetros desde tu propio
+        archivo SCSS.
+    </p>
+
+</article>

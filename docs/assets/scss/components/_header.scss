@@ -1,6 +1,88 @@
 @use "sass:list";
 @use "../core/instances" as *;
 
+.documentationpage {
+    #header {
+        @include brp($b6) {
+            @include position((p: sticky, t: 0, z: 9));
+            @include bc(var(--theme_surface), var(--theme_text));
+            @include wh(100%, 64px);
+            border-bottom: 1px solid var(--theme_border);
+        }
+
+        &:has(.page_search.active) {
+            @include brp($b6) {
+                z-index: 12;
+            }
+        }
+    }
+
+    .main_header {
+        @include brp($b6) {
+            @include grid;
+            @include align-items(center);
+            @include gap(8px);
+            @include wh(100%, 100%);
+            grid-template-columns: minmax(0, 1fr) auto auto;
+            grid-template-areas: "l0 s0 t0";
+            box-sizing: border-box;
+            padding: 0 12px;
+        }
+
+        .left_header {
+            @include brp($b6) {
+                @include flex;
+                @include align-items(center);
+                min-width: 0;
+            }
+
+            .logo_sisass {
+                @include brp($b6) {
+                    @include ht;
+                    @include position;
+                    @include wh(clamp(110px, 32vw, 130px), 30px);
+                    display: block;
+                }
+
+                &::before {
+                    @include brp($b6) {
+                        @include wh(100%, 100%);
+                    }
+                }
+            }
+
+            .separator,
+            .slogan {
+                @include brp($b6) {
+                    display: none;
+                }
+            }
+        }
+
+        .tools_header {
+            @include brp($b6) {
+                @include flex;
+                @include align-items(center);
+                @include gap(8px);
+            }
+
+            .separator {
+                @include brp($b6) {
+                    display: none;
+                }
+            }
+
+            .contact {
+                @include brp($b6) {
+                    @include flex;
+                    @include align-items(center);
+                    @include gap(8px);
+                }
+            }
+        }
+    }
+}
+
 .container_header {
     @include wh(min(100vw, 1920px), 100%);
     @include center-flex-column;

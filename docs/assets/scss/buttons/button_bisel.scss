@@ -1,0 +1,38 @@
+@use "sisass_components/buttons" as *;
+
+.documentationpage {
+    .button_bisel_example_group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .button_bisel_example {
+        @include button_bisel((
+            width: 160px,
+            height: 58px,
+            bg1: #64D8CB,
+            bg2: #202735,
+            bg_opacity: 0.85,
+            aspect_inside: 3,
+            color: #FFFFFF,
+            color_hover: #FFFFFF
+        ));
+    }
+
+    .button_bisel_example_border {
+        @include button_bisel((
+            width: 160px,
+            height: 58px,
+            bg1: #F5C451,
+            bg2: #9A315A,
+            bg_opacity: 0.85,
+            border_contain: true,
+            border: 2px solid #9A315A,
+            aspect_inside: 3,
+            color: #FFFFFF,
+            color_hover: #FFFFFF
+        ));
+    }
+}

@@ -1,4 +1,4 @@
-// Update: 20260827
+// Update: 20261008
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -75,7 +75,7 @@
 
 // Text + Font
 @mixin tf($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "tf() only accepts a map with text and font options.";
     }
 
@@ -109,7 +109,7 @@
 
 // Font Face
 @mixin font-face($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "font-face() only accepts a map with font options.";
     }
 
@@ -191,7 +191,7 @@
 
 // autofill
 @mixin autofill($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "autofill() only accepts a map with autofill options.";
     }
 
@@ -215,7 +215,7 @@
 
 // Background
 @mixin background($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "background() only accepts a map with background options.";
     }
 
@@ -278,7 +278,7 @@
     $bottom_value: null;
     $left_value: null;
 
-    @if meta.type-of($position) == "map" {
+    @if meta.type-of($position) == "map" or $position == () {
         $position_attr: $position;
 
         $position: mapv($position_attr, (position, p), relative);
@@ -360,11 +360,40 @@
     gap: normalize-px($value);
 }
 
+// Resolve size
+@mixin resolve-size($attr: ()) {
+    @if meta.type-of($attr) != "map" and $attr != () {
+        @error "resolve-size() only accepts a map with width + height, width + ratio, or height + ratio .";
+    }
+    $w: mapv($attr, (width, w), null);
+    $h: mapv($attr, (height, h), null);
+    $r: mapv($attr, (aspect_ratio, ratio, r), null);
+
+    $has_width: $w != null;
+    $has_height: $h != null;
+    $has_ratio: $r != null;
+
+    @if $has_width and $has_height and not $has_ratio {
+        width: $w;
+        height: $h;
+    } @else if $has_width and $has_ratio and not $has_height {
+        width: $w;
+        aspect-ratio: $r;
+    } @else if $has_height and $has_ratio and not $has_width {
+        height: $h;
+        aspect-ratio: $r;
+    } @else {
+        @error "resolve-size() requires exactly two values: width + height, width + ratio, or height + ratio.";
+    }
+}
+
+// Cover
 @mixin cover {
     @include whs(100%);
     object-fit: cover;
 }
 
+// Contain
 @mixin contain {
     @include whs(100%);
     object-fit: contain;
@@ -515,11 +544,11 @@
 
 // Need gulp-postcss and postcss-inline-svg
 @mixin icon-svg-mask($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "icon-svg-mask() only accepts a map with SVG mask options.";
     }
 
-    $svg: mapv($attr, svg, false);
+    $svg: mapv($attr, svg, null);
     $color: mapv($attr, (color, c), #FFFFFF);
     $position_attr: mapv($attr, (position, p), (
         position: absolute
@@ -531,7 +560,7 @@
     $path: mapv($attr, path, "../../img/svg/");
     $display: mapv($attr, (display, d), block);
 
-    @if $svg != false {
+    @if $svg != null {
         @if $position_attr != false {
             @include position($position_attr);
         }
@@ -600,7 +629,7 @@
 
 // Normalize the styles for working with SVG files
 @mixin normalize-svg($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "normalize-svg() only accepts a map with SVG options.";
     }
 
@@ -634,7 +663,7 @@
 
 // Add scroll
 @mixin scroll($attr: ()) {
-    @if meta.type-of($attr) != "map" {
+    @if meta.type-of($attr) != "map" and $attr != () {
         @error "scroll() only accepts a map with scroll options.";
     }
 

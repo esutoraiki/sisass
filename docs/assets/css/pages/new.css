@@ -3,6 +3,9 @@
   margin-inline: auto;
   margin-block-end: 56px;
 }
+.new .container_table .full {
+  margin-block-start: 15px;
+}
 .new .release_intro {
   text-align: left;
   text-decoration: initial;

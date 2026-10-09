@@ -1,0 +1,93 @@
+@use "../core/_instances" as *;
+@use "sisass_components/buttons" as *;
+
+.documentationpage {
+    .button_example_group {
+        @include align-items(center);
+        @include gap(16px);
+        @include flex;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+
+        @include brp($b7) {
+            @include flex-direction(column);
+        }
+    }
+
+    .button_style_arrow_no_params {
+        @include button_style_arrow;
+    }
+
+    .button_pagination_example_right,
+    .button_pagination_example_link_right {
+        @include button_style_arrow(
+            (
+                border_radius: 32px,
+                width: 180px,
+                bg: $c4,
+                bg_hover: $c5,
+                bg_active: $c6,
+                bg_disabled: $c8,
+                color: $c5,
+                color_hover: $c4,
+                color_disabled: $c1,
+                border: $bd11,
+                border_hover: $bd5,
+                border_active: $bd12,
+                border_disabled: $bd13,
+                icon: right,
+                tf: (
+                    f: $f4,
+                    s: szrem(16),
+                    w: bold,
+                    t: uppercase,
+                    a: center
+                )
+            )
+        );
+    }
+
+    .button_pagination_example_left,
+    .button_pagination_example_link_left {
+        @include button_style_arrow(
+            (
+                radius: 32px,
+                w: 180px,
+                bg: $c4,
+                bg_hover: $c5,
+                c: $c5,
+                ch: $c4,
+                bd: $bd11,
+                bdh: $bd5,
+                icon: left,
+                tf: (
+                    f: $f4,
+                    s: szrem(16),
+                    w: bold,
+                    t: uppercase,
+                    a: center
+                )
+            )
+        );
+    }
+
+    .button_pagination_example_disabled,
+    .button_pagination_example_link_disabled {
+        @include button_style_arrow(
+            (
+                border_radius: 32px,
+                width: 180px,
+                bg_disabled: $c8,
+                color_disabled: $c1,
+                border_disabled: $bd13,
+                tf: (
+                    f: $f4,
+                    s: szrem(16),
+                    w: bold,
+                    t: uppercase,
+                    a: center
+                )
+            )
+        );
+    }
+}

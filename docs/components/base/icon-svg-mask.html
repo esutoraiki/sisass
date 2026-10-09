@@ -30,7 +30,7 @@
         </h2>
 
         <pre class="language-scss"><code>@mixin icon-svg-mask($attr: (
-    svg: false,
+    svg: null,
     color: #FFFFFF,
     position: (
         position: absolute,
@@ -52,7 +52,7 @@
     display: block
 ));</code></pre>
         <p class="description">
-            Valores por defecto: svg <b>false</b>, color | c
+            Valores por defecto: svg <b>null</b>, color | c
             <b>#FFFFFF</b>, position | p <b>(position: absolute)</b>,
             width | w <b>100px</b>, height | h <b>100px</b>, repeat | r
             <b>no-repeat</b>, size | s <b>contain</b>, path
@@ -75,9 +75,9 @@
             <tbody>
                 <tr>
                     <td><b>svg</b></td>
-                    <td>String | Bool</td>
-                    <td>false</td>
-                    <td>Nombre base del archivo SVG. Si es <b>false</b>, no genera la máscara.</td>
+                    <td>String | Null</td>
+                    <td>null</td>
+                    <td>Nombre base del archivo SVG. Si es <b>null</b>, no genera la máscara.</td>
                 </tr>
                 <tr>
                     <td><b>color | c</b></td>
