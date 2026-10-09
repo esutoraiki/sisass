@@ -46,7 +46,7 @@ function open_search_interface() {
     container_node.classList.add(class_active);
 
     if (input_node) {
-        input_node.focus();
+        input_node.focus({ preventScroll: true });
     }
 
     return true;
@@ -566,6 +566,7 @@ function render_result_item(item, index, query, nodes, state, root_node) {
         }
 
         event.preventDefault();
+        close_mobile_search(nodes, state);
         update_page_hash(event.currentTarget.dataset.searchAnchor);
         focus_target(root_node, event.currentTarget.dataset.searchAnchor);
         set_panel_visibility(nodes, state, false);
@@ -642,6 +643,19 @@ function close_results(nodes, state) {
     set_panel_visibility(nodes, state, false);
 }
 
+function close_mobile_search(nodes, state) {
+    close_results(nodes, state);
+
+    if (window.innerWidth <= mobile_breakpoint) {
+        nodes.search_node.classList.remove(class_active);
+        nodes.search_node.querySelector(".container_search").classList.remove(class_active);
+        const trigger = nodes.search_node.querySelector(selector_search_openclose);
+
+        trigger.classList.remove(class_hide);
+        trigger.focus({ preventScroll: true });
+    }
+}
+
 function update_search(nodes, state, root_node) {
     const query = nodes.input_node.value.trim();
 
@@ -710,7 +724,8 @@ function attach_keyboard_shortcuts(root_node, nodes, state) {
         ) {
             event.preventDefault();
             open_search_interface();
-            nodes.input_node.focus();
+            window.scrollTo({ top: 0, behavior: "auto" });
+            nodes.input_node.focus({ preventScroll: true });
             nodes.input_node.select();
             return;
         }
@@ -721,8 +736,10 @@ function attach_keyboard_shortcuts(root_node, nodes, state) {
 
         if (event.key === "Escape") {
             event.preventDefault();
-            close_results(nodes, state);
-            nodes.input_node.focus();
+            close_mobile_search(nodes, state);
+            if (window.innerWidth > mobile_breakpoint) {
+                nodes.input_node.focus();
+            }
             return;
         }
 
@@ -835,6 +852,17 @@ function initialize_search_interface(root_node) {
 
     nodes.status_node.textContent = empty_search_message;
 
+    search_node.querySelector(".close").addEventListener("click", function () {
+        close_mobile_search(nodes, state);
+    });
+
+    window.matchMedia("(max-width: " + mobile_breakpoint + "px)").addEventListener("change", function () {
+        openclose_node.classList.remove(class_hide);
+        search_node.classList.remove(class_active);
+        container_node.classList.remove(class_active);
+        close_results(nodes, state);
+    });
+
     if (openclose_node) {
         openclose_node.addEventListener("click", function (event) {
             event.preventDefault();
@@ -866,7 +894,11 @@ function initialize_search_interface(root_node) {
         const target = event.target;
 
         if (target instanceof HTMLElement && !target.closest(selector_search_container)) {
-            close_results(nodes, state);
+            if (window.innerWidth <= mobile_breakpoint && search_node.classList.contains(class_active)) {
+                close_mobile_search(nodes, state);
+            } else {
+                close_results(nodes, state);
+            }
         }
     });
 

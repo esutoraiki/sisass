@@ -10,6 +10,12 @@
 
 .documentationpage {
     .main_header {
+        &:has(.page_search.active) {
+            @include brp($b6) {
+                @include position((z: 12));
+            }
+        }
+
         .page_search {
             @include position((
                 p: absolute,
@@ -25,13 +31,15 @@
 
             @include brp($b6) {
                 @include position((
-                    p: absolute,
-                    t: 50%,
-                    r: 70px,
+                    p: relative,
+                    t: auto,
+                    r: auto,
                     l: auto
                 ));
                 @include wh(max-content);
-                transform: translateY(-50%);
+                transform: none;
+                border-right: 1px solid var(--theme_border);
+                padding-right: 12px;
             }
 
             @media print { display: none; }
@@ -43,14 +51,20 @@
                     @include border-radius(12px);
                     @include bc(var(--theme_surface), var(--theme_text));
                     @include position((
-                        p: absolute,
-                        t: 10px,
-                        r: 15px
+                        p: fixed,
+                        t: 8px,
+                        r: 8px,
+                        l: 8px,
+                        z: 20
                     ));
-                    @include wh(min(90vw, 520px));
+                    @include wh(auto);
                     transform: none;
                     box-shadow: var(--theme_shadow);
                     padding: 10px;
+                    box-sizing: border-box;
+                    max-height: calc(100dvh - 16px);
+                    overflow-y: auto;
+                    border: 0;
                 }
             }
 
@@ -91,13 +105,29 @@
                 }
             }
 
+            .close {
+                display: none;
+
+                @include brp($b6) {
+                    @include position((p: absolute, t: 10px, r: 10px));
+                    @include font(szrem(14), $f1, bold);
+                    @include bc(var(--theme_surface_alt), var(--theme_text));
+                    @include border-radius(6px);
+                    display: block;
+                    border: 1px solid var(--theme_border);
+                    padding: 6px 12px;
+                    cursor: pointer;
+                }
+            }
+
             .page_search_label {
                 display: none;
 
                 @include brp($b6) {
                     @include font(szrem(15), $f2, bold);
                     @include text;
-                    margin-bottom: 8px;
+                    margin: 0 80px 12px 0;
+                    min-height: 32px;
                     display: block;
                     color: var(--theme_text);
                 }
@@ -207,7 +237,10 @@
 
                 @include brp($b6) {
                     @include wh(100%);
-                    top: calc(100% + 7px);
+                    @include position((p: relative, t: auto, l: auto));
+                    transform: none;
+                    margin-top: 8px;
+                    box-shadow: none;
                 }
 
                 &.is_visible { display: block; }
@@ -267,10 +300,20 @@
                 overflow-y: auto;
                 scrollbar-gutter: stable;
                 padding: 0 12px 12px;
+
+                @include brp($b6) {
+                    max-height: none;
+                    overflow-y: visible;
+                    scrollbar-gutter: auto;
+                }
             }
 
             .page_search_results.has_many_results .page_search_list {
                 height: min(445px, calc(100vh - 190px));
+
+                @include brp($b6) {
+                    height: auto;
+                }
             }
 
             .page_search_state {
