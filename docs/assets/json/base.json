@@ -226,6 +226,12 @@
             "node": "pb"
         },
         {
+            "id": "resolve-dimensions",
+            "url": "../components/base/resolve-dimensions.html",
+            "position": "beforeend",
+            "node": "resolve-dimensions"
+        },
+        {
             "id": "strip_unit",
             "url": "../components/base/strip_unit.html",
             "position": "beforeend",

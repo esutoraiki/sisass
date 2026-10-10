@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../core/instances" as *;
+
+$dimensions: resolve-dimensions((
+    width: 160px,
+    height: 90px,
+    seed_width: 320px
+));
+
+.documentationpage {
+    .fn_resolve_dimensions {
+        width: map.get($dimensions, width);
+        height: map.get($dimensions, height);
+    }
+}

@@ -28,8 +28,9 @@
     </p>
     <p class="note">
         Cuando se utiliza <b>aspect_ratio</b>, también debe enviarse <b>width</b>. En ese caso, <b>button_simple</b>
-        anula <b>height</b> y delega la resolución en <b>resolve-size</b> mediante la combinación
-        <b>width + aspect_ratio</b>. Si no se envía una proporción, utiliza <b>width + height</b>.
+        anula <b>height</b> y delega en <b>resolve-size</b> la emisión de la combinación
+        <b>width + aspect_ratio</b>; la dimensión implícita la determina el navegador mediante CSS. Si no se envía
+        una proporción, utiliza <b>width + height</b>.
     </p>
 
     <section class="use">

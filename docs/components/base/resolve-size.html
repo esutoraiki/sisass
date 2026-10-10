@@ -12,12 +12,13 @@
     </div>
 
     <p class="description">
-        Resuelve dos dimensiones compatibles entre <b>width</b>, <b>height</b> y <b>aspect_ratio</b>. Requiere
-        exactamente una de estas combinaciones: ancho y alto, ancho y relación, o alto y relación.
+        Aplica una combinación válida de <b>width</b>, <b>height</b> y <b>aspect_ratio</b>. Requiere exactamente
+        una de estas combinaciones: ancho y alto, ancho y relación, o alto y relación.
     </p>
     <p class="description">
-        El mixin recibe un mapa y admite los alias documentados. Si se envía una combinación incompleta o las tres
-        dimensiones, genera un error.
+        El mixin recibe un mapa y admite los alias documentados. Cuando se usa <b>aspect_ratio</b>, la dimensión
+        implícita no se calcula en Sass: el navegador la determina mediante la propiedad CSS <b>aspect-ratio</b>.
+        Si se envía una combinación incompleta o las tres dimensiones, genera un error.
     </p>
 
     <section class="use">
@@ -47,8 +48,8 @@
         <p class="description">
             Los tres elementos obtienen el mismo ancho y alto final mediante tres combinaciones diferentes: el primero
             recibe <b>width</b> y <b>height</b>, el segundo recibe <b>width</b> y <b>aspect_ratio</b>, y el tercero recibe
-            <b>height</b> y <b>aspect_ratio</b>. El resultado permite comprobar que <b>resolve-size</b> calcula las
-            dimensiones equivalentes a partir de cualquiera de esas parejas válidas.
+            <b>height</b> y <b>aspect_ratio</b>. En las dos últimas combinaciones, Sass emite <b>aspect-ratio</b> y el
+            navegador calcula la dimensión implícita.
         </p>
         <div id="resolve_size_example_tabs" class="container_example tab_panel" data-tab-panel data-active-tab="result">
             <div class="tab_panel_list" data-tab-panel-list>

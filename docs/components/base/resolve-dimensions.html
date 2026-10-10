@@ -1,0 +1,102 @@
+<article id="resolve-dimensions" class="resolve-dimensions">
+    <div class="group_title">
+        <h2 class="subtitle">
+            resolve-dimensions (_base.scss)
+        </h2>
+        <h3 class="attribute">
+            Tipo: Function
+        </h3>
+        <h3 class="attribute">
+            Versión: 2.x.x
+        </h3>
+    </div>
+
+    <p class="description">
+        Recibe un ancho y un alto de referencia, calcula su relación de aspecto y devuelve un nuevo par de dimensiones
+        cuando se determina el ancho o el alto esperado.
+    </p>
+    <p class="description">
+        La función devuelve un mapa con las claves <b>width</b> y <b>height</b>.
+    </p>
+    <p class="note">
+        Para consumir el resultado, usa <b>map.get($dimensions, width)</b> y <b>map.get($dimensions, height)</b>,
+        donde <b>$dimensions</b> contiene el mapa devuelto por la función.
+    </p>
+
+    <section class="use">
+        <h2 class="title">
+            Interface
+        </h2>
+
+        <pre class="language-scss"><code>@function resolve-dimensions($attr: ());</code></pre>
+
+        <h3 class="subtitle">
+            Sintaxis map
+        </h3>
+        <div class="container_table">
+            <table class="full">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Tipo</th>
+                        <th>Default</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>width | w</b></td>
+                        <td>Number</td>
+                        <td>null</td>
+                        <td>Define el ancho base usado para obtener la proporción.</td>
+                    </tr>
+                    <tr>
+                        <td><b>height | h</b></td>
+                        <td>Number</td>
+                        <td>null</td>
+                        <td>Define el alto base usado para obtener la proporción.</td>
+                    </tr>
+                    <tr>
+                        <td><b>seed_width | sw</b></td>
+                        <td>Number</td>
+                        <td>null</td>
+                        <td>Establece el ancho final y calcula el alto conservando la proporción.</td>
+                    </tr>
+                    <tr>
+                        <td><b>seed_height | sh</b></td>
+                        <td>Number</td>
+                        <td>null</td>
+                        <td>Establece el alto final y calcula el ancho conservando la proporción.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="description">
+            <b>width</b> y <b>height</b> son obligatorios. Si se envían <b>seed_width</b> y <b>seed_height</b> al
+            mismo tiempo, la función genera un error.
+        </p>
+
+        <h2 class="title">
+            Ejemplo
+        </h2>
+
+        <p class="description">
+            Las dimensiones de referencia son <b>160px × 90px</b>. Al establecer <b>seed_width: 320px</b>, la función
+            devuelve <b>width: 320px</b> y <b>height: 180px</b>, conservando la relación de aspecto definida por las
+            dimensiones de referencia.
+        </p>
+
+        <div class="container_example">
+            <h2 class="subtitle">
+                Ejemplo 1: SCSS
+            </h2>
+            <pre class="language-scss" data-src="../assets/scss/bases/resolve-dimensions.scss"></pre>
+
+            <h2 class="subtitle">
+                Ejemplo 1: CSS generado
+            </h2>
+            <pre class="language-css" data-src="../assets/css/bases/resolve-dimensions.css"></pre>
+        </div>
+    </section>
+</article>

@@ -1,4 +1,4 @@
-// Update: 20261008
+// Update: 20261010
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
@@ -823,6 +823,41 @@
     $value: mapv($attr, (value, v), 0);
 
     @return #{math.div($value * $base_i, 100) + $unn};
+}
+
+// Resolve dimensions
+@function resolve-dimensions($attr: ()) {
+    $width: mapv($attr, (width, w), null);
+    $height: mapv($attr, (height, h), null);
+    $seed_width: mapv($attr, (seed_width, sw), null);
+    $seed_height: mapv($attr, (seed_height, sh), null);
+
+    @if $width == null or $height == null {
+        @error "Width and height are required to resolve dimensions.";
+    }
+
+    @if $seed_width != null and $seed_height != null {
+        @error "Only one seed dimension is allowed.";
+    }
+
+    $ratio: math.div($width, $height);
+
+    @if $ratio <= 0 {
+        @error "Width and height must produce a positive ratio.";
+    }
+
+    @if $seed_width != null {
+        $width: $seed_width;
+        $height: math.div($width, $ratio);
+    } @else if $seed_height != null {
+        $height: $seed_height;
+        $width: $height * $ratio;
+    }
+
+    @return (
+        width: $width,
+        height: $height
+    );
 }
 
 // Remove unit of measurement from a value
