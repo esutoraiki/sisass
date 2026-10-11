@@ -6,6 +6,7 @@
 @use "components/_theme";
 
 @use "components/_page_loader";
+@use "components/_go_top";
 @use "components/_buttons";
 @use "components/_menu";
 @use "components/_header";
@@ -28,8 +29,11 @@ html.page[data-theme="dark"] {
 
 .no_scroll { overflow: hidden !important; }
 .no_visibility { visibility: hidden !important; }
+
 html.page {
     scrollbar-gutter: stable;
     scrollbar-width: 15px;
     scroll-behavior: smooth;
+    container-type: scroll-state;
+    container-name: page;
 }

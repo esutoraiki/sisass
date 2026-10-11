@@ -1,0 +1,28 @@
+@use "../core/instances" as * ;
+
+.btn_top {
+    @include transition((translate $t3 ease, opacity $t3));
+    @include position((p: fixed, b: 20px, r: 20px, z: 3));
+    @include border-radius(5px);
+    @include wh(max-content);
+    @include bc($c4, $c2);
+    @include user-select;
+    translate: 100px 0;
+    display: block;
+    padding: 15px 20px;
+    opacity: 0;
+}
+
+@container page scroll-state(scrollable: top) {
+    .btn_top {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+@supports not (container-type: scroll-state) {
+    .btn_top {
+        translate: 0 0;
+        opacity: 1;
+    }
+}

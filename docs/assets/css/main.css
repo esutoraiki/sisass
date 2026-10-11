@@ -583,6 +583,46 @@ html.page[data-theme=dark] {
   will-change: transform;
 }
 
+.btn_top {
+  -webkit-transition: translate 300ms ease, opacity 300ms;
+  -moz-transition: translate 300ms ease, opacity 300ms;
+  -o-transition: translate 300ms ease, opacity 300ms;
+  transition: translate 300ms ease, opacity 300ms;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 3;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  width: max-content;
+  height: auto;
+  background-color: #FBB03B;
+  color: #000;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  translate: 100px 0;
+  display: block;
+  padding: 15px 20px;
+  opacity: 0;
+}
+
+@container page scroll-state(scrollable: top) {
+  .btn_top {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
+@supports not (container-type: scroll-state) {
+  .btn_top {
+    translate: 0 0;
+    opacity: 1;
+  }
+}
 .btn {
   -webkit-flex-direction: row;
   flex-direction: row;
@@ -1794,7 +1834,7 @@ html.page[data-theme=dark] {
 }
 .documentationpage .main_header .page_search .page_search_results {
   background-color: var(--theme_surface);
-  color: var(--theme_text);
+  background-color: color-mix(in srgb, var(--theme_surface) 80%, transparent);
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
   -ms-border-radius: 12px;
@@ -1806,6 +1846,8 @@ html.page[data-theme=dark] {
   z-index: 1;
   width: min(630px, 100vw - 32px);
   height: auto;
+  backdrop-filter: blur(3px);
+  color: var(--theme_text);
   transform: translateX(-50%);
   box-sizing: border-box;
   border: 1px solid var(--theme_border);
@@ -4759,4 +4801,6 @@ html.page {
   scrollbar-gutter: stable;
   scrollbar-width: 15px;
   scroll-behavior: smooth;
+  container-type: scroll-state;
+  container-name: page;
 }

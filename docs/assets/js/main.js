@@ -30,6 +30,17 @@ import { get_theme, init_theme_toggle, set_theme } from "./components/theme_togg
             }
         },
 
+        set_back_to_top_links = () => {
+            const
+                current_url = window.location.pathname + window.location.search + "#back_to_top",
+                back_to_top_links = document.querySelectorAll(".btn_top")
+            ;
+
+            for (const back_to_top_link of back_to_top_links) {
+                back_to_top_link.href = current_url;
+            }
+        },
+
         NSDocumentation = (function () {
             let is_menu_locked = false;
 
@@ -159,6 +170,7 @@ import { get_theme, init_theme_toggle, set_theme } from "./components/theme_togg
                     });
 
                     set_home_link();
+                    set_back_to_top_links();
 
                     if (current_page === "home") {
                         const
