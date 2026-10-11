@@ -257,7 +257,9 @@
     }
 
     background-color: $bg_value;
-    @if $use_legacy_value {
+    @if meta.type-of($bg_value) == "string" and string.index("#{$bg_value}", "var(") == 1 {
+        background-color: color-mix(in srgb, $bg_value ($opacity_value * 100%), transparent);
+    } @else if $use_legacy_value {
         background-color: rgba($bg_value, $opacity_value);
     } @else {
         background-color: rgb-alpha($bg_value, $opacity_value);

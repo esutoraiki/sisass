@@ -14,7 +14,9 @@
     <p class="description">
         Genera un color de fondo con opacidad usando sintaxis moderna
         <b>rgb(... / alpha)</b> o <b>rgba(...)</b>. Soporta dos formas de uso:
-        parámetros individuales o sintaxis <b>map</b>.
+        parámetros individuales o sintaxis <b>map</b>. El color también puede
+        ser una variable CSS con formato <b>var(...)</b>; en ese caso genera
+        <b>color-mix(...)</b> para que la opacidad se resuelva en el navegador.
     </p>
     <p class="description">
         Cuando <b>use_legacy</b> es <b>false</b>, el mixin genera una salida
@@ -57,9 +59,9 @@
             <tbody>
                 <tr>
                     <td><b>bg</b></td>
-                    <td>Color</td>
+                    <td>Color o String CSS</td>
                     <td>#FFF</td>
-                    <td>Define el color base usado para generar <b>background-color</b>.</td>
+                    <td>Define el color base usado para generar <b>background-color</b>. Acepta colores Sass y variables CSS con <b>var(...)</b>.</td>
                 </tr>
                 <tr>
                     <td><b>opacity</b></td>
@@ -93,9 +95,9 @@
             <tbody>
                 <tr>
                     <td><b>color | c</b></td>
-                    <td>Color</td>
+                    <td>Color o String CSS</td>
                     <td>#FFF</td>
-                    <td>Define el color base usado para generar <b>background-color</b>.</td>
+                    <td>Define el color base usado para generar <b>background-color</b>. Acepta colores Sass y variables CSS con <b>var(...)</b>.</td>
                 </tr>
                 <tr>
                     <td><b>opacity | o</b></td>
@@ -133,6 +135,7 @@
                 <div class="result">
                     <div class="background_opacity_example_legacy"></div>
                     <div class="background_opacity_example_map"></div>
+                    <div class="background_opacity_example_css_variable"></div>
                 </div>
             </div>
 
@@ -145,7 +148,7 @@
             </div>
 
             <div class="tab_panel_panel" data-tab-panel-panel="html">
-                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;background_opacity_example_legacy&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;background_opacity_example_map&quot;&gt;&lt;/div&gt;</code></pre>
+                <pre class="language-html"><code>&lt;div&nbsp;class=&quot;background_opacity_example_legacy&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;background_opacity_example_map&quot;&gt;&lt;/div&gt;&NewLine;&lt;div&nbsp;class=&quot;background_opacity_example_css_variable&quot;&gt;&lt;/div&gt;</code></pre>
             </div>
         </div>
     </section>

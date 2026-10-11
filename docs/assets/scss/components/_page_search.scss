@@ -221,7 +221,7 @@
             }
 
             .page_search_results {
-                @include bc(var(--theme_surface), var(--theme_text));
+                @include background-opacity((color: var(--theme_surface), opacity: 0.8));
                 @include border-radius(12px);
                 @include position((
                     p: absolute,
@@ -229,6 +229,8 @@
                     l: 50%
                 ));
                 @include wh(min(630px, calc(100vw - 32px)));
+                backdrop-filter: blur(3px);
+                color: var(--theme_text);
                 transform: translateX(-50%);
                 box-sizing: border-box;
                 border: 1px solid var(--theme_border);

@@ -15,4 +15,13 @@
         ));
         @include whs(100px);
     }
+
+    .background_opacity_example_css_variable {
+        --background_opacity_example_color: #{$c2};
+        @include background-opacity((
+            color: var(--background_opacity_example_color),
+            opacity: 0.65
+        ));
+        @include whs(100px);
+    }
 }

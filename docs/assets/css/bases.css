@@ -55,6 +55,13 @@
   width: 100px;
   height: 100px;
 }
+.documentationpage .background_opacity_example_css_variable {
+  --background_opacity_example_color: #000;
+  background-color: var(--background_opacity_example_color);
+  background-color: color-mix(in srgb, var(--background_opacity_example_color) 65%, transparent);
+  width: 100px;
+  height: 100px;
+}
 
 .documentationpage .rgb_alpha_example {
   width: 100px;
